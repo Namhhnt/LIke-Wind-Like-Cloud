@@ -289,6 +289,19 @@ style quick_button_text:
 
 screen navigation():
 
+    $ main_menu_entries = [
+        ("❦", _("Start"), Start(), True),
+        ("↺", _("Load"), ShowMenu("load"), False),
+        ("⚙", _("Preferences"), ShowMenu("preferences"), False),
+        ("✦", _("About"), ShowMenu("about"), False),
+    ]
+
+    if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        $ main_menu_entries.append(("?", _("Help"), ShowMenu("help"), False))
+
+    if renpy.variant("pc"):
+        $ main_menu_entries.append(("⏻", _("Quit"), Quit(confirm=False), False))
+
     if main_menu:
 
         frame:
@@ -296,28 +309,46 @@ screen navigation():
 
             if renpy.variant("small"):
                 xalign 0.5
-                ypos 610
+                ypos 792
             else:
-                xpos 110
-                ypos 298
+                xpos 86
+                ypos 372
 
             vbox:
-                style_prefix "navigation"
-                spacing gui.navigation_spacing
+                spacing 0
 
-                textbutton _("Start"):
-                    style "navigation_primary_button"
-                    action Start()
+                for i, (icon, label, button_action, is_primary) in enumerate(main_menu_entries):
 
-                textbutton _("Load") action ShowMenu("load")
-                textbutton _("Preferences") action ShowMenu("preferences")
-                textbutton _("About") action ShowMenu("about")
+                    if i:
+                        null height 10
 
-                if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-                    textbutton _("Help") action ShowMenu("help")
+                        frame:
+                            style "navigation_divider"
 
-                if renpy.variant("pc"):
-                    textbutton _("Quit") action Quit(confirm=False)
+                        null height 10
+
+                    button:
+                        style ("navigation_primary_button" if is_primary else "navigation_button")
+                        action button_action
+
+                        hbox:
+                            xfill True
+                            yalign 0.5
+                            spacing 18
+
+                            text icon:
+                                style ("navigation_primary_icon_text" if is_primary else "navigation_icon_text")
+
+                            text label:
+                                style ("navigation_primary_label_text" if is_primary else "navigation_label_text")
+
+                            null:
+                                width 0
+                                xfill True
+
+                            if is_primary:
+                                text "›":
+                                    style "navigation_primary_chevron_text"
 
     else:
 
@@ -354,6 +385,12 @@ style navigation_button is gui_button
 style navigation_button_text is gui_button_text
 style navigation_primary_button is navigation_button
 style navigation_primary_button_text is navigation_button_text
+style navigation_label_text is gui_text
+style navigation_primary_label_text is navigation_label_text
+style navigation_icon_text is gui_text
+style navigation_primary_icon_text is navigation_icon_text
+style navigation_primary_chevron_text is gui_text
+style navigation_divider is empty
 style menu_nav_panel is empty
 style game_nav_panel is menu_nav_panel
 style main_menu_title_text is gui_text
@@ -367,14 +404,14 @@ style menu_toolbar_hotspot is empty
 
 style navigation_button:
     xfill True
-    yminimum 92
-    background Frame("gui/theme/menu_button_frame.png", 52, 34, 52, 34)
-    hover_background Frame("gui/theme/menu_button_hover_frame.png", 52, 34, 52, 34)
-    selected_background Frame("gui/theme/menu_button_hover_frame.png", 52, 34, 52, 34)
-    left_padding 28
-    right_padding 28
-    top_padding 14
-    bottom_padding 14
+    yminimum 82
+    background Frame("gui/theme/menu_button_frame.png", 260, 120, 260, 120)
+    hover_background Frame("gui/theme/menu_button_frame.png", 260, 120, 260, 120)
+    selected_background Frame("gui/theme/menu_button_frame.png", 260, 120, 260, 120)
+    left_padding 24
+    right_padding 24
+    top_padding 12
+    bottom_padding 12
 
 style navigation_button_text:
     color "#f7efe3"
@@ -385,26 +422,63 @@ style navigation_button_text:
     xalign 0.0
 
 style navigation_primary_button:
-    yminimum 98
-    background Frame("gui/theme/menu_button_active_frame.png", 56, 36, 56, 36)
-    hover_background Frame("gui/theme/menu_button_active_frame.png", 56, 36, 56, 36)
-    selected_background Frame("gui/theme/menu_button_active_frame.png", 56, 36, 56, 36)
-    left_padding 30
-    right_padding 30
-    top_padding 16
-    bottom_padding 16
+    yminimum 92
+    background Frame("gui/theme/menu_button_active_frame.png", 260, 120, 260, 120)
+    hover_background Frame("gui/theme/menu_button_active_frame.png", 260, 120, 260, 120)
+    selected_background Frame("gui/theme/menu_button_active_frame.png", 260, 120, 260, 120)
+    left_padding 26
+    right_padding 22
+    top_padding 14
+    bottom_padding 14
 
 style navigation_primary_button_text:
     size 35
     bold True
 
+style navigation_label_text:
+    color "#f3eadc"
+    hover_color "#fff9f0"
+    size 29
+    yalign 0.5
+
+style navigation_primary_label_text:
+    color "#fff6eb"
+    size 31
+    bold True
+    yalign 0.5
+
+style navigation_icon_text:
+    color "#e2d3bf"
+    size 28
+    yalign 0.5
+    min_width 34
+    text_align 0.5
+
+style navigation_primary_icon_text:
+    color "#fff3e0"
+    size 30
+    yalign 0.5
+    min_width 34
+    text_align 0.5
+
+style navigation_primary_chevron_text:
+    color "#fff1de"
+    size 36
+    bold True
+    yalign 0.5
+
+style navigation_divider:
+    xfill True
+    ysize 1
+    background Solid("#eadfcd3a")
+
 style menu_nav_panel:
-    xsize 492
-    left_padding 28
-    right_padding 28
-    top_padding 28
-    bottom_padding 28
-    background Frame("gui/theme/menu_panel_frame.png", 60, 60, 60, 60)
+    xsize 468
+    left_padding 20
+    right_padding 20
+    top_padding 18
+    bottom_padding 18
+    background Frame("gui/theme/menu_panel_frame.png", 96, 96, 96, 96)
 
 style game_nav_panel:
     xsize 420
@@ -412,7 +486,7 @@ style game_nav_panel:
     right_padding 20
     top_padding 18
     bottom_padding 18
-    background Frame("gui/theme/menu_panel_frame.png", 60, 60, 60, 60)
+    background Frame("gui/theme/menu_panel_frame.png", 96, 96, 96, 96)
 
 style main_menu_title_text:
     color "#fff4e7"
@@ -425,17 +499,20 @@ style main_menu_subtitle_text:
 
 style main_menu_quote_text:
     color "#eadfce"
-    size 24
+    size 22
     italic True
+    outlines [(1, "#20161acc", 0, 0)]
 
 style main_menu_prompt_text:
     color "#fff0dc"
-    size 30
+    size 28
     italic True
+    outlines [(1, "#20161acc", 0, 0)]
 
 style main_menu_footer_text:
     color "#e0cfbc"
     size 20
+    outlines [(1, "#20161acc", 0, 0)]
 
 style menu_tool_button:
     background Solid("#1d151aa8")
@@ -477,55 +554,87 @@ screen main_menu():
 
     if renpy.variant("small"):
 
-        add Transform("gui/theme/game_title.png", zoom=0.42, xalign=0.5, ypos=78)
-        add "gui/theme/start_prompt_mobile.png"
+        add Transform("gui/theme/title_mobile.png", zoom=0.48, xalign=0.5, ypos=174)
 
         fixed:
+            xpos 72
+            ypos 56
+            add Transform("gui/theme/bgm_locale.png", zoom=0.13)
+
+            button:
+                style "menu_toolbar_hotspot"
+                xpos 8
+                ypos 120
+                xsize 104
+                ysize 104
+                action ShowMenu("preferences")
+
+            button:
+                style "menu_toolbar_hotspot"
+                xpos 20
+                ypos 12
+                xsize 204
+                ysize 74
+                action ShowMenu("preferences")
+
+        text _("Tap Start to begin"):
+            style "main_menu_prompt_text"
             xalign 0.5
-            ypos 42
-            add Transform("gui/theme/bgm_locale.png", zoom=0.25)
+            ypos 1516
+            text_align 0.5
 
-            button:
-                style "menu_toolbar_hotspot"
-                xpos 22
-                ypos 18
-                xsize 228
-                ysize 128
-                action ShowMenu("preferences")
+        text "v[config.version]":
+            style "main_menu_footer_text"
+            xalign 0.5
+            ypos 1622
+            text_align 0.5
 
-            button:
-                style "menu_toolbar_hotspot"
-                xpos 270
-                ypos 18
-                xsize 228
-                ysize 128
-                action ShowMenu("preferences")
+        text "© [config.name!t]":
+            style "main_menu_footer_text"
+            xalign 0.5
+            ypos 1668
+            text_align 0.5
 
     else:
 
-        add Transform("gui/theme/game_title.png", zoom=0.34, xpos=70, ypos=26)
-        add "gui/theme/start_prompt_pc.png"
+        add Transform("gui/theme/title_pc.png", zoom=0.34, xpos=64, ypos=74)
 
         fixed:
-            xpos 1390
-            ypos 30
-            add Transform("gui/theme/bgm_locale.png", zoom=0.24)
+            xpos 1328
+            ypos 34
+            add Transform("gui/theme/bgm_locale.png", zoom=0.11)
 
             button:
                 style "menu_toolbar_hotspot"
-                xpos 18
-                ypos 16
-                xsize 238
-                ysize 132
+                xpos 10
+                ypos 98
+                xsize 84
+                ysize 84
                 action ShowMenu("preferences")
 
             button:
                 style "menu_toolbar_hotspot"
-                xpos 280
-                ypos 16
-                xsize 220
-                ysize 132
+                xpos 12
+                ypos 10
+                xsize 196
+                ysize 52
                 action ShowMenu("preferences")
+
+        text _("Click Start to begin"):
+            style "main_menu_prompt_text"
+            xalign 0.54
+            ypos 642
+            text_align 0.5
+
+        text "v[config.version]":
+            style "main_menu_footer_text"
+            xpos 1516
+            ypos 852
+
+        text "© [config.name!t]":
+            style "main_menu_footer_text"
+            xpos 1348
+            ypos 892
 
     use navigation
 
@@ -671,7 +780,7 @@ style game_menu_content_frame:
     right_padding 40
     top_padding 36
     bottom_padding 36
-    background Frame("gui/theme/content_panel_frame.png", 56, 56, 56, 56)
+    background Frame("gui/theme/content_panel_frame.png", 96, 96, 96, 96)
 
 style game_menu_viewport:
     xsize 1380
@@ -707,15 +816,37 @@ style navigation_primary_button_text:
 
 style menu_nav_panel:
     variant "small"
-    xsize 700
-    left_padding 34
-    right_padding 34
-    top_padding 28
-    bottom_padding 28
+    xsize 530
+    left_padding 22
+    right_padding 22
+    top_padding 18
+    bottom_padding 18
 
 style game_nav_panel:
     variant "small"
     xsize 540
+
+style navigation_label_text:
+    variant "small"
+    size 33
+
+style navigation_primary_label_text:
+    variant "small"
+    size 36
+
+style navigation_icon_text:
+    variant "small"
+    size 31
+    min_width 40
+
+style navigation_primary_icon_text:
+    variant "small"
+    size 34
+    min_width 40
+
+style navigation_primary_chevron_text:
+    variant "small"
+    size 38
 
 style main_menu_title_text:
     variant "small"
