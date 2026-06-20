@@ -100,6 +100,14 @@ screen route_map():
                 style "route_map_summary"
                 xalign 0.5
 
+            text _("Validation: [get_validation_summary()]"):
+                style "route_map_summary"
+                xalign 0.5
+
+            text _("Acceptance: [get_acceptance_summary()]"):
+                style "route_map_summary"
+                xalign 0.5
+
             for route_id in ROUTE_ORDER:
                 $ route = ROUTES[route_id]
                 $ route_chapters = get_route_chapters(route_id)
@@ -265,7 +273,11 @@ label hoang_h02:
 
 
 label resolve_seed_ending:
-    if "ending_shared_silence" in progress["ending_eligibility"]:
+    if "ending_true_convergence" in progress["ending_eligibility"]:
+        jump ending_true_convergence
+    elif "ending_focus_hoang" in progress["ending_eligibility"]:
+        jump ending_focus_hoang
+    elif "ending_shared_silence" in progress["ending_eligibility"]:
         jump ending_shared_silence
     elif "ending_restraint" in progress["ending_eligibility"]:
         jump ending_restraint
@@ -282,6 +294,13 @@ label ending_shared_silence:
     jump route_map
 
 
+label ending_focus_hoang:
+    $ mark_ending_seen("ending_focus_hoang")
+    "Ending unlocked: Hoang Focus."
+    "Because the playthrough leaned harder into Hoang's route, the resolution centers his emotional trajectory over Tam's hesitation."
+    jump route_map
+
+
 label ending_restraint:
     $ mark_ending_seen("ending_restraint")
     "Ending unlocked: Quiet Restraint."
@@ -293,4 +312,11 @@ label ending_confession:
     $ mark_ending_seen("ending_confession")
     "Ending unlocked: Sudden Confession."
     "The confession path lands first, reshaping the route through urgency instead of caution."
+    jump route_map
+
+
+label ending_true_convergence:
+    $ mark_ending_seen("ending_true_convergence")
+    "True ending unlocked: True Convergence."
+    "After seeing both Hoang directions across playthroughs, the routes can finally resolve into a calmer understanding that was impossible before."
     jump route_map

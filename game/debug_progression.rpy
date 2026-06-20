@@ -20,6 +20,8 @@ screen debug_progression():
             text _("Excluded: [', '.join(progress['excluded']) if progress['excluded'] else 'None']") style "route_map_summary"
             text _("Choices: [get_unlocked_choice_summary()]") style "route_map_summary"
             text _("Eligible Endings: [get_ending_summary()]") style "route_map_summary"
+            text _("Validation: [get_validation_summary()]") style "route_map_summary"
+            text _("Acceptance: [get_acceptance_summary()]") style "route_map_summary"
 
             text _("Complete Chapter") style "route_map_route_title"
 
@@ -32,5 +34,6 @@ screen debug_progression():
 
             hbox:
                 spacing 18
+                textbutton _("Refresh Validation") action Function(refresh_validation_state)
                 textbutton _("Reset Progress") action Function(debug_reset_progress)
                 textbutton _("Close Debug") action Hide("debug_progression")

@@ -178,6 +178,7 @@ init -2 python:
             "status": "locked",
             "label": "hoang_h02",
             "prerequisites": ["hoang_h01", "tam_c03"],
+            "soft_hide_until_any_completed": ["hoang_bonus_restraint", "hoang_bonus_confession"],
             "optional_conditions": [],
             "unlocks": [],
             "excludes": [],
@@ -202,5 +203,51 @@ init -2 python:
             "label": "Notice the subtle reaction",
             "type": "insight",
             "conditions": ["flag_player_knows_hoang_restraint"],
+        },
+    }
+
+    ENDING_RULES = {
+        "ending_restraint": {
+            "title": "Quiet Restraint",
+            "requires_completed": ["hoang_h02"],
+            "requires_directions_any": {
+                "hoang": ["restraint"],
+            },
+            "emotional_max": {
+                "misunderstanding": 1,
+            },
+        },
+        "ending_confession": {
+            "title": "Sudden Confession",
+            "requires_completed": ["hoang_h02"],
+            "requires_directions_any": {
+                "hoang": ["confession"],
+            },
+        },
+        "ending_shared_silence": {
+            "title": "Shared Silence",
+            "requires_completed": ["hoang_h02"],
+            "emotional_min": {
+                "trust": 3,
+            },
+            "emotional_max": {
+                "distance": 0,
+            },
+        },
+        "ending_focus_hoang": {
+            "title": "Hoang Focus",
+            "requires_completed": ["hoang_h02"],
+            "route_focus_greater": ["hoang", "tam"],
+        },
+        "ending_true_convergence": {
+            "title": "True Convergence",
+            "requires_completed": ["hoang_h02"],
+            "emotional_min": {
+                "trust": 3,
+            },
+            "emotional_max": {
+                "distance": 0,
+            },
+            "persistent_endings_all": ["ending_restraint", "ending_confession"],
         },
     }
