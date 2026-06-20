@@ -7,6 +7,7 @@ init -1 python:
             "excluded": [],
             "hidden": [],
             "play_order": [],
+            "recommended_next": [],
             "route_status": {route_id: "locked" for route_id in ROUTE_ORDER},
             "route_focus": {route_id: 0 for route_id in ROUTE_ORDER},
             "player_flags": [],
@@ -19,6 +20,7 @@ init -1 python:
                 "misunderstanding": 0,
             },
             "unlocked_choices": [],
+            "completed_exclusion_groups": [],
         }
 
     def add_unique(target, value):
@@ -35,14 +37,26 @@ init -1 python:
     def chapter_title(chapter_id):
         return CHAPTERS[chapter_id]["title"]
 
+    def route_title(route_id):
+        return ROUTES[route_id]["title"]
+
     def prerequisites_met(chapter_id):
         chapter = CHAPTERS[chapter_id]
-        return all(prerequisite in progress["completed"] for prerequisite in chapter["prerequisites"])
+        if not all(prerequisite in progress["completed"] for prerequisite in chapter["prerequisites"]):
+            return False
+
+        required_directions = chapter.get("required_directions", {})
+        for route_id, directions in required_directions.items():
+            if not any(direction in progress["relationship_directions"][route_id] for direction in directions):
+                return False
+
+        return True
 
     def initialize_progression():
         if progress["initialized"]:
             recalculate_chapter_availability()
             recalculate_route_status()
+            update_recommended_next()
             return
 
         progress["initialized"] = True
@@ -52,6 +66,7 @@ init -1 python:
 
         recalculate_chapter_availability()
         recalculate_route_status()
+        update_recommended_next()
 
     def apply_direct_unlocks(chapter):
         for unlocked_chapter_id in chapter["unlocks"]:
@@ -66,6 +81,32 @@ init -1 python:
         for flag in chapter["flags_set"]:
             add_unique(progress["player_flags"], flag)
 
+        for route_id, flags in chapter.get("character_flags_set", {}).items():
+            for flag in flags:
+                add_unique(progress["character_flags"][route_id], flag)
+
+    def apply_relationship_directions(chapter):
+        for route_id, directions in chapter.get("relationship_directions_set", {}).items():
+            for direction in directions:
+                add_unique(progress["relationship_directions"][route_id], direction)
+
+    def apply_choice_unlocks(chapter):
+        for choice_id in chapter.get("choice_unlocks", []):
+            add_unique(progress["unlocked_choices"], choice_id)
+
+    def apply_emotional_effects(chapter):
+        for effect_key, delta in chapter.get("emotional_effects", {}).items():
+            progress["emotional_state"][effect_key] = progress["emotional_state"].get(effect_key, 0) + delta
+
+    def apply_exclusions(chapter):
+        exclusion_group = chapter.get("exclusion_group")
+        if exclusion_group:
+            add_unique(progress["completed_exclusion_groups"], exclusion_group)
+
+        for excluded_chapter_id in chapter.get("excludes", []):
+            if excluded_chapter_id not in progress["completed"]:
+                add_unique(progress["excluded"], excluded_chapter_id)
+
     def recalculate_chapter_availability():
         for chapter_id in CHAPTER_ORDER:
             if chapter_id in progress["completed"]:
@@ -74,6 +115,13 @@ init -1 python:
 
             if chapter_id in progress["excluded"]:
                 remove_if_present(progress["available"], chapter_id)
+                continue
+
+            exclusion_group = CHAPTERS[chapter_id].get("exclusion_group")
+            if exclusion_group and exclusion_group in progress["completed_exclusion_groups"]:
+                remove_if_present(progress["available"], chapter_id)
+                if chapter_id not in progress["completed"]:
+                    add_unique(progress["excluded"], chapter_id)
                 continue
 
             if prerequisites_met(chapter_id):
@@ -101,6 +149,20 @@ init -1 python:
             else:
                 progress["route_status"][route_id] = "locked"
 
+    def sort_available_chapters(chapter_ids):
+        return sorted(
+            chapter_ids,
+            key=lambda chapter_id: (
+                progress["route_focus"][CHAPTERS[chapter_id]["route"]],
+                CHAPTERS[chapter_id]["timeline_position"],
+                CHAPTERS[chapter_id]["id"],
+            ),
+        )
+
+    def update_recommended_next():
+        available = [chapter_id for chapter_id in progress["available"] if chapter_id not in progress["hidden"]]
+        progress["recommended_next"] = sort_available_chapters(available)[:2]
+
     def get_chapter_state(chapter_id):
         if chapter_id in progress["completed"]:
             return "completed"
@@ -126,13 +188,46 @@ init -1 python:
         progress["route_focus"][chapter["route"]] += 1
 
         apply_flags(chapter)
+        apply_emotional_effects(chapter)
+        apply_relationship_directions(chapter)
+        apply_choice_unlocks(chapter)
+        apply_exclusions(chapter)
         apply_direct_unlocks(chapter)
 
         recalculate_chapter_availability()
         recalculate_route_status()
+        update_recommended_next()
 
     def get_route_status_label(route_id):
         return progress["route_status"].get(route_id, "locked")
+
+    def is_recommended_chapter(chapter_id):
+        return chapter_id in progress["recommended_next"]
+
+    def get_last_completed_chapter():
+        if progress["play_order"]:
+            return progress["play_order"][-1]
+        return None
+
+    def get_play_order_summary():
+        if not progress["play_order"]:
+            return "No chapters completed yet."
+
+        return " → ".join(chapter_title(chapter_id) for chapter_id in progress["play_order"])
+
+    def get_route_focus_summary(route_id):
+        return progress["route_focus"].get(route_id, 0)
+
+    def get_relationship_direction_summary(route_id):
+        directions = progress["relationship_directions"].get(route_id, [])
+        if not directions:
+            return "None"
+        return ", ".join(directions)
+
+    def get_unlocked_choice_summary():
+        if not progress["unlocked_choices"]:
+            return "None"
+        return ", ".join(progress["unlocked_choices"])
 
 
 default progress = make_progress_state()

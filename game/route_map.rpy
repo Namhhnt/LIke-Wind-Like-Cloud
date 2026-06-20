@@ -6,6 +6,7 @@ style route_map_route_title is gui_text
 style route_map_route_status is gui_text
 style route_map_chapter_button is button
 style route_map_chapter_button_text is button_text
+style route_map_recommended_text is gui_text
 style route_map_completed_text is gui_text
 style route_map_locked_text is gui_text
 
@@ -39,6 +40,10 @@ style route_map_chapter_button:
 style route_map_chapter_button_text:
     properties gui.text_properties("button")
     xalign 0.0
+
+style route_map_recommended_text:
+    size 20
+    color gui.hover_color
 
 style route_map_completed_text:
     size 24
@@ -74,7 +79,20 @@ screen route_map():
                 style "route_map_title"
                 xalign 0.5
 
-            text _("Phase 1 prototype: complete Tam's route to verify progression flow."):
+            text _("Phase 3 prototype: bonus chapters now branch into mutually exclusive directions."):
+                style "route_map_summary"
+                xalign 0.5
+
+            if progress["recommended_next"]:
+                text _("Recommended Next: [', '.join(chapter_title(chapter_id) for chapter_id in progress['recommended_next'])]"):
+                    style "route_map_summary"
+                    xalign 0.5
+
+            text _("Play Order: [get_play_order_summary()]"):
+                style "route_map_summary"
+                xalign 0.5
+
+            text _("Unlocked Choices: [get_unlocked_choice_summary()]"):
                 style "route_map_summary"
                 xalign 0.5
 
@@ -91,6 +109,12 @@ screen route_map():
 
                         text route["title"]:
                             style "route_map_route_title"
+
+                        text _("Focus: [get_route_focus_summary(route_id)]"):
+                            style "route_map_summary"
+
+                        text _("Direction: [get_relationship_direction_summary(route_id)]"):
+                            style "route_map_summary"
 
                         if route_status == "completed":
                             text _("Completed") style "route_map_route_status"
@@ -109,6 +133,10 @@ screen route_map():
                                     textbutton chapter_title(chapter_id):
                                         style "route_map_chapter_button"
                                         action Return(chapter_id)
+
+                                    if is_recommended_chapter(chapter_id):
+                                        text _("Recommended next chapter"):
+                                            style "route_map_recommended_text"
 
                                 elif chapter_state == "completed":
                                     text "[chapter_title(chapter_id)] - [_(\"Completed\")]":
@@ -149,9 +177,6 @@ label route_map:
 
 
 label tam_c01:
-    scene bg room
-    show eileen happy
-
     "Tam reaches the riverside before sunrise, carrying questions she cannot ask aloud yet."
     "This first chapter exists to prove the new progression flow works end to end."
 
@@ -160,22 +185,48 @@ label tam_c01:
 
 
 label tam_c02:
-    scene bg room
-    show eileen happy
-
     "The second chapter opens only after the first is complete, using centralized progression data."
-    "For now, the story slice stays short while the route map and unlock rules settle into place."
+    "This chapter now opens Hoang's route before Tam can finish her own line, creating the first interwoven prerequisite."
 
     $ complete_chapter("tam_c02")
     jump route_map
 
 
-label tam_c03:
-    scene bg room
-    show eileen happy
+label hoang_h01:
+    "Hoang's point of view arrives between Tam's second and third beats."
+    "Completing it unlocks two mutually exclusive bonus chapters before the route can settle into its next shape."
 
-    "Tam leaves with one small promise and the route marked complete."
-    "The next implementation phase can build cross-route unlocks on top of this foundation."
+    $ complete_chapter("hoang_h01")
+    jump route_map
+
+
+label hoang_bonus_restraint:
+    "Hoang chooses restraint and leaves several thoughts unspoken."
+    "That choice closes off the confession variant and unlocks a gentler follow-up tone."
+
+    $ complete_chapter("hoang_bonus_restraint")
+    jump route_map
+
+
+label hoang_bonus_confession:
+    "Hoang speaks too directly, forcing the scene toward confession instead of restraint."
+    "That choice excludes the quieter variant and unlocks a more forward follow-up path."
+
+    $ complete_chapter("hoang_bonus_confession")
+    jump route_map
+
+
+label tam_c03:
+    "Tam can only reach this moment after Hoang's route has taken one of its two optional emotional directions."
+    "That makes the route map prove a real exclusion-driven dependency instead of a simple linear chain."
 
     $ complete_chapter("tam_c03")
+    jump route_map
+
+
+label hoang_h02:
+    "Hoang's second chapter now depends on both his first scene and Tam's third one."
+    "This closes the first two-route loop and gives route focus something meaningful to measure."
+
+    $ complete_chapter("hoang_h02")
     jump route_map
