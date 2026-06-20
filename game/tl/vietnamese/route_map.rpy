@@ -9,6 +9,9 @@ translate vietnamese strings:
     old "Unlocked Choices: [get_unlocked_choice_summary()]"
     new "Lựa chọn đã mở khóa: [get_unlocked_choice_summary()]"
 
+    old "Eligible Endings: [get_ending_summary()]"
+    new "Kết thúc đủ điều kiện: [get_ending_summary()]"
+
     old "Direction: [get_relationship_direction_summary(route_id)]"
     new "Hướng quan hệ: [get_relationship_direction_summary(route_id)]"
 
@@ -17,6 +20,9 @@ translate vietnamese strings:
 
     old "Recommended next chapter"
     new "Chương được gợi ý tiếp theo"
+
+    old "Progress Debug"
+    new "Gỡ lỗi tiến trình"
 
     old "Completed"
     new "Hoàn thành"

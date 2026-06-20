@@ -21,6 +21,8 @@ init -1 python:
             },
             "unlocked_choices": [],
             "completed_exclusion_groups": [],
+            "ending_flags": [],
+            "ending_eligibility": [],
         }
 
     def add_unique(target, value):
@@ -40,6 +42,12 @@ init -1 python:
     def route_title(route_id):
         return ROUTES[route_id]["title"]
 
+    def has_player_flag(flag):
+        return flag in progress["player_flags"]
+
+    def has_relationship_direction(route_id, direction):
+        return direction in progress["relationship_directions"][route_id]
+
     def prerequisites_met(chapter_id):
         chapter = CHAPTERS[chapter_id]
         if not all(prerequisite in progress["completed"] for prerequisite in chapter["prerequisites"]):
@@ -56,6 +64,7 @@ init -1 python:
         if progress["initialized"]:
             recalculate_chapter_availability()
             recalculate_route_status()
+            recalculate_ending_eligibility()
             update_recommended_next()
             return
 
@@ -66,6 +75,7 @@ init -1 python:
 
         recalculate_chapter_availability()
         recalculate_route_status()
+        recalculate_ending_eligibility()
         update_recommended_next()
 
     def apply_direct_unlocks(chapter):
@@ -149,6 +159,24 @@ init -1 python:
             else:
                 progress["route_status"][route_id] = "locked"
 
+    def recalculate_ending_eligibility():
+        eligible = []
+
+        if "hoang_h02" not in progress["completed"]:
+            progress["ending_eligibility"] = eligible
+            return
+
+        if has_relationship_direction("hoang", "restraint") and progress["emotional_state"]["misunderstanding"] <= 1:
+            eligible.append("ending_restraint")
+
+        if has_relationship_direction("hoang", "confession"):
+            eligible.append("ending_confession")
+
+        if progress["emotional_state"]["trust"] >= 3 and progress["emotional_state"]["distance"] <= 0:
+            eligible.append("ending_shared_silence")
+
+        progress["ending_eligibility"] = eligible
+
     def sort_available_chapters(chapter_ids):
         return sorted(
             chapter_ids,
@@ -196,6 +224,7 @@ init -1 python:
 
         recalculate_chapter_availability()
         recalculate_route_status()
+        recalculate_ending_eligibility()
         update_recommended_next()
 
     def get_route_status_label(route_id):
@@ -228,6 +257,68 @@ init -1 python:
         if not progress["unlocked_choices"]:
             return "None"
         return ", ".join(progress["unlocked_choices"])
+
+    def choice_is_available(choice_id):
+        if choice_id not in CHOICE_DEFINITIONS:
+            return False
+
+        if choice_id not in progress["unlocked_choices"] and CHOICE_DEFINITIONS[choice_id]["type"] != "insight":
+            return False
+
+        for condition in CHOICE_DEFINITIONS[choice_id]["conditions"]:
+            if condition == "direction_hoang_restraint" and not has_relationship_direction("hoang", "restraint"):
+                return False
+            if condition == "direction_hoang_confession" and not has_relationship_direction("hoang", "confession"):
+                return False
+            if condition == "flag_player_knows_hoang_restraint" and not has_player_flag("player_knows_hoang_restraint"):
+                return False
+
+        return True
+
+    def get_emotional_hint():
+        trust = progress["emotional_state"]["trust"]
+        misunderstanding = progress["emotional_state"]["misunderstanding"]
+        distance = progress["emotional_state"]["distance"]
+
+        if misunderstanding >= 2:
+            return "Misunderstanding thickens around the silence between them."
+        if trust >= 3 and distance <= 0:
+            return "Trust is quietly winning over hesitation."
+        if distance > 0:
+            return "Distance still lingers between what they feel and what they say."
+        return "Their feelings are shifting, but not yet settled."
+
+    def get_ending_summary():
+        if not progress["ending_eligibility"]:
+            return "None yet"
+        return ", ".join(progress["ending_eligibility"])
+
+    def mark_ending_seen(ending_id):
+        add_unique(progress["ending_flags"], ending_id)
+
+    def debug_unlock(chapter_id):
+        if chapter_id in CHAPTERS and chapter_id not in progress["completed"] and chapter_id not in progress["excluded"]:
+            add_unique(progress["available"], chapter_id)
+            recalculate_route_status()
+            update_recommended_next()
+
+    def debug_complete(chapter_id):
+        if chapter_id in CHAPTERS:
+            complete_chapter(chapter_id)
+
+    def debug_reset_progress():
+        global progress
+        progress = make_progress_state()
+        initialize_progression()
+
+    def debug_show_progress():
+        return {
+            "completed": list(progress["completed"]),
+            "available": list(progress["available"]),
+            "excluded": list(progress["excluded"]),
+            "choices": list(progress["unlocked_choices"]),
+            "endings": list(progress["ending_eligibility"]),
+        }
 
 
 default progress = make_progress_state()

@@ -186,3 +186,21 @@ init -2 python:
             "choice_unlocks": [],
         },
     }
+
+    CHOICE_DEFINITIONS = {
+        "ask_gently": {
+            "label": "Ask gently",
+            "type": "conditional",
+            "conditions": ["direction_hoang_restraint"],
+        },
+        "choose_direct_affection": {
+            "label": "Choose direct affection",
+            "type": "directional",
+            "conditions": ["direction_hoang_confession"],
+        },
+        "notice_subtle_reaction": {
+            "label": "Notice the subtle reaction",
+            "type": "insight",
+            "conditions": ["flag_player_knows_hoang_restraint"],
+        },
+    }
