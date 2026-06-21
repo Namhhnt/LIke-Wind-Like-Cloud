@@ -268,3 +268,14 @@ translate vietnamese strings:
     # game/screens.rpy:1082
     old "Mouse Wheel Up"
     new "Mouse Wheel Up"
+
+translate vietnamese strings:
+
+    old "Development"
+    new "Phát triển"
+
+    old "Debugging Mode"
+    new "Chế độ gỡ lỗi"
+
+    old "Progress Debug"
+    new "Gỡ lỗi tiến trình"

@@ -1,10 +1,22 @@
 init -1 python:
-    if not hasattr(persistent, "gallery_unlocks"):
-        persistent.gallery_unlocks = []
-    if not hasattr(persistent, "route_clear_history"):
-        persistent.route_clear_history = []
-    if not hasattr(persistent, "true_ending_seen"):
-        persistent.true_ending_seen = False
+    def normalize_persistent_progression_state():
+        if not hasattr(persistent, "gallery_unlocks") or persistent.gallery_unlocks is None:
+            persistent.gallery_unlocks = []
+        elif not isinstance(persistent.gallery_unlocks, list):
+            persistent.gallery_unlocks = list(persistent.gallery_unlocks)
+
+        if not hasattr(persistent, "route_clear_history") or persistent.route_clear_history is None:
+            persistent.route_clear_history = []
+        elif not isinstance(persistent.route_clear_history, list):
+            persistent.route_clear_history = list(persistent.route_clear_history)
+
+        if not hasattr(persistent, "true_ending_seen") or persistent.true_ending_seen is None:
+            persistent.true_ending_seen = False
+
+        if not hasattr(persistent, "debugging_mode") or persistent.debugging_mode is None:
+            persistent.debugging_mode = False
+
+    normalize_persistent_progression_state()
 
     def make_progress_state():
         return {
@@ -77,6 +89,8 @@ init -1 python:
         return True
 
     def initialize_progression():
+        normalize_persistent_progression_state()
+
         if progress["initialized"]:
             recalculate_chapter_availability()
             recalculate_route_status()
@@ -191,6 +205,8 @@ init -1 python:
                 progress["route_status"][route_id] = "locked"
 
     def ending_rule_met(ending_id, rule):
+        normalize_persistent_progression_state()
+
         if not all(has_completed(chapter_id) for chapter_id in rule.get("requires_completed", [])):
             return False
 
@@ -343,6 +359,8 @@ init -1 python:
         return ", ".join(progress["ending_eligibility"])
 
     def mark_ending_seen(ending_id):
+        normalize_persistent_progression_state()
+
         add_unique(progress["ending_flags"], ending_id)
         if ending_id not in persistent.route_clear_history:
             persistent.route_clear_history.append(ending_id)

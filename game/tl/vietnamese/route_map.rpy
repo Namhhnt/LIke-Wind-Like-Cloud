@@ -3,26 +3,11 @@ translate vietnamese strings:
     old "Route Map"
     new "Bản đồ tuyến"
 
-    old "Phase 3 prototype: bonus chapters now branch into mutually exclusive directions."
-    new "Nguyên mẫu giai đoạn 3: các chương thưởng giờ phân nhánh thành những hướng đi loại trừ lẫn nhau."
-
-    old "Unlocked Choices: [get_unlocked_choice_summary()]"
-    new "Lựa chọn đã mở khóa: [get_unlocked_choice_summary()]"
-
-    old "Eligible Endings: [get_ending_summary()]"
-    new "Kết thúc đủ điều kiện: [get_ending_summary()]"
-
-    old "Direction: [get_relationship_direction_summary(route_id)]"
-    new "Hướng quan hệ: [get_relationship_direction_summary(route_id)]"
-
-    old "Focus: [get_route_focus_summary(route_id)]"
-    new "Mức tập trung: [get_route_focus_summary(route_id)]"
+    old "Recommended Next: [', '.join(chapter_title(chapter_id) for chapter_id in progress['recommended_next'])]"
+    new "Gợi ý tiếp theo: [', '.join(chapter_title(chapter_id) for chapter_id in progress['recommended_next'])]"
 
     old "Recommended next chapter"
     new "Chương được gợi ý tiếp theo"
-
-    old "Progress Debug"
-    new "Gỡ lỗi tiến trình"
 
     old "Completed"
     new "Hoàn thành"

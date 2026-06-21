@@ -1097,6 +1097,17 @@ screen preferences():
                     textbutton "English" action Language(None)
                     textbutton "Tiếng Việt" action Language("vietnamese")
 
+                vbox:
+                    style_prefix "check"
+                    label _("Development")
+                    textbutton _("Debugging Mode"):
+                        action ToggleField(persistent, "debugging_mode")
+                        selected persistent.debugging_mode
+                    textbutton _("Route Map") action Jump("route_map")
+                    textbutton _("Progress Debug"):
+                        action ShowMenu("debug_progression")
+                        sensitive persistent.debugging_mode
+
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
 

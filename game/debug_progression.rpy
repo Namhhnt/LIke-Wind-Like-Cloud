@@ -1,27 +1,42 @@
 screen debug_progression():
-    modal True
+    tag menu
 
-    frame:
-        background Solid("#111111ee")
-        xalign 0.5
-        yalign 0.5
-        xsize 1400
-        ysize 820
-        xpadding 28
-        ypadding 28
+    use game_menu(_("Progress Debug"), scroll="viewport"):
 
         vbox:
-            spacing 18
+            spacing 22
 
-            text _("Progression Debug") style "route_map_title"
+            text _("Prototype and progression diagnostics are grouped here so the player-facing route map stays clean."):
+                style "route_map_summary"
 
             text _("Completed: [', '.join(progress['completed']) if progress['completed'] else 'None']") style "route_map_summary"
             text _("Available: [', '.join(progress['available']) if progress['available'] else 'None']") style "route_map_summary"
             text _("Excluded: [', '.join(progress['excluded']) if progress['excluded'] else 'None']") style "route_map_summary"
-            text _("Choices: [get_unlocked_choice_summary()]") style "route_map_summary"
+            text _("Play Order: [get_play_order_summary()]") style "route_map_summary"
+            text _("Unlocked Choices: [get_unlocked_choice_summary()]") style "route_map_summary"
             text _("Eligible Endings: [get_ending_summary()]") style "route_map_summary"
             text _("Validation: [get_validation_summary()]") style "route_map_summary"
             text _("Acceptance: [get_acceptance_summary()]") style "route_map_summary"
+
+            null height 10
+
+            for route_id in ROUTE_ORDER:
+                frame:
+                    style "route_map_panel"
+
+                    vbox:
+                        spacing 10
+
+                        text ROUTES[route_id]["title"]:
+                            style "route_map_route_title"
+
+                        text _("Focus: [get_route_focus_summary(route_id)]"):
+                            style "route_map_summary"
+
+                        text _("Direction: [get_relationship_direction_summary(route_id)]"):
+                            style "route_map_summary"
+
+            null height 12
 
             text _("Complete Chapter") style "route_map_route_title"
 
@@ -34,6 +49,7 @@ screen debug_progression():
 
             hbox:
                 spacing 18
+
                 textbutton _("Refresh Validation") action Function(refresh_validation_state)
                 textbutton _("Reset Progress") action Function(debug_reset_progress)
-                textbutton _("Close Debug") action Hide("debug_progression")
+                textbutton _("Open Route Map") action Jump("route_map")
