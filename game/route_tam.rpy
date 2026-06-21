@@ -4,13 +4,13 @@ default tam_confidence = 0
 default huyen_trust = 0
 default hoang_impression = 0
 
-define tam = Character("Tâm")
-define huyen = Character("Huyền")
+define tam = Character("Tâm", image="tam")
+define huyen = Character("Huyền", image="huyen")
 define hr = Character("Chị tuyển dụng")
 define interviewer = Character("Người phỏng vấn")
 define manager = Character("Trưởng phòng")
-define hoang_unknown = Character("Chàng trai kỳ lạ")
-define hoang = Character("Hoàng")
+define hoang_unknown = Character("Chàng trai kỳ lạ", image="hoang")
+define hoang = Character("Hoàng", image="hoang")
 define narrator = Character(None)
 
 label tam_c01:
@@ -32,7 +32,7 @@ label tam_c01:
 
     narrator "Tâm nhìn chúng rất lâu."
 
-    tam "Phòng triển khai dự án..."
+    tam thoughtful "Phòng triển khai dự án..."
 
     narrator "Tên vị trí nghe không quá xa lạ. Nhưng công ty thì khác."
 
@@ -46,15 +46,15 @@ label tam_c01:
 
     narrator "Điện thoại rung lên trên mặt bàn."
 
-    huyen "Dậy chưa bà nội?"
+    huyen smile "Dậy chưa bà nội?"
 
-    tam "Dậy rồi."
+    tam dazed "Dậy rồi."
 
-    huyen "Tốt. Tao đang ở dưới nhà mày. Xuống đi. Nếu để tao đi phỏng vấn một mình, tao sẽ trù mày được nhận vào phòng kế toán và phải làm bảng lương đến hết đời."
+    huyen pouty "Tốt. Tao đang ở dưới nhà mày. Xuống đi. Nếu để tao đi phỏng vấn một mình, tao sẽ trù mày được nhận vào phòng kế toán và phải làm bảng lương đến hết đời."
 
-    tam "Mày ác vừa thôi."
+    tam smile "Mày ác vừa thôi."
 
-    huyen "Xuống nhanh. Tao mua bánh mì."
+    huyen smile "Xuống nhanh. Tao mua bánh mì."
 
     narrator "Tâm bật cười."
 
@@ -65,23 +65,23 @@ label tam_c01:
 
     narrator "Huyền đứng ở sảnh chung cư, một tay cầm hai ổ bánh mì, tay kia ôm túi hồ sơ trước ngực như ôm phao cứu sinh."
 
-    huyen "Tao nói thật nhé, tim tao đang đập như chạy deadline cuối quý."
+    huyen sad "Tao nói thật nhé, tim tao đang đập như chạy deadline cuối quý."
 
-    tam "Mày cũng biết sợ cơ à?"
+    tam smile "Mày cũng biết sợ cơ à?"
 
-    huyen "Tao biết sợ chứ. Tao chỉ giấu giỏi hơn mày thôi."
+    huyen smile "Tao biết sợ chứ. Tao chỉ giấu giỏi hơn mày thôi."
 
     narrator "Tâm nhận ổ bánh mì từ tay Huyền. Còn nóng. Giấy gói thấm một chút dầu, mùi pate và rau mùi bốc lên giản dị đến mức làm người ta thấy cuộc đời vẫn còn cứu được."
 
-    huyen "Này, lát nữa nếu người ta hỏi vì sao muốn vào phòng triển khai dự án, mày định nói gì?"
+    huyen neutral "Này, lát nữa nếu người ta hỏi vì sao muốn vào phòng triển khai dự án, mày định nói gì?"
 
-    tam "Tao vẫn đang nghĩ."
+    tam thoughtful "Tao vẫn đang nghĩ."
 
-    huyen "Vậy là chưa nghĩ xong."
+    huyen pouty "Vậy là chưa nghĩ xong."
 
-    tam "Tao nghĩ rồi. Chỉ là chưa sắp xếp được."
+    tam embarrassed "Tao nghĩ rồi. Chỉ là chưa sắp xếp được."
 
-    huyen "Đấy. Khác gì chưa nghĩ xong đâu."
+    huyen smile "Đấy. Khác gì chưa nghĩ xong đâu."
 
     narrator "Tâm im lặng một chút. Huyền liếc cô, ánh mắt vừa trêu vừa thật sự quan tâm."
 
@@ -91,18 +91,18 @@ label tam_c01:
         "Thừa nhận mình cũng lo, rồi rủ Huyền cùng rà lại ý chính.":
             $ huyen_trust += 1
             $ add_unique(progress["player_flags"], "tam_huyen_shared_anxiety")
-            tam "Ừ, tao cũng lo. Hay trên đường đi mình rà lại với nhau một lượt đi. Mày nghe giúp tao xem có chỗ nào ngớ ngẩn không."
-            huyen "Được đấy. Ít ra hôm nay tao có cảm giác mình là bạn thân chứ không phải NPC phát bánh mì."
+            tam sad "Ừ, tao cũng lo. Hay trên đường đi mình rà lại với nhau một lượt đi. Mày nghe giúp tao xem có chỗ nào ngớ ngẩn không."
+            huyen happy "Được đấy. Ít ra hôm nay tao có cảm giác mình là bạn thân chứ không phải NPC phát bánh mì."
 
         "Tỏ ra tự tin để Huyền bớt lo.":
-            tam "Không sao đâu. Tao nghĩ vào đó ứng biến được."
-            huyen "Nghe thì cũng ngầu đấy. Nhưng tao ghét nhất chữ ứng biến trước phỏng vấn."
+            tam smile "Không sao đâu. Tao nghĩ vào đó ứng biến được."
+            huyen serious "Nghe thì cũng ngầu đấy. Nhưng tao ghét nhất chữ ứng biến trước phỏng vấn."
             narrator "Huyền nói vậy, nhưng cũng không ép thêm."
 
         "Bảo Huyền đừng làm mình căng thẳng thêm.":
             $ huyen_trust -= 1
-            tam "Mày đừng hỏi nữa. Tao đang cố không căng thẳng đây."
-            huyen "Ờ... xin lỗi."
+            tam sad "Mày đừng hỏi nữa. Tao đang cố không căng thẳng đây."
+            huyen sad "Ờ... xin lỗi."
             narrator "Câu trả lời rơi xuống giữa hai người hơi cụt. Không nặng nề. Chỉ là hơi lạnh đi một nhịp."
 
     scene bg_company_lobby_morning
@@ -114,11 +114,11 @@ label tam_c01:
 
     narrator "Ở quầy lễ tân, Huyền ghé sát tai cô."
 
-    huyen "Tao vừa thấy một anh đi qua đeo thẻ phòng pháp lý. Mặt lạnh như văn bản từ chối thanh toán."
+    huyen smile "Tao vừa thấy một anh đi qua đeo thẻ phòng pháp lý. Mặt lạnh như văn bản từ chối thanh toán."
 
-    tam "Mày đừng làm tao cười."
+    tam smile "Mày đừng làm tao cười."
 
-    huyen "Cười cho bớt run. Khoa học chưa chứng minh nhưng tao chứng minh bằng kinh nghiệm cá nhân rồi."
+    huyen happy "Cười cho bớt run. Khoa học chưa chứng minh nhưng tao chứng minh bằng kinh nghiệm cá nhân rồi."
 
     narrator "Tâm mím môi, nhưng khóe miệng vẫn không nhịn được cong lên."
 
@@ -145,11 +145,11 @@ label tam_c01:
 
     narrator "Huyền ngồi bên cạnh khẽ giơ nắm tay."
 
-    huyen "Cố lên. Đừng bán đứng tao."
+    huyen happy "Cố lên. Đừng bán đứng tao."
 
-    tam "Tao vào phỏng vấn chứ có vào phòng thẩm vấn đâu."
+    tam smile "Tao vào phỏng vấn chứ có vào phòng thẩm vấn đâu."
 
-    huyen "Khác nhau ở chỗ nào?"
+    huyen confused "Khác nhau ở chỗ nào?"
 
     narrator "Tâm bật cười rất khẽ, rồi bước vào."
 
@@ -188,26 +188,26 @@ label tam_c01_speech_retry:
         menu:
             "Chọn ý tiếp theo trong phần trả lời:"
 
-            "Hiểu đặc thù công ty đa ngành: triển khai dự án là điểm nối giữa xây dựng, vật liệu, IT, pháp lý, kế toán và quản lý chất lượng." if "context" not in tam_speech_order:
+            "Tự giới thiệu: tập trung kể về điểm mạnh cá nhân và thành tích học tập, khả năng quan sát và học hỏi." if "self_only" not in tam_speech_order:
+                $ tam_speech_order.append("self_only")
+
+            "Triển khai dự án là điểm nối giữa xây dựng, vật liệu, IT, pháp lý, kế toán và quản lý chất lượng." if "context" not in tam_speech_order:
                 $ tam_speech_order.append("context")
 
             "Nhấn mạnh năng lực phối hợp: theo dõi tiến độ, tổng hợp thông tin, làm rõ đầu việc và giữ luồng trao đổi giữa các phòng ban." if "coordination" not in tam_speech_order:
                 $ tam_speech_order.append("coordination")
 
+            "Khả năng làm việc độc lập: em có thể tự xử lý mọi việc mà không cần làm phiền phòng ban khác." if "solo" not in tam_speech_order:
+                $ tam_speech_order.append("solo")
+
             "Nói về tư duy rủi ro: phát hiện vướng mắc sớm, báo cáo minh bạch, không để lỗi nhỏ thành vấn đề lớn." if "risk" not in tam_speech_order:
                 $ tam_speech_order.append("risk")
 
-            "Kết lại bằng thái độ làm việc: học nhanh, chịu khó đi hiện trường khi cần, tôn trọng quy trình và chịu trách nhiệm với phần việc của mình." if "commitment" not in tam_speech_order:
+            "Thái độ làm việc: học nhanh, chịu khó đi hiện trường khi cần, tôn trọng quy trình và chịu trách nhiệm với phần việc của mình." if "commitment" not in tam_speech_order:
                 $ tam_speech_order.append("commitment")
 
             "Nói rằng mức lương là điều em quan tâm nhất vì em muốn được đánh giá đúng giá trị." if "salary_first" not in tam_speech_order:
                 $ tam_speech_order.append("salary_first")
-
-            "Khẳng định em có thể tự xử lý mọi việc mà không cần làm phiền phòng ban khác." if "solo" not in tam_speech_order:
-                $ tam_speech_order.append("solo")
-
-            "Tập trung kể về điểm mạnh cá nhân và thành tích học tập, không cần đi sâu vào yêu cầu công việc." if "self_only" not in tam_speech_order:
-                $ tam_speech_order.append("self_only")
 
     $ tam_speech_has_required = all(x in tam_speech_order for x in tam_speech_required)
     $ tam_speech_perfect_order = tam_speech_order == tam_speech_required
@@ -272,15 +272,15 @@ label tam_c01_speech_retry:
 
 label tam_c01_interview_perfect:
 
-    tam "Em nghĩ vị trí triển khai dự án không chỉ là truyền đạt thông tin từ bên này sang bên kia."
+    tam serious "Em nghĩ vị trí triển khai dự án không chỉ là truyền đạt thông tin từ bên này sang bên kia."
 
-    tam "Với một công ty có nhiều mảng như xây dựng, vật liệu, IT, pháp lý, kế toán và quản lý chất lượng, người ở phòng triển khai cần hiểu được việc của mình nằm ở đâu trong toàn bộ dòng chảy dự án."
+    tam thoughtful "Với một công ty có nhiều mảng như xây dựng, vật liệu, IT, pháp lý, kế toán và quản lý chất lượng, người ở phòng triển khai cần hiểu được việc của mình nằm ở đâu trong toàn bộ dòng chảy dự án."
 
-    tam "Nếu em không hiểu bối cảnh, em sẽ chỉ chuyển tiếp thông tin. Nhưng nếu hiểu bối cảnh, em có thể biết thông tin nào cần làm rõ, phòng ban nào cần được cập nhật, và rủi ro nào nên được báo sớm."
+    tam serious "Nếu em không hiểu bối cảnh, em sẽ chỉ chuyển tiếp thông tin. Nhưng nếu hiểu bối cảnh, em có thể biết thông tin nào cần làm rõ, phòng ban nào cần được cập nhật, và rủi ro nào nên được báo sớm."
 
-    tam "Em chưa có nhiều kinh nghiệm thực tế, nhưng em có khả năng tổng hợp, theo dõi chi tiết, và em không ngại học quy trình từ đầu."
+    tam neutral "Em chưa có nhiều kinh nghiệm thực tế, nhưng em có khả năng tổng hợp, theo dõi chi tiết, và em không ngại học quy trình từ đầu."
 
-    tam "Em muốn làm tốt phần việc của mình theo cách đáng tin cậy. Không ồn ào, nhưng rõ ràng và có trách nhiệm."
+    tam smile "Em muốn làm tốt phần việc của mình theo cách đáng tin cậy. Không ồn ào, nhưng rõ ràng và có trách nhiệm."
 
     manager "Cách em trả lời khá có cấu trúc."
 
@@ -297,11 +297,11 @@ label tam_c01_interview_perfect:
 
 label tam_c01_interview_pass:
 
-    tam "Em nghĩ công việc triển khai dự án cần khả năng phối hợp và theo dõi chi tiết."
+    tam serious "Em nghĩ công việc triển khai dự án cần khả năng phối hợp và theo dõi chi tiết."
 
-    tam "Công ty mình có nhiều phòng ban liên quan đến từng dự án, nên nếu thông tin không rõ ràng hoặc cập nhật chậm, tiến độ chung có thể bị ảnh hưởng."
+    tam thoughtful "Công ty mình có nhiều phòng ban liên quan đến từng dự án, nên nếu thông tin không rõ ràng hoặc cập nhật chậm, tiến độ chung có thể bị ảnh hưởng."
 
-    tam "Em muốn học cách nắm quy trình, hỗ trợ các bên làm việc với nhau tốt hơn và báo cáo kịp thời khi có vướng mắc."
+    tam neutral "Em muốn học cách nắm quy trình, hỗ trợ các bên làm việc với nhau tốt hơn và báo cáo kịp thời khi có vướng mắc."
 
     manager "Tốt. Câu trả lời hơi vòng một chút, nhưng ý chính ổn."
 
@@ -316,9 +316,9 @@ label tam_c01_interview_pass:
 
 label tam_c01_interview_skip:
 
-    tam "Em nghĩ vị trí này cần sự cẩn thận, khả năng phối hợp và tinh thần học hỏi."
+    tam serious "Em nghĩ vị trí này cần sự cẩn thận, khả năng phối hợp và tinh thần học hỏi."
 
-    tam "Em chưa có nhiều kinh nghiệm, nhưng em sẵn sàng học quy trình, hỗ trợ công việc và làm theo hướng dẫn của cấp trên."
+    tam sad "Em chưa có nhiều kinh nghiệm, nhưng em sẵn sàng học quy trình, hỗ trợ công việc và làm theo hướng dẫn của cấp trên."
 
     manager "Được."
 
@@ -336,23 +336,23 @@ label tam_c01_after_interview:
 
     narrator "Khi Tâm bước ra khỏi phòng, Huyền đã đứng bật dậy như lò xo."
 
-    huyen "Sao rồi?"
+    huyen sad "Sao rồi?"
 
-    tam "Chưa biết."
+    tam dazed "Chưa biết."
 
-    huyen "Mặt mày nhìn không tệ. Tức là không bị loại ngay tại cửa."
+    huyen smile "Mặt mày nhìn không tệ. Tức là không bị loại ngay tại cửa."
 
-    tam "Cảm ơn vì lời động viên rất có giá trị tinh thần."
+    tam smile "Cảm ơn vì lời động viên rất có giá trị tinh thần."
 
-    huyen "Không có gì. Tao tính phí theo giờ."
+    huyen smile "Không có gì. Tao tính phí theo giờ."
 
     narrator "Hai người ngồi xuống hàng ghế dài ở sảnh. Bên ngoài lớp kính, nắng trưa bắt đầu rơi thành từng mảng gắt."
 
-    huyen "Tao run quá."
+    huyen sad "Tao run quá."
 
-    tam "Đến lượt mày rồi à?"
+    tam surprised "Đến lượt mày rồi à?"
 
-    huyen "Ừ. Nếu tao chết trong đó, nhớ xóa lịch sử tìm kiếm của tao."
+    huyen sad "Ừ. Nếu tao chết trong đó, nhớ xóa lịch sử tìm kiếm của tao."
 
     menu:
         "Tâm nên động viên Huyền thế nào?"
@@ -360,19 +360,19 @@ label tam_c01_after_interview:
         "Nhắc Huyền bình tĩnh và dùng thế mạnh thật của mình.":
             $ huyen_trust += 1
             $ add_unique(progress["player_flags"], "tam_supported_huyen_interview")
-            tam "Mày không cần cố tỏ ra giỏi hơn con người thật của mày đâu. Mày nói chuyện tự nhiên, bắt ý nhanh, lại nhớ chi tiết tốt. Cứ dùng đúng mấy thứ đó."
-            huyen "Nghe hơi giống lời thoại trong phim thanh xuân, nhưng... có ích thật."
-            tam "Đi đi. Đừng làm xấu mặt bánh mì ban sáng."
+            tam serious "Mày không cần cố tỏ ra giỏi hơn con người thật của mày đâu. Mày nói chuyện tự nhiên, bắt ý nhanh, lại nhớ chi tiết tốt. Cứ dùng đúng mấy thứ đó."
+            huyen smile "Nghe hơi giống lời thoại trong phim thanh xuân, nhưng... có ích thật."
+            tam smile "Đi đi. Đừng làm xấu mặt bánh mì ban sáng."
 
         "Trêu Huyền để cô ấy bớt căng.":
-            tam "Không sao. Nếu mày trượt, tao sẽ kể chuyện này trong đám cưới mày."
-            huyen "Mày đúng là bạn thân kiểu cần cho vào danh sách rủi ro dự án."
+            tam smile "Không sao. Nếu mày trượt, tao sẽ kể chuyện này trong đám cưới mày."
+            huyen laugh "Mày đúng là bạn thân kiểu cần cho vào danh sách rủi ro dự án."
             narrator "Huyền bật cười. Căng thẳng trong mắt cô vơi đi một chút."
 
         "Bảo Huyền tự lo vì ai cũng phải tự vượt qua.":
             $ huyen_trust -= 1
-            tam "Tao cũng không biết khuyên gì. Mày tự lo đi. Ai cũng phải tự qua phần của mình mà."
-            huyen "Ờ. Tao hiểu."
+            tam neutral "Tao cũng không biết khuyên gì. Mày tự lo đi. Ai cũng phải tự qua phần của mình mà."
+            huyen sad "Ờ. Tao hiểu."
             narrator "Huyền cười, nhưng nụ cười hơi mỏng."
 
     narrator "Huyền đi vào phòng phỏng vấn."
@@ -390,15 +390,15 @@ label tam_c01_after_interview:
 
     narrator "Tâm đọc email hai lần. Huyền đọc bốn lần. Sau đó hai đứa nhìn nhau vài giây, rồi cùng bật cười như hai kẻ vừa thoát khỏi một vụ tai nạn không nghiêm trọng nhưng đủ làm tim rơi xuống tận đầu gối."
 
-    huyen "Tối nay ăn mừng."
+    huyen happy "Tối nay ăn mừng."
 
-    tam "Ăn gì?"
+    tam surprised "Ăn gì?"
 
-    huyen "Sang."
+    huyen serious "Sang."
 
-    tam "Mày vừa mới được nhận việc đã muốn phá sản à?"
+    tam shocked "Mày vừa mới được nhận việc đã muốn phá sản à?"
 
-    huyen "Không. Tao gọi đó là đầu tư vào tinh thần trước khi bị doanh nghiệp nghiền nát."
+    huyen smile "Không. Tao gọi đó là đầu tư vào tinh thần trước khi bị doanh nghiệp nghiền nát."
 
     narrator "Tâm thấy lập luận ấy sai sai."
 
@@ -414,24 +414,24 @@ label tam_c01_after_interview:
             "Chia sẻ thật, nhưng không làm Huyền thấy bị so sánh.":
                 $ huyen_trust += 1
                 $ add_unique(progress["player_flags"], "tam_shared_salary_with_care")
-                tam "Tao được offer cao hơn tao tưởng một chút."
-                huyen "Thật á? Bao nhiêu?"
-                tam "Tao nói mày nghe, nhưng không phải để khoe đâu nhé. Tao cũng hơi bất ngờ."
-                huyen "Con điên. Mày được offer cao thì tao mừng chứ. Sau này nhớ bao tao trà sữa size lớn."
-                tam "Đấy mới là mục đích thật của mày đúng không?"
-                huyen "Bạn thân là phải biết biến niềm vui của nhau thành đồ uống."
+                tam happy "Tao được offer cao hơn tao tưởng một chút."
+                huyen surprised "Thật á? Bao nhiêu?"
+                tam embarrassed "Tao nói mày nghe, nhưng không phải để khoe đâu nhé. Tao cũng hơi bất ngờ."
+                huyen laugh "Con điên. Mày được offer cao thì tao mừng chứ. Sau này nhớ bao tao trà sữa size lớn."
+                tam smile "Đấy mới là mục đích thật của mày đúng không?"
+                huyen happy "Bạn thân là phải biết biến niềm vui của nhau thành đồ uống."
 
             "Giấu đi để tránh Huyền buồn.":
                 $ huyen_trust -= 1
                 $ add_unique(progress["player_flags"], "tam_hid_salary_from_huyen")
-                tam "Cũng bình thường thôi."
+                tam sad "Cũng bình thường thôi."
                 narrator "Tâm nói vậy. Nhưng cô biết mình vừa giấu Huyền một điều không quá cần phải giấu."
                 narrator "Sự im lặng nhỏ ấy nằm lại giữa hai người như một cái ghim lệch."
 
             "Khoe thẳng vì mình xứng đáng.":
                 $ huyen_trust -= 1
-                tam "Tao được offer cao hơn. Chắc tại phần phỏng vấn tốt thật."
-                huyen "Ờ. Mày giỏi mà."
+                tam happy "Tao được offer cao hơn. Chắc tại phần phỏng vấn tốt thật."
+                huyen sad "Ờ. Mày giỏi mà."
                 narrator "Huyền vẫn cười. Nhưng giọng cô bớt sáng đi một chút."
 
     else:
@@ -454,25 +454,25 @@ label tam_c01_after_interview:
 
     narrator "Đèn vàng. Khăn trải bàn trắng. Ly thủy tinh trong suốt đến mức Tâm sợ mình chỉ cần cầm mạnh tay một chút cũng có thể để lộ sự quê mùa vừa kịp giấu đi."
 
-    huyen "Này."
+    huyen neutral "Này."
 
-    tam "Gì?"
+    tam neutral "Gì?"
 
-    huyen "Chúng ta chính thức là người lớn rồi đấy."
+    huyen happy "Chúng ta chính thức là người lớn rồi đấy."
 
-    tam "Chỉ vì được nhận việc?"
+    tam surprised "Chỉ vì được nhận việc?"
 
-    huyen "Ừ. Người lớn là những sinh vật vui mừng khi nhận được email bắt đầu chuỗi ngày bán linh hồn cho bảng biểu."
+    huyen smile "Ừ. Người lớn là những sinh vật vui mừng khi nhận được email bắt đầu chuỗi ngày bán linh hồn cho bảng biểu."
 
-    tam "Nghe bi quan quá."
+    tam smile "Nghe bi quan quá."
 
-    huyen "Nhưng tao nói trong nhà hàng sang, nên nó thành triết lý."
+    huyen smile "Nhưng tao nói trong nhà hàng sang, nên nó thành triết lý."
 
     narrator "Tâm cười. Cô nâng ly nước trái cây lên."
 
-    tam "Chúc mừng chúng ta."
+    tam happy "Chúc mừng chúng ta."
 
-    huyen "Chúc mừng chúng ta. Và chúc phòng triển khai dự án sống sót sau khi tuyển hai đứa mình."
+    huyen happy "Chúc mừng chúng ta. Và chúc phòng triển khai dự án sống sót sau khi tuyển hai đứa mình."
 
     play sound "audio/glass_clink.ogg"
 
@@ -490,13 +490,13 @@ label tam_c01_after_interview:
 
     narrator "Chỉ nâng ly về phía hai cô gái, như một lời chúc mừng lặng lẽ."
 
-    huyen "Gì thế?"
+    huyen confused "Gì thế?"
 
-    tam "Không biết."
+    tam thoughtful "Không biết."
 
-    huyen "Người quen của mày à?"
+    huyen confused "Người quen của mày à?"
 
-    tam "Không."
+    tam neutral "Không."
 
     narrator "Tâm nhìn lại."
 
@@ -562,7 +562,7 @@ label tam_c01_after_interview:
             $ tam_work_skill += 1
             $ tam_confidence += 1
             $ add_unique(progress["player_flags"], "tam_handled_project_issue_well")
-            tam "Em xin phép kiểm tra lại với QC và vật tư trước. Nếu lệch ở biên bản, em sẽ ghi rõ điểm chưa khớp rồi gửi bản tổng hợp cho các bên liên quan."
+            tam serious "Em xin phép kiểm tra lại với QC và vật tư trước. Nếu lệch ở biên bản, em sẽ ghi rõ điểm chưa khớp rồi gửi bản tổng hợp cho các bên liên quan."
             manager "Đúng. Làm như vậy đi."
             narrator "Không ai khen thêm."
             narrator "Nhưng chỉ một câu 'đúng' thôi cũng đủ khiến Tâm thấy sống lưng mình thẳng hơn."
@@ -570,14 +570,14 @@ label tam_c01_after_interview:
         "Gửi xác nhận tạm cho kế toán trước để kịp deadline, rồi bổ sung sau.":
             $ tam_confidence -= 1
             $ add_unique(progress["player_flags"], "tam_project_issue_rushed")
-            tam "Em gửi xác nhận tạm trước rồi bổ sung sau được không ạ?"
+            tam embarrassed "Em gửi xác nhận tạm trước rồi bổ sung sau được không ạ?"
             manager "Không. Hồ sơ thanh toán mà chạy trước xác nhận chất lượng thì người bị gọi đầu tiên là phòng mình."
             narrator "Tâm im lặng."
             narrator "Cô ghi lại lời nhắc ấy rất kỹ."
 
         "Chờ trưởng phòng tự quyết vì hồ sơ liên quan nhiều bên.":
             $ tam_confidence -= 1
-            tam "Vậy phần này em chờ anh quyết định rồi em làm theo ạ?"
+            tam sad "Vậy phần này em chờ anh quyết định rồi em làm theo ạ?"
             manager "Anh cần em kiểm tra trước khi anh quyết."
             narrator "Câu nói không nặng."
             narrator "Nhưng Tâm vẫn thấy mặt mình nóng lên."
@@ -615,9 +615,9 @@ label tam_c01_after_interview:
 
     if "huyen_trust_high_c01" in progress["player_flags"]:
         $ hoang_impression += 1
-        huyen "Đứng thẳng lên. Mày đẹp mà cứ làm như đang xin lỗi xã hội vì mình đẹp ấy."
-        tam "Mày nói nhỏ thôi."
-        huyen "Không. Tao đang thực hiện nghĩa vụ bạn thân."
+        huyen serious "Đứng thẳng lên. Mày đẹp mà cứ làm như đang xin lỗi xã hội vì mình đẹp ấy."
+        tam embarrassed "Mày nói nhỏ thôi."
+        huyen serious "Không. Tao đang thực hiện nghĩa vụ bạn thân."
 
     narrator "Hôm đó công ty có vài khách mời từ đối tác."
 
@@ -631,27 +631,27 @@ label tam_c01_after_interview:
 
     narrator "Ánh mắt anh bình tĩnh. Nụ cười vừa đủ lịch sự. Cái kiểu người có thể đứng yên giữa một căn phòng ồn ào mà vẫn khiến không khí quanh mình có trật tự riêng."
 
-    tam "..."
+    tam thoughtful "..."
 
-    huyen "Gì đấy?"
+    huyen confused "Gì đấy?"
 
-    tam "Không có gì."
+    tam embarrassed "Không có gì."
 
-    huyen "Không có gì mà nhìn người ta như đang đọc tài liệu mật?"
+    huyen smile "Không có gì mà nhìn người ta như đang đọc tài liệu mật?"
 
-    tam "Mày im đi."
+    tam embarrassed "Mày im đi."
 
     narrator "Huyền nhìn theo hướng mắt Tâm, rồi khẽ huých khuỷu tay vào cô."
 
-    huyen "À."
+    huyen smile "À."
 
-    tam "À cái gì?"
+    tam surprised "À cái gì?"
 
-    huyen "Không có gì. Tao chỉ vừa phát hiện dự án phụ."
+    huyen smile "Không có gì. Tao chỉ vừa phát hiện dự án phụ."
 
-    tam "Huyền."
+    tam embarrassed "Huyền."
 
-    huyen "Rồi rồi. Tao im."
+    huyen smile "Rồi rồi. Tao im."
 
     if hoang_impression >= 4:
 
@@ -671,41 +671,41 @@ label tam_c01_after_interview:
 
         narrator "Rồi anh bước tới."
 
-        hoang "Chào em."
+        hoang neutral "Chào em."
 
-        tam "Dạ... chào anh."
+        tam shy "Dạ... chào anh."
 
-        hoang "Anh là Hoàng. Đi cùng đoàn đối tác hôm nay."
+        hoang neutral "Anh là Hoàng. Đi cùng đoàn đối tác hôm nay."
 
-        tam "Em là Tâm. Phòng triển khai dự án."
+        tam neutral "Em là Tâm. Phòng triển khai dự án."
 
-        hoang "Anh biết."
+        hoang smile "Anh biết."
 
         narrator "Tâm hơi khựng lại."
 
-        hoang "Lúc nãy anh có nghe em trao đổi về hồ sơ nghiệm thu với anh bên vật tư. Cách em tóm ý khá gọn."
+        hoang serious "Lúc nãy anh có nghe em trao đổi về hồ sơ nghiệm thu với anh bên vật tư. Cách em tóm ý khá gọn."
 
-        tam "À... em chỉ nói lại phần em nắm được thôi ạ."
+        tam embarrassed "À... em chỉ nói lại phần em nắm được thôi ạ."
 
-        hoang "Nói lại cho người khác hiểu cũng là một kỹ năng."
+        hoang serious "Nói lại cho người khác hiểu cũng là một kỹ năng."
 
         narrator "Giọng anh không giống khen xã giao."
 
         narrator "Và chính vì thế, Tâm bỗng không biết nên đặt tay mình ở đâu cho tự nhiên."
 
-        huyen "Tôi đi lấy thêm nước nhé."
+        huyen smile "Tôi đi lấy thêm nước nhé."
 
         narrator "Huyền nói rất nhanh rồi biến mất."
 
         narrator "Phản bội rất có kỹ thuật."
 
-        hoang "Bạn em thú vị thật."
+        hoang smile "Bạn em thú vị thật."
 
-        tam "Dạ. Nó thường xuyên như vậy."
+        tam smile "Dạ. Nó thường xuyên như vậy."
 
-        hoang "Vậy chắc em vất vả."
+        hoang smile "Vậy chắc em vất vả."
 
-        tam "Cũng quen rồi ạ."
+        tam smile "Cũng quen rồi ạ."
 
         narrator "Hoàng khẽ cười."
 
@@ -745,31 +745,31 @@ label tam_c01_after_interview:
 
                 narrator "Chỉ là có những khoảnh khắc nếu bỏ qua, sau này sẽ thấy hơi tiếc."
 
-                tam "Chào anh. Hình như anh là khách mời bên công ty đối tác ạ?"
+                tam neutral "Chào anh. Hình như anh là khách mời bên công ty đối tác ạ?"
 
-                hoang "Ừ. Anh là Hoàng."
+                hoang neutral "Ừ. Anh là Hoàng."
 
-                tam "Em là Tâm. Phòng triển khai dự án."
+                tam neutral "Em là Tâm. Phòng triển khai dự án."
 
-                hoang "Anh có nghe giới thiệu lúc nãy."
+                hoang neutral "Anh có nghe giới thiệu lúc nãy."
 
-                tam "Vậy chắc anh cũng nghe cả đoạn em nói hơi vấp."
+                tam embarrassed "Vậy chắc anh cũng nghe cả đoạn em nói hơi vấp."
 
-                hoang "Có."
+                hoang serious "Có."
 
                 narrator "Tâm ngẩng lên."
 
-                hoang "Nhưng đoạn sau em sửa lại tốt."
+                hoang smile "Nhưng đoạn sau em sửa lại tốt."
 
                 narrator "Câu trả lời thẳng đến mức Tâm không biết nên xem là khen hay xác nhận hiện trường."
 
-                tam "Anh thường nói chuyện như đang nghiệm thu hồ sơ vậy ạ?"
+                tam smile "Anh thường nói chuyện như đang nghiệm thu hồ sơ vậy ạ?"
 
                 narrator "Hoàng thoáng khựng."
 
                 narrator "Rồi anh bật cười."
 
-                hoang "Không thường xuyên. Chỉ khi gặp người làm phòng triển khai."
+                hoang smile "Không thường xuyên. Chỉ khi gặp người làm phòng triển khai."
 
                 narrator "Tâm cũng cười."
 
@@ -819,19 +819,19 @@ label tam_c01_year_end_after_meeting:
 
     narrator "Những dòng xe nhỏ như những vệt sáng nối nhau đi qua dưới chân tòa nhà."
 
-    huyen "Sao?"
+    huyen neutral "Sao?"
 
-    tam "Sao gì?"
+    tam neutral "Sao gì?"
 
-    huyen "Dự án phụ."
+    huyen smile "Dự án phụ."
 
-    tam "Mày gọi người ta là dự án phụ thêm lần nữa, tao sẽ nộp mày cho phòng quản lý chất lượng."
+    tam embarrassed "Mày gọi người ta là dự án phụ thêm lần nữa, tao sẽ nộp mày cho phòng quản lý chất lượng."
 
-    huyen "Tao chỉ đang đánh giá rủi ro."
+    huyen serious "Tao chỉ đang đánh giá rủi ro."
 
-    tam "Rủi ro gì?"
+    tam surprised "Rủi ro gì?"
 
-    huyen "Rủi ro mày thích người ta trước khi kịp hiểu người ta là ai."
+    huyen serious "Rủi ro mày thích người ta trước khi kịp hiểu người ta là ai."
 
     narrator "Tâm quay đi."
 
@@ -840,10 +840,10 @@ label tam_c01_year_end_after_meeting:
     narrator "Có lẽ không."
 
     if "huyen_trust_high_c01" in progress["player_flags"]:
-        huyen "Nhưng nếu có gì thật, nhớ nói tao."
-        huyen "Tao không hứa khuyên đúng. Nhưng tao hứa sẽ nghe trước khi phán xét."
-        tam "Nghe trưởng thành ghê."
-        huyen "Tao diễn đấy. Nhưng cũng có tâm."
+        huyen serious "Nhưng nếu có gì thật, nhớ nói tao."
+        huyen smile "Tao không hứa khuyên đúng. Nhưng tao hứa sẽ nghe trước khi phán xét."
+        tam smile "Nghe trưởng thành ghê."
+        huyen happy "Tao diễn đấy. Nhưng cũng có tâm."
 
     narrator "Tâm khẽ cười."
 
@@ -863,17 +863,17 @@ label tam_c01_year_end_no_contact:
 
     narrator "Cuối buổi tiệc, Tâm đứng bên cửa kính cùng Huyền."
 
-    huyen "Mày đang tiếc à?"
+    huyen thoughtful "Mày đang tiếc à?"
 
-    tam "Tiếc gì?"
+    tam surprised "Tiếc gì?"
 
-    huyen "Không biết. Tao chỉ hỏi vậy thôi."
+    huyen neutral "Không biết. Tao chỉ hỏi vậy thôi."
 
     narrator "Tâm nhìn xuống thành phố."
 
     narrator "Ánh đèn dưới kia trôi đi thành từng dòng lặng lẽ."
 
-    tam "Chắc không."
+    tam sad "Chắc không."
 
     narrator "Cô nói vậy."
 
