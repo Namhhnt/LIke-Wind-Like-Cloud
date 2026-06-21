@@ -27,6 +27,11 @@ game/
 | Check symbol locations quickly | `saves/navigation.json` | Generated index, not editable source. |
 | Add preload libraries | `libs/libs.txt` | Alters load order for `game/libs/`. |
 
+## TOOLING
+- Local Ren'Py SDK/runtime path: `/mnt/d/RenPy/renpy-8.3.2-sdk`.
+- Use that SDK for future runtime launches, translation validation, and traceback reproduction.
+- Do not assume `renpy` is installed globally or available on `PATH`.
+
 ## CONVENTIONS
 - Keep behavior in `.rpy` files at the `game/` root; `game/gui/` is asset storage, not script logic.
 - `screens.rpy` mixes stock Ren'Py scaffolding with custom styling; inspect before replacing sections wholesale.

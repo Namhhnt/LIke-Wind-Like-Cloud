@@ -40,6 +40,11 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 | `define config.*`, `build.name` | `game/options.rpy` | Game metadata and engine config. |
 | Generated symbol index | `game/saves/navigation.json` | Runtime-produced location map; inspect, do not hand-maintain. |
 
+## TOOLING
+- Local Ren'Py SDK/runtime is available at `/mnt/d/RenPy/renpy-8.3.2-sdk`.
+- For future runtime validation, launch the project with that SDK instead of assuming Ren'Py is on `PATH`.
+- Prefer using the SDK when reproducing issues from `log.txt`, `traceback.txt`, or `errors.txt`.
+
 ## CONVENTIONS
 - Hand-edited Ren'Py source lives in `game/*.rpy` and `game/tl/**`.
 - GUI image assets live under `game/gui/`; behavior stays in `game/gui.rpy` and `game/screens.rpy`.
