@@ -27,8 +27,8 @@ label tam_c01_speech_retry:
         $ add_unique(progress["player_flags"], "tam_interview_pass_skip_no_bonus")
         $ add_unique(progress["player_flags"], "tam_salary_standard_start")
 
-        narrator "Tâm hít sâu, bỏ qua sự hoàn hảo mà mình vẫn luôn muốn giữ."
-        narrator "Cô trả lời theo cách an toàn hơn, vừa đủ để không bị loại, nhưng cũng không tạo được điểm sáng đặc biệt."
+        narrator "Tam takes a deep breath and lets go of the perfection she always tries to hold onto."
+        narrator "She answers in a safer way, enough to avoid being rejected, but not enough to create any special spark."
 
         jump tam_c01_interview_skip
 
@@ -77,8 +77,8 @@ label tam_c01_speech_retry:
             jump tam_c01_speech_retry
 
         else:
-            narrator "Tâm đã thất bại 3 lần trong phần sắp xếp ý."
-            narrator "Từ bây giờ cô có thể tiếp tục thử lại, hoặc bỏ qua để đi tiếp mà không nhận thưởng thêm."
+            narrator "Tam has failed the ordering section 3 times."
+            narrator "From this point on, she can keep retrying or skip ahead without earning any extra reward."
 
             jump tam_c01_speech_retry
 

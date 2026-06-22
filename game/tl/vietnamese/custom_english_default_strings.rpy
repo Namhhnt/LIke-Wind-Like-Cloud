@@ -600,6 +600,36 @@ translate vietnamese strings:
     old "Only a very faint glance, swallowed by the party before it could become anything clear."
     new "Chỉ có một ánh nhìn rất khẽ, bị buổi tiệc nuốt mất trước khi kịp trở thành điều gì rõ ràng."
 
+    old "Tam's Speech"
+    new "Tâm's Speech"
+
+    old "Arrange the key points for the interview answer"
+    new "Sắp xếp các ý chính cho phần trả lời phỏng vấn"
+
+    old "Selected [len(picked)] / 4"
+    new "Đã chọn [len(picked)] / 4"
+
+    old "Attempt [attempt] / 3"
+    new "Lượt thử [attempt] / 3"
+
+    old "Skip unlocked after 3 failed attempts"
+    new "Đã mở bỏ qua sau 3 lần thất bại"
+
+    old "Choose all 4 points. You can reorder them before confirming"
+    new "Chọn đủ 4 ý, có thể đổi lại trước khi xác nhận"
+
+    old "Choose the points Tam should use in her answer. Pick all the right points to pass; get both the points and the order right for a better reward."
+    new "Chọn những ý Tâm nên dùng để trả lời. Đủ ý đúng thì vượt qua, đúng cả thứ tự thì nhận thưởng tốt hơn."
+
+    old "Tap a selected point again to remove it and adjust the order."
+    new "Nhấn lại vào một ý để bỏ chọn và sắp xếp lại thứ tự."
+
+    old "Confirm"
+    new "Xác nhận"
+
+    old "From this point on, she can keep retrying or skip ahead without earning any extra reward."
+    new "Từ bây giờ cô có thể tiếp tục thử lại, hoặc bỏ qua để đi tiếp mà không nhận thưởng thêm."
+
     old "Tam laughed."
     new "Tâm bật cười."
 

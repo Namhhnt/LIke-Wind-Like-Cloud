@@ -29,8 +29,8 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
             xsize 1210
             spacing 8
 
-            text "Tâm's Speech" style "tam_speech_title" xalign 0.5
-            text "Sắp xếp các ý chính cho phần trả lời phỏng vấn" style "tam_speech_subtitle" xalign 0.5
+            text _("Tam's Speech") style "tam_speech_title" xalign 0.5
+            text _("Arrange the key points for the interview answer") style "tam_speech_subtitle" xalign 0.5
 
         hbox:
             xpos 500
@@ -41,7 +41,7 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
                 style "tam_speech_progress_badge"
                 xysize (220, 64)
 
-                text "Đã chọn [len(picked)] / 4" style "tam_speech_progress_text" xalign 0.5 yalign 0.5
+                text _("Selected [len(picked)] / 4") style "tam_speech_progress_text" xalign 0.5 yalign 0.5
 
             for i in range(4):
                 if i < len(picked):
@@ -80,14 +80,14 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
                     box_wrap True
                     xfill True
 
-                    text "Lượt thử [attempt] / 3" style "tam_speech_panel_kicker"
+                    text _("Attempt [attempt] / 3") style "tam_speech_panel_kicker"
 
                     if can_skip:
-                        text "Đã mở bỏ qua sau 3 lần thất bại" style "tam_speech_warning"
+                        text _("Skip unlocked after 3 failed attempts") style "tam_speech_warning"
                     else:
-                        text "Chọn đủ 4 ý, có thể đổi lại trước khi xác nhận" style "tam_speech_hint"
+                        text _("Choose all 4 points. You can reorder them before confirming") style "tam_speech_hint"
 
-                text "Chọn những ý Tâm nên dùng để trả lời. Đủ ý đúng thì vượt qua, đúng cả thứ tự thì nhận thưởng tốt hơn." style "tam_speech_body"
+                    text _("Choose the points Tam should use in her answer. Pick all the right points to pass; get both the points and the order right for a better reward.") style "tam_speech_body"
 
                 vpgrid:
                     cols 2
@@ -110,23 +110,23 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
                     xfill True
                     spacing 18
 
-                    text "Nhấn lại vào một ý để bỏ chọn và sắp xếp lại thứ tự." style "tam_speech_footer"
+                    text _("Tap a selected point again to remove it and adjust the order.") style "tam_speech_footer"
 
                     null width 20
 
-                    textbutton "Chọn lại":
+                    textbutton _("Reset"):
                         style "tam_speech_secondary_button"
                         text_style "tam_speech_secondary_button_text"
                         action SetScreenVariable("picked", [])
 
-                    textbutton "Xác nhận":
+                    textbutton _("Confirm"):
                         style "tam_speech_primary_button"
                         text_style "tam_speech_primary_button_text"
                         action Return({"action": "confirm", "picked": list(picked)})
                         sensitive len(picked) == 4
 
                     if can_skip:
-                        textbutton "Bỏ qua":
+                        textbutton _("Skip"):
                             style "tam_speech_skip_button"
                             text_style "tam_speech_skip_button_text"
                             action Return({"action": "skip"})
