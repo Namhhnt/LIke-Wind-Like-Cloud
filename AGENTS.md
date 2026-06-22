@@ -1,17 +1,17 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-06-20
-**Commit:** 8d7937c
+**Generated:** 2026-06-22
+**Commit:** working tree
 **Branch:** develop
 
 ## OVERVIEW
-Small Ren'Py visual novel project. Runtime code is still mostly scaffold-level, while the real progression design lives in specs and the UI theme has already been customized.
+Ren'Py visual novel project with a custom warm-themed UI and an in-progress but already functional progression prototype. The repo now includes data-driven route/chapter state, a route map screen, debug progression tooling, seeded Tam/Hoang route content, and supporting authoring/design docs.
 
 ## STRUCTURE
 ```text
 LikeWindLikeCloud/
-├── game/              # Executable Ren'Py scripts, translations, runtime artifacts.
-├── Specs/             # Mechanics spec plus menu/background reference art.
+├── game/              # Executable Ren'Py scripts, progression runtime, story content, assets.
+├── Specs/             # Mechanics spec, implementation docs, authored chapter references, design art.
 ├── .vscode/           # Local editor exclusions for Ren'Py generated files.
 ├── log.txt            # Recent Ren'Py session log.
 └── traceback.txt      # Latest runtime failure details.
@@ -20,20 +20,35 @@ LikeWindLikeCloud/
 ## WHERE TO LOOK
 | Task | Location | Notes |
 |------|----------|-------|
-| Story entry | `game/script.rpy` | Currently default starter script. |
-| Menus, save/load, preferences, help | `game/screens.rpy` | Main UI surface; includes desktop and touch variants. |
+| Story/bootstrap entry | `game/script.rpy` | Initializes progression state and jumps to `route_map`. |
+| Route/chapter metadata | `game/progression_data.rpy` | Central route list, chapter schema, unlock graph, endings seeds. |
+| Progression state/logic | `game/progression_logic.rpy` | Initialization, unlock recalculation, validation, recommendations, endings. |
+| Route map and progression UI | `game/route_map.rpy` | Main prototype progression surface and route selection screen. |
+| Debug progression UI | `game/debug_progression.rpy` | Validation, reset, completion shortcuts, acceptance summaries. |
+| Story content and chapter labels | `game/stories/` | Authored Tam route scenes and minigame labels live here. |
+| Demo Hoang route and endings | `game/demo_route_hoang.rpy` | POV/bonus chapter flow plus prototype ending resolution. |
+| Menus, save/load, preferences, help | `game/screens.rpy` | Core Ren'Py UI surface; includes desktop and touch variants. |
 | Project metadata, version, build name | `game/options.rpy` | Window title, version, build-facing config. |
 | Theme colors, sizes, menu backgrounds | `game/gui.rpy` | Warm palette and layout constants live here. |
+| Character/background declarations | `game/scripts/` | Sprite declarations and shared scene/background definitions. |
 | Translation work | `game/tl/` | Mirrors source filenames by locale. |
 | Progression design | `Specs/game_mechanics.md` | Data model for routes, chapters, unlocks. |
-| UI/design reference | `Specs/Design/`, `Specs/Base_assets/` | Mockups and visual reference only. |
+| Implementation roadmap | `Specs/progression_implementation_plan.md` | Tracks delivered vs planned progression milestones. |
+| Chapter-writing guidance | `Specs/chapter_authoring_guide.md` | Documents the live metadata/label authoring pattern. |
+| UI/design reference | `Specs/Design/`, `Specs/Base_assets/` | Mockups and visual reference for menu/background assets. |
 
 ## CODE MAP
 No `.rpy` LSP is configured in this workspace. Use these file-level anchors instead:
 
 | Symbol Area | Location | Role |
 |-------------|----------|------|
-| `label start` | `game/script.rpy` | Current story entry label. |
+| `label start` / `label after_load` | `game/script.rpy` | Progression bootstrap and load-time refresh hooks. |
+| `ROUTES`, `CHAPTERS`, `CHAPTER_ORDER` | `game/progression_data.rpy` | Canonical progression metadata for the playable prototype. |
+| `initialize_progression()`, `complete_chapter()`, `refresh_validation_state()` | `game/progression_logic.rpy` | Core runtime progression engine. |
+| `screen route_map`, `label route_map` | `game/route_map.rpy` | Main progression navigation surface. |
+| `screen debug_progression` | `game/debug_progression.rpy` | Prototype-only diagnostics and reset tools. |
+| `label tam_c01`, `tam_c02`, `tam_c03` | `game/stories/tam/**` | Current authored Tam route chapter entry points. |
+| `label hoang_h01`, `hoang_bonus_*`, `hoang_h02` | `game/demo_route_hoang.rpy` | Hoang POV/bonus prototype and ending gateway. |
 | `screen say`, `choice`, `navigation`, `main_menu`, `preferences` | `game/screens.rpy` | Core Ren'Py screen set. |
 | Touch `screen quick_menu()` variant | `game/screens.rpy` near mobile section | Mobile override of the desktop quick menu. |
 | `define gui.*` | `game/gui.rpy` | Visual system: colors, fonts, spacing, backgrounds. |
@@ -44,9 +59,12 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 - Local Ren'Py SDK/runtime is available at `/mnt/d/RenPy/renpy-8.3.2-sdk`.
 - For future runtime validation, launch the project with that SDK instead of assuming Ren'Py is on `PATH`.
 - Prefer using the SDK when reproducing issues from `log.txt`, `traceback.txt`, or `errors.txt`.
+- `.rpy` LSP is not configured in this workspace, so file-level anchors and text search remain the primary navigation tools.
 
 ## CONVENTIONS
 - Hand-edited Ren'Py source lives in `game/*.rpy` and `game/tl/**`.
+- Progression metadata currently lives directly in `game/progression_data.rpy` and `game/progression_logic.rpy`, not yet under a `systems/` subtree proposed by older planning docs.
+- Story content is starting to move into domain folders like `game/stories/tam/`, while sprite/background declarations live under `game/scripts/`.
 - GUI image assets live under `game/gui/`; behavior stays in `game/gui.rpy` and `game/screens.rpy`.
 - Translation files mirror source filenames: `script.rpy` -> `tl/vietnamese/script.rpy`, etc.
 - `.vscode/settings.json` hides `cache/`, `.rpyc`, and `.rpymc`; follow that lead when reviewing diffs.
@@ -56,12 +74,15 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 - Do not edit generated/runtime files: `game/cache/`, `game/saves/`, `*.rpyc`, `*.rpymc`, `log.txt`, `traceback.txt`.
 - Do not treat `game/saves/navigation.json` as source of truth; it is generated runtime output.
 - Do not assume `game/screens.rpy` is untouched boilerplate; custom menu styling and a touch-only quick menu live there.
+- Do not assume `Specs/progression_implementation_plan.md` is current source of truth for missing features; several Phase 1-4 items are already implemented in runtime files.
 - Do not change source strings without checking the mirrored locale files under `game/tl/`.
 
 ## UNIQUE STYLES
 - UI palette is warm beige/brown, not Ren'Py default blue.
 - Both main menu and game menu backgrounds point at `gui/theme/background_full.png`.
 - The project already contains PC/mobile visual references under `Specs/Design/` and `Specs/Base_assets/`.
+- The current playable prototype centers on Tam as the default unlocked route, then unlocks Hoang POV/bonus content through chapter completion.
+- Progression runtime already tracks recommendations, route focus, emotional state, relationship directions, validation issues, and seeded ending eligibility.
 
 ## COMMANDS
 ```bash
@@ -72,5 +93,6 @@ grep -RInE '^(label|screen|translate [^ ]+ strings|define )' game
 ```
 
 ## NOTES
-- `Specs/game_mechanics.md` is more advanced than the current story scripts; implementation work should reconcile that gap explicitly.
+- `Specs/game_mechanics.md` still represents the broad product target, but runtime has partially caught up through a data-driven prototype rather than remaining pure scaffold.
+- `Specs/progression_implementation_plan.md` now contains historical gap statements that no longer match the live runtime exactly.
 - `traceback.txt` records a real translation failure: duplicate `old "Rolls forward to later dialogue."` entries in `game/tl/vietnamese/screens.rpy`.
