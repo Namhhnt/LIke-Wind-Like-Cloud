@@ -9,36 +9,34 @@ label tam_c01_speech_game:
 label tam_c01_speech_retry:
 
     $ tam_speech_order = []
-    $ tam_speech_required = list(tam_speech_required_order)
 
     # Shuffle once per attempt.
-    # This keeps the UI stable while the player is selecting 4 answers.
+    # This keeps the UI stable while the player is selecting and reordering ideas.
     $ tam_speech_pool = list(tam_speech_items)
     $ renpy.random.shuffle(tam_speech_pool)
 
-    narrator "Mini-game: Sắp xếp các ý chính cho phần trả lời phỏng vấn."
-    narrator "Chọn 4 ý cần trình bày. Nếu chọn đủ ý đúng thì pass. Nếu đúng cả ý lẫn thứ tự thì nhận bonus."
+    $ tam_speech_result = renpy.call_screen(
+        "tam_speech_minigame",
+        items=tam_speech_pool,
+        attempt=(tam_speech_attempts + 1 if tam_speech_attempts < 3 else 3),
+        can_skip=tam_speech_attempts >= 3
+    )
 
-    while len(tam_speech_order) < 4:
+    if tam_speech_result.get("action") == "skip":
+        $ tam_salary_tier = "standard"
+        $ add_unique(progress["player_flags"], "tam_interview_pass_skip_no_bonus")
+        $ add_unique(progress["player_flags"], "tam_salary_standard_start")
 
-        # Keep the shuffled order, but hide already selected choices.
-        $ tam_speech_available = [
-            item for item in tam_speech_pool
-            if item["id"] not in tam_speech_order
-        ]
+        narrator "Tâm hít sâu, bỏ qua sự hoàn hảo mà mình vẫn luôn muốn giữ."
+        narrator "Cô trả lời theo cách an toàn hơn, vừa đủ để không bị loại, nhưng cũng không tạo được điểm sáng đặc biệt."
 
-        $ tam_speech_choice = renpy.call_screen(
-            "tam_speech_choice_screen",
-            items=tam_speech_available,
-            picked=tam_speech_order
-        )
+        jump tam_c01_interview_skip
 
-        $ tam_speech_order.append(tam_speech_choice)
+    $ tam_speech_order = list(tam_speech_result.get("picked", []))
+    $ tam_speech_has_required_result = tam_speech_order_has_required(tam_speech_order)
+    $ tam_speech_perfect_order = tam_speech_order_is_perfect(tam_speech_order)
 
-    $ tam_speech_has_required = all(x in tam_speech_order for x in tam_speech_required)
-    $ tam_speech_perfect_order = tam_speech_order == tam_speech_required
-
-    if tam_speech_has_required:
+    if tam_speech_has_required_result:
 
         if tam_speech_perfect_order:
             $ tam_salary_tier = "high"
@@ -80,23 +78,9 @@ label tam_c01_speech_retry:
 
         else:
             narrator "Tâm đã thất bại 3 lần trong phần sắp xếp ý."
-            narrator "Có thể chơi lại để lấy bonus, hoặc skip để pass nhưng không nhận điểm thưởng."
+            narrator "Từ bây giờ cô có thể tiếp tục thử lại, hoặc bỏ qua để đi tiếp mà không nhận thưởng thêm."
 
-            menu:
-                "Chọn cách xử lý:"
-
-                "Chơi lại mini-game":
-                    jump tam_c01_speech_retry
-
-                "Skip — pass không bonus":
-                    $ tam_salary_tier = "standard"
-                    $ add_unique(progress["player_flags"], "tam_interview_pass_skip_no_bonus")
-                    $ add_unique(progress["player_flags"], "tam_salary_standard_start")
-
-                    narrator "Tâm hít sâu, bỏ qua sự hoàn hảo mà mình vẫn luôn muốn giữ."
-                    narrator "Cô trả lời theo cách an toàn hơn, vừa đủ để không bị loại, nhưng cũng không tạo được điểm sáng đặc biệt."
-
-                    jump tam_c01_interview_skip
+            jump tam_c01_speech_retry
 
 
 label tam_c01_interview_perfect:

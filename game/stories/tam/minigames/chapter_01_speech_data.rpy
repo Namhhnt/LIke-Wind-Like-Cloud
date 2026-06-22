@@ -55,34 +55,18 @@ init python:
     ]
 
 
-screen tam_speech_choice_screen(items, picked):
-    modal True
+    def tam_speech_toggle_choice(picked, item_id):
+        if item_id in picked:
+            picked.remove(item_id)
+        elif len(picked) < 4:
+            picked.append(item_id)
 
-    frame:
-        xalign 0.5
-        yalign 0.5
-        xmaximum 1100
-        ymaximum 900
-        padding (36, 30)
+        renpy.restart_interaction()
 
-        vbox:
-            spacing 18
 
-            text "Chọn ý tiếp theo cho câu trả lời của Tâm" size 34
+    def tam_speech_order_is_perfect(order):
+        return order == tam_speech_required_order
 
-            if picked:
-                text "Đã chọn: [', '.join(tam_speech_short_labels[item_id] for item_id in picked)]" size 24
-            else:
-                text "Đã chọn: chưa có" size 24
 
-            text "Các ý còn lại:" size 26
-
-            vbox:
-                spacing 12
-
-                for item in items:
-                    textbutton item["label"]:
-                        action Return(item["id"])
-                        xfill True
-
-            text "Mỗi lượt chọn sẽ khóa lại ý vừa chọn." size 20
+    def tam_speech_order_has_required(order):
+        return all(item_id in order for item_id in tam_speech_required_order)
