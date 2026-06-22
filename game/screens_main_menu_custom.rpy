@@ -2,7 +2,7 @@
 ## Custom PC-first Main/Game Menus
 ################################################################################
 
-default _mm_quote_text = "“Có những kỷ niệm như làn gió,\nlặng lẽ đi qua, nhưng mãi chẳng thể quên.”"
+default _mm_quote_text = _("“Some memories are like the wind,\npassing by quietly, yet never truly forgotten.”")
 
 
 screen main_menu():
@@ -65,19 +65,19 @@ screen main_menu_logo():
             vbox:
                 spacing 4
 
-                text "Tựa gió,":
+                text _("Like wind,"):
                     size 88
                     color "#fff0d6"
                     italic True
                     outlines [(2, "#00000088", 0, 2)]
 
-                text "tựa mây":
+                text _("like cloud"):
                     size 88
                     color "#fff0d6"
                     italic True
                     outlines [(2, "#00000088", 0, 2)]
 
-        text "Yuuka Story  •  Minh Story  •  Tâm Story":
+        text _("Yuuka Story  •  Minh Story  •  Tam Story"):
             xpos 50
             ypos 238
             size 25
@@ -100,38 +100,38 @@ screen main_menu_navigation():
             spacing 4
 
             use main_menu_nav_button(
-                label="Bắt đầu",
+                label=_("Start"),
                 action=Start(),
                 primary=True,
                 icon_text="❧"
             )
 
             use main_menu_nav_button(
-                label="Tiếp tục",
+                label=_("Continue"),
                 action=ShowMenu("load"),
                 icon_text="◷"
             )
 
             use main_menu_nav_button(
-                label="Chương truyện",
+                label=_("Story Chapters"),
                 action=Start("route_map"),
                 icon_text="▦"
             )
 
             use main_menu_nav_button(
-                label="Thư viện",
-                action=Function(renpy.notify, "Thư viện sẽ sớm ra mắt."),
+                label=_("Library"),
+                action=Function(renpy.notify, _("Library coming soon.")),
                 icon_text="▧"
             )
 
             use main_menu_nav_button(
-                label="Cài đặt",
+                label=_("Settings"),
                 action=ShowMenu("preferences"),
                 icon_text="⚙"
             )
 
             use main_menu_nav_button(
-                label="Thoát",
+                label=_("Quit"),
                 action=Quit(confirm=True),
                 icon_text="⇱"
             )
@@ -197,7 +197,7 @@ screen main_menu_top_controls():
             ypos 16
             spacing 18
 
-            textbutton "♪  Nhạc nền":
+            textbutton _("♪  Background Music"):
                 text_size 23
                 text_color "#efe4d4"
                 text_hover_color "#ffffff"
@@ -208,7 +208,7 @@ screen main_menu_top_controls():
                 color "#efe4d477"
                 yalign 0.5
 
-            textbutton "◎  Ngôn ngữ":
+            textbutton _("◎  Language"):
                 text_size 23
                 text_color "#efe4d4"
                 text_hover_color "#ffffff"
@@ -233,12 +233,12 @@ screen language_menu():
             yalign 0.5
             spacing 20
 
-            text "Ngôn ngữ":
+            text _("Language"):
                 size 36
                 color "#fff1dc"
                 xalign 0.5
 
-            textbutton "Tiếng Việt":
+            textbutton _("Vietnamese"):
                 xalign 0.5
                 action Language("vietnamese")
 
@@ -246,7 +246,7 @@ screen language_menu():
                 xalign 0.5
                 action Language(None)
 
-            textbutton "Quay lại":
+            textbutton _("Return"):
                 xalign 0.5
                 action Return()
 
@@ -262,7 +262,7 @@ screen main_menu_bottom_text():
         line_spacing 10
         outlines [(1, "#00000088", 0, 1)]
 
-    text "Nhấn để bắt đầu":
+    text _("Press to begin"):
         xalign 0.63
         ypos 744
         size 31
@@ -276,7 +276,7 @@ screen main_menu_bottom_text():
         size 22
         color "#e9dcc7cc"
 
-    text "TỰA GIÓ, TỰA MÂY   © 2024  |  All rights reserved.":
+    text _("LIKE WIND, LIKE CLOUD   © 2024  |  All rights reserved."):
         xpos 1390
         ypos 1012
         size 18
@@ -306,7 +306,7 @@ screen main_menu_asset_debug():
                 vbox:
                     spacing 4
 
-                    text "Missing Main Menu Assets:":
+                    text _("Missing Main Menu Assets:"):
                         size 18
                         color "#ffcc66"
 
@@ -483,30 +483,30 @@ screen game_menu_navigation_contents():
         spacing 10
 
         if _in_replay:
-            use game_menu_nav_button("Kết thúc xem lại", EndReplay(confirm=True))
+            use game_menu_nav_button(_("End Replay"), EndReplay(confirm=True))
         else:
-            use game_menu_nav_button("Lịch sử", ShowMenu("history"))
+            use game_menu_nav_button(_("History"), ShowMenu("history"))
 
             if not main_menu:
-                use game_menu_nav_button("Lưu", ShowMenu("save"))
+                use game_menu_nav_button(_("Save"), ShowMenu("save"))
 
-        use game_menu_nav_button("Tải", ShowMenu("load"))
-        use game_menu_nav_button("Tùy chọn", ShowMenu("preferences"))
+        use game_menu_nav_button(_("Load"), ShowMenu("load"))
+        use game_menu_nav_button(_("Preferences"), ShowMenu("preferences"))
 
         if not main_menu:
-            use game_menu_nav_button("Menu chính", MainMenu())
+            use game_menu_nav_button(_("Main Menu"), MainMenu())
 
-        use game_menu_nav_button("Thông tin", ShowMenu("about"))
+        use game_menu_nav_button(_("About"), ShowMenu("about"))
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-            use game_menu_nav_button("Hướng dẫn", ShowMenu("help"))
+            use game_menu_nav_button(_("Help"), ShowMenu("help"))
 
         if renpy.variant("pc"):
-            use game_menu_nav_button("Thoát", Quit(confirm=not main_menu))
+            use game_menu_nav_button(_("Quit"), Quit(confirm=not main_menu))
 
         null height 18
 
-        use game_menu_nav_button("Quay lại", Return(), primary=True)
+        use game_menu_nav_button(_("Return"), Return(), primary=True)
 
 
 screen game_menu_nav_button(label, action, primary=False):

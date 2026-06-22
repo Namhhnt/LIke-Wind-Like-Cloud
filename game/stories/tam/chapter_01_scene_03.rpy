@@ -5,286 +5,210 @@ label tam_c01_scene_03:
     scene bg_company_open_office_day
     with dissolve
 
-    narrator "Tâm học cách phân biệt một email cần trả lời ngay với một email chỉ có vẻ như cần trả lời ngay."
-
-    narrator "Cô học cách đọc biên bản họp mà không ngủ gục."
-
-    narrator "Học cách ghi chú deadline, mã hồ sơ, số hợp đồng, tên nhà thầu, và cả những câu nói nửa đùa nửa thật của cấp trên mà tốt nhất không nên xem là đùa."
-
-    narrator "Phòng triển khai dự án đúng như cô hình dung trong buổi phỏng vấn."
-
-    narrator "Nằm ở giữa rất nhiều thứ."
-
-    narrator "Và cũng bị kéo từ rất nhiều phía."
+    narrator "Tam learned how to tell the difference between an email that really needed an answer right away and one that only looked like it did."
+    narrator "She learned how to read meeting minutes without falling asleep."
+    narrator "She learned to note deadlines, file codes, contract numbers, contractor names, and even the half-joking remarks from her supervisors that were probably best not treated as jokes."
+    narrator "The project implementation department was exactly as she had imagined during the interview."
+    narrator "It sat in the middle of many things."
+    narrator "And it was pulled from many directions too."
 
     scene bg_meeting_room_day
     with dissolve
 
-    manager "Tâm, hồ sơ nghiệm thu lô vật liệu này đang lệch với ghi chú của bên quản lý chất lượng. Kế toán thì cần xác nhận trước cuối ngày để lên thanh toán tạm."
+    manager "Tam, the acceptance file for this material batch doesn't match the notes from quality management. Accounting needs confirmation before the end of the day to process temporary payment."
+    manager "Check it again for me. Don't let legal call this afternoon asking why the paperwork moved ahead of the signed minutes."
 
-    manager "Em kiểm tra lại giúp anh. Đừng để chiều nay phòng pháp lý phải gọi xuống hỏi vì sao hồ sơ chạy trước biên bản."
-
-    narrator "Một tập tài liệu được đặt xuống trước mặt Tâm."
-
-    narrator "Không dày."
-
-    narrator "Nhưng đủ khiến lòng cô hơi nặng."
+    narrator "A stack of documents was set down in front of Tam."
+    narrator "Not thick."
+    narrator "But heavy enough to make her chest tighten."
 
     if "tam_work_skill_strong_c01" in progress["player_flags"]:
-        narrator "Tâm chợt nhớ lại câu trả lời hôm phỏng vấn."
-        narrator "Không chuyển tiếp thông tin khi chưa hiểu bối cảnh."
-        narrator "Không để lỗi nhỏ thành vấn đề lớn."
+        narrator "Tam suddenly remembered her answer from the interview."
+        narrator "Don't pass information along before you understand the context."
+        narrator "Don't let a small mistake become a big problem."
 
     menu:
-        "Tâm nên xử lý hồ sơ lệch thế nào?"
+        "How should Tam handle the mismatch in the file?"
 
-        "Đối chiếu ghi chú QC, hỏi lại vật tư, sau đó gửi một bản tổng hợp ngắn cho kế toán và pháp lý.":
+        "Cross-check the QC notes, confirm with materials, then send a short summary to accounting and legal.":
             $ tam_work_skill += 1
             $ tam_confidence += 1
             $ add_unique(progress["player_flags"], "tam_handled_project_issue_well")
-            tam serious "Em xin phép kiểm tra lại với QC và vật tư trước. Nếu lệch ở biên bản, em sẽ ghi rõ điểm chưa khớp rồi gửi bản tổng hợp cho các bên liên quan."
-            manager "Đúng. Làm như vậy đi."
-            narrator "Không ai khen thêm."
-            narrator "Nhưng chỉ một câu 'đúng' thôi cũng đủ khiến Tâm thấy sống lưng mình thẳng hơn."
+            tam serious "Please let me verify it with QC and materials first. If the mismatch is in the minutes, I'll note the discrepancy clearly and send a short summary to the relevant teams."
+            manager "Correct. Do that."
+            narrator "No one added any praise."
+            narrator "But that single word, 'correct,' was enough to make Tam feel her spine straighten."
 
-        "Gửi xác nhận tạm cho kế toán trước để kịp deadline, rồi bổ sung sau.":
+        "Send a temporary confirmation to accounting first so the deadline is met, then supplement it later.":
             $ tam_confidence -= 1
             $ add_unique(progress["player_flags"], "tam_project_issue_rushed")
-            tam embarrassed "Em gửi xác nhận tạm trước rồi bổ sung sau được không ạ?"
-            manager "Không. Hồ sơ thanh toán mà chạy trước xác nhận chất lượng thì người bị gọi đầu tiên là phòng mình."
-            narrator "Tâm im lặng."
-            narrator "Cô ghi lại lời nhắc ấy rất kỹ."
+            tam embarrassed "Could I send a temporary confirmation first and complete the rest afterward?"
+            manager "No. If payment paperwork moves before quality confirmation, our department will be the first one called."
+            narrator "Tam fell silent."
+            narrator "She wrote down that warning very carefully."
 
-        "Chờ trưởng phòng tự quyết vì hồ sơ liên quan nhiều bên.":
+        "Wait for the manager to decide because the file involves too many teams.":
             $ tam_confidence -= 1
-            tam sad "Vậy phần này em chờ anh quyết định rồi em làm theo ạ?"
-            manager "Anh cần em kiểm tra trước khi anh quyết."
-            narrator "Câu nói không nặng."
-            narrator "Nhưng Tâm vẫn thấy mặt mình nóng lên."
+            tam sad "So for this part, should I wait for your decision and then follow it?"
+            manager "I need you to check it before I decide."
+            narrator "The sentence was not harsh."
+            narrator "But Tam still felt her face warm up."
 
     scene bg_company_year_end_party
     with fade
 
-    narrator "Year End Party của công ty được tổ chức ở một khách sạn lớn vào cuối năm."
-
-    narrator "Sau vài tháng đi làm, Tâm đã bớt giống cô gái cầm hồ sơ ngồi cứng đờ trong phòng chờ phỏng vấn."
-
-    narrator "Cô vẫn cẩn thận. Vẫn hay nghĩ nhiều."
-
-    narrator "Nhưng đã biết lúc nào nên hỏi, lúc nào nên im lặng, và lúc nào phải đứng ra nói một câu rõ ràng trước khi mọi chuyện rối hơn."
+    narrator "The company's Year End Party was held at a large hotel at the end of the year."
+    narrator "After a few months of working, Tam looked less like the girl clutching a folder stiffly in an interview waiting room."
+    narrator "She was still careful. Still prone to overthinking."
+    narrator "But now she knew when to ask, when to stay quiet, and when she had to step forward and say something clearly before things tangled any further."
 
     if tam_salary_tier == "high":
-        narrator "Mức lương tốt hơn ban đầu cũng cho cô nhiều lựa chọn hơn."
-        narrator "Tối nay, Tâm mặc một chiếc váy thanh lịch vừa vặn, phụ kiện nhỏ nhưng sáng, không phô trương mà vẫn đủ khiến người khác ngoái nhìn."
+        narrator "The stronger salary had given her more choices too."
+        narrator "Tonight Tam wore an elegant dress that fit well, with small but bright accessories, not showy, yet enough to make people glance back."
         $ hoang_impression += 2
     else:
-        narrator "Tâm chọn một bộ váy đơn giản, gọn gàng, không quá nổi bật nhưng hợp với cô."
-        narrator "Cái đẹp của cô vẫn nằm ở sự sạch sẽ, dịu mắt, và một chút lặng lẽ khó gọi tên."
+        narrator "Tam chose a simple, neat dress. Not especially striking, but right for her."
+        narrator "Her beauty still lived in cleanliness, softness, and a quietness that was hard to name."
 
     if tam_confidence >= 2:
-        narrator "Cách cô đứng giữa đám đông cũng khác."
-        narrator "Không còn là kiểu cố giấu mình ở rìa cuộc vui."
-        narrator "Cô nói chuyện vừa đủ, cười vừa đủ, và khi đồng nghiệp nhắc đến một vướng mắc dự án vừa xử lý xong, Tâm trả lời bằng sự bình tĩnh hiếm thấy ở một nhân viên mới."
+        narrator "The way she stood in a crowd had changed too."
+        narrator "She no longer looked like someone trying to hide at the edge of the room."
+        narrator "She spoke just enough, smiled just enough, and when a colleague mentioned a project snag that had only recently been resolved, Tam answered with a calmness rarely seen in a new employee."
         $ hoang_impression += 2
     elif tam_confidence >= 1:
-        narrator "Tâm chưa thật sự tự tin giữa đám đông, nhưng cô không còn quá lạc lõng."
+        narrator "Tam was not truly confident in a crowd yet, but she no longer felt completely out of place."
         $ hoang_impression += 1
     else:
-        narrator "Giữa ánh đèn và tiếng nhạc, Tâm vẫn thấy mình hơi nhỏ."
-        narrator "Cô đứng cạnh Huyền nhiều hơn, thi thoảng mỉm cười khi có người hỏi chuyện."
+        narrator "Under the lights and music, Tam still felt a little small."
+        narrator "She stayed beside Huyen more often, smiling lightly now and then when people spoke to her."
 
     if "huyen_trust_high_c01" in progress["player_flags"]:
         $ hoang_impression += 1
-        huyen serious "Đứng thẳng lên. Mày đẹp mà cứ làm như đang xin lỗi xã hội vì mình đẹp ấy."
-        tam embarrassed "Mày nói nhỏ thôi."
-        huyen serious "Không. Tao đang thực hiện nghĩa vụ bạn thân."
+        huyen serious "Stand up straight. You're pretty, stop acting like you owe society an apology for it."
+        tam embarrassed "Lower your voice."
+        huyen serious "No. I'm fulfilling my best-friend duties."
 
-    narrator "Hôm đó công ty có vài khách mời từ đối tác."
-
-    narrator "Tâm không để ý nhiều."
-
-    narrator "Cho đến khi cô nhìn thấy một người đứng gần khu vực cửa kính."
-
-    narrator "Một chàng trai mặc vest tối màu, dáng người cao và gọn. Khuôn mặt không quá xa lạ, nhưng cũng không đủ quen để cô gọi tên cảm giác vừa thoáng qua trong lòng."
-
-    narrator "Anh đang nói chuyện với một người bên ban lãnh đạo công ty."
-
-    narrator "Ánh mắt anh bình tĩnh. Nụ cười vừa đủ lịch sự. Cái kiểu người có thể đứng yên giữa một căn phòng ồn ào mà vẫn khiến không khí quanh mình có trật tự riêng."
+    narrator "The company had invited a few guests from partner organizations that night."
+    narrator "Tam did not pay much attention at first."
+    narrator "Not until she noticed someone standing near the window area."
+    narrator "A young man in a dark suit, tall and lean. His face was not exactly familiar, but not strange enough for her to name the feeling that brushed through her."
+    narrator "He was talking with someone from the company's leadership team."
+    narrator "His gaze was calm. His smile was just polite enough. The kind of person who could stand still in a noisy room and still make the air around him feel orderly."
 
     tam thoughtful "..."
+    huyen confused "What is it?"
+    tam embarrassed "Nothing."
+    huyen smile "Nothing? You're looking at him like you're reading classified documents."
+    tam embarrassed "Be quiet."
 
-    huyen confused "Gì đấy?"
-
-    tam embarrassed "Không có gì."
-
-    huyen smile "Không có gì mà nhìn người ta như đang đọc tài liệu mật?"
-
-    tam embarrassed "Mày im đi."
-
-    narrator "Huyền nhìn theo hướng mắt Tâm, rồi khẽ huých khuỷu tay vào cô."
-
-    huyen smile "À."
-
-    tam surprised "À cái gì?"
-
-    huyen smile "Không có gì. Tao chỉ vừa phát hiện dự án phụ."
-
-    tam embarrassed "Huyền."
-
-    huyen smile "Rồi rồi. Tao im."
+    narrator "Huyen followed Tam's line of sight and then lightly nudged her with an elbow."
+    huyen smile "Ah."
+    tam surprised "Ah what?"
+    huyen smile "Nothing. I just discovered your side project."
+    tam embarrassed "Huyen."
+    huyen smile "All right, all right. I'll stop."
 
     if hoang_impression >= 4:
-
         $ add_unique(progress["player_flags"], "hoang_first_contact_c01")
         $ add_unique(progress["player_flags"], "hoang_approached_tam_first")
         $ add_unique(progress["player_flags"], "tam_year_end_strong_impression")
 
-        narrator "Tâm định quay đi."
+        narrator "Tam was about to look away."
+        narrator "But at that moment, the young man looked over."
+        narrator "Their eyes met."
+        narrator "Not for long."
+        narrator "Just long enough for Tam to realize he was truly looking at her, not past the crowd."
+        narrator "Then he walked toward her."
 
-        narrator "Nhưng đúng lúc đó, chàng trai kia nhìn sang."
+        hoang neutral "Hello."
+        tam shy "Uh... hello."
+        hoang neutral "I'm Hoang. I'm here with the partner delegation tonight."
+        tam neutral "I'm Tam. Project implementation."
+        hoang smile "I know."
 
-        narrator "Ánh mắt hai người chạm nhau."
+        narrator "Tam froze for a beat."
+        hoang serious "I heard you earlier, when you were discussing the acceptance paperwork with the materials team. You summarize things clearly."
+        tam embarrassed "Oh... I was only repeating what I understood."
+        hoang serious "Making other people understand is a skill too."
+        narrator "His tone did not sound like empty politeness."
+        narrator "And because of that, Tam suddenly did not know where to put her hands."
 
-        narrator "Không lâu."
+        huyen smile "I'll go get more water."
+        narrator "Huyen said it very quickly and vanished."
+        narrator "A highly technical betrayal."
 
-        narrator "Chỉ vừa đủ để Tâm nhận ra anh đang thật sự nhìn mình, không phải nhìn xuyên qua đám đông."
+        hoang smile "Your friend is interesting."
+        tam smile "She usually is."
+        hoang smile "That must be exhausting."
+        tam smile "I'm used to it."
 
-        narrator "Rồi anh bước tới."
-
-        hoang neutral "Chào em."
-
-        tam shy "Dạ... chào anh."
-
-        hoang neutral "Anh là Hoàng. Đi cùng đoàn đối tác hôm nay."
-
-        tam neutral "Em là Tâm. Phòng triển khai dự án."
-
-        hoang smile "Anh biết."
-
-        narrator "Tâm hơi khựng lại."
-
-        hoang serious "Lúc nãy anh có nghe em trao đổi về hồ sơ nghiệm thu với anh bên vật tư. Cách em tóm ý khá gọn."
-
-        tam embarrassed "À... em chỉ nói lại phần em nắm được thôi ạ."
-
-        hoang serious "Nói lại cho người khác hiểu cũng là một kỹ năng."
-
-        narrator "Giọng anh không giống khen xã giao."
-
-        narrator "Và chính vì thế, Tâm bỗng không biết nên đặt tay mình ở đâu cho tự nhiên."
-
-        huyen smile "Tôi đi lấy thêm nước nhé."
-
-        narrator "Huyền nói rất nhanh rồi biến mất."
-
-        narrator "Phản bội rất có kỹ thuật."
-
-        hoang smile "Bạn em thú vị thật."
-
-        tam smile "Dạ. Nó thường xuyên như vậy."
-
-        hoang smile "Vậy chắc em vất vả."
-
-        tam smile "Cũng quen rồi ạ."
-
-        narrator "Hoàng khẽ cười."
-
-        narrator "Một nụ cười rất nhẹ."
-
-        narrator "Nhưng lạ thay, nó làm Tâm nhớ đến chiếc bàn trong góc tối của nhà hàng mấy tháng trước."
-
-        narrator "Một cái ly được nâng lên."
-
-        narrator "Một lời chúc mừng không thành tiếng."
-
-        narrator "Ý nghĩ ấy vụt qua rất nhanh, rồi tan mất giữa tiếng nhạc."
+        narrator "Hoang laughed softly."
+        narrator "A very light laugh."
+        narrator "Strangely enough, it reminded Tam of the shadowed table in the restaurant corner months earlier."
+        narrator "A glass lifting into the air."
+        narrator "A congratulations with no sound."
+        narrator "The thought flashed through her and dissolved into the music."
 
         jump tam_c01_year_end_after_meeting
 
     elif hoang_impression >= 2:
-
         $ add_unique(progress["player_flags"], "tam_year_end_can_approach_hoang")
 
-        narrator "Chàng trai kia nhìn sang một lần."
-
-        narrator "Rất nhanh."
-
-        narrator "Không đủ để gọi là bắt chuyện. Nhưng đủ để Tâm biết nếu cô bước tới, điều đó sẽ không quá kỳ lạ."
+        narrator "The young man glanced over once."
+        narrator "Very quickly."
+        narrator "Not enough to call it an opening. But enough for Tam to know that if she walked over, it would not be too strange."
 
         menu:
-            "Tâm có nên chủ động bắt chuyện không?"
+            "Should Tam go over and start a conversation?"
 
-            "Chủ động bắt chuyện với anh" if "tam_year_end_can_approach_hoang" in progress["player_flags"]:
+            "Go over and speak to him" if "tam_year_end_can_approach_hoang" in progress["player_flags"]:
                 $ add_unique(progress["player_flags"], "hoang_first_contact_c01")
                 $ add_unique(progress["player_flags"], "tam_approached_hoang_first")
                 $ hoang_impression += 1
 
-                narrator "Tâm hít một hơi rất khẽ."
+                narrator "Tam took a very small breath."
+                narrator "Not because she had suddenly become brave."
+                narrator "Only because some moments, if you let them pass, turn into regret later."
 
-                narrator "Không phải vì cô bỗng trở nên can đảm."
-
-                narrator "Chỉ là có những khoảnh khắc nếu bỏ qua, sau này sẽ thấy hơi tiếc."
-
-                tam neutral "Chào anh. Hình như anh là khách mời bên công ty đối tác ạ?"
-
-                hoang neutral "Ừ. Anh là Hoàng."
-
-                tam neutral "Em là Tâm. Phòng triển khai dự án."
-
-                hoang neutral "Anh có nghe giới thiệu lúc nãy."
-
-                tam embarrassed "Vậy chắc anh cũng nghe cả đoạn em nói hơi vấp."
-
-                hoang serious "Có."
-
-                narrator "Tâm ngẩng lên."
-
-                hoang smile "Nhưng đoạn sau em sửa lại tốt."
-
-                narrator "Câu trả lời thẳng đến mức Tâm không biết nên xem là khen hay xác nhận hiện trường."
-
-                tam smile "Anh thường nói chuyện như đang nghiệm thu hồ sơ vậy ạ?"
-
-                narrator "Hoàng thoáng khựng."
-
-                narrator "Rồi anh bật cười."
-
-                hoang smile "Không thường xuyên. Chỉ khi gặp người làm phòng triển khai."
-
-                narrator "Tâm cũng cười."
-
-                narrator "Một cuộc trò chuyện rất ngắn."
-
-                narrator "Nhưng đủ để cả hai có một cái tên dành cho nhau."
+                tam neutral "Hello. I think you're one of the guests from the partner company, right?"
+                hoang neutral "Yeah. I'm Hoang."
+                tam neutral "I'm Tam. Project implementation."
+                hoang neutral "I heard the introductions earlier."
+                tam embarrassed "Then I guess you also heard the part where I stumbled a little."
+                hoang serious "I did."
+                narrator "Tam looked up."
+                hoang smile "But you recovered well afterward."
+                narrator "The answer was so direct that Tam could not tell whether it was praise or an inspection note."
+                tam smile "Do you always talk like you're inspecting paperwork?"
+                narrator "Hoang paused."
+                narrator "Then he laughed."
+                hoang smile "Not often. Only when I meet someone from project implementation."
+                narrator "Tam laughed too."
+                narrator "It was a very short conversation."
+                narrator "But enough for the two of them to have a name for each other."
 
                 jump tam_c01_year_end_after_meeting
 
-            "Không bắt chuyện, chỉ giữ khoảng cách quan sát":
+            "Don't approach him, just keep your distance and watch":
                 $ add_unique(progress["player_flags"], "hoang_no_contact_c01")
                 $ add_unique(progress["player_flags"], "hoang_romance_slow_start")
-                narrator "Tâm cuối cùng vẫn không bước tới."
-                narrator "Cô chỉ nhìn anh thêm một lần nữa, rồi quay sang nghe Huyền nói chuyện."
-                narrator "Có những cuộc gặp bắt đầu bằng một lời chào."
-                narrator "Cũng có những cuộc gặp bắt đầu bằng việc cả hai đều im lặng."
+                narrator "In the end, Tam did not step forward."
+                narrator "She only looked at him once more, then turned back to listen to Huyen speak."
+                narrator "Some encounters begin with a greeting."
+                narrator "Others begin with both people staying silent."
+
                 jump tam_c01_year_end_no_contact
 
     else:
-
         $ add_unique(progress["player_flags"], "hoang_no_contact_c01")
         $ add_unique(progress["player_flags"], "hoang_romance_delayed_start")
 
-        narrator "Chàng trai kia đứng ở phía xa."
-
-        narrator "Tâm nhìn thấy anh."
-
-        narrator "Và có lẽ anh cũng nhìn thấy cô."
-
-        narrator "Nhưng đám đông, ánh đèn, tiếng nhạc, và cả sự thiếu tự tin nhỏ bé trong lòng Tâm đã giữ hai người ở hai phía khác nhau của căn phòng."
-
-        narrator "Không ai bước tới."
-
-        narrator "Không có lời chào."
-
-        narrator "Chỉ có một ánh nhìn rất khẽ, bị buổi tiệc nuốt mất trước khi kịp trở thành điều gì rõ ràng."
+        narrator "The young man remained in the distance."
+        narrator "Tam saw him."
+        narrator "And maybe he saw her too."
+        narrator "But the crowd, the lights, the music, and the small lack of confidence inside Tam kept the two of them on opposite sides of the room."
+        narrator "No one stepped forward."
+        narrator "There was no greeting."
+        narrator "Only a very faint glance, swallowed by the party before it could become anything clear."
 
         jump tam_c01_year_end_no_contact

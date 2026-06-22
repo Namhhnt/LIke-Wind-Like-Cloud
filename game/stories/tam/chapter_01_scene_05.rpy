@@ -5,30 +5,30 @@ label tam_c01_year_end_no_contact:
     scene bg_company_year_end_party_late
     with dissolve
 
-    narrator "Cuối buổi tiệc, Tâm đứng bên cửa kính cùng Huyền."
+    narrator "At the end of the party, Tam stands by the glass wall with Huyen."
 
-    huyen thoughtful "Mày đang tiếc à?"
+    huyen thoughtful "Do you regret it?"
 
-    tam surprised "Tiếc gì?"
+    tam surprised "Regret what?"
 
-    huyen neutral "Không biết. Tao chỉ hỏi vậy thôi."
+    huyen neutral "I don't know. I'm just asking."
 
-    narrator "Tâm nhìn xuống thành phố."
+    narrator "Tam looks down at the city."
 
-    narrator "Ánh đèn dưới kia trôi đi thành từng dòng lặng lẽ."
+    narrator "The lights below drift by in quiet streams."
 
-    tam sad "Chắc không."
+    tam sad "Probably not."
 
-    narrator "Cô nói vậy."
+    narrator "That's what she says."
 
-    narrator "Nhưng trong lòng lại có một khoảng rất nhỏ, giống như một chỗ trống vừa bị ai đó khẽ chạm vào rồi bỏ quên."
+    narrator "But inside her, there is a very small space, like an emptiness someone brushed against and then forgot."
 
-    narrator "Ở phía xa, chàng trai khách mời cũng rời khỏi buổi tiệc."
+    narrator "In the distance, the young guest also leaves the party."
 
-    narrator "Hai người không nói với nhau câu nào."
+    narrator "The two of them do not exchange a single word."
 
-    narrator "Chỉ là sau này, khi nhớ lại, Tâm vẫn sẽ tự hỏi."
+    narrator "Only later, when she remembers it, Tam will still ask herself."
 
-    narrator "Nếu hôm đó mình bước tới trước thì sao?"
+    narrator "What if I had stepped forward first that day?"
 
     jump tam_c01_end

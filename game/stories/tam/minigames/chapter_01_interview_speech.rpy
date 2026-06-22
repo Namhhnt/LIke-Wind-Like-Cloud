@@ -47,9 +47,9 @@ label tam_c01_speech_retry:
             $ add_unique(progress["player_flags"], "tam_salary_high_start")
             $ add_unique(progress["player_flags"], "tam_work_skill_strong_c01")
 
-            narrator "Các ý được đặt đúng thứ tự."
-            narrator "Tâm mở đầu bằng việc hiểu bức tranh lớn, sau đó đi vào năng lực phối hợp, tư duy rủi ro, rồi mới kết lại bằng thái độ làm việc."
-            narrator "Một câu trả lời không quá hoa mỹ. Nhưng gọn, có trục, và không bị rơi vào kiểu tự quảng cáo non tay."
+            narrator "The points fall into exactly the right order."
+            narrator "Tam begins by showing she understands the big picture, then moves into coordination skills, risk awareness, and only then closes with work attitude."
+            narrator "It is not an ornate answer. But it is concise, structured, and never slips into clumsy self-promotion."
 
             jump tam_c01_interview_perfect
 
@@ -60,8 +60,8 @@ label tam_c01_speech_retry:
             $ add_unique(progress["player_flags"], "tam_interview_passed")
             $ add_unique(progress["player_flags"], "tam_salary_standard_start")
 
-            narrator "Các ý quan trọng đều có mặt, nhưng thứ tự trình bày chưa thật sự sắc."
-            narrator "Dù vậy, Tâm vẫn cho thấy cô hiểu công việc và có thái độ nghiêm túc."
+            narrator "All the important points are there, but the presentation order is not quite sharp."
+            narrator "Even so, Tam still shows that she understands the job and takes it seriously."
 
             jump tam_c01_interview_pass
 
@@ -70,9 +70,9 @@ label tam_c01_speech_retry:
         $ tam_speech_attempts += 1
 
         if tam_speech_attempts < 3:
-            narrator "Câu trả lời bị lệch trọng tâm."
-            narrator "Hội đồng không khó chịu, nhưng ánh mắt họ đủ khiến Tâm hiểu mình vừa đi sai hướng."
-            narrator "Thử lại."
+            narrator "The answer loses focus."
+            narrator "The panel is not annoyed, but their expressions are enough for Tam to realize she has gone off course."
+            narrator "Try again."
 
             jump tam_c01_speech_retry
 
@@ -85,58 +85,58 @@ label tam_c01_speech_retry:
 
 label tam_c01_interview_perfect:
 
-    tam serious "Em nghĩ vị trí triển khai dự án không chỉ là truyền đạt thông tin từ bên này sang bên kia."
+    tam serious "I think a project implementation role is more than just relaying information from one side to another."
 
-    tam serious "Với một công ty có nhiều mảng như xây dựng, vật liệu, IT, pháp lý, kế toán và quản lý chất lượng, người ở phòng triển khai cần hiểu được việc của mình nằm ở đâu trong toàn bộ dòng chảy dự án."
+    tam serious "In a company with multiple functions like construction, materials, IT, legal, accounting, and quality management, the implementation team needs to understand where its work sits in the full project flow."
 
-    tam serious "Nếu em không hiểu bối cảnh, em sẽ chỉ chuyển tiếp thông tin. Nhưng nếu hiểu bối cảnh, em có thể biết thông tin nào cần làm rõ, phòng ban nào cần được cập nhật, và rủi ro nào nên được báo sớm."
+    tam serious "If I do not understand the context, I will only pass information along. But if I do understand it, I can tell which details need clarification, which departments need updates, and which risks should be reported early."
 
-    tam neutral "Em chưa có nhiều kinh nghiệm thực tế, nhưng em có khả năng tổng hợp, theo dõi chi tiết, và em không ngại học quy trình từ đầu."
+    tam neutral "I do not have much real-world experience yet, but I can synthesize information, track details, and I am not afraid to learn the process from the ground up."
 
-    tam smile "Em muốn làm tốt phần việc của mình theo cách đáng tin cậy. Không ồn ào, nhưng rõ ràng và có trách nhiệm."
+    tam smile "I want to do my part well in a way people can rely on. Not loudly, but clearly and responsibly."
 
-    manager "Cách em trả lời khá có cấu trúc."
+    manager "Your answer is quite well structured."
 
-    interviewer "Và thực tế hơn anh chị nghĩ."
+    interviewer "And more practical than we expected."
 
-    narrator "Tâm thấy vai mình nhẹ đi một chút."
+    narrator "Tam feels her shoulders lighten a little."
 
-    narrator "Không phải vì cô chắc chắn mình đã thắng."
+    narrator "Not because she is certain she has won."
 
-    narrator "Chỉ là lần đầu tiên trong buổi sáng hôm ấy, cô thấy mình đang đứng đúng chỗ."
+    narrator "Only because, for the first time that morning, she feels like she is standing in the right place."
 
     jump tam_c01_after_interview
 
 
 label tam_c01_interview_pass:
 
-    tam serious "Em nghĩ công việc triển khai dự án cần khả năng phối hợp và theo dõi chi tiết."
+    tam serious "I think project implementation work requires coordination skills and close attention to detail."
 
-    tam serious "Công ty mình có nhiều phòng ban liên quan đến từng dự án, nên nếu thông tin không rõ ràng hoặc cập nhật chậm, tiến độ chung có thể bị ảnh hưởng."
+    tam serious "Our company has many departments involved in each project, so if information is unclear or updates come late, the overall schedule can be affected."
 
-    tam neutral "Em muốn học cách nắm quy trình, hỗ trợ các bên làm việc với nhau tốt hơn và báo cáo kịp thời khi có vướng mắc."
+    tam neutral "I want to learn the process, help different teams work together better, and report issues in time when problems come up."
 
-    manager "Tốt. Câu trả lời hơi vòng một chút, nhưng ý chính ổn."
+    manager "Good. The answer circles a bit, but the main point is solid."
 
-    interviewer "Chị đánh giá cao việc em có nhắc đến phối hợp liên phòng ban."
+    interviewer "I appreciate that you mentioned cross-department coordination."
 
-    narrator "Tâm gật đầu."
+    narrator "Tam nods."
 
-    narrator "Cô biết mình chưa thật xuất sắc, nhưng ít nhất không bị trôi."
+    narrator "She knows she was not exceptional, but at least she did not drift off track."
 
     jump tam_c01_after_interview
 
 
 label tam_c01_interview_skip:
 
-    tam serious "Em nghĩ vị trí này cần sự cẩn thận, khả năng phối hợp và tinh thần học hỏi."
+    tam serious "I think this position requires carefulness, coordination, and a willingness to learn."
 
-    tam sad "Em chưa có nhiều kinh nghiệm, nhưng em sẵn sàng học quy trình, hỗ trợ công việc và làm theo hướng dẫn của cấp trên."
+    tam sad "I do not have much experience yet, but I am ready to learn the process, support the work, and follow guidance from my supervisors."
 
-    manager "Được."
+    manager "All right."
 
-    narrator "Một câu trả lời an toàn."
+    narrator "A safe answer."
 
-    narrator "Không sai. Nhưng cũng không để lại nhiều dư âm."
+    narrator "Not wrong. But it does not leave much behind, either."
 
     jump tam_c01_after_interview

@@ -5,42 +5,42 @@ label tam_c01_year_end_after_meeting:
     scene bg_company_year_end_party_late
     with dissolve
 
-    narrator "Đêm ấy, khi buổi tiệc dần trôi về cuối, Tâm đứng cạnh cửa kính nhìn xuống thành phố."
+    narrator "That night, as the party drifted toward its end, Tam stood by the glass looking down at the city."
 
-    narrator "Những dòng xe nhỏ như những vệt sáng nối nhau đi qua dưới chân tòa nhà."
+    narrator "Small streams of cars passed below the building like connected streaks of light."
 
-    huyen neutral "Sao?"
+    huyen neutral "Well?"
 
-    tam neutral "Sao gì?"
+    tam neutral "Well what?"
 
-    huyen smile "Dự án phụ."
+    huyen smile "Your side project."
 
-    tam embarrassed "Mày gọi người ta là dự án phụ thêm lần nữa, tao sẽ nộp mày cho phòng quản lý chất lượng."
+    tam embarrassed "Call him a side project one more time and I'll report you to quality management."
 
-    huyen serious "Tao chỉ đang đánh giá rủi ro."
+    huyen serious "I'm just assessing the risk."
 
-    tam surprised "Rủi ro gì?"
+    tam surprised "What risk?"
 
-    huyen serious "Rủi ro mày thích người ta trước khi kịp hiểu người ta là ai."
+    huyen serious "The risk that you start liking him before you even know who he is."
 
-    narrator "Tâm quay đi."
+    narrator "Tam turns away."
 
-    narrator "Má cô hơi nóng. Có lẽ vì rượu trái cây."
+    narrator "Her cheeks feel a little warm. Maybe from the fruit wine."
 
-    narrator "Có lẽ không."
+    narrator "Maybe not."
 
     if "huyen_trust_high_c01" in progress["player_flags"]:
-        huyen serious "Nhưng nếu có gì thật, nhớ nói tao."
-        huyen smile "Tao không hứa khuyên đúng. Nhưng tao hứa sẽ nghe trước khi phán xét."
-        tam smile "Nghe trưởng thành ghê."
-        huyen happy "Tao diễn đấy. Nhưng cũng có tâm."
+        huyen serious "But if something real happens, tell me."
+        huyen smile "I can't promise the right advice. But I can promise I'll listen before I judge."
+        tam smile "That sounds weirdly mature."
+        huyen happy "I'm performing. But I mean it, too."
 
-    narrator "Tâm khẽ cười."
+    narrator "Tam laughs softly."
 
-    narrator "Cô không biết cuộc gặp ngắn ngủi vừa rồi sẽ dẫn mình đến đâu."
+    narrator "She does not know where that brief encounter will lead her."
 
-    narrator "Cô chỉ biết, trong một ngày cuối năm đầy tiếng người và ánh đèn, có một ánh mắt đã dừng lại nơi cô lâu hơn một nhịp."
+    narrator "She only knows that, on a year-end night full of voices and light, one gaze lingered on her for a beat longer than it had to."
 
-    narrator "Và đôi khi, một nhịp thôi cũng đủ làm gió đổi chiều."
+    narrator "And sometimes, one beat is enough to make the wind change direction."
 
     jump tam_c01_end

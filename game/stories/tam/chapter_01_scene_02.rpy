@@ -5,181 +5,140 @@ label tam_c01_after_interview:
     scene bg_company_lobby_noon
     with dissolve
 
-    narrator "Khi Tâm bước ra khỏi phòng, Huyền đã đứng bật dậy như lò xo."
+    narrator "When Tam stepped out of the room, Huyen was already on her feet like a spring."
+    huyen sad "How did it go?"
+    tam dazed "No idea yet."
+    huyen smile "Your face doesn't look terrible. That means they didn't reject you at the door."
+    tam smile "Thank you for that deeply uplifting encouragement."
+    huyen smile "You're welcome. I charge by the hour."
 
-    huyen sad "Sao rồi?"
-
-    tam dazed "Chưa biết."
-
-    huyen smile "Mặt mày nhìn không tệ. Tức là không bị loại ngay tại cửa."
-
-    tam smile "Cảm ơn vì lời động viên rất có giá trị tinh thần."
-
-    huyen smile "Không có gì. Tao tính phí theo giờ."
-
-    narrator "Hai người ngồi xuống hàng ghế dài ở sảnh. Bên ngoài lớp kính, nắng trưa bắt đầu rơi thành từng mảng gắt."
-
-    huyen sad "Tao run quá."
-
-    tam surprised "Đến lượt mày rồi à?"
-
-    huyen sad "Ừ. Nếu tao chết trong đó, nhớ xóa lịch sử tìm kiếm của tao."
+    narrator "The two of them sat down on a long bench in the lobby. Outside the glass wall, the noon sunlight had started falling in harsh slabs."
+    huyen sad "I'm shaking."
+    tam surprised "Is it your turn now?"
+    huyen sad "Yeah. If I die in there, delete my search history."
 
     menu:
-        "Tâm nên động viên Huyền thế nào?"
+        "How should Tam encourage Huyen?"
 
-        "Nhắc Huyền bình tĩnh và dùng thế mạnh thật của mình.":
+        "Tell Huyen to stay calm and lean on her real strengths.":
             $ huyen_trust += 1
             $ add_unique(progress["player_flags"], "tam_supported_huyen_interview")
-            tam serious "Mày không cần cố tỏ ra giỏi hơn con người thật của mày đâu. Mày nói chuyện tự nhiên, bắt ý nhanh, lại nhớ chi tiết tốt. Cứ dùng đúng mấy thứ đó."
-            huyen smile "Nghe hơi giống lời thoại trong phim thanh xuân, nhưng... có ích thật."
-            tam smile "Đi đi. Đừng làm xấu mặt bánh mì ban sáng."
+            tam serious "You don't need to act more capable than you really are. You speak naturally, pick things up fast, and you remember details well. Just use those."
+            huyen smile "That sounds a little like dialogue from a youth drama, but... it actually helps."
+            tam smile "Go on, then. Don't disgrace the breakfast banh mi."
 
-        "Trêu Huyền để cô ấy bớt căng.":
-            tam smile "Không sao. Nếu mày trượt, tao sẽ kể chuyện này trong đám cưới mày."
-            huyen laugh "Mày đúng là bạn thân kiểu cần cho vào danh sách rủi ro dự án."
-            narrator "Huyền bật cười. Căng thẳng trong mắt cô vơi đi một chút."
+        "Tease Huyen so she relaxes.":
+            tam smile "It's fine. If you fail, I'll tell this story at your wedding."
+            huyen laugh "You're exactly the kind of best friend who belongs on the project risk register."
+            narrator "Huyen laughed. Some of the tension left her eyes."
 
-        "Bảo Huyền tự lo vì ai cũng phải tự vượt qua.":
+        "Tell Huyen to handle it herself because everyone has to get through their own part.":
             $ huyen_trust -= 1
-            tam neutral "Tao cũng không biết khuyên gì. Mày tự lo đi. Ai cũng phải tự qua phần của mình mà."
-            huyen sad "Ờ. Tao hiểu."
-            narrator "Huyền cười, nhưng nụ cười hơi mỏng."
+            tam neutral "I don't really know what to tell you. Handle it yourself. Everyone has to get through their own part."
+            huyen sad "Yeah. I get it."
+            narrator "Huyen smiled, but the smile looked thin."
 
-    narrator "Huyền đi vào phòng phỏng vấn."
-
-    narrator "Tâm ngồi lại một mình."
-
-    narrator "Sảnh công ty bỗng rộng hơn hẳn khi không còn tiếng Huyền nói bên cạnh."
+    narrator "Huyen went into the interview room."
+    narrator "Tam sat there alone."
+    narrator "The company lobby suddenly felt much larger without Huyen talking beside her."
 
     scene bg_company_lobby_afternoon
     with dissolve
 
-    narrator "Kết quả được thông báo vào cuối buổi chiều."
+    narrator "The results came at the end of the afternoon."
+    narrator "Both of them got in."
+    narrator "Tam read the email twice. Huyen read it four times. Then they looked at each other for a few seconds and burst out laughing like two people who had just escaped a minor accident that still sent their hearts crashing down to their knees."
 
-    narrator "Cả hai cùng trúng tuyển."
-
-    narrator "Tâm đọc email hai lần. Huyền đọc bốn lần. Sau đó hai đứa nhìn nhau vài giây, rồi cùng bật cười như hai kẻ vừa thoát khỏi một vụ tai nạn không nghiêm trọng nhưng đủ làm tim rơi xuống tận đầu gối."
-
-    huyen happy "Tối nay ăn mừng."
-
-    tam surprised "Ăn gì?"
-
-    huyen serious "Sang."
-
-    tam shocked "Mày vừa mới được nhận việc đã muốn phá sản à?"
-
-    huyen smile "Không. Tao gọi đó là đầu tư vào tinh thần trước khi bị doanh nghiệp nghiền nát."
-
-    narrator "Tâm thấy lập luận ấy sai sai."
-
-    narrator "Nhưng cũng khá thuyết phục."
+    huyen happy "We're celebrating tonight."
+    tam surprised "With what?"
+    huyen serious "Something fancy."
+    tam shocked "You just got hired and you already want to go bankrupt?"
+    huyen smile "No. I call it investing in morale before the company crushes us."
+    narrator "Tam thought that argument was a little suspect."
+    narrator "But also fairly convincing."
 
     if tam_salary_tier == "high":
-        narrator "Email offer của Tâm có mức lương khởi điểm cao hơn kỳ vọng."
-        narrator "Một con số không đến mức khiến cô đổi đời, nhưng đủ để cô nhìn màn hình thêm vài giây, cảm thấy lòng mình sáng lên như vừa có ai mở cửa sổ."
+        narrator "Tam's offer email came with a starting salary higher than she expected."
+        narrator "Not a number big enough to change her life, but enough to make her stare at the screen for a few extra seconds and feel as if someone had opened a window inside her chest."
 
         menu:
-            "Tâm nên nói với Huyền về mức lương thế nào?"
+            "How should Tam tell Huyen about the salary?"
 
-            "Chia sẻ thật, nhưng không làm Huyền thấy bị so sánh.":
+            "Share honestly, but without making Huyen feel compared.":
                 $ huyen_trust += 1
                 $ add_unique(progress["player_flags"], "tam_shared_salary_with_care")
-                tam happy "Tao được offer cao hơn tao tưởng một chút."
-                huyen surprised "Thật á? Bao nhiêu?"
-                tam embarrassed "Tao nói mày nghe, nhưng không phải để khoe đâu nhé. Tao cũng hơi bất ngờ."
-                huyen laugh "Con điên. Mày được offer cao thì tao mừng chứ. Sau này nhớ bao tao trà sữa size lớn."
-                tam smile "Đấy mới là mục đích thật của mày đúng không?"
-                huyen happy "Bạn thân là phải biết biến niềm vui của nhau thành đồ uống."
+                tam happy "They offered me a little more than I expected."
+                huyen surprised "Really? How much?"
+                tam embarrassed "I'll tell you, but I'm not bragging, okay? I was surprised too."
+                huyen laugh "You idiot. If you got a better offer, I'm happy for you. Just remember to buy me a large milk tea later."
+                tam smile "So that was your real motive, huh?"
+                huyen happy "Best friends know how to turn each other's happiness into beverages."
 
-            "Giấu đi để tránh Huyền buồn.":
+            "Hide it so Huyen won't feel bad.":
                 $ huyen_trust -= 1
                 $ add_unique(progress["player_flags"], "tam_hid_salary_from_huyen")
-                tam sad "Cũng bình thường thôi."
-                narrator "Tâm nói vậy. Nhưng cô biết mình vừa giấu Huyền một điều không quá cần phải giấu."
-                narrator "Sự im lặng nhỏ ấy nằm lại giữa hai người như một cái ghim lệch."
+                tam sad "It's pretty normal, I guess."
+                narrator "That's what Tam said. But she knew she had just hidden something from Huyen that did not really need hiding."
+                narrator "That small silence stayed between them like a crooked pin."
 
-            "Khoe thẳng vì mình xứng đáng.":
+            "Show off because she earned it.":
                 $ huyen_trust -= 1
-                tam happy "Tao được offer cao hơn. Chắc tại phần phỏng vấn tốt thật."
-                huyen sad "Ờ. Mày giỏi mà."
-                narrator "Huyền vẫn cười. Nhưng giọng cô bớt sáng đi một chút."
+                tam happy "I got offered more. Guess my interview really was that good."
+                huyen sad "Yeah. You're good, after all."
+                narrator "Huyen kept smiling. But her voice lost a little of its brightness."
 
     else:
-        narrator "Mức lương khởi điểm của Tâm ở mức tiêu chuẩn."
-        narrator "Không cao đến mức khiến cô reo lên, cũng không thấp đến mức làm cô thất vọng."
-        narrator "Vừa đủ. Như một cánh cửa mở ra không quá rộng, nhưng rõ ràng là đã mở."
+        narrator "Tam's starting salary landed in the standard range."
+        narrator "Not high enough to make her squeal, and not low enough to disappoint her."
+        narrator "Just enough. Like a door opening not too wide, but clearly open."
 
     if huyen_trust >= 2:
         $ add_unique(progress["player_flags"], "huyen_trust_high_c01")
         $ add_unique(progress["player_flags"], "huyen_advice_work_unlocked")
         $ add_unique(progress["player_flags"], "huyen_advice_relationship_unlocked")
-        narrator "Từ hôm đó, Huyền bắt đầu tin Tâm theo một cách khác."
-        narrator "Không chỉ là bạn thân để cùng cười, cùng than, cùng ăn những bữa vô nghĩa sau giờ làm."
-        narrator "Mà còn là người có thể nói thật, nghe thật, và giữ lại cho nhau vài lời khuyên đúng lúc."
+        narrator "From that day on, Huyen began trusting Tam in a different way."
+        narrator "Not just as the best friend you laugh with, complain with, and share meaningless after-work meals with."
+        narrator "But as someone who could speak honestly, listen honestly, and hold on to the right advice at the right time for each other."
 
     scene bg_luxury_restaurant_evening
     with fade
 
-    narrator "Tối hôm đó, hai người chọn một nhà hàng sang trọng hơn mức cần thiết."
+    narrator "That evening, the two of them chose a restaurant slightly more luxurious than necessary."
+    narrator "Warm yellow lights. White tablecloths. Glassware so clear Tam was afraid one clumsy grip might expose the awkwardness she had only just managed to hide."
 
-    narrator "Đèn vàng. Khăn trải bàn trắng. Ly thủy tinh trong suốt đến mức Tâm sợ mình chỉ cần cầm mạnh tay một chút cũng có thể để lộ sự quê mùa vừa kịp giấu đi."
+    huyen neutral "Hey."
+    tam neutral "What?"
+    huyen happy "We're officially adults now."
+    tam surprised "Just because we got hired?"
+    huyen smile "Yeah. Adults are creatures who get excited when they receive the email that begins a long chain of selling their souls to spreadsheets."
+    tam smile "That sounds awfully pessimistic."
+    huyen smile "But I'm saying it in a fancy restaurant, so it becomes philosophy."
 
-    huyen neutral "Này."
-
-    tam neutral "Gì?"
-
-    huyen happy "Chúng ta chính thức là người lớn rồi đấy."
-
-    tam surprised "Chỉ vì được nhận việc?"
-
-    huyen smile "Ừ. Người lớn là những sinh vật vui mừng khi nhận được email bắt đầu chuỗi ngày bán linh hồn cho bảng biểu."
-
-    tam smile "Nghe bi quan quá."
-
-    huyen smile "Nhưng tao nói trong nhà hàng sang, nên nó thành triết lý."
-
-    narrator "Tâm cười. Cô nâng ly nước trái cây lên."
-
-    tam happy "Chúc mừng chúng ta."
-
-    huyen happy "Chúc mừng chúng ta. Và chúc phòng triển khai dự án sống sót sau khi tuyển hai đứa mình."
+    narrator "Tam laughed and raised her fruit juice glass."
+    tam happy "To us."
+    huyen happy "To us. And to the project implementation department surviving after hiring the two of us."
 
     play sound "audio/glass_clink.ogg"
 
-    narrator "Hai chiếc ly chạm nhẹ vào nhau."
+    narrator "The two glasses touched lightly."
+    narrator "The sound of glass was very soft."
+    narrator "At that very moment, from a table tucked into a shaded corner, someone else also raised a glass."
+    narrator "Tam noticed it from the corner of her eye."
+    narrator "A young man sitting alone. The light only reached half his shoulder, leaving his face sunk in a darkness that felt just unfamiliar enough."
+    narrator "He said nothing."
+    narrator "He only lifted his glass toward the two girls, like a quiet congratulations."
 
-    narrator "Tiếng thủy tinh vang lên rất khẽ."
+    huyen confused "What was that?"
+    tam thoughtful "No idea."
+    huyen confused "Someone you know?"
+    tam neutral "No."
 
-    narrator "Đúng lúc ấy, ở chiếc bàn trong góc khuất, có một người cũng nâng ly."
-
-    narrator "Tâm nhìn thấy điều đó qua khóe mắt."
-
-    narrator "Một chàng trai ngồi một mình. Ánh đèn chỉ rơi đến nửa vai, để khuôn mặt anh chìm trong một khoảng tối vừa đủ xa lạ."
-
-    narrator "Anh không nói gì."
-
-    narrator "Chỉ nâng ly về phía hai cô gái, như một lời chúc mừng lặng lẽ."
-
-    huyen confused "Gì thế?"
-
-    tam thoughtful "Không biết."
-
-    huyen confused "Người quen của mày à?"
-
-    tam neutral "Không."
-
-    narrator "Tâm nhìn lại."
-
-    narrator "Chàng trai trong góc đã đặt ly xuống. Anh hơi nghiêng đầu, như thể vừa vô tình bị bắt gặp trong một hành động không định để ai thấy."
-
-    narrator "Rồi anh quay mặt về phía cửa kính."
-
-    narrator "Thành phố phía sau lưng anh loang loáng ánh đèn."
-
-    narrator "Một khoảnh khắc rất nhỏ."
-
-    narrator "Nhỏ đến mức nếu ngày hôm đó Tâm không vui như thế, có lẽ cô đã quên ngay."
+    narrator "Tam looked again."
+    narrator "The young man in the corner had already lowered his glass. He tilted his head slightly, as if he had just been accidentally caught in something he had not meant anyone to notice."
+    narrator "Then he turned back toward the window."
+    narrator "The city lights shimmered behind him."
+    narrator "A very small moment."
+    narrator "Small enough that if Tam had not been so happy that day, she might have forgotten it immediately."
 
     $ add_unique(progress["player_flags"], "tam_saw_corner_man_at_dinner")
     $ add_unique(progress["player_flags"], "hoang_hidden_first_presence")
@@ -187,10 +146,8 @@ label tam_c01_after_interview:
     scene black
     with fade
 
-    narrator "Thời gian trôi qua."
-
-    narrator "Một công việc mới không làm đời người lập tức thay đổi."
-
-    narrator "Nó chỉ âm thầm thay đổi nhịp thở của từng ngày."
+    narrator "Time passed."
+    narrator "A new job does not make a person's life change overnight."
+    narrator "It only quietly changes the rhythm of each day."
 
     jump tam_c01_scene_03

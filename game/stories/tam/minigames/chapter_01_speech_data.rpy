@@ -1,4 +1,4 @@
-# Tâm Route - Chapter 01 Speech Mini-game Data
+# Tam Route - Chapter 01 Speech Mini-game Data
 # ============================================================
 
 default tam_speech_attempts = 0
@@ -14,43 +14,43 @@ init python:
     ]
 
     tam_speech_short_labels = {
-        "self_only": "Tự giới thiệu",
-        "context": "Hiểu bối cảnh công ty",
-        "coordination": "Phối hợp liên phòng ban",
-        "solo": "Làm việc độc lập",
-        "risk": "Tư duy rủi ro",
-        "commitment": "Thái độ làm việc",
-        "salary_first": "Quan tâm mức lương",
+        "self_only": _("Self-introduction"),
+        "context": _("Understand the company context"),
+        "coordination": _("Cross-team coordination"),
+        "solo": _("Independent work"),
+        "risk": _("Risk awareness"),
+        "commitment": _("Work attitude"),
+        "salary_first": _("Salary-focused"),
     }
 
     tam_speech_items = [
         {
             "id": "self_only",
-            "label": "Tự giới thiệu: tập trung kể về điểm mạnh cá nhân, thành tích học tập, khả năng quan sát và học hỏi.",
+            "label": _("Self-introduction: focus on personal strengths, academic achievements, observation, and willingness to learn."),
         },
         {
             "id": "context",
-            "label": "Triển khai dự án là điểm nối giữa xây dựng, vật liệu, IT, pháp lý, kế toán và quản lý chất lượng.",
+            "label": _("Project implementation connects construction, materials, IT, legal, accounting, and quality management."),
         },
         {
             "id": "coordination",
-            "label": "Nhấn mạnh năng lực phối hợp: theo dõi tiến độ, tổng hợp thông tin, làm rõ đầu việc và giữ luồng trao đổi giữa các phòng ban.",
+            "label": _("Emphasize coordination skills: track progress, synthesize information, clarify tasks, and keep communication flowing across departments."),
         },
         {
             "id": "solo",
-            "label": "Khả năng làm việc độc lập: em có thể tự xử lý mọi việc mà không cần làm phiền phòng ban khác.",
+            "label": _("Independent work ability: I can handle everything on my own without bothering other departments."),
         },
         {
             "id": "risk",
-            "label": "Nói về tư duy rủi ro: phát hiện vướng mắc sớm, báo cáo minh bạch, không để lỗi nhỏ thành vấn đề lớn.",
+            "label": _("Talk about risk awareness: spot issues early, report transparently, and keep small mistakes from becoming major problems."),
         },
         {
             "id": "commitment",
-            "label": "Thái độ làm việc: học nhanh, chịu khó đi hiện trường khi cần, tôn trọng quy trình và chịu trách nhiệm với phần việc của mình.",
+            "label": _("Work attitude: learn quickly, visit the site when needed, respect process, and take responsibility for my part of the work."),
         },
         {
             "id": "salary_first",
-            "label": "Nói rằng mức lương là điều em quan tâm nhất vì em muốn được đánh giá đúng giá trị.",
+            "label": _("Say that salary matters most because I want to be evaluated for my true worth."),
         },
     ]
 

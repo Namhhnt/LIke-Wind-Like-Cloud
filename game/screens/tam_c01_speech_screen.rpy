@@ -1,5 +1,5 @@
 # ============================================================
-# Tâm Route - Chapter 01 Speech Mini-game Screen
+# Tam Route - Chapter 01 Speech Mini-game Screen
 # ============================================================
 
 transform tam_speech_portrait_pos:

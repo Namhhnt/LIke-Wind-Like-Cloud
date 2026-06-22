@@ -5,154 +5,118 @@ label tam_c01:
     scene black
     with fade
 
-    narrator "Chương 01"
-    narrator "Ngày Đầu Tiên Gió Đổi Chiều"
+    narrator "Chapter 01"
+    narrator "The First Day the Wind Changed Direction"
 
     scene bg_tam_room_morning
     with dissolve
 
-    narrator "Buổi sáng hôm ấy, Tâm thức dậy sớm hơn báo thức mười phút."
+    narrator "That morning, Tam woke up ten minutes before her alarm."
+    narrator "Outside the window, the city was not fully awake yet. A thin wash of light lay over the crowded rooftops, quiet as if someone had just drawn back the curtain for a new day."
+    narrator "On her desk was a neatly clipped stack of documents. CV. Application letter. A photocopy of her degree. A few small certificates she wasn't sure would help, but leaving them out somehow felt wrong."
+    narrator "Tam looked at them for a long time."
 
-    narrator "Ngoài cửa sổ, thành phố còn chưa hẳn tỉnh. Một lớp sáng mỏng phủ lên những mái nhà san sát, lặng lẽ như ai đó vừa kéo rèm cho một ngày mới."
+    tam thoughtful "Project implementation department..."
 
-    narrator "Trên bàn học của cô là một tập hồ sơ đã được kẹp ngay ngắn. CV. Đơn ứng tuyển. Một bản photo bằng tốt nghiệp. Vài chứng chỉ nhỏ không chắc có giúp ích gì không, nhưng bỏ ra thì lại thấy thiếu."
-
-    narrator "Tâm nhìn chúng rất lâu."
-
-    tam thoughtful "Phòng triển khai dự án..."
-
-    narrator "Tên vị trí nghe không quá xa lạ. Nhưng công ty thì khác."
-
-    narrator "Một công ty đầu tư đa ngành. Có xây dựng. Có vật liệu. Có phòng IT. Có pháp lý. Có kế toán. Có quản lý chất lượng. Có cả những phòng ban mà chỉ đọc tên thôi Tâm đã thấy mình cần thêm một tách cà phê để không bỏ cuộc giữa chừng."
-
-    narrator "Cô không phải kiểu người sợ việc khó."
-
-    narrator "Chỉ là cô hơi sợ những thứ mình chưa nắm rõ."
+    narrator "The position title did not sound too unfamiliar. But the company was different."
+    narrator "A multi-sector investment company. Construction. Materials. IT. Legal. Accounting. Quality management. Even departments whose names alone made Tam feel like she needed another cup of coffee just to avoid giving up halfway."
+    narrator "She was not the kind of person who feared difficult work."
+    narrator "She was only a little afraid of what she still did not understand."
 
     play sound "audio/phone_vibrate.ogg"
 
-    narrator "Điện thoại rung lên trên mặt bàn."
+    narrator "Her phone vibrated on the table."
 
-    huyen smile "Dậy chưa bà nội?"
+    huyen smile "You awake yet, grandma?"
+    tam dazed "I am."
+    huyen pouty "Good. I'm downstairs. Come down. If you make me go into that interview alone, I'll curse you into getting assigned to accounting and doing payroll for the rest of your life."
+    tam smile "You're evil."
+    huyen smile "Come down already. I bought banh mi."
 
-    tam dazed "Dậy rồi."
-
-    huyen pouty "Tốt. Tao đang ở dưới nhà mày. Xuống đi. Nếu để tao đi phỏng vấn một mình, tao sẽ trù mày được nhận vào phòng kế toán và phải làm bảng lương đến hết đời."
-
-    tam smile "Mày ác vừa thôi."
-
-    huyen smile "Xuống nhanh. Tao mua bánh mì."
-
-    narrator "Tâm bật cười."
-
-    narrator "Có những người chỉ cần xuất hiện qua một dòng tin nhắn, không khí trong lòng người khác đã bớt nặng đi một chút."
+    narrator "Tam laughed."
+    narrator "Some people only needed to appear through a single text message to make the air inside someone else's chest feel a little lighter."
 
     scene bg_apartment_lobby_morning
     with dissolve
 
-    narrator "Huyền đứng ở sảnh chung cư, một tay cầm hai ổ bánh mì, tay kia ôm túi hồ sơ trước ngực như ôm phao cứu sinh."
+    narrator "Huyen was standing in the apartment lobby, holding two banh mi in one hand and hugging a folder bag to her chest with the other as if it were a life buoy."
+    huyen sad "I'm serious, my heart's pounding like it's quarter-end deadline season."
+    tam smile "So you do know how to be scared?"
+    huyen smile "Of course I do. I just hide it better than you."
+    narrator "Tam took a sandwich from Huyen. It was still warm. The wrapper had soaked up a little oil, and the smell of pate and cilantro rose up in a way so ordinary it made life feel salvageable."
 
-    huyen sad "Tao nói thật nhé, tim tao đang đập như chạy deadline cuối quý."
+    huyen neutral "Hey, if they ask why you want to join project implementation later, what are you going to say?"
+    tam thoughtful "I'm still thinking."
+    huyen pouty "So you haven't figured it out yet."
+    tam embarrassed "I have. I just haven't arranged it yet."
+    huyen smile "Exactly. That's the same thing."
 
-    tam smile "Mày cũng biết sợ cơ à?"
-
-    huyen smile "Tao biết sợ chứ. Tao chỉ giấu giỏi hơn mày thôi."
-
-    narrator "Tâm nhận ổ bánh mì từ tay Huyền. Còn nóng. Giấy gói thấm một chút dầu, mùi pate và rau mùi bốc lên giản dị đến mức làm người ta thấy cuộc đời vẫn còn cứu được."
-
-    huyen neutral "Này, lát nữa nếu người ta hỏi vì sao muốn vào phòng triển khai dự án, mày định nói gì?"
-
-    tam thoughtful "Tao vẫn đang nghĩ."
-
-    huyen pouty "Vậy là chưa nghĩ xong."
-
-    tam embarrassed "Tao nghĩ rồi. Chỉ là chưa sắp xếp được."
-
-    huyen smile "Đấy. Khác gì chưa nghĩ xong đâu."
-
-    narrator "Tâm im lặng một chút. Huyền liếc cô, ánh mắt vừa trêu vừa thật sự quan tâm."
+    narrator "Tam fell silent for a moment. Huyen glanced at her, her expression teasing but genuinely concerned."
 
     menu:
-        "Tâm nên đáp lại Huyền thế nào?"
+        "How should Tam respond to Huyen?"
 
-        "Thừa nhận mình cũng lo, rồi rủ Huyền cùng rà lại ý chính.":
+        "Admit she's worried too, then ask Huyen to review the main points with her.":
             $ huyen_trust += 1
             $ add_unique(progress["player_flags"], "tam_huyen_shared_anxiety")
-            tam sad "Ừ, tao cũng lo. Hay trên đường đi mình rà lại với nhau một lượt đi. Mày nghe giúp tao xem có chỗ nào ngớ ngẩn không."
-            huyen happy "Được đấy. Ít ra hôm nay tao có cảm giác mình là bạn thân chứ không phải NPC phát bánh mì."
+            tam sad "Yeah, I'm worried too. How about we go over it together on the way? Listen for me and tell me if anything sounds stupid."
+            huyen happy "That's better. At least today I feel like your best friend instead of an NPC handing out sandwiches."
 
-        "Tỏ ra tự tin để Huyền bớt lo.":
-            tam smile "Không sao đâu. Tao nghĩ vào đó ứng biến được."
-            huyen serious "Nghe thì cũng ngầu đấy. Nhưng tao ghét nhất chữ ứng biến trước phỏng vấn."
-            narrator "Huyền nói vậy, nhưng cũng không ép thêm."
+        "Act confident so Huyen worries less.":
+            tam smile "It'll be fine. I think I can improvise in there."
+            huyen serious "Sounds cool, sure. But I hate the word 'improvise' before an interview."
+            narrator "Huyen said that, but she did not push further."
 
-        "Bảo Huyền đừng làm mình căng thẳng thêm.":
+        "Tell Huyen not to make her even more stressed.":
             $ huyen_trust -= 1
-            tam sad "Mày đừng hỏi nữa. Tao đang cố không căng thẳng đây."
-            huyen sad "Ờ... xin lỗi."
-            narrator "Câu trả lời rơi xuống giữa hai người hơi cụt. Không nặng nề. Chỉ là hơi lạnh đi một nhịp."
+            tam sad "Stop asking. I'm already trying not to freak out."
+            huyen sad "Right... sorry."
+            narrator "The answer dropped between them a little short. Not heavy. Just a little colder for a beat."
 
     scene bg_company_lobby_morning
     with fade
 
-    narrator "Công ty nằm trong một tòa nhà văn phòng lớn, mặt kính sáng đến mức Tâm nhìn thấy bóng mình phản chiếu trên đó."
+    narrator "The company occupied a large office building, its glass facade bright enough for Tam to see her own reflection in it."
+    narrator "White blouse. Dark skirt. Hair tied neatly at the nape of her neck. An appearance just serious enough, and just young enough, that no one could be sure she was truly ready to step into a machine this large."
+    narrator "At reception, Huyen leaned close to her ear."
 
-    narrator "Áo sơ-mi trắng. Chân váy tối màu. Tóc buộc gọn sau gáy. Một vẻ ngoài vừa đủ nghiêm túc, vừa đủ trẻ để người ta không đoán chắc cô đã thật sự sẵn sàng bước vào một guồng máy lớn."
+    huyen smile "I just saw a guy walk past with a legal department badge. His face was as cold as a payment rejection notice."
+    tam smile "Don't make me laugh."
+    huyen happy "Laugh so you shake less. Science hasn't proven it, but I have, through personal experience."
 
-    narrator "Ở quầy lễ tân, Huyền ghé sát tai cô."
-
-    huyen smile "Tao vừa thấy một anh đi qua đeo thẻ phòng pháp lý. Mặt lạnh như văn bản từ chối thanh toán."
-
-    tam smile "Mày đừng làm tao cười."
-
-    huyen happy "Cười cho bớt run. Khoa học chưa chứng minh nhưng tao chứng minh bằng kinh nghiệm cá nhân rồi."
-
-    narrator "Tâm mím môi, nhưng khóe miệng vẫn không nhịn được cong lên."
+    narrator "Tam pressed her lips together, but the corners of her mouth still lifted."
 
     scene bg_interview_waiting_room
     with dissolve
 
-    narrator "Phòng chờ phỏng vấn yên tĩnh."
-
-    narrator "Trên tường treo những bức ảnh về công trình, nhà máy vật liệu, một khu văn phòng đang thi công, và vài màn hình dashboard nội bộ hiện những con số mà Tâm chưa kịp hiểu."
-
-    narrator "Có lẽ đây không phải một nơi chỉ cần biết gõ văn bản và gửi email."
-
-    narrator "Càng nhìn, Tâm càng hiểu vị trí mình ứng tuyển nằm ở giữa rất nhiều dòng chảy."
-
-    narrator "Tiến độ. Hồ sơ. Vật tư. Pháp lý. Chi phí. Chất lượng. Con người."
-
-    narrator "Một mắt xích nhỏ, nhưng nếu lệch, rất nhiều thứ phía sau cũng lệch theo."
+    narrator "The interview waiting room was quiet."
+    narrator "On the wall hung photographs of construction projects, material plants, an office complex still under construction, and several internal dashboard screens showing figures Tam had not had time to understand."
+    narrator "Maybe this was not a place where knowing how to type documents and send emails would be enough."
+    narrator "The more she looked, the more Tam understood that the position she was applying for sat in the middle of many currents."
+    narrator "Schedule. Documentation. Materials. Legal. Cost. Quality. People."
+    narrator "A small link in the chain, but if it shifted, many things behind it would shift too."
 
     play sound "audio/door_open.ogg"
 
-    hr "Bạn Tâm, mời em vào phòng."
+    hr "Tam, please come in."
 
-    narrator "Tâm đứng dậy."
+    narrator "Tam stood up."
+    narrator "Huyen, still seated beside her, lifted a small fist."
+    huyen happy "Good luck. Don't betray me."
+    tam smile "I'm going into an interview, not an interrogation room."
+    huyen confused "What's the difference?"
 
-    narrator "Huyền ngồi bên cạnh khẽ giơ nắm tay."
-
-    huyen happy "Cố lên. Đừng bán đứng tao."
-
-    tam smile "Tao vào phỏng vấn chứ có vào phòng thẩm vấn đâu."
-
-    huyen confused "Khác nhau ở chỗ nào?"
-
-    narrator "Tâm bật cười rất khẽ, rồi bước vào."
+    narrator "Tam laughed very softly, then stepped inside."
 
     scene bg_interview_room
     with dissolve
 
-    interviewer "Chào em. Em cứ ngồi thoải mái."
+    interviewer "Hello. Please, make yourself comfortable."
+    manager "We've looked through your file. This project implementation role is not just paperwork. It requires coordination with many departments. How do you understand this job?"
 
-    manager "Bọn anh đã xem qua hồ sơ của em. Vị trí triển khai dự án bên anh không chỉ làm giấy tờ. Nó cần phối hợp với nhiều phòng ban. Em hiểu công việc này như thế nào?"
-
-    narrator "Câu hỏi đến sớm hơn Tâm tưởng."
-
-    narrator "Cô đặt hai tay lên đùi, ngón cái khẽ miết vào nhau."
-
-    narrator "Đây không phải lúc để nói lan man."
-
-    narrator "Cô cần sắp xếp ý."
+    narrator "The question came sooner than Tam expected."
+    narrator "She placed both hands on her knees, her thumbs lightly brushing together."
+    narrator "This was not the moment to ramble."
+    narrator "She needed to organize her thoughts."
 
     jump tam_c01_speech_game

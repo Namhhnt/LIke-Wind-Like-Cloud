@@ -760,7 +760,7 @@ screen preferences():
                     style_prefix "check"
                     label _("Language")
                     textbutton "English" action Language(None)
-                    textbutton "Tiếng Việt" action Language("vietnamese")
+                    textbutton _("Vietnamese") action Language("vietnamese")
 
                 vbox:
                     style_prefix "check"

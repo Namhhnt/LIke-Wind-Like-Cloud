@@ -8,9 +8,9 @@ default hoang_impression = 0
 
 define tam = Character("Tâm", image="tam")
 define huyen = Character("Huyền", image="huyen")
-define hr = Character("Chị tuyển dụng")
-define interviewer = Character("Người phỏng vấn")
-define manager = Character("Trưởng phòng")
-define hoang_unknown = Character("Chàng trai kỳ lạ", image="hoang")
+define hr = Character(_("Recruiter"))
+define interviewer = Character(_("Interviewer"))
+define manager = Character(_("Manager"))
+define hoang_unknown = Character(_("Mysterious man"), image="hoang")
 define hoang = Character("Hoàng", image="hoang")
 define narrator = Character(None)
