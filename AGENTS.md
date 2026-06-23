@@ -56,9 +56,9 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 | Generated symbol index | `game/saves/navigation.json` | Runtime-produced location map; inspect, do not hand-maintain. |
 
 ## TOOLING
-- Local Ren'Py SDK/runtime is available at `/mnt/d/RenPy/renpy-8.3.2-sdk`.
-- For future runtime validation, launch the project with that SDK instead of assuming Ren'Py is on `PATH`.
-- Prefer using the SDK when reproducing issues from `log.txt`, `traceback.txt`, or `errors.txt`.
+- Local Ren'Py runtime is available at `/home/hhnam/Applications/renpy`.
+- Preferred launcher for validation is `/home/hhnam/Applications/renpy/renpy.sh` rather than assuming `renpy` is on `PATH`.
+- When reproducing issues from `log.txt`, `traceback.txt`, or `errors.txt`, use that local launcher unless the user points to a different install.
 - `.rpy` LSP is not configured in this workspace, so file-level anchors and text search remain the primary navigation tools.
 
 ## CONVENTIONS
@@ -66,7 +66,7 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 - Progression metadata currently lives directly in `game/progression_data.rpy` and `game/progression_logic.rpy`, not yet under a `systems/` subtree proposed by older planning docs.
 - Story content is starting to move into domain folders like `game/stories/tam/`, while sprite/background declarations live under `game/scripts/`.
 - GUI image assets live under `game/gui/`; behavior stays in `game/gui.rpy` and `game/screens.rpy`.
-- Translation files mirror source filenames: `script.rpy` -> `tl/vietnamese/script.rpy`, etc.
+- Translation files mirror source filenames and subfolders: `script.rpy` -> `tl/vietnamese/script.rpy`, `stories/tam/chapter_02_scene_01.rpy` -> `tl/vietnamese/stories/tam/chapter_02_scene_01.rpy`.
 - `.vscode/settings.json` hides `cache/`, `.rpyc`, and `.rpymc`; follow that lead when reviewing diffs.
 - `game/libs/libs.txt` changes Ren'Py load order for files placed under `game/libs/`.
 

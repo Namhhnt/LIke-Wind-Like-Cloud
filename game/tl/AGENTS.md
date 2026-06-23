@@ -9,6 +9,7 @@ game/tl/
 ├── None/common.rpym      # Baseline/common translation data.
 └── vietnamese/
     ├── script.rpy
+    ├── stories/**        # Mirrors nested story source paths under game/
     ├── screens.rpy
     └── options.rpy
 ```
@@ -16,7 +17,7 @@ game/tl/
 ## WHERE TO LOOK
 | Task | Location | Notes |
 |------|----------|-------|
-| Story line translations | `vietnamese/script.rpy` | Mirrors `game/script.rpy`. |
+| Story line translations | `vietnamese/**/*.rpy` | Mirrors source story filenames and nested folders under `game/`. |
 | UI/menu string translations | `vietnamese/screens.rpy` | Mirrors `game/screens.rpy`; currently has a duplicate-string failure. |
 | Title/config translations | `vietnamese/options.rpy` | Mirrors `game/options.rpy`. |
 | Common/base string reference | `None/common.rpym` | Useful reference; not where custom locale work should start. |
@@ -25,7 +26,7 @@ game/tl/
 - Keep locale files aligned with source filenames and responsibilities.
 - When source UI text changes, update the mirrored locale file in the same pass.
 - One locale should have one `old`/`new` pair per source string.
-- Preserve file locality: screen text stays in `screens.rpy`, story lines in `script.rpy`.
+- Preserve file locality: screen text stays in `screens.rpy`, and story text mirrors the matching source file path under `game/`.
 
 ## ANTI-PATTERNS
 - Do not duplicate the same `old` string inside one locale file.
