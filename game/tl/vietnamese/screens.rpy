@@ -277,5 +277,8 @@ translate vietnamese strings:
     old "Debugging Mode"
     new "Chế độ gỡ lỗi"
 
+    old "Problem Diagnosis Debug"
+    new "Gỡ lỗi chẩn đoán dự án"
+
     old "Progress Debug"
     new "Gỡ lỗi tiến trình"

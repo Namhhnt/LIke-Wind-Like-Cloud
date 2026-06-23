@@ -769,6 +769,9 @@ screen preferences():
                         action ToggleField(persistent, "debugging_mode")
                         selected persistent.debugging_mode
                     textbutton _("Route Map") action Jump("route_map")
+                    textbutton _("Problem Diagnosis Debug"):
+                        action ShowMenu("problem_diagnosis_debug_menu")
+                        sensitive persistent.debugging_mode
                     textbutton _("Progress Debug"):
                         action ShowMenu("debug_progression")
                         sensitive persistent.debugging_mode
