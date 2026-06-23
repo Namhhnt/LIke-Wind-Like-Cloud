@@ -197,7 +197,7 @@ screen main_menu_top_controls():
             ypos 16
             spacing 18
 
-            textbutton _("♪  Background Music"):
+            textbutton _("♪  BG.Music"):
                 text_size 23
                 text_color "#efe4d4"
                 text_hover_color "#ffffff"

@@ -24,7 +24,7 @@ translate vietnamese strings:
     old "Settings"
     new "Cài đặt"
 
-    old "♪  Background Music"
+    old "♪  BG.Music"
     new "♪  Nhạc nền"
 
     old "◎  Language"
