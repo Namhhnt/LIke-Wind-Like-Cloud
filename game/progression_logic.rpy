@@ -408,6 +408,10 @@ init -1 python:
         remove_if_present(progress["available"], chapter_id)
         progress["play_order"].append(chapter_id)
 
+        reward_story_points = globals().get("award_investment_points_for_story_chapter", None)
+        if callable(reward_story_points):
+            reward_story_points(chapter_id)
+
         if route_id in progress["route_focus"]:
             progress["route_focus"][route_id] += 1
 

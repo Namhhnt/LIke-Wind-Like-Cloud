@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "stories": [
+    {
+      "id": "tam_original_coffee_rain",
+      "title": "Coffee After the Rain",
+      "series": "Tâm Notes",
+      "type": "original_story",
+      "size": "small",
+      "source": "local",
+      "file": "stories/tam/coffee_after_the_rain.md",
+      "order": 1,
+      "point_cost": 0,
+      "unlock_mode": "free",
+      "prerequisites": [],
+      "tags": ["Tam", "Original Story"],
+      "cover": ""
+    },
+    {
+      "id": "tam_original_after_interview",
+      "title": "The Elevator Ride Home",
+      "series": "Tâm Notes",
+      "type": "extra",
+      "size": "small",
+      "source": "local",
+      "file": "stories/tam/the_elevator_ride_home.md",
+      "order": 2,
+      "point_cost": 1,
+      "unlock_mode": "points",
+      "prerequisites": ["tam_c01_interview_day"],
+      "tags": ["Tam", "After Interview"],
+      "cover": ""
+    }
+  ]
+}

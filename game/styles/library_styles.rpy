@@ -73,3 +73,59 @@ style library_back_button_text is button_text:
     insensitive_color LIB_DISABLED
     size 28
     font gui.interface_text_font
+
+style library_story_card_title is default:
+    color LIB_TEXT
+    size 34
+    font gui.interface_text_font
+    outlines [(1, "#00000066", 0, 1)]
+
+style library_story_card_subtitle is default:
+    color LIB_GOLD
+    size 22
+    font gui.interface_text_font
+
+style library_story_meta is default:
+    color LIB_MUTED
+    size 21
+    line_spacing 4
+    font gui.interface_text_font
+
+style library_story_status_text is default:
+    color LIB_GOLD
+    size 24
+    font gui.interface_text_font
+
+style library_story_summary_text is default:
+    color LIB_TEXT
+    size 22
+    font gui.interface_text_font
+
+style library_story_player_title is default:
+    color LIB_TEXT
+    size 30
+    font gui.interface_text_font
+
+style library_story_speaker is default:
+    color LIB_GOLD
+    size 24
+    font gui.interface_text_font
+
+style library_story_text is default:
+    color LIB_TEXT
+    size 26
+    line_spacing 8
+    font gui.interface_text_font
+
+style library_story_button_button is button:
+    background Solid("#2C2018CC")
+    hover_background Solid("#5A3C24DD")
+    insensitive_background Solid("#221914AA")
+    padding (22, 12)
+
+style library_story_button_text is button_text:
+    color LIB_TEXT
+    hover_color "#fff4dd"
+    insensitive_color LIB_DISABLED
+    size 24
+    font gui.interface_text_font

@@ -65,6 +65,8 @@ init -5 python:
 
 
     def library_get_progress_text(category_id):
+        if category_id == "stories" and "get_story_library_progress_text" in globals():
+            return get_story_library_progress_text()
         return LIBRARY_PROGRESS_MAP.get(category_id, "")
 
 
