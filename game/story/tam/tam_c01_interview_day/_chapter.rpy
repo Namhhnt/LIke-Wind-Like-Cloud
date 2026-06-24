@@ -1,0 +1,12 @@
+# FILE: game/story/tam/tam_c01_interview_day/_chapter.rpy
+# Chapter wrapper. Calls scene labels only; no heavy story content here.
+
+label tam_c01_interview_day:
+    call tam_c01_interview_day_s01_tam_huyen_morning
+    call tam_c01_interview_day_s02_interview_room
+    call tam_c01_interview_day_s03_success_result
+    call tam_c01_interview_day_s04_celebration_dinner
+    $ story_complete_chapter('tam_c01_interview_day')
+    if renpy.has_label('route_map'):
+        jump route_map
+    return

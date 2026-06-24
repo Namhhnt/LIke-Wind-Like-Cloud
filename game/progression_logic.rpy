@@ -1,3 +1,7 @@
+# FILE: game/progression_logic.rpy
+# Purpose: Progression/runtime logic for the full skeleton route chapter map MVP.
+# Compatible with skeleton labels that call story_complete_chapter().
+
 init -1 python:
     def normalize_persistent_progression_state():
         if not hasattr(persistent, "gallery_unlocks") or persistent.gallery_unlocks is None:
@@ -16,9 +20,26 @@ init -1 python:
         if not hasattr(persistent, "debugging_mode") or persistent.debugging_mode is None:
             persistent.debugging_mode = False
 
+        if not hasattr(persistent, "timeline_bookmarks") or persistent.timeline_bookmarks is None:
+            persistent.timeline_bookmarks = []
+        elif not isinstance(persistent.timeline_bookmarks, list):
+            persistent.timeline_bookmarks = list(persistent.timeline_bookmarks)
+
     normalize_persistent_progression_state()
 
+    def progression_track_ids():
+        track_ids = list(ROUTE_ORDER)
+        for track_id in globals().get("RELATIONSHIP_TRACK_ORDER", []):
+            add_unique(track_ids, track_id)
+        return track_ids
+
     def make_progress_state():
+        track_ids = list(ROUTE_ORDER)
+        extra_tracks = globals().get("RELATIONSHIP_TRACK_ORDER", [])
+        for track_id in extra_tracks:
+            if track_id not in track_ids:
+                track_ids.append(track_id)
+
         return {
             "initialized": False,
             "completed": [],
@@ -31,8 +52,8 @@ init -1 python:
             "route_status": {route_id: "locked" for route_id in ROUTE_ORDER},
             "route_focus": {route_id: 0 for route_id in ROUTE_ORDER},
             "player_flags": [],
-            "character_flags": {route_id: [] for route_id in ROUTE_ORDER},
-            "relationship_directions": {route_id: [] for route_id in ROUTE_ORDER},
+            "character_flags": {track_id: [] for track_id in track_ids},
+            "relationship_directions": {track_id: [] for track_id in track_ids},
             "emotional_state": {
                 "trust": 0,
                 "distance": 0,
@@ -55,20 +76,59 @@ init -1 python:
         if value in target:
             target.remove(value)
 
+    def normalize_progress_runtime_state():
+        # Save-safe migration when ROUTE_ORDER / skeleton metadata changes.
+        expected_tracks = progression_track_ids()
+
+        for key, default_value in make_progress_state().items():
+            if key not in progress:
+                progress[key] = default_value
+
+        for route_id in ROUTE_ORDER:
+            progress["route_status"].setdefault(route_id, "locked")
+            progress["route_focus"].setdefault(route_id, 0)
+
+        for stale_route_id in list(progress["route_status"].keys()):
+            if stale_route_id not in ROUTE_ORDER:
+                progress["route_status"].pop(stale_route_id, None)
+
+        for stale_route_id in list(progress["route_focus"].keys()):
+            if stale_route_id not in ROUTE_ORDER:
+                progress["route_focus"].pop(stale_route_id, None)
+
+        for track_id in expected_tracks:
+            progress["character_flags"].setdefault(track_id, [])
+            progress["relationship_directions"].setdefault(track_id, [])
+
+    def chapter_data(chapter_id):
+        return CHAPTERS[chapter_id]
+
     def get_route_chapters(route_id):
-        return [chapter_id for chapter_id in CHAPTER_ORDER if CHAPTERS[chapter_id]["route"] == route_id]
+        return [chapter_id for chapter_id in CHAPTER_ORDER if CHAPTERS[chapter_id].get("route") == route_id]
 
     def chapter_title(chapter_id):
-        return CHAPTERS[chapter_id]["title"]
+        return CHAPTERS[chapter_id].get("title", chapter_id)
 
     def route_title(route_id):
-        return ROUTES[route_id]["title"]
+        return ROUTES.get(route_id, {}).get("title", route_id)
 
     def has_player_flag(flag):
-        return flag in progress["player_flags"]
+        if flag in progress["player_flags"]:
+            return True
+        # Fallback for skeleton scenes that store flags in story_flags.
+        story_has_flag_fn = globals().get("story_has_flag", None)
+        if callable(story_has_flag_fn):
+            return story_has_flag_fn(flag)
+        return False
 
     def has_relationship_direction(route_id, direction):
-        return direction in progress["relationship_directions"][route_id]
+        if direction in progress["relationship_directions"].get(route_id, []):
+            return True
+        # Fallback for skeleton scenes that call story_add_direction(character, direction).
+        story_has_direction_fn = globals().get("story_has_direction", None)
+        if callable(story_has_direction_fn):
+            return story_has_direction_fn(route_id, direction)
+        return False
 
     def has_completed(chapter_id):
         return chapter_id in progress["completed"]
@@ -76,20 +136,64 @@ init -1 python:
     def any_completed(chapter_ids):
         return any(chapter_id in progress["completed"] for chapter_id in chapter_ids)
 
+    def story_relation_value():
+        state = globals().get("story_state", None)
+        if isinstance(state, dict):
+            return state.get("minh_yuuka_relation", "unknown")
+        return "unknown"
+
+    def story_relation_allowed(allowed_relations):
+        if not allowed_relations:
+            return True
+        if isinstance(allowed_relations, str):
+            allowed_relations = [allowed_relations]
+        return story_relation_value() in allowed_relations
+
+    def story_flag_blocked(blocking_flags):
+        for flag in blocking_flags:
+            if has_player_flag(flag):
+                return True
+        return False
+
     def prerequisites_met(chapter_id):
         chapter = CHAPTERS[chapter_id]
-        if not all(prerequisite in progress["completed"] for prerequisite in chapter["prerequisites"]):
+
+        if not all(prerequisite in progress["completed"] for prerequisite in chapter.get("prerequisites", [])):
+            return False
+
+        prerequisites_any = chapter.get("prerequisites_any", [])
+        if prerequisites_any and not any_completed(prerequisites_any):
+            return False
+
+        required_story_relation = chapter.get("required_story_relation", [])
+        if required_story_relation and not story_relation_allowed(required_story_relation):
+            return False
+
+        blocked_story_relation = chapter.get("blocked_story_relation", [])
+        if blocked_story_relation and story_relation_allowed(blocked_story_relation):
+            return False
+
+        if story_flag_blocked(chapter.get("blocked_if_story_flag_any", [])):
+            return False
+
+        required_flags_all = chapter.get("required_flags_all", [])
+        if required_flags_all and not all(has_player_flag(flag) for flag in required_flags_all):
+            return False
+
+        required_flags_any = chapter.get("required_flags_any", [])
+        if required_flags_any and not any(has_player_flag(flag) for flag in required_flags_any):
             return False
 
         required_directions = chapter.get("required_directions", {})
         for route_id, directions in required_directions.items():
-            if not any(direction in progress["relationship_directions"][route_id] for direction in directions):
+            if not any(has_relationship_direction(route_id, direction) for direction in directions):
                 return False
 
         return True
 
     def initialize_progression():
         normalize_persistent_progression_state()
+        normalize_progress_runtime_state()
 
         if progress["initialized"]:
             recalculate_chapter_availability()
@@ -100,7 +204,8 @@ init -1 python:
             return
 
         progress["initialized"] = True
-        first_chapter = ROUTES[DEFAULT_ROUTE_ID]["entry_chapter"]
+
+        first_chapter = ROUTES[DEFAULT_ROUTE_ID].get("entry_chapter")
         if first_chapter:
             add_unique(progress["available"], first_chapter)
 
@@ -111,7 +216,9 @@ init -1 python:
         update_recommended_next()
 
     def apply_direct_unlocks(chapter):
-        for unlocked_chapter_id in chapter["unlocks"]:
+        for unlocked_chapter_id in chapter.get("unlocks", []):
+            if unlocked_chapter_id not in CHAPTERS:
+                continue
             if unlocked_chapter_id in progress["completed"]:
                 continue
             if unlocked_chapter_id in progress["excluded"]:
@@ -120,15 +227,17 @@ init -1 python:
                 add_unique(progress["available"], unlocked_chapter_id)
 
     def apply_flags(chapter):
-        for flag in chapter["flags_set"]:
+        for flag in chapter.get("flags_set", []):
             add_unique(progress["player_flags"], flag)
 
         for route_id, flags in chapter.get("character_flags_set", {}).items():
+            progress["character_flags"].setdefault(route_id, [])
             for flag in flags:
                 add_unique(progress["character_flags"][route_id], flag)
 
     def apply_relationship_directions(chapter):
         for route_id, directions in chapter.get("relationship_directions_set", {}).items():
+            progress["relationship_directions"].setdefault(route_id, [])
             for direction in directions:
                 add_unique(progress["relationship_directions"][route_id], direction)
 
@@ -148,8 +257,20 @@ init -1 python:
         for excluded_chapter_id in chapter.get("excludes", []):
             if excluded_chapter_id not in progress["completed"]:
                 add_unique(progress["excluded"], excluded_chapter_id)
+                remove_if_present(progress["available"], excluded_chapter_id)
+
+    def sync_story_route_locks():
+        relation = story_relation_value()
+        if relation in ["ex_lovers_long_separated", "still_lovers"]:
+            # Minh's romantic pairing routes with other characters are hard-blocked.
+            for chapter_id in ["tam_c20a_tam_minh_possible", "thienan_c21a_minh_possible"]:
+                if chapter_id in CHAPTERS and chapter_id not in progress["completed"]:
+                    add_unique(progress["excluded"], chapter_id)
+                    remove_if_present(progress["available"], chapter_id)
 
     def recalculate_chapter_availability():
+        normalize_progress_runtime_state()
+        sync_story_route_locks()
         progress["temporarily_hidden"] = []
 
         for chapter_id in CHAPTER_ORDER:
@@ -185,6 +306,7 @@ init -1 python:
                 remove_if_present(progress["available"], chapter_id)
 
     def recalculate_route_status():
+        normalize_progress_runtime_state()
         for route_id in ROUTE_ORDER:
             route_chapters = get_route_chapters(route_id)
 
@@ -214,6 +336,10 @@ init -1 python:
             if not any(has_relationship_direction(route_id, direction) for direction in directions):
                 return False
 
+        required_story_relation = rule.get("required_story_relation", [])
+        if required_story_relation and not story_relation_allowed(required_story_relation):
+            return False
+
         for key, value in rule.get("emotional_min", {}).items():
             if progress["emotional_state"].get(key, 0) < value:
                 return False
@@ -238,16 +364,15 @@ init -1 python:
         for ending_id, rule in ENDING_RULES.items():
             if ending_rule_met(ending_id, rule):
                 eligible.append(ending_id)
-
         progress["ending_eligibility"] = eligible
 
     def sort_available_chapters(chapter_ids):
         return sorted(
             chapter_ids,
             key=lambda chapter_id: (
-                progress["route_focus"][CHAPTERS[chapter_id]["route"]],
-                CHAPTERS[chapter_id]["timeline_position"],
-                CHAPTERS[chapter_id]["id"],
+                CHAPTERS[chapter_id].get("timeline_position", 9999),
+                progress["route_focus"].get(CHAPTERS[chapter_id].get("route"), 0),
+                CHAPTERS[chapter_id].get("id", chapter_id),
             ),
         )
 
@@ -269,15 +394,22 @@ init -1 python:
     def complete_chapter(chapter_id):
         initialize_progression()
 
+        if chapter_id not in CHAPTERS:
+            renpy.notify("Cannot complete unknown chapter: %s" % chapter_id)
+            return
+
         if chapter_id in progress["completed"]:
             return
 
         chapter = CHAPTERS[chapter_id]
+        route_id = chapter.get("route")
 
         add_unique(progress["completed"], chapter_id)
         remove_if_present(progress["available"], chapter_id)
         progress["play_order"].append(chapter_id)
-        progress["route_focus"][chapter["route"]] += 1
+
+        if route_id in progress["route_focus"]:
+            progress["route_focus"][route_id] += 1
 
         apply_flags(chapter)
         apply_emotional_effects(chapter)
@@ -306,7 +438,6 @@ init -1 python:
     def get_play_order_summary():
         if not progress["play_order"]:
             return "No chapters completed yet."
-
         return " → ".join(chapter_title(chapter_id) for chapter_id in progress["play_order"])
 
     def get_route_focus_summary(route_id):
@@ -314,36 +445,41 @@ init -1 python:
 
     def get_relationship_direction_summary(route_id):
         directions = progress["relationship_directions"].get(route_id, [])
-        if not directions:
-            return "None"
-        return ", ".join(directions)
+        return ", ".join(directions) if directions else "None"
 
     def get_unlocked_choice_summary():
-        if not progress["unlocked_choices"]:
-            return "None"
-        return ", ".join(progress["unlocked_choices"])
+        return ", ".join(progress["unlocked_choices"]) if progress["unlocked_choices"] else "None"
 
     def choice_is_available(choice_id):
         if choice_id not in CHOICE_DEFINITIONS:
             return False
 
-        if choice_id not in progress["unlocked_choices"] and CHOICE_DEFINITIONS[choice_id]["type"] != "insight":
+        definition = CHOICE_DEFINITIONS[choice_id]
+        if choice_id not in progress["unlocked_choices"] and definition.get("type") != "insight":
             return False
 
-        for condition in CHOICE_DEFINITIONS[choice_id]["conditions"]:
-            if condition == "direction_hoang_restraint" and not has_relationship_direction("hoang", "restraint"):
-                return False
-            if condition == "direction_hoang_confession" and not has_relationship_direction("hoang", "confession"):
-                return False
-            if condition == "flag_player_knows_hoang_restraint" and not has_player_flag("player_knows_hoang_restraint"):
-                return False
+        for condition in definition.get("conditions", []):
+            if condition.startswith("direction_"):
+                parts = condition.split("_")
+                if len(parts) >= 3:
+                    track = parts[1]
+                    direction = "_".join(parts[2:])
+                    if not has_relationship_direction(track, direction):
+                        return False
+            elif condition.startswith("flag_"):
+                flag = condition.replace("flag_", "", 1)
+                if not has_player_flag(flag):
+                    return False
+            elif condition == "relation_old_close_friends":
+                if story_relation_value() != "old_close_friends":
+                    return False
 
         return True
 
     def get_emotional_hint():
-        trust = progress["emotional_state"]["trust"]
-        misunderstanding = progress["emotional_state"]["misunderstanding"]
-        distance = progress["emotional_state"]["distance"]
+        trust = progress["emotional_state"].get("trust", 0)
+        misunderstanding = progress["emotional_state"].get("misunderstanding", 0)
+        distance = progress["emotional_state"].get("distance", 0)
 
         if misunderstanding >= 2:
             return "Misunderstanding thickens around the silence between them."
@@ -354,19 +490,14 @@ init -1 python:
         return "Their feelings are shifting, but not yet settled."
 
     def get_ending_summary():
-        if not progress["ending_eligibility"]:
-            return "None yet"
-        return ", ".join(progress["ending_eligibility"])
+        return ", ".join(progress["ending_eligibility"]) if progress["ending_eligibility"] else "None yet"
 
     def mark_ending_seen(ending_id):
         normalize_persistent_progression_state()
-
         add_unique(progress["ending_flags"], ending_id)
-        if ending_id not in persistent.route_clear_history:
-            persistent.route_clear_history.append(ending_id)
-        if ending_id not in persistent.gallery_unlocks:
-            persistent.gallery_unlocks.append(ending_id)
-        if ending_id == "ending_true_convergence":
+        add_unique(persistent.route_clear_history, ending_id)
+        add_unique(persistent.gallery_unlocks, ending_id)
+        if ending_id == "e01_canon_true":
             persistent.true_ending_seen = True
 
     def debug_unlock(chapter_id):
@@ -384,6 +515,18 @@ init -1 python:
         progress = make_progress_state()
         initialize_progression()
 
+    def debug_set_minyuu_relation(relation):
+        story_set_relation = globals().get("story_set_minyuu_relation", None)
+        if callable(story_set_relation):
+            story_set_relation(relation)
+        else:
+            state = globals().get("story_state", None)
+            if isinstance(state, dict):
+                state["minh_yuuka_relation"] = relation
+        recalculate_chapter_availability()
+        recalculate_route_status()
+        update_recommended_next()
+
     def debug_show_progress():
         return {
             "completed": list(progress["completed"]),
@@ -391,6 +534,7 @@ init -1 python:
             "excluded": list(progress["excluded"]),
             "choices": list(progress["unlocked_choices"]),
             "endings": list(progress["ending_eligibility"]),
+            "relation": story_relation_value(),
         }
 
     def validate_progression_metadata():
@@ -404,12 +548,24 @@ init -1 python:
             if entry and entry not in CHAPTERS:
                 issues.append("Route %s has missing entry chapter %s." % (route_id, entry))
 
+        order_seen = set()
+        for chapter_id in CHAPTER_ORDER:
+            if chapter_id in order_seen:
+                issues.append("Chapter order contains duplicate chapter %s." % chapter_id)
+            order_seen.add(chapter_id)
+            if chapter_id not in CHAPTERS:
+                issues.append("Chapter order references unknown chapter %s." % chapter_id)
+
+        for chapter_id in CHAPTERS:
+            if chapter_id not in CHAPTER_ORDER:
+                issues.append("Chapter %s is missing from CHAPTER_ORDER." % chapter_id)
+
         exclusion_groups = {}
         for chapter_id, chapter in CHAPTERS.items():
-            if chapter["route"] not in ROUTES:
-                issues.append("Chapter %s references unknown route %s." % (chapter_id, chapter["route"]))
+            if chapter.get("route") not in ROUTES:
+                issues.append("Chapter %s references unknown route %s." % (chapter_id, chapter.get("route")))
 
-            for ref_group in ["prerequisites", "unlocks", "excludes", "soft_hide_until_any_completed"]:
+            for ref_group in ["prerequisites", "prerequisites_any", "unlocks", "excludes", "soft_hide_until_any_completed"]:
                 for ref in chapter.get(ref_group, []):
                     if ref not in CHAPTERS:
                         issues.append("Chapter %s references unknown chapter %s in %s." % (chapter_id, ref, ref_group))
@@ -434,21 +590,17 @@ init -1 python:
         return issues
 
     def get_validation_summary():
-        if not progress["validation_issues"]:
-            return "No metadata issues"
-        return " | ".join(progress["validation_issues"])
+        return "No metadata issues" if not progress["validation_issues"] else " | ".join(progress["validation_issues"])
 
     def run_acceptance_checks():
+        default_entry = ROUTES[DEFAULT_ROUTE_ID].get("entry_chapter")
         results = {
-            "default_route_available": ROUTES[DEFAULT_ROUTE_ID]["entry_chapter"] in progress["available"] or ROUTES[DEFAULT_ROUTE_ID]["entry_chapter"] in progress["completed"],
-            "cross_route_unlock_present": has_completed("tam_c02") or "hoang_h01" in progress["available"] or has_completed("hoang_h01"),
-            "multiple_available_choices": len(progress["available"]) >= 1,
-            "bonus_exclusion_works": bool(progress["completed_exclusion_groups"]),
+            "default_route_available": default_entry in progress["available"] or default_entry in progress["completed"],
+            "full_skeleton_order_present": "final_c24_last_choices" in CHAPTER_ORDER and len(CHAPTER_ORDER) >= 30,
+            "minyuu_verdict_present": all(ch in CHAPTERS for ch in ["fb_minyuu_04a_old_friends", "fb_minyuu_05b_separation", "fb_minyuu_04c_no_breakup"]),
+            "all_ending_rules_present": len(ENDING_RULES) >= 24,
             "excluded_not_selectable": all(chapter_id not in progress["available"] for chapter_id in progress["excluded"]),
-            "bonus_unlocks_choices": bool(progress["unlocked_choices"]),
-            "bonus_unlocks_directions": any(progress["relationship_directions"][route_id] for route_id in ROUTE_ORDER),
-            "route_order_recorded": bool(progress["play_order"]),
-            "player_and_character_knowledge_split": has_player_flag("player_knows_hoang_restraint") and bool(progress["character_flags"]["hoang"]),
+            "route_order_recorded": bool(progress["play_order"]) or not progress["completed"],
             "route_map_refresh_ready": True,
             "save_safe_default_state": True,
             "debug_tools_present": True,
@@ -465,6 +617,34 @@ init -1 python:
     def refresh_validation_state():
         progress["validation_issues"] = validate_progression_metadata()
         run_acceptance_checks()
+
+    def timeline_route_has_selectable_node(route_id):
+        return any(CHAPTERS[chapter_id].get("route") == route_id and get_chapter_state(chapter_id) in ["available", "completed"] for chapter_id in CHAPTER_ORDER)
+
+    def timeline_get_first_available_route_id():
+        for route_id in ROUTE_ORDER:
+            if timeline_route_has_selectable_node(route_id):
+                return route_id
+        return DEFAULT_ROUTE_ID
+
+    def timeline_resolve_route_selection(selected_route=None, selected_node=None):
+        route_id = selected_route if selected_route in ROUTES else DEFAULT_ROUTE_ID
+        node_id = selected_node
+
+        if not timeline_route_has_selectable_node(route_id):
+            route_id = timeline_get_first_available_route_id()
+            node_id = None
+
+        if not node_id:
+            node_id = timeline_get_first_selectable_node(route_id)
+
+        if not node_id:
+            for candidate_route in ROUTE_ORDER:
+                candidate_node = timeline_get_first_selectable_node(candidate_route)
+                if candidate_node:
+                    return candidate_route, candidate_node
+
+        return route_id, node_id
 
 
 default progress = make_progress_state()
