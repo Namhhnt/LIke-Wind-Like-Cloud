@@ -5,6 +5,8 @@
 label tam_c01_speech_game:
 
     $ tam_speech_attempts = 0
+    $ tam_speech_config = tam_speech_variant()
+    $ tam_speech_source_key = "minigame:speech_order:tam_c01_interview"
 
 label tam_c01_speech_retry:
 
@@ -12,20 +14,20 @@ label tam_c01_speech_retry:
 
     # Shuffle once per attempt.
     # This keeps the UI stable while the player is selecting and reordering ideas.
-    $ tam_speech_pool = list(tam_speech_items)
+    $ tam_speech_pool = tam_speech_items()
     $ renpy.random.shuffle(tam_speech_pool)
 
     $ tam_speech_result = renpy.call_screen(
         "tam_speech_minigame",
         items=tam_speech_pool,
-        attempt=(tam_speech_attempts + 1 if tam_speech_attempts < 3 else 3),
-        can_skip=tam_speech_attempts >= 3
+        attempt=(tam_speech_attempts + 1 if tam_speech_attempts < tam_speech_config.get("max_attempts", 3) else tam_speech_config.get("max_attempts", 3)),
+        can_skip=tam_speech_attempts >= tam_speech_config.get("max_attempts", 3)
     )
 
     if tam_speech_result.get("action") == "skip":
-        $ tam_salary_tier = "standard"
-        $ add_unique(progress["player_flags"], "tam_interview_pass_skip_no_bonus")
-        $ add_unique(progress["player_flags"], "tam_salary_standard_start")
+        $ tam_speech_result = minigame_build_result("speech_order", "tam_c01_interview", "skip", metrics={"attempts_used": tam_speech_attempts, "picked": []}, extra={"action": "skip"})
+        $ minigame_store_result(tam_speech_result)
+        $ minigame_apply_effects(tam_speech_result, source_key=tam_speech_source_key)
 
         narrator "Tam takes a deep breath and lets go of the perfection she always tries to hold onto."
         narrator "She answers in a safer way, enough to avoid being rejected, but not enough to create any special spark."
@@ -39,13 +41,9 @@ label tam_c01_speech_retry:
     if tam_speech_has_required_result:
 
         if tam_speech_perfect_order:
-            $ tam_salary_tier = "high"
-            $ tam_work_skill += 2
-            $ tam_confidence += 2
-            $ add_unique(progress["player_flags"], "tam_interview_passed")
-            $ add_unique(progress["player_flags"], "tam_interview_bonus_order")
-            $ add_unique(progress["player_flags"], "tam_salary_high_start")
-            $ add_unique(progress["player_flags"], "tam_work_skill_strong_c01")
+            $ tam_speech_result = minigame_build_result("speech_order", "tam_c01_interview", "perfect", metrics={"attempts_used": tam_speech_attempts + 1, "picked": list(tam_speech_order), "perfect_order": True, "has_required_points": True}, extra={"action": "complete"})
+            $ minigame_store_result(tam_speech_result)
+            $ minigame_apply_effects(tam_speech_result, source_key=tam_speech_source_key)
 
             narrator "The points fall into exactly the right order."
             narrator "Tam begins by showing she understands the big picture, then moves into coordination skills, risk awareness, and only then closes with work attitude."
@@ -54,11 +52,9 @@ label tam_c01_speech_retry:
             jump tam_c01_interview_perfect
 
         else:
-            $ tam_salary_tier = "standard"
-            $ tam_work_skill += 1
-            $ tam_confidence += 1
-            $ add_unique(progress["player_flags"], "tam_interview_passed")
-            $ add_unique(progress["player_flags"], "tam_salary_standard_start")
+            $ tam_speech_result = minigame_build_result("speech_order", "tam_c01_interview", "pass", metrics={"attempts_used": tam_speech_attempts + 1, "picked": list(tam_speech_order), "perfect_order": False, "has_required_points": True}, extra={"action": "complete"})
+            $ minigame_store_result(tam_speech_result)
+            $ minigame_apply_effects(tam_speech_result, source_key=tam_speech_source_key)
 
             narrator "All the important points are there, but the presentation order is not quite sharp."
             narrator "Even so, Tam still shows that she understands the job and takes it seriously."

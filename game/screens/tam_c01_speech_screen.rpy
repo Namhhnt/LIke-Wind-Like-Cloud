@@ -14,6 +14,9 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
     zorder 100
 
     default picked = []
+    $ speech_variant = tam_speech_variant()
+    $ max_choices = speech_variant.get("max_choices", 4)
+    $ max_attempts = speech_variant.get("max_attempts", 3)
 
     fixed:
         xysize (1920, 1080)
@@ -41,11 +44,11 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
                 style "tam_speech_progress_badge"
                 xysize (220, 64)
 
-                text _("Selected [len(picked)] / 4") style "tam_speech_progress_text" xalign 0.5 yalign 0.5
+                text _("Selected [len(picked)] / [max_choices]") style "tam_speech_progress_text" xalign 0.5 yalign 0.5
 
-            for i in range(4):
+            for i in range(max_choices):
                 if i < len(picked):
-                    $ chip_label = tam_speech_short_labels[picked[i]]
+                    $ chip_label = tam_speech_short_labels().get(picked[i], picked[i])
 
                     frame:
                         style "tam_speech_selected_chip"
@@ -80,10 +83,10 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
                     box_wrap True
                     xfill True
 
-                    text _("Attempt [attempt] / 3") style "tam_speech_panel_kicker"
+                    text _("Attempt [attempt] / [max_attempts]") style "tam_speech_panel_kicker"
 
                     if can_skip:
-                        text _("Skip unlocked after 3 failed attempts") style "tam_speech_warning"
+                        text _("Skip unlocked after [max_attempts] failed attempts") style "tam_speech_warning"
                     else:
                         text _("Choose all 4 points. You can reorder them before confirming") style "tam_speech_hint"
 

@@ -6,11 +6,14 @@ This plan turns `Specs/game_mechanics.md` into an implementation roadmap for the
 
 ## Current Gap
 
-- `game/script.rpy` is still starter-template content.
-- `game/screens.rpy` and `game/gui.rpy` provide generic menu and styling infrastructure, not progression logic.
-- No current runtime files implement route metadata, chapter availability, exclusion groups, emotional state, or ending logic.
+- The runtime foundation is in place: `game/script.rpy` boots directly into progression initialization and the route map.
+- Progression systems already live in `game/progression_data.rpy`, `game/progression_logic.rpy`, `game/route_map.rpy`, and `game/debug_progression.rpy`.
+- A broad authored chapter tree now exists under `game/story/`, while `game/demo_route_hoang.rpy` remains as an older demo-oriented flow.
+- The remaining gap is no longer core progression scaffolding; it is keeping roadmap notes aligned with the live chapter structure and continuing to expand/refine authored content.
 
-## Recommended Runtime Layout
+## Earlier Recommended Runtime Layout
+
+This was the target structure before the current implementation settled into its present file layout. Keep it as historical planning context, not as the current source of truth.
 
 ```text
 game/

@@ -8,6 +8,42 @@ init python:
     PD_MAX_ANALYZE_SELECTION = 4
     PD_SLOT_LIMIT = 4
 
+    minigame_register({
+        "id": "problem_diagnosis",
+        "category": "analysis",
+        "title": _("Problem Diagnosis"),
+        "default_variant": "case_scope_creep_01",
+        "variants": {
+            "case_scope_creep_01": {
+                "title": _("Project Diagnosis"),
+                "outcomes": {
+                    "excellent": {
+                        "summary": _("The diagnosis is sharp, actionable, and well owned."),
+                        "effects": {},
+                    },
+                    "good": {
+                        "summary": _("The diagnosis is solid and keeps the project on track."),
+                        "effects": {},
+                    },
+                    "mixed": {
+                        "summary": _("The diagnosis works, but leaves avoidable risk behind."),
+                        "effects": {},
+                    },
+                    "poor": {
+                        "summary": _("The diagnosis is weak and the team moves forward with limited clarity."),
+                        "effects": {},
+                    },
+                },
+                "result_tiers": {
+                    "excellent": {"investment_points": 3, "story_flags_add": ["pd_scope_creep_excellent"]},
+                    "good": {"investment_points": 2, "story_flags_add": ["pd_scope_creep_good"]},
+                    "mixed": {"investment_points": 1, "story_flags_add": ["pd_scope_creep_mixed"]},
+                    "poor": {"investment_points": 0, "story_flags_add": ["pd_scope_creep_poor"]},
+                },
+            },
+        },
+    })
+
     PD_CASES = {
         "case_scope_creep_01": {
             "title": "Project Diagnosis",

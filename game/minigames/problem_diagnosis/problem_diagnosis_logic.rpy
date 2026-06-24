@@ -360,6 +360,7 @@ init python:
     def pd_finalize_result(aborted=False):
         store = renpy.store
         case = pd_get_case()
+        case_id = store.pd_state.get("case_id")
         phase_1 = store.pd_state.get("phase_1_score", 0)
         phase_2 = store.pd_state.get("phase_2_score", 0)
         total = int((phase_1 * 0.55) + (phase_2 * 0.45))
@@ -377,25 +378,62 @@ init python:
 
         store.pd_state["total_score"] = total
 
-        return {
-            "case_id": store.pd_state.get("case_id"),
-            "case_title": case.get("case_title", ""),
-            "tier": tier,
-            "phase_1_score": phase_1,
-            "phase_2_score": phase_2,
-            "total_score": total,
-            "generated_insights": list(store.pd_state.get("generated_insight_ids", [])),
-            "root_causes": list(store.pd_state.get("root_cause_slots", [])),
-            "impacts": list(store.pd_state.get("impact_slots", [])),
-            "action_pic_pairs": dict(store.pd_state.get("action_pic_pairs", {})),
-            "aborted": aborted,
-        }
+        tier_effects = minigame_get_variant("problem_diagnosis", case_id, fallback="case_scope_creep_01").get("result_tiers", {}).get(tier, {})
+
+        result = minigame_build_result(
+            "problem_diagnosis",
+            case_id,
+            tier,
+            metrics={
+                "phase_1_score": phase_1,
+                "phase_2_score": phase_2,
+                "total_score": total,
+            },
+            state={
+                "generated_insights": list(store.pd_state.get("generated_insight_ids", [])),
+                "root_causes": list(store.pd_state.get("root_cause_slots", [])),
+                "impacts": list(store.pd_state.get("impact_slots", [])),
+                "action_pic_pairs": dict(store.pd_state.get("action_pic_pairs", {})),
+            },
+            extra={
+                "aborted": aborted,
+                "case_title": case.get("case_title", ""),
+            }
+        )
+        result["case_id"] = case_id
+        result["case_title"] = case.get("case_title", "")
+        result["tier"] = tier
+        result["phase_1_score"] = phase_1
+        result["phase_2_score"] = phase_2
+        result["total_score"] = total
+        result["generated_insights"] = list(store.pd_state.get("generated_insight_ids", []))
+        result["root_causes"] = list(store.pd_state.get("root_cause_slots", []))
+        result["impacts"] = list(store.pd_state.get("impact_slots", []))
+        result["action_pic_pairs"] = dict(store.pd_state.get("action_pic_pairs", {}))
+        result["aborted"] = aborted
+        result["effects"] = dict(result.get("effects", {}))
+
+        if tier_effects:
+            for effect_key, effect_value in tier_effects.items():
+                if isinstance(effect_value, list):
+                    result["effects"].setdefault(effect_key, [])
+                    result["effects"][effect_key].extend(effect_value)
+                elif isinstance(effect_value, dict):
+                    result["effects"].setdefault(effect_key, {})
+                    result["effects"][effect_key].update(effect_value)
+                else:
+                    result["effects"][effect_key] = effect_value
+
+        return result
 
 
     def pd_submit_phase_2():
         store = renpy.store
         pd_score_phase_2()
         store.pd_last_result = pd_finalize_result()
+        minigame_store_result(store.pd_last_result)
+        if store.pd_state.get("apply_live_effects", True):
+            minigame_apply_effects(store.pd_last_result, source_key=store.pd_state.get("effect_source_key") or ("minigame:problem_diagnosis:%s" % store.pd_last_result.get("variant_id")))
 
 
     def pd_exit_current_case():
@@ -408,6 +446,9 @@ init python:
                 pd_score_phase_2()
 
             store.pd_last_result = pd_finalize_result(aborted=True)
+            minigame_store_result(store.pd_last_result)
+            if store.pd_state.get("apply_live_effects", True):
+                minigame_apply_effects(store.pd_last_result, source_key=store.pd_state.get("effect_source_key") or ("minigame:problem_diagnosis:%s" % store.pd_last_result.get("variant_id")))
 
 
     def pd_reset_phase_2():

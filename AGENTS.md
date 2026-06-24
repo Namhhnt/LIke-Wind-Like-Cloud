@@ -5,7 +5,7 @@
 **Branch:** develop
 
 ## OVERVIEW
-Ren'Py visual novel project with a custom warm-themed UI and an in-progress but already functional progression prototype. The repo now includes data-driven route/chapter state, a route map screen, debug progression tooling, seeded Tam/Hoang route content, and supporting authoring/design docs.
+Ren'Py visual novel project with a custom warm-themed UI and a data-driven progression runtime that now spans a full multi-route chapter map. The repo includes route/chapter state, route-map and debug tooling, a broad authored `game/story/` chapter tree across Tam/Hoàng/Yuuka/Minh-plus-final branches, and supporting authoring/design docs.
 
 ## STRUCTURE
 ```text
@@ -23,10 +23,10 @@ LikeWindLikeCloud/
 | Story/bootstrap entry | `game/script.rpy` | Initializes progression state and jumps to `route_map`. |
 | Route/chapter metadata | `game/progression_data.rpy` | Central route list, chapter schema, unlock graph, endings seeds. |
 | Progression state/logic | `game/progression_logic.rpy` | Initialization, unlock recalculation, validation, recommendations, endings. |
-| Route map and progression UI | `game/route_map.rpy` | Main prototype progression surface and route selection screen. |
+| Route map and progression UI | `game/route_map.rpy` | Main progression surface and route selection screen. |
 | Debug progression UI | `game/debug_progression.rpy` | Validation, reset, completion shortcuts, acceptance summaries. |
-| Story content and chapter labels | `game/stories/` | Authored Tam route scenes and minigame labels live here. |
-| Demo Hoang route and endings | `game/demo_route_hoang.rpy` | POV/bonus chapter flow plus prototype ending resolution. |
+| Story content and chapter labels | `game/story/` | Authored chapter wrappers and scene files for the current route map live here. |
+| Legacy/demo Hoang route and endings | `game/demo_route_hoang.rpy` | Older POV/bonus demo labels and seed-ending flow still present alongside the newer chapter tree. |
 | Menus, save/load, preferences, help | `game/screens.rpy` | Core Ren'Py UI surface; includes desktop and touch variants. |
 | Project metadata, version, build name | `game/options.rpy` | Window title, version, build-facing config. |
 | Theme colors, sizes, menu backgrounds | `game/gui.rpy` | Warm palette and layout constants live here. |
@@ -47,7 +47,7 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 | `initialize_progression()`, `complete_chapter()`, `refresh_validation_state()` | `game/progression_logic.rpy` | Core runtime progression engine. |
 | `screen route_map`, `label route_map` | `game/route_map.rpy` | Main progression navigation surface. |
 | `screen debug_progression` | `game/debug_progression.rpy` | Prototype-only diagnostics and reset tools. |
-| `label tam_c01`, `tam_c02`, `tam_c03` | `game/stories/tam/**` | Current authored Tam route chapter entry points. |
+| `label prologue_rain_dream`, `tam_c01_interview_day`, `tam_c02_company_party` | `game/story/**/_chapter.rpy` | Current chapter entry labels live in per-chapter wrapper files across the story tree. |
 | `label hoang_h01`, `hoang_bonus_*`, `hoang_h02` | `game/demo_route_hoang.rpy` | Hoang POV/bonus prototype and ending gateway. |
 | `screen say`, `choice`, `navigation`, `main_menu`, `preferences` | `game/screens.rpy` | Core Ren'Py screen set. |
 | Touch `screen quick_menu()` variant | `game/screens.rpy` near mobile section | Mobile override of the desktop quick menu. |
@@ -64,7 +64,7 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 ## CONVENTIONS
 - Hand-edited Ren'Py source lives in `game/*.rpy` and `game/tl/**`.
 - Progression metadata currently lives directly in `game/progression_data.rpy` and `game/progression_logic.rpy`, not yet under a `systems/` subtree proposed by older planning docs.
-- Story content is starting to move into domain folders like `game/stories/tam/`, while sprite/background declarations live under `game/scripts/`.
+- Story content now lives in route/chapter folders under `game/story/`, while sprite/background declarations live under `game/scripts/`.
 - GUI image assets live under `game/gui/`; behavior stays in `game/gui.rpy` and `game/screens.rpy`.
 - Translation files mirror source filenames and subfolders: `script.rpy` -> `tl/vietnamese/script.rpy`, `stories/tam/chapter_02_scene_01.rpy` -> `tl/vietnamese/stories/tam/chapter_02_scene_01.rpy`.
 - `.vscode/settings.json` hides `cache/`, `.rpyc`, and `.rpymc`; follow that lead when reviewing diffs.
@@ -81,7 +81,7 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 - UI palette is warm beige/brown, not Ren'Py default blue.
 - Both main menu and game menu backgrounds point at `gui/theme/background_full.png`.
 - The project already contains PC/mobile visual references under `Specs/Design/` and `Specs/Base_assets/`.
-- The current playable prototype centers on Tam as the default unlocked route, then unlocks Hoang POV/bonus content through chapter completion.
+- The current playable build still starts on Tam by default, but the progression graph and chapter labels now cover a much broader route map through Hoàng, Yuuka, work/group, Minh-Yuuka resolution branches, and the final route.
 - Progression runtime already tracks recommendations, route focus, emotional state, relationship directions, validation issues, and seeded ending eligibility.
 
 ## COMMANDS
@@ -93,6 +93,6 @@ grep -RInE '^(label|screen|translate [^ ]+ strings|define )' game
 ```
 
 ## NOTES
-- `Specs/game_mechanics.md` still represents the broad product target, but runtime has partially caught up through a data-driven prototype rather than remaining pure scaffold.
+- `Specs/game_mechanics.md` still represents the broad product target, but the runtime has moved well beyond scaffold status into a large authored chapter tree backed by the live progression system.
 - `Specs/progression_implementation_plan.md` now contains historical gap statements that no longer match the live runtime exactly.
 - `traceback.txt` records a real translation failure: duplicate `old "Rolls forward to later dialogue."` entries in `game/tl/vietnamese/screens.rpy`.
