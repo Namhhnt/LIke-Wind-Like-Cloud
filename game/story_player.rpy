@@ -23,7 +23,7 @@ init -1 python:
     def story_sprite_render_xpos(sprite):
         lane = story_sprite_lane(sprite)
         if lane == "left":
-            return 0.05
+            return 0.03
         if lane == "right":
             return 0.85
         return 0.5
@@ -35,7 +35,7 @@ init -1 python:
         lane = story_sprite_lane(sprite)
         if lane == "center":
             return 484
-        return 618
+        return 640
 
     def story_sprite_render_xanchor(sprite):
         lane = story_sprite_lane(sprite)
@@ -50,7 +50,7 @@ init -1 python:
         if lane == "center":
             return 0.9
         if story_sprite_is_side_image(sprite):
-            return 0.5
+            return 0.65
         return 0.84
 
 
@@ -152,7 +152,7 @@ screen library_story_reader(content_id):
                             xsize 1134
                             ysize 170
                             background Solid("#0B0806D9")
-                            padding (164, 18)
+                            padding (174, 18)
 
                             vbox:
                                 spacing 10
