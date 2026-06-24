@@ -232,7 +232,118 @@ screen library_music():
 
 screen library_minigames():
     tag menu
-    use library_placeholder_page("minigames")
+
+    $ category = library_get_category("minigames")
+    $ category_title = _(category["title"]) if category else _("Minigames")
+    $ category_subtitle = _(category["subtitle"]) if category else _("Replay special minigames.")
+
+    use library_menu_shell(
+        page_title=category_title,
+        page_subtitle=category_subtitle,
+        back_action=ShowMenu("library")
+    ):
+
+        vbox:
+            spacing 26
+
+            text category_title:
+                style "library_placeholder_title"
+
+            text _("Replay minigames you have encountered in the story. Each minigame becomes available after you play it in the main route."):
+                style "library_placeholder_body"
+
+            # List all minigame library items
+            $ minigame_items = [item for item in library_items.values() if item.get("category") == "minigames"]
+            $ minigame_items.sort(key=lambda item: (item.get("series", ""), item.get("title", "")))
+
+            if not minigame_items:
+                frame:
+                    xsize 1160
+                    ysize 120
+                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+                    padding (28, 24)
+
+                    text _("No minigames are available yet. Play through the story to unlock them."):
+                        style "library_placeholder_body"
+
+            else:
+                for item in minigame_items:
+                    use library_minigame_card(item)
+
+
+screen library_minigame_card(item):
+
+    $ is_unlocked = is_library_content_unlocked(item["id"])
+    $ prereq_text = get_library_prerequisite_text(item)
+    $ replay_info = get_minigame_library_replay_info(item["id"])
+    $ can_replay = is_unlocked and replay_info is not None
+
+    frame:
+        xsize 1148
+        background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+        padding (24, 22)
+
+        vbox:
+            spacing 16
+
+            hbox:
+                xfill True
+
+                vbox:
+                    spacing 8
+
+                    text item["title"]:
+                        style "library_story_card_title"
+
+                    text item.get("series") or _("Minigame"):
+                        style "library_story_card_subtitle"
+
+                null xfill True
+
+                if is_unlocked:
+                    text _("Available") style "library_story_status_text"
+                else:
+                    text _("Locked") style "library_story_status_text"
+
+            grid 2 3:
+                xfill True
+                spacing 16
+
+                text _("Series") + ": " + (item.get("series") or _("Minigame")):
+                    style "library_story_meta"
+
+                text _("Type") + ": " + item.get("type", "minigame").replace("_", " ").title():
+                    style "library_story_meta"
+
+                text _("Size") + ": " + item.get("size", "small").title():
+                    style "library_story_meta"
+
+                text _("Points") + ": " + str(item.get("point_cost", 0)):
+                    style "library_story_meta"
+
+                text _("Story Gate") + ": " + prereq_text:
+                    style "library_story_meta"
+
+                text _("Status") + ": " + (_("Unlocked") if is_unlocked else _("Locked")):
+                    style "library_story_meta"
+
+            hbox:
+                xfill True
+
+                null xfill True
+
+                if can_replay:
+                    textbutton _("Play"):
+                        style_prefix "library_story_button"
+                        action Call(replay_info["replay_label"], content_id=item["id"])
+                elif is_unlocked:
+                    textbutton _("No replay"):
+                        style_prefix "library_story_button"
+                        action NullAction()
+                else:
+                    textbutton _("Locked"):
+                        style_prefix "library_story_button"
+                        action NullAction()
 
 
 screen library_extras():

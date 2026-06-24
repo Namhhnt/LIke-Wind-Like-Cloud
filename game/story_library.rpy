@@ -231,7 +231,10 @@ init -1 python:
         global story_library_loaded, story_library_last_error
 
         ensure_story_library_defaults()
+        # Preserve non-story items (minigames, extras, etc.) registered outside the manifest.
+        preserved = {k: v for k, v in library_items.items() if v.get("category") != "stories"}
         library_items.clear()
+        library_items.update(preserved)
         story_library_last_error = None
 
         try:

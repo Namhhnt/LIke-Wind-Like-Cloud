@@ -124,3 +124,31 @@ init python:
 
     def tam_speech_order_has_required(order):
         return all(item_id in order for item_id in tam_speech_required_order())
+
+
+    # ------------------------------------------------------------------
+    # Generic helpers for speech-order variants used by library replay.
+    # These work with any variant's required_order list.
+    # ------------------------------------------------------------------
+    def tam_speech_order_is_perfect_for_list(order, required_order):
+        if not required_order:
+            return False
+        if len(order) < len(required_order):
+            return False
+        return list(order)[:len(required_order)] == list(required_order)
+
+
+    def tam_speech_order_has_required_for_list(order, required_order):
+        return all(item_id in order for item_id in required_order)
+
+
+    def tam_speech_short_labels_for_variant(variant):
+        return dict(variant.get("short_labels", {}))
+
+
+    def tam_speech_toggle_choice_generic(picked, item_id, max_choices):
+        if item_id in picked:
+            picked.remove(item_id)
+        elif len(picked) < max_choices:
+            picked.append(item_id)
+        renpy.restart_interaction()

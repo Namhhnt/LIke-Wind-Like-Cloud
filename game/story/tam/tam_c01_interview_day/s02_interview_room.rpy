@@ -12,4 +12,7 @@ label tam_c01_interview_day_s02_interview_room:
         $ story_add('career_tam', 1)
     else:
         $ story_add('doom_score', 1)
+
+    # Unlock minigame for library replay
+    $ add_unique(persistent.unlocked_library_content, "minigame_speech_tam_c01")
     return
