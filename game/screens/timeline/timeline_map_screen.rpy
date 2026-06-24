@@ -80,7 +80,7 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
                     mousewheel True
 
                     fixed:
-                        xysize (2560, 500)
+                        xysize (2560, 950)
 
                         if nodes:
                             for connection in timeline_get_connections(selected_route):

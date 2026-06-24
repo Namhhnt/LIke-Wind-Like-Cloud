@@ -239,7 +239,7 @@ translate vietnamese strings:
 
     # game/screens.rpy:249
     old "Back"
-    new "Back"
+    new "Quay lại"
 
     # game/screens.rpy:254
     old "Q.Save"

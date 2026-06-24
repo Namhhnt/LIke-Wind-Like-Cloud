@@ -120,7 +120,7 @@ screen main_menu_navigation():
 
             use main_menu_nav_button(
                 label=_("Library"),
-                action=Function(renpy.notify, _("Library coming soon.")),
+                action=ShowMenu("library"),
                 icon_text="▧"
             )
 
