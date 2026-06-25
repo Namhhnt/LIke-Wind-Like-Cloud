@@ -25,6 +25,11 @@ init -1 python:
         elif not isinstance(persistent.timeline_bookmarks, list):
             persistent.timeline_bookmarks = list(persistent.timeline_bookmarks)
 
+        if not hasattr(persistent, "unlocked_chapters") or persistent.unlocked_chapters is None:
+            persistent.unlocked_chapters = []
+        elif not isinstance(persistent.unlocked_chapters, list):
+            persistent.unlocked_chapters = list(persistent.unlocked_chapters)
+
     normalize_persistent_progression_state()
 
     def progression_track_ids():
@@ -407,6 +412,9 @@ init -1 python:
         add_unique(progress["completed"], chapter_id)
         remove_if_present(progress["available"], chapter_id)
         progress["play_order"].append(chapter_id)
+
+        normalize_persistent_progression_state()
+        add_unique(persistent.unlocked_chapters, chapter_id)
 
         reward_story_points = globals().get("award_investment_points_for_story_chapter", None)
         if callable(reward_story_points):

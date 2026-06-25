@@ -348,4 +348,83 @@ screen library_minigame_card(item):
 
 screen library_extras():
     tag menu
-    use library_placeholder_page("extras")
+
+    $ secret_list = list(SECRET_DEFINITIONS.items()) if "SECRET_DEFINITIONS" in globals() else []
+    $ unlocked_count = get_unlocked_secret_count()
+
+    use library_menu_shell(
+        page_title=_("Extras"),
+        page_subtitle=_("Bonus content and special materials."),
+        back_action=ShowMenu("library")
+    ):
+
+        vbox:
+            spacing 22
+
+            text _("Secrets & Achievements"):
+                style "library_placeholder_title"
+
+            if unlocked_count == 0:
+                text _("No secrets discovered yet. Keep playing to find hidden moments."):
+                    style "library_placeholder_body"
+
+                text _("(Total: %(total)d secrets)") % {"total": len(secret_list)}:
+                    style "library_story_meta"
+
+            else:
+                text _("You have found %(count)d out of %(total)d secrets.") % {"count": unlocked_count, "total": len(secret_list)}:
+                    style "library_placeholder_body"
+
+                null height 8
+
+                viewport:
+                    scrollbars "vertical"
+                    mousewheel True
+                    draggable True
+                    ysize 520
+
+                    vbox:
+                        spacing 12
+
+                        for secret_id, secret_def in secret_list:
+                            $ is_unlocked = has_unlocked_secret(secret_id)
+                            $ icon = secret_def.get("icon", "★")
+                            $ title = secret_def.get("title", secret_id)
+                            $ desc = secret_def.get("description", "")
+
+                            frame:
+                                xsize 1148
+                                background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+                                padding (24, 18)
+
+                                hbox:
+                                    xfill True
+                                    yfill True
+
+                                    text icon:
+                                        min_width 48
+                                        size 40
+                                        color (LIB_GOLD if is_unlocked else LIB_DISABLED)
+                                        yalign 0.5
+
+                                    vbox:
+                                        xsize 1020
+                                        spacing 6
+                                        yalign 0.5
+
+                                        if is_unlocked:
+                                            text _(title):
+                                                style "library_story_card_title"
+                                                size 28
+
+                                            text _(desc):
+                                                style "library_story_meta"
+                                        else:
+                                            text _("???"):
+                                                style "library_story_card_title"
+                                                size 28
+                                                color LIB_DISABLED
+
+                                            text _("Not yet discovered"):
+                                                style "library_story_meta"
+                                                color LIB_DISABLED

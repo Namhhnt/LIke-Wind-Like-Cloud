@@ -67,6 +67,11 @@ init -5 python:
     def library_get_progress_text(category_id):
         if category_id == "stories" and "get_story_library_progress_text" in globals():
             return get_story_library_progress_text()
+        if category_id == "extras":
+            unlocked = len(persistent.unlocked_secrets) if hasattr(persistent, "unlocked_secrets") and persistent.unlocked_secrets else 0
+            if unlocked:
+                return "%d %s" % (unlocked, _("found"))
+            return _("None found")
         return LIBRARY_PROGRESS_MAP.get(category_id, "")
 
 
@@ -90,3 +95,57 @@ init -5 python:
             return Frame(path, border, border)
 
         return Solid(color)
+
+
+    SECRET_DEFINITIONS = {
+        "secret_prologue_seen": {
+            "title": "First Dream",
+            "description": "Witness the dream in the rain.",
+            "icon": "★",
+        },
+        "secret_tam_interview": {
+            "title": "New Beginning",
+            "description": "Get through the first job interview.",
+            "icon": "★",
+        },
+        "secret_first_date": {
+            "title": "Sunday Date",
+            "description": "Experience the Sunday date with Tâm.",
+            "icon": "★",
+        },
+    }
+
+    def ensure_secret_defaults():
+        if not hasattr(persistent, "unlocked_secrets") or persistent.unlocked_secrets is None:
+            persistent.unlocked_secrets = []
+        elif not isinstance(persistent.unlocked_secrets, list):
+            persistent.unlocked_secrets = list(persistent.unlocked_secrets)
+
+    ensure_secret_defaults()
+
+    def unlock_secret(secret_id):
+        ensure_secret_defaults()
+        if secret_id in persistent.unlocked_secrets:
+            return False
+        persistent.unlocked_secrets.append(secret_id)
+        renpy.save_persistent()
+        secret = SECRET_DEFINITIONS.get(secret_id)
+        if secret:
+            renpy.notify(_("Secret found: %s") % secret.get("title", secret_id))
+        return True
+
+    def has_unlocked_secret(secret_id):
+        ensure_secret_defaults()
+        return secret_id in persistent.unlocked_secrets
+
+    def get_unlocked_secrets():
+        ensure_secret_defaults()
+        results = []
+        for secret_id in SECRET_DEFINITIONS:
+            if secret_id in persistent.unlocked_secrets:
+                results.append((secret_id, SECRET_DEFINITIONS[secret_id]))
+        return results
+
+    def get_unlocked_secret_count():
+        ensure_secret_defaults()
+        return len(persistent.unlocked_secrets)

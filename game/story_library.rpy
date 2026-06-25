@@ -281,7 +281,13 @@ init -1 python:
             return True
 
         fallback_completed = globals().get("story_completed_chapters", [])
-        return chapter_id in fallback_completed
+        if chapter_id in fallback_completed:
+            return True
+
+        if hasattr(persistent, "unlocked_chapters") and isinstance(persistent.unlocked_chapters, list):
+            return chapter_id in persistent.unlocked_chapters
+
+        return False
 
     def library_prerequisites_met(item):
         for chapter_id in item.get("prerequisites", []):
