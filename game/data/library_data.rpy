@@ -72,6 +72,10 @@ init -5 python:
             if unlocked:
                 return "%d %s" % (unlocked, _("found"))
             return _("None found")
+        if category_id == "characters":
+            unlocked = get_unlocked_character_count()
+            total = len(CHARACTER_PROFILES)
+            return "%d / %d" % (unlocked, total)
         return LIBRARY_PROGRESS_MAP.get(category_id, "")
 
 
@@ -149,3 +153,87 @@ init -5 python:
     def get_unlocked_secret_count():
         ensure_secret_defaults()
         return len(persistent.unlocked_secrets)
+
+
+    CHARACTER_PROFILES = [
+        {
+            "id": "tam",
+            "name": "Tâm",
+            "route": "tam",
+            "sprite": "side tam neutral",
+            "description": "The protagonist. A young woman navigating her career, relationships, and self-discovery in the city.",
+            "tags": ["protagonist", "main"],
+        },
+        {
+            "id": "hoang",
+            "name": "Hoàng",
+            "route": "hoang",
+            "sprite": "side hoang neutral",
+            "description": "A calm and observant man, connected to Minh by family. His quiet presence leaves a strong impression.",
+            "tags": ["route", "main"],
+        },
+        {
+            "id": "yuuka",
+            "name": "Yuuka",
+            "route": "yuuka",
+            "sprite": "side yuuka neutral",
+            "description": "A young Japanese film director whose arrival stirs old memories and new connections.",
+            "tags": ["route", "main"],
+        },
+        {
+            "id": "minh",
+            "name": "Minh",
+            "route": "minh",
+            "sprite": "side minh neutral",
+            "description": "A figure from the past whose return reopens questions of love, friendship, and closure.",
+            "tags": ["route", "main"],
+        },
+        {
+            "id": "thienan",
+            "name": "Thiên An",
+            "route": "thienan",
+            "sprite": "side thienan neutral",
+            "description": "A grounded presence with her own struggles. Her story weaves through family pressure and self-assertion.",
+            "tags": ["route", "main"],
+        },
+        {
+            "id": "huyen",
+            "name": "Huyền",
+            "route": "huyen",
+            "sprite": "side huyen neutral",
+            "description": "Tâm's close friend. She balances her own ambitions and relationships while staying by Tâm's side.",
+            "tags": ["route", "main"],
+        },
+        {
+            "id": "quan",
+            "name": "Quân",
+            "route": None,
+            "sprite": "side quan neutral",
+            "description": "A colleague and friend. His warmth and reliability make him a steady presence at work and beyond.",
+            "tags": ["supporting"],
+        },
+    ]
+
+
+    def is_character_unlocked(profile):
+        if profile.get("route") is None:
+            return True
+
+        route_id = profile["route"]
+        if not hasattr(persistent, "unlocked_chapters") or not isinstance(persistent.unlocked_chapters, list):
+            return False
+
+        for chapter_id in persistent.unlocked_chapters:
+            chapter = globals().get("CHAPTERS", {}).get(chapter_id)
+            if chapter and chapter.get("route") == route_id:
+                return True
+
+        return False
+
+
+    def get_unlocked_character_count():
+        count = 0
+        for profile in CHARACTER_PROFILES:
+            if is_character_unlocked(profile):
+                count += 1
+        return count

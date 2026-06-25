@@ -45,7 +45,95 @@ screen library_placeholder_page(category_id):
 
 screen library_characters():
     tag menu
-    use library_placeholder_page("characters")
+
+    use library_menu_shell(
+        page_title=_("Character Profiles"),
+        page_subtitle=_("Learn about the characters in the story."),
+        back_action=ShowMenu("library")
+    ):
+
+        viewport:
+            scrollbars "vertical"
+            mousewheel True
+            draggable True
+            ysize 620
+
+            vbox:
+                spacing 18
+
+                for profile in CHARACTER_PROFILES:
+                    use library_character_card(profile)
+
+
+screen library_character_card(profile):
+
+    $ unlocked = is_character_unlocked(profile)
+    $ sprite_ref = profile.get("sprite", "")
+    $ tags_text = ", ".join(profile.get("tags", []))
+    $ has_route = profile.get("route") is not None
+
+    frame:
+        xsize 1148
+        background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+        padding (24, 22)
+
+        hbox:
+            spacing 24
+
+            # Character sprite / locked placeholder
+            if unlocked and sprite_ref:
+                add sprite_ref:
+                    xysize (130, 200)
+                    yalign 0.5
+            elif unlocked:
+                null width 130
+            else:
+                frame:
+                    xysize (130, 200)
+                    background Solid("#1A1511CC")
+                    padding (0, 0)
+
+                    text "?":
+                        color LIB_DISABLED
+                        size 58
+                        xalign 0.5
+                        yalign 0.5
+
+            vbox:
+                spacing 8
+                xsize 950
+
+                hbox:
+                    spacing 12
+
+                    text profile["name"]:
+                        style "library_story_card_title"
+                        color (LIB_TEXT if unlocked else LIB_DISABLED)
+
+                    if has_route:
+                        text "[" + profile["route"].title() + "]":
+                            style "library_story_meta"
+                            color (LIB_GOLD if unlocked else LIB_DISABLED)
+                    else:
+                        text "[" + _("Supporting") + "]":
+                            style "library_story_meta"
+                            color (LIB_MUTED if unlocked else LIB_DISABLED)
+
+                text profile["description"]:
+                    style "library_story_summary_text"
+                    color (LIB_TEXT if unlocked else LIB_MUTED)
+
+                null height 2
+
+                text tags_text:
+                    style "library_story_meta"
+                    color (LIB_MUTED if unlocked else LIB_DISABLED)
+
+                if not unlocked:
+                    null height 6
+                    text _("Complete a chapter in this character's route to unlock their profile."):
+                        style "library_story_status_text"
+                        color LIB_DISABLED
 
 
 screen library_story_card(item):
