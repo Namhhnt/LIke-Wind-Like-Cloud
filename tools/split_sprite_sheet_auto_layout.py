@@ -469,6 +469,7 @@ def split_sheet(
     transparent_bg: bool,
     version_digits: str,
     normalize_sheet: bool,
+    crop_padding: int = 0,
 ) -> None:
     if not sheet_path.exists():
         raise FileNotFoundError(f"Sprite sheet not found: {sheet_path}")
@@ -508,8 +509,11 @@ def split_sheet(
     print(f"Canon:   {canonical_size[0]}x{canonical_size[1]}")
     print(f"Actual:  {sheet_width}x{sheet_height}")
     print(f"Resize:  {'yes' if did_resize else 'no'}")
+    final_size = target_size - crop_padding * 2 if crop_padding > 0 else target_size
     print(f"Cell:    exact {target_size}x{target_size}")
     print(f"Target:  {target_size}x{target_size}")
+    print(f"Crop:    {crop_padding}px" if crop_padding > 0 else "Crop:    none")
+    print(f"Result:  {final_size}x{final_size}")
     print(f"Version: {version_digits or '(base)'}")
     print(f"Transparent BG: {transparent_bg}")
     print()
@@ -534,6 +538,14 @@ def split_sheet(
         if transparent_bg:
             # Keep fixed canvas size, do not trim/further fit.
             cell = remove_connected_black_background(cell, threshold=threshold)
+
+        if crop_padding > 0:
+            cell = cell.crop((
+                crop_padding,
+                crop_padding,
+                cell.width - crop_padding,
+                cell.height - crop_padding,
+            ))
 
         expression_name = build_expression_name(expression, version_digits)
         output_path = output_dir / f"{char_name}_{expression_name}.png"
@@ -889,6 +901,17 @@ def parse_args() -> argparse.Namespace:
     )
 
     parser.add_argument(
+        "--crop-padding",
+        type=int,
+        default=4,
+        help=(
+            "Crop N pixels from each edge of every cell after splitting. "
+            "Removes residues from neighboring cells. Default: 4. "
+            "Set to 0 to disable."
+        ),
+    )
+
+    parser.add_argument(
         "--transparent-bg",
         action="store_true",
         default=False,
@@ -991,6 +1014,7 @@ def main() -> None:
             transparent_bg=args.transparent_bg,
             version_digits=job.version_digits,
             normalize_sheet=not args.no_normalize_sheet,
+            crop_padding=args.crop_padding,
         )
 
         write_sprite_script(
