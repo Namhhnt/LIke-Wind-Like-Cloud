@@ -25,7 +25,7 @@ init -1 python:
         if lane == "left":
             return 0.03
         if lane == "right":
-            return 0.85
+            return 0.97
         return 0.5
 
     def story_sprite_render_xpixel(sprite):

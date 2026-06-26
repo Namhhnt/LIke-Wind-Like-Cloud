@@ -30,6 +30,21 @@
       "prerequisites": ["tam_c01_interview_day"],
       "tags": ["Tam", "After Interview"],
       "cover": ""
+    },
+    {
+      "id": "yuuka_minh_sunday_market",
+      "title": "Sunday Market",
+      "series": "Yuuka Notes",
+      "type": "original_story",
+      "size": "medium",
+      "source": "local",
+      "file": "stories/yuuka/sunday_market.md",
+      "order": 1,
+      "point_cost": 0,
+      "unlock_mode": "free",
+      "prerequisites": [],
+      "tags": ["Yuuka", "Minh", "Original Story"],
+      "cover": ""
     }
   ]
 }

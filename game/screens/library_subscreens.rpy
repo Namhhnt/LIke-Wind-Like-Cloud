@@ -83,13 +83,13 @@ screen library_character_card(profile):
             # Character sprite / locked placeholder
             if unlocked and sprite_ref:
                 add sprite_ref:
-                    xysize (130, 200)
+                    xysize (200, 200)
                     yalign 0.5
             elif unlocked:
-                null width 130
+                null width 200
             else:
                 frame:
-                    xysize (130, 200)
+                    xysize (200, 200)
                     background Solid("#1A1511CC")
                     padding (0, 0)
 
@@ -112,10 +112,12 @@ screen library_character_card(profile):
 
                     if has_route:
                         text "[" + profile["route"].title() + "]":
+                            substitute False
                             style "library_story_meta"
                             color (LIB_GOLD if unlocked else LIB_DISABLED)
                     else:
                         text "[" + _("Supporting") + "]":
+                            substitute False
                             style "library_story_meta"
                             color (LIB_MUTED if unlocked else LIB_DISABLED)
 
