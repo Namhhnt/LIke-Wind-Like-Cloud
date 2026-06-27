@@ -317,7 +317,116 @@ screen library_cg():
 
 screen library_music():
     tag menu
-    use library_placeholder_page("music")
+
+    $ category = library_get_category("music")
+    $ category_title = _(category["title"]) if category else _("Music Room")
+    $ category_subtitle = _(category["subtitle"]) if category else _("Listen to unlocked music tracks.")
+    $ music_items = get_music_library_items()
+
+    use library_menu_shell(
+        page_title=category_title,
+        page_subtitle=category_subtitle,
+        back_action=ShowMenu("library")
+    ):
+
+        vbox:
+            spacing 26
+
+            text category_title:
+                style "library_placeholder_title"
+
+            text _("Tracks unlock when you complete their linked story chapter for the first time."):
+                style "library_placeholder_body"
+
+            if not music_items:
+                frame:
+                    xsize 1160
+                    ysize 120
+                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+                    padding (28, 24)
+
+                    text _("No music tracks were found in the music folder."):
+                        style "library_placeholder_body"
+
+            else:
+                viewport:
+                    scrollbars "vertical"
+                    mousewheel True
+                    draggable True
+                    ysize 560
+
+                    vbox:
+                        spacing 16
+
+                        for item in music_items:
+                            use library_music_card(item)
+
+
+screen library_music_card(item):
+
+    $ is_unlocked = is_library_content_unlocked(item["id"])
+    $ prereq_text = get_library_prerequisite_text(item)
+    $ is_playing = is_library_music_playing(item["id"])
+
+    frame:
+        xsize 1148
+        background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+        padding (24, 22)
+
+        vbox:
+            spacing 16
+
+            hbox:
+                xfill True
+
+                vbox:
+                    spacing 8
+
+                    text item["title"]:
+                        style "library_story_card_title"
+
+                    text item.get("series") or _("Original Soundtrack"):
+                        style "library_story_card_subtitle"
+
+                null xfill True
+
+                if is_unlocked:
+                    if is_playing:
+                        text _("Playing") style "library_story_status_text"
+                    else:
+                        text _("Unlocked") style "library_story_status_text"
+                else:
+                    text _("Locked") style "library_story_status_text"
+
+            grid 2 2:
+                xfill True
+                spacing 16
+
+                text _("Story Gate") + ": " + prereq_text:
+                    style "library_story_meta"
+
+                text _("Status") + ": " + (_("Unlocked") if is_unlocked else _("Locked")):
+                    style "library_story_meta"
+
+            hbox:
+                xfill True
+                spacing 18
+
+                null xfill True
+
+                if is_unlocked and is_playing:
+                    textbutton _("Stop"):
+                        style_prefix "library_story_button"
+                        action Function(stop_library_music_preview)
+
+                if is_unlocked:
+                    textbutton (_("Play Again") if is_playing else _("Play")):
+                        style_prefix "library_story_button"
+                        action Function(play_library_music_track, item["id"])
+                else:
+                    textbutton _("Locked"):
+                        style_prefix "library_story_button"
+                        action NullAction()
 
 
 screen library_minigames():

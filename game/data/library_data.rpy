@@ -76,6 +76,8 @@ init -5 python:
             unlocked = get_unlocked_character_count()
             total = len(CHARACTER_PROFILES)
             return "%d / %d" % (unlocked, total)
+        if category_id == "music" and "get_music_library_progress_text" in globals():
+            return get_music_library_progress_text()
         return LIBRARY_PROGRESS_MAP.get(category_id, "")
 
 

@@ -71,3 +71,24 @@ translate vietnamese strings:
 
     old "Use this page as the future entry point for category-specific content and filters."
     new "Hãy dùng trang này làm điểm vào trong tương lai cho nội dung và bộ lọc riêng của từng mục."
+
+    old "Tracks unlock when you complete their linked story chapter for the first time."
+    new "Các bản nhạc sẽ mở khóa khi bạn hoàn thành chương truyện liên kết lần đầu tiên."
+
+    old "No music tracks were found in the music folder."
+    new "Không tìm thấy bản nhạc nào trong thư mục nhạc."
+
+    old "Original Soundtrack"
+    new "Nhạc nền gốc"
+
+    old "Playing"
+    new "Đang phát"
+
+    old "Play Again"
+    new "Phát lại"
+
+    old "Play"
+    new "Phát"
+
+    old "Stop"
+    new "Dừng"

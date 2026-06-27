@@ -128,13 +128,17 @@ init -1 python:
             return None
 
         item_id = (item.get("id") or "").strip()
+        if not item_id:
+            return None
+
+        category = (item.get("category") or "stories").strip().lower()
         file_path = (item.get("file") or item.get("local_file") or "").strip()
-        if not item_id or not file_path:
+        if category == "stories" and not file_path:
             return None
 
         normalized = dict(item)
         normalized["id"] = item_id
-        normalized["file"] = file_path.replace("\\", "/")
+        normalized["file"] = file_path.replace("\\", "/") if file_path else ""
         normalized["title"] = (item.get("title") or item_id.replace("_", " ").title()).strip()
         normalized["series"] = (item.get("series") or _("Original Stories")).strip()
         normalized["type"] = (item.get("type") or "original_story").strip().lower()
