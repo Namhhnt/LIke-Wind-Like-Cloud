@@ -70,7 +70,7 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 | Generated symbol index | `game/saves/navigation.json` | Runtime-produced location map; inspect, do not hand-maintain. |
 
 ## TOOLING
-- Local Ren'Py runtime is available at `/home/hhnam/Applications/renpy`.
+- Local Ren'Py runtime is available at `/home/hhnam/Applications/renpy` or `/mnt/d/RenPy/renpy-8.3.2-sdk`.
 - Preferred launcher for validation is `/home/hhnam/Applications/renpy/renpy.sh` rather than assuming `renpy` is on `PATH`.
 - When reproducing issues from `log.txt`, `traceback.txt`, or `errors.txt`, use that local launcher unless the user points to a different install.
 - `.rpy` LSP is not configured in this workspace, so file-level anchors and text search remain the primary navigation tools.

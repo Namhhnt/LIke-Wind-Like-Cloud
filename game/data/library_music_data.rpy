@@ -100,7 +100,20 @@ init -1 python:
             if item:
                 register_library_item(item)
 
+    def ensure_music_library_registered(force=False):
+        ensure_story_library_loaded()
+
+        has_music_items = False
+        for item in library_items.values():
+            if item.get("category") == "music":
+                has_music_items = True
+                break
+
+        if force or not has_music_items:
+            refresh_music_library_registry()
+
     def get_music_library_items():
+        ensure_music_library_registered()
         items = [item for item in library_items.values() if item.get("category") == "music"]
         items.sort(key=lambda item: (item.get("order", 9999), item.get("title", "")))
         return items
@@ -118,6 +131,7 @@ init -1 python:
         return "%d / %d" % (unlocked, len(items))
 
     def play_library_music_track(content_id):
+        ensure_music_library_registered()
         item = get_library_item(content_id)
         if not item or item.get("category") != "music":
             return False
