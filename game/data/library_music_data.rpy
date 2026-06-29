@@ -134,19 +134,18 @@ init -1 python:
         ensure_music_library_registered()
         item = get_library_item(content_id)
         if not item or item.get("category") != "music":
-            return False
+            return
 
         if not is_library_content_unlocked(content_id):
-            return False
+            return
 
         track_path = item.get("file")
         if not track_path or not renpy.loadable(track_path):
-            return False
+            return
 
         renpy.music.play(track_path, channel="music", loop=True)
         persistent.library_music_playing_id = content_id
         renpy.save_persistent()
-        return True
 
     def stop_library_music_preview():
         renpy.music.stop(channel="music", fadeout=0.5)
@@ -155,8 +154,6 @@ init -1 python:
 
         if renpy.loadable("audio/bgm.mp3"):
             renpy.music.play("audio/bgm.mp3", channel="music", loop=True, fadein=0.5)
-
-        return True
 
     def is_library_music_playing(content_id):
         if persistent.library_music_playing_id != content_id:
