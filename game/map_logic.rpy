@@ -51,7 +51,110 @@ init -1 python:
             return False
         if loc.get("default_unlocked", False):
             return True
+
+        unlocked_locations = progress.get("unlocked_map_locations", [])
+        if unlocked_locations is None:
+            unlocked_locations = []
+        elif not isinstance(unlocked_locations, list):
+            unlocked_locations = list(unlocked_locations)
+            progress["unlocked_map_locations"] = unlocked_locations
+
+        if location_id in unlocked_locations:
+            return True
+
         return map_conditions_are_met(loc.get("unlock_conditions", []))
+
+
+    def refresh_unlocked_map_locations():
+        unlocked_locations = progress.setdefault("unlocked_map_locations", [])
+        if unlocked_locations is None:
+            unlocked_locations = []
+            progress["unlocked_map_locations"] = unlocked_locations
+        elif not isinstance(unlocked_locations, list):
+            unlocked_locations = list(unlocked_locations)
+            progress["unlocked_map_locations"] = unlocked_locations
+
+        opening_locations_ready = (
+            map_condition_is_met("flag:opening_map_locations_unlocked")
+            or map_condition_is_met("completed:tam_c01_interview_day")
+        )
+
+        if not opening_locations_ready:
+            for location_id in ["tam_apartment", "huyen_apartment", "company"]:
+                remove_if_present(unlocked_locations, location_id)
+
+        for location_id, location in FIXED_MAP_LOCATIONS.items():
+            if location.get("default_unlocked", False):
+                add_unique(unlocked_locations, location_id)
+                continue
+
+            if map_conditions_are_met(location.get("unlock_conditions", [])):
+                add_unique(unlocked_locations, location_id)
+
+
+    def unlock_map_location(location_id):
+        initialize_progression()
+
+        if location_id not in FIXED_MAP_LOCATIONS:
+            return
+
+        unlocked_locations = progress.setdefault("unlocked_map_locations", [])
+        if unlocked_locations is None:
+            unlocked_locations = []
+            progress["unlocked_map_locations"] = unlocked_locations
+        elif not isinstance(unlocked_locations, list):
+            unlocked_locations = list(unlocked_locations)
+            progress["unlocked_map_locations"] = unlocked_locations
+
+        add_unique(unlocked_locations, location_id)
+
+
+    def unlock_map_locations(location_ids):
+        initialize_progression()
+
+        for location_id in location_ids or []:
+            unlock_map_location(location_id)
+
+
+    def map_context_for_story_target(chapter_id=None, scene_id=None):
+        if scene_id:
+            context_id = MAP_CONTEXT_BY_SCENE.get(scene_id)
+            if context_id in MAP_CONTEXTS:
+                return context_id
+
+        if chapter_id:
+            context_id = MAP_CONTEXT_BY_CHAPTER.get(chapter_id)
+            if context_id in MAP_CONTEXTS:
+                return context_id
+
+        return None
+
+
+    def queue_story_map_context(context_id=None, chapter_id=None, scene_id=None):
+        global next_story_map_context_id
+
+        resolved_context_id = context_id or map_context_for_story_target(chapter_id=chapter_id, scene_id=scene_id)
+        next_story_map_context_id = resolved_context_id if resolved_context_id in MAP_CONTEXTS else None
+        return next_story_map_context_id
+
+
+    def resolve_story_map_context(default_context_id="act1_default"):
+        global next_story_map_context_id
+
+        resolved_context_id = next_story_map_context_id
+        next_story_map_context_id = None
+
+        if resolved_context_id in MAP_CONTEXTS:
+            return resolved_context_id
+
+        last_completed_chapter = globals().get("get_last_completed_chapter", None)
+        chapter_id = last_completed_chapter() if callable(last_completed_chapter) else None
+        resolved_context_id = map_context_for_story_target(chapter_id=chapter_id)
+
+        if resolved_context_id in MAP_CONTEXTS:
+            return resolved_context_id
+
+        return default_context_id if default_context_id in MAP_CONTEXTS else "act1_default"
 
 
     def chapter_is_available_for_map(chapter_id):

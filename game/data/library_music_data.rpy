@@ -14,7 +14,7 @@ init -1 python:
         "108 Nights The Sky Remembers.mp3": "yuuka_c18c_long_distance_interlude",
         "Between the Frames.mp3": "fb_minyuu_01_first_frame",
         "Calling For My Hand.mp3": "hoang_h01_brother_house",
-        "Con Vẫn Đang Lớn.mp3": "tam_c03_thienan_family",
+        # "Con Vẫn Đang Lớn.mp3": "tam_c03_thienan_family",
         "Couldnt Say Aloud.mp3": "fb_minyuu_04a_old_friends",
         "Finally Be Family.mp3": "group_c11_social_dinner",
         "I Refuse Your Sacrifice.mp3": "hoang_h05_shadow_of_minh",
@@ -28,7 +28,7 @@ init -1 python:
         "The Loop We Are.mp3": "fb_minyuu_02_working_rhythm",
         "Unsent Letter JP Full ver.mp3": "fb_minyuu_03_door_left_open",
         "When Nothing Happens.mp3": "prologue_rain_dream",
-        "夜が朝にほどけるまで.mp3": "yuuka_c09_yuukas_work",
+        # "夜が朝にほどけるまで.mp3": "yuuka_c09_yuukas_work",
     }
 
     def music_slug_from_filename(filename):

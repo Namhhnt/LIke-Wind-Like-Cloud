@@ -29,7 +29,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     on "hide" action SetVariable("quick_menu", True)
 
     $ context = MAP_CONTEXTS.get(context_id, MAP_CONTEXTS["act1_default"])
-    $ bg = context.get("background", "images/maps/city_map_01_day.png")
+    $ bg = context.get("background", "images/maps/city_map_day.png")
     $ panel_bg = ui_frame_or_solid("gui/library/panel.png", "#140f0be6", 26)
     $ frame_bg = ui_frame_or_solid("gui/library/panel.png", "#201812f0", 26)
     $ map_zoom = 2.0
@@ -47,8 +47,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
         if renpy.loadable(bg):
             add bg fit "cover"
-        elif renpy.loadable("images/maps/city_map_01_day.png"):
-            add "images/maps/city_map_01_day.png" fit "cover"
+        elif renpy.loadable("images/maps/city_map_day.png"):
+            add "images/maps/city_map_day.png" fit "cover"
         else:
             add (mm_theme_asset("background_full.png") if mm_loadable(mm_theme_asset("background_full.png")) else Solid("#15120f")) fit "cover"
 
@@ -70,8 +70,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
                 if renpy.loadable(bg):
                     add Transform(bg, zoom=map_zoom)
-                elif renpy.loadable("images/maps/city_map_01_day.png"):
-                    add Transform("images/maps/city_map_01_day.png", zoom=map_zoom)
+                elif renpy.loadable("images/maps/city_map_day.png"):
+                    add Transform("images/maps/city_map_day.png", zoom=map_zoom)
                 else:
                     add Solid("#15120f")
 

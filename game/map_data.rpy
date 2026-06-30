@@ -8,8 +8,8 @@ init -2 python:
             "y": 218,
             "category": "residential",
             "icon": "apartment_high",
-            "default_unlocked": True,
-            "unlock_conditions": [],
+            "default_unlocked": False,
+            "unlock_conditions": ["completed:tam_c01_interview_day"],
             "description": "A polished apartment tower where Tâm starts and returns to familiar ground.",
         },
         "huyen_apartment": {
@@ -19,8 +19,8 @@ init -2 python:
             "y": 290,
             "category": "residential",
             "icon": "apartment_mid",
-            "default_unlocked": True,
-            "unlock_conditions": [],
+            "default_unlocked": False,
+            "unlock_conditions": ["completed:tam_c01_interview_day"],
             "description": "A neighborhood apartment block near late-night food and familiar conversations.",
         },
         "hoang_house": {
@@ -133,6 +133,30 @@ init -2 python:
             "temporarily_locked_locations": {},
             "force_only_locations": [],
         },
+        "day_default": {
+            "background": "images/maps/city_map_01_day.png",
+            "title": "City Map",
+            "subtitle": "Choose where the story goes next.",
+            "show_locked_fixed_locations": True,
+            "temporarily_locked_locations": {},
+            "force_only_locations": [],
+        },
+        "afternoon_default": {
+            "background": "images/maps/city_map_01_afternoon.png",
+            "title": "City Map",
+            "subtitle": "The city is still bright, but the day is starting to turn.",
+            "show_locked_fixed_locations": True,
+            "temporarily_locked_locations": {},
+            "force_only_locations": [],
+        },
+        "evening_default": {
+            "background": "images/maps/city_map_01_evening.png",
+            "title": "City at Evening",
+            "subtitle": "The city settles into evening as the next choice opens up.",
+            "show_locked_fixed_locations": True,
+            "temporarily_locked_locations": {},
+            "force_only_locations": [],
+        },
         "night_default": {
             "background": "images/maps/city_map_01_night.png",
             "title": "City at Night",
@@ -199,6 +223,16 @@ init -2 python:
         "minyuu_c23b_ex_lovers_resolution": "restaurant",
         "minyuu_c23c_still_lovers_resolution": "conference_hall",
         "final_c24_last_choices": "conference_hall",
+    }
+
+    MAP_CONTEXT_BY_CHAPTER = {
+        "tam_c02_company_party": "evening_default",
+        "yuuka_c08_festival_arrival": "afternoon_default",
+        "final_c24_last_choices": "festival_finale",
+    }
+
+    MAP_CONTEXT_BY_SCENE = {
+        "tam_c01_interview_day_s01_tam_huyen_morning": "day_default",
     }
 
     MAP_MARKER_OFFSETS = [

@@ -4,6 +4,7 @@ define e = Character("Eileen")
 
 
 default progression_autosave_slot = "_progression_auto"
+default next_story_map_context_id = None
 
 
 init -1 python:
@@ -32,7 +33,7 @@ init -1 python:
 
 
     def reset_progression_for_new_game():
-        global progress
+        global progress, next_story_map_context_id
 
         clear_progression_autosave()
 
@@ -44,6 +45,8 @@ init -1 python:
 
         if callable(globals().get("make_progress_state", None)):
             progress = make_progress_state()
+
+        next_story_map_context_id = None
 
         renpy.block_rollback()
 

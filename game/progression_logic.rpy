@@ -52,6 +52,7 @@ init -1 python:
             "excluded": [],
             "hidden": [],
             "temporarily_hidden": [],
+            "unlocked_map_locations": [],
             "play_order": [],
             "recommended_next": [],
             "route_status": {route_id: "locked" for route_id in ROUTE_ORDER},
@@ -200,7 +201,11 @@ init -1 python:
         normalize_persistent_progression_state()
         normalize_progress_runtime_state()
 
+        refresh_map_unlocks = globals().get("refresh_unlocked_map_locations", None)
+
         if progress["initialized"]:
+            if callable(refresh_map_unlocks):
+                refresh_map_unlocks()
             recalculate_chapter_availability()
             recalculate_route_status()
             recalculate_ending_eligibility()
@@ -214,6 +219,8 @@ init -1 python:
         if first_chapter:
             add_unique(progress["available"], first_chapter)
 
+        if callable(refresh_map_unlocks):
+            refresh_map_unlocks()
         recalculate_chapter_availability()
         recalculate_route_status()
         recalculate_ending_eligibility()
@@ -429,6 +436,10 @@ init -1 python:
         apply_choice_unlocks(chapter)
         apply_exclusions(chapter)
         apply_direct_unlocks(chapter)
+
+        refresh_map_unlocks = globals().get("refresh_unlocked_map_locations", None)
+        if callable(refresh_map_unlocks):
+            refresh_map_unlocks()
 
         recalculate_chapter_availability()
         recalculate_route_status()

@@ -8,7 +8,9 @@ label route_map(selected_route=DEFAULT_ROUTE_ID, selected_node=None):
         call route_map_timeline(selected_route=selected_route, selected_node=selected_node)
         return
 
-    jump story_hub
+    $ resolved_context_id = resolve_story_map_context()
+    call story_hub(context_id=resolved_context_id)
+    return
 
 
 label route_map_timeline(selected_route=DEFAULT_ROUTE_ID, selected_node=None):

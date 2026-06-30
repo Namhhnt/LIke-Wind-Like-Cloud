@@ -6,6 +6,8 @@ label prologue_rain_dream:
     call prologue_rain_dream_s02_wake_up
     call prologue_rain_dream_s03_tell_or_hide
     $ story_complete_chapter('prologue_rain_dream')
+    if renpy.has_label('tam_c01_interview_day'):
+        jump tam_c01_interview_day
     if renpy.has_label('route_map'):
         jump route_map
     return
