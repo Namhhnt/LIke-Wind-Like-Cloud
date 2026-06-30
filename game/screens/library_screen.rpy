@@ -31,9 +31,9 @@ screen library_menu_shell(page_title, page_subtitle, back_action=ShowMenu("main_
                 ypos 24
                 spacing 4
 
-                use main_menu_nav_button(label=_("Start"), action=Start(), icon_text="❧")
+                use main_menu_nav_button(label=_("Start"), action=Show("main_menu_start_prompt"), icon_text="❧")
                 use main_menu_nav_button(label=_("Continue"), action=ShowMenu("load"), icon_text="◷")
-                use main_menu_nav_button(label=_("Story Chapters"), action=Start("route_map"), icon_text="▦")
+                use main_menu_nav_button(label=_("Story Chapters"), action=Start("route_map_timeline"), icon_text="▦")
                 use main_menu_nav_button(label=_("Library"), action=NullAction(), primary=True, icon_text="▧")
                 use main_menu_nav_button(label=_("Settings"), action=ShowMenu("preferences"), icon_text="⚙")
                 use main_menu_nav_button(label=_("Quit"), action=Quit(confirm=True), icon_text="⇱")

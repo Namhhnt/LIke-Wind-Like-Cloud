@@ -4,6 +4,14 @@
 #   timeline_chapter_map returns (action, chapter_id, route_id, node_id)
 
 label route_map(selected_route=DEFAULT_ROUTE_ID, selected_node=None):
+    if selected_route != DEFAULT_ROUTE_ID or selected_node is not None:
+        call route_map_timeline(selected_route=selected_route, selected_node=selected_node)
+        return
+
+    jump story_hub
+
+
+label route_map_timeline(selected_route=DEFAULT_ROUTE_ID, selected_node=None):
     window hide
     $ initialize_progression()
     $ current_route, current_node = timeline_resolve_route_selection(selected_route, selected_node)

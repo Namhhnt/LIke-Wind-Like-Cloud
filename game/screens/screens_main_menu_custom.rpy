@@ -101,7 +101,7 @@ screen main_menu_navigation():
 
             use main_menu_nav_button(
                 label=_("Start"),
-                action=Start(),
+                action=Show("main_menu_start_prompt"),
                 primary=True,
                 icon_text="❧"
             )
@@ -114,7 +114,7 @@ screen main_menu_navigation():
 
             use main_menu_nav_button(
                 label=_("Story Chapters"),
-                action=Start("route_map"),
+                action=Start("route_map_timeline"),
                 icon_text="▦"
             )
 
@@ -137,7 +137,7 @@ screen main_menu_navigation():
             )
 
 
-screen main_menu_nav_button(label, action, primary=False, icon_text="•"):
+screen main_menu_nav_button(label, action, primary=False, icon_text="•", sensitive=True):
 
     $ idle_bg = mm_theme_asset("menu_button_active_frame.png") if primary and mm_loadable(mm_theme_asset("menu_button_active_frame.png")) else (mm_theme_asset("menu_button_frame.png") if mm_loadable(mm_theme_asset("menu_button_frame.png")) else Solid("#00000000"))
     $ hover_bg = mm_theme_asset("menu_button_hover_frame.png") if mm_loadable(mm_theme_asset("menu_button_hover_frame.png")) else Solid("#ffffff16")
@@ -147,6 +147,8 @@ screen main_menu_nav_button(label, action, primary=False, icon_text="•"):
         ysize 62
         background idle_bg
         hover_background hover_bg
+        insensitive_background idle_bg
+        sensitive sensitive
         action action
 
         hbox:
@@ -157,13 +159,13 @@ screen main_menu_nav_button(label, action, primary=False, icon_text="•"):
             text icon_text:
                 min_width 34
                 size 27
-                color "#efe4d4"
+                color ("#efe4d4" if sensitive else "#9c9185")
                 yalign 0.5
 
             text label:
                 size 29
-                color "#efe4d4"
-                hover_color "#fff4dd"
+                color ("#efe4d4" if sensitive else "#9c9185")
+                hover_color ("#fff4dd" if sensitive else "#9c9185")
                 yalign 0.5
 
             if primary:
@@ -171,9 +173,94 @@ screen main_menu_nav_button(label, action, primary=False, icon_text="•"):
 
                 text "›":
                     size 40
-                    color "#fff2d0"
+                    color ("#fff2d0" if sensitive else "#9c9185")
                     xalign 1.0
                     yalign 0.5
+
+
+screen main_menu_start_prompt():
+
+    modal True
+    zorder 200
+
+    $ panel_bg = Frame(mm_theme_asset("menu_panel_frame.png"), 36, 36) if mm_loadable(mm_theme_asset("menu_panel_frame.png")) else Solid("#2d261fe8")
+    $ continue_enabled = has_progression_autosave()
+
+    key "game_menu" action Hide("main_menu_start_prompt")
+    key "K_ESCAPE" action Hide("main_menu_start_prompt")
+
+    add Solid("#00000088")
+
+    fixed:
+        xysize (1920, 1080)
+
+        button:
+            background None
+            hover_background None
+            action Hide("main_menu_start_prompt")
+            xfill True
+            yfill True
+
+        frame:
+            xpos 690
+            ypos 266
+            xsize 540
+            ysize 472
+            background panel_bg
+
+            vbox:
+                xpos 34
+                ypos 30
+                spacing 16
+
+                text _("Choose how you want to begin."):
+                    size 34
+                    bold True
+                    color "#f4e4c5"
+                    outlines [(1, "#00000088", 0, 1)]
+
+                text _("Continue from last save point"):
+                    size 28
+                    color ("#f4d59f" if continue_enabled else "#b3a291")
+
+                text _("Load the progression autosave created the last time you reached the map."):
+                    size 20
+                    color ("#d9c7ae" if continue_enabled else "#99897a")
+
+                use main_menu_nav_button(
+                    label=_("Continue"),
+                    action=[Hide("main_menu_start_prompt"), FileLoad(progression_autosave_slot, confirm=False, slot=True)],
+                    primary=continue_enabled,
+                    icon_text="◷",
+                    sensitive=continue_enabled
+                )
+
+                if not continue_enabled:
+                    text _("No map autosave has been created yet."):
+                        size 18
+                        color "#b8aa99"
+
+                null height 8
+
+                text _("New Game"):
+                    size 28
+                    color "#f4d59f"
+
+                text _("Start over from the beginning and replace the current progression autosave."):
+                    size 20
+                    color "#d9c7ae"
+
+                use main_menu_nav_button(
+                    label=_("New Game"),
+                    action=[Function(clear_progression_autosave), Hide("main_menu_start_prompt"), Start("new_game_overwrite")],
+                    icon_text="↺"
+                )
+
+                textbutton _("Back"):
+                    background None
+                    action Hide("main_menu_start_prompt")
+                    text_color "#d9c9b0"
+                    text_hover_color "#fff0cf"
 
 
 screen main_menu_top_controls():
