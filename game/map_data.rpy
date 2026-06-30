@@ -4,7 +4,7 @@ init -2 python:
         "tam_apartment": {
             "id": "tam_apartment",
             "name": "Tâm's Apartment",
-            "x": 280,
+            "x": 200,
             "y": 218,
             "category": "residential",
             "icon": "apartment_high",
@@ -15,8 +15,8 @@ init -2 python:
         "huyen_apartment": {
             "id": "huyen_apartment",
             "name": "Huyền's Apartment",
-            "x": 520,
-            "y": 290,
+            "x": 580,
+            "y": 180,
             "category": "residential",
             "icon": "apartment_mid",
             "default_unlocked": False,
@@ -26,8 +26,8 @@ init -2 python:
         "hoang_house": {
             "id": "hoang_house",
             "name": "Hoàng / Minh's House",
-            "x": 302,
-            "y": 782,
+            "x": 240,
+            "y": 732,
             "category": "residential_villa",
             "icon": "villa",
             "default_unlocked": False,
@@ -37,8 +37,8 @@ init -2 python:
         "park": {
             "id": "park",
             "name": "Park",
-            "x": 366,
-            "y": 486,
+            "x": 350,
+            "y": 432,
             "category": "public",
             "icon": "park",
             "default_unlocked": True,
@@ -48,8 +48,8 @@ init -2 python:
         "library": {
             "id": "library",
             "name": "Library",
-            "x": 700,
-            "y": 500,
+            "x": 550,
+            "y": 450,
             "category": "public",
             "icon": "library",
             "default_unlocked": False,
@@ -59,8 +59,8 @@ init -2 python:
         "foodie_street": {
             "id": "foodie_street",
             "name": "Foodie Street",
-            "x": 790,
-            "y": 324,
+            "x": 720,
+            "y": 280,
             "category": "commercial",
             "icon": "food",
             "default_unlocked": True,
@@ -70,8 +70,8 @@ init -2 python:
         "shopping_area": {
             "id": "shopping_area",
             "name": "Shopping Area",
-            "x": 984,
-            "y": 296,
+            "x": 816,
+            "y": 210,
             "category": "commercial",
             "icon": "shopping",
             "default_unlocked": False,
@@ -81,8 +81,8 @@ init -2 python:
         "restaurant": {
             "id": "restaurant",
             "name": "Restaurant",
-            "x": 896,
-            "y": 378,
+            "x": 826,
+            "y": 288,
             "category": "commercial",
             "icon": "restaurant",
             "default_unlocked": True,
@@ -103,8 +103,8 @@ init -2 python:
         "conference_hall": {
             "id": "conference_hall",
             "name": "Conference Hall",
-            "x": 1048,
-            "y": 456,
+            "x": 896,
+            "y": 378,
             "category": "event",
             "icon": "event",
             "default_unlocked": False,
@@ -126,7 +126,7 @@ init -2 python:
 
     MAP_CONTEXTS = {
         "act1_default": {
-            "background": "images/maps/city_map_01_day.png",
+            "background": "images/maps/city_map_day.png",
             "title": "City Map",
             "subtitle": "Choose where the story goes next.",
             "show_locked_fixed_locations": True,
@@ -134,7 +134,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "day_default": {
-            "background": "images/maps/city_map_01_day.png",
+            "background": "images/maps/city_map_day.png",
             "title": "City Map",
             "subtitle": "Choose where the story goes next.",
             "show_locked_fixed_locations": True,
@@ -142,7 +142,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "afternoon_default": {
-            "background": "images/maps/city_map_01_afternoon.png",
+            "background": "images/maps/city_map_afternoon.png",
             "title": "City Map",
             "subtitle": "The city is still bright, but the day is starting to turn.",
             "show_locked_fixed_locations": True,
@@ -150,7 +150,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "evening_default": {
-            "background": "images/maps/city_map_01_evening.png",
+            "background": "images/maps/city_map_evening.png",
             "title": "City at Evening",
             "subtitle": "The city settles into evening as the next choice opens up.",
             "show_locked_fixed_locations": True,
@@ -158,7 +158,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "night_default": {
-            "background": "images/maps/city_map_01_night.png",
+            "background": "images/maps/city_map_night.png",
             "title": "City at Night",
             "subtitle": "Some routes narrow when the city grows quieter.",
             "show_locked_fixed_locations": True,
@@ -166,7 +166,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "festival_finale": {
-            "background": "images/maps/city_map_01_night.png",
+            "background": "images/maps/city_map_night.png",
             "title": "Festival Night",
             "subtitle": "The city closes in around the event that matters most.",
             "show_locked_fixed_locations": True,

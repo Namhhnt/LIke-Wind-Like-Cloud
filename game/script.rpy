@@ -52,7 +52,7 @@ init -1 python:
 
 label start:
     $ initialize_progression()
-    jump route_map
+    jump prologue_rain_dream
 
 
 label new_game_overwrite:
