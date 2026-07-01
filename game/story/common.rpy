@@ -19,3 +19,7 @@ define quan = Character("Quân", image="quan")
 define hoang_unknown = Character(_("Mysterious man"), image="hoang")
 define hoang = Character("Hoàng", image="hoang")
 define narrator = Character(None)
+
+define yuuka = Character("Yuuka", image="yuuka")
+define minh = Character("Minh", image="minh")
+define thienan = Character("Thiên An", image="thienan")
