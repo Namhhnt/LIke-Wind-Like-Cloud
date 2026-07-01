@@ -73,15 +73,15 @@ screen library_character_card(profile):
     $ has_route = profile.get("route") is not None
     $ cid = profile["id"]
 
-    frame:
-        xsize 1148
-        background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
-        padding (24, 22)
+    if unlocked:
+        button:
+            background None
+            action ShowMenu("library_character_detail", character_id=cid)
 
-        if unlocked:
-            button:
-                background None
-                action ShowMenu("library_character_detail", character_id=cid)
+            frame:
+                xsize 1176
+                background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+                padding (24, 22)
 
                 hbox:
                     spacing 24
@@ -125,7 +125,12 @@ screen library_character_card(profile):
                             style "library_story_meta"
                             color LIB_MUTED
 
-        else:
+    if not unlocked:
+        frame:
+            xsize 1176
+            background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+            padding (24, 22)
+
             hbox:
                 spacing 24
 
@@ -156,6 +161,8 @@ screen library_character_card(profile):
 
 
 screen library_character_detail(character_id):
+
+    tag menu
 
     python:
         profile = None

@@ -3,8 +3,6 @@ screen library_menu_shell(page_title, page_subtitle, back_action=ShowMenu("main_
     add (mm_theme_asset("background_full.png") if mm_loadable(mm_theme_asset("background_full.png")) else Solid("#15120f")) fit "cover"
     add Solid("#00000066")
 
-    use main_menu_top_controls
-
     key "game_menu" action back_action
     key "K_ESCAPE" action back_action
 
@@ -21,54 +19,18 @@ screen library_menu_shell(page_title, page_subtitle, back_action=ShowMenu("main_
 
         frame:
             xpos 72
-            ypos 225
-            xsize 460
-            ysize 505
-            background (Frame(mm_theme_asset("menu_panel_frame.png"), 36, 36) if mm_loadable(mm_theme_asset("menu_panel_frame.png")) else Solid(LIB_PANEL))
-
-            vbox:
-                xpos 26
-                ypos 24
-                spacing 4
-
-                use main_menu_nav_button(label=_("Start"), action=Show("main_menu_start_prompt"), icon_text="❧")
-                use main_menu_nav_button(label=_("Continue"), action=ShowMenu("load"), icon_text="◷")
-                use main_menu_nav_button(label=_("Story Chapters"), action=Start("route_map_timeline"), icon_text="▦")
-                use main_menu_nav_button(label=_("Library"), action=NullAction(), primary=True, icon_text="▧")
-                use main_menu_nav_button(label=_("Settings"), action=ShowMenu("preferences"), icon_text="⚙")
-                use main_menu_nav_button(label=_("Quit"), action=Quit(confirm=True), icon_text="⇱")
-
-        frame:
-            xpos 560
             ypos 210
-            xsize 1290
-            ysize 760
+            xsize 1760
+            ysize 740
             background (Frame(mm_theme_asset("content_panel_frame.png"), 40, 40) if mm_loadable(mm_theme_asset("content_panel_frame.png")) else Solid(LIB_PANEL_SOFT))
 
             fixed:
                 xpos 42
                 ypos 36
-                xsize 1206
-                ysize 676
+                xsize 1676
+                ysize 668
 
                 transclude
-
-        vbox:
-            xpos 72
-            ypos 805
-            spacing 4
-
-            text _("“Some memories are like the wind,"):
-                color "#D8C9AD"
-                size 24
-                italic True
-                outlines [(1, "#00000088", 0, 1)]
-
-            text _("passing by quietly, yet never truly forgotten.”"):
-                color "#D8C9AD"
-                size 24
-                italic True
-                outlines [(1, "#00000088", 0, 1)]
 
         textbutton back_label:
             xpos 72
@@ -76,6 +38,7 @@ screen library_menu_shell(page_title, page_subtitle, back_action=ShowMenu("main_
             action back_action
             text_style "library_back_button_text"
 
+    use main_menu_top_controls
     use main_menu_asset_debug
 
 
