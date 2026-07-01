@@ -15,11 +15,11 @@ tags:
 
 scene bg black
 
-narrator: Sáng Chủ Nhật hôm ấy, trời không mưa, cũng không nắng gắt. Một buổi sáng vừa đủ dịu để người ta có thể đi ra ngoài mà không cần chuẩn bị tinh thần quá nhiều.
+narrator: That Sunday morning, there was no rain and no harsh sun. Just a morning gentle enough for people to go outside without much mental preparation.
 
-narrator: Với Yuuka, đó là một ngày hiếm hoi không có lịch quay, không có bài dựng phải nộp, cũng không có buổi họp câu lạc bộ nào chen ngang vào đời sống riêng tư vốn đã hơi chật chội của cô.
+narrator: For Yuuka, it was one of those rare days with no shoot on the schedule, no edit to turn in, and no club meeting cutting into the cramped little space that was her private life.
 
-narrator: Còn với Minh, Chủ Nhật đơn giản là ngày thích hợp để đi mua đồ dùng trong tuần.
+narrator: And for Minh, Sunday was simply the right day to go buy the week's supplies.
 
 scene bg cg_yuuka_minh_market_walk with fade
 show minh neutral at left
@@ -43,11 +43,11 @@ minh neutral: "That was not praise."
 
 yuuka teasing: "I accept it anyway."
 
-narrator: Minh khẽ thở ra. Không hẳn là bất lực, cũng không hẳn là khó chịu. Gần Yuuka lâu rồi, anh dần hiểu rằng có những cuộc tranh luận tốt nhất là nên kết thúc trước khi chúng kịp bắt đầu.
+narrator: Minh let out a quiet breath. Not exactly helpless, and not exactly annoyed either. After spending a long time around Yuuka, he had come to understand that some arguments were best ended before they even began.
 
-narrator: Khu chợ cuối tuần không quá đông, nhưng vẫn đủ nhộn nhịp. Tiếng người bán hàng, tiếng xe đẩy, tiếng túi giấy sột soạt và mùi bánh mì mới nướng pha vào nhau thành một thứ âm thanh rất đời thường.
+narrator: The weekend market wasn't too crowded, but it was lively enough. Vendors' voices, cart wheels, the rustle of paper bags, and the smell of fresh bread all mingled into a very ordinary kind of sound.
 
-narrator: Yuuka đi bên cạnh Minh, mắt nhìn hết quầy trái cây lại sang quầy hoa, vẻ mặt sáng lên như một đứa trẻ vừa được thả vào bảo tàng những thứ nhỏ nhặt.
+narrator: Yuuka walked beside Minh, looking from the fruit stall to the flower stall, her face lighting up like a child just let loose in a museum of small things.
 
 yuuka surprised: "They sell strawberries here too?"
 
@@ -71,11 +71,11 @@ minh smile: "Better?"
 
 yuuka bashful: "A little."
 
-narrator: Cô quay mặt đi, nhưng nụ cười nhỏ nơi khóe môi vẫn không giấu được. Minh nhìn thấy. Dĩ nhiên là anh nhìn thấy. Anh chỉ không nói ra.
+narrator: She turned away, but the small smile at the corner of her mouth still couldn't hide. Minh saw it. Of course he saw it. He just didn't say anything.
 
 scene bg cg_yuuka_minh_choose_strawberries with dissolve
 
-narrator: Yuuka chọn một hộp dâu nhỏ. Chọn rất lâu, cân nhắc từng quả như thể đang tuyển diễn viên chính cho một bộ phim ngắn về mùa xuân.
+narrator: Yuuka picked out a small box of strawberries. She took a long time, weighing each berry as if she were casting the lead actor for a spring short film.
 
 minh neutral: "That one."
 
@@ -93,9 +93,9 @@ minh smile: "I will take that as praise."
 
 yuuka grinning: "See? You learn fast."
 
-narrator: Minh cầm hộp dâu cô chọn, đặt vào giỏ. Động tác rất tự nhiên, rất gọn gàng, như thể từ đầu đến cuối anh đã biết mình sẽ là người cầm nó.
+narrator: Minh took the box of strawberries she had chosen and put it in the basket. The motion was very natural, very neat, as if he'd known from the start he would be the one carrying it.
 
-narrator: Yuuka nhìn bàn tay anh. Rồi nhìn chiếc giỏ. Rồi lại nhìn anh.
+narrator: Yuuka looked at his hand. Then at the basket. Then back at him.
 
 yuuka smile: "You know, I can carry something too."
 
@@ -117,7 +117,7 @@ yuuka smile: "Or where feelings start."
 
 minh neutral: "That too."
 
-narrator: Câu trả lời ấy đến quá bình thản, khiến Yuuka khựng lại trong nửa nhịp. Cô quay sang nhìn anh, nhưng Minh đã cúi xuống xem danh sách mua đồ, vẻ mặt điềm nhiên như thể vừa rồi anh chỉ nói về giá hành lá.
+narrator: His answer came so calmly that Yuuka froze for half a beat. She turned to look at him, but Minh had already lowered his head to check the shopping list, his expression so placid it was as if he'd only just been talking about the price of scallions.
 
 show yuuka flustered at right
 
@@ -133,9 +133,9 @@ yuuka frustrated: "You are impossible."
 
 minh neutral: "Ten, then."
 
-narrator: Yuuka nhìn anh chằm chằm. Minh vẫn bình thản đặt hộp trứng vào giỏ.
+narrator: Yuuka stared at him. Minh calmly placed the egg carton into the basket.
 
-narrator: Có đôi khi cô thật sự không biết anh vô tình hay cố ý. Nhưng nếu phải thành thật, cô nghiêng về khả năng thứ hai. Người đàn ông này quá thông minh để có thể vô tội hoàn toàn.
+narrator: Sometimes she really couldn't tell whether he was doing it on purpose or not. But if she had to be honest, she leaned toward the second possibility. This man was too clever to be completely innocent.
 
 show yuuka teasing at right
 
@@ -161,11 +161,11 @@ minh neutral: "Because I am carrying the strawberries."
 
 yuuka grinning: "Also that."
 
-narrator: Họ tiếp tục đi qua từng quầy hàng. Rau xanh, trứng, bánh mì, sữa, một ít thịt, vài món gia vị. Những thứ chẳng có gì đặc biệt, vậy mà khi đi cùng nhau, chúng bỗng trở nên có chút gì đó dịu dàng.
+narrator: They kept moving from stall to stall. Leafy greens, eggs, bread, milk, a little meat, a few seasonings. Nothing especially remarkable, and yet when they were together, it all seemed to take on a softness of its own.
 
-narrator: Yuuka thỉnh thoảng lại giơ một món lên hỏi. Minh trả lời ngắn gọn. Khi cần thì giải thích. Khi không cần thì chỉ nhìn cô bằng ánh mắt điềm tĩnh đến phát bực.
+narrator: Yuuka occasionally held something up to ask about it. Minh answered briefly. When needed, he explained. When not needed, he only looked at her with a patience so calm it was almost infuriating.
 
-narrator: Đến quầy đồ gia dụng nhỏ ở cuối khu chợ, Yuuka đột nhiên dừng lại trước một chiếc tạp dề màu xanh nhạt.
+narrator: At the small household goods stall at the end of the market, Yuuka suddenly stopped in front of a pale blue apron.
 
 scene bg cg_yuuka_minh_blue_apron with dissolve
 
@@ -219,7 +219,7 @@ yuuka confused: "Then why did you answer like that?"
 
 minh smile: "Because it worked."
 
-narrator: Lần này thì đến lượt Yuuka im lặng thật sự. Cô nhìn Minh. Minh nhìn lại cô. Vẻ mặt anh vẫn bình thản, nhưng khóe môi hơi cong lên. Rất nhẹ thôi. Đủ để khiến cô biết mình vừa thua một ván rất sạch.
+narrator: This time it was Yuuka who fell silent for real. She looked at Minh. Minh looked back. His face was still calm, but the corner of his mouth had curved up. Just a little. Enough for her to know she'd lost that round cleanly.
 
 yuuka embarrassed: "You are getting better at this."
 
@@ -237,18 +237,18 @@ yuuka frustrated: "You are still winning. I dislike this."
 
 minh smile: "Noted."
 
-narrator: Chiếc tạp dề xanh nhạt cuối cùng được đặt vào giỏ cùng với dâu, trứng và bánh mì. Yuuka cố giữ vẻ mặt bình thường, nhưng ánh mắt vẫn còn hơi dao động.
+narrator: The pale blue apron was finally placed in the basket along with the strawberries, eggs, and bread. Yuuka tried to keep her expression normal, but her eyes were still a little unsettled.
 
-narrator: Minh nhận ra điều đó. Anh không trêu thêm. Đôi khi, sự im lặng đúng lúc cũng là một kiểu dịu dàng.
+narrator: Minh noticed. He didn't tease her further. Sometimes, silence at the right time was its own kind of tenderness.
 
 scene bg cg_yuuka_minh_bench_rest with fade
 
-narrator: Sau khi mua xong, hai người ghé vào một góc nghỉ nhỏ bên ngoài khu chợ. Có vài chiếc ghế dài đặt dưới tán cây, gió luồn qua kẽ lá, mang theo mùi nắng non và tiếng phố xá xa xa.
+narrator: After they finished shopping, the two of them stopped by a small rest area outside the market. A few benches sat beneath the trees, wind drifting through the leaves with the scent of young sunlight and the distant hum of the street.
 
 show minh neutral at left
 show yuuka neutral at right
 
-narrator: Minh đặt túi đồ xuống cạnh chân. Yuuka ngồi xuống bên cạnh anh, ôm hộp dâu trong tay như đang giữ một báu vật vừa giành được sau trận chiến thương lượng cực kỳ vẻ vang.
+narrator: Minh set the shopping bag down beside his feet. Yuuka sat next to him, holding the strawberry box in both hands as if it were a treasure she had just won after a brilliantly negotiated battle.
 
 yuuka smile: "Can we eat some now?"
 
@@ -274,13 +274,13 @@ yuuka happy: "That is one of my talents."
 
 scene bg cg_yuuka_minh_clean_strawberry with dissolve
 
-narrator: Minh lấy từ túi ra một chai nước nhỏ và một hộp khăn giấy ướt. Yuuka nhìn anh làm mọi thứ một cách trật tự: mở hộp dâu, lau tay, rửa sơ từng quả bằng nước uống, thấm nhẹ qua khăn giấy sạch, rồi mới đưa cho cô.
+narrator: Minh took a small bottle of water and a pack of wet tissues from his bag. Yuuka watched him do everything in an orderly way: open the strawberry box, wipe his hands, rinse each berry lightly with drinking water, pat them dry with a clean tissue, and only then hand them to her.
 
 show yuuka melancholic at right
 
-narrator: Chỉ là một việc rất nhỏ. Nhỏ đến mức nếu kể lại với người khác, có lẽ chẳng ai thấy đáng để bận tâm.
+narrator: Just a tiny thing. So tiny that if someone else heard about it, they probably wouldn't think it was worth paying attention to.
 
-narrator: Nhưng với Yuuka, chính những điều nhỏ như vậy mới luôn khiến lòng cô mềm đi.
+narrator: But for Yuuka, it was precisely those little things that always made her heart soften.
 
 yuuka melancholic: "You always do this."
 
@@ -294,7 +294,7 @@ yuuka neutral: "Is it only a habit?"
 
 minh neutral: "No."
 
-narrator: Câu trả lời ngắn gọn ấy làm Yuuka khẽ cúi mắt. Cô cầm quả dâu anh vừa đưa, nhưng chưa ăn ngay. Đầu ngón tay cô chạm vào phần lá xanh còn vương chút nước mát.
+narrator: That short answer made Yuuka lower her eyes slightly. She held the strawberry he'd just given her, but didn't eat it right away. Her fingertips touched the green leaves still holding a trace of cool water.
 
 yuuka bashful: "You know, when someone is too kind in quiet ways, it becomes unfair."
 
@@ -312,7 +312,7 @@ yuuka shy: "No."
 
 scene bg cg_yuuka_minh_hair_touch with dissolve
 
-narrator: Minh nhìn cô một lúc lâu. Rồi anh đưa tay, rất nhẹ, gạt một lọn tóc bị gió thổi vướng lên má cô.
+narrator: Minh watched her for a long moment. Then he reached out, very gently, and brushed away a strand of hair the wind had blown onto her cheek.
 
 show yuuka flustered at right
 
@@ -330,9 +330,9 @@ minh neutral: "Was it not?"
 
 yuuka shy: "It was."
 
-narrator: Một khoảng lặng mỏng rơi xuống giữa hai người.
+narrator: A thin silence fell between them.
 
-narrator: Không ngượng ngập. Không xa cách. Chỉ là thứ im lặng rất nhẹ, như ánh nắng trượt qua tán cây, như tiếng gió chạm vào cổ áo, như một điều gì đó đang từ từ thành hình mà chưa ai muốn gọi tên quá lớn.
+narrator: Not awkward. Not distant. Just a very light kind of silence, like sunlight sliding through the tree canopy, like the wind brushing the collar of a shirt, like something slowly taking shape that neither of them wanted to name too loudly yet.
 
 yuuka neutral: "Minh."
 
@@ -376,11 +376,11 @@ yuuka teasing: "Liar."
 
 minh neutral: "Maybe a little."
 
-narrator: Yuuka bật cười. Lần này không phải kiểu cười trêu chọc, cũng không phải kiểu cười cố che giấu bối rối. Chỉ là một tiếng cười nhỏ, trong và nhẹ, tan vào buổi sáng Chủ Nhật bình thường đến mức gần như hoàn hảo.
+narrator: Yuuka let out a laugh. Not a teasing laugh this time, nor a laugh trying to hide her embarrassment. Just a small, clear, light laugh, dissolving into a Sunday morning that was ordinary enough to feel almost perfect.
 
 scene bg cg_yuuka_minh_strawberry_smile with dissolve
 
-narrator: Minh đưa cho cô thêm một quả dâu. Yuuka nhận lấy, cắn một miếng nhỏ. Vị ngọt hơi chua lan trên đầu lưỡi.
+narrator: Minh handed her another strawberry. Yuuka took it and bit off a small piece. Its sweet-and-sour flavor spread across her tongue.
 
 yuuka happy: "Good choice."
 
@@ -392,28 +392,28 @@ minh neutral: "Then what?"
 
 yuuka bashful: "Today."
 
-narrator: Minh không trả lời ngay. Anh chỉ ngồi cạnh cô, mắt nhìn về phía con đường trước mặt. Nhưng Yuuka thấy rõ bàn tay anh đặt trên ghế đã nhích lại gần cô hơn một chút.
+narrator: Minh didn't answer right away. He only sat beside her, looking out toward the road ahead. But Yuuka could clearly see that the hand he had resting on the bench had inched a little closer to her.
 
-narrator: Rất chậm. Rất kín đáo.
+narrator: Very slowly. Very discreetly.
 
 scene bg cg_yuuka_minh_finger_touch with dissolve
 
-narrator: Cô nhìn bàn tay ấy, rồi lặng lẽ đặt tay mình xuống bên cạnh.
+narrator: She looked at that hand, then quietly set hers down beside it.
 
-narrator: Hai ngón tay chạm nhau trước. Rất khẽ. Như một sự tình cờ có chủ ý.
+narrator: Their fingers touched first. Very lightly. Like coincidence with intent.
 
 show minh smile at left
 show yuuka smile at right
 
-narrator: Minh không rút tay lại.
+narrator: Minh didn't pull away.
 
-narrator: Yuuka cũng vậy.
+narrator: Yuuka didn't either.
 
-narrator: Trong một buổi sáng chẳng có gì đặc biệt, giữa những túi đồ mua vội và hộp dâu còn vương nước mát, có một điều gì đó đã lặng lẽ trở nên rõ ràng hơn.
+narrator: On a morning that was nothing special, between hastily bought bags and a box of strawberries still beaded with cool water, something had quietly become a little clearer.
 
-narrator: Không cần lời hứa. Không cần tỏ tình thêm. Không cần một khung hình quá đẹp.
+narrator: No promises needed. No extra confession needed. No need for a picture-perfect frame.
 
-narrator: Chỉ cần người kia vẫn ngồi đó. Bên cạnh mình. Bình yên như thể từ đầu đã nên như vậy.
+narrator: Only for the other person to still be there. Beside her. Peaceful, as if that was how it had been meant to be from the beginning.
 
 hide yuuka
 hide minh

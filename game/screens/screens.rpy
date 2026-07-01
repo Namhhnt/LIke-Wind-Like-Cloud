@@ -832,8 +832,9 @@ screen preferences():
             vbox:
                 style_prefix "check"
                 label _("Language")
-                textbutton "English" action Language(None)
+                textbutton "English" action Language("english")
                 textbutton _("Vietnamese") action Language("vietnamese")
+                textbutton _("Japanese") action Language("japanese")
 
         null height (4 * gui.pref_spacing)
 
