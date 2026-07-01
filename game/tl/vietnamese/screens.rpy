@@ -15,6 +15,9 @@ translate vietnamese strings:
     old "Main Menu"
     new "Menu chính"
 
+    old "Route Map"
+    new "Bản đồ tuyến"
+
     old "About"
     new "Giới thiệu"
 
@@ -183,9 +186,6 @@ translate vietnamese strings:
     old "Right Click"
     new "Nhấp chuột phải"
 
-    old "Mouse Wheel Up\nClick Rollback Side"
-    new "Cuộn chuột lên\nNhấp cạnh hoàn tác"
-
     old "Mouse Wheel Down"
     new "Cuộn chuột xuống"
 
@@ -282,3 +282,8 @@ translate vietnamese strings:
 
     old "Progress Debug"
     new "Gỡ lỗi tiến trình"
+
+translate vietnamese strings:
+
+    old "Vietnamese"
+    new "Tiếng Việt"

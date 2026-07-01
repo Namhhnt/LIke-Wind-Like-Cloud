@@ -17,3 +17,9 @@ translate vietnamese strings:
 
     old "Choose an active marker to continue the story."
     new "Hãy chọn một điểm đang hoạt động để tiếp tục câu chuyện."
+
+    old "Drag the map to explore the city. Use Focus to jump back to the current point of interest."
+    new "Kéo bản đồ để khám phá thành phố. Dùng Focus để nhảy về điểm quan tâm hiện tại."
+
+    old "Focus"
+    new "Tập trung"

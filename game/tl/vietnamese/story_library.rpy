@@ -41,3 +41,6 @@ translate vietnamese strings:
 
     old "This story could not be unlocked."
     new "Không thể mở khóa truyện này."
+
+    old "Read"
+    new "Đọc"

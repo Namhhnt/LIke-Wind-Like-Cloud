@@ -404,3 +404,59 @@ translate vietnamese strings:
 
     old "Stop scattered feedback from chat, calls, and informal comments."
     new "Chấm dứt phản hồi rải rác từ chat, cuộc gọi và các nhận xét không chính thức."
+
+translate vietnamese strings:
+
+    old "?  Hint"
+    new "?  Gợi ý"
+
+    old "Choose related data from the left panel first."
+    new "Hãy chọn dữ liệu liên quan từ bảng bên trái trước."
+
+    old "Clear selections"
+    new "Xóa lựa chọn"
+
+    old "Combine clues to generate insights."
+    new "Kết hợp các manh mối để tạo ra nhận định."
+
+    old "Connect each action to its owner."
+    new "Nối từng hành động với người phụ trách của nó."
+
+    old "Drag insights to the appropriate categories."
+    new "Kéo nhận định vào các danh mục phù hợp."
+
+    old "Drag or click to select data."
+    new "Kéo hoặc nhấp để chọn dữ liệu."
+
+    old "Match each action to the correct PIC / owner."
+    new "Ghép từng hành động với PIC / người phụ trách chính xác."
+
+    old "Place evidence that shows what the issue is already hurting."
+    new "Đặt bằng chứng cho thấy vấn đề đang gây tổn hại đến điều gì."
+
+    old "Select multiple related facts to analyze."
+    new "Chọn nhiều dữ kiện liên quan để phân tích."
+
+    old "Selected data (2–4 items to analyze)"
+    new "Dữ liệu đã chọn (2–4 mục để phân tích)"
+
+    old "Solution / Hành động"
+    new "Giải pháp / Hành động"
+
+    old "[pd_get_case('case_scope_creep_01').get('case_title', '')] — [pd_get_case('case_scope_creep_01').get('description', '')]"
+    new "[pd_get_case('case_scope_creep_01').get('case_title', '')] — [pd_get_case('case_scope_creep_01').get('description', '')]"
+
+    old "‹  Back"
+    new "‹  Quay lại"
+
+    old "→  Proceed to Solution"
+    new "→  Tiếp tục đến Giải pháp"
+
+    old "↻  Reset"
+    new "↻  Đặt lại"
+
+    old "▤  Project Notes"
+    new "▤  Ghi chú dự án"
+
+    old "✦  Analyze Selected"
+    new "✦  Phân tích mục đã chọn"

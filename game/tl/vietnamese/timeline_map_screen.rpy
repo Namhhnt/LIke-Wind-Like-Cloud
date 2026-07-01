@@ -51,9 +51,6 @@ translate vietnamese strings:
     old "Time [node.get('duration', 'Approx. 20 min')]"
     new "Thời gian [node.get('duration', 'Approx. 20 min')]"
 
-    old "Unlocked"
-    new "Đã mở khóa"
-
     old "Unlock Requirements"
     new "Yêu cầu mở khóa"
 

@@ -17,3 +17,38 @@ translate vietnamese strings:
 
     old "Start over from the beginning and replace the current progression autosave."
     new "Bắt đầu lại từ đầu và thay thế bản lưu tiến trình hiện tại."
+
+    old "Story Chapters"
+    new "Chương truyện"
+
+    old "Settings"
+    new "Cài đặt"
+
+translate vietnamese strings:
+
+    old "♪  BG.Music"
+    new "♪  Nhạc Nền"
+
+    old "◎  Language"
+    new "◎  Ngôn ngữ"
+
+    old "Press to begin"
+    new "Nhấn để bắt đầu"
+
+    old "“Some memories are like the wind,\npassing by quietly, yet never truly forgotten.”"
+    new "“Có những kỷ niệm như ngọn gió,\nthoáng qua thật khẽ, mà chẳng bao giờ thực sự phai nhòa.”"
+
+    old "LIKE WIND, LIKE CLOUD   © 2024  |  All rights reserved."
+    new "LIKE WIND, LIKE CLOUD   © 2024  |  Đã đăng ký bản quyền."
+
+    old "Yuuka Story  •  Minh Story  •  Tam Story"
+    new "Truyện Yuuka  •  Truyện Minh  •  Truyện Tâm"
+
+    old "Like wind,"
+    new "Tựa như ngọn gió,"
+
+    old "like cloud"
+    new "tựa làn mây"
+
+    old "Missing Main Menu Assets:"
+    new "Thiếu tài nguyên Menu Chính:"
