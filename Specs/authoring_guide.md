@@ -370,7 +370,293 @@ When the player returns to the map, `resolve_story_map_context()` will pick the 
 
 ---
 
-## 7. Story State & Scoring
+## 7. Unlocking Library Content
+
+The Library screen (accessible from the main/game menu) has six categories. Each uses a different unlock mechanism. This section documents all of them.
+
+### 7.1 Character Profiles
+
+**Status: Implemented**
+
+Character profiles use a **granular unlock API**. Instead of auto-unlocking all characters in a route when any chapter completes, the author explicitly unlocks the character (and specific profile sections) from within the scene/chapter script.
+
+#### Unlocking a character
+
+Call from any `.rpy` scene file when the character first appears or is first referenced:
+
+```renpy
+$ unlock_library_character("thienan")
+```
+
+This makes the character card visible in the Library — the name, sprite, description, and tags become accessible. Locked cards show "???" as the name and a "?" placeholder sprite.
+
+#### Unlocking profile sections
+
+Within a character's detail page, sections like Inner Layer, Core Traits, Narrative Function, Notes, and Relationships start **locked** (shown as `[Section Name — Locked]`). The author can unlock them gradually across the story:
+
+```renpy
+$ unlock_character_section("thienan", "inner_layer")
+$ unlock_character_section("thienan", "core_traits")
+$ unlock_character_section("thienan", "narrative_function")
+$ unlock_character_section("thienan", "notes")
+$ unlock_character_section("thienan", "relationships")
+```
+
+Section keys correspond to keys inside the profile's `"profile"` sub-dict, plus `"relationships"` for the top-level relationships list:
+
+| Section Key | Profile Field | Description |
+|---|---|---|
+| `"inner_layer"` | `profile.inner_layer` | Deeper personality / emotional makeup |
+| `"core_traits"` | `profile.core_traits` | List of defining personality traits |
+| `"narrative_function"` | `profile.narrative_function` | The character's role in the story |
+| `"hidden_identity"` | `profile.hidden_identity` | Secret layers (Minh-specific) |
+| `"aliases"` | `profile.aliases` | Alternative names (Minh-specific) |
+| `"notes"` | `profile.notes` | Author notes |
+| `"relationships"` | top-level `relationships` | Relationship list |
+
+The sections `"role"` and `"public_identity"` are **always visible** once the character is unlocked — they do not require a separate unlock call.
+
+#### How it works
+
+- Character IDs and section unlock state are tracked in `persistent.unlocked_library_characters` (list) and `persistent.unlocked_character_sections` (list of `"character_id.section_key"` strings), maintained in `game/story_library.rpy`.
+- The core functions live in `game/data/library_data.rpy`:
+  - `unlock_library_character(character_id)` — adds the character to the unlocked list
+  - `unlock_character_section(character_id, section_key)` — adds the section entry
+  - `is_character_unlocked(profile)` — checks `persistent.unlocked_library_characters`
+  - `is_character_section_unlocked(character_id, section_key)` — checks unlocked sections
+- Profiles with `"route": None` (supporting characters) are always unlocked regardless.
+- The detail screen is at `screen library_character_detail` in `game/screens/library_subscreens.rpy`.
+- 21 character profiles exist across all 8 routes plus supporting cast.
+
+### 7.2 Side Stories (Original Stories)
+
+**Status: Implemented**
+
+Side stories are Markdown files in `game/stories/` registered via a `manifest.json`. They use a **three-tier unlock** system:
+
+| Unlock Mode | Behavior |
+|------------|----------|
+| `"free"` | Unlocked automatically when all `prerequisites` (chapters) are completed. |
+| `"points"` | Unlocked when prerequisites are met **and** the player spends investment points. |
+| *(omitted)* | Defaults to `"points"` if `point_cost > 0`, otherwise `"free"`. |
+
+**Prerequisite example — story requires a chapter to be completed:**
+
+```json
+{
+    "id": "yuuka_minh_sunday_market",
+    "title": "Sunday Market",
+    "series": "Yuuka & Minh",
+    "type": "side_story",
+    "size": "medium",
+    "order": 1,
+    "unlock_mode": "free",
+    "prerequisites": ["tam_c05_sunday_date"],
+    "file": "stories/yuuka_minh_sunday_market.md"
+}
+```
+
+**Point-cost example — story requires investment points:**
+
+```json
+{
+    "id": "special_story",
+    "title": "A Special Evening",
+    "size": "medium",
+    "point_cost": 3,
+    "unlock_mode": "points",
+    "prerequisites": ["tam_c03_thienan_family"]
+}
+```
+
+Point costs are tiered:
+
+| Size Keyword | Default Cost |
+|-------------|-------------|
+| `"small"` | 1 point |
+| `"medium"` | 3 points |
+| `"large"` | 5 points |
+| `"special"` | 10 points |
+
+You can override with an explicit `"point_cost"` value.
+
+**To trigger unlock from code** (instead of prerequisites), call:
+
+```renpy
+$ unlock_library_content("content_id")
+```
+
+### 7.3 Music Room
+
+**Status: Implemented (items auto-scanned from folder)**
+
+Music tracks are **auto-detected** from `game/audio/music/` and registered into the library system. Each `.mp3` file in that folder is mapped to a chapter in `MUSIC_CHAPTER_BY_FILENAME` (defined in `game/data/library_music_data.rpy`):
+
+```python
+MUSIC_CHAPTER_BY_FILENAME = {
+    "Keep Going On.mp3": "tam_c01_interview_day",
+    "When Nothing Happens.mp3": "prologue_rain_dream",
+    "Still Holding Hands.mp3": "tam_c05_sunday_date",
+    # ...
+}
+```
+
+- When the mapped chapter is completed, the track becomes freely available in the Music Room.
+- Tracks have `unlock_mode: "free"` — no point cost.
+- The library regenerates the item list at init time.
+
+**To add a new track:**
+1. Place the `.mp3` file in `game/audio/music/`.
+2. Add an entry to `MUSIC_CHAPTER_BY_FILENAME` mapping it to the chapter that should unlock it.
+3. If no chapter should gate it, comment it out or omit it (it won't appear in the library).
+
+**To add a track that is always unlocked** (no chapter gate), assign it a dummy `prerequisites: []` or don't list it in `MUSIC_CHAPTER_BY_FILENAME` (it just won't appear until you add a registry entry manually).
+
+### 7.4 CG Gallery
+
+**Status: Not implemented (placeholder screen)**
+
+The CG gallery currently shows a placeholder page. The CG image files exist in `game/images/assets/cg/` and are declared in `game/scripts/cgs.rpy`, but no library item data or unlock system has been wired yet.
+
+**To implement the CG gallery**, you will need to:
+1. Define CG items (similar to minigame items) with `"category": "cg"` and register them via `register_library_item()`.
+2. Each CG item should have a `prerequisites` chapter and optionally a `point_cost`.
+3. Replace the placeholder in `screen library_cg()` (in `game/screens/library_subscreens.rpy`) with actual CG thumbnails and display logic.
+
+Example structure for future CG items:
+
+```python
+register_library_item({
+    "id": "cg_yuuka_minh_market_walk",
+    "title": _("Market Walk"),
+    "category": "cg",
+    "series": _("Yuuka & Minh"),
+    "type": "cg",
+    "size": "small",
+    "point_cost": 0,
+    "unlock_mode": "free",
+    "prerequisites": ["yuuka_c08_festival_arrival"],
+    "image": "images/assets/cg/cg_yuuka_minh_market_walk.png",
+    "tags": ["cg", "yuuka", "minh"],
+})
+```
+
+### 7.5 Minigame Replay
+
+**Status: Implemented**
+
+Minigames are registered into the library via `register_library_item()` calls in `game/data/library_minigame_data.rpy`. Each minigame variant:
+
+- Has `"category": "minigames"`.
+- Uses `"unlock_mode": "free"` with a `prerequisites` chapter — completing the chapter unlocks the minigame for replay.
+- Has a `"type"` field that maps to the replay label (e.g., `"minigame_speech_order"`, `"minigame_problem_diagnosis"`).
+
+**Currently registered minigames:**
+
+| Library ID | Title | Prerequisite Chapter |
+|-----------|-------|---------------------|
+| `minigame_speech_tam_c01` | Tam's Interview Speech | `tam_c01_interview_day` |
+| `minigame_speech_hoang_h01` | Hoàng's Gift Choice | `hoang_h01_brother_house` |
+| `minigame_speech_yuuka_c08` | Yuuka's Director Speech | `yuuka_c08_festival_arrival` |
+| `minigame_pd_scope_creep` | Project Diagnosis: Scope Creep | `work_c10_project_festival_overlap` |
+
+**To add a new minigame replay entry:**
+
+```python
+# In game/data/library_minigame_data.rpy:
+register_library_item({
+    "id": "minigame_<unique_id>",
+    "title": _("Display Title"),
+    "category": "minigames",
+    "series": _("Series Name"),
+    "type": "minigame_<engine_type>",   # matches the replay label handler
+    "size": "small",                     # small | medium | large | special
+    "point_cost": 0,                     # 0 = free
+    "unlock_mode": "free",              # free | points
+    "prerequisites": ["chapter_id"],     # chapter that gates this
+    "tags": ["minigame", "tag1", "tag2"],
+    "cover": "",
+})
+```
+
+The replay label must exist and be wired in the minigame engine.
+
+### 7.6 Extras / Secrets
+
+**Status: Implemented**
+
+Secrets are lightweight unlockables defined in `SECRET_DEFINITIONS` in `game/data/library_data.rpy`. Unlock from anywhere in story code:
+
+```renpy
+$ unlock_secret("secret_prologue_seen")
+```
+
+```python
+SECRET_DEFINITIONS = {
+    "secret_prologue_seen": {
+        "title": "First Dream",
+        "description": "Witness the dream in the rain.",
+        "icon": "★",
+    },
+}
+```
+
+Secrets are stored in `persistent.unlocked_secrets` and displayed in the Extras category.
+
+### 7.7 Investment Points Economy
+
+**Status: Implemented**
+
+Investment points are the currency for unlocking library content. Awarded automatically when a chapter is completed (via `complete_chapter()` → `award_investment_points_for_story_chapter()`):
+
+```renpy
+# Each chapter completion gives 1 point by default:
+$ award_investment_points_for_story_chapter(chapter_id)
+```
+
+To award points manually:
+
+```renpy
+$ award_investment_points(amount, source_key="<unique_key>")
+```
+
+The `source_key` prevents the same source from awarding points twice. Use it for one-time rewards (e.g., reading a story, achieving a milestone).
+
+### 7.8 Common Library Item Fields
+
+Every library item (stories, music, minigames, future CG items) uses these fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | yes | Unique identifier |
+| `title` | string | yes | Display title |
+| `category` | string | yes | `"stories"`, `"music"`, `"cg"`, `"minigames"` |
+| `series` | string | no | Grouping label |
+| `type` | string | yes | Content type descriptor |
+| `size` | string | no | `"small"`, `"medium"`, `"large"`, `"special"` (affects default point cost) |
+| `point_cost` | int | no | Override default point cost (0 = free) |
+| `unlock_mode` | string | no | `"free"` or `"points"` (auto-detected from `point_cost` if omitted) |
+| `prerequisites` | list | no | Chapter IDs that must be completed first |
+| `tags` | list | no | Metadata tags for filtering |
+| `cover` | string | no | Cover image path |
+| `order` | int | no | Sort order within category |
+
+### 7.9 Persistent Variables Reference
+
+| Variable | Type | Purpose |
+|----------|------|---------|
+| `persistent.investment_points` | int | Currency for unlocking content |
+| `persistent.spent_investment_points` | int | Total points spent (tracking only) |
+| `persistent.unlocked_library_content` | list | IDs of point-unlocked library content |
+| `persistent.read_library_content` | list | IDs of stories that have been read |
+| `persistent.claimed_rewards` | list | Reward source keys already claimed (prevents double-claiming) |
+| `persistent.unlocked_secrets` | list | IDs of unlocked secrets/extras |
+| `persistent.gallery_unlocks` | list | IDs of unlocked gallery items |
+| `persistent.unlocked_chapters` | list | IDs of all chapters ever completed (by `complete_chapter()`) |
+
+---
+
+## 8. Story State & Scoring
 
 ### Per-Character Scores (`story_state`)
 

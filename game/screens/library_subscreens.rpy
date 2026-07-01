@@ -71,23 +71,64 @@ screen library_character_card(profile):
     $ sprite_ref = profile.get("sprite", "")
     $ tags_text = ", ".join(profile.get("tags", []))
     $ has_route = profile.get("route") is not None
+    $ cid = profile["id"]
 
     frame:
         xsize 1148
         background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
         padding (24, 22)
 
-        hbox:
-            spacing 24
+        if unlocked:
+            button:
+                background None
+                action ShowMenu("library_character_detail", character_id=cid)
 
-            # Character sprite / locked placeholder
-            if unlocked and sprite_ref:
-                add sprite_ref:
-                    xysize (200, 200)
-                    yalign 0.5
-            elif unlocked:
-                null width 200
-            else:
+                hbox:
+                    spacing 24
+
+                    if sprite_ref:
+                        add sprite_ref:
+                            xysize (200, 200)
+                            yalign 0.5
+                    else:
+                        null width 200
+
+                    vbox:
+                        spacing 8
+                        xsize 900
+
+                        hbox:
+                            spacing 12
+
+                            text profile["name"]:
+                                style "library_story_card_title"
+                                color LIB_TEXT
+
+                            if has_route:
+                                text "[" + profile["route"].title() + "]":
+                                    substitute False
+                                    style "library_story_meta"
+                                    color LIB_GOLD
+                            else:
+                                text "[" + _("Supporting") + "]":
+                                    substitute False
+                                    style "library_story_meta"
+                                    color LIB_MUTED
+
+                        text profile["description"]:
+                            style "library_story_summary_text"
+                            color LIB_TEXT
+
+                        null height 2
+
+                        text tags_text:
+                            style "library_story_meta"
+                            color LIB_MUTED
+
+        else:
+            hbox:
+                spacing 24
+
                 frame:
                     xysize (200, 200)
                     background Solid("#1A1511CC")
@@ -99,43 +140,306 @@ screen library_character_card(profile):
                         xalign 0.5
                         yalign 0.5
 
-            vbox:
-                spacing 8
-                xsize 950
+                vbox:
+                    spacing 8
+                    xsize 900
 
-                hbox:
-                    spacing 12
-
-                    text profile["name"]:
+                    text "???":
                         style "library_story_card_title"
-                        color (LIB_TEXT if unlocked else LIB_DISABLED)
+                        color LIB_DISABLED
 
-                    if has_route:
-                        text "[" + profile["route"].title() + "]":
-                            substitute False
-                            style "library_story_meta"
-                            color (LIB_GOLD if unlocked else LIB_DISABLED)
-                    else:
-                        text "[" + _("Supporting") + "]":
-                            substitute False
-                            style "library_story_meta"
-                            color (LIB_MUTED if unlocked else LIB_DISABLED)
+                    null height 2
 
-                text profile["description"]:
-                    style "library_story_summary_text"
-                    color (LIB_TEXT if unlocked else LIB_MUTED)
-
-                null height 2
-
-                text tags_text:
-                    style "library_story_meta"
-                    color (LIB_MUTED if unlocked else LIB_DISABLED)
-
-                if not unlocked:
-                    null height 6
-                    text _("Complete a chapter in this character's route to unlock their profile."):
+                    text _("Locked — progress the story to unlock this character."):
                         style "library_story_status_text"
                         color LIB_DISABLED
+
+
+screen library_character_detail(character_id):
+
+    python:
+        profile = None
+        for p in CHARACTER_PROFILES:
+            if p["id"] == character_id:
+                profile = p
+                break
+
+    if profile is None:
+        use library_menu_shell(
+            page_title=_("Character Not Found"),
+            page_subtitle="",
+            back_action=ShowMenu("library_characters")
+        ):
+            text _("Could not find character data.") style "library_placeholder_body"
+
+    else:
+
+        $ unlocked = is_character_unlocked(profile)
+        $ cid = profile["id"]
+        $ sprite_ref = profile.get("sprite", "")
+        $ has_route = profile.get("route") is not None
+        $ profile_data = profile.get("profile", {})
+
+        use library_menu_shell(
+            page_title=profile["name"] if unlocked else "???",
+            page_subtitle=(profile["description"] if unlocked else ""),
+            back_action=ShowMenu("library_characters"),
+            back_label=_("Back to Characters")
+        ):
+
+            if not unlocked:
+                text _("Character locked. Progress the story to unlock their profile.") style "library_placeholder_body"
+
+            else:
+
+                hbox:
+                    spacing 32
+
+                    # Sprite column
+                    vbox:
+                        spacing 12
+                        xsize 240
+
+                        if sprite_ref:
+                            add sprite_ref:
+                                xysize (240, 240)
+                                yalign 0.0
+                        else:
+                            null height 240
+
+                        if has_route:
+                            text "Route: " + profile["route"].title():
+                                substitute False
+                                style "library_story_meta"
+                                color LIB_GOLD
+                        else:
+                            text _("Supporting Character"):
+                                style "library_story_meta"
+                                color LIB_MUTED
+
+                    # Profile sections column
+                    viewport:
+                        scrollbars "vertical"
+                        mousewheel True
+                        draggable True
+                        ysize 620
+                        xsize 900
+
+                        vbox:
+                            spacing 16
+
+                            # Role — always visible
+                            if profile_data.get("role"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Role"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        text profile_data["role"]:
+                                            style "library_story_summary_text"
+                                            color LIB_TEXT
+
+                            # Public Identity — always visible
+                            if profile_data.get("public_identity"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Public Identity"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        text profile_data["public_identity"]:
+                                            style "library_story_summary_text"
+                                            color LIB_TEXT
+
+                            # Inner Layer — unlockable
+                            if profile_data.get("inner_layer") and is_character_section_unlocked(cid, "inner_layer"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Inner Layer"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        text profile_data["inner_layer"]:
+                                            style "library_story_summary_text"
+                                            color LIB_TEXT
+                            elif profile_data.get("inner_layer"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    text _("[Inner Layer — Locked]"):
+                                        substitute False
+                                        style "library_story_meta"
+
+                            # Core Traits — unlockable
+                            if profile_data.get("core_traits") and is_character_section_unlocked(cid, "core_traits"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Core Traits"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        text ", ".join(profile_data["core_traits"]):
+                                            style "library_story_summary_text"
+                                            color LIB_TEXT
+                            elif profile_data.get("core_traits"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    text _("[Core Traits — Locked]"):
+                                        substitute False
+                                        style "library_story_meta"
+
+                            # Narrative Function — unlockable
+                            if profile_data.get("narrative_function") and is_character_section_unlocked(cid, "narrative_function"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Narrative Function"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        text profile_data["narrative_function"]:
+                                            style "library_story_summary_text"
+                                            color LIB_TEXT
+                            elif profile_data.get("narrative_function"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    text _("[Narrative Function — Locked]"):
+                                        substitute False
+                                        style "library_story_meta"
+
+                            # Hidden Identity — unlockable (Minh-specific)
+                            if profile_data.get("hidden_identity") and is_character_section_unlocked(cid, "hidden_identity"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Hidden Identity"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        text profile_data["hidden_identity"]:
+                                            style "library_story_summary_text"
+                                            color LIB_TEXT
+                            elif profile_data.get("hidden_identity"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    text _("[Hidden Identity — Locked]"):
+                                        substitute False
+                                        style "library_story_meta"
+
+                            # Aliases — unlockable (Minh-specific)
+                            if profile_data.get("aliases") and is_character_section_unlocked(cid, "aliases"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Aliases"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        text ", ".join(profile_data["aliases"]):
+                                            style "library_story_summary_text"
+                                            color LIB_TEXT
+                            elif profile_data.get("aliases"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    text _("[Aliases — Locked]"):
+                                        substitute False
+                                        style "library_story_meta"
+
+                            # Notes — unlockable
+                            if profile_data.get("notes") and is_character_section_unlocked(cid, "notes"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Notes"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        vbox:
+                                            spacing 4
+                                            for note in profile_data["notes"]:
+                                                text "• " + note:
+                                                    style "library_story_summary_text"
+                                                    color LIB_TEXT
+                            elif profile_data.get("notes"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    text _("[Notes — Locked]"):
+                                        substitute False
+                                        style "library_story_meta"
+
+                            # Relationships — unlockable
+                            if profile.get("relationships") and is_character_section_unlocked(cid, "relationships"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    vbox:
+                                        spacing 6
+
+                                        text _("Relationships"):
+                                            style "library_story_meta"
+                                            color LIB_GOLD
+
+                                        for rel in profile["relationships"]:
+                                            text "• %s (%s)" % (rel["target"].title(), rel["type"].title()):
+                                                style "library_story_summary_text"
+                                                color LIB_TEXT
+                            elif profile.get("relationships"):
+                                frame:
+                                    background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 20)
+                                    padding (20, 16)
+
+                                    text _("[Relationships — Locked]"):
+                                        substitute False
+                                        style "library_story_meta"
 
 
 screen library_story_card(item):

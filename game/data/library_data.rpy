@@ -360,7 +360,7 @@ init -5 python:
         {
             "id": "thienan",
             "name": "Nguyễn Thiên An",
-            "route": "thienan",
+            "route": "tam",
             "sprite": "side thienan neutral",
             "description": "Tâm's elder sister: elegant, capable, and raised to carry expectation with a straight back and very little complaint.",
             "profile": {
@@ -409,7 +409,7 @@ init -5 python:
         {
             "id": "huyen",
             "name": "Lê Thị Huyền",
-            "route": "huyen",
+            "route": "tam",
             "sprite": "side huyen neutral",
             "description": "Tâm's close friend: frank, socially alert, and often the person who says the thing Tâm is still trying to swallow.",
             "profile": {
@@ -447,7 +447,7 @@ init -5 python:
         {
             "id": "quan",
             "name": "Trần Quốc Quân",
-            "route": None,
+            "route": "tam",
             "sprite": "side quan neutral",
             "description": "A demanding senior at work whose standards are high enough to frighten people before they learn why he keeps them.",
             "profile": {
@@ -485,7 +485,7 @@ init -5 python:
         {
             "id": "akiko",
             "name": "Kobayashi Akiko",
-            "route": None,
+            "route": "yuuka",
             "sprite": "side akiko neutral",
             "description": "Yuuka's closest friend: quiet, film-obsessed, emotionally safe, and sharper than her soft manner first suggests.",
             "profile": {
@@ -1059,20 +1059,44 @@ init -5 python:
         },
     ]
 
+    def unlock_library_character(character_id):
+        if not hasattr(persistent, "unlocked_library_characters") or persistent.unlocked_library_characters is None:
+            persistent.unlocked_library_characters = []
+        if character_id not in persistent.unlocked_library_characters:
+            persistent.unlocked_library_characters.append(character_id)
+
+
+    def unlock_character_section(character_id, section_key):
+        if not hasattr(persistent, "unlocked_character_sections") or persistent.unlocked_character_sections is None:
+            persistent.unlocked_character_sections = []
+        entry = "%s.%s" % (character_id, section_key)
+        if entry not in persistent.unlocked_character_sections:
+            persistent.unlocked_character_sections.append(entry)
+
+
     def is_character_unlocked(profile):
         if profile.get("route") is None:
             return True
 
-        route_id = profile["route"]
-        if not hasattr(persistent, "unlocked_chapters") or not isinstance(persistent.unlocked_chapters, list):
+        cid = profile["id"]
+        if not hasattr(persistent, "unlocked_library_characters"):
             return False
+        if not isinstance(persistent.unlocked_library_characters, list):
+            return False
+        return cid in persistent.unlocked_library_characters
 
-        for chapter_id in persistent.unlocked_chapters:
-            chapter = globals().get("CHAPTERS", {}).get(chapter_id)
-            if chapter and chapter.get("route") == route_id:
-                return True
 
-        return False
+    def is_character_section_unlocked(character_id, section_key):
+        # role and public_identity are always visible when the character is unlocked
+        always_visible = ["role", "public_identity"]
+        if section_key in always_visible:
+            return True
+        entry = "%s.%s" % (character_id, section_key)
+        if not hasattr(persistent, "unlocked_character_sections"):
+            return False
+        if not isinstance(persistent.unlocked_character_sections, list):
+            return False
+        return entry in persistent.unlocked_character_sections
 
 
     def get_unlocked_character_count():

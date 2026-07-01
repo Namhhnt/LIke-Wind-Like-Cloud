@@ -3,6 +3,8 @@ default persistent.spent_investment_points = 0
 default persistent.unlocked_library_content = []
 default persistent.read_library_content = []
 default persistent.claimed_rewards = []
+default persistent.unlocked_library_characters = []
+default persistent.unlocked_character_sections = []
 
 define STORY_LIBRARY_STORY_REWARD = 1
 define STORY_LIBRARY_DEFAULT_SMALL_COST = 1
@@ -39,6 +41,16 @@ init -1 python:
             persistent.claimed_rewards = []
         elif not isinstance(persistent.claimed_rewards, list):
             persistent.claimed_rewards = list(persistent.claimed_rewards)
+
+        if not hasattr(persistent, "unlocked_library_characters") or persistent.unlocked_library_characters is None:
+            persistent.unlocked_library_characters = []
+        elif not isinstance(persistent.unlocked_library_characters, list):
+            persistent.unlocked_library_characters = list(persistent.unlocked_library_characters)
+
+        if not hasattr(persistent, "unlocked_character_sections") or persistent.unlocked_character_sections is None:
+            persistent.unlocked_character_sections = []
+        elif not isinstance(persistent.unlocked_character_sections, list):
+            persistent.unlocked_character_sections = list(persistent.unlocked_character_sections)
 
     def safe_story_library_int(value, default=0):
         try:

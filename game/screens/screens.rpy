@@ -277,6 +277,81 @@ style quick_button:
 style quick_button_text:
     properties gui.text_properties("quick_button")
 
+init python:
+    def _debug_overlay_visible():
+        """Return True if the debug overlay should be shown (in-game, not on a menu screen)."""
+        if renpy.store.main_menu:
+            return False
+        _menu_screens = [
+            "save", "load", "preferences", "history",
+            "about", "help", "library_menu_shell",
+            "debug_progression", "route_map",
+            "problem_diagnosis_debug_menu",
+        ]
+        return not any(renpy.get_screen(s) for s in _menu_screens)
+
+screen debug_overlay():
+    default _debug_collapsed = False
+    zorder 100
+
+    if persistent.debugging_mode and _debug_overlay_visible():
+
+        drag:
+            drag_name "debug_overlay"
+            draggable True
+            drag_handle (0, 0, 1.0, 32)
+            xalign 1.0 yalign 0.0
+            xoffset -8 yoffset 8
+
+            frame:
+                xminimum 320 xmaximum 420
+                padding (10, 10)
+                background "#000000cc"
+
+                has vbox spacing 4
+
+                # Header row (draggable via drag_handle)
+                hbox:
+                    text "DEBUG MODE" size 14 bold True color "#ffcc00"
+                    $ _toggle_label = "−" if not _debug_collapsed else "+"
+                    textbutton "[_toggle_label]":
+                        action ToggleScreenVariable("_debug_collapsed")
+                        text_size 14 text_bold True text_color "#ffcc00"
+                        background None hover_background None
+
+                if not _debug_collapsed:
+                    null height 4
+
+                    # Character scores
+                    text "Character Scores" size 11 bold True color "#ff8800"
+                    for key in sorted(story_state.keys()):
+                        $ val = story_state[key]
+                        text "[key]: [val]" size 9 color "#cccccc"
+
+                    null height 4
+
+                    # Story flags
+                    if story_flags:
+                        text "Flags" size 11 bold True color "#ff8800"
+                        $ flag_str = ", ".join(story_flags)
+                        text "[flag_str]" size 9 color "#88ff88"
+                        null height 4
+
+                    # Progression
+                    text "Progression" size 11 bold True color "#ff8800"
+                    if isinstance(progress, dict):
+                        $ completed_list = progress.get("completed_chapters", [])
+                        if isinstance(completed_list, list):
+                            text "Chapters: [len(completed_list)] / [len(CHAPTER_ORDER)]" size 9 color "#cccccc"
+
+                        for route_id in ROUTE_ORDER:
+                            $ route_status = progress.get("route_status", {}).get(route_id, "?")
+                            $ route_title = ROUTES[route_id]["title"]
+                            text "[route_title]: [route_status]" size 9 color "#aaaaaa"
+
+init python:
+    if "debug_overlay" not in config.overlay_screens:
+        config.overlay_screens.append("debug_overlay")
 
 ################################################################################
 ## Main and Game Menu Screens
@@ -736,99 +811,96 @@ screen preferences():
 
     use game_menu(_("Preferences"), scroll="viewport"):
 
+        hbox:
+            box_wrap True
+
+            if renpy.variant("pc") or renpy.variant("web"):
+
+                vbox:
+                    style_prefix "radio"
+                    label _("Display")
+                    textbutton _("Window") action Preference("display", "window")
+                    textbutton _("Fullscreen") action Preference("display", "fullscreen")
+
+            vbox:
+                style_prefix "check"
+                label _("Skip")
+                textbutton _("Unseen Text") action Preference("skip", "toggle")
+                textbutton _("After Choices") action Preference("after choices", "toggle")
+                textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+
+            vbox:
+                style_prefix "check"
+                label _("Language")
+                textbutton "English" action Language(None)
+                textbutton _("Vietnamese") action Language("vietnamese")
+
+        null height (4 * gui.pref_spacing)
+
+        hbox:
+            style_prefix "slider"
+            box_wrap True
+
+            vbox:
+
+                label _("Text Speed")
+
+                bar value Preference("text speed")
+
+                label _("Auto-Forward Time")
+
+                bar value Preference("auto-forward time")
+
+            vbox:
+
+                if config.has_music:
+                    label _("Music Volume")
+
+                    hbox:
+                        bar value Preference("music volume")
+
+                if config.has_sound:
+
+                    label _("Sound Volume")
+
+                    hbox:
+                        bar value Preference("sound volume")
+
+                        if config.sample_sound:
+                            textbutton _("Test") action Play("sound", config.sample_sound)
+
+
+                if config.has_voice:
+                    label _("Voice Volume")
+
+                    hbox:
+                        bar value Preference("voice volume")
+
+                        if config.sample_voice:
+                            textbutton _("Test") action Play("voice", config.sample_voice)
+
+                if config.has_music or config.has_sound or config.has_voice:
+                    null height gui.pref_spacing
+
+                    textbutton _("Mute All"):
+                        action Preference("all mute", "toggle")
+                        style "mute_all_button"
+
+        null height gui.pref_spacing
+
         vbox:
-
-            hbox:
-                box_wrap True
-
-                if renpy.variant("pc") or renpy.variant("web"):
-
-                    vbox:
-                        style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
-
-                vbox:
-                    style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
-                vbox:
-                    style_prefix "check"
-                    label _("Language")
-                    textbutton "English" action Language(None)
-                    textbutton _("Vietnamese") action Language("vietnamese")
-
-                vbox:
-                    style_prefix "check"
-                    label _("Development")
-                    textbutton _("Debugging Mode"):
-                        action ToggleField(persistent, "debugging_mode")
-                        selected persistent.debugging_mode
-                    textbutton _("Route Map") action Jump("route_map")
-                    textbutton _("Problem Diagnosis Debug"):
-                        action ShowMenu("problem_diagnosis_debug_menu")
-                        sensitive persistent.debugging_mode
-                    textbutton _("Progress Debug"):
-                        action ShowMenu("debug_progression")
-                        sensitive persistent.debugging_mode
-
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be added here, to
-                ## add additional creator-defined preferences.
-
-            null height (4 * gui.pref_spacing)
-
-            hbox:
-                style_prefix "slider"
-                box_wrap True
-
-                vbox:
-
-                    label _("Text Speed")
-
-                    bar value Preference("text speed")
-
-                    label _("Auto-Forward Time")
-
-                    bar value Preference("auto-forward time")
-
-                vbox:
-
-                    if config.has_music:
-                        label _("Music Volume")
-
-                        hbox:
-                            bar value Preference("music volume")
-
-                    if config.has_sound:
-
-                        label _("Sound Volume")
-
-                        hbox:
-                            bar value Preference("sound volume")
-
-                            if config.sample_sound:
-                                textbutton _("Test") action Play("sound", config.sample_sound)
-
-
-                    if config.has_voice:
-                        label _("Voice Volume")
-
-                        hbox:
-                            bar value Preference("voice volume")
-
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
-
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
-
-                        textbutton _("Mute All"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
+            style_prefix "check"
+            label _("Development")
+            textbutton _("Debugging Mode"):
+                action ToggleField(persistent, "debugging_mode")
+                selected persistent.debugging_mode
+            textbutton _("Route Map") action Jump("route_map")
+            textbutton _("Problem Diagnosis Debug"):
+                action ShowMenu("problem_diagnosis_debug_menu")
+                sensitive persistent.debugging_mode
+            textbutton _("Progress Debug"):
+                action ShowMenu("debug_progression")
+                sensitive persistent.debugging_mode
 
 
 style pref_label is gui_label

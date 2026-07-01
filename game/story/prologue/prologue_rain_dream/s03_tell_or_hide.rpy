@@ -192,4 +192,7 @@ label prologue_rain_dream_s03_tell_or_hide:
 
     "Cánh cửa khép lại sau lưng cô."
 
+    $ unlock_library_character("tam")
+    $ unlock_character_section("tam", "inner_layer")
+    $ unlock_character_section("tam", "core_traits")
     return
