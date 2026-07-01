@@ -25,13 +25,13 @@ init -2 python:
         },
         "hoang_house": {
             "id": "hoang_house",
-            "name": "Hoàng / Minh's House",
+            "name": "Hoàng's House",
             "x": 240,
             "y": 732,
             "category": "residential_villa",
             "icon": "villa",
             "default_unlocked": False,
-            "unlock_conditions": ["completed:tam_c01_interview_day"],
+            "unlock_conditions": ["completed:tam_c02_company_party"],
             "description": "A detached home tied to Minh, Hoàng, and the routes that orbit them.",
         },
         "park": {
@@ -41,8 +41,8 @@ init -2 python:
             "y": 432,
             "category": "public",
             "icon": "park",
-            "default_unlocked": True,
-            "unlock_conditions": [],
+            "default_unlocked": False,
+            "unlock_conditions": ["completed:tam_c01_interview_day"],
             "description": "A softer public space for reflective scenes and chance meetings.",
         },
         "library": {
@@ -63,8 +63,8 @@ init -2 python:
             "y": 280,
             "category": "commercial",
             "icon": "food",
-            "default_unlocked": True,
-            "unlock_conditions": [],
+            "default_unlocked": False,
+            "unlock_conditions": ["completed:tam_c01_interview_day"],
             "description": "A lively food district where optional scenes can feel personal and immediate.",
         },
         "shopping_area": {
@@ -85,8 +85,8 @@ init -2 python:
             "y": 288,
             "category": "commercial",
             "icon": "restaurant",
-            "default_unlocked": True,
-            "unlock_conditions": [],
+            "default_unlocked": False,
+            "unlock_conditions": ["completed:tam_c02_company_party"],
             "description": "A dinner-and-talk location that fits route-crossing scenes well.",
         },
         "company": {
