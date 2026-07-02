@@ -19,37 +19,9 @@ label tam_c02_company_party_s02_party_start:
 
     "Tâm đứng ở gần cửa vào, một tay cầm clutch nhỏ, tay còn lại giữ nhẹ phần cổ tay áo."
 
-    # "Chiếc váy công sở cô chọn không quá nổi bật."
-
-    # "Nhưng vừa đủ gọn gàng."
-
-    # "Vừa đủ an toàn."
-
-    # "Và vừa đủ khiến Huyền nhìn cô bằng vẻ mặt rất không hài lòng."
-
-    # huyen neutral "Mày gọi đây là đi tiệc à?"
-
-    # tam neutral "Có vấn đề gì?"
-
-    # huyen tired "Không. Rất chuyên nghiệp. Nhìn như sắp lên phát biểu báo cáo quý."
-
-    # tam embarrassed "Tao thấy ổn mà."
-
-    # huyen teasing "Ổn. Ổn kiểu nếu có cháy thì nhân viên cứu hỏa sẽ hỏi mày danh sách khách mời."
-
-    # tam tired "Mày bớt đi."
-
-    # "Huyền cười, đưa tay kéo nhẹ phần tóc bên vai Tâm ra sau."
-
-    # huyen smile "Thôi được. Xinh."
-
-    # tam neutral "Vừa nãy mày chê."
-
-    # huyen grinning "Chê là quyền bạn thân. Khen là nghĩa vụ công dân."
-
-    # "Tâm cúi mắt cười."
-
     if story_has_flag('tam_c02_outfit_party_elegant'):
+        scene cg_tam_c02_party_premium_dress
+        with dissolve
         "Chiếc váy Tâm mặc tối nay không giống những bộ đồ công sở thường ngày của cô."
 
         "Vải rủ mềm, đường cắt gọn, phần eo vừa vặn đến mức cô đã phải đứng trước gương lâu hơn cần thiết."
@@ -116,6 +88,9 @@ label tam_c02_company_party_s02_party_start:
 
     "Tâm cúi mắt cười."
 
+    scene bg_company_year_end_party
+    with dissolve
+    
     "Phía trước sân khấu nhỏ, quản lý các phòng ban đang đứng thành từng cụm."
 
     "Một nhóm nhân viên trẻ tụ lại cạnh bàn đồ uống."
