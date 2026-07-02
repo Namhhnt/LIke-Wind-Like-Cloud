@@ -115,6 +115,7 @@ label tam_c01_interview_day_s02_interview_room:
     call tam_c01_speech_game
 
     if tam_salary_tier == "high":
+        $ story_flag('tam_perfect_interview')
         $ story_add('career_tam', 2)
         $ story_add('tam_self_clarity', 1)
 
