@@ -38,14 +38,14 @@ label prologue_rain_dream_s01_rain_meeting:
     "Anh nhìn chiếc ô trong tay cô, rồi nhìn xuống vai áo đã ướt một mảng của cô."
     "Một lúc sau, anh khẽ thở ra."
 
-    "\"Em cứ đứng như vậy thì cảm mất.\""
+    minh_unknown "\"Em cứ đứng như vậy thì cảm mất.\""
 
     tam surprised "..."
 
     "Giọng nói đó thấp, khô, nhưng không lạnh."
     "Tâm cảm thấy trong ngực mình có thứ gì đó khựng lại một nhịp."
 
-    tam confused "Anh là ai?"
+    tam smile "Em... không sao."
 
     "Người kia không trả lời ngay."
 
@@ -54,11 +54,11 @@ label prologue_rain_dream_s01_rain_meeting:
 
     "Nhưng Tâm lại thấy lòng bàn tay mình nóng lên."
 
-    "\"Muộn rồi.\""
+    minh_unknown "\"Muộn rồi.\""
 
     "Anh nói."
 
-    "\"Về thôi.\""
+    minh_unknown "\"Tôi đưa em về.\""
 
     "Tâm muốn hỏi về đâu."
     "Muốn hỏi anh là ai."
@@ -86,6 +86,7 @@ label prologue_rain_dream_s01_rain_meeting:
 
         "Gương mặt của người đàn ông ấy":
             $ story_add('tam_minh_drawn', 1)
+            $ story_add('tam_hoang_interest', 1)
             $ story_flag('dream_remembered_face')
 
             "Tâm cố níu lại đường nét cuối cùng còn sót trong trí nhớ."

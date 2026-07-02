@@ -27,8 +27,8 @@ translate english strings:
     old "Một ứng viên ngồi đối diện khẽ cúi xuống nói với người bên cạnh."
     new "A candidate sitting opposite him gently bent down and spoke to the person next to him."
 
-    old "Nghe nói team này có anh Quân khó lắm."
-    new "I heard that this team with Quân is very difficult."
+    old "Nghe nói team này có anh Quân khó tính lắm."
+    new "I heard this team has someone named Quân who's really tough."
 
     old "Trưởng phòng ấy. Soi kỹ từng dòng, ít khen, ghét nhất kiểu nói hay mà làm dở."
     new "Head of that department. Carefully examine each line, rarely praise, hate the type that says well but does poorly."
@@ -80,12 +80,6 @@ translate english strings:
 
     old "Cổ áo ổn."
     new "The collar is fine."
-
-    old "Tao chưa hỏi."
-    new "I haven't asked yet."
-
-    old "Nhưng mặt mày hỏi rồi."
-    new "But your face asked."
 
     old "Tâm bật cười rất khẽ."
     new "Tâm laughed very softly."
@@ -225,9 +219,6 @@ translate english strings:
     old "Vâng. Em sẽ lưu ý."
     new "Yes. I will take note."
 
-    old "Tâm gật đầu."
-    new "Tâm nodded."
-
     old "Câu trả lời vẫn lịch sự."
     new "The answer is still polite."
 
@@ -275,3 +266,273 @@ translate english strings:
 
     old "Nhưng đỡ hơn."
     new "But it's better."
+
+    old "Này."
+    new "Hey."
+
+    old "Ừ?"
+    new "Hmm?"
+
+    old "Nói thật đi. Bên trong thế nào?"
+    new "Tell me the truth. How was it in there?"
+
+    old "Tâm nhìn Huyền."
+    new "Tâm looked at Huyền."
+
+    old "Câu hỏi rất đơn giản."
+    new "The question was very simple."
+
+    old "Nhưng cô biết Huyền không chỉ hỏi về căn phòng, hay mấy người phỏng vấn, hay những câu hỏi chuyên môn."
+    new "But she knew Huyền wasn't just asking about the room, or the interviewers, or the technical questions."
+
+    old "Huyền muốn biết liệu bên trong có đáng sợ như lời đồn không."
+    new "Huyền wanted to know if it was as scary as the rumors said."
+
+    old "Muốn biết liệu mình sắp bước vào một nơi sẽ nuốt mất toàn bộ sự tự tin còn sót lại không."
+    new "Wanted to know if she was about to walk into a place that would swallow whatever confidence she had left."
+
+    old "Tâm cúi nhìn mép portfolio đã được vuốt phẳng hơn một chút."
+    new "Tâm looked down at the edge of her portfolio, now slightly more smoothed out."
+
+    old "Nói hết thì có thể làm Huyền lo."
+    new "Telling everything might make Huyền worry."
+
+    old "Giấu đi thì cũng không hẳn là tử tế."
+    new "Hiding it wasn't exactly kind either."
+
+    old "How should Tâm answer Huyền?"
+    new "Huyền?"
+
+    old "Có áp lực."
+    new "There's pressure."
+
+    old "Tao biết ngay mà."
+    new "I knew it."
+
+    old "Nhưng không đến mức không thở được."
+    new "But not enough to choke."
+
+    old "Huyền nhìn cô, chờ tiếp."
+    new "Huyền looked at her, waiting for more."
+
+    old "Họ hỏi khá kỹ. Không phải kiểu hỏi cho có. Có vài câu phải nghĩ thật cẩn thận mới trả lời được."
+    new "They asked pretty thoroughly. Not just going through the motions. A few questions needed real careful thought."
+
+    old "Có câu nào đánh đố không?"
+    new "Any trick questions?"
+
+    old "Không hẳn. Nhưng có câu nếu mình nói quá đẹp thì nghe sẽ giả."
+    new "Not really. But if you make it sound too perfect, it comes off fake."
+
+    old "Tuyệt. Đúng chuyên môn của tao rồi."
+    new "Great. Right up my alley."
+
+    old "Mày chỉ cần đừng cố tỏ ra hoàn hảo."
+    new "Just don't try to act perfect."
+
+    old "Khó đấy. Tao vốn hoàn hảo tự nhiên."
+    new "Tough. I'm naturally perfect."
+
+    old "Ừ. Nhất là cổ áo sáng nay."
+    new "Yeah. Especially that collar this morning."
+
+    old "Tâm khẽ bật cười."
+    new "Tâm chuckled softly."
+
+    old "Thật đấy. Cứ trả lời rõ ràng. Nếu cần nghĩ thì xin vài giây. Họ không khó chịu đâu."
+    new "Seriously. Just answer clearly. If you need a moment, take it. They won't mind."
+
+    old "Mày chắc không?"
+    new "Are you sure?"
+
+    old "Chắc."
+    new "Sure."
+
+    old "Huyền thở ra."
+    new "Huyền let out a breath."
+
+    old "Được. Nghe đáng sợ, nhưng đáng sợ có hình dạng thì đỡ hơn."
+    new "Okay. Sounds scary, but a fear with a shape is better than the shapeless kind."
+
+    old "Ừ. Ít nhất mình biết nó có mấy cái răng."
+    new "Yeah. At least we know how many teeth it has."
+
+    old "Ví dụ kinh quá."
+    new "What a gruesome analogy."
+
+    old "Keep it vague to avoid worrying her"
+    new "Keep it vague to avoid worrying her"
+
+    old "Cũng bình thường."
+    new "It was okay."
+
+    old "Bình thường kiểu nào?"
+    new "What kind of okay?"
+
+    old "Kiểu... phòng phỏng vấn, bàn dài, nước lọc, câu hỏi."
+    new "You know... interview room, long table, water, questions."
+
+    old "Cảm ơn. Miêu tả rất giàu giá trị sinh tồn."
+    new "Thanks. Very survival-rich description."
+
+    old "Tao nghĩ mày vào rồi sẽ tự bắt nhịp được."
+    new "I think once you're in there, you'll find your rhythm."
+
+    old "Đừng nói kiểu đó. Kiểu đó nghe như câu trước khi nhân vật phụ hy sinh."
+    new "Don't say it like that. That sounds like a line before a supporting character dies."
+
+    old "Mày là nhân vật phụ à?"
+    new "Are you a supporting character?"
+
+    old "Trong đời tao thì tao là nữ chính."
+    new "In my story, I'm the main character."
+
+    old "Vậy nữ chính không chết ở vòng phỏng vấn đâu."
+    new "Well, the main character doesn't die at the interview stage."
+
+    old "Huyền nhìn cô một lúc, nửa nghi ngờ, nửa buồn cười."
+    new "Huyền looked at her for a moment, half skeptical, half amused."
+
+    old "Mày đang giấu tao gì không?"
+    new "Are you hiding something from me?"
+
+    old "Tao đang giữ lại vài bất ngờ."
+    new "I'm saving a few surprises."
+
+    old "Đúng là nghe còn đáng sợ hơn."
+    new "That somehow sounds even scarier."
+
+    old "Không sao đâu. Mày làm được."
+    new "It's fine. You've got this."
+
+    old "Lời động viên hơi chung chung."
+    new "That's a bit generic."
+
+    old "Nhưng ít nhất lúc này, nó giữ cho Huyền không bị kéo sâu thêm vào những hình dung xấu nhất."
+    new "But at least for now, it kept Huyền from spiraling deeper into her worst-case scenarios."
+
+    old "Có áp lực. Nhưng tao nghĩ họ không tìm người trả lời đẹp nhất."
+    new "There's pressure. But I don't think they're looking for the one with the prettiest answers."
+
+    old "Là sao?"
+    new "What do you mean?"
+
+    old "Họ đang xem mình có hiểu việc thật không."
+    new "They're trying to see if we actually understand the work."
+
+    old "Huyền hơi nghiêng đầu."
+    new "Huyền tilted her head slightly."
+
+    old "Tâm hạ giọng, nói chậm hơn một chút."
+    new "Tâm lowered her voice, speaking a bit more slowly."
+
+    old "Nếu họ hỏi về điểm yếu, đừng biến nó thành một câu khoe khéo. Nếu họ hỏi về teamwork, đừng nói kiểu 'em hòa đồng với tất cả mọi người'. Nghe thì an toàn, nhưng rỗng."
+    new "If they ask about weaknesses, don't turn it into a humble brag. If they ask about teamwork, don't say 'I get along with everyone.' Sounds safe, but hollow."
+
+    old "Vậy phải nói sao?"
+    new "So what should I say?"
+
+    old "Nói một tình huống cụ thể. Có vấn đề gì, mày đã làm gì, kết quả ra sao, sau đó mày học được gì."
+    new "Give a specific situation. What the problem was, what you did, what happened, and what you learned."
+
+    old "Tâm dừng lại, nhớ đến câu hỏi của Quân được chuyển qua người quản lý."
+    new "Tâm paused, remembering the question from Quân that had been passed through the manager."
+
+    old "Và nếu họ hỏi về mâu thuẫn trong team, đừng né. Cứ thừa nhận là có những lúc làm việc với người khác không dễ. Quan trọng là mình xử lý nó thế nào."
+    new "And if they ask about team conflict, don't avoid it. Admit that sometimes working with others isn't easy. What matters is how you handle it."
+
+    old "Mày vừa được ai nhập à?"
+    new "Did someone just possess you or something?"
+
+    old "Tự nhiên nói nghe như senior đi phỏng vấn fresher."
+    new "You suddenly sound like a senior interviewing a freshman."
+
+    old "Tao chỉ vừa bị hỏi xong thôi."
+    new "I just got asked these questions myself."
+
+    old "Ừ. Nhưng hữu ích."
+    new "Yeah. But useful."
+
+    old "Huyền lấy điện thoại ra, gõ nhanh vài chữ vào note."
+    new "Huyền took out her phone and quickly typed a few words into notes."
+
+    old "Tình huống cụ thể. Hành động. Kết quả. Bài học."
+    new "Specific situation. Action. Result. Lesson."
+
+    old "Không giả vờ quá cầu toàn."
+    new "Don't pretend to be too perfect."
+
+    old "Càng không."
+    new "Definitely not."
+
+    old "Được. Tự nhiên tao thấy mình có vẻ sống được."
+    new "Okay. Suddenly I feel like I might survive this."
+
+    old "Chúc mừng. Thành tựu lớn trước giờ phỏng vấn."
+    new "Congratulations. A major achievement before the interview."
+
+    old "Im đi."
+    new "Shut up."
+
+    old "Huyền cười, nhưng lần này ngón tay cô không còn miết lên mép bìa hồ sơ nữa."
+    new "Huyền laughed, but this time her fingers weren't tracing the edge of her folder anymore."
+
+    old "Lê Thị Thu Huyền?"
+    new "Huyền?"
+
+    old "Tên Huyền vang lên từ phía cửa."
+    new "Huyền's name was called from the door."
+
+    old "Nụ cười trên môi cô lập tức đông lại."
+    new "The smile on her face instantly froze."
+
+    old "Rồi. Tới lượt tao."
+    new "Alright. My turn."
+
+    old "Ừm."
+    new "Yeah."
+
+    old "Nếu tao không quay lại..."
+    new "If I don't come back..."
+
+    old "Tao sẽ ăn phần bánh mừng của mày tối nay."
+    new "I'll eat your celebration cake tonight."
+
+    old "Đồ ác độc."
+    new "You monster."
+
+    old "Huyền đứng dậy, chỉnh lại cổ áo theo thói quen."
+    new "Huyền stood up, adjusting her collar out of habit."
+
+    old "Lần này, cổ áo đã thẳng."
+    new "This time, her collar was already straight."
+
+    old "Ổn rồi."
+    new "You're good."
+
+    old "Tao chưa hỏi."
+    new "I haven't asked yet."
+
+    old "Nhưng mặt mày hỏi rồi."
+    new "But your face asked."
+
+    old "Huyền khựng lại."
+    new "Huyền paused."
+
+    old "Rồi cô bật cười, rất khẽ."
+    new "Then she let out a very quiet laugh."
+
+    old "Được. Tao vào đây."
+    new "Okay. I'm going in."
+
+    old "Tâm gật đầu."
+    new "Tâm nodded."
+
+    old "Cửa phòng phỏng vấn khép lại sau lưng Huyền."
+    new "The interview room door closed behind Huyền."
+
+    old "Phòng chờ lại yên xuống."
+    new "The waiting room fell quiet again."
+
+    old "Nhưng lần này, sự im lặng không còn nặng như lúc đầu nữa."
+    new "But this time, the silence wasn't as heavy as before."

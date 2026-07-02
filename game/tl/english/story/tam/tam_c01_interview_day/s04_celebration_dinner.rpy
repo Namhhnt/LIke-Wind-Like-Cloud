@@ -132,6 +132,9 @@ translate english strings:
     old "Who notices Hoàng first?"
     new "Who notices Hoàng first?"
 
+    old "Tâm"
+    new "Tâm"
+
     old "Tâm là người nhìn thấy anh trước."
     new "Tâm was the one who saw him first."
 
@@ -180,6 +183,9 @@ translate english strings:
     old "Nhưng không hiểu sao, cái cách anh nâng ly vừa đủ kia khiến cô nhớ lâu hơn mức cần thiết."
     new "But for some reason, the way he raised his glass just enough made her remember it longer than necessary."
 
+    old "Huyền"
+    new "Huyền"
+
     old "Huyền là người phát hiện ra anh trước."
     new "Huyền was the one who discovered him first."
 
@@ -187,7 +193,7 @@ translate english strings:
     new "She was about to order another dessert when she suddenly stopped and glanced over Tâm's shoulder."
 
     old "Ê."
-    new "HALLO."
+    new "Hey!"
 
     old "Bàn bên kia có trai đẹp."
     new "There are handsome guys at the other table."

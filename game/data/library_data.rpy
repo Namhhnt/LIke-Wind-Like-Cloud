@@ -408,7 +408,7 @@ init -5 python:
 
         {
             "id": "huyen",
-            "name": "Lê Thị Huyền",
+            "name": "Lê Thị Thu Huyền",
             "route": "tam",
             "sprite": "side huyen neutral",
             "description": "Tâm's close friend: frank, socially alert, and often the person who says the thing Tâm is still trying to swallow.",

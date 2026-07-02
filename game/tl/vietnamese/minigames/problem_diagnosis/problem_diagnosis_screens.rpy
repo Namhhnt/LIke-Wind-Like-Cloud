@@ -345,8 +345,8 @@ translate vietnamese strings:
     old "Owner: [pd_get_pic_name(pic_id)]"
     new "Người phụ trách: [pd_get_pic_name(pic_id)]"
 
-    old "Tâm"
-    new "Tâm"
+    # old "Tâm"
+    # new "Tâm"
 
     old "Project coordinator"
     new "Điều phối dự án"
@@ -363,8 +363,8 @@ translate vietnamese strings:
     old "Project manager"
     new "Quản lý dự án"
 
-    old "Huyền"
-    new "Huyền"
+    # old "Huyền"
+    # new "Huyền"
 
     old "Cross-team coordinator"
     new "Điều phối liên nhóm"

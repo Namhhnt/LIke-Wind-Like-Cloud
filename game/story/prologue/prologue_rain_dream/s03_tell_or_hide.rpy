@@ -105,7 +105,7 @@ label prologue_rain_dream_s03_tell_or_hide:
 
             tam smile "Chờ tao hai phút."
 
-            huyen laughing "Ba phút. Tao thực tế hơn mày."
+            huyen laughing "Cho hẳn năm phút. Tao thực tế hơn mày."
 
         "Giữ lại cho riêng mình":
             $ story_flag('tam_keeps_dream_private')
@@ -124,14 +124,14 @@ label prologue_rain_dream_s03_tell_or_hide:
 
             tam surprised "Cà phê?"
 
-            huyen teasing "Không đường. Ít đá. Vì mày sẽ càm ràm nếu tao mua sai."
+            huyen teasing "Ít đường. Ít đá. Vì mày sẽ càm ràm nếu tao mua sai."
 
             "Tâm nhìn vào gương."
             "Khóe môi cô mềm xuống."
 
             tam smile "Biết điều đấy."
 
-            huyen happy "Tất nhiên. Chị em tốt không phải để trưng."
+            huyen happy "Tất nhiên. Chị em tốt không phải chỉ để trưng."
 
             "Tâm tắt máy."
             "Một lúc sau, cô mở lại ngăn tủ, đặt quyển sổ nhỏ vào trong cùng."
@@ -166,7 +166,7 @@ label prologue_rain_dream_s03_tell_or_hide:
 
             tam neutral "Làm gì có chuyện đó."
 
-            huyen teasing "Ai biết được. Đời mà. Nó thích làm màu hơn cả biên kịch phim Hàn."
+            huyen teasing "Ai biết được. Đời mà. Đôi khi nó thích làm màu hơn cả biên kịch phim Hàn."
 
             "Tâm cười theo."
             "Nhưng lúc cúi xuống lấy túi xách, cô kéo khóa hơi mạnh tay."
@@ -190,7 +190,7 @@ label prologue_rain_dream_s03_tell_or_hide:
 
     tam neutral "Đi thôi."
 
-    "Cánh cửa khép lại sau lưng cô."
+    "Cánh cửa phòng ngủ khép lại sau lưng cô. Một ngày mới bắt đầu."
 
     $ unlock_library_character("tam")
     $ unlock_character_section("tam", "inner_layer")

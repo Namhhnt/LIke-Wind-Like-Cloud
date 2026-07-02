@@ -153,8 +153,8 @@ translate english strings:
     old "Chờ tao hai phút."
     new "Wait two minutes."
 
-    old "Ba phút. Tao thực tế hơn mày."
-    new "Three minutes. I'm more realistic than you."
+    old "Cho hẳn năm phút. Tao thực tế hơn mày."
+    new "Give it five whole minutes. I'm more practical than you."
 
     old "Giữ lại cho riêng mình"
     new "Keep it to herself"
@@ -180,8 +180,8 @@ translate english strings:
     old "Cà phê?"
     new "Coffee?"
 
-    old "Không đường. Ít đá. Vì mày sẽ càm ràm nếu tao mua sai."
-    new "No sugar. Less ice. Because you will complain if I buy the wrong one."
+    old "Ít đường. Ít đá. Vì mày sẽ càm ràm nếu tao mua sai."
+    new "Less sugar. Less ice. Because you'll complain if I get it wrong."
 
     old "Tâm nhìn vào gương."
     new "Tâm looked in the mirror."
@@ -192,8 +192,8 @@ translate english strings:
     old "Biết điều đấy."
     new "Know that."
 
-    old "Tất nhiên. Chị em tốt không phải để trưng."
-    new "Of course. Good sisters are not for show."
+    old "Tất nhiên. Chị em tốt không phải chỉ để trưng."
+    new "Of course. Good sisters aren't just for show."
 
     old "Tâm tắt máy."
     new "Tâm turned off the phone."
@@ -246,8 +246,8 @@ translate english strings:
     old "Làm gì có chuyện đó."
     new "There's no such thing."
 
-    old "Ai biết được. Đời mà. Nó thích làm màu hơn cả biên kịch phim Hàn."
-    new "Who knows? That's life. He likes to color more than Korean movie screenwriters."
+    old "Ai biết được. Đời mà. Đôi khi nó thích làm màu hơn cả biên kịch phim Hàn."
+    new "Who knows. That's life. Sometimes it likes to show off more than a Korean drama writer."
 
     old "Tâm cười theo."
     new "Tâm laughed along."
@@ -288,5 +288,5 @@ translate english strings:
     old "Đi thôi."
     new "Let's go."
 
-    old "Cánh cửa khép lại sau lưng cô."
-    new "The door closed behind her."
+    old "Cánh cửa phòng ngủ khép lại sau lưng cô. Một ngày mới bắt đầu."
+    new "The bedroom door closed behind her. A new day begins."

@@ -21,6 +21,9 @@ translate english strings:
     old "Điện thoại trên tủ đầu giường rung lên."
     new "The phone on the bedside table vibrated."
 
+    old "06:30."
+    new "06:30."
+
     old "Phỏng vấn lúc chín giờ."
     new "Interview at nine o'clock."
 
@@ -93,8 +96,8 @@ translate english strings:
     old "Cô không viết dài. Chỉ ghi vài chữ."
     new "She doesn't write long. Just write a few words."
 
-    old "\"Mưa. Mái hiên. Một người đàn ông. Giọng nói quen.\""
-    new "\"Rain. Awning. A man. A familiar voice.\""
+    old "\"Mưa. Mái hiên. Lại là người đó. Giọng nói vẫn vậy.\""
+    new "\"Rain. Awning. It's him again. The voice is still the same.\""
 
     old "Ngòi bút dừng lại rất lâu sau chữ cuối cùng."
     new "The pen stopped long after the last word."

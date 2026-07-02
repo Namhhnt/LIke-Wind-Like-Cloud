@@ -216,9 +216,6 @@ translate english strings:
     old "Chúc mừng em."
     new "Congratulations."
 
-    old "Vâng."
-    new "Yes."
-
     old "Tối về nhà ăn cơm không? Chị nói mẹ nấu thêm món em thích."
     new "Are you coming home for dinner tonight? She told mom to cook more of my favorite dishes."
 
@@ -239,6 +236,9 @@ translate english strings:
 
     old "Được. Đi chơi vui."
     new "Okay. Junket."
+
+    old "Vâng."
+    new "Yes."
 
     old "Cúp máy xong, Tâm vẫn nhìn màn hình thêm vài giây."
     new "After hanging up, Tâm still looked at the screen for a few more seconds."
@@ -303,9 +303,6 @@ translate english strings:
     old "Trước cửa xoay, Huyền bỗng dừng lại."
     new "In front of the revolving door, Huyền suddenly stopped."
 
-    old "Này."
-    new "This."
-
     old "Tối nay vẫn phải đi ăn. Dù mày chọn nhánh nào đi nữa."
     new "Still have to go eat tonight. No matter which branch you choose."
 
@@ -322,7 +319,7 @@ translate english strings:
     new "Are not. From today I am a future employee. I need healthy entertainment."
 
     old "Tâm lắc đầu."
-    new "Tâm shook his head."
+    new "Tâm shook her head."
 
     old "Nhưng nụ cười trên môi cô không hạ xuống."
     new "But the smile on her lips did not decrease."

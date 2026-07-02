@@ -63,7 +63,7 @@ label prologue_rain_dream_s02_wake_up:
             "Tâm quay lại bàn, kéo ngăn tủ lấy một quyển sổ nhỏ."
             "Cô không viết dài. Chỉ ghi vài chữ."
 
-            "\"Mưa. Mái hiên. Một người đàn ông. Giọng nói quen.\""
+            "\"Mưa. Mái hiên. Lại là người đó. Giọng nói vẫn vậy.\""
 
             "Ngòi bút dừng lại rất lâu sau chữ cuối cùng."
             "Cuối cùng, cô gấp mép trang lại."

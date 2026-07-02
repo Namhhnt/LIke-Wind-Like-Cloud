@@ -7,6 +7,8 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     "Buổi sáng hôm ấy, Tâm thức dậy trước chuông báo thức năm phút."
 
+    "Ngày hôm nay có buổi phỏng vấn quan trọng. Cô không muốn để bản thân bị cuốn vào những giấc mơ mơ hồ, hay những cảm giác khó hiểu."
+
     "Chiếc điện thoại nằm úp trên bàn, bên cạnh một tập portfolio đã được cô kiểm tra đến mức mép giấy hơi cong lên."
 
     tam tired "Mình đúng là rảnh thật..."
@@ -27,9 +29,9 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     "Chuông cửa reo đúng lúc cô vừa bỏ tập hồ sơ vào túi."
 
-    huyen happy "Tâm ơi, mở cửa. Tao đến cứu đời mày đây."
+    huyen happy "Tâm ơi, mở cửa. Tao đến giải cứu mày đây."
 
-    tam confused "Cứu gì?"
+    tam confused "Cứu cái gì?"
 
     huyen teasing "Cứu khỏi việc mày tự soi CV đến mức nhà tuyển dụng chưa kịp đánh giá thì giấy đã mòn trước."
 
@@ -51,7 +53,7 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     huyen "Kiểu 'người này lát nữa đi phỏng vấn thật à'."
 
-    tam happy "Tao chưa nói gì mà."
+    tam happy "Tao chưa nói gì nhá."
 
     huyen irritated "Nhưng mặt mày nói rồi."
 
@@ -99,7 +101,7 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     tam smile "Tập trước."
 
-    "Huyền ngồi xuống mép giường, ôm ly cà phê bằng hai tay."
+    "Huyền ngồi xuống sofa, ôm ly cà phê bằng hai tay."
 
     "Lần này đến lượt Tâm nhìn ra chỗ lệch."
 
@@ -128,11 +130,11 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
             tam neutral "Một chút của mày thường là khá nhiều."
 
-            huyen "Đừng vạch trần bạn bè vào buổi sáng. Vô đạo đức lắm."
+            huyen "Đừng bóc mẽ bạn bè vào buổi sáng. Vô đạo đức lắm."
 
             tam happy "Ừ. Tao xin lỗi."
 
-            "Tâm kéo ghế lại gần, mở túi, lấy ra một bản CV của Huyền."
+            "Tâm ngồi lại gần, mở túi, lấy ra một bản CV của Huyền."
 
             tam neutral "Tao xem qua rồi. Phần kinh nghiệm thực tập của mày ổn. Phần teamwork cũng ổn. Nếu họ hỏi về điểm yếu, đừng nói 'quá cầu toàn'."
 
@@ -208,7 +210,7 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
             tam smile "Tên quán là 'Hai người trượt phỏng vấn'. Slogan: thất nghiệp nhưng thơm mùi rang xay."
 
-            huyen "..."
+            huyen neutral "..."
 
             huyen laughing "Ý tưởng tệ đến mức tao thấy tỉnh hẳn."
 
@@ -263,10 +265,58 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     "Chỉ có quai túi trên vai cô hơi siết vào lòng bàn tay."
 
+    "Chiếc taxi lăn bánh rời khỏi khu chung cư, nhập vào dòng xe buổi sáng."
+
+    "Ngoài cửa kính, thành phố trôi qua trong những mảng nắng còn nhạt. Tâm đặt tập hồ sơ lên đùi, còn Huyền thì tựa đầu vào ghế, cố tỏ ra bình thản."
+
+    huyen neutral "Còn mười lăm phút nữa. Mày định dùng nó để lo lắng hay để thở?"
+
+    tam smile "Có lựa chọn thứ ba không?"
+
+    huyen teasing "Có. Vừa lo vừa thở. Rất tiết kiệm thời gian."
+
+    menu:
+        "What should they do on the way?"
+
+        "Review the portfolios one last time":
+            $ story_add('career_tam', 1)
+            $ story_add('career_huyen', 1)
+
+            "Tâm mở túi, kiểm tra lại thứ tự hồ sơ lần cuối."
+
+            tam neutral "CV, portfolio, bản in dự phòng. Của mày cũng đủ rồi."
+
+            huyen bored "Nghe như kiểm kê hàng hóa."
+
+            tam teasing "Hàng hóa chất lượng cao."
+
+            huyen laughing "Được. Câu đó lát nữa nhớ nói với nhà tuyển dụng."
+
+        "Lighten up the mood":
+            $ story_add('tam_self_clarity', 1)
+            $ story_flag('tam_huyen_taxi_bonding')
+
+            tam neutral "Tao nghĩ nếu cả hai cùng trượt, mình vẫn mở được quán cà phê."
+
+            huyen confused "Lại cái quán thất nghiệp đó à?"
+
+            tam smile "Lần này nâng cấp. Có combo CV lỗi và nước mắt rang xay."
+
+            huyen laughing "Mày im đi. Tao mà cười trôi son là mày chịu trách nhiệm."
+
+            "Tâm cũng bật cười."
+
+            "Không khí trong xe nhẹ đi một chút. Vừa đủ để hai bàn tay bớt lạnh."
+
+    "Taxi rẽ vào khu thương mại."
     scene bg_company_lobby_morning
     with dissolve
 
-    "Tòa nhà công ty hiện ra sau lớp kính lớn của sảnh chính."
+    "Tòa nhà công ty hiện ra sau bóng dáng của những tòa nhà cao tầng với cửa kính lớn."
+
+    "Hai người trả tiền taxi, rồi bước vào sảnh."
+
+    "Cửa kính xoay mở ra, đón hai cô gái bước vào sảnh."
 
     "Máy lạnh trong lobby thổi ra một luồng khí khô và lạnh. Mùi nước lau sàn mới còn vương rất nhẹ."
 

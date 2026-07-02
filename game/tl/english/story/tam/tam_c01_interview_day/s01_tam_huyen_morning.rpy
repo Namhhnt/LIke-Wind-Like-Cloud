@@ -3,6 +3,9 @@ translate english strings:
     old "Buổi sáng hôm ấy, Tâm thức dậy trước chuông báo thức năm phút."
     new "That morning, Tâm woke up five minutes before the alarm."
 
+    old "Ngày hôm nay có buổi phỏng vấn quan trọng. Cô không muốn để bản thân bị cuốn vào những giấc mơ mơ hồ, hay những cảm giác khó hiểu."
+    new "Today was the day of the important interview. She didn't want to get caught up in vague dreams or confusing feelings."
+
     old "Chiếc điện thoại nằm úp trên bàn, bên cạnh một tập portfolio đã được cô kiểm tra đến mức mép giấy hơi cong lên."
     new "The phone lay face down on the table, next to a portfolio that she had examined until the edges of the paper were slightly curled."
 
@@ -30,11 +33,11 @@ translate english strings:
     old "Chuông cửa reo đúng lúc cô vừa bỏ tập hồ sơ vào túi."
     new "The doorbell rang just as she put the folder in her bag."
 
-    old "Tâm ơi, mở cửa. Tao đến cứu đời mày đây."
-    new "Tâm, open the door. I'm here to save your life."
+    old "Tâm ơi, mở cửa. Tao đến giải cứu mày đây."
+    new "Tâm, open up. I'm here to save you."
 
-    old "Cứu gì?"
-    new "Save what?"
+    old "Cứu cái gì?"
+    new "Save me from what?"
 
     old "Cứu khỏi việc mày tự soi CV đến mức nhà tuyển dụng chưa kịp đánh giá thì giấy đã mòn trước."
     new "Save you from inspecting your CV so much that the paper wears out before the recruiters can even judge it."
@@ -66,7 +69,7 @@ translate english strings:
     old "Kiểu 'người này lát nữa đi phỏng vấn thật à'."
     new "Like 'is this person really going to be interviewed later'."
 
-    old "Tao chưa nói gì mà."
+    old "Tao chưa nói gì nhá."
     new "I haven't said anything yet."
 
     old "Nhưng mặt mày nói rồi."
@@ -118,7 +121,7 @@ translate english strings:
     new "Are you worried?"
 
     old "Có."
-    new "Have."
+    new "Yes."
 
     old "Nhiều không?"
     new "Much?"
@@ -132,8 +135,8 @@ translate english strings:
     old "Tập trước."
     new "Previous episode."
 
-    old "Huyền ngồi xuống mép giường, ôm ly cà phê bằng hai tay."
-    new "Huyền sat down on the edge of the bed, holding a cup of coffee with both hands."
+    old "Huyền ngồi xuống sofa, ôm ly cà phê bằng hai tay."
+    new "Huyền sat down on the sofa, holding her coffee cup with both hands."
 
     old "Lần này đến lượt Tâm nhìn ra chỗ lệch."
     new "This time it was Tâm's turn to see the deviation."
@@ -168,17 +171,20 @@ translate english strings:
     old "Một chút của mày thường là khá nhiều."
     new "A little bit of you is usually quite a lot."
 
-    old "Đừng vạch trần bạn bè vào buổi sáng. Vô đạo đức lắm."
-    new "Don't expose your friends in the morning. Very immoral."
+    old "Đừng bóc mẽ bạn bè vào buổi sáng. Vô đạo đức lắm."
+    new "Don't expose your friend in the morning. So unethical."
 
     old "Ừ. Tao xin lỗi."
     new "YES. I'm sorry."
 
-    old "Tâm kéo ghế lại gần, mở túi, lấy ra một bản CV của Huyền."
-    new "Tâm pulled his chair closer, opened his bag, and took out a copy of Huyền's CV."
+    old "Tâm ngồi lại gần, mở túi, lấy ra một bản CV của Huyền."
+    new "Tâm sat closer, opened her bag, and took out a copy of Huyền's resume."
 
     old "Tao xem qua rồi. Phần kinh nghiệm thực tập của mày ổn. Phần teamwork cũng ổn. Nếu họ hỏi về điểm yếu, đừng nói 'quá cầu toàn'."
     new "I looked it over. Your internship experience is fine. The teamwork part is also good. If they ask about weaknesses, don't say 'too much of a perfectionist'."
+
+    old "Sao?"
+    new "What?"
 
     old "Nghe giả."
     new "Sounds fake."
@@ -242,6 +248,9 @@ translate english strings:
 
     old "Cái đó ai nhìn thấy được?"
     new "Who can see that?"
+
+    old "Tao."
+    new "Me."
 
     old "Nhà tuyển dụng đâu phải mày."
     new "The recruiter is not you."
@@ -325,13 +334,13 @@ translate english strings:
     new "Fine."
 
     old "Không nói dối?"
-    new "Don't lie?"
+    new "No lying?"
 
     old "Có trang điểm nhẹ nên nếu nói dối cũng khó phát hiện."
     new "She has light makeup so it's hard to detect if she lies."
 
     old "Tâm."
-    new "Heart."
+    new "Tâm."
 
     old "Ổn thật."
     new "It's okay."
@@ -348,8 +357,65 @@ translate english strings:
     old "Chỉ có quai túi trên vai cô hơi siết vào lòng bàn tay."
     new "Only the strap of the bag on her shoulder was slightly tightened in her palm."
 
-    old "Tòa nhà công ty hiện ra sau lớp kính lớn của sảnh chính."
-    new "The company building appears behind the large glass of the main lobby."
+    old "Chiếc taxi lăn bánh rời khỏi khu chung cư, nhập vào dòng xe buổi sáng."
+    new "The taxi pulled away from the apartment complex, merging into the morning traffic."
+
+    old "Ngoài cửa kính, thành phố trôi qua trong những mảng nắng còn nhạt. Tâm đặt tập hồ sơ lên đùi, còn Huyền thì tựa đầu vào ghế, cố tỏ ra bình thản."
+    new "Outside the window, the city drifted by in pale patches of sunlight. Tâm placed her portfolio on her lap, while Huyền leaned back in her seat, trying to look calm."
+
+    old "Còn mười lăm phút nữa. Mày định dùng nó để lo lắng hay để thở?"
+    new "Fifteen minutes left. Are you going to use them to worry or to breathe?"
+
+    old "Có lựa chọn thứ ba không?"
+    new "Is there a third option?"
+
+    old "Có. Vừa lo vừa thở. Rất tiết kiệm thời gian."
+    new "Yes. Worry and breathe at the same time. Very time-efficient."
+
+    old "Tâm mở túi, kiểm tra lại thứ tự hồ sơ lần cuối."
+    new "Tâm opened her bag, checking the order of her documents one last time."
+
+    old "CV, portfolio, bản in dự phòng. Của mày cũng đủ rồi."
+    new "Resume, portfolio, backup printouts. Yours are ready too."
+
+    old "Nghe như kiểm kê hàng hóa."
+    new "Sounds like inventory."
+
+    old "Hàng hóa chất lượng cao."
+    new "High-quality merchandise."
+
+    old "Được. Câu đó lát nữa nhớ nói với nhà tuyển dụng."
+    new "Okay. Remember to say that to the interviewer later."
+
+    old "Tao nghĩ nếu cả hai cùng trượt, mình vẫn mở được quán cà phê."
+    new "I think if we both fail, we can still open that coffee shop."
+
+    old "Lại cái quán thất nghiệp đó à?"
+    new "That unemployment café again?"
+
+    old "Lần này nâng cấp. Có combo CV lỗi và nước mắt rang xay."
+    new "This time it's upgraded. Comes with a faulty CV combo and roasted tears."
+
+    old "Mày im đi. Tao mà cười trôi son là mày chịu trách nhiệm."
+    new "Shut up. If I laugh my lipstick off, you're responsible."
+
+    old "Tâm cũng bật cười."
+    new "Tâm laughed too."
+
+    old "Không khí trong xe nhẹ đi một chút. Vừa đủ để hai bàn tay bớt lạnh."
+    new "The atmosphere in the car lightened a little. Just enough for their hands to feel less cold."
+
+    old "Taxi rẽ vào khu thương mại."
+    new "The taxi turned into the commercial district."
+
+    old "Tòa nhà công ty hiện ra sau bóng dáng của những tòa nhà cao tầng với cửa kính lớn."
+    new "The company building emerged from behind the surrounding high-rises with their large glass windows."
+
+    old "Hai người trả tiền taxi, rồi bước vào sảnh."
+    new "The two paid for the taxi and walked into the lobby."
+
+    old "Cửa kính xoay mở ra, đón hai cô gái bước vào sảnh."
+    new "The revolving glass doors opened to welcome the two girls into the lobby."
 
     old "Máy lạnh trong lobby thổi ra một luồng khí khô và lạnh. Mùi nước lau sàn mới còn vương rất nhẹ."
     new "The air conditioner in the lobby blows out cold, dry air. The smell of new floor cleaner still lingers very lightly."

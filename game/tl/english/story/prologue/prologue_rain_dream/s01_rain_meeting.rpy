@@ -33,9 +33,6 @@ translate english strings:
     old "Tâm khẽ siết cán ô."
     new "Tâm gently tightened the handle of the umbrella."
 
-    old "..."
-    new "..."
-
     old "Người đàn ông dừng lại trước mặt cô."
     new "The man stopped in front of her."
 
@@ -60,14 +57,17 @@ translate english strings:
     old "\"Em cứ đứng như vậy thì cảm mất.\""
     new "\"If you keep standing like that, you'll catch a cold.\""
 
+    old "..."
+    new "..."
+
     old "Giọng nói đó thấp, khô, nhưng không lạnh."
     new "That voice was low, dry, but not cold."
 
     old "Tâm cảm thấy trong ngực mình có thứ gì đó khựng lại một nhịp."
     new "Tâm felt something in his chest stop for a beat."
 
-    old "Anh là ai?"
-    new "Who are you?"
+    old "Em... không sao."
+    new "I'm... fine."
 
     old "Người kia không trả lời ngay."
     new "The other person did not answer immediately."
@@ -87,8 +87,8 @@ translate english strings:
     old "Anh nói."
     new "he said."
 
-    old "\"Về thôi.\""
-    new "\"Let's go home.\""
+    old "\"Tôi đưa em về.\""
+    new "\"I'll take you home.\""
 
     old "Tâm muốn hỏi về đâu."
     new "Tâm wants to ask about where."

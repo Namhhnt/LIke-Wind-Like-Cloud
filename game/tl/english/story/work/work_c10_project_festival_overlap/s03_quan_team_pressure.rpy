@@ -6,8 +6,8 @@ translate english strings:
     old "Who steps up?"
     new "Who steps up?"
 
-    old "Tâm"
-    new "Tâm"
+    # old "Tâm"
+    # new "Tâm"
 
-    old "Huyền"
-    new "Huyền"
+    # old "Huyền"
+    # new "Huyền"
