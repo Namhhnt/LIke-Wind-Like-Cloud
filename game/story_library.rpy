@@ -85,8 +85,28 @@ init -1 python:
 
         return os.path.join(game_dir, normalized)
 
+    def story_library_normalize_path(path):
+        return (path or "").replace("\\", "/").lstrip("/")
+
+    def story_library_is_text_asset(path):
+        normalized = story_library_normalize_path(path)
+        if not normalized.startswith("stories/"):
+            return False
+        if normalized.endswith("manifest.json"):
+            return False
+        return normalized.endswith(".md") or normalized.endswith(".txt")
+
     def story_library_read_text(path):
-        filesystem_path = story_library_game_path(path)
+        normalized = story_library_normalize_path(path)
+        filesystem_path = story_library_game_path(normalized)
+
+        try:
+            raw_data = renpy.file(normalized).read()
+            if isinstance(raw_data, bytes):
+                return raw_data.decode("utf-8")
+            return raw_data
+        except Exception as exc:
+            renpy.log("Story library: failed to read %s via Ren'Py file access (%s)" % (normalized, exc))
 
         if filesystem_path and os.path.isfile(filesystem_path):
             try:
@@ -95,39 +115,29 @@ init -1 python:
             except Exception as exc:
                 renpy.log("Story library: failed to read filesystem path %s (%s)" % (filesystem_path, exc))
 
-        try:
-            raw_data = renpy.file(path).read()
-            if isinstance(raw_data, bytes):
-                return raw_data.decode("utf-8")
-            return raw_data
-        except Exception as exc:
-            renpy.log("Story library: failed to read %s (%s)" % (path, exc))
-            return None
+        return None
 
     def story_library_list_text_files():
         files = set()
 
+        for path in renpy.list_files():
+            normalized = story_library_normalize_path(path)
+            if story_library_is_text_asset(normalized):
+                files.add(normalized)
+
         stories_dir = story_library_game_path("stories")
+        if files:
+            return sorted(files)
+
         if stories_dir and os.path.isdir(stories_dir):
             for root, _dirs, filenames in os.walk(stories_dir):
                 for filename in filenames:
-                    if not (filename.endswith(".md") or filename.endswith(".txt")):
-                        continue
-
                     absolute_path = os.path.join(root, filename)
                     relative_path = os.path.relpath(absolute_path, getattr(config, "gamedir", stories_dir))
-                    normalized = relative_path.replace("\\", "/")
-                    if normalized.startswith("stories/"):
+                    normalized = story_library_normalize_path(relative_path)
+                    if story_library_is_text_asset(normalized):
                         files.add(normalized)
 
-        for path in renpy.list_files():
-            normalized = path.replace("\\", "/")
-            if not normalized.startswith("stories/"):
-                continue
-            if normalized.endswith("manifest.json"):
-                continue
-            if normalized.endswith(".md") or normalized.endswith(".txt"):
-                files.add(normalized)
         return sorted(files)
 
     def story_library_slug_from_path(path):
