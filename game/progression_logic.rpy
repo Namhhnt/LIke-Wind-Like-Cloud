@@ -20,6 +20,9 @@ init -1 python:
         if not hasattr(persistent, "debugging_mode") or persistent.debugging_mode is None:
             persistent.debugging_mode = False
 
+        if not hasattr(persistent, "debug_reveal_spoilers") or persistent.debug_reveal_spoilers is None:
+            persistent.debug_reveal_spoilers = False
+
         if not hasattr(persistent, "timeline_bookmarks") or persistent.timeline_bookmarks is None:
             persistent.timeline_bookmarks = []
         elif not isinstance(persistent.timeline_bookmarks, list):
@@ -402,6 +405,41 @@ init -1 python:
         if chapter_id in progress["available"]:
             return "available"
         return "locked"
+
+    def progression_debug_reveal_spoilers():
+        normalize_persistent_progression_state()
+        return bool(getattr(persistent, "debug_reveal_spoilers", False))
+
+    def chapter_is_revealed(chapter_id):
+        # Player-facing chapter names/details stay hidden until the chapter is
+        # available or completed. Debug reveal must be explicitly toggled.
+        if progression_debug_reveal_spoilers():
+            return True
+        return get_chapter_state(chapter_id) in ["available", "completed"]
+
+    def chapter_safe_title(chapter_id, locked_title=None):
+        if chapter_id in CHAPTERS and chapter_is_revealed(chapter_id):
+            return chapter_title(chapter_id)
+        if chapter_id in CHAPTERS:
+            return CHAPTERS[chapter_id].get("locked_title") or locked_title or "Chưa mở khóa"
+        return locked_title or "Chưa mở khóa"
+
+    def chapter_safe_display_title(chapter_id, unlocked_title=None, locked_title=None):
+        if chapter_id in CHAPTERS and chapter_is_revealed(chapter_id):
+            return unlocked_title or chapter_title(chapter_id)
+        if chapter_id in CHAPTERS:
+            return CHAPTERS[chapter_id].get("locked_display_title") or CHAPTERS[chapter_id].get("locked_title") or locked_title or "Chương chưa mở khóa"
+        return locked_title or "Chương chưa mở khóa"
+
+    def chapter_list_safe_summary(chapter_ids):
+        if not chapter_ids:
+            return "None"
+        return ", ".join(chapter_safe_display_title(chapter_id) for chapter_id in chapter_ids)
+
+    def debug_toggle_spoiler_reveal():
+        normalize_persistent_progression_state()
+        persistent.debug_reveal_spoilers = not bool(persistent.debug_reveal_spoilers)
+        return persistent.debug_reveal_spoilers
 
     def complete_chapter(chapter_id):
         initialize_progression()

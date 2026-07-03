@@ -244,3 +244,24 @@ style timeline_footer_text:
 style timeline_footer_hint:
     size 17
     color "#bda98f"
+
+style timeline_lane_label_frame is frame
+style timeline_lane_label_text is gui_text
+style timeline_time_marker_text is gui_text
+
+style timeline_lane_label_frame:
+    background Solid("#1a1510aa")
+    xpadding 0
+    ypadding 0
+
+style timeline_lane_label_text:
+    size 16
+    bold True
+    color "#f5d7a6"
+    text_align 0.5
+
+style timeline_time_marker_text:
+    size 22
+    bold True
+    color "#fff4e4"
+    outlines [(1, "#2b0611", 0, 0)]

@@ -1,21 +1,22 @@
-screen timeline_chapter_map(route_id="tam", selected_node_id=None):
+screen timeline_chapter_map(route_id=None, selected_node_id=None):
     tag menu
     modal True
 
     on "show" action SetVariable("quick_menu", False)
     on "hide" action SetVariable("quick_menu", True)
 
-    default selected_route = route_id
-    default active_node_id = selected_node_id if selected_node_id else timeline_get_first_selectable_node(route_id)
+    default selected_route = timeline_normalize_route_id(route_id)
+    default active_node_id = selected_node_id if selected_node_id else timeline_get_first_selectable_node(selected_route)
 
     $ nodes = timeline_get_nodes(selected_route)
     $ resolved_node = timeline_resolve_selected_node(selected_route, active_node_id)
     $ active_node_id = resolved_node["id"] if resolved_node else None
     $ selected_node = resolved_node
-
-    $ selected_chapter_id = selected_node["chapter_id"] if selected_node else None
+    $ selected_chapter_id = selected_node.get("chapter_id") if selected_node else None
     $ selected_node_state = timeline_get_node_state(selected_node) if selected_node else None
     $ selected_can_play = (selected_node_state == "current" and timeline_has_runtime_chapter(selected_chapter_id)) if selected_chapter_id else False
+    $ canvas_w, canvas_h = timeline_get_canvas_size(selected_route)
+    $ viewport_xinitial = timeline_get_viewport_xinitial(selected_route, active_node_id, 1744)
 
     fixed:
         xysize (1920, 1080)
@@ -23,12 +24,12 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
         add timeline_get_background_displayable()
         add Solid("#00000099")
 
-        text "Timeline Chapter Map":
+        text "Continuous Story Timeline":
             style "timeline_title"
             xpos 80
             ypos 42
 
-        text "Track route progress, branches, and future chapters.":
+        text "Past, present, branches, and final choices share one chronology. Locked chapters stay hidden until unlocked.":
             style "timeline_subtitle"
             xpos 84
             ypos 118
@@ -58,6 +59,12 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
                         SetScreenVariable("active_node_id", timeline_get_first_selectable_node(route["id"]))
                     ]
 
+            if timeline_can_show_debug_reveal_toggle():
+                textbutton timeline_debug_reveal_button_label():
+                    style "timeline_route_tab"
+                    text_style "timeline_route_tab_text"
+                    action Function(timeline_toggle_debug_reveal)
+
         frame:
             style "timeline_map_panel"
             xpos 64
@@ -65,7 +72,7 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
             xysize (1792, 506)
 
             fixed:
-                text "Drag horizontally to explore the route timeline":
+                text "Drag horizontally to travel through the story chronology":
                     style "timeline_scroll_hint"
                     xalign 0.5
                     ypos 16
@@ -78,18 +85,28 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
                     ysize 450
                     draggable True
                     mousewheel True
+                    xinitial viewport_xinitial
 
                     fixed:
-                        xysize (2560, 950)
+                        xysize (canvas_w, canvas_h)
 
                         if nodes:
+                            for label in timeline_get_lane_labels(selected_route):
+                                if timeline_should_render_lane_label(selected_route, label):
+                                    use timeline_lane_label(selected_route, label)
+
                             for connection in timeline_get_connections(selected_route):
-                                use timeline_connection_line(selected_route, connection)
+                                if timeline_should_render_connection(selected_route, connection):
+                                    use timeline_connection_line(selected_route, connection)
 
                             for node in nodes:
-                                use timeline_node_card(node, active_node_id)
+                                if timeline_should_render_node(node, selected_route):
+                                    if timeline_node_is_marker(node):
+                                        use timeline_time_marker(selected_route, node)
+                                    else:
+                                        use timeline_node_card(selected_route, node, active_node_id)
                         else:
-                            text "This route does not have timeline nodes yet.":
+                            text "This timeline does not have nodes yet.":
                                 style "timeline_empty_state"
                                 xpos 700
                                 ypos 170
@@ -110,7 +127,7 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
                 ypos 730
                 xysize (1430, 300)
 
-                text "Select a route tab to inspect its chapters.":
+                text "Select a chapter to inspect it.":
                     style "timeline_empty_state"
                     xalign 0.5
                     yalign 0.5
@@ -138,9 +155,10 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
                     textbutton "Preview":
                         style "timeline_secondary_button"
                         text_style "timeline_secondary_button_text"
+                        sensitive bool(selected_chapter_id)
                         action Return(("preview", selected_chapter_id, selected_route, selected_node["id"]))
 
-                    if timeline_is_bookmarked(selected_chapter_id):
+                    if selected_chapter_id and timeline_is_bookmarked(selected_chapter_id):
                         textbutton "Remove Bookmark":
                             style "timeline_secondary_button"
                             text_style "timeline_secondary_button_text"
@@ -149,6 +167,7 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
                         textbutton "Bookmark":
                             style "timeline_secondary_button"
                             text_style "timeline_secondary_button_text"
+                            sensitive bool(selected_chapter_id)
                             action Return(("bookmark", selected_chapter_id, selected_route, selected_node["id"]))
 
         text "LIKE WIND, LIKE CLOUD":
@@ -156,21 +175,63 @@ screen timeline_chapter_map(route_id="tam", selected_node_id=None):
             xpos 80
             ypos 1038
 
-        text "Locked future nodes can still be previewed and bookmarked.":
+        text "Timeline positions are chronological; unrevealed structure is hidden from the player view.":
             style "timeline_footer_hint"
             xalign 0.5
             ypos 1038
 
-screen timeline_node_card(node, selected_node_id):
+
+screen timeline_lane_label(route_id, label):
+    frame:
+        style "timeline_lane_label_frame"
+        xpos timeline_get_lane_label_render_x(route_id, label)
+        ypos label.get("y", 0)
+        xysize (label.get("w", 300), 34)
+
+        text label.get("text", ""):
+            style "timeline_lane_label_text"
+            xalign 0.5
+            yalign 0.5
+
+
+screen timeline_time_marker(route_id, node):
+    $ marker_w = node.get("w", 150)
+    $ marker_h = node.get("h", 150)
+
+    fixed:
+        xpos timeline_get_node_render_x(route_id, node)
+        ypos node["y"]
+        xysize (marker_w, marker_h)
+
+        add Solid("#730f2fee"):
+            xysize (marker_w, marker_h)
+
+        add Solid("#f5d7a666"):
+            xpos 4
+            ypos 4
+            xsize marker_w - 8
+            ysize 3
+
+        text node.get("title", ""):
+            style "timeline_time_marker_text"
+            xalign 0.5
+            yalign 0.5
+            text_align 0.5
+            xmaximum marker_w - 20
+
+
+screen timeline_node_card(route_id, node, selected_node_id):
     $ state = timeline_get_node_state(node)
     $ is_selected = node["id"] == selected_node_id
     $ node_type = node.get("type", "core")
+    $ is_revealed = timeline_should_reveal_node(node)
     $ node_style = "timeline_node_selected" if is_selected else "timeline_node"
     $ node_w = node["w"] + 44
     $ node_h = node["h"] + 44
+    $ node_title = timeline_get_node_display_title(node)
 
     button:
-        xpos node["x"]
+        xpos timeline_get_node_render_x(route_id, node)
         ypos node["y"]
         xysize (node_w, node_h)
         style node_style
@@ -183,22 +244,35 @@ screen timeline_node_card(node, selected_node_id):
                 xpos 10
                 ypos 10
                 xsize node_w - 20
-                ysize 136
+                ysize 128
 
-            add Solid("#0000008f"):
+            add Solid("#00000099"):
                 xpos 10
-                ypos 136
+                ypos 10
                 xsize node_w - 20
-                ysize node_h - 146
+                ysize 128
 
-            text node["code"]:
+            text timeline_get_safe_node_code(node):
                 style "timeline_node_code"
-                xpos 116
-                ypos 162
+                xpos 18
+                ypos 18
+
+            add Solid("#000000b0"):
+                xpos 10
+                ypos 138
+                xsize node_w - 20
+                ysize node_h - 148
+
+            text node_title:
+                style "timeline_node_title"
+                xpos 16
+                ypos 148
+                xmaximum node_w - 32
+                ymaximum 48
 
             hbox:
                 xpos 16
-                ypos 202
+                ypos 206
                 spacing 6
 
                 if state == "completed":
@@ -211,42 +285,45 @@ screen timeline_node_card(node, selected_node_id):
                     text "○" style "timeline_status_locked_icon"
                     text "Locked" style "timeline_status_locked_text"
 
-            if timeline_is_bookmarked(node["chapter_id"]):
+            if timeline_is_bookmarked(node.get("chapter_id")):
                 text "Saved":
                     style "timeline_badge_bonus"
                     xpos node_w - 82
                     ypos 14
 
-            if node_type == "bonus":
-                text "Bonus":
-                    style "timeline_badge_bonus"
-                    xpos 16
-                    ypos 204
-            elif node_type == "pov":
-                text "POV":
-                    style "timeline_badge_pov"
-                    xpos 16
-                    ypos 204
+            if is_revealed:
+                if node_type == "bonus":
+                    text "Bonus":
+                        style "timeline_badge_bonus"
+                        xpos 16
+                        ypos 112
+                elif node_type == "pov":
+                    text "POV":
+                        style "timeline_badge_pov"
+                        xpos 16
+                        ypos 112
+
 
 screen timeline_connection_line(route_id, connection):
     $ from_node = timeline_find_node(route_id, connection["from"])
     $ to_node = timeline_find_node(route_id, connection["to"])
-    $ line_color = "#f0cc72" if connection.get("style") == "dashed" else "#d7b77d"
+    $ style_name = connection.get("style", "normal")
+    $ line_color = "#f0cc72" if style_name in ["branch", "merge", "dashed"] else "#d7b77d"
     $ dot_color = "#f5d7a6"
-    $ from_w = from_node["w"] + 44 if from_node else 0
-    $ from_h = from_node["h"] + 38 if from_node else 0
-    $ to_h = to_node["h"] + 38 if to_node else 0
+    $ from_w = from_node.get("w", 200) + (0 if timeline_node_is_marker(from_node) else 44) if from_node else 0
+    $ from_h = from_node.get("h", 200) + (0 if timeline_node_is_marker(from_node) else 38) if from_node else 0
+    $ to_h = to_node.get("h", 200) + (0 if timeline_node_is_marker(to_node) else 38) if to_node else 0
 
     if from_node and to_node:
-        $ from_x = from_node["x"] + from_w
+        $ from_x = timeline_get_node_render_x(route_id, from_node) + from_w
         $ from_y = from_node["y"] + int(from_h / 2)
-        $ to_x = to_node["x"]
+        $ to_x = timeline_get_node_render_x(route_id, to_node)
         $ to_y = to_node["y"] + int(to_h / 2)
         $ mid_x = int((from_x + to_x) / 2)
         $ horizontal_width = max(1, to_x - from_x)
 
         if abs(from_y - to_y) < 20:
-            if connection.get("style") == "dashed":
+            if style_name == "dashed":
                 for dash_x in range(from_x, to_x, 22):
                     add Solid(line_color):
                         xpos dash_x
@@ -290,12 +367,14 @@ screen timeline_connection_line(route_id, connection):
                 xsize 10
                 ysize 10
 
+
 screen timeline_detail_panel(route_id, node):
     $ state = timeline_get_node_state(node)
     $ requirements = timeline_get_requirement_lines(node)
     $ stat_modifiers = timeline_get_node_stat_modifiers(node)
     $ detail_title = timeline_get_detail_title(node)
     $ detail_summary = timeline_get_node_summary(node)
+    $ route_label = timeline_get_route_label(node.get("origin_route", route_id))
 
     frame:
         style "timeline_detail_panel"
@@ -326,6 +405,7 @@ screen timeline_detail_panel(route_id, node):
                 ypos 248
                 spacing 24
 
+                text "Track [route_label]" style "timeline_detail_meta"
                 text "Time [node.get('duration', 'Approx. 20 min')]" style "timeline_detail_meta"
 
                 if state == "locked":
@@ -334,6 +414,13 @@ screen timeline_detail_panel(route_id, node):
                     text "Completed" style "timeline_detail_meta"
                 else:
                     text "Unlocked" style "timeline_detail_meta"
+
+            if timeline_debug_reveal_spoilers():
+                text timeline_get_debug_node_line(node):
+                    style "timeline_detail_meta"
+                    xpos 442
+                    ypos 274
+                    xmaximum 500
 
             text "Unlock Requirements":
                 style "timeline_requirements_title"
@@ -367,7 +454,6 @@ screen timeline_detail_panel(route_id, node):
             #                 xmaximum 300
 
 
-
 screen timeline_requirement_line(done, label):
     hbox:
         spacing 8
@@ -378,5 +464,3 @@ screen timeline_requirement_line(done, label):
             text "○" style "timeline_status_locked_icon"
 
         text label style "timeline_requirement_text"
-
-

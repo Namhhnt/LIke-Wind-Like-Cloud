@@ -32,6 +32,12 @@ label route_map_timeline(selected_route=DEFAULT_ROUTE_ID, selected_node=None):
                 next_action = "exit"
                 break
 
+            if not isinstance(result, tuple) or len(result) != 4:
+                # Defensive guard for non-returning UI actions such as debug toggles.
+                # Some Ren'Py Function actions can accidentally bubble a bool back
+                # through call_screen(); ignore them instead of crashing the map loop.
+                continue
+
             action, chapter_id, returned_route, returned_node = result
             current_route = returned_route or current_route
             current_node = returned_node or current_node

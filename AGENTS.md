@@ -1,6 +1,6 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-06-26
+**Generated:** 2026-07-03
 **Commit:** working tree
 **Branch:** library-screen (based on develop)
 
@@ -41,7 +41,7 @@ LikeWindLikeCloud/
 | Theme colors, sizes, menu backgrounds | `game/gui.rpy` | Warm palette and layout constants. |
 | Styles | `game/styles/library_styles.rpy` | Library-specific style definitions. |
 | Character/background declarations | `game/scripts/` | Sprites (tam, hoang, yuuka, minh, thienan, huyen, quan, thienan) + backgrounds + CGs. |
-| Translation work | `game/tl/` | Mirrors source filenames by locale (Vietnamese). |
+| Translation work | `game/tl/` | Mirrors source filenames by locale (`game/tl/english/`, `game/tl/vietnamese/`). |
 | Minigames | `game/minigames/` | Problem Diagnosis + Speech Ordering, with global minigame runtime. |
 | Progression design | `Specs/game_mechanics.md` | Data model for routes, chapters, unlocks (still valid reference). |
 | Implementation roadmap | `Specs/progression_implementation_plan.md` | All implementation phases checked complete. |
@@ -92,7 +92,7 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 - Do not treat `game/saves/navigation.json` as source of truth; it is generated runtime output.
 - Do not assume `game/screens.rpy` is untouched boilerplate; custom menu styling and a touch-only quick menu live there.
 - Do not assume `Specs/progression_implementation_plan.md` is current source of truth for missing features; all phases are checked complete.
-- Do not change source strings without checking the mirrored locale files under `game/tl/`.
+- Do not change source strings without checking the mirrored locale files under `game/tl/`. English TL files (`game/tl/english/story/`) mirror the `game/story/` folder structure with `translate english strings:` blocks containing `old`/`new` entry pairs. Every Vietnamese source string, `"..."` silence, and English menu choice requires a matching `old` entry — missing entries fall back to source text, duplicate or stale entries produce Ren'Py warnings.
 
 ## UNIQUE STYLES
 - UI palette is warm beige/brown, not Ren'Py default blue.
@@ -101,6 +101,61 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 - Progression runtime tracks recommendations, route focus, emotional state, relationship directions, validation issues, and seeded ending eligibility across 8 routes and 24 endings.
 - Library system supports 6 content categories, 21 character profiles, and Markdown-based custom story reading with investment point unlocks.
 - The current playable build starts on Tâm by default; all 8 routes have authored content in the story tree.
+
+## FEATURE STATUS
+### — Complete / Production —
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Custom Main Menu | **DONE** | Custom warm-themed UI with fallback assets; PC-first 1920x1080. |
+| Progression Engine | **DONE** | 8 routes, 36 chapters, full unlock graph, prerequisites, exclusions, recommendations, route focus, relationship directions, emotional state, debug screen/commands. All phases in impl plan checked. |
+| Route Map / Timeline | **DONE** | Timeline chapter selection with bookmarks, available/locked/hidden/excluded states. |
+| Library Shell | **DONE** | 6 categories (Characters, Stories, CG, Music, Minigames, Extras), card-based navigation, warm palette matching main menu. |
+| Character Profiles | **DONE** | 21 profiles with unlocked/locked states per playthrough. |
+| Minigame Runtime | **DONE** | Two minigames: Problem Diagnosis, Speech Ordering. Global runtime. |
+| Interactive Map | **DONE** | Location-based chapter selection with fixed + temp locations, unlock logic, label dispatch. |
+| Character Sprites (side) | **DONE** | 7 characters with 30+ expressions each. |
+| Background / CG Definitions | **DONE** | Background and CG image declarations. |
+| Story Parser | **DONE** | Markdown/txt parser for custom Library stories. |
+| Investment Points Engine | **DONE** | Point earning/spending for story unlocks, tied to manifest.json. |
+
+### — Has Content, Needs Authoring Iteration —
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Prologue (Rain Dream) | **DONE** | 3 scene files, ~420 lines, full dialogue. |
+| Tam Route C01 (Interview Day) | **DONE** | 4 files, ~1,180 lines, full dialogue. Eng TL synced. |
+| Tam Route C02 (Company Party) | **DONE** | Multiple files, ~1,380 lines, authored content. |
+| Tam Route (remaining chapters) | **AUTHORED** | C03, C05, C06, C07, C20a, C20b — scaffold-level scene structure with branching choices, minimal dialogue. |
+| Flashback Minyuu | **AUTHORED** | ~570 lines across 33 files, authored backstory content. |
+
+### — Skeleton / Scaffold (Minimal Content) —
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Hoang Route | **SKELETON** | ~176 lines across 10 files. Scene structure exists, needs dialogue. |
+| Yuuka Route | **SKELETON** | ~385 lines across 23 files. Some authored segments, mostly scaffold. |
+| Thiên An Route | **SKELETON** | ~159 lines across 9 files. Choice branches defined, no dialogue. |
+| Huyền Route | **SKELETON** | ~90 lines across 5 files. Basic scene structure. |
+| Work / Group Route | **SKELETON** | ~258 lines across 15 files. Scene headers and choice points. |
+| Minyuu Route (c19a-c19c, c23a-c23c) | **SKELETON** | Scene structure with branch choices, minimal prose. |
+| Final Route (c24) | **SKELETON** | ~168 lines across 6 files. Doom/canon check logic exists. |
+
+### — Needs Content / Placeholder —
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Ending Narratives (e01-e24) | **STUB** | All 24 ending labels exist with condition helpers (`can_get_*`), but each is an ~11-line stub with no narrative content. Only `ending_resolver.rpy` has real routing logic. |
+| CG Gallery | **STUB** | Category exists in library; no CG entries populated. |
+| Music Room | **STUB** | Category exists; actions use `NullAction()`. No music tracks registered. |
+| Extras | **STUB** | Category exists; no content. |
+
+### — Partially Implemented / Needs Polish —
+| Feature | Status | Notes |
+|---------|--------|-------|
+| English Translations | **PARTIAL** | 116 TL files (4,760 lines). Prologue + Tam C01 clean-synced. Other routes have TL coverage but may be out of sync with source changes. |
+| Vietnamese TL | **KNOWN ISSUE** | `traceback.txt` reports duplicate `old` entries in `game/tl/vietnamese/screens.rpy`. |
+| Library Stories | **3 STORIES** | Tam (2) + Yuuka/Minh (1). Reader, parser, investment unlock work. Needs more content. |
+| Interactive Map | **BASIC** | Implemented but likely needs content tuning. Some features from spec (temporary location locking, animation) may not be fully wired. |
+| Mobile Adaptation | **NOT STARTED** | PC-first. Touch quick menu exists; no tablet/phone layout adaptation. |
+| Full-size Character Sprites | **NOT STARTED** | Only side sprites defined. No full-body character art. |
+| Main Menu BG Assets | **FALLBACK** | Uses `gui/theme/background_full.png`. Design mockups exist but may not match final art. |
 
 ## COMMANDS
 ```bash
@@ -113,3 +168,4 @@ grep -RInE '^(label|screen|translate [^ ]+ strings|define )' game
 ## NOTES
 - `traceback.txt` currently records a translation issue: duplicate `old` entries in `game/tl/vietnamese/screens.rpy`.
 - The most recent work added custom side stories (Yuuka/Minh "Sunday Market") with CG assets and fixed a bracket interpolation bug in the character profiles screen.
+- Prologue and Tam C01 English translation files were synced to reflect updated story lines (7 TL files under `game/tl/english/story/prologue/prologue_rain_dream/` and `game/tl/english/story/tam/tam_c01_interview_day/`). Every Vietnamese source string and `"..."` silence has a matching `translate english strings:` entry; no orphan entries remain. The sync was automated via a Python extraction/parsing pipeline.
