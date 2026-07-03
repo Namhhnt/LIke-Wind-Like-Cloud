@@ -34,6 +34,17 @@ init -2 python:
             "unlock_conditions": ["completed:tam_c02_company_party"],
             "description": "A detached home tied to Minh, Hoàng, and the routes that orbit them.",
         },
+        "quan_apartment": {
+            "id": "quan_apartment",
+            "name": "Quân's Apartment",
+            "x": 1158,
+            "y": 280,
+            "category": "residential",
+            "icon": "apartment_mid",
+            "default_unlocked": False,
+            "unlock_conditions": ["completed:tam_c02_company_party"],
+            "description": "A typical apartment tower where Quân returns to after work.",
+        },
         "park": {
             "id": "park",
             "name": "Park",

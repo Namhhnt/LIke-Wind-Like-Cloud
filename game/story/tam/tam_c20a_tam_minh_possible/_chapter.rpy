@@ -7,6 +7,7 @@ label tam_c20a_tam_minh_possible:
     call tam_c20a_tam_minh_possible_s03_tam_choice
     call tam_c20a_tam_minh_possible_s04_route_commit_or_step_back
     $ story_complete_chapter('tam_c20a_tam_minh_possible')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

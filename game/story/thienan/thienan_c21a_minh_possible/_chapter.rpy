@@ -7,6 +7,7 @@ label thienan_c21a_minh_possible:
     call thienan_c21a_minh_possible_s03_thienan_choice
     call thienan_c21a_minh_possible_s04_route_commit_or_release
     $ story_complete_chapter('thienan_c21a_minh_possible')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

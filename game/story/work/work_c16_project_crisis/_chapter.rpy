@@ -7,6 +7,7 @@ label work_c16_project_crisis:
     call work_c16_project_crisis_s03_huyen_quan_interaction
     call work_c16_project_crisis_s04_minh_boundary_check
     $ story_complete_chapter('work_c16_project_crisis')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

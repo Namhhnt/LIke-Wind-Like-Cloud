@@ -6,6 +6,7 @@ label fb_minyuu_01_first_frame:
     call fb_minyuu_01_first_frame_s02_professional_friction
     call fb_minyuu_01_first_frame_s03_first_choice
     $ story_complete_chapter('fb_minyuu_01_first_frame')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

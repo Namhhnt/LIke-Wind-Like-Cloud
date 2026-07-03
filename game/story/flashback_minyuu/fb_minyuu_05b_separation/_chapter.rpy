@@ -7,6 +7,7 @@ label fb_minyuu_05b_separation:
     call fb_minyuu_05b_separation_s03_yuuka_leaves_or_minh_cuts
     call fb_minyuu_05b_separation_s04_finalize_ex_lovers
     $ story_complete_chapter('fb_minyuu_05b_separation')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

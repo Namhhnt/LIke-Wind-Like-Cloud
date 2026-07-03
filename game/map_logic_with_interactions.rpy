@@ -373,6 +373,16 @@ init -1 python:
         final_entries = []
         used_location_ids = set()
 
+        # Add one clickable hub for each visible fixed location first.
+        # Story events can still sit around the same coordinate as separate markers.
+        hub_builder = globals().get("build_context_location_hub_entries", None)
+        if callable(hub_builder):
+            for hub_entry in hub_builder(context):
+                entry = resolve_map_entry(hub_entry)
+                final_entries.append(entry)
+                if entry.get("location_id"):
+                    used_location_ids.add(entry["location_id"])
+
         for raw_entry in source_entries:
             entry = resolve_map_entry(raw_entry)
             state = map_entry_is_available(entry, context)
@@ -385,8 +395,11 @@ init -1 python:
             if entry.get("location_id"):
                 used_location_ids.add(entry["location_id"])
 
-        for extra_entry in build_context_location_markers(context, used_location_ids):
-            final_entries.append(resolve_map_entry(extra_entry))
+        # Backward-compatible fallback: if the interaction hub file is not loaded,
+        # keep the old locked fixed-location markers.
+        if not callable(hub_builder):
+            for extra_entry in build_context_location_markers(context, used_location_ids):
+                final_entries.append(resolve_map_entry(extra_entry))
 
         priority = {
             "main": 0,
@@ -394,7 +407,8 @@ init -1 python:
             "bonus": 2,
             "extra": 3,
             "temporary": 4,
-            "locked": 5,
+            "location_hub": 5,
+            "locked": 6,
         }
         final_entries.sort(key=lambda entry: (priority.get(entry.get("kind"), 99), entry.get("title", entry.get("name", ""))))
         return final_entries

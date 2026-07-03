@@ -6,6 +6,7 @@ label thienan_c21b_choose_own_path:
     call thienan_c21b_choose_own_path_s02_quang_or_family_pressure
     call thienan_c21b_choose_own_path_s03_self_assertion_choice
     $ story_complete_chapter('thienan_c21b_choose_own_path')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

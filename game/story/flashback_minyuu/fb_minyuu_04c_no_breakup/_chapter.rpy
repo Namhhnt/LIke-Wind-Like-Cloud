@@ -7,6 +7,7 @@ label fb_minyuu_04c_no_breakup:
     call fb_minyuu_04c_no_breakup_s03_private_or_public_seed
     call fb_minyuu_04c_no_breakup_s04_finalize_still_lovers
     $ story_complete_chapter('fb_minyuu_04c_no_breakup')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

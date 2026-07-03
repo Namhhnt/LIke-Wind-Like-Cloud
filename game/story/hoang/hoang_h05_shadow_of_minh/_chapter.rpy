@@ -7,6 +7,7 @@ label hoang_h05_shadow_of_minh:
     call hoang_h05_shadow_of_minh_s03_huyen_or_minh_context
     call hoang_h05_shadow_of_minh_s04_growth_choice
     $ story_complete_chapter('hoang_h05_shadow_of_minh')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

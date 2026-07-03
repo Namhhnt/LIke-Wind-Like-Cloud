@@ -7,6 +7,7 @@ label work_c10_project_festival_overlap:
     call work_c10_project_festival_overlap_s03_quan_team_pressure
     call work_c10_project_festival_overlap_s04_career_or_relationship_choice
     $ story_complete_chapter('work_c10_project_festival_overlap')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

@@ -7,6 +7,7 @@ label huyen_c22_quan_or_hoang:
     call huyen_c22_quan_or_hoang_s03_hoang_huyen_option
     call huyen_c22_quan_or_hoang_s04_huyen_choice
     $ story_complete_chapter('huyen_c22_quan_or_hoang')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

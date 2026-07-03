@@ -7,6 +7,7 @@ label group_c11_social_dinner:
     call group_c11_social_dinner_s03_state_sensitive_dinner
     call group_c11_social_dinner_s04_observation_choice
     $ story_complete_chapter('group_c11_social_dinner')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

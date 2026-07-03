@@ -7,6 +7,7 @@ label fb_minyuu_02_working_rhythm:
     call fb_minyuu_02_working_rhythm_s03_minh_care_or_boundary
     call fb_minyuu_02_working_rhythm_s04_score_branch
     $ story_complete_chapter('fb_minyuu_02_working_rhythm')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

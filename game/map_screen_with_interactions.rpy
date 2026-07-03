@@ -23,31 +23,42 @@ init -1 python:
 
     def interactive_map_label_entries(entries):
         labels = []
-        seen_locations = set()
+        first_entries_by_location = {}
+        hub_entries_by_location = {}
+        ordered_location_ids = []
 
         for entry in entries:
             location_id = entry.get("location_id")
-            state = entry.get("state", "available")
-
-            if location_id:
-                if location_id in seen_locations:
-                    continue
-                seen_locations.add(location_id)
-
-                if not fixed_location_is_unlocked(location_id):
-                    continue
-
-                location = FIXED_MAP_LOCATIONS.get(location_id, {})
-                labels.append({
-                    "id": "label_%s" % location_id,
-                    "title": location.get("name", entry.get("title", entry.get("name", location_id))),
-                    "x": location.get("x", entry.get("x", 960)),
-                    "y": location.get("y", entry.get("y", 540)),
-                    "state": state,
-                    "source_entry": entry,
-                })
+            if not location_id:
                 continue
 
+            if location_id not in first_entries_by_location:
+                first_entries_by_location[location_id] = entry
+                ordered_location_ids.append(location_id)
+
+            if entry.get("kind") == "location_hub":
+                hub_entries_by_location[location_id] = entry
+
+        for location_id in ordered_location_ids:
+            if not fixed_location_is_unlocked(location_id):
+                continue
+
+            entry = hub_entries_by_location.get(location_id, first_entries_by_location.get(location_id))
+            if not entry:
+                continue
+
+            location = FIXED_MAP_LOCATIONS.get(location_id, {})
+            labels.append({
+                "id": "label_%s" % location_id,
+                "title": location.get("name", entry.get("title", entry.get("name", location_id))),
+                "x": location.get("x", entry.get("x", 960)),
+                "y": location.get("y", entry.get("y", 540)),
+                "state": entry.get("state", "available"),
+                "source_entry": entry,
+            })
+
+        for entry in entries:
+            state = entry.get("state", "available")
             if state != "available":
                 continue
 
@@ -171,7 +182,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                     xfill True
                     spacing 12
 
-                    text _("Available Story Events"):
+                    text _("Map Locations & Story Events"):
                         style "interactive_map_panel_title"
 
                     null:
@@ -183,7 +194,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                         action SetScreenVariable("events_panel_collapsed", not events_panel_collapsed)
 
                 if not events_panel_collapsed:
-                    text _("Hover a marker on the map or pick an entry here to continue."):
+                    text _("Pick a story event, or click an unlocked location to spend free time."):
                         style "interactive_map_panel_body"
 
                     viewport:
@@ -199,7 +210,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                                 $ state = entry.get("state", "available")
                                 $ title = entry.get("title", entry.get("name", ""))
                                 $ description = entry.get("description", "")
-                                $ route_line = route_title(entry.get("route_id")) if entry.get("route_id") else _("Location")
+                                $ route_line = _("Location Hub") if entry.get("kind") == "location_hub" else (route_title(entry.get("route_id")) if entry.get("route_id") else _("Location"))
                                 $ list_action = Return(entry) if state == "available" else NullAction()
 
                                 button:
@@ -247,7 +258,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 screen interactive_map_marker(entry, hovered_entry=None, map_zoom=1.0):
     $ state = entry.get("state", "available")
     $ kind = entry.get("kind", "extra")
-    $ glyph = "◆" if kind == "main" else ("●" if kind in ["character", "bonus", "extra"] else "◌")
+    $ glyph = "◎" if kind == "location_hub" else ("◆" if kind == "main" else ("●" if kind in ["character", "bonus", "extra"] else "◌"))
     $ marker_style = "interactive_map_marker_main" if kind == "main" else ("interactive_map_marker_locked" if state != "available" else "interactive_map_marker")
     $ marker_text_style = "interactive_map_marker_text_locked" if state != "available" else ("interactive_map_marker_text_main" if kind == "main" else "interactive_map_marker_text")
     $ marker_action = Return(entry) if state == "available" else NullAction()
@@ -285,7 +296,7 @@ screen interactive_map_label_button(label_entry, hovered_entry=None, map_zoom=1.
 screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0, map_canvas_size=(3344, 1882), map_viewport_size=(1920, 1080), map_focus_center=(760, 460)):
     $ state = entry.get("state", "available")
     $ title = entry.get("title", entry.get("name", ""))
-    $ route_line = route_title(entry.get("route_id")) if entry.get("route_id") else _("Location")
+    $ route_line = _("Location Hub") if entry.get("kind") == "location_hub" else (route_title(entry.get("route_id")) if entry.get("route_id") else _("Location"))
 
     frame:
         xpos 58

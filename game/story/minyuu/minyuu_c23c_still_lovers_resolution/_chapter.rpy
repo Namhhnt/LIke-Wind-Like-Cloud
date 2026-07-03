@@ -6,6 +6,7 @@ label minyuu_c23c_still_lovers_resolution:
     call minyuu_c23c_still_lovers_resolution_s02_private_public_non_marriage
     call minyuu_c23c_still_lovers_resolution_s03_future_shape
     $ story_complete_chapter('minyuu_c23c_still_lovers_resolution')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

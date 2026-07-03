@@ -7,6 +7,7 @@ label tam_c06_minh_returns:
     call tam_c06_minh_returns_s03_tam_reaction
     call tam_c06_minh_returns_s04_unlock_minh_route
     $ story_complete_chapter('tam_c06_minh_returns')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

@@ -7,6 +7,7 @@ label yuuka_c18b_habit_of_you:
     call yuuka_c18b_habit_of_you_s03_no_longer_running
     call yuuka_c18b_habit_of_you_s04_late_reunion_seed
     $ story_complete_chapter('yuuka_c18b_habit_of_you')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return

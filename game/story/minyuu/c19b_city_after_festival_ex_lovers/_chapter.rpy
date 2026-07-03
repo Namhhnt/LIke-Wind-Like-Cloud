@@ -6,6 +6,7 @@ label c19b_city_after_festival_ex_lovers:
     call c19b_city_after_festival_ex_lovers_s02_unresolved_past
     call c19b_city_after_festival_ex_lovers_s03_reunion_or_late_or_single_choice
     $ story_complete_chapter('c19b_city_after_festival_ex_lovers')
+    $ activity_start_free_time_session(40)
     if renpy.has_label('route_map'):
         jump route_map
     return
