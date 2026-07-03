@@ -11,3 +11,4 @@ translate english strings:
 
     old "Avoid both choices"
     new "Avoid both choices"
+

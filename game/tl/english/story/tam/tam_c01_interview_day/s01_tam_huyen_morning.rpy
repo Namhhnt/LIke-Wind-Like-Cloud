@@ -449,3 +449,9 @@ translate english strings:
 
     old "Ừ. Vào thôi."
     new "YES. Let's go in."
+
+    old 'Portfolio?'
+    new 'Portfolio?'
+
+    old 'What should they do on the way?'
+    new 'What should they do on the way?'

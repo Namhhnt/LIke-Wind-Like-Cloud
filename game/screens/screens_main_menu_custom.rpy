@@ -9,10 +9,7 @@ screen main_menu():
 
     tag menu
 
-    if renpy.variant("touch"):
-        use main_menu_touch
-    else:
-        use main_menu_pc
+    use main_menu_pc
 
 
 screen main_menu_pc():
@@ -407,12 +404,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     tag menu
 
-    if renpy.variant("touch"):
-        use game_menu_touch(title, scroll, yinitial, spacing):
-            transclude
-    else:
-        use game_menu_pc(title, scroll, yinitial, spacing):
-            transclude
+    use game_menu_pc(title, scroll, yinitial, spacing):
+        transclude
 
 
 screen game_menu_pc(title, scroll=None, yinitial=0.0, spacing=0):

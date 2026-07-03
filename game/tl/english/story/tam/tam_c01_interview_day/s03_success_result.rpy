@@ -323,3 +323,4 @@ translate english strings:
 
     old "Nhưng nụ cười trên môi cô không hạ xuống."
     new "But the smile on her lips did not decrease."
+

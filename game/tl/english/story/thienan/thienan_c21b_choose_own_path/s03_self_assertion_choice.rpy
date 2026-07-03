@@ -5,3 +5,4 @@ translate english strings:
 
     old "Single self-direction"
     new "Single self-direction"
+

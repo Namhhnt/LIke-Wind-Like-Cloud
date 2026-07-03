@@ -11,3 +11,4 @@ translate english strings:
 
     old "Invest more clearly in Hoàng"
     new "Invest more clearly in Hoàng"
+

@@ -14,3 +14,6 @@ translate english strings:
 
     old "Choose herself"
     new "Choose herself"
+
+    old 'Thiên An chooses...'
+    new 'Thiên An chooses...'

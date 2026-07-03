@@ -8,29 +8,30 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-
+# 4x4 sheet expressions (16 total)
 DEFAULT_EXPRESSIONS = [
-    "neutral",      # bình thường
-    "smile",        # cười mỉm
-    "happy",        # vui
-    "laughing",     # cười to
+    "serious",      # nghiêm túc
+    "calm",         # bình tĩnh
+    "thoughtful",   # trầm tư
+    "determined",   # quyết tâm
 
-    "shy",          # e thẹn
-    "embarrassed",  # bối rối / ngượng
-    "teasing",      # trêu chọc
-    "surprised",    # ngạc nhiên
+    "worried",      # lo lắng
+    "anxious",      # bất an
+    "hopeful",      # hy vọng
+    "relieved",     # nhẹ nhõm
 
-    "sad",          # buồn
-    "teary",        # rưng rưng
-    "hurt",         # tổn thương
-    "lonely",       # cô đơn
+    "pouty",        # phụng phịu
+    "sulking",      # dỗi
+    "smirking",     # cười đểu
+    "flirty",       # tán tỉnh
 
-    "angry",        # tức giận
-    "irritated",    # khó chịu
-    "confused",     # khó hiểu / lúng túng
-    "tired",        # mệt mỏi
+    "sleepy",       # buồn ngủ
+    "dazed",        # choáng váng
+    "curious",      # tò mò
+    "confident",    # tự tin
 ]
 
+# 5x5 sheet expressions (25 total)
 DEFAULT_EXPRESSIONS_5X5 = [
     "neutral",      # bình thường
     "smile",        # cười mỉm
@@ -71,6 +72,11 @@ SHEET_FILENAME_RE = re.compile(
 
 GRID_TOKEN_5X5_RE = re.compile(r"(?<!\d)5x5(?!\d)", re.IGNORECASE)
 GRID_TOKEN_4X4_RE = re.compile(r"(?<!\d)4x4(?!\d)", re.IGNORECASE)
+
+LAYOUT_PRIORITY = {
+    "4x4": 0,
+    "5x5": 1,
+}
 
 
 @dataclass(frozen=True)
@@ -141,6 +147,13 @@ def infer_char_name_from_input(input_path: Path) -> str | None:
     return char_name
 
 
+def infer_layout_name_from_filename(input_path: Path) -> str:
+    if GRID_TOKEN_5X5_RE.search(input_path.name):
+        return "5x5"
+
+    return "4x4"
+
+
 def infer_sheet_layout(
     sheet_path: Path,
     cols_override: int | None = None,
@@ -152,6 +165,9 @@ def infer_sheet_layout(
     Naming rule:
     - filenames containing `5x5` use the 25-expression sheet.
     - filenames containing `4x4`, or no grid token, use the default 16-expression sheet.
+
+    When sheet selection is automatic and both layouts exist for the same
+    character/version, the 4x4 sheet is processed first, then the 5x5 sheet.
 
     `--cols` and `--rows` remain available as manual overrides.
     When either override is used, the final grid must still match one of the
@@ -237,7 +253,7 @@ def collect_candidate_sheets(root: Path, char_name: str | None = None) -> list[P
     return candidates
 
 
-def choose_sheet_for_character(project_root: Path, char_name: str) -> tuple[Path, str]:
+def choose_sheets_for_character(project_root: Path, char_name: str) -> list[tuple[Path, str]]:
     root = characters_root(project_root)
     candidates = collect_candidate_sheets(root, char_name=char_name)
 
@@ -250,8 +266,9 @@ def choose_sheet_for_character(project_root: Path, char_name: str) -> tuple[Path
 
     nested_dir = root / char_name
 
-    def sort_key(path: Path) -> tuple[int, int, int]:
+    def sort_key(path: Path) -> tuple[int, int, int, int]:
         _, version_digits = parse_sheet_filename(path)
+        layout_name = infer_layout_name_from_filename(path)
 
         version_value = int(version_digits) if version_digits else -1
         is_nested = 0 if path.parent == nested_dir else 1
@@ -262,11 +279,23 @@ def choose_sheet_for_character(project_root: Path, char_name: str) -> tuple[Path
         else:
             version_rank = -1
 
-        return has_version, is_nested, version_rank
+        return has_version, is_nested, version_rank, LAYOUT_PRIORITY[layout_name]
 
-    selected = sorted(candidates, key=sort_key)[0]
-    _, version_digits = parse_sheet_filename(selected)
-    return selected, version_digits
+    selected_by_key: dict[tuple[str, str], tuple[Path, str]] = {}
+
+    for candidate in sorted(candidates, key=sort_key):
+        _, version_digits = parse_sheet_filename(candidate)
+        layout_name = infer_layout_name_from_filename(candidate)
+        key = (version_digits, layout_name)
+        selected_by_key.setdefault(key, (candidate, version_digits))
+
+    return [
+        selected_by_key[key]
+        for key in sorted(
+            selected_by_key,
+            key=lambda item: (item[0], LAYOUT_PRIORITY[item[1]]),
+        )
+    ]
 
 
 def discover_sheet_jobs(project_root: Path, output_dir: str | None) -> list[SheetJob]:
@@ -284,7 +313,7 @@ def discover_sheet_jobs(project_root: Path, output_dir: str | None) -> list[Shee
             f"No sprite sheets matching '*_expression_sheet*.png' were found under {root}"
         )
 
-    jobs_by_key: dict[tuple[str, str], SheetJob] = {}
+    jobs_by_key: dict[tuple[str, str, str], SheetJob] = {}
 
     for candidate in candidates:
         char_name, version_digits = parse_sheet_filename(candidate)
@@ -298,7 +327,8 @@ def discover_sheet_jobs(project_root: Path, output_dir: str | None) -> list[Shee
             version_digits=version_digits,
         )
 
-        key = (char_name, version_digits)
+        layout_name = infer_layout_name_from_filename(candidate)
+        key = (char_name, version_digits, layout_name)
         existing = jobs_by_key.get(key)
 
         if existing is None:
@@ -311,7 +341,14 @@ def discover_sheet_jobs(project_root: Path, output_dir: str | None) -> list[Shee
         if candidate_nested and not existing_nested:
             jobs_by_key[key] = job
 
-    return sorted(jobs_by_key.values(), key=lambda job: (job.char_name, job.version_digits))
+    return sorted(
+        jobs_by_key.values(),
+        key=lambda job: (
+            job.char_name,
+            job.version_digits,
+            LAYOUT_PRIORITY[infer_layout_name_from_filename(job.sheet_path)],
+        ),
+    )
 
 
 def resolve_jobs(
@@ -341,7 +378,7 @@ def resolve_jobs(
         ]
 
     if char_name:
-        sheet_path, version_digits = choose_sheet_for_character(project_root, char_name)
+        selected_sheets = choose_sheets_for_character(project_root, char_name)
 
         resolved_output_dir = (
             Path(output_dir).expanduser().resolve()
@@ -356,6 +393,7 @@ def resolve_jobs(
                 output_dir=resolved_output_dir,
                 version_digits=version_digits,
             )
+            for sheet_path, version_digits in selected_sheets
         ]
 
     return discover_sheet_jobs(project_root, output_dir)
@@ -654,9 +692,17 @@ def get_preview_output_path(
     layout_name: str,
     version_digits: str,
     preview_output: str | None = None,
+    multiple_jobs: bool = False,
 ) -> Path:
     if preview_output:
-        return Path(preview_output).expanduser().resolve()
+        preview_path = Path(preview_output).expanduser().resolve()
+
+        if not multiple_jobs:
+            return preview_path
+
+        suffix = f"_{version_digits}" if version_digits else ""
+        preview_stem = f"{preview_path.stem}_{layout_name}{suffix}"
+        return preview_path.with_name(f"{preview_stem}{preview_path.suffix}")
 
     suffix = f"_{version_digits}" if version_digits else ""
     filename = f"{char_name}_expression_sheet_{layout_name}{suffix}_preview.png"
@@ -869,7 +915,8 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help=(
             "Override number of columns in sprite sheet. "
-            "If omitted, inferred from filename: 5x5 => 5, otherwise 4."
+            "If omitted, inferred from filename for direct inputs. "
+            "Automatic sheet selection processes 4x4 first, then 5x5."
         ),
     )
 
@@ -879,7 +926,8 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help=(
             "Override number of rows in sprite sheet. "
-            "If omitted, inferred from filename: 5x5 => 5, otherwise 4."
+            "If omitted, inferred from filename for direct inputs. "
+            "Automatic sheet selection processes 4x4 first, then 5x5."
         ),
     )
 
@@ -947,7 +995,8 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help=(
             "Output file path for --dry-run preview image. "
-            "If omitted, a default preview PNG is created in the output folder."
+            "If omitted, a default preview PNG is created in the output folder. "
+            "When multiple layouts are processed, layout/version suffixes are added automatically."
         ),
     )
 
@@ -987,6 +1036,7 @@ def main() -> None:
                 layout_name=layout.name,
                 version_digits=job.version_digits,
                 preview_output=args.preview_output,
+                multiple_jobs=len(jobs) > 1,
             )
 
             render_dry_run_preview(

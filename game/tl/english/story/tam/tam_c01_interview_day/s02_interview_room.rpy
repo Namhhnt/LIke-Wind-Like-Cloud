@@ -536,3 +536,4 @@ translate english strings:
 
     old "Nhưng lần này, sự im lặng không còn nặng như lúc đầu nữa."
     new "But this time, the silence wasn't as heavy as before."
+

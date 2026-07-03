@@ -11,3 +11,6 @@ translate english strings:
 
     old "Hoàng's design contribution"
     new "Hoàng's design contribution"
+
+    old 'MVP: Minh appears as advisor/supervisor for a company project.'
+    new 'MVP: Minh appears as advisor/supervisor for a company project.'
