@@ -10,3 +10,13 @@ image bg_company_open_office_day = "images/assets/bg/bg_company_open_office_day.
 image bg_meeting_room_day = "images/assets/bg/bg_meeting_room_day.png"
 image bg_company_year_end_party = "images/assets/bg/bg_company_year_end_party.png"
 image bg_company_year_end_party_late = "images/assets/bg/bg_company_year_end_party_late.png"
+
+
+# temporaty assets
+# TODO: update these with proper assets
+image bg_tam_family_living_room_evening = Solid("#1b1714")
+image bg_tam_family_dining_room_evening = Solid("#201814")
+image bg_tam_family_entry_evening = Solid("#17120f")
+image bg_tam_family_hallway_night = Solid("#121014")
+image bg_tam_family_balcony_night = Solid("#10151d")
+image bg_tam_family_thienan_room_night = Solid("#17151a")

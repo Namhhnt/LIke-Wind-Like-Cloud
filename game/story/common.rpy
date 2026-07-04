@@ -91,6 +91,7 @@ define COLOR_MINH = "#7DA7C7"
 define COLOR_YUUKA = "#F4A7C8"
 define COLOR_THIENAN = "#B79AE8"
 define COLOR_QUAN = "#9EA7B3"
+define COLOR_QUANG = "#c2ca9e"
 
 define COLOR_AKIKO = "#B8C8D8"
 define COLOR_TETSUYA = "#C7A97A"
@@ -233,6 +234,18 @@ define quan = Character(
     what_outlines=LWLC_DIALOGUE_OUTLINES
 )
 
+define quan = Character(
+    "Quang",
+    image="quang",
+    who_color=COLOR_QUANG,
+    who_font=LWLC_NAME_FONT,
+    who_size=LWLC_NAME_SIZE,
+    who_outlines=LWLC_NAME_OUTLINES,
+    what_font=LWLC_DIALOGUE_FONT,
+    what_size=LWLC_DIALOGUE_SIZE,
+    what_color=LWLC_DIALOGUE_COLOR,
+    what_outlines=LWLC_DIALOGUE_OUTLINES
+)
 
 # ============================================================
 # Workplace / Generic Characters
@@ -406,7 +419,7 @@ define kim = Character(
 # ============================================================
 
 define minh_father = Character(
-    "Huỳnh Phi Hùng",
+    "Ông Hùng",
     image="minh_father",
     who_color=COLOR_MINH_FATHER,
     who_font=LWLC_NAME_FONT,
@@ -419,7 +432,7 @@ define minh_father = Character(
 )
 
 define minh_mother = Character(
-    "Bùi Thị Kim Liên",
+    "Bà Liên",
     image="minh_mother",
     who_color=COLOR_MINH_MOTHER,
     who_font=LWLC_NAME_FONT,
@@ -432,7 +445,7 @@ define minh_mother = Character(
 )
 
 define tam_father = Character(
-    "Nguyễn Đức Thành",
+    "Ông Thành",
     image="tam_father",
     who_color=COLOR_TAM_FATHER,
     who_font=LWLC_NAME_FONT,
@@ -445,7 +458,7 @@ define tam_father = Character(
 )
 
 define tam_mother = Character(
-    "Đặng Thu Hà",
+    "Bà Hà",
     image="tam_mother",
     who_color=COLOR_TAM_MOTHER,
     who_font=LWLC_NAME_FONT,
@@ -458,7 +471,7 @@ define tam_mother = Character(
 )
 
 define yuuka_father = Character(
-    "Nakamura Seiji",
+    "Ông Seiji",
     image="yuuka_father",
     who_color=COLOR_YUUKA_FATHER,
     who_font=LWLC_NAME_FONT,
@@ -471,7 +484,7 @@ define yuuka_father = Character(
 )
 
 define yuuka_mother = Character(
-    "Nakamura Reiko",
+    "Bà Reiko",
     image="yuuka_mother",
     who_color=COLOR_YUUKA_MOTHER,
     who_font=LWLC_NAME_FONT,
