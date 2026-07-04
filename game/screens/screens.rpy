@@ -259,11 +259,40 @@ screen quick_menu():
 init python:
     config.overlay_screens.append("quick_menu")
 
+    def _phone_overlay_visible():
+        if renpy.store.main_menu:
+            return False
+        if not quick_menu:
+            return False
+
+        blocked_screens = [
+            "choice",
+            "phone_home",
+            "save",
+            "load",
+            "preferences",
+            "history",
+            "about",
+            "help",
+            "library_menu_shell",
+            "debug_progression",
+            "route_map",
+            "interactive_map_screen",
+            "timeline_chapter_map",
+            "problem_diagnosis_minigame",
+            "tam_speech_minigame",
+            "lib_speech_minigame",
+            "problem_diagnosis_debug_menu",
+        ]
+        return not any(renpy.get_screen(screen_name) for screen_name in blocked_screens)
+
 default quick_menu = True
 
 style quick_menu is hbox
 style quick_button is default
 style quick_button_text is button_text
+style phone_overlay_button is button
+style phone_overlay_button_text is button_text
 
 style quick_menu:
     xalign 0.5
@@ -274,6 +303,41 @@ style quick_button:
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
+
+style phone_overlay_button:
+    background Solid("#1a1510de")
+    hover_background Solid("#3a2c1ef0")
+    insensitive_background Solid("#17120dcc")
+    xsize 64
+    ysize 82
+    xpadding 0
+    ypadding 0
+
+style phone_overlay_button_text:
+    color "#ffcf84"
+    hover_color "#fff0bf"
+    size 64
+    outlines [(1, "#130c08cc", 0, 0)]
+    text_align 0.5
+    yalign 0.5
+
+screen phone_overlay_launcher():
+    zorder 99
+
+    if _phone_overlay_visible():
+        button:
+            xpos 1828
+            ypos 26
+            style "phone_overlay_button"
+            action ShowMenu("phone_home", back_action=Return(), back_label=_("Return"))
+
+            text "📱":
+                xalign 0.5
+                yalign 0.5
+                style "phone_overlay_button_text"
+
+init python:
+    config.overlay_screens.append("phone_overlay_launcher")
 
 init python:
     def _debug_overlay_visible():

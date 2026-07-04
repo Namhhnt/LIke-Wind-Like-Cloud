@@ -88,7 +88,7 @@ screen main_menu_navigation():
         xpos 96
         ypos 410
         xsize 560
-        ysize 430
+        ysize 500
         background (Frame(mm_theme_asset("menu_panel_frame.png"), 36, 36) if mm_loadable(mm_theme_asset("menu_panel_frame.png")) else Solid("#2d261fc4"))
 
         vbox:
@@ -119,6 +119,12 @@ screen main_menu_navigation():
                 label=_("Library"),
                 action=ShowMenu("library"),
                 icon_text="▧"
+            )
+
+            use main_menu_nav_button(
+                label=_("Phone"),
+                action=ShowMenu("phone_home"),
+                icon_text="◉"
             )
 
             use main_menu_nav_button(
@@ -572,6 +578,7 @@ screen game_menu_navigation_contents():
 
         use game_menu_nav_button(_("Load"), ShowMenu("load"))
         use game_menu_nav_button(_("Preferences"), ShowMenu("preferences"))
+        use game_menu_nav_button(_("Phone"), ShowMenu("phone_home", back_action=Return()))
 
         if not main_menu:
             use game_menu_nav_button(_("Main Menu"), MainMenu())
