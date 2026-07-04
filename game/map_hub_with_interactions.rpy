@@ -22,20 +22,22 @@ label interactive_map(map_entries=None, context_id="act1_default", allow_back=Tr
             if renpy.has_label("route_map_timeline"):
                 jump route_map_timeline
             return
-
-        if not selected_entry:
-            return
-
-        if isinstance(selected_entry, dict) and selected_entry.get("action_type") == "location_hub":
-            call location_interaction_hub(selected_entry.get("location_id"))
+        elif isinstance(selected_entry, dict) and selected_entry.get("_action") == "phone":
+            call screen phone_home(back_action=Return(), back_label=_("Back to Map"))
         else:
-            $ next_label = resolve_map_target_label(selected_entry)
-
-            if not next_label:
-                "This location has no valid story target."
+            if not selected_entry:
                 return
 
-            jump expression next_label
+            if isinstance(selected_entry, dict) and selected_entry.get("action_type") == "location_hub":
+                call location_interaction_hub(selected_entry.get("location_id"))
+            else:
+                $ next_label = resolve_map_target_label(selected_entry)
+
+                if not next_label:
+                    "This location has no valid story target."
+                    return
+
+                jump expression next_label
 
 
 label story_hub(context_id="act1_default", allow_back=False):

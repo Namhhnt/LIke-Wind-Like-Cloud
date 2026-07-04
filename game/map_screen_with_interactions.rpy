@@ -167,6 +167,17 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
             text _("Drag the map to explore the city. Use Focus to jump back to the current point of interest."):
                 style "interactive_map_drag_hint"
 
+        button:
+            xpos 58
+            ypos 282
+            style "interactive_map_phone_button"
+            action Return({"_action": "phone"})
+
+            text "📱":
+                xalign 0.5
+                yalign 0.5
+                style "interactive_map_phone_button_icon"
+
         frame:
             xpos 1492
             ypos 48
@@ -357,6 +368,8 @@ style interactive_map_list_meta is gui_text
 style interactive_map_list_meta_locked is gui_text
 style interactive_map_secondary_button is button
 style interactive_map_secondary_button_text is button_text
+style interactive_map_phone_button is button
+style interactive_map_phone_button_icon is gui_text
 style interactive_map_marker is button
 style interactive_map_marker_main is button
 style interactive_map_marker_locked is button
@@ -466,6 +479,21 @@ style interactive_map_secondary_button_text:
     size 22
     color "#f5e5cb"
     hover_color "#ffddaa"
+
+style interactive_map_phone_button:
+    background Solid("#1a1510e6")
+    hover_background Solid("#3a2c1ee6")
+    insensitive_background Solid("#17120dcc")
+    xsize 64
+    ysize 84
+    xpadding 0
+    ypadding 0
+
+style interactive_map_phone_button_icon:
+    size 64
+    color "#ffcf84"
+    hover_color "#fff0bf"
+    outlines [(1, "#130c08cc", 0, 0)]
 
 style interactive_map_marker:
     background None

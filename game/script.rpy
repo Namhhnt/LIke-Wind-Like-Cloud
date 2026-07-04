@@ -63,4 +63,6 @@ label new_game_overwrite:
 label after_load:
     $ initialize_progression()
     $ refresh_validation_state()
+    $ phone_ensure_state()
+    $ phone_refresh_all()
     return

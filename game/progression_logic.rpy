@@ -214,6 +214,10 @@ init -1 python:
             recalculate_ending_eligibility()
             refresh_validation_state()
             update_recommended_next()
+
+            refresh_phone = globals().get("phone_refresh_all", None)
+            if callable(refresh_phone):
+                refresh_phone()
             return
 
         progress["initialized"] = True
@@ -229,6 +233,10 @@ init -1 python:
         recalculate_ending_eligibility()
         refresh_validation_state()
         update_recommended_next()
+
+        refresh_phone = globals().get("phone_refresh_all", None)
+        if callable(refresh_phone):
+            refresh_phone()
 
     def apply_direct_unlocks(chapter):
         for unlocked_chapter_id in chapter.get("unlocks", []):
@@ -485,6 +493,10 @@ init -1 python:
         refresh_validation_state()
         update_recommended_next()
 
+        refresh_phone = globals().get("phone_refresh_all", None)
+        if callable(refresh_phone):
+            refresh_phone()
+
     def get_route_status_label(route_id):
         return progress["route_status"].get(route_id, "locked")
 
@@ -567,6 +579,10 @@ init -1 python:
             recalculate_route_status()
             update_recommended_next()
 
+        refresh_phone = globals().get("phone_refresh_all", None)
+        if callable(refresh_phone):
+            refresh_phone()
+
     def debug_complete(chapter_id):
         if chapter_id in CHAPTERS:
             complete_chapter(chapter_id)
@@ -587,6 +603,10 @@ init -1 python:
         recalculate_chapter_availability()
         recalculate_route_status()
         update_recommended_next()
+
+        refresh_phone = globals().get("phone_refresh_all", None)
+        if callable(refresh_phone):
+            refresh_phone()
 
     def debug_show_progress():
         return {
