@@ -1,0 +1,73 @@
+# Runtime state for the in-game phone and public-facing character status.
+
+default phone_state = {
+    "unlocked_contacts": [],
+    "unlocked_threads": [],
+    "read_threads": [],
+    "unread_threads": [],
+    "read_messages": [],
+    "sent_replies": {},
+    "unlocked_mails": [],
+    "read_mails": [],
+    "unlocked_posts": [],
+    "read_posts": [],
+    "liked_posts": [],
+    "notification_log": [],
+}
+
+default character_status = {
+    "tam": {
+        "job_title": None,
+        "job_level": 0,
+        "salary": None,
+        "income_monthly": None,
+        "inventory": [],
+        "known_info": [],
+        "public_stats": {},
+    },
+    "hoang": {
+        "job_title": None,
+        "job_level": 0,
+        "salary": None,
+        "income_monthly": None,
+        "inventory": [],
+        "known_info": [],
+        "public_stats": {},
+    },
+    "huyen": {
+        "job_title": None,
+        "job_level": 0,
+        "salary": None,
+        "income_monthly": None,
+        "inventory": [],
+        "known_info": [],
+        "public_stats": {},
+    },
+    "minh": {
+        "job_title": None,
+        "job_level": 0,
+        "salary": None,
+        "income_monthly": None,
+        "inventory": [],
+        "known_info": [],
+        "public_stats": {},
+    },
+    "yuuka": {
+        "job_title": None,
+        "job_level": 0,
+        "salary": None,
+        "income_monthly": None,
+        "inventory": [],
+        "known_info": [],
+        "public_stats": {},
+    },
+    "thienan": {
+        "job_title": None,
+        "job_level": 0,
+        "salary": None,
+        "income_monthly": None,
+        "inventory": [],
+        "known_info": [],
+        "public_stats": {},
+    },
+}
