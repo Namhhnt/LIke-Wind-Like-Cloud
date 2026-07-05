@@ -1,2289 +1,2406 @@
-Được, Sir. Em dựng lại thành bản **Game Timeline hoàn chỉnh dạng route-map**, có thể dùng làm nền để viết metadata `CHAPTERS`, `ENDING_RULES`, `CHOICE_DEFINITIONS`. Cách chia nhánh bên dưới bám theo progression system hiện tại: chapter có thể unlock route khác, mutually exclusive bằng `excludes`, set hướng quan hệ bằng `relationship_directions_set`, cộng/trừ cảm xúc bằng `emotional_effects`, và mở choice có điều kiện bằng `choice_unlocks`. 
-Phần Yuuka/Minh flashback sẽ dùng cấu trúc “quá khứ ảnh hưởng hiện tại”, đặc biệt là tuyến chia xa: Yuuka rời đi, nhận ra Minh đã ngấm vào cách cô sống, rồi quay lại trong trạng thái đã trưởng thành hơn. 
+# Visual Novel Timeline — Tựa Gió, Tựa Mây
+
+**Version:** 2026-07-05 score/flag alignment update  
+**Purpose:** Route-map timeline for Ren'Py progression metadata, ending rules, and future choice definitions.  
+**Score scale:** all numeric scores use **0–100**.
 
 ---
 
-## 4. Chapter ID Mapping (Spec → Code)
+# 0. Update Notes
 
-The spec uses numbered chapters (C01-C25) for readability. The code uses unique string IDs. Below is the mapping:
+This version updates the timeline to match the newer route spine:
+
+- Score thresholds now use **0–100**, not the old `0–6` / `+1` style.
+- Choice effects should use a consistent delta rhythm:
+  - **±5** = small beat / subtle acknowledgement
+  - **±10** = meaningful scene choice
+  - **±15** = major route-defining choice
+  - **±20** = crisis-level event or branch lock
+- Adds **Thiên An — Arranged Marriage** as a valid ending path.
+- Clarifies that **Minh/Yuuka flashback resolution is mandatory**. If the player fails the core Minyuu requirement, final resolution should fall to `e24_doom`.
+- Aligns score and flag names with `story_state.rpy` / `ending_rules.rpy` where possible.
+- Adds missing timeline flags for route readability. Some are narrative/planning flags and may need to be added in scenes later.
+
+---
+
+# 1. Chapter ID Mapping
 
 ```text
-Spec Chapter           | Code ID                          | Route     | Status
-------------------------|----------------------------------|-----------|-----------------------
-Prologue                | prologue_rain_dream              | tam       | DONE (authored)
-C01 — Ngày phỏng vấn    | tam_c01_interview_day             | tam       | DONE (authored)
-C02 — Buổi tiệc công ty | tam_c02_company_party             | tam       | DONE (authored)
-C03 — Chị gái Thiên An  | tam_c03_thienan_family            | tam       | DONE (authored)
-C04 — Căn nhà của anh   | hoang_h01_brother_house           | hoang     | SKELETON
-C05 — Buổi hẹn CN       | tam_c05_sunday_date               | tam       | SKELETON
-C06 — Minh về nước      | tam_c06_minh_returns              | tam       | SKELETON
-C07 — Minh ở công ty    | tam_c07_minh_at_company           | tam       | SKELETON
-C08 — Yuuka xuất hiện   | yuuka_c08_festival_arrival        | yuuka     | SKELETON
-C09 — Buổi chiếu phim   | yuuka_c09_yuukas_work             | yuuka     | SKELETON
-C10 — Dự án lệch nhịp   | work_c10_project_festival_overlap  | work      | SKELETON
-C11 — Bữa tối người cũ  | group_c11_social_dinner           | group     | SKELETON
-C12 — Flashback sống ch | fb_minyuu_01-03                   | minh      | DONE (authored)
-C13 — Tâm chọn vị trí   | tam_c20a (late-game)              | tam       | SKELETON
-C14 — Flashback chia xa | fb_minyuu_04a/b/c + fb_05b        | minh      | DONE (authored)
-C15 — (not in spec)     | yuuka_c18a/b/c                    | yuuka     | SKELETON
-C16 — Khủng hoảng dự án | work_c16_project_crisis            | work      | SKELETON
-C17 — Hoàng bóng Minh   | hoang_h05_shadow_of_minh          | hoang     | SKELETON
-C18 — Habit of You      | yuuka_c18a/b/c                    | yuuka     | SKELETON
-C19 — City After Fest   | c19a/b/c                          | minh      | SKELETON
-C20 — Tam late choices  | tam_c20a + tam_c20b               | tam       | SKELETON
-C21 — Thiên An path     | thienan_c21a + thienan_c21b       | thienan   | SKELETON
-C22 — Huyền route       | huyen_c22_quan_or_hoang           | huyen     | SKELETON
-C23 — Minyuu resolution | minyuu_c23a/b/c                   | minh      | SKELETON
-C24 — Last choices      | final_c24_last_choices            | final     | SKELETON
+Spec Chapter           | Code ID                                | Route     | Status
+-----------------------|----------------------------------------|-----------|-----------------------
+Prologue               | prologue_rain_dream                    | tam       | DONE
+C01 — Ngày phỏng vấn   | tam_c01_interview_day                  | tam       | DONE
+C02 — Buổi tiệc công ty| tam_c02_company_party                  | tam       | DONE
+C03 — Chị gái Thiên An | tam_c03_thienan_family                 | tam       | DONE
+C04 — Căn nhà của anh  | hoang_h01_brother_house                | hoang     | SKELETON
+C05 — Buổi hẹn CN      | tam_c05_sunday_date                    | tam       | SKELETON
+C06 — Minh về nước     | tam_c06_minh_returns                   | tam       | SKELETON
+C07 — Minh ở công ty   | tam_c07_minh_at_company                | tam       | SKELETON
+C08 — Yuuka xuất hiện  | yuuka_c08_festival_arrival             | yuuka     | SKELETON
+C09 — Buổi chiếu phim  | yuuka_c09_yuukas_work                  | yuuka     | SKELETON
+C10 — Dự án lệch nhịp  | work_c10_project_festival_overlap      | work      | SKELETON
+C11 — Bữa tối người cũ | group_c11_social_dinner                | group     | SKELETON
+C12 — Minyuu flashback | fb_minyuu_01-03                        | minh      | DONE/SKELETON MIX
+C13 — Tâm chọn vị trí  | tam_c20a_tam_minh_possible             | tam       | SKELETON
+C14 — Điểm gãy Minyuu  | fb_minyuu_04a/b/c + fb_05b             | minh      | DONE/SKELETON MIX
+C15 — Yuuka interlude  | yuuka_c18a/b/c                         | yuuka     | SKELETON
+C16 — Khủng hoảng dự án| work_c16_project_crisis                | work      | SKELETON
+C17 — Bóng Minh        | hoang_h05_shadow_of_minh               | hoang     | SKELETON
+C18 — Habit of You     | yuuka_c18a/b/c                         | yuuka     | SKELETON
+C19 — City After Fest  | c19a/b/c                               | minh      | SKELETON
+C20 — Tam late choices | tam_c20a + tam_c20b                    | tam       | SKELETON
+C21 — Thiên An path    | thienan_c21a + thienan_c21b            | thienan   | SKELETON
+C22 — Huyền route      | huyen_c22_quan_or_hoang                | huyen     | SKELETON
+C23 — Minyuu resolution| minyuu_c23a/b/c                        | minh      | SKELETON
+C24 — Last choices     | final_c24_last_choices                 | final     | SKELETON
 ```
 
 ---
 
-# MASTER GAME TIMELINE — Tựa Gió, Tựa Mây
+# 2. Core Design
 
-## I. Core Design
+Game không phải dating-sim kiểu “tặng đủ quà thì cưới”. Cái đó tiện, nhưng hơi rẻ. Truyện này sống bằng nhịp quan hệ, vết cũ, lựa chọn đúng lúc, và những người không nói hết điều mình biết.
 
-Game này không nên là dating-sim thuần kiểu “tặng quà đủ điểm thì cưới”. Không hợp. Hơi… rẻ, và truyện này không nghèo đến thế.
+Cấu trúc route hợp nhất:
 
-Cấu trúc hợp hơn là:
+> **Một canon cảm xúc có thật, nhưng người chơi có thể làm lệch nhịp, mở hoặc khóa những khả năng khác bằng lựa chọn đủ sớm.**
 
-> **Một tuyến canon cảm xúc có thật, nhưng người chơi có quyền làm lệch nhịp, mở hoặc khóa các khả năng tình cảm khác.**
+Game có 5 lớp logic:
 
-Tức là game có:
-
-* **Main timeline:** các sự kiện lớn vẫn xảy ra.
-* **Relationship direction:** ai nghiêng về ai, có dám bước tới không.
-* **Emotional consequence:** chọn sai không lập tức game over, nhưng làm nhân vật chậm mở lòng, né tránh, hoặc hiểu lầm lâu hơn.
-* **Flashback influence:** lựa chọn trong quá khứ của Minh/Yuuka thay đổi lựa chọn khả dụng ở hiện tại.
-* **Exclusion route:** một số chương bonus/extra khi đã chơi sẽ khóa chương khác, vì nhân vật đã đi vào một hướng tâm lý khác.
+1. **Main timeline:** các sự kiện lớn vẫn xảy ra.
+2. **Relationship direction:** nhân vật nghiêng về ai, có dám bước tới không.
+3. **Score consequence:** điểm không chỉ tăng ở “route chính”. Một scene của Hoàng vẫn có thể tăng/giảm điểm Tâm-Hoàng hoặc Huyền-Hoàng.
+4. **Flashback influence:** lựa chọn trong quá khứ của Minh/Yuuka quyết định khóa/mở romance của Minh ở hiện tại.
+5. **Exclusion route:** một số hướng tình cảm loại trừ nhau, vì nhân vật đã đi vào một lựa chọn tâm lý khác.
 
 ---
 
-# II. Key Variables / Directions
+# 3. Score System
 
-## 1. Relationship Directions
-
-Directions are set at runtime via `story_add_direction(character_id, direction)` and checked via `story_has_direction(character, direction)`. Each direction corresponds to a `story_flag("direction_{character}_{direction}")`.
+## 3.1 Delta Rhythm
 
 ```text
-tam_direction:
-- tam_hoang_open       # Tam opens up to Hoàng
-- tam_hoang_commit     # Tam commits to Hoàng relationship
-- tam_minh_open        # Tam opens up to Minh
-- tam_minh_commit      # Tam commits to Minh path
-- tam_career_focus     # Tam prioritises career
-
-hoang_direction:
-- hoang_tam_open       # Hoàng opens up to Tâm
-- hoang_tam_pursue     # Hoàng actively pursues Tâm
-- hoang_huyen_open     # Hoàng opens up to Huyền
-- hoang_friend_group   # Hoàng stays in friend group
-
-huyen_direction:
-- huyen_hoang_open     # Huyền opens up to Hoàng
-- huyen_hoang_commit   # Huyền commits to Hoàng
-
-minh_direction:
-- minh_yuuka_old_friends     # Minh-Yuuka as old friends
-- minh_yuuka_ex_lovers       # Minh-Yuuka as ex-lovers
-- minh_yuuka_still_lovers    # Minh-Yuuka still in love
-
-yuuka_direction:
-- yuuka_minh_old_friends     # Yuuka-Minh as old friends
-- yuuka_minh_ex_lovers       # Yuuka-Minh as ex-lovers
-- yuuka_minh_still_lovers    # Yuuka-Minh still in love
-
-minyuu_direction:
-- old_friend_seed            # Seed for old friends outcome
-- ex_lover_seed              # Seed for ex-lovers outcome
-- still_lover_seed           # Seed for still lovers outcome
-- ex_lovers_need_separation  # Lock ex-lovers path through separation
-
-thienan_direction:
-- thienan_minh_commit  # Thiên An commits to Minh path
++5 / -5      small emotional beat, minor observation, polite support
++10 / -10    meaningful choice, route-relevant scene
++15 / -15    major route choice, confession, refusal, crisis intervention
++20 / -20    branch lock, family crisis, separation/reunion decision
 ```
 
+For negative-nature scores, lower is better:
 
-## 2. Story State Variables
+```text
+tam_insecurity
+hoang_insecurity
+minh_yuuka_unresolved
+boundary_score
+family_pressure_thienan
+doom_score
+```
 
-Live runtime state is stored in the global `story_state` dictionary (defined in `game/story_state.rpy`). These variables are modified via `story_add(key, amount)` and `story_set(key, value)`.
+So for these:
+
+```text
+-10 tam_insecurity    # good: Tâm becomes steadier
++10 tam_insecurity    # bad: Tâm compares herself / destabilizes
+-10 family_pressure   # good: Thiên An resists family pressure
++15 family_pressure   # bad: family crisis / arranged marriage pressure rises
+```
+
+---
+
+## 3.2 Initial Character Scores
+
+These are baseline emotional positions, **not final eligibility**.
 
 ```text
 # Core relation state
-minh_yuuka_relation     # unknown | old_close_friends | ex_lovers_long_separated | still_lovers
-minh_romance_lock       # True locks Minh from romantic routes except Yuuka
-yuuka_romance_lock      # True locks Yuuka from romantic routes except Minh
-doom_score              # Accumulates toward doom ending (thresholds: 5, 8)
+minh_yuuka_relation        = "unknown"
+minh_romance_lock          = False
+yuuka_romance_lock         = False
+doom_score                 = 0
 
 # Tâm
-tam_hoang_interest      # Interest in Hoàng
-tam_quang_interest      # Interest in Quang (static)
-tam_quan_interest       # Interest in Quân
-tam_minh_drawn          # Drawn toward Minh
-tam_self_clarity        # Self-awareness
-tam_respect_yuuka       # Respect for Yuuka
-tam_insecurity          # Insecurity level
-tam_observation         # Observation skill
-career_tam              # Career progression
+tam_hoang_interest         = 35
+tam_quang_interest         = 0
+tam_quan_interest          = 0
+tam_minh_drawn             = 5
+tam_self_clarity           = 20
+tam_respect_yuuka          = 0
+tam_insecurity             = 35
+tam_observation            = 20
+career_tam                 = 15
 
 # Hoàng
-hoang_tam_trust         # Trust in Tâm
-hoang_huyen_interest    # Interest in Huyền
-hoang_insecurity        # Insecurity level
-hoang_self_acceptance   # Self-acceptance growth
-hoang_professional_credit # Professional standing
+hoang_tam_trust            = 35
+hoang_huyen_interest       = 5
+hoang_insecurity           = 30
+hoang_self_acceptance      = 35
+hoang_professional_credit  = 30
 
 # Huyền
-huyen_quan_trust        # Trust in Quân
-huyen_quan_interest     # Interest in Quân
-huyen_hoang_interest    # Interest in Hoàng
-career_huyen            # Career progression
+huyen_quan_trust           = 10
+huyen_quan_interest        = 5
+huyen_hoang_interest       = 10
+career_huyen               = 15
 
 # Thiên An
-thienan_quang_trust     # Trust in Quang
-thienan_minh_residue    # Residual feelings for Minh
-family_pressure_thienan # Family pressure level
-thienan_self_assertion  # Self-assertion growth
-quang_persistance        # Quang's persistence (static)
+thienan_quang_trust        = 35
+thienan_minh_residue       = 65
+family_pressure_thienan    = 70
+thienan_self_assertion     = 35
+quang_persistance          = 60   # legacy spelling
+quang_persistence          = 60   # corrected spelling
 
-# Minh-Yuuka
-minh_yuuka_trust        # Mutual trust
-minh_yuuka_intimacy     # Intimacy level
-minh_yuuka_unresolved   # Unresolved tension
-old_friend_score        # Score toward old friends outcome
-ex_lover_score          # Score toward ex-lovers outcome
-still_lover_score       # Score toward still lovers outcome
-romantic_score          # Romantic intensity
-boundary_score          # Boundary/avoidance score
+# Minh / Yuuka
+minh_yuuka_trust           = 0
+minh_yuuka_intimacy        = 0
+minh_yuuka_unresolved      = 55
+old_friend_score           = 0
+ex_lover_score             = 0
+still_lover_score          = 0
+romantic_score             = 0
+boundary_score             = 50
 
-# Ending support flags (set by late-game choices)
-ending_support          # List of ending IDs unlocked by narrative choices
+ending_support             = []
 ```
 
-## 3. Route Unlock Logic (Actual)
+---
 
-Route unlocking is controlled by the progression system in `game/progression_data.rpy` and `game/progression_logic.rpy`. Each chapter has `prerequisites` (all must be completed) and/or `prerequisites_any` (any one must be completed). Below is the actual unlock graph:
+## 3.3 Ending Thresholds
+
+### Tâm
+
+#### Tâm — Hoàng ending
 
 ```text
-# Default-unlocked routes:
-- Tâm (default_unlocked=True, entry: prologue_rain_dream)
+tam_hoang_interest         >= 75
+tam_minh_drawn             >= 50
+tam_self_clarity           >= 50
+tam_respect_yuuka          >= 25
+tam_insecurity             <= 25
+tam_observation            >= 25
+career_tam                 >= 50
+hoang_tam_trust            >= 75
+hoang_insecurity           <= 15
+hoang_self_acceptance      >= 80
+hoang_professional_credit  >= 90
+NOT direction_tam_tam_minh_commit
+ending_support includes e02_tam_hoang
+```
 
-# Route unlock conditions:
-- Hoàng: unlocked after completing tam_c03_thienan_family
-- Minh: unlocked after yuuka_c08_festival_arrival (via fb_minyuu_01)
-- Yuuka: unlocked after tam_c07_minh_at_company (via yuuka_c08)
-- Work/Group: unlocked via work_c10 (prereq: group_c11 prerequisites cascade)
-- Huyền: unlocked via huyen_c22 (prereq: tam_c20b or thienan_c21b)
-- Thiên An: unlocked via thienan_c21a (prereq: tam_c20b)
-- Final: default_unlocked=False, entry via final_c24
+Note: `tam_minh_drawn >= 50` here is not “Tâm yêu Minh”. It means Tâm has faced the impression Minh left on her clearly enough. If this score is too low, her later choice of Hoàng feels untested and a bit… dễ dãi. Không ổn.
 
-# Core chapter prerequisite chain:
+#### Tâm — Minh ending
+
+```text
+minh_yuuka_relation        == old_close_friends
+minh_romance_lock          == False
+minyuu_shared_arc_ok       == True
+tam_hoang_interest         <= 50
+hoang_tam_trust            >= 50
+tam_minh_drawn             >= 90
+tam_self_clarity           >= 75
+tam_respect_yuuka          >= 50
+tam_insecurity             <= 25
+tam_observation            >= 50
+career_tam                 >= 75
+direction_tam_tam_minh_commit
+ending_support includes e03_tam_minh
+```
+
+This is the rare route. Minh is the ultra-final boss, and yes, unfortunately he knows it.
+
+---
+
+### Hoàng
+
+```text
+# Hoàng — Tâm
+hoang_tam_trust            >= 75
+
+# Hoàng — Huyền
+hoang_huyen_interest       >= 75
+huyen_hoang_interest       >= 75
+
+# Shared Hoàng growth gate
+hoang_insecurity           <= 15
+hoang_self_acceptance      >= 80
+hoang_professional_credit  >= 90
+```
+
+---
+
+### Huyền
+
+```text
+# Huyền — Quân
+huyen_quan_trust           >= 75
+career_huyen               >= 50
+NOT direction_huyen_huyen_hoang_commit
+
+# Huyền — Hoàng
+huyen_hoang_interest       >= 75
+hoang_huyen_interest       >= 75
+career_huyen               >= 50
+NOT direction_tam_tam_hoang_commit
+```
+
+---
+
+### Thiên An
+
+```text
+# Thiên An — Quang
+thienan_quang_trust        >= 90
+thienan_self_assertion     >= 50
+family_pressure_thienan    < 60 OR family_pressure_thienan <= thienan_self_assertion
+ending_support includes e06_thienan_quang
+
+# Thiên An — Minh
+minh_yuuka_relation        == old_close_friends
+minh_romance_lock          == False
+minyuu_shared_arc_ok       == True
+thienan_minh_residue       >= 50
+thienan_self_assertion     >= 50
+family_pressure_thienan    < 60 OR family_pressure_thienan <= thienan_self_assertion
+direction_thienan_thienan_minh_commit
+ending_support includes e07_thienan_minh
+
+# Thiên An — Single
+thienan_self_assertion     >= 50
+family_pressure_thienan    < 60 OR family_pressure_thienan <= thienan_self_assertion
+ending_support includes e08_thienan_single
+
+# Thiên An — Arranged Marriage
+family_pressure_thienan    >= 60
+family_pressure_thienan    > thienan_self_assertion
+ending_support includes e09_thienan_arranged
+```
+
+Arranged Marriage is not “bad end màu mè”. It is a sacrifice ending: Thiên An chooses family survival over self-choice.
+
+---
+
+### Minh / Yuuka shared arc
+
+This phase is mandatory. If it fails, the story resolves to `e24_doom`.
+
+```text
+minh_yuuka_relation in:
+  - old_close_friends
+  - ex_lovers_long_separated
+  - still_lovers
+
+minh_yuuka_trust           >= 80
+minh_yuuka_intimacy        >= 75
+minh_yuuka_unresolved      <= 28
+
+# Exclusive branch score based on relation:
+old_friend_score           >= 80  if relation == old_close_friends
+ex_lover_score             >= 80  if relation == ex_lovers_long_separated
+still_lover_score          >= 80  if relation == still_lovers
+
+romantic_score             >= 43
+boundary_score             <= 34
+```
+
+The three branch scores are exclusive. Do not let a playthrough accumulate all three above threshold unless you enjoy debugging ghosts. Which, respectfully, no.
+
+---
+
+# 4. Score / Flag Registry
+
+## 4.1 Runtime Score Keys
+
+These are the score keys currently expected by the updated route logic.
+
+```text
+doom_score
+
+tam_hoang_interest
+tam_quang_interest
+tam_quan_interest
+tam_minh_drawn
+tam_self_clarity
+tam_respect_yuuka
+tam_insecurity
+tam_observation
+career_tam
+
+hoang_tam_trust
+hoang_huyen_interest
+hoang_insecurity
+hoang_self_acceptance
+hoang_professional_credit
+
+huyen_quan_trust
+huyen_quan_interest
+huyen_hoang_interest
+career_huyen
+
+thienan_quang_trust
+thienan_minh_residue
+family_pressure_thienan
+thienan_self_assertion
+quang_persistance
+quang_persistence
+
+minh_yuuka_trust
+minh_yuuka_intimacy
+minh_yuuka_unresolved
+old_friend_score
+ex_lover_score
+still_lover_score
+romantic_score
+boundary_score
+```
+
+## 4.2 Optional Future Score Keys
+
+These are not strictly required by current ending rules, but the timeline references them conceptually. Add only if scenes need finer branching.
+
+```text
+career_yuuka               # Only needed if Yuuka career should be scored separately.
+group_trust                # Friend-group stability; can remain flags-only for MVP.
+family_business_damage     # Useful if crisis outcome needs more granularity than doom_score.
+```
+
+For now, avoid adding too many “cute little scores”. They multiply like rabbits and then someone has to feed them.
+
+---
+
+## 4.3 Relationship Direction Flags
+
+Directions use the helper:
+
+```renpy
+story_add_direction("<character>", "<direction>")
+```
+
+The resulting flag is:
+
+```text
+direction_<character>_<direction>
+```
+
+### Tâm
+
+```text
+direction_tam_tam_hoang_open
+direction_tam_tam_hoang_commit
+direction_tam_tam_minh_open
+direction_tam_tam_minh_commit
+direction_tam_tam_career_focus
+direction_tam_tam_support_huyen
+direction_tam_tam_quang_open              # optional rare route
+```
+
+### Hoàng
+
+```text
+direction_hoang_hoang_tam_open
+direction_hoang_hoang_tam_pursue
+direction_hoang_hoang_huyen_open
+direction_hoang_hoang_friend_group
+```
+
+### Huyền
+
+```text
+direction_huyen_huyen_hoang_open
+direction_huyen_huyen_hoang_commit
+direction_huyen_huyen_quan_open
+direction_huyen_huyen_quan_commit
+```
+
+### Minh / Yuuka
+
+```text
+direction_minh_minh_yuuka_old_friends
+direction_minh_minh_yuuka_ex_lovers
+direction_minh_minh_yuuka_still_lovers
+
+direction_yuuka_yuuka_minh_old_friends
+direction_yuuka_yuuka_minh_ex_lovers
+direction_yuuka_yuuka_minh_still_lovers
+
+direction_minyuu_old_friend_seed
+direction_minyuu_ex_lover_seed
+direction_minyuu_still_lover_seed
+direction_minyuu_ex_lovers_need_separation
+```
+
+### Thiên An / Quang
+
+```text
+direction_thienan_thienan_quang_open
+direction_thienan_thienan_minh_commit
+direction_thienan_thienan_single
+direction_thienan_thienan_family_arranged
+
+direction_quang_quang_thienan_commit
+direction_quang_quang_tam_open             # optional rare route
+```
+
+---
+
+## 4.4 Important Story Flags
+
+### Romance lock / route block
+
+```text
+lock_minh_romance_except_yuuka
+lock_yuuka_romance_except_minh
+blocked_tam_minh_commit
+blocked_thienan_minh_commit
+blocked_yuuka_single_true
+minh_romance_open_after_yuuka
+minh_route_unlocked
+```
+
+### Prologue / dream
+
+```text
+dream_remembered_face
+dream_remembered_rain
+dream_ignored
+huyen_knows_dream
+huyen_teases_dream
+tam_keeps_dream_private
+tam_remember_rain
+```
+
+### Tâm / Hoàng / Huyền route state
+
+```text
+tam_hoang_level_up
+tam_hoang_stable_path
+tam_hoang_break
+tam_hoang_never_started
+tam_explain_later
+tam_minh_possible
+tam_minh_private_scene
+tam_minh_late_night_work
+tam_step_back_choice
+
+hoang_jealousy_resolved
+hoang_huyen_possible
+hoang_huyen_late_path
+hoang_independent_ending_support
+
+huyen_hoang_possible
+huyen_quan_side_01
+huyen_quan_after_work
+```
+
+### Minh / Yuuka
+
+```text
+old_friend_seed
+ex_lover_seed
+still_lover_seed
+ex_lovers_need_separation
+minyuu_clean_break
+minyuu_silent_distance
+yuuka_left_first
+yuuka_return_standing
+yuuka_respect_boundary
+yuuka_fear_repeating_past
+yuuka_confess_without_running
+yuuka_single_possible
+minh_yuuka_reopen
+minh_yuuka_guarded
+minh_yuuka_closed
+minh_can_ask_directly
+```
+
+### Thiên An / family crisis
+
+```text
+thienan_old_story_hint
+thienan_private_talk
+thienan_quang_open
+thienan_minh_flashback
+thienan_family_arranged
+arranged_marriage_path
+arranged_marriage_offer_seen
+thienan_arranged_accepts
+thienan_arranged_refuses
+quang_identity_revealed
+
+family_business_crisis_started
+family_business_scandal_triggered
+family_father_hospitalized
+crisis_minh_adviser
+crisis_quang_financial_support
+crisis_hoang_legal_support
+crisis_bad_default
+crisis_best_outcome
+crisis_good_outcome
+crisis_partial_legal_clear
+crisis_partial_business_saved
+```
+
+### Ending support
+
+```text
+e01_canon_true
+e02_tam_hoang
+e03_tam_minh
+e04_hoang_huyen
+e05_huyen_quan
+e06_thienan_quang
+e07_thienan_minh
+e08_thienan_single
+e09_thienan_arranged
+e10_minyuu_reunion
+e11_minyuu_late_reunion
+e12_minyuu_private_lovers
+e13_minyuu_public_lovers
+e14_minyuu_non_marriage
+e15_minyuu_long_distance
+e16_minh_single
+e17_yuuka_single
+e18_minyuu_mutual_single
+e19_yuuka_career
+e20_minyuu_friendship
+e21_tam_independent
+e22_huyen_independent
+e23_hoang_single_growth
+e24_doom
+```
+
+---
+
+# 5. Route Unlock Logic
+
+```text
+# Default-unlocked:
+Tâm route starts at prologue_rain_dream.
+
+# Main chain:
 prologue_rain_dream
   -> tam_c01_interview_day
   -> tam_c02_company_party
   -> tam_c03_thienan_family
-  -> hoang_h01_brother_house  (Hoàng POV)
+  -> hoang_h01_brother_house
   -> tam_c05_sunday_date
   -> tam_c06_minh_returns
   -> tam_c07_minh_at_company
-  -> yuuka_c08_festival_arrival  (Yuuka enters)
+  -> yuuka_c08_festival_arrival
 
-# Flashback Minyuu chain (branching):
-yuuka_c08 -> fb_minyuu_01 -> fb_minyuu_02 -> fb_minyuu_03
-  -> fb_minyuu_04a OR fb_minyuu_04b OR fb_minyuu_04c  (branch)
-  -> fb_minyuu_05b (from 04b only)
-All fb_minyuu_04 branches -> yuuka_c09
+# Flashback Minyuu:
+yuuka_c08_festival_arrival
+  -> fb_minyuu_01_first_frame
+  -> fb_minyuu_02_working_rhythm
+  -> fb_minyuu_03_door_left_open
+  -> one of:
+       fb_minyuu_04a_old_friends
+       fb_minyuu_04b_living_together
+       fb_minyuu_04c_no_breakup
+  -> if 04b:
+       fb_minyuu_05b_separation
+  -> yuuka_c09_yuukas_work
 
-# Mid-game parallel chapters:
-yuuka_c09 -> work_c10 -> group_c11 -> work_c16
-work_c16 -> hoang_h05_shadow_of_minh
-hoang_h05 -> yuuka_c18a, yuuka_c18b, yuuka_c18c  (parallel, route-dependent)
+# Midgame:
+yuuka_c09_yuukas_work
+  -> work_c10_project_festival_overlap
+  -> group_c11_social_dinner
+  -> work_c16_project_crisis
+  -> hoang_h05_shadow_of_minh
 
-# Late-game branches (mutually exclusive paths):
-yuuka_c18a -> c19a (old friends path)
-yuuka_c18b -> c19b (ex-lovers path)
-yuuka_c18c -> c19c (still lovers path)
-All c19 paths -> tam_c20b (convergence)
+# Branch-based present Yuuka:
+hoang_h05_shadow_of_minh
+  -> yuuka_c18a_career_interlude
+  -> yuuka_c18b_habit_of_you
+  -> yuuka_c18c_long_distance_interlude
 
-# Final routes (route-specific):
-tam_c20b -> thienan_c21a (Thiên An-Minh possible)
-         -> thienan_c21b (choose own path)
-         -> huyen_c22 (Quân or Hoàng)
-         -> minyuu_c23a/b/c (resolution, route-dependent)
-         -> final_c24_last_choices (final chapter)
+# City After Festival:
+yuuka_c18a -> c19a_city_after_festival_old_friends
+yuuka_c18b -> c19b_city_after_festival_ex_lovers
+yuuka_c18c -> c19c_city_after_festival_still_lovers
+
+# Late game:
+c19a/b/c
+  -> tam_c20a_tam_minh_possible
+  -> tam_c20b_admiration_vs_love
+  -> thienan_c21a_minh_possible
+  -> thienan_c21b_choose_own_path
+  -> huyen_c22_quan_or_hoang
+  -> minyuu_c23a/b/c
+  -> final_c24_last_choices
 ```
 
-See `game/progression_data.rpy` for the full prerequisite graph with all 36 chapters.
-
 ---
 
-# III. Main Timeline
+# 6. Main Timeline with Score / Flag Effects
 
----
+## PROLOGUE — `prologue_rain_dream`
 
-# PROLOGUE (prologue_rain_dream) — Giấc mơ trong mưa
+### Function
 
-## POV
+Foreshadow Minh through Tâm's dream. The dream should not “explain fate”. It should feel like a small safety memory misplaced in the wrong life.
 
-Tâm.
-
-## Nội dung
-
-Game mở đầu bằng một giấc mơ của Tâm.
-
-Cô thấy mình đứng ở trạm xe bus trong một cơn mưa rất cũ. Mọi thứ mờ đi vì nước mưa và ánh đèn xe. Có một chàng trai đứng cạnh cô, không rõ mặt. Anh đưa cho cô một chiếc khăn giấy, hoặc kéo chiếc ô lệch về phía cô nhiều hơn một chút.
-
-Không có lời tỏ tình. Không có cứu rỗi hào nhoáng. Chỉ là một hành động nhỏ.
-
-Tâm tỉnh dậy, không nhớ rõ mặt người đó. Chỉ nhớ cảm giác: người ấy từng khiến cô thấy an toàn một cách rất lạ.
-
-## Function
-
-* Foreshadow Minh.
-* Tạo `flag_dream_rain_man`.
-* Nếu người chơi chọn “cố nhớ rõ gương mặt”, tăng `tam_minh_drawn`.
-* Nếu chọn “gạt đi vì chỉ là mơ”, tăng `tam_grounded`.
-* Nếu chọn “ghi lại giấc mơ”, unlock later choice khi gặp Minh: `tam_remember_rain`.
-
-## Branch Effect
+### Choices
 
 ```text
-Choice A: Cố nhớ người trong mơ
-+1 tam_minh_drawn
-+1 sensitivity
+A. Cố nhớ mặt người trong mơ
++10 tam_minh_drawn
++5 tam_observation
+flag: dream_remembered_face
 
-Choice B: Cười bản thân rồi dậy đi làm
-+1 tam_grounded
-+1 career_tam
+B. Nhớ cơn mưa hơn là người
++5 tam_minh_drawn
++10 tam_observation
+flag: dream_remembered_rain
 
-Choice C: Gửi tin nhắn kể cho Huyền
-+1 huyen_tam_bond
-unlock: huyen_tease_dream
+C. Gạt đi vì chỉ là mơ
++5 tam_self_clarity
++5 career_tam
+flag: dream_ignored
+
+D. Kể cho Huyền
++5 career_huyen
+flag: huyen_knows_dream
+flag: huyen_teases_dream
 ```
 
 ---
 
-# CHAPTER 1 (tam_c01_interview_day) — Ngày phỏng vấn
+## C01 — `tam_c01_interview_day`
 
-## POV
+### Function
 
-Tâm.
+Introduce Tâm and Huyền through pressure, not exposition. First visual seed of Hoàng.
 
-## Nội dung chính
-
-Tâm và Huyền cùng đi phỏng vấn xin việc. Hai cô gái còn trẻ, có năng lực, nhưng phản ứng khác nhau trước áp lực.
-
-Tâm chuẩn bị kỹ, hơi căng, muốn mọi thứ “đúng”. Huyền thoải mái hơn, có vẻ lanh và biết xoay tình huống. Trong phần phỏng vấn, game có thể có mini-game speech/interview, lựa chọn thứ tự ý trả lời.
-
-Hai người đều trúng tuyển.
-
-Buổi tối, họ ăn mừng ở một nhà hàng sang trọng. Đây là lần đầu Hoàng nhìn thấy Tâm và Huyền. Lúc này họ chưa quen nhau. Hoàng đến đó cùng một người quen trong ngành/đối tác, không chủ động xen vào quá sâu, chỉ có vài khoảnh khắc ánh mắt chạm nhau.
-
-Tâm có thể để ý Hoàng, Huyền có thể để ý, hoặc cả hai chỉ xem anh là “một anh đẹp trai bàn bên”.
-
-## Canon
-
-Tâm chú ý Hoàng, nhưng chưa làm gì. Huyền trêu.
-
-## Branches
+### Choices
 
 ```text
-Choice A: Tâm nhìn Hoàng lâu hơn một chút
-+1 tam_hoang_interest
-+1 hoang_notices_tam
+A. Tâm chuẩn bị kỹ, trả lời có cấu trúc
++10 career_tam
++5 tam_self_clarity
 
-Choice B: Tâm kéo Huyền khỏi việc hóng chuyện
-+1 tam_grounded
-+1 huyen_tam_bond
+B. Tâm hỗ trợ Huyền trước phỏng vấn
++5 career_huyen
++5 tam_observation
+flag: tam_supports_huyen
 
-Choice C: Huyền bình luận Hoàng hợp gu mình
-+1 huyen_hoang_interest
-unlock: huyen_tease_hoang
+C. Tâm nhìn Hoàng lâu hơn một chút ở nhà hàng
++10 tam_hoang_interest
++5 hoang_tam_trust
 
-Choice D: Tâm tập trung vào công việc mới
-+1 career_tam
-+1 tam_confidence
+D. Huyền bình luận Hoàng hợp gu mình
++10 huyen_hoang_interest
++5 hoang_huyen_interest
+flag: huyen_tease_hoang
 ```
-
-## Unlock
-
-* `tam_c02_company_party`
-* `tam_c03_thienan_family` seed
 
 ---
 
-# CHAPTER 2 (tam_c02_company_party) — Buổi tiệc công ty
+## C02 — `tam_c02_company_party`
 
-## POV
+### Function
 
-Tâm, có thể có đoạn ngắn Hoàng POV nếu đủ điều kiện.
+First active Tâm/Hoàng/Huyền branching. Quân is seeded by reputation and work standards.
 
-## Nội dung
-
-Tâm và Huyền bắt đầu đi làm. Quân — trưởng phòng khó tính — được giới thiệu qua những lời đồn trong công ty: năng lực cao, soi kỹ, ít khen, không thích nhân viên làm màu.
-
-Buổi tiệc công ty diễn ra sau giai đoạn onboarding. Hoàng xuất hiện với tư cách nhà thiết kế kiến trúc trẻ, bạn của trưởng phòng/được mời hợp tác trong một dự án của công ty.
-
-Đây là lần Tâm, Huyền và Hoàng chính thức có cơ hội nói chuyện.
-
-## Canon
-
-Tâm chủ động bắt chuyện với Hoàng. Hoàng ban đầu lịch sự, hơi phòng thủ, sau đó bị sự tự nhiên của Tâm làm mềm. Huyền đứng ngoài trêu, nhưng không chen.
-
-## Game Branches
-
-### Route A — Canon Seed: Tâm bắt chuyện
+### Branch A — Tâm approaches Hoàng
 
 ```text
 Condition:
-tam_hoang_interest >= 1 OR player chooses direct approach
+tam_hoang_interest >= 40 OR direct player choice
 
 Effects:
-+2 trust_tam_hoang
-+1 intimacy_tam_hoang
-set tam_direction: tam_hoang_open
-unlock: hoang_h01_first_impression
++15 tam_hoang_interest
++15 hoang_tam_trust
+-5 tam_insecurity
+direction: tam / tam_hoang_open
+direction: hoang / hoang_tam_open
+flag: hoang_notices_tam
 ```
 
-### Route B — Hoàng chủ động
+### Branch B — Hoàng approaches Tâm
 
 ```text
 Condition:
-hoang_notices_tam >= 1 AND Tâm không chủ động
+hoang_notices_tam OR Tâm does not approach
 
 Effects:
-+1 trust_tam_hoang
-+1 hoang_tam_interest
-set hoang_direction: hoang_tam_open
-unlock: tam_surprised_by_hoang
++10 tam_hoang_interest
++10 hoang_tam_trust
++5 hoang_self_acceptance
+direction: hoang / hoang_tam_open
 ```
 
-### Route C — Không gặp gỡ đáng kể
+### Branch C — Huyền interacts with Hoàng more
 
 ```text
 Condition:
-Tâm chọn né xã giao / tập trung Huyền / rời tiệc sớm
+huyen_hoang_interest >= 20 OR Tâm pushes Huyền forward
 
 Effects:
-+1 career_tam
--1 intimacy_tam_hoang
-set hoang_direction: hoang_friend_group_possible
-Hoàng và Tâm vẫn biết nhau, nhưng không thân.
++15 huyen_hoang_interest
++10 hoang_huyen_interest
+direction: huyen / huyen_hoang_open
+direction: hoang / hoang_huyen_open
+direction: tam / tam_support_huyen
 ```
 
-### Route D — Huyền tương tác với Hoàng nhiều hơn
+### Branch D — Tâm avoids social route
 
 ```text
-Condition:
-huyen_hoang_interest >= 1 OR Tâm đẩy Huyền lên nói chuyện
-
 Effects:
-+2 trust_hoang_huyen
-+1 huyen_hoang_interest
-set huyen_direction: huyen_hoang_interest
-set tam_direction: tam_support_huyen
++10 career_tam
++5 tam_self_clarity
+-5 tam_hoang_interest
+direction: tam / tam_career_focus
 ```
-
-## Unlock
-
-* `tam_c03_thienan_family`
-* `hoang_h01_brother_house` (seed) nếu Tâm/Hoàng/Huyền có tương tác đủ.
 
 ---
 
-# CHAPTER 3 (tam_c03_thienan_family) — Chị gái Thiên An
+## C03 — `tam_c03_thienan_family`
 
-## POV
+### Function
 
-Tâm.
+Introduce Thiên An as family pressure plus quiet competence. Seed Quang, Minh residue, and the later family crisis.
 
-## Nội dung
-
-Chương giới thiệu Thiên An: chị gái Tâm, xinh đẹp, tài giỏi, thành đạt, nhưng tình duyên không trọn vẹn. Mẹ thường xuyên giục xem mắt, giới thiệu người tốt, nhưng Thiên An không thật sự quan tâm.
-
-Tâm về nhà ăn cơm. Không khí gia đình ấm nhưng có áp lực. Mẹ hỏi chuyện Thiên An, rồi tiện hỏi sang Tâm. Thiên An khéo léo chuyển hướng để bảo vệ em, Tâm cũng nhận ra chị mình mệt.
-
-Đây là chương gia đình, nhưng cũng là chương đặt nền cho ước muốn thầm kín của Tâm: **chị mình cũng nên được hạnh phúc**.
-
-Đồng thời, chương có nhánh career: Thiên An có thể gợi ý Tâm học thêm quản lý, triển khai dự án, cách đọc người trong môi trường công sở.
-
-## Canon
-
-Tâm thương chị, chưa can thiệp gì nhiều. Thiên An vẫn giữ khoảng cách với chuyện tình cảm.
-
-## Branches
-
-### Family Support
+### Choices
 
 ```text
-Choice A: Tâm bênh Thiên An trước mẹ
-+2 trust_tam_thienan
-+1 tam_family_courage
-unlock: thienan_private_talk
+A. Tâm bênh Thiên An trước mẹ
++10 tam_self_clarity
++10 tam_observation
+-10 family_pressure_thienan
+flag: thienan_private_talk
+
+B. Tâm hỏi Thiên An về quản lý / công việc
++15 career_tam
++5 tam_observation
+flag: tam_project_management_skill
+
+C. Tâm hỏi chị từng yêu ai chưa
++10 thienan_minh_residue
++5 tam_observation
+flag: thienan_old_story_hint
+
+D. Tâm im lặng để bữa cơm trôi qua
++10 family_pressure_thienan
++5 tam_insecurity
 ```
 
-### Career Growth
+### Quang Seed
 
 ```text
-Choice B: Tâm hỏi Thiên An về quản lý dự án
-+2 career_tam
-unlock: tam_project_management_skill
-unlock later choice: tam_handle_project_crisis
+If Quang appears as assistant/deputy:
++5 thienan_quang_trust
++5 quang_persistence
+flag: quang_present_in_family_arc
 ```
-
-### Romance Curiosity
-
-```text
-Choice C: Tâm hỏi chị có từng yêu ai chưa
-+1 thienan_minh_residue
-+1 tam_insight_romance
-unlock: thienan_old_story_hint
-```
-
-### Family Pressure
-
-```text
-Choice D: Tâm im lặng để bữa cơm trôi qua
-+1 family_pressure_thienan
--1 trust_tam_thienan
-```
-
-## Unlock
-
-* `hoang_h01_brother_house`
-* `tam_c05_sunday_date`
-* `thienan_c21a_minh_possible` soft-hidden until later.
 
 ---
 
-# CHAPTER 4 (hoang_h01_brother_house) — Hoàng POV: Căn nhà của anh trai
+## C04 — `hoang_h01_brother_house`
 
-## POV
+### Function
 
-Hoàng.
+Hoàng POV. He lives in Minh's house, calls Minh for advice, and reveals his own insecurity under Minh's shadow.
 
-## Nội dung
+### Gift Branches
 
-Chương chuyển sang Hoàng. Người chơi thấy Hoàng sống một mình trong căn biệt thự của Minh. Không gian rộng, đẹp, hơi quá yên tĩnh với một người như Hoàng.
-
-Hé lộ gia thế: cha mẹ làm nhà nước, có vị trí quan trọng nhưng không nói rõ. Không exposition lộ liễu. Chỉ qua cách Hoàng nhận điện thoại từ cha, cách anh tránh nói quá nhiều về gia đình, cách người khác nể anh “vừa đủ”.
-
-Hoàng gọi/nhắn cho Minh đang ở xa. Hai anh em nói chuyện ngắn, không sướt mướt. Hoàng hỏi xin tư vấn chọn quà.
-
-Tính chất món quà thay đổi theo route.
-
-## Gift Branches
-
-### Canon — Quà cho Tâm
+#### Gift for Tâm
 
 ```text
 Condition:
-tam_direction has tam_hoang_open
-trust_tam_hoang >= 2
-
-Gift:
-Một món tinh tế, không quá đắt, liên quan đến thói quen của Tâm.
-Ví dụ: sổ tay đẹp, kẹp tóc, khăn, hoặc một món nhỏ dùng được hằng ngày.
+direction_tam_tam_hoang_open
+hoang_tam_trust >= 45
 
 Effects:
-+1 hoang_tam_commit
-+1 intimacy_tam_hoang
++10 tam_hoang_interest
++10 hoang_tam_trust
++5 hoang_self_acceptance
+direction: hoang / hoang_tam_pursue
 ```
 
-### Hoàng — Huyền
+#### Gift for Huyền
 
 ```text
 Condition:
-huyen_hoang_interest >= 2
-tam_support_huyen active
-
-Gift:
-Món có tính vui, hợp tính Huyền hơn: phụ kiện sáng, đồ decor bàn làm việc, vé workshop/trải nghiệm.
+direction_huyen_huyen_hoang_open
+huyen_hoang_interest >= 25
 
 Effects:
-+2 trust_hoang_huyen
-set hoang_direction: hoang_huyen_open
++10 huyen_hoang_interest
++10 hoang_huyen_interest
+direction: hoang / hoang_huyen_open
 ```
 
-### Friend Group
+#### Friend group gift
 
 ```text
 Condition:
-No romance lock
-
-Gift:
-Hoàng mua quà chung / chuẩn bị đồ ăn / vé sự kiện ba người.
+No clear romance direction
 
 Effects:
-+1 trust_friend_group
-+1 hoang_friend_group
++5 hoang_self_acceptance
++5 career_huyen
++5 career_tam
+direction: hoang / hoang_friend_group
 ```
 
-### Bad/Confused Gift
+#### Bad / confused gift
 
 ```text
-Condition:
-hoang_insecurity_active OR player ignores Minh's advice
-
 Effects:
--1 trust_target
-+1 awkwardness
-unlock: hoang_repair_attempt
++10 hoang_insecurity
+-5 hoang_self_acceptance
+flag: hoang_repair_attempt
 ```
-
-## Minh Presence
-
-Minh chỉ xuất hiện qua tin nhắn/cuộc gọi nhưng phải đủ “nặng”. Anh không nói nhiều, nhưng tư vấn chuẩn, vì Minh giỏi đọc người. Đồng thời lộ ra một chút: Hoàng rất tin anh trai.
-
-## Unlock
-
-* `tam_c05_sunday_date`
-* `hoang_h01_brother_house` (tiếp)
-* `hoang_h05_shadow_of_minh` seed
 
 ---
 
-# CHAPTER 5 (tam_c05_sunday_date) — Buổi hẹn Chủ Nhật
+## C05 — `tam_c05_sunday_date`
 
-## POV
+### Function
 
-Tâm hoặc Hoàng, tùy route.
+Soft upgrade chapter. No need for fireworks. Let the cup, car door, jacket, seat choice, and unasked question do the work.
 
-## Nội dung
-
-Một buổi Chủ Nhật đặc biệt. Đây là chương tăng gắn kết. Không cần drama lớn. Chỉ cần đủ nhiều hành động nhỏ.
-
-## Branch Structure
-
-### Route A — Canon Date: Hoàng & Tâm
-
-Hoàng chủ động hẹn Tâm. Tâm sửa soạn kỹ hơn bình thường. Hoàng đến đón bằng xe hơi. Buổi hẹn có cảm giác vừa lạ vừa ngọt.
-
-Họ ăn sáng, đi dạo, có một hoạt động nhẹ: xem triển lãm, chọn đồ nội thất, đi hiệu sách, hoặc ghé một chỗ Hoàng muốn cho Tâm thấy.
-
-Quan trọng nhất là: Tâm nhận ra Hoàng đang cố bước ra khỏi vùng bị động.
-
-```text
-Effects:
-+2 trust_tam_hoang
-+2 intimacy_tam_hoang
-set hoang_direction: hoang_tam_commit
-set tam_direction: tam_hoang_open
-unlock: tam_hoang_level_up
-```
-
-### Route B — Hoàng & Huyền
-
-Nếu Huyền là người nghiêng về Hoàng, buổi hẹn riêng diễn ra với sắc thái khác: vui hơn, sắc hơn, đỡ ngượng hơn. Huyền dễ chọc Hoàng. Hoàng bị kéo ra khỏi nhịp phòng thủ nhanh hơn.
-
-```text
-Effects:
-+2 trust_hoang_huyen
-+2 intimacy_hoang_huyen
-set hoang_direction: hoang_huyen_open
-set huyen_direction: huyen_hoang_interest
-```
-
-### Route C — Hẹn ba người
-
-Nếu không có romance lock, Hoàng rủ cả Tâm và Huyền. Không khí nhẹ, hợp cạ. Hoàng hơi thích Tâm hơn, nhưng Tâm không bật đèn xanh nên anh giữ chừng mực.
-
-Huyền có thể nhận ra Hoàng thích Tâm.
-
-```text
-Effects:
-+1 trust_friend_group
-+1 trust_tam_hoang
-+1 trust_hoang_huyen
-
-Choice:
-- Tâm bật đèn xanh nhẹ → unlock tam_hoang_late_open
-- Tâm đẩy Huyền → unlock huyen_hoang_possible
-- Tâm giữ bạn bè → set hoang_tam_restraint
-```
-
-## Unlock
-
-* `tam_c06_minh_returns`
-* `tam_c07_minh_at_company` seed
-* `hoang_h05_shadow_of_minh` seed
-
----
-
-# CHAPTER 6 (tam_c06_minh_returns) — Minh về nước
-
-## POV
-
-Tâm, Hoàng, optional Minh.
-
-## Nội dung
-
-Minh về nước. Hoàng đưa bạn về giới thiệu.
-
-Đây là chương then chốt để unlock Minh route.
-
-## Canon Branch
-
-Tâm đang hẹn hò với Hoàng. Hoàng đưa Tâm về gặp Minh. Khi nhìn thấy Minh, Tâm bất ngờ bỏ về/khựng lại quá rõ. Không phải vì cô yêu Minh, mà vì giấc mơ/trạm mưa/ký ức mờ bật lên quá mạnh.
-
-Hoàng thấy. Minh cũng thấy.
-
-Sau đó dẫn tới buổi hẹn thứ hai: bàn ăn bốn người gồm Minh, Hoàng, Tâm, và Huyền. Bầu không khí có nhiều lớp: Hoàng cố bình thường, Tâm ngượng, Huyền quan sát, Minh lịch sự nhưng khó đọc.
-
-```text
-Effects:
-unlock: minh_route
-+1 tam_minh_drawn
-+1 hoang_insecurity_active
-+1 minh_notices_tam
-```
-
-## Huyền Route Branch
-
-Nếu Hoàng đang nghiêng về Huyền, lần đầu chỉ có Hoàng đưa Huyền về gặp Minh.
-
-Huyền thấy Minh thú vị. Không nhất thiết là thích kiểu lãng mạn; là kiểu “người này quá khó đọc, hơi đáng ghét, nhưng đáng để nhìn thêm”. Sau đó Huyền lôi Tâm tới bữa tối bốn người.
-
-```text
-Effects:
-+1 huyen_minh_curiosity
-+1 trust_hoang_huyen
-unlock: dinner_four_people
-```
-
-## Friend Group Branch
-
-Nếu không ai hẹn hò, Hoàng mời cả Tâm và Huyền về ăn tối, giới thiệu hai cô bạn thân trong công việc với Minh.
-
-```text
-Effects:
-+1 trust_friend_group
-unlock: minh_route
-unlock: group_dinner_variation
-```
-
-## Critical Choices
-
-```text
-Tâm:
-A. Ở lại dù bối rối
-+1 tam_courage
-+1 trust_hoang_tam
-+1 minh_respect_tam
-
-B. Bỏ về
-+1 tam_minh_drawn
-+1 hoang_insecurity_active
-unlock: tam_explain_later
-
-C. Nói thật một phần với Hoàng
-+2 trust_tam_hoang
--1 hoang_insecurity_active
-```
-
-## Unlock
-
-* `tam_c07_minh_at_company`
-* `yuuka_c08_festival_arrival` seed
-* `group_c11_social_dinner` seed
-
----
-
-# CHAPTER 7 (tam_c07_minh_at_company) — Minh ở công ty
-
-## POV
-
-Mutually exclusive: Tâm POV hoặc Minh POV.
-
-## Nội dung
-
-Minh xuất hiện ở công ty với vai trò giám sát/cố vấn dự án từ tập đoàn đối tác lớn. Quân cũng xuất hiện rõ hơn ở vị trí trưởng phòng khó tính.
-
-Tâm và Huyền tiếp xúc với Minh trong môi trường công việc.
-
-Tâm bắt đầu nhận ra Minh không chỉ là “người trong mơ” hay “anh trai Hoàng”. Anh rất sắc, rất giỏi, và nguy hiểm theo kiểu có thể đọc được điều người khác chưa kịp nói.
-
-Huyền thì thấy Minh “thú vị”, nhưng cũng biết đây không phải kiểu đàn ông dễ đùa quá tay.
-
-## Route Structure
-
-### Tâm POV — Emotional Route
-
-Người chơi thấy Tâm bối rối giữa Hoàng và Minh.
+### Branch A — Tâm / Hoàng canon date
 
 ```text
 Condition:
-tam_minh_drawn >= 1
+direction_tam_tam_hoang_open OR direction_hoang_hoang_tam_open
 
-Choices:
-A. Giữ khoảng cách với Minh vì đang nghĩ cho Hoàng
-+2 trust_tam_hoang
--1 tam_minh_drawn
-set tam_direction: tam_hoang_open
-
-B. Chủ động hỏi Minh về công việc
-+1 career_tam
-+1 trust_tam_minh
-unlock: tam_minh_professional_bond
-
-C. Theo đuổi cảm giác với Minh rõ hơn
-+2 tam_minh_drawn
-+1 distance_tam_hoang
-set tam_direction: tam_minh_drawn
-```
-
-### Minh POV — Observation Route
-
-Người chơi thấy Minh đọc Tâm, Hoàng, Huyền, Quân. Minh không dễ rung động, nhưng Tâm gợi cho anh một cảm giác khó gọi tên: vừa quen, vừa không nên chạm vào.
-
-Minh là kiểu yêu bằng quan sát và trách nhiệm; anh thường giữ lại cảm xúc, nghĩ bằng hệ quả và khoảng cách an toàn. 
-
-```text
-Choices:
-A. Giữ ranh giới công việc
-+1 minh_boundary_high
-+1 trust_professional
-
-B. Giúp Tâm xử lý một lỗi nhỏ
-+1 trust_tam_minh
-+1 tam_minh_drawn
-
-C. Cảnh báo Hoàng nhẹ nhàng
-+1 trust_minh_hoang
-+1 hoang_insecurity_active
-```
-
-## Exclusion
-
-`tam_c07_pov` và `minh_m01_pov` nên mutually exclusive trong một playthrough.
-
-## Unlock
-
-* `yuuka_c08_festival_arrival`
-* `work_c10_project_festival_overlap` seed
-* `fb_minyuu_01_first_frame` soft-hidden
-
----
-
-# CHAPTER 8 (yuuka_c08_festival_arrival) — Sự xuất hiện của Yuuka
-
-## POV
-
-Tâm hoặc Minh, tùy route focus.
-
-## Nội dung
-
-Yuuka đến Việt Nam tham dự Liên hoan phim Châu Á - Thái Bình Dương. Cô không đến như cô gái năm xưa, mà là một đạo diễn/người làm phim đã có tên tuổi.
-
-Minh biết trước qua Ayumi rằng Yuuka sẽ tham dự festival. Nhưng biết trước không làm anh sẵn sàng hơn.
-
-Buổi sáng trước ngày gặp lại, Minh vô thức mua nguyên liệu để nấu những món Yuuka thích. Anh tự nhận ra rồi hơi khó chịu với chính mình. Rất “vợ chồng già giận nhau lâu ngày”: nghĩ đến thì bực, nhưng tay vẫn tự nhớ đường đến quầy nguyên liệu.
-
-Yuuka xuất hiện ở sân bay/festival/hotel. Tùy route, người đầu tiên thấy cô có thể là Minh, Tâm, Hoàng hoặc Huyền.
-
-## Core Emotional Function
-
-* Unlock Yuuka route.
-* Đưa “quá khứ chưa đóng” vào hiện tại.
-* Làm Tâm thấy: cảm giác của mình với Minh có thể không phải thứ duy nhất đang tồn tại.
-* Làm Hoàng hiểu anh trai mình có một vết cũ rất sâu.
-* Làm Huyền nhận ra đây không còn là gossip vui nữa.
-
-## Branches
-
-### Canon
-
-Tâm đang hẹn hò Hoàng. Yuuka xuất hiện. Tâm thấy Yuuka đẹp, trẻ, khí chất quá khác. Sau đó nhận ra giữa Yuuka và Minh có một dòng điện ngầm rất rõ.
-
-```text
 Effects:
-+2 minh_yuuka_tension
-+1 tam_insecurity
-+1 hoang_protective_tam
-unlock: yuuka_y01
-unlock: minh_yuuka_flashback_01
++15 tam_hoang_interest
++15 hoang_tam_trust
+-10 tam_insecurity
++10 hoang_self_acceptance
+direction: tam / tam_hoang_open
+direction: hoang / hoang_tam_pursue
+flag: tam_hoang_level_up
 ```
 
-### Tâm-Minh Lean
-
-Nếu Tâm đã nghiêng về Minh, Yuuka xuất hiện như một cú đánh thẳng vào ảo tưởng còn non của Tâm.
-
-```text
-Effects:
-+2 tam_minh_conflict
-+2 tam_self_compare
-unlock: tam_step_back_choice
-unlock: yuuka_rival_not_rival_scene
-```
-
-### Hoàng-Huyền Route
-
-Yuuka xuất hiện chủ yếu tác động vào Minh/Hoàng. Huyền quan sát Yuuka và thấy “người này không đơn giản”. Tâm có thể đứng ngoài, trở thành người nhận ra câu chuyện sâu hơn.
-
-```text
-Effects:
-+1 huyen_insight
-+1 tam_observer_role
-unlock: huyen_question_minh
-```
-
-### Friend Group Route
-
-Yuuka xuất hiện khiến cả nhóm bị kéo vào quá khứ của Minh. Không ai có quyền hỏi, nhưng ai cũng thấy.
-
-```text
-Effects:
-+1 group_tension
-unlock: group_dinner_yuuka
-```
-
-## Unlock
-
-* `yuuka_c08_festival_arrival` (chương này)
-* `fb_minyuu_01_first_frame`
-* `yuuka_c09_yuukas_work`
-
----
-
-# CHAPTER 9 (yuuka_c09_yuukas_work) — Buổi chiếu phim
-
-## POV
-
-Yuuka.
-
-## Nội dung
-
-Yuuka tham dự buổi chiếu phim của mình. Cô đứng trước đám đông với tư cách đạo diễn, trả lời phỏng vấn, nói về tác phẩm, ánh sáng, ký ức, lựa chọn và cái giá của trưởng thành.
-
-Nhưng khi nhìn thấy Minh dưới hàng ghế khách mời, nhịp của cô lệch đi một chút.
-
-Không ai ngoài Minh nhận ra. Hoặc Tâm nhận ra nếu `tam_insight >= 2`.
-
-Sau buổi chiếu, có reception. Minh và Yuuka buộc phải nói chuyện xã giao.
-
-## Choices
-
-```text
-Yuuka:
-A. Giữ vẻ chuyên nghiệp
-+1 career_yuuka
-+1 minh_yuuka_guarded
-
-B. Đùa nhẹ với Minh như ngày cũ
-+1 intimacy_minh_yuuka
-+1 pain_minh_yuuka
-
-C. Hỏi thẳng anh có xem phim không
-+1 yuuka_honest_pursuit
-unlock: minh_answer_about_film
-
-Minh:
-A. Khen phim bằng nhận xét kỹ thuật
-+1 yuuka_respect
-+1 distance_minh_yuuka
-
-B. Nhắc một chi tiết nhỏ trong phim
-+2 intimacy_minh_yuuka
--1 distance_minh_yuuka
-
-C. Chỉ nói “Chúc mừng”
-+1 minh_boundary_high
-+1 yuuka_hurt
-```
-
-## Route Impact
-
-* Nếu Minh nhận xét đúng một chi tiết nhỏ, Yuuka biết anh vẫn nhìn cô như trước.
-* Nếu Minh quá lạnh, Yuuka route chuyển sang `yuuka_avoidance` hoặc `yuuka_late_reunion`.
-* Nếu Tâm chứng kiến và chọn lùi, route Tâm-Hoàng được cứu.
-* Nếu Tâm chọn cạnh tranh, mở nhánh Tâm-Minh nhưng tăng risk.
-
-## Unlock
-
-* `fb_minyuu_02_working_rhythm`
-* `work_c10_project_festival_overlap`
-* `tam_c20a_tam_minh_possible` seed
-
----
-
-# CHAPTER 10 (work_c10_project_festival_overlap) — Dự án bắt đầu lệch nhịp
-
-## POV
-
-Tâm/Huyền.
-
-## Nội dung
-
-Công ty bắt đầu vào giai đoạn căng của dự án. Minh làm cố vấn, Quân quản lý trực tiếp, Hoàng liên quan phần thiết kế/hình ảnh/không gian, Tâm và Huyền nằm trong team triển khai.
-
-Đây là chương công việc để tránh game chỉ xoay quanh yêu đương. Yêu đương mà không có đời sống thì như món ăn chỉ có nước sốt. Ngon hai thìa đầu, sau đó hơi mệt.
-
-Quân thể hiện rõ năng lực và sự khó tính. Huyền ban đầu khó chịu với anh, nhưng dần thấy anh không bắt bẻ vô lý.
-
-## Branches
-
-### Tâm Career
+### Branch B — Hoàng / Huyền date
 
 ```text
 Condition:
-tam_project_management_skill unlocked
-
-Choice:
-Tâm đứng ra xử lý một điểm nghẽn trong dự án.
+direction_huyen_huyen_hoang_open
+huyen_hoang_interest >= 30
 
 Effects:
-+2 career_tam
-+1 minh_respect_tam
-+1 quan_respect_tam
-unlock: tam_promotion_path
++15 huyen_hoang_interest
++15 hoang_huyen_interest
++5 hoang_self_acceptance
+direction: huyen / huyen_hoang_open
+direction: hoang / hoang_huyen_open
 ```
 
-### Huyền — Quân Seed
+### Branch C — Three-person outing
 
 ```text
-Condition:
-Huyền chọn đối thoại trực tiếp thay vì than phiền
-
 Effects:
-+2 trust_huyen_quan
-set huyen_direction: huyen_quan_interest
-unlock: huyen_quan_side_01
++5 tam_hoang_interest
++5 huyen_hoang_interest
++5 hoang_huyen_interest
++5 hoang_tam_trust
+
+If Tâm lightly opens:
+  +10 tam_hoang_interest
+  flag: tam_hoang_late_open
+
+If Tâm pushes Huyền:
+  +10 huyen_hoang_interest
+  direction: tam / tam_support_huyen
 ```
-
-### Huyền — Hoàng Seed
-
-```text
-Condition:
-hoang_huyen_open active
-
-Effects:
-Hoàng giúp Huyền giải tỏa sau giờ làm.
-+1 intimacy_hoang_huyen
--1 huyen_quan_interest
-```
-
-### Tâm — Minh Risk
-
-```text
-Condition:
-tam_minh_drawn >= 2
-
-Effects:
-Minh giúp Tâm một lỗi công việc nhỏ.
-+1 trust_tam_minh
-+1 distance_tam_hoang
-unlock: tam_minh_private_scene
-```
-
-## Unlock
-
-* `group_c11_social_dinner`
-* `work_c16_project_crisis` seed
-* `huyen_c22_quan_or_hoang` seed
 
 ---
 
-# CHAPTER 11 (group_c11_social_dinner) — Bữa tối có thêm người cũ
+## C06 — `tam_c06_minh_returns`
 
-## POV
+### Function
 
-Hoàng hoặc Tâm.
+Minh returns. Tâm's dream/intuition collides with real life. Hoàng witnesses enough to become unsettled.
 
-## Nội dung
-
-Một bữa tối tại nhà Minh/Hoàng. Tùy nhánh, thành phần có thể khác:
-
-* Canon: Minh, Yuuka, Hoàng, Tâm; Huyền có thể đến sau hoặc là người kéo Tâm tới.
-* Huyền route: Minh, Yuuka, Hoàng, Huyền, rồi Tâm.
-* Friend route: cả nhóm.
-
-Yuuka ở trong không gian của Minh. Cô biết căn bếp, biết vài thói quen của anh. Không cần nói, nhưng người khác nhìn thấy.
-
-Tâm nhận ra mình đang nhìn vào một dạng quan hệ đã có lịch sử quá sâu. Hoàng cũng nhận ra. Anh không biết hết, nhưng đủ hiểu Minh từng có một người quan trọng.
-
-## Key Scene Options
-
-```text
-A. Tâm giúp Hoàng trong bếp
-+2 trust_tam_hoang
--1 tam_minh_drawn
-
-B. Tâm hỏi Yuuka về phim
-+1 trust_tam_yuuka
-+1 tam_maturity
-unlock: tam_yuuka_private_talk
-
-C. Huyền kéo không khí nhẹ lại
-+1 group_trust
-+1 huyen_social_skill
-
-D. Minh vô thức nấu món Yuuka thích
-+2 minh_yuuka_tension
-+1 group_notices_past
-```
-
-## Canon Result
-
-Tâm và Hoàng có trục trặc âm, nhưng chưa vỡ. Minh và Yuuka bị kéo lại gần một chút dù cả hai đều cố tỏ ra bình thường.
-
-## Unlock
-
-* `fb_minyuu_03_door_left_open`
-* `work_c16_project_crisis`
-* `hoang_h05_shadow_of_minh`
-
----
-
-# CHAPTER 12 (fb_minyuu_01_03) — Flashback: Lần đầu sống chung
-
-## POV
-
-Yuuka.
-
-## Nội dung
-
-Flashback về thời Yuuka và Minh từng sống chung ở nước ngoài/sau biến cố ký túc xá. Yuuka gặp khó khăn tài chính/chỗ ở, Minh đề nghị cô về ở cùng. Ban đầu là giúp đỡ, sau đó là một cấu trúc thân mật rất nguy hiểm.
-
-Yuuka nhận ra Minh chăm sóc bằng hệ thống: phòng đã dọn, đồ cần dùng đã chuẩn bị, auto-save, backup, thuốc, đồ ăn, thói quen nhỏ. Không tỏ tình, nhưng mọi thứ trong nhà dần có dấu tay của nhau.
-
-## Choices Affect Present
-
-```text
-Choice A: Yuuka nhận giúp đỡ nhưng đặt quy tắc rõ
-+1 yuuka_independence
-+1 trust_minh_yuuka
-unlock present choice: yuuka_respect_boundary
-
-Choice B: Yuuka dựa vào Minh nhiều hơn
-+2 intimacy_minh_yuuka
-+1 yuuka_dependency
-unlock present risk: yuuka_fear_repeating_past
-
-Choice C: Yuuka trêu Minh để phá băng
-+1 intimacy_minh_yuuka
-+1 yuuka_playful_pursuit
-
-Choice D: Minh giữ khoảng cách quá kỹ
-+1 minh_boundary_high
-+1 yuuka_loneliness
-```
-
-## Unlock
-
-* `fb_minyuu_05b_separation` (từ nhánh 04b)
-* `yuuka_c09_yuukas_work`
-* `work_c10_project_festival_overlap`
-
----
-
-# CHAPTER 13 (tam_c20a_tam_minh_possible) — Tâm chọn đứng ở đâu (late-game)
-
-## POV
-
-Tâm.
-
-## Nội dung
-
-Sau khi chứng kiến Minh và Yuuka, Tâm phải định vị cảm xúc của mình. Đây là chương quan trọng để tránh biến Tâm thành “nữ phụ bị cuốn theo trai đẹp”. Không được. Tâm phải có lòng tự trọng và độ thật riêng.
-
-## Choices
-
-### A. Nói chuyện thẳng với Hoàng
-
-Tâm nói rằng cô đã từng có một cảm giác kỳ lạ với Minh, nhưng không muốn dùng im lặng làm tổn thương Hoàng.
-
-```text
-Effects:
-+3 trust_tam_hoang
--1 hoang_insecurity_active
-set tam_direction: tam_hoang_open
-lock out: tam_minh_romance unless later breakup branch
-```
-
-### B. Lùi khỏi Hoàng để suy nghĩ
-
-Tâm không muốn tiếp tục khi lòng chưa yên.
-
-```text
-Effects:
-+1 tam_maturity
-+2 distance_tam_hoang
-set tam_direction: tam_uncertain
-unlock: tam_minh_possible
-unlock: hoang_huyen_possible
-```
-
-### C. Theo cảm giác với Minh
-
-Tâm chủ động tiếp cận Minh nhiều hơn qua công việc.
-
-```text
-Effects:
-+2 tam_minh_drawn
-+2 distance_tam_hoang
-+1 hoang_hurt
-set tam_direction: tam_minh_drawn
-unlock: tam_minh_route_01
-```
-
-### D. Đẩy Huyền về phía Hoàng
-
-Chỉ nên khả dụng nếu Tâm chưa hẹn hò Hoàng hoặc đã lùi rõ ràng.
-
-```text
-Effects:
-+2 huyen_hoang_interest
-+1 tam_support_huyen
-set hoang_direction: hoang_huyen_open
-```
-
-## Unlock
-
-* `tam_c20b_admiration_vs_love`
-* `thienan_c21a_minh_possible` seed
-
----
-
-# CHAPTER 14 (thienan_c21a_b) — Thiên An, Minh, và Quang (late-game)
-
-## POV
-
-Thiên An.
-
-## Nội dung
-
-Thiên An route mở. Quang xuất hiện rõ hơn: trợ lý của Thiên An, thiếu gia tập đoàn lớn nhưng từ chối thừa kế sản nghiệp, kiên trì theo đuổi Thiên An suốt 6 năm.
-
-Quang không nên viết như “nam phụ simp”. Không. Anh phải có phẩm chất riêng: bền, biết giữ khoảng cách, làm tốt công việc, không dùng gia thế ép cô. Cái đẹp của Quang là anh ở lại đủ lâu nhưng không biến việc ở lại thành cái còng.
-
-Thiên An bị gia đình giục kết hôn/sắp xếp đối tượng. Cô mệt nhưng không vỡ.
-
-## Branches
-
-### Quang Route
-
-```text
-Choice A: Thiên An cho phép Quang bước gần hơn nửa bước
-+2 trust_thienan_quang
-+1 intimacy_thienan_quang
-set thienan_direction: thienan_quang_open
-```
-
-### Minh Residue
+### Canon Branch
 
 ```text
 Condition:
-player unlocked thienan_old_story_hint
+Tâm and Hoàng have meaningful connection.
 
-Choice B: Thiên An nhớ lại Minh
-+2 thienan_minh_residue
-unlock: thienan_minh_flashback
+Effects:
++15 tam_minh_drawn
++10 hoang_insecurity
++5 tam_observation
+flag: minh_route_unlocked
+flag: minh_notices_tam
 ```
 
-### Family Arrangement
+### Tâm stays despite shock
 
 ```text
-Choice C: Thiên An chấp nhận đi xem mắt để yên chuyện
-+2 family_pressure_thienan
-set thienan_direction: thienan_family_arranged
-unlock: arranged_marriage_path
++10 tam_self_clarity
++10 hoang_tam_trust
+-5 hoang_insecurity
 ```
 
-### Single Path
+### Tâm leaves abruptly
 
 ```text
-Choice D: Thiên An từ chối cả gia đình lẫn Quang
-+1 thienan_single
-+1 career_thienan
++15 tam_minh_drawn
++15 hoang_insecurity
++10 tam_insecurity
+flag: tam_explain_later
 ```
 
-## Unlock
+### Tâm tells Hoàng partial truth
 
-* `thienan_c21a_minh_possible`
-* `thienan_c21b_choose_own_path`
+```text
++15 hoang_tam_trust
++10 tam_self_clarity
+-10 hoang_insecurity
+```
 
 ---
 
-# CHAPTER 15 (fb_minyuu_04_05) — Flashback: Điểm gãy của Minh và Yuuka
+## C07 — `tam_c07_minh_at_company`
 
-## POV
+### Function
 
-Minh hoặc Yuuka, mutually exclusive.
+Minh appears as project adviser. Tâm/Huyền interact with him through competence, not melodrama.
 
-## Nội dung
-
-Flashback về biến cố chia xa. Đây không nên chỉ là “Yuuka bỏ chạy”. Phải cho người chơi thấy cả hai đều có lý do, nhưng cách họ chọn làm tổn thương nhau.
-
-Minh sợ sự dịu dàng của mình làm Yuuka yếu đi. Yuuka sợ nếu trả lời, cô sẽ mất cả tình yêu lẫn bản thân. Một người lùi vì trách nhiệm. Một người chạy vì sợ. Tuyệt vời. Rất trưởng thành theo kiểu làm khổ nhau có học thức.
-
-## Choices
-
-### Minh POV
+### Tâm keeps distance because of Hoàng
 
 ```text
-A. Nói thẳng rằng cả hai cần dừng lại
-+2 minh_boundary_high
-+2 yuuka_hurt
-set past_break: minh_cut_clean
-
-B. Hỏi Yuuka muốn gì thật sự
-+1 minh_vulnerability
-unlock present: minh_can_ask_directly
-
-C. Im lặng gánh quyết định
-+2 avoidance_minh
-+1 unresolved_past
++10 hoang_tam_trust
++10 tam_self_clarity
+-10 tam_minh_drawn
+direction: tam / tam_hoang_open
 ```
 
-### Yuuka POV
+### Tâm asks Minh about work
 
 ```text
-A. Ở lại đối thoại
-+2 yuuka_courage
-unlock present: yuuka_confess_without_running
-
-B. Bỏ chạy
-+2 yuuka_avoidance
-+2 unresolved_past
-canon compatible
-
-C. Nói rằng cô cần thời gian
-+1 yuuka_independence
-+1 minh_waiting_pain
-unlock: late_reunion_path
++15 career_tam
++10 tam_observation
++5 tam_minh_drawn
+flag: tam_minh_professional_bond
 ```
 
-## Present Impact
+### Tâm follows the pull toward Minh
 
-* Nếu quá khứ chọn “đối thoại”, hiện tại mở lựa chọn tái hợp sớm.
-* Nếu quá khứ chọn “bỏ chạy”, hiện tại cần nhiều chương repair hơn.
-* Nếu quá khứ chọn “cần thời gian”, mở ending “Minh và Yuuka đến với nhau rất lâu sau đó, không kết hôn”.
+```text
++15 tam_minh_drawn
++10 tam_insecurity
++10 hoang_insecurity
+direction: tam / tam_minh_open
+```
 
-## Unlock
+### Minh helps with a small work error
 
-* `yuuka_c18a_career_interlude`
-* `yuuka_c18b_habit_of_you`
-* `yuuka_c18c_long_distance_interlude`
+```text
++10 career_tam
++10 tam_observation
++5 tam_minh_drawn
+```
 
 ---
 
-# CHAPTER 16 (work_c16_project_crisis) — Khủng hoảng dự án
+## C08 — `yuuka_c08_festival_arrival`
 
-## POV
+### Function
 
-Tâm/Huyền/Minh tùy route.
+Yuuka enters. Her presence tests whether Tâm understands the difference between attraction, history, and actual claim.
 
-## Nội dung
-
-Dự án công ty gặp lỗi lớn. Deadline, khách hàng, truyền thông nội bộ, trách nhiệm đội nhóm — tất cả dồn lại. Đây là chương kiểm tra năng lực chứ không chỉ cảm xúc.
-
-Quân gây áp lực mạnh. Minh nhìn ra gốc vấn đề. Tâm có cơ hội thể hiện kỹ năng quản lý nếu đã học từ Thiên An. Huyền có cơ hội đối đầu Quân một cách trưởng thành.
-
-## Outcomes
-
-### Tâm Career Win
+### Canon: Tâm is with Hoàng
 
 ```text
-Condition:
-career_tam >= threshold
-tam_project_management_skill unlocked
-
-Effects:
-+3 career_tam
-+1 minh_respect_tam
-+1 quan_respect_tam
-unlock: tam_promotion_ending_support
++15 tam_respect_yuuka
++10 tam_observation
++10 tam_insecurity
++10 minh_yuuka_unresolved
+flag: group_notices_past
 ```
 
-### Huyền — Quân Bond
+### Tâm-Minh lean
 
 ```text
 Condition:
-huyen_quan_interest >= 1
+tam_minh_drawn >= 50
 
 Effects:
-Quân bảo vệ Huyền trước một lỗi không hoàn toàn do cô.
-+2 trust_huyen_quan
-unlock: huyen_quan_after_work
++15 tam_respect_yuuka
++15 tam_insecurity
++10 tam_observation
+flag: tam_step_back_choice
+flag: yuuka_rival_not_rival_scene
 ```
 
-### Minh — Tâm Bond
+### Hoàng-Huyền route
+
+```text
++10 huyen_hoang_interest
++10 hoang_huyen_interest
++5 career_huyen
+flag: huyen_question_minh
+```
+
+### Yuuka arrival core
+
+```text
++10 minh_yuuka_trust
++10 minh_yuuka_intimacy
++10 minh_yuuka_unresolved
+flag: yuuka_route_unlocked
+```
+
+---
+
+## C09 — `yuuka_c09_yuukas_work`
+
+### Function
+
+Yuuka is seen as a professional. This matters. She cannot be reduced to Minh's old wound.
+
+### Yuuka keeps professional mask
+
+```text
++10 minh_yuuka_trust
++5 boundary_score
+-5 minh_yuuka_unresolved
+```
+
+### Yuuka jokes like old days
+
+```text
++10 minh_yuuka_intimacy
++10 romantic_score
++5 minh_yuuka_unresolved
+```
+
+### Minh comments on a precise detail in her film
+
+```text
++15 minh_yuuka_trust
++10 minh_yuuka_intimacy
+-10 minh_yuuka_unresolved
+```
+
+### Minh only says “Congratulations”
+
+```text
++10 boundary_score
++10 minh_yuuka_unresolved
+```
+
+### Tâm witnesses and steps back
+
+```text
++10 tam_self_clarity
++10 tam_respect_yuuka
+-10 tam_insecurity
+-10 tam_minh_drawn
+```
+
+---
+
+## C10 — `work_c10_project_festival_overlap`
+
+### Function
+
+Work pressure begins. This prevents romance from floating in empty air like cheap perfume.
+
+### Tâm career win
 
 ```text
 Condition:
-tam_minh_drawn >= 2 AND Tâm not locked with Hoàng
+flag tam_project_management_skill
 
 Effects:
-+2 trust_tam_minh
-unlock: tam_minh_late_night_work
++15 career_tam
++10 tam_observation
++5 hoang_professional_credit
+```
+
+### Huyền / Quân seed
+
+```text
+Condition:
+Huyền confronts Quân directly but not stupidly.
+
+Effects:
++15 huyen_quan_trust
++10 career_huyen
+direction: huyen / huyen_quan_open
+flag: huyen_quan_side_01
+```
+
+### Huyền / Hoàng comfort beat
+
+```text
+Condition:
+direction_hoang_hoang_huyen_open
+
+Effects:
++10 huyen_hoang_interest
++10 hoang_huyen_interest
+-5 huyen_quan_trust
+```
+
+### Tâm / Minh risk
+
+```text
+Condition:
+tam_minh_drawn >= 50
+
+Effects:
++10 tam_minh_drawn
++10 career_tam
++10 hoang_insecurity
+flag: tam_minh_private_scene
+```
+
+---
+
+## C11 — `group_c11_social_dinner`
+
+### Function
+
+The dinner shows history without explaining it. Yuuka knows Minh's kitchen. Tâm and Hoàng both notice.
+
+### Tâm helps Hoàng in the kitchen
+
+```text
++15 hoang_tam_trust
++10 tam_hoang_interest
+-10 tam_minh_drawn
+-5 hoang_insecurity
+```
+
+### Tâm asks Yuuka about film
+
+```text
++15 tam_respect_yuuka
++10 tam_observation
+-5 tam_insecurity
+flag: tam_yuuka_private_talk
+```
+
+### Huyền lightens the room
+
+```text
++10 career_huyen
++5 huyen_quan_trust
++5 huyen_hoang_interest
+```
+
+### Minh cooks a Yuuka dish by memory
+
+```text
++15 minh_yuuka_intimacy
++10 romantic_score
+-10 minh_yuuka_unresolved
++10 tam_observation
+flag: group_notices_past
+```
+
+---
+
+## C12 — `fb_minyuu_01_03`
+
+### Function
+
+Flashback: living together begins. It defines whether affection became friendship, love, or an unbroken bond.
+
+### Yuuka accepts help with clear rules
+
+```text
++15 minh_yuuka_trust
+-10 boundary_score
+-5 minh_yuuka_unresolved
+flag: yuuka_respect_boundary
+```
+
+### Yuuka depends on Minh heavily
+
+```text
++15 minh_yuuka_intimacy
++10 romantic_score
++10 boundary_score
++10 minh_yuuka_unresolved
+flag: yuuka_fear_repeating_past
+```
+
+### Yuuka teases Minh to break the room open
+
+```text
++10 minh_yuuka_intimacy
++10 romantic_score
+-5 boundary_score
+```
+
+### Minh keeps too much distance
+
+```text
++15 boundary_score
++10 minh_yuuka_unresolved
+```
+
+---
+
+## C13 — `tam_c20a_tam_minh_possible`
+
+### Function
+
+Tâm must choose where to stand. This protects her from becoming “the girl who got swept away by a cooler man”. No, thank you.
+
+### Tâm tells Hoàng the partial truth
+
+```text
++15 hoang_tam_trust
++15 tam_self_clarity
+-10 hoang_insecurity
+-10 tam_insecurity
+direction: tam / tam_hoang_open
+flag: blocked_tam_minh_commit unless later breakup branch
+```
+
+### Tâm steps back from Hoàng
+
+```text
++15 tam_self_clarity
++10 tam_insecurity
++10 hoang_insecurity
+flag: tam_hoang_break
+flag: tam_minh_possible
+flag: hoang_huyen_possible
+```
+
+### Tâm follows her pull toward Minh
+
+```text
++15 tam_minh_drawn
++10 career_tam
++15 hoang_insecurity
+direction: tam / tam_minh_open
+flag: tam_minh_route_01
+```
+
+### Tâm pushes Huyền toward Hoàng
+
+```text
+Condition:
+Tâm has not committed to Hoàng OR tam_hoang_break
+
+Effects:
++15 huyen_hoang_interest
++10 hoang_huyen_interest
+direction: tam / tam_support_huyen
+direction: hoang / hoang_huyen_open
+```
+
+---
+
+## C14 — `fb_minyuu_04a/b/c + fb_minyuu_05b`
+
+### Function
+
+The flashback branch lock. This is where Minh/Yuuka relation is canonized for the playthrough.
+
+### 04A — Old Close Friends
+
+```text
+Set:
+minh_yuuka_relation = "old_close_friends"
+
+Effects:
++80 old_friend_score
++80 minh_yuuka_trust
++75 minh_yuuka_intimacy
++45 romantic_score
+-20 minh_yuuka_unresolved
+-20 boundary_score
+
+Flags:
+old_friend_seed
+minh_romance_open_after_yuuka
+```
+
+Result:
+- Minh/Yuuka had affection, maybe even mutual awareness, but never officially became lovers.
+- Minh can later open to Tâm or Thiên An if current route earns it.
+- Yuuka can end as friend, late confession, career, or single depending later support.
+
+### 04B — Ex-Lovers / Living Together / Separation
+
+```text
+Set after fb_minyuu_05b:
+minh_yuuka_relation = "ex_lovers_long_separated"
+
+Effects:
++80 ex_lover_score
++85 minh_yuuka_trust
++80 minh_yuuka_intimacy
++70 romantic_score
+-30 boundary_score
+# unresolved must be repaired later:
+minh_yuuka_unresolved should end <= 28
+
+Flags:
+ex_lover_seed
+ex_lovers_need_separation
+yuuka_left_first OR minyuu_silent_distance
+lock_minh_romance_except_yuuka
+lock_yuuka_romance_except_minh
+```
+
+Result:
+- Canon separation/reunion path.
+- Minh is locked away from Tâm/Thiên An romance.
+- Yuuka has strongest career growth in this branch.
+
+### 04C — Still Lovers / No Breakup
+
+```text
+Set:
+minh_yuuka_relation = "still_lovers"
+
+Effects:
++80 still_lover_score
++90 minh_yuuka_trust
++85 minh_yuuka_intimacy
++75 romantic_score
+-30 minh_yuuka_unresolved
+-25 boundary_score
+
+Flags:
+still_lover_seed
+lock_minh_romance_except_yuuka
+lock_yuuka_romance_except_minh
+```
+
+Result:
+- Minh/Yuuka never fully separate.
+- Yuuka becomes known, but less brilliant than canon because the long solitude did not refine her as brutally.
+- No Tâm-Minh or Thiên An-Minh route.
+
+---
+
+## C15 / C18 — `yuuka_c18a/b/c`
+
+### Function
+
+Playable montage of Yuuka's years away / emotional development.
+
+### Tokyo / Akiko section
+
+```text
+Yuuka avoids naming her grief:
++10 minh_yuuka_unresolved
++5 boundary_score
+
+Yuuka admits she misses Minh:
++10 minh_yuuka_trust
+-10 minh_yuuka_unresolved
+```
+
+### First job section
+
+```text
+Yuuka treats Minh's influence as her own growth:
++10 minh_yuuka_trust
+-5 minh_yuuka_unresolved
+
+Yuuka recognizes “the habit of him”:
++15 minh_yuuka_intimacy
++10 romantic_score
+-10 minh_yuuka_unresolved
+```
+
+### Ayumi section
+
+```text
+Yuuka gets defensive:
++10 minh_yuuka_unresolved
++5 doom_score
+
+Yuuka learns from Ayumi:
++10 minh_yuuka_trust
+-10 minh_yuuka_unresolved
+flag: yuuka_return_standing
+```
+
+### Low point
+
+```text
+Yuuka cuts Minh out:
++20 boundary_score
++15 minh_yuuka_unresolved
+flag: yuuka_single_possible
+
+Yuuka turns longing into discipline:
+-15 minh_yuuka_unresolved
+-10 boundary_score
+flag: yuuka_return_standing
+```
+
+---
+
+## C16 — `work_c16_project_crisis`
+
+### Function
+
+Test competence under pressure.
+
+### Tâm career success
+
+```text
+Condition:
+career_tam >= 50
+flag tam_project_management_skill
+
+Effects:
++15 career_tam
++10 tam_self_clarity
++5 hoang_professional_credit
+flag: tam_promotion_ending_support
+```
+
+### Huyền / Quân bond
+
+```text
+Condition:
+direction_huyen_huyen_quan_open
+
+Effects:
++15 huyen_quan_trust
++10 career_huyen
+direction: huyen / huyen_quan_open
+flag: huyen_quan_after_work
+```
+
+### Minh / Tâm late-night work
+
+```text
+Condition:
+tam_minh_drawn >= 70
+NOT direction_tam_tam_hoang_commit
+
+Effects:
++10 tam_minh_drawn
++10 career_tam
++5 tam_observation
+flag: tam_minh_late_night_work
 ```
 
 ### Failure
 
 ```text
-Condition:
-wrong choices / low career
-
-Effects:
-+1 stress_all
--1 career_tam
--1 trust_quan_team
-unlock: repair_project_extra
++10 doom_score
+-10 career_tam
+-10 career_huyen
++10 tam_insecurity
 ```
-
-## Unlock
-
-* `hoang_h05_shadow_of_minh`
-* `yuuka_c18` branches unlock
 
 ---
 
-# CHAPTER 17 (hoang_h05_shadow_of_minh) — Hoàng dưới cái bóng của Minh
+## C17 — `hoang_h05_shadow_of_minh`
 
-## POV
+### Function
 
-Hoàng.
+Hoàng faces Minh's shadow. The scene must avoid making him petty. He can be hurt and still kind.
 
-## Nội dung
-
-Hoàng phải đối diện cảm giác mình lại bị đặt cạnh Minh. Nếu Tâm nghiêng về Minh, vết này đau rõ. Nếu Hoàng-Huyền route, nó nhẹ hơn nhưng vẫn còn: Hoàng nhận ra nhiều người xung quanh mình đều bị Minh ảnh hưởng.
-
-Hoàng không ghét Minh. Anh thương anh trai, kính trọng anh, nhưng vẫn có khoảnh khắc khó chịu vì cái bóng ấy quá lớn.
-
-## Branches
-
-### Canon Repair: Hoàng & Tâm
+### Hoàng / Tâm repair
 
 ```text
 Condition:
-tam_hoang_open active
-trust_tam_hoang >= threshold
-
-Hoàng nói thật một phần nỗi bất an.
-Tâm không phủ nhận, cũng không dỗ ngọt rẻ tiền.
-Cô ở lại.
+direction_tam_tam_hoang_open
+hoang_tam_trust >= 60
 
 Effects:
-+3 trust_tam_hoang
-set hoang_jealousy_resolved
-unlock: tam_hoang_stable_path
++15 hoang_tam_trust
++15 tam_hoang_interest
+-15 hoang_insecurity
++15 hoang_self_acceptance
+direction: tam / tam_hoang_commit
+direction: hoang / hoang_tam_pursue
+flag: hoang_jealousy_resolved
+flag: tam_hoang_stable_path
 ```
 
-### Break Path
+### Break path
 
 ```text
 Condition:
-distance_tam_hoang high
-
-Hoàng chủ động lùi.
-Không trách Tâm, nhưng không thể giả vờ.
+tam_minh_drawn high OR hoang_insecurity high
 
 Effects:
-set tam_hoang_break
-unlock: tam_minh_route_02
-unlock: hoang_huyen_late_path
++15 tam_self_clarity
++15 hoang_insecurity
+flag: tam_hoang_break
+flag: tam_minh_possible
+flag: hoang_huyen_late_path
 ```
 
-### Hoàng-Huyền Path
-
-Huyền không an ủi kiểu mềm. Cô chọc Hoàng một câu hơi đau nhưng đúng. Hoàng bật cười, rồi đỡ hơn.
+### Hoàng / Huyền path
 
 ```text
+Condition:
+direction_hoang_hoang_huyen_open
+
 Effects:
-+2 trust_hoang_huyen
-+1 intimacy_hoang_huyen
-set hoang_direction: hoang_huyen_open
++15 hoang_huyen_interest
++15 huyen_hoang_interest
+-10 hoang_insecurity
++10 hoang_self_acceptance
 ```
 
-### Friend Path
-
-Hoàng học cách không cần thắng Minh để có giá trị riêng.
+### Hoàng independent growth
 
 ```text
-Effects:
-+1 hoang_self_acceptance
-unlock: hoang_independent_ending_support
++15 hoang_self_acceptance
++15 hoang_professional_credit
+flag: hoang_independent_ending_support
 ```
-
-## Unlock
-
-* `yuuka_c18a_career_interlude` / `yuuka_c18b_habit_of_you` / `yuuka_c18c_long_distance_interlude`
 
 ---
 
-# CHAPTER 18 (yuuka_c18a_b_c) — Yuuka: The Habit of You (3 branches)
+## C19 — `c19a/b/c_city_after_festival`
 
-## POV
+### Function
 
-Yuuka.
-
-## Nội dung
-
-Một flashback/montage playable về những năm Yuuka xa Minh. Có thể không cần làm đủ 21 chương như tiểu thuyết, nhưng nên chia thành các node lớn. Tuyến chia xa vốn đã có khung rõ: Yuuka trở về Nhật, cố sống bình thường, nhận ra Minh đã ngấm vào cách cô nghĩ và làm việc; càng trưởng thành càng thấy cái bóng anh lớn hơn; cuối cùng ngừng chạy và quay lại. 
-
-## Playable Sections
-
-### Section A — Tokyo
-
-Yuuka ở cùng Akiko và Tetsuya, thấy sự chăm sóc đời thường của họ và nhớ Minh.
-
-```text
-Choice:
-- Né tránh → +1 yuuka_avoidance
-- Thừa nhận với Akiko rằng mình nhớ Minh → +1 yuuka_honesty
-```
-
-### Section B — Công việc đầu tiên
-
-Yuuka xử lý công việc theo cách rất “Minh”: gọn, tỉnh, logic.
-
-```text
-Choice:
-- Xem đó là trưởng thành của riêng mình → +1 yuuka_independence
-- Nhận ra dấu Minh trong mình → +1 yuuka_accepts_love
-```
-
-### Section C — Ayumi
-
-Ayumi xuất hiện, feedback sắc. Yuuka bị kéo lên một mặt bằng chuyên nghiệp cao hơn.
-
-```text
-Choice:
-- Tự ái → +1 yuuka_pride
-- Học từ Ayumi → +2 career_yuuka
-```
-
-### Section D — Điểm đáy
-
-Yuuka kiệt sức, cô đơn, nhưng không còn muốn chạy khỏi tình yêu này.
-
-```text
-Choice:
-- Cắt Minh ra khỏi đời mình → set yuuka_single_possible
-- Biến nỗi nhớ thành kỷ luật → set yuuka_return_standing
-```
-
-## Unlock
-
-* `c19a_city_after_festival_old_friends`
-* `c19b_city_after_festival_ex_lovers`
-* `c19c_city_after_festival_still_lovers`
-
----
-
-# CHAPTER 19 (c19a_b_c) — Thành phố sau festival (3 branches)
-
-## POV
-
-Minh/Yuuka.
-
-## Nội dung
-
-Sau festival, Yuuka và Minh có một khoảng đi cùng nhau trong thành phố. Không cần hôn. Không cần ôm. Chỉ cần đủ nguy hiểm.
-
-Họ nói về phim, về Việt Nam, về những năm đã qua. Nhưng câu thật nằm dưới câu khác.
-
-Yuuka có thể hỏi:
-
-> “Anh vẫn giữ thói quen uống cà phê không đường à?”
-
-Bề mặt là cà phê. Thực chất là: **anh có còn là người em từng biết không?**
-
-Minh có thể đáp:
-
-> “Có vài thứ đổi rồi. Vài thứ thì không.”
-
-Bề mặt là thói quen. Thực chất là: **anh vẫn còn yêu em, nhưng đừng bắt anh nói ngay.**
-
-## Branches
+Present-day Minyuu test. Same city, older people, less room for lying.
 
 ### Reopen
 
 ```text
 Condition:
-yuuka_return_standing active
-distance_minh_yuuka <= threshold
-past unresolved not too high
+yuuka_return_standing
+minh_yuuka_unresolved <= 35
+boundary_score <= 40
 
 Effects:
-set minh_direction: minh_yuuka_reopen
-+2 intimacy_minh_yuuka
-unlock: minh_yuuka_finale_path
++15 minh_yuuka_trust
++15 minh_yuuka_intimacy
+-15 minh_yuuka_unresolved
+-10 boundary_score
+flag: minh_yuuka_reopen
 ```
 
 ### Guarded
 
 ```text
 Condition:
-minh_boundary_high OR yuuka_avoidance
+boundary_score high OR unresolved high
 
 Effects:
-set minh_yuuka_guarded
-unlock: late_reunion_path
++10 boundary_score
++10 minh_yuuka_unresolved
+flag: minh_yuuka_guarded
 ```
 
-### Break Again
+### Break again
 
 ```text
 Condition:
-wrong choices + high avoidance
+wrong choices + high unresolved
 
 Effects:
-set yuuka_single_possible
-set minh_solitude_possible
-```
-
-## Unlock
-
-* `tam_c20b_admiration_vs_love`
-* `thienan_c21a_minh_possible`
-* `thienan_c21b_choose_own_path`
-
----
-
-# CHAPTER 20 (tam_c20b_admiration_vs_love) — Tâm và Minh: Có phải tình yêu không?
-
-## POV
-
-Tâm/Minh.
-
-## Condition
-
-Chỉ mở nếu:
-
-```text
-tam_minh_drawn high
-tam_hoang_break active OR tam_hoang_never_started
-minh_yuuka_reopen NOT active
-```
-
-## Nội dung
-
-Tâm và Minh có một chương riêng để kiểm tra bản chất cảm xúc.
-
-Đây là tuyến nguy hiểm. Nếu viết không khéo sẽ biến Tâm thành người thay thế Yuuka, Minh thành người đàn ông “ai cũng được miễn là chữa lành”. Không ổn. Rất không ổn. Cần cho họ đối diện thẳng:
-
-* Tâm bị Minh hút vì anh sâu, an toàn, khó đọc.
-* Minh quý Tâm vì cô ấm, thật, có độ bình yên.
-* Nhưng giữa họ có thật sự là tình yêu, hay là hai người đang đi tìm thứ mình thiếu?
-
-## Choices
-
-```text
-A. Tâm hỏi thẳng Minh có đang nhìn cô như chính cô không
-+2 tam_maturity
-if minh_yuuka_closed:
-    unlock tam_minh_possible_ending
-else:
-    Minh lùi lại, +1 bittersweet
-
-B. Tâm nhận ra mình từng bị ấn tượng, không phải yêu
-set tam_self_clarity
-unlock tam_independent_or_hoang_repair
-
-C. Minh bước tới
-Condition: minh_yuuka_reopen false, trust_tam_minh high, tam_hoang free
-set minh_tam_open
-unlock tam_minh_ending_path
-```
-
-## Ending Support
-
-* Tâm-Minh possible ending.
-* Tâm độc lập/career ending.
-* Tâm-Hoàng repair if Hoàng still open.
-
----
-
-# CHAPTER 21 (thienan_c21a_minh_possible + thienan_c21b_choose_own_path) — Thiên An: hai con đường
-
-## POV
-
-Thiên An.
-
-## Condition
-
-Mở nếu:
-
-```text
-thienan_minh_residue >= threshold
-Minh not locked with Yuuka/Tâm
-```
-
-## Nội dung
-
-Thiên An gặp lại Minh trong một bối cảnh công việc/gia đình. Hai người từng có quá khứ, nhưng không cần biến thành melodrama.
-
-Thiên An không phải tình địch rẻ tiền của Yuuka. Cô là bằng chứng rằng có những người rất tốt, rất xứng đáng, nhưng tình yêu vẫn không chọn họ.
-
-Nếu Minh đang mở với Yuuka, Thiên An nhận ra và lùi. Nếu Minh đã đóng Yuuka và Tâm, cô có thể có một nhánh chậm với anh — nhưng rất khó, rất nhiều tự trọng, rất nhiều điều không nói.
-
-## Branches
-
-### Thiên An — Quang Canon
-
-```text
-Condition:
-trust_thienan_quang high
-
-Thiên An nhìn Minh, khựng một nhịp, rồi quay về phía Quang.
-Không phải vì Quang thắng Minh.
-Mà vì cô cuối cùng chọn người đã ở lại trong đời thật của mình.
-
-Effects:
-set thienan_quang_open
-lock thienan_minh
-```
-
-### Thiên An — Minh Possible
-
-```text
-Condition:
-minh_yuuka_closed
-tam_minh_closed
-thienan_minh_residue high
-thienan_quang_open false
-
-Effects:
-unlock thienan_minh_late_path
-```
-
-### Thiên An Single
-
-```text
-Choice:
-Thiên An không chọn ai, cũng không để gia đình chọn hộ.
-
-Effects:
-set thienan_single
-+2 career_thienan
-```
-
-### Arranged Marriage
-
-```text
-Condition:
-family_pressure_thienan high
-trust_thienan_quang low
-thienan_self_assertion low
-
-Effects:
-set thienan_family_arranged
-unlock arranged_marriage_ending
++20 doom_score
++20 minh_yuuka_unresolved
+flag: yuuka_single_possible
+flag: minh_yuuka_closed
 ```
 
 ---
 
-# CHAPTER 22 (huyen_c22_quan_or_hoang) — Huyền và Quân
+## C20 — `tam_c20b_admiration_vs_love`
 
-## POV
+### Function
 
-Huyền.
+Tâm and Minh test whether this is love, rescue instinct, admiration, or old dream residue.
 
-## Nội dung
+### Tâm asks if Minh sees her as herself
 
-Huyền route rõ hơn. Quân không còn chỉ là trưởng phòng khó tính. Anh có nguyên tắc, có tiêu chuẩn, và càng quan sát càng thấy anh không lạnh vô lý.
+```text
++15 tam_self_clarity
++10 tam_observation
 
-Huyền có thể bị hấp dẫn bởi một người khiến cô phải nghiêm túc hơn. Quân bị hấp dẫn bởi một người dám cãi nhưng không cãi ngu. Ừ, nghe khô nhưng hợp. Rất hợp.
+If minh_yuuka_closed and old_close_friends:
+  +15 tam_minh_drawn
+  direction: tam / tam_minh_open
 
-## Branches
+Else:
+  -10 tam_minh_drawn
+  +10 tam_respect_yuuka
+```
 
-### Canon Huyền — Quân
+### Tâm realizes it was impression, not love
+
+```text
++20 tam_self_clarity
++15 tam_respect_yuuka
+-20 tam_minh_drawn
+-15 tam_insecurity
+flag: tam_independent_or_hoang_repair
+```
+
+### Minh steps toward Tâm
 
 ```text
 Condition:
-trust_huyen_quan >= threshold
-huyen_hoang_interest low or resolved
+minh_yuuka_relation == old_close_friends
+minh_romance_lock == False
+tam_minh_drawn >= 90
+tam_self_clarity >= 75
+career_tam >= 75
+tam_hoang_interest <= 50
 
 Effects:
-set huyen_direction: huyen_quan_interest
-unlock huyen_quan_finale
+direction: tam / tam_minh_commit
+ending_support: e03_tam_minh
 ```
-
-### Hoàng — Huyền
-
-```text
-Condition:
-hoang_huyen_open active
-trust_hoang_huyen high
-
-Effects:
-set hoang_huyen_finale
-lock huyen_quan
-```
-
-### Huyền Independent
-
-```text
-Condition:
-career_huyen high
-no romance lock
-
-Effects:
-set huyen_independent
-```
-
-## Unlock
-
-* `minyuu_c23a_old_friends_resolution`
-* `minyuu_c23b_ex_lovers_resolution`
-* `minyuu_c23c_still_lovers_resolution`
 
 ---
 
-# CHAPTER 23 (minyuu_c23a_b_c) — Minyuu: Không chạy nữa (3 branches)
+## C21 — `thienan_c21a/b`
 
-## POV
+### Function
 
-Yuuka/Minh.
+Thiên An has four possible resolutions: Quang, Minh, Single, Arranged Marriage.
 
-## Condition
-
-Mở nếu:
+### Quang route
 
 ```text
-yuuka_return_standing active
-minh_yuuka_reopen active
-trust_minh_yuuka high
-distance_minh_yuuka low
+Condition:
+quang_persistence >= 60
+
+Effects:
++15 thienan_quang_trust
++10 thienan_self_assertion
+-10 family_pressure_thienan
+direction: thienan / thienan_quang_open
 ```
 
-## Nội dung
-
-Đây là chương tái hợp chính. Không nên cho họ giải thích hết bằng lời. Cần có một cảnh đời thường: Minh nấu ăn, Yuuka giúp dọn, một cái bát đặt sai chỗ, một món cô thích được mua sẵn.
-
-Yuuka nhận ra anh vẫn nhớ.
-
-Minh nhận ra cô không còn là cô gái chỉ biết bám vào anh để đứng vững. Cô đã có đời mình, nghề mình, trục sống của mình. Đây là điều làm Minh dám mở cửa lại.
-
-## Choices
+### Minh residue
 
 ```text
-A. Yuuka nói thẳng: “Em không quay lại để được anh cứu.”
-+2 yuuka_return_standing
-+2 minh_trust_yuuka
+Condition:
+flag thienan_old_story_hint
 
-B. Minh thừa nhận anh vẫn sợ làm cô yếu đi
-+2 intimacy_minh_yuuka
--1 avoidance_minh
-
-C. Hai người chọn ở cạnh nhau nhưng không vội kết hôn
-unlock: late_non_marriage_reunion_ending
-
-D. Hai người chính thức quay lại
-unlock: canon_reunion_ending
+Effects:
++10 thienan_minh_residue
++5 thienan_self_assertion
+flag: thienan_minh_flashback
 ```
 
-## Notes
+### Family arranged pressure
 
-Canon có thể là Minh-Yuuka quay lại sâu sắc. Nhưng một possible ending rất đẹp là:
+```text
+Effects:
++15 family_pressure_thienan
+-10 thienan_self_assertion
+direction: thienan / thienan_family_arranged
+flag: arranged_marriage_offer_seen
+flag: arranged_marriage_path
+```
 
-> Minh và Yuuka đến với nhau rất lâu sau đó, không kết hôn.
+### Thiên An refuses both family and romance
 
-Ending này hợp nếu quá khứ chọn “cần thời gian”, hiện tại chọn “không ép danh phận”, và cả hai đặt sự tự do/trưởng thành lên trước hình thức.
+```text
++20 thienan_self_assertion
+-15 family_pressure_thienan
+direction: thienan / thienan_single
+ending_support: e08_thienan_single
+```
 
 ---
 
-# CHAPTER 24 (final_c24_last_choices) — Những lựa chọn cuối cùng
+# 7. Family Business Crisis Arc
 
-## POV
+This arc may be implemented inside `thienan_c21b_choose_own_path` and `final_c24_last_choices`, or split into a future optional chapter if the project needs more breathing room.
 
-Multi-route.
+## 7.1 Crisis Start
 
-## Nội dung
+### Event
 
-Chương gom các route trước finale. Mỗi nhân vật có một lựa chọn cuối:
+Family business begins to fail:
+
+```text
+- southern branch revenue drops
+- contracts delay/cancel
+- internal reports are beautified
+- factions blame each other
+- cashflow pressure rises
+```
+
+### Effects
+
+```text
++15 family_pressure_thienan
++10 doom_score
+flag: family_business_crisis_started
+```
+
+Thiên An steps in and temporarily stabilizes things.
+
+```text
++10 thienan_self_assertion
++10 thienan_quang_trust   # if Quang supports professionally
+-5 family_pressure_thienan
+```
+
+## 7.2 Scandal Trap
+
+Opponent/internal planted person creates:
+
+```text
+- bad subcontracts
+- hidden/scrubbed data
+- shell-company transactions
+- suspicious paper trail pointing to Thiên An
+- media scandal timing
+```
+
+### Effects
+
+```text
++20 family_pressure_thienan
++15 doom_score
+flag: family_business_scandal_triggered
+flag: family_father_hospitalized
+```
+
+## 7.3 Intervention Branch A — Minh as Strategic Adviser
+
+### Conditions
+
+```text
+tam_observation >= 50 OR thienan_minh_residue >= 50
+AND enough trust to ask Minh
+AND Minh is not narratively blocked from helping
+```
+
+### Effects
+
+```text
++10 tam_observation
++10 thienan_self_assertion
+-15 family_pressure_thienan
+-10 doom_score
+flag: crisis_minh_adviser
+```
+
+### Result tiers
+
+```text
+Early:
+  scandal prevented or reversed
+  -20 family_pressure_thienan
+  -15 doom_score
+
+Mid:
+  legal/economic damage reduced
+  -10 family_pressure_thienan
+  -10 doom_score
+
+Late:
+  partial vindication only
+  -5 doom_score
+  flag: crisis_partial_legal_clear
+```
+
+## 7.4 Intervention Branch B — Quang Reveals Identity
+
+### Conditions
+
+```text
+thienan_quang_trust >= 70 OR tam_quang_interest >= 50
+quang_persistence >= 60
+```
+
+### Effects
+
+```text
++15 thienan_quang_trust
++15 thienan_self_assertion
+-20 family_pressure_thienan
+-10 doom_score
+flag: quang_identity_revealed
+flag: crisis_quang_financial_support
+```
+
+### Cost
+
+```text
+Quang must return closer to family power/inheritance conflict.
+```
+
+If Quang route is weak, this may feel like debt rather than love:
+
+```text
+if thienan_quang_trust < 70:
+  +10 family_pressure_thienan
+  flag: crisis_partial_business_saved
+```
+
+## 7.5 Intervention Branch C — Hoàng Asks Mother for Legal Fairness
+
+### Conditions
+
+```text
+direction_tam_tam_hoang_commit OR hoang_tam_trust >= 75
+Tâm tells Hoàng the family crisis truth
+```
+
+### Effects
+
+```text
++10 hoang_self_acceptance
++15 hoang_professional_credit
+-15 family_pressure_thienan
+-10 doom_score
+flag: crisis_hoang_legal_support
+```
+
+This is not “bẻ luật”. It is ensuring evidence is read fairly.
+
+## 7.6 Arranged Marriage Offer
+
+### Event
+
+A powerful family offers to save the business through marriage alliance.
+
+### Trigger
+
+```text
+family_pressure_thienan >= 60
+family_business_scandal_triggered
+NOT crisis_best_outcome
+```
+
+### Effects
+
+```text
+flag: arranged_marriage_offer_seen
+flag: arranged_marriage_path
+```
+
+### Accept
+
+```text
++20 family_pressure_thienan
+-15 thienan_self_assertion
+direction: thienan / thienan_family_arranged
+flag: thienan_arranged_accepts
+ending_support: e09_thienan_arranged
+```
+
+### Refuse
+
+```text
++20 thienan_self_assertion
+-10 family_pressure_thienan
+flag: thienan_arranged_refuses
+
+If Quang trust high:
+  ending_support: e06_thienan_quang
+
+If Minh path open:
+  ending_support: e07_thienan_minh
+
+If romance closed:
+  ending_support: e08_thienan_single
+```
+
+## 7.7 Crisis Outcomes
+
+### Best Outcome
+
+```text
+Conditions:
+crisis_minh_adviser early
+AND at least one of:
+  crisis_quang_financial_support
+  crisis_hoang_legal_support
+
+Effects:
+-30 family_pressure_thienan
+-20 doom_score
++15 thienan_self_assertion
+flag: crisis_best_outcome
+```
+
+### Good Outcome
+
+```text
+Conditions:
+Any two intervention branches
+OR one very strong early branch
+
+Effects:
+-20 family_pressure_thienan
+-15 doom_score
+flag: crisis_good_outcome
+```
+
+### Partial Legal Clear
+
+```text
+Conditions:
+Minh/Hoàng late
+No Quang support
+
+Effects:
+-10 doom_score
+flag: crisis_partial_legal_clear
+```
+
+### Partial Business Saved
+
+```text
+Conditions:
+Quang only
+No Minh/Hoàng
+
+Effects:
+-10 family_pressure_thienan
+flag: crisis_partial_business_saved
+```
+
+### Bad Default
+
+```text
+Conditions:
+No strong intervention
+Thiên An self-gathers until too late
+
+Effects:
++20 doom_score
++20 family_pressure_thienan
+flag: crisis_bad_default
+```
+
+### Doom
+
+```text
+Condition:
+doom_score >= 80
+OR Minyuu mandatory arc failed
+OR final has no valid ending
+
+Ending:
+e24_doom
+```
+
+---
+
+# 8. C22 — `huyen_c22_quan_or_hoang`
+
+## Function
+
+Resolve Huyền without making her a spare wheel. Huyền deserves an actual arc, not “Tâm didn’t pick Hoàng, so here, recycle.”
+
+### Huyền — Quân
+
+```text
+Condition:
+huyen_quan_trust >= 75
+career_huyen >= 50
+NOT direction_huyen_huyen_hoang_commit
+
+Effects:
+direction: huyen / huyen_quan_commit
+ending_support: e05_huyen_quan
+```
+
+### Huyền — Hoàng
+
+```text
+Condition:
+huyen_hoang_interest >= 75
+hoang_huyen_interest >= 75
+career_huyen >= 50
+NOT direction_tam_tam_hoang_commit
+
+Effects:
+direction: huyen / huyen_hoang_commit
+direction: hoang / hoang_huyen_open
+ending_support: e04_hoang_huyen
+```
+
+### Huyền independent
+
+```text
+Condition:
+career_huyen >= 50
+No romance direction
+
+Effects:
+ending_support: e22_huyen_independent
+```
+
+---
+
+# 9. C23 — `minyuu_c23a/b/c`
+
+## Function
+
+Resolve Minh/Yuuka based on branch.
+
+### Old Close Friends
+
+```text
+Condition:
+minh_yuuka_relation == old_close_friends
+minyuu_shared_arc_ok
+
+Possible supports:
+e20_minyuu_friendship
+e11_minyuu_late_reunion    # if neither Tâm/Thiên An route claims Minh
+e17_yuuka_single
+e19_yuuka_career
+```
+
+### Ex-Lovers
+
+```text
+Condition:
+minh_yuuka_relation == ex_lovers_long_separated
+minyuu_shared_arc_ok
+
+Possible supports:
+e10_minyuu_reunion
+e11_minyuu_late_reunion
+e18_minyuu_mutual_single
+e16_minh_single
+e17_yuuka_single
+```
+
+### Still Lovers
+
+```text
+Condition:
+minh_yuuka_relation == still_lovers
+minyuu_shared_arc_ok
+
+Possible supports:
+e13_minyuu_public_lovers
+e14_minyuu_non_marriage
+e15_minyuu_long_distance
+e12_minyuu_private_lovers
+```
+
+### Incomplete Ending Variant — Yuuka Single Mother
+
+This is a special sub-branch of the ex-lovers/canon branch.
+
+```text
+Conditions:
+minh_yuuka_relation == ex_lovers_long_separated
+first-night/separation flag exists
+Yuuka does not return after four years
+Minh/Yuuka reunion support is absent or delayed
+Yuuka single support is active
+
+Suggested flags:
+minyuu_first_night
+yuuka_pregnant_after_separation
+yuuka_single_mother
+minh_finds_child_late
+```
+
+Ending handling options:
+- Fold into `e17_yuuka_single` if MVP needs fewer endings.
+- Or create future `e25_yuuka_single_mother_late_reunion` if expanding beyond 24 endings.
+
+Do not add this as a casual shock twist. If used, it needs a quiet pain structure, not soap-opera thunder.
+
+---
+
+# 10. C24 — `final_c24_last_choices`
+
+Final chapter should not ask “who do you like?” like a menu at a food court. It should present choices that are emotionally earned.
 
 ## Tâm
 
 ```text
-- Chọn Hoàng
-- Chọn Minh
-- Chọn bản thân/career
-- Làm lành với chính cảm giác từng lệch nhịp
+Choose Hoàng:
+  requires tam_hoang_interest >= 75
+  requires hoang_tam_trust >= 75
+  ending_support: e02_tam_hoang
+
+Choose Minh:
+  requires old_close_friends
+  requires tam_minh_drawn >= 90
+  requires Yuuka respect gate
+  direction: tam / tam_minh_commit
+  ending_support: e03_tam_minh
+
+Choose self/career:
+  requires tam_self_clarity >= 50
+  requires career_tam >= 50
+  ending_support: e21_tam_independent
 ```
 
 ## Hoàng
 
 ```text
-- Chọn Tâm
-- Chọn Huyền
-- Chọn độc thân trưởng thành hơn
-- Hòa giải với cái bóng của Minh
-```
+Choose Tâm:
+  ending_support: e02_tam_hoang
 
-## Minh
+Choose Huyền:
+  ending_support: e04_hoang_huyen
 
-```text
-- Chọn Yuuka
-- Chọn Tâm
-- Chọn Thiên An
-- Chọn độc thân
-- Chọn muộn với Yuuka, không ràng buộc hôn nhân
-```
-
-## Yuuka
-
-```text
-- Ở lại với Minh
-- Rời đi nhưng không chạy
-- Chọn sự nghiệp và độc thân
-- Hẹn một ngày khác, khi cả hai đủ yên
+Choose growth:
+  requires hoang_self_acceptance >= 80
+  requires hoang_professional_credit >= 90
+  ending_support: e23_hoang_single_growth
 ```
 
 ## Huyền
 
 ```text
-- Chọn Quân
-- Chọn Hoàng
-- Chọn độc lập
+Choose Quân:
+  ending_support: e05_huyen_quan
+
+Choose Hoàng:
+  ending_support: e04_hoang_huyen
+
+Choose independent:
+  ending_support: e22_huyen_independent
 ```
 
 ## Thiên An
 
 ```text
-- Chọn Quang
-- Chọn Minh
-- Chọn độc thân
-- Chấp nhận hôn nhân sắp xếp
+Choose Quang:
+  requires thienan_quang_trust >= 90
+  ending_support: e06_thienan_quang
+
+Choose Minh:
+  requires old_close_friends
+  requires thienan_minh_residue >= 50
+  direction: thienan / thienan_minh_commit
+  ending_support: e07_thienan_minh
+
+Choose self:
+  requires thienan_self_assertion >= 50
+  ending_support: e08_thienan_single
+
+Accept arranged marriage:
+  requires family_pressure_thienan >= 60
+  requires family_pressure_thienan > thienan_self_assertion
+  direction: thienan / thienan_family_arranged
+  ending_support: e09_thienan_arranged
+```
+
+## Minh / Yuuka
+
+```text
+Still lovers:
+  support e13/e14/e15/e12 based on exact final choice.
+
+Ex-lovers:
+  support e10/e11/e18 based on reunion level.
+
+Old close friends:
+  support e20 or open Minh to Tâm/Thiên An route if those are earned.
 ```
 
 ---
 
-# CHAPTER 25 — Finale / Ending Resolution
+# 11. Ending Resolver Priority
 
-## Ending Priority
-
-Ending nên resolve theo thứ tự ưu tiên để tránh conflict:
+Current priority should be treated as:
 
 ```text
-1. Doom Ending
-2. Canon True Ending
-3. Major Alternative Pair Endings
-4. Late Reunion Endings
-5. Single/Independent Endings
-6. Arranged Marriage Ending
-7. Open Ending
+1. e24_doom
+2. mandatory Minyuu relation validation
+3. e01_canon_true
+4. still_lovers Minyuu resolver:
+   - e13_minyuu_public_lovers
+   - e14_minyuu_non_marriage
+   - e15_minyuu_long_distance
+   - e12_minyuu_private_lovers
+5. ex_lovers Minyuu resolver:
+   - e10_minyuu_reunion
+   - e11_minyuu_late_reunion
+   - e18_minyuu_mutual_single
+   - e16_minh_single / e17_yuuka_single fallbacks
+6. old_close_friends major alternatives:
+   - e03_tam_minh
+   - e07_thienan_minh
+   - e20_minyuu_friendship
+7. e09_thienan_arranged
+8. e02_tam_hoang
+9. e04_hoang_huyen
+10. e05_huyen_quan
+11. e06_thienan_quang
+12. e19_yuuka_career
+13. e21_tam_independent
+14. e22_huyen_independent
+15. e23_hoang_single_growth
+16. e08_thienan_single
+17. e16_minh_single
+18. e17_yuuka_single
+19. e24_doom fallback
 ```
+
+Important: `e09_thienan_arranged` must be checked **before** softer side-route endings. Otherwise the family pressure route can be swallowed by “single” or “Quang” support even when the story says Thiên An has already sacrificed herself.
 
 ---
 
-# IV. Ending Rules
-
-The game has 24 endings (e01-e24), each with a `can_get_*` condition helper defined in `game/ending_rules.rpy`. Ending resolution is handled by `resolve_story_ending()` in the same file.
-
-## Ending Priority (resolve order)
-
-```text
-1. e24_doom                    — Doom ending (doom_score >= 8)
-2. e01_canon_true              — Canon true ending (all 4 pairs)
-3. e13_minyuu_public_lovers    — Minyuu public lovers (still_lovers branch)
-4. e14_minyuu_non_marriage      — Minyuu non-marriage (still_lovers)
-5. e15_minyuu_long_distance     — Minyuu long-distance (still_lovers)
-6. e12_minyuu_private_lovers    — Minyuu private lovers (still_lovers fallback)
-7. e10_minyuu_reunion           — Minyuu reunion (ex_lovers branch)
-8. e11_minyuu_late_reunion      — Minyuu late reunion (ex_lovers)
-9. e18_minyuu_mutual_single     — Minyuu mutual single (ex_lovers)
-10. e03_tam_minh                — Tâm-Minh (old_close_friends branch)
-11. e07_thienan_minh            — Thiên An-Minh (old_close_friends)
-12. e20_minyuu_friendship       — Minyuu friendship (old_close_friends)
-13. e02_tam_hoang               — Tâm-Hoàng
-14. e04_hoang_huyen             — Hoàng-Huyền
-15. e05_huyen_quan              — Huyền-Quân
-16. e06_thienan_quang           — Thiên An-Quang
-17. e19_yuuka_career            — Yuuka career
-18. e21_tam_independent         — Tâm independent
-19. e22_huyen_independent       — Huyền independent
-20. e23_hoang_single_growth     — Hoàng single growth
-21. e08_thienan_single          — Thiên An single
-22. e09_thienan_arranged        — Thiên An arranged marriage
-23. e16_minh_single             — Minh single
-24. e17_yuuka_single            — Yuuka single
-```
-
-## Key State Variables for Ending Conditions
-
-```text
-minh_yuuka_relation:  # Determines which Minyuu ending branch to use
-  - "old_close_friends"        # Stayed friends after separation
-  - "ex_lovers_long_separated" # Separated as ex-lovers, long time apart
-  - "still_lovers"             # Never stopped loving each other
-
-doom_score:  # Accumulated through poor choices
-  - doom_score >= 5: can_get_canon_true becomes false
-  - doom_score >= 8: forced doom ending
-
-minh_romance_lock:  # When True, Minh cannot romance Tâm or Thiên An
-yuuka_romance_lock: # When True, Yuuka cannot romance others
-
-ending_support:  # List of ending IDs that the current playthrough supports
-  # Set by late-game choices; checked via story_has_ending_support()
-```
-
-## 1. e01_canon_true — Canon True Ending
-
-```text
-Pairs: Tâm-Hoàng, Yuuka-Minh, Huyền-Quân, Thiên An-Quang
-
-Required:
-  hoang_tam_trust >= 5
-  minh_yuuka_relation in ["ex_lovers_long_separated", "still_lovers"]
-  minh_yuuka_trust >= 5
-  huyen_quan_trust >= 4
-  thienan_quang_trust >= 4
-  doom_score < 5
-  story_has_ending_support("e01_canon_true")
-```
-
-## 2. e02_tam_hoang — Tâm-Hoàng Ending
-
-```text
-Required:
-  hoang_tam_trust >= 5
-  NOT direction "tam_minh_commit"
-  hoang_insecurity < 6
-  story_has_ending_support("e02_tam_hoang")
-```
-
-## 3. e03_tam_minh — Tâm-Minh Ending
-
-```text
-Required:
-  minh_yuuka_relation == "old_close_friends"
-  NOT minh_romance_lock
-  tam_minh_drawn >= 4
-  direction "tam_minh_commit"
-  story_has_ending_support("e03_tam_minh")
-```
-
-## 4. e04_hoang_huyen — Hoàng-Huyền Ending
-
-```text
-Required:
-  hoang_huyen_interest >= 4
-  huyen_hoang_interest >= 4
-  NOT direction "tam_hoang_commit"
-  story_has_ending_support("e04_hoang_huyen")
-```
-
-## 5. e05_huyen_quan — Huyền-Quân Ending
-
-```text
-Required:
-  huyen_quan_trust >= 4
-  NOT direction "huyen_hoang_commit"
-  story_has_ending_support("e05_huyen_quan")
-```
-
-## 6. e06_thienan_quang — Thiên An-Quang Ending
-
-```text
-Required:
-  thienan_quang_trust >= 4
-  family_pressure_thienan < 6
-  story_has_ending_support("e06_thienan_quang")
-```
-
-## 7. e07_thienan_minh — Thiên An-Minh Ending
-
-```text
-Required:
-  minh_yuuka_relation == "old_close_friends"
-  NOT minh_romance_lock
-  thienan_minh_residue >= 4
-  direction "thienan_minh_commit"
-  story_has_ending_support("e07_thienan_minh")
-```
-
-## 8. e08_thienan_single — Thiên An Single
-
-```text
-Required:
-  thienan_self_assertion >= 4
-  story_has_ending_support("e08_thienan_single")
-```
-
-## 9. e09_thienan_arranged — Thiên An Arranged Marriage
-
-```text
-Required:
-  family_pressure_thienan >= 5
-  story_has_ending_support("e09_thienan_arranged")
-```
-
-## 10-15. Minyuu Endings (route-dependent)
-
-Resolved by `resolve_ex_lovers_ending()` or `resolve_still_lovers_ending()` based on `minh_yuuka_relation`:
-
-### Still Lovers Branch:
-- e12_minyuu_private_lovers   — Private lovers (fallback)
-- e13_minyuu_public_lovers    — Public lovers
-- e14_minyuu_non_marriage     — Non-marriage commitment
-- e15_minyuu_long_distance    — Long-distance relationship
-
-### Ex-Lovers Branch:
-- e10_minyuu_reunion          — Full reunion (trust >= 5)
-- e11_minyuu_late_reunion     — Late reunion (trust >= 3)
-- e18_minyuu_mutual_single    — Both single, may or may not reunite
-
-### Old Close Friends Branch:
-- e20_minyuu_friendship       — Minyuu maintain friendship
-
-## 16. e16_minh_single — Minh Single
-
-```text
-Required:
-  minh_yuuka_relation in ["old_close_friends", "ex_lovers_long_separated"]
-  story_has_ending_support("e16_minh_single")
-```
-
-## 17. e17_yuuka_single — Yuuka Single
-
-```text
-Required:
-  (complex conditions — see ending_rules.rpy)
-  story_has_ending_support("e17_yuuka_single")
-```
-
-## 18. e18_minyuu_mutual_single — Minyuu Mutual Single (see above)
-
-## 19. e19_yuuka_career — Yuuka Career Ending
-
-```text
-Required:
-  career_yuuka >= 4
-  story_has_ending_support("e19_yuuka_career")
-```
-
-## 20. e20_minyuu_friendship — Minyuu Friendship (see above)
-
-## 21. e21_tam_independent — Tâm Independent
-
-```text
-Required:
-  tam_self_clarity >= 4
-  story_has_ending_support("e21_tam_independent")
-```
-
-## 22. e22_huyen_independent — Huyền Independent
-
-```text
-Required:
-  career_huyen >= 3
-  story_has_ending_support("e22_huyen_independent")
-```
-
-## 23. e23_hoang_single_growth — Hoàng Single Growth
-
-```text
-Required:
-  hoang_self_acceptance >= 4
-  story_has_ending_support("e23_hoang_single_growth")
-```
-
-## 24. e24_doom — Doom Ending
-
-```text
-Triggered by:
-  doom_score >= 8
-  OR last-resort fallback when no ending conditions met
-```
-
----
-
----
-
-# V. 36-Chapter Metadata IDs (Actual)
-
-The following is the complete list of all 36 chapter IDs as defined in `game/progression_data.rpy` under `CHAPTER_ORDER`. Each chapter has metadata for prerequisites, route assignment, timeline position, exclusions, and unlock conditions.
-
-```text
-# Prologue
-prologue_rain_dream                          # Tâm — Default unlocked
-
-# Tâm Route (early)
-tam_c01_interview_day                        # Tâm — Prereq: prologue
-tam_c02_company_party                        # Tâm — Prereq: tam_c01
-tam_c03_thienan_family                       # Tâm — Prereq: tam_c02
-
-# Hoàng POV
-hoang_h01_brother_house                      # Hoàng — Prereq: tam_c03
-
-# Tâm Route (mid)
-tam_c05_sunday_date                          # Tâm — Prereq: hoang_h01
-tam_c06_minh_returns                         # Tâm — Prereq: tam_c05
-tam_c07_minh_at_company                      # Tâm — Prereq: tam_c06
-
-# Yuuka Arrival
-yuuka_c08_festival_arrival                   # Yuuka — Prereq: tam_c07
-
-# Flashback Minyuu (5 chapters)
-fb_minyuu_01_first_frame                     # Minh — Prereq: yuuka_c08
-fb_minyuu_02_working_rhythm                  # Minh — Prereq: fb_minyuu_01
-fb_minyuu_03_door_left_open                  # Minh — Prereq: fb_minyuu_02
-fb_minyuu_04a_old_friends                    # Minh — Branch A (prereq: fb_minyuu_03)
-fb_minyuu_04b_living_together                # Minh — Branch B (prereq: fb_minyuu_03)
-fb_minyuu_04c_no_breakup                     # Minh — Branch C (prereq: fb_minyuu_03)
-fb_minyuu_05b_separation                     # Minh — Prereq: fb_minyuu_04b only
-
-# Present-Day Midgame
-yuuka_c09_yuukas_work                        # Yuuka — Prereq: any fb_minyuu_04
-work_c10_project_festival_overlap            # Work — Prereq: yuuka_c09
-group_c11_social_dinner                      # Group — Prereq: work_c10
-work_c16_project_crisis                      # Work — Prereq: group_c11
-
-# Hoàng Shadow
-hoang_h05_shadow_of_minh                     # Hoàng — Prereq: work_c16
-
-# Yuuka Present-Day (3 parallel branches)
-yuuka_c18a_career_interlude                  # Yuuka — Prereq: hoang_h05
-yuuka_c18b_habit_of_you                      # Yuuka — Prereq: hoang_h05
-yuuka_c18c_long_distance_interlude           # Yuuka — Prereq: hoang_h05
-
-# City After Festival (3 parallel branches)
-c19a_city_after_festival_old_friends         # Minh — Prereq: yuuka_c18a
-c19b_city_after_festival_ex_lovers           # Minh — Prereq: yuuka_c18b
-c19c_city_after_festival_still_lovers        # Minh — Prereq: yuuka_c18c
-
-# Tâm Late-Game
-tam_c20a_tam_minh_possible                   # Tâm — Prereq: c19 (any)
-tam_c20b_admiration_vs_love                  # Tâm — Prereq: c19 (any)
-
-# Thiên An Late-Game
-thienan_c21a_minh_possible                   # Thiên An — Prereq: tam_c20b
-thienan_c21b_choose_own_path                 # Thiên An — Prereq: tam_c20b
-
-# Huyền Route
-huyen_c22_quan_or_hoang                      # Huyền — Prereq: tam_c20b or thienan_c21b
-
-# Minyuu Resolution (3 branches)
-minyuu_c23a_old_friends_resolution           # Minh — Prereq: c19a
-minyuu_c23b_ex_lovers_resolution             # Minh — Prereq: c19b
-minyuu_c23c_still_lovers_resolution          # Minh — Prereq: c19c
-
-# Final Chapter
-final_c24_last_choices                       # Final — Prereq: minyuu_c23 (any)
-# After final chapter: jump to ending_resolver label
-```
-
----
-
----
-
-# VI. Route Exclusion Groups
-
-Exclusion groups are defined in the progression system via the `excludes` field on each chapter's metadata. When one chapter in a group is completed, the others are locked for that playthrough. The actual exclusion rules operate through the chapter prerequisite graph rather than named groups, but the following logical groups emerge:
-
-```text
-# Minh-Yuuka relation branches (mutually exclusive direction sets)
-Group: minyuu_relationship_seed
-  - old_friend_seed     (fb_minyuu_04a → old_close_friends)
-  - ex_lover_seed       (fb_minyuu_04b + fb_05b → ex_lovers_long_separated)
-  - still_lover_seed    (fb_minyuu_04c → still_lovers)
-
-# Minh romance lock (prevents non-Yuuka romantic endings)
-minh_romance_lock = True
-  blocks: e03_tam_minh, e07_thienan_minh
-
-# Tâm romantic directions (mutually exclusive in a single playthrough)
-Group: tam_romance_main
-  - tam_hoang_commit    (leads to e02_tam_hoang)
-  - tam_minh_commit     (leads to e03_tam_minh, requires old_close_friends)
-  - tam_career_focus    (leads to e21_tam_independent)
-
-# Hoàng romantic directions
-Group: hoang_romance_main
-  - hoang_tam_open (leads to e02_tam_hoang)
-  - hoang_huyen_open (leads to e04_hoang_huyen)
-
-# Huyền romantic directions
-Group: huyen_romance_main
-  - huyen_hoang_commit (leads to e04_hoang_huyen)
-  - NOT huyen_hoang_commit (leads to e05_huyen_quan)
-
-# Thiên An directions
-Group: thienan_resolution
-  - thienan_minh_commit (leads to e07_thienan_minh)
-  - thienan_self_assertion high (leads to e08_thienan_single)
-  - family_pressure_thienan high (leads to e09_thienan_arranged)
-```
-
----
-
----
-
-# VII. Clean Canon Route Summary
-
-The canonical path through the story (default narrative without player deviation):
+# 12. Clean Canon Route Summary
 
 ```text
 prologue_rain_dream:
-  Tâm dreams of a stranger in the rain (Minh, unrecognised).
+  Tâm dreams of a stranger in rain.
 
 tam_c01_interview_day:
-  Tâm and Huyền interview at their future company. First sighting of Hoàng.
+  Tâm and Huyền interview. Hoàng is first noticed.
 
 tam_c02_company_party:
-  Tâm talks to Hoàng at the company party. Huyền interacts with everyone.
+  Tâm talks to Hoàng. Huyền observes and teases.
 
 tam_c03_thienan_family:
-  Family dinner introduces Thiên An. Tâm sees her sister's hidden fatigue.
+  Family dinner introduces Thiên An pressure and Quang seed.
 
 hoang_h01_brother_house:
-  Hoàng POV — living in Minh's house. Calls Minh for gift advice.
+  Hoàng lives in Minh's house and calls Minh for advice.
 
 tam_c05_sunday_date:
-  Hoàng and Tâm's first Sunday date. Relationship upgrades.
+  Hoàng and Tâm's relationship upgrades.
 
 tam_c06_minh_returns:
-  Minh returns to Vietnam. Tâm meets him — emotional shock. Four-person dinner.
+  Minh returns. Tâm is shaken. Hoàng notices.
 
 tam_c07_minh_at_company:
-  Minh as project advisor. Tâm and Hoàng have first subtle friction.
+  Minh acts as adviser. Tâm sees his competence.
 
 yuuka_c08_festival_arrival:
-  Yuuka arrives for the film festival. Minh loses composure.
+  Yuuka appears. Old Minyuu history enters the room.
 
 fb_minyuu_01-03:
-  Flashback — first meeting, working together, living together decision.
+  Living together flashback. Care becomes dangerous.
 
 fb_minyuu_04a/b/c + fb_05b:
-  Flashback — living together deepens. Separation point (branch).
+  Past branch locks: old friends / ex-lovers / still lovers.
 
 yuuka_c09_yuukas_work:
-  Present day — Yuuka's work, film screening, cold-yet-warm conversation with Minh.
+  Yuuka is seen as a serious professional.
 
 work_c10 + group_c11 + work_c16:
-  Project pressure at work. Quân-Huyền dynamic forms. Crisis deepens.
+  Work crisis tests Tâm/Huyền/Quân/Minh.
 
 hoang_h05_shadow_of_minh:
-  Hoàng confronts his brother's shadow. Tâm either stays or drifts.
+  Hoàng faces Minh's shadow.
 
 yuuka_c18a/b/c:
-  Yuuka's years away from Minh. Tokyo, work, realisation.
+  Yuuka processes the years away.
 
 c19a/b/c:
-  Minh and Yuuka walk through the city after the festival. Old doors reopen.
+  City after festival. Minyuu doors reopen or close.
 
 tam_c20a/b:
-  Tâm's late-game choices — her feelings, her clarity.
+  Tâm distinguishes admiration, dream residue, love, and choice.
 
 thienan_c21a/b:
-  Thiên An's path — Minh, Quang, or self.
+  Thiên An faces Quang, Minh residue, family crisis, and arranged marriage pressure.
 
-huyen_c22_quan_or_hoang:
-  Huyền chooses between Quân and Hoàng.
+huyen_c22:
+  Huyền resolves toward Quân, Hoàng, or independence.
 
-minyuu_c23a/b/c:
-  Minyuu resolution — friendship, reunion, or long-distance.
+minyuu_c23:
+  Minyuu resolves according to flashback branch.
 
 final_c24_last_choices:
-  All characters make their final choice.
+  Final supports are chosen.
 
 ending_resolver:
-  Routes to the correct ending label based on all accumulated variables.
+  Final ending is determined by score, direction, relation, lock, and support.
 ```
 
 ---
 
-Bản timeline này đã được cập nhật để phản ánh đúng story flow hiện tại trong codebase. Xem `game/progression_data.rpy` cho metadata đầy đủ của 36 chapters, `game/ending_rules.rpy` cho 24 endings, và `game/story_state.rpy` cho runtime variables.
+# 13. Implementation Notes
+
+## 13.1 Scene choice score deltas
+
+Old scene effects such as:
+
+```text
++1 trust_tam_hoang
++2 intimacy_minh_yuuka
+```
+
+should be converted to:
+
+```text
++5 / +10 / +15 existing score keys
+```
+
+Example replacement:
+
+```text
+trust_tam_hoang       -> hoang_tam_trust
+intimacy_tam_hoang    -> tam_hoang_interest + hoang_tam_trust
+trust_tam_minh        -> tam_minh_drawn + tam_observation + career_tam
+trust_hoang_huyen     -> hoang_huyen_interest + huyen_hoang_interest
+trust_thienan_quang   -> thienan_quang_trust
+distance_minh_yuuka   -> boundary_score
+pain_minh_yuuka       -> minh_yuuka_unresolved
+```
+
+## 13.2 Avoid score inflation
+
+Do not add `+15` too often. A 0–100 scale gives room, but if every scene is dramatic then no scene is dramatic. Tragic, in a spreadsheet way.
+
+Suggested pacing:
+
+```text
+Early chapters:
+  +5 to +10 mostly
+
+Midgame:
+  +10 standard, +15 for route-relevant choices
+
+Late game:
+  +15 for commitments
+  +20 only for branch locks / crisis
+```
+
+## 13.3 Ending support is not score replacement
+
+A route should need both:
+
+```text
+score threshold
+AND direction/flag
+AND ending_support
+```
+
+Score says the emotional groundwork exists.  
+Direction says the character actually chose that path.  
+Ending support says the final chapter allowed that ending.
+
+All three are needed. Otherwise a route can appear because of math alone, and math is not romance. It is accounting.
+
+---
+
+# 14. Pending Expansion
+
+Possible future additions:
+
+```text
+1. Add explicit family crisis chapter:
+   thienan_c21c_family_business_crisis
+
+2. Add optional Quang/Tâm route chapter:
+   tam_c20c_quang_unexpected_route
+
+3. Add optional Yuuka single-mother special ending:
+   e25_yuuka_single_mother_late_reunion
+
+4. Add career_yuuka score only if Yuuka career ending needs more than ending_support.
+```
+
+For MVP, the current 24-ending structure is enough. Do not let the route tree become a banyan tree with emotional licensing problems.

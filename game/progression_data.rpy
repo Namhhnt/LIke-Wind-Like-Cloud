@@ -773,7 +773,7 @@ init -2 python:
  'e06_thienan_quang': {'requires_completed': ['final_c24_last_choices'], 'title': 'Thiên An - Quang'},
  'e07_thienan_minh': {'requires_completed': ['final_c24_last_choices'], 'title': 'Thiên An - Minh'},
  'e08_thienan_single': {'requires_completed': ['final_c24_last_choices'], 'title': 'Thiên An Single'},
- 'e09_thienan_arranged': {'requires_completed': ['final_c24_last_choices'], 'title': 'Thiên An Arranged Marriage'},
+ 'e09_thienan_arranged': {'requires_completed': ['final_c24_last_choices'], 'title': 'Thiên An - Arranged Marriage'},
  'e10_minyuu_reunion': {'requires_completed': ['final_c24_last_choices'], 'title': 'Minh - Yuuka Reunion'},
  'e11_minyuu_late_reunion': {'requires_completed': ['final_c24_last_choices'], 'title': 'Minh - Yuuka Late Reunion'},
  'e12_minyuu_private_lovers': {'requires_completed': ['final_c24_last_choices'],
