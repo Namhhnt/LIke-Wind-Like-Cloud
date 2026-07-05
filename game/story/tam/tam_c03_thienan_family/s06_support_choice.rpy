@@ -2,133 +2,120 @@
 # Scene file.
 
 label tam_c03_thienan_family_s06_support_choice:
-    scene bg_tam_family_entry_evening
-    with dissolve
+    scene black
+    with fade
 
-    "Sáng hôm sau, trời chưa sáng hẳn thì Thiên An đã chuẩn bị ra sân bay."
+    $ story_flag('tam_quang_support_choice_seen')
+    $ unlock_character_section("quang", "notes")
 
-    "Tâm xuống dưới nhà khi nghe tiếng vali kéo qua nền gạch."
+    "Sáng hôm sau, Tâm gặp Quang ở cổng."
 
-    scene bg_tam_family_living_room_evening
-    with dissolve
+    "Anh đến sớm hơn giờ hẹn."
 
-    "Thiên An mặc áo khoác mỏng, tóc buộc gọn sau gáy."
+    "Trong tay là một túi giấy nhỏ, bên trong có vài hộp thuốc bổ, một gói cà phê không đường và một hộp kẹo bạc hà."
 
-    "Trên cổ tay cô là chiếc đồng hồ thường dùng khi đi công tác."
+    tam confused "Anh mang gì nhiều vậy?"
 
-    "Quang đứng cạnh cửa, tay cầm điện thoại, vẻ mặt tỉnh táo đến mức khiến người khác nghi ngờ anh có thật sự ngủ hay không."
+    quang neutral "Không nhiều đâu."
 
-    tam tired "Hai người đi sớm vậy ạ?"
+    tam neutral "Nếu anh nói vậy thì chắc là nhiều."
 
-    thienan neutral "Em ngủ tiếp đi."
+    quang embarrassed "Một chút đồ cho chị An. Với cô chú."
 
-    tam neutral "Em dậy rồi."
+    tam teasing "Anh có chắc là anh không định mở cửa hàng tiện lợi trước cổng nhà em không?"
 
-    thienan neutral "Mặt em nói khác."
+    quang bashful "Nếu mở thì chắc lỗ."
 
-    quang "Anh đồng ý với An."
+    tam smile "Vì toàn đem cho không?"
 
-    tam embarrassed "Hai người đi công tác mà cũng hợp tác bắt nạt em à?"
+    quang embarrassed "Ừm..."
 
-    quang "Không. Đây là đánh giá độc lập."
+    "Tâm bật cười."
 
-    thienan smile "Khá khách quan."
+    "Quang cũng cười theo, hơi ngượng."
 
-    "Tâm lườm cả hai."
+    "Một người đàn ông trưởng thành, làm việc chắc chắn, vậy mà khi bị trêu lại có vẻ thật thà đến tội."
 
-    "Quang mỉm cười."
+    "Nhưng có lẽ chính vì vậy nên bố mẹ cô mới quý anh."
 
-    "Thiên An kéo vali ra cửa."
+    quang neutral "Tâm."
 
-    tam neutral "Chị."
+    tam neutral "Dạ?"
 
-    thienan neutral "Ừ?"
+    quang neutral "Mấy ngày tới chị An có thể sẽ hơi căng. Nếu em thấy chị ấy bỏ bữa, nhờ em nhắc giúp anh."
 
-    tam neutral "Đi cẩn thận."
+    tam confused "Sao anh không tự nhắc?"
 
-    "Thiên An nhìn cô."
+    quang smile "Anh nhắc thì chị ấy sẽ bảo anh lắm chuyện."
 
-    "Rồi cô đưa tay kéo lại cổ áo ngủ bị lệch của Tâm."
+    tam teasing "Em nhắc thì chị ấy cũng bảo vậy thôi."
 
-    thienan neutral "Em cũng vậy. Ở nhà đừng để mẹ hỏi dồn quá thì lại khai hết chuyện riêng."
+    quang neutral "Nhưng em là em gái. Được quyền hơn anh."
 
-    tam embarrassed "Em có chuyện riêng gì đâu."
+    "Câu nói ấy rất bình thường."
 
-    thienan smile "Vậy càng đáng nghi."
+    "Nhưng Tâm lại thấy nó hơi buồn."
 
-    "Thiên An nói xong thì đi ra trước."
+    "Quang biết rõ vị trí của mình."
 
-    scene bg_tam_family_entry_evening
-    with dissolve
+    "Biết rõ đến mức chưa từng bước quá nửa bước."
 
-    "Quang chậm hơn một nhịp."
+    if story_has_flag('tam_sees_quang_as_possible_for_thienan'):
+        "Tâm nhớ lại chiếc áo khoác trên vai Thiên An tối qua."
 
-    "Anh kiểm tra lại khóa vali cho Thiên An, rồi mới quay sang Tâm."
+    elif story_has_flag('tam_quang_interest_seed'):
+        "Tâm nhớ lại cách Quang đứng ngoài cửa, như thể đã quen với việc rời đi trước khi người khác kịp giữ."
 
-    quang "Nhờ em để ý cô chú giúp anh."
-
-    tam neutral "Bố mẹ em á?"
-
-    quang "Ừ. Và An nữa."
-
-    tam neutral "Chị An đi với anh mà."
-
-    quang "Không phải lúc nào người ở cạnh cũng nhìn được hết."
-
-    "Tâm im lặng."
-
-    "Câu đó không giống lời nhờ vả thông thường."
-
-    "Nó giống một người đã hiểu rõ giới hạn của chính mình."
+    else:
+        "Tâm nhìn túi giấy trong tay Quang, không hiểu vì sao mình lại thấy câu chuyện này đáng tiếc."
 
     menu:
         "Tâm trả lời Quang thế nào?"
 
-        "\"Em sẽ giúp anh.\"":
-            $ story_flag('tam_promised_quang_support')
+        "Em sẽ giúp anh":
+            $ story_add('thienan_quang_trust', 1)
+            $ story_add('quang_persistence', 2)
+            $ story_flag('tam_agrees_to_help_quang')
             $ story_flag('tam_support_quang')
-            $ story_flag('quang_an_route_seed')
-            $ story_add_direction('thienan', 'quang')
-            $ story_add('thienan_quang_trust', 2)
+            $ unlock_character_section("quang", "narrative_function")
+            $ unlock_character_section("thienan", "notes")
 
             tam neutral "Em sẽ giúp anh."
 
-            "Quang hơi khựng lại."
+            quang surprised "Giúp anh?"
 
-            quang "Giúp anh?"
+            tam smile "Nhắc chị An ăn. Nhắc chị ấy nghỉ. Và nếu có cơ hội..."
 
-            tam neutral "Vâng."
+            quang confused "Nếu có cơ hội?"
 
-            "Tâm nhìn ra ngoài cửa."
+            tam teasing "Em chưa nghĩ ra. Nhưng chắc sẽ có."
 
-            "Thiên An đang đứng cạnh xe, cúi xuống kiểm tra tin nhắn."
+            "Quang nhìn Tâm."
 
-            tam neutral "Nếu có lúc chị ấy không nhìn thấy, em sẽ thử nhắc."
+            "Ánh mắt anh thoáng rối, rồi dịu xuống."
 
-            quang "Tâm..."
+            quang smile "Cảm ơn em."
 
-            tam neutral "Nhưng em không hứa thành công đâu."
+            tam neutral "Nhưng anh cũng phải tự cố."
 
-            quang "Anh biết."
+            quang embarrassed "Anh biết."
 
-            "Quang cười."
+            tam irritated "Không. Anh không biết."
 
-            "Nụ cười ấy nhẹ hơn thường ngày."
+            "Quang khựng lại."
 
-            quang "Chỉ cần em đừng làm cô ấy khó chịu là được."
+            tam neutral "Nếu biết thì anh đã không chờ lâu như vậy."
 
-            tam teasing "Nghe như anh có kinh nghiệm thất bại rồi."
+            "Quang im lặng."
 
-            quang "Rất nhiều."
+            "Lần này, anh không cười để né."
 
-            "Anh nói bình thản."
-
-            "Bình thản đến mức Tâm không trêu tiếp được."
-
-        "\"Em sẽ giúp chị em.\"":
-            $ story_flag('tam_supports_thienan')
-            $ story_add('thienan_self_assertion', 2)
+        "Em sẽ giúp chị em":
+            $ story_add('thienan_self_assertion', 1)
             $ story_add('tam_observation', 1)
+            $ story_flag('tam_prioritizes_thienan_choice')
+            $ unlock_character_section("tam", "narrative_function")
+            $ unlock_character_section("thienan", "core_traits")
 
             tam neutral "Em sẽ giúp chị em."
 
@@ -136,136 +123,101 @@ label tam_c03_thienan_family_s06_support_choice:
 
             "Rồi anh gật đầu."
 
-            quang "Vậy là đủ rồi."
+            quang smile "Ừ. Như vậy là đúng."
 
-            tam neutral "Anh không thấy hụt hẫng à?"
+            tam melancholic "Anh không buồn à?"
 
-            quang "Không."
+            quang neutral "Buồn thì cũng không được làm sai."
 
-            "Quang nhìn về phía Thiên An."
+            "Tâm hơi khựng lại."
 
-            quang "Nếu cô ấy ổn hơn, thì ai giúp không quan trọng."
+            quang smile "Anh thích chị An. Nhưng người cần được đặt ở giữa chuyện này là chị ấy, không phải anh."
 
-            "Tâm không biết nên gọi đó là cao thượng hay cứng đầu."
+            "Câu đó khiến Tâm không trêu tiếp được."
 
-            "Có khi là cả hai."
+            "Vì nó quá đàng hoàng."
 
-        "\"Một ngày nào đó, anh nên nói rõ với chị ấy.\"":
-            $ story_flag('tam_encouraged_quang_confession')
-            $ story_flag('quang_an_route_seed')
-            $ story_add_direction('thienan', 'quang')
+        "Anh nên nói với chị ấy một ngày nào đó":
+            $ story_add('quang_persistence', 2)
             $ story_add('thienan_quang_trust', 1)
-            $ story_add('thienan_self_assertion', 1)
+            $ story_flag('tam_encouraged_quang_confession')
+            $ unlock_character_section("quang", "inner_layer")
+            $ unlock_character_section("quang", "notes")
 
-            tam neutral "Một ngày nào đó, anh nên nói rõ với chị ấy."
+            tam neutral "Anh nên nói với chị ấy một ngày nào đó."
 
-            "Quang im lặng."
+            quang surprised "Nói gì?"
 
-            "Ngoài cửa, tiếng động cơ xe khẽ rung trong buổi sáng sớm."
+            tam bored "Anh Quang."
 
-            quang "Anh từng nghĩ vậy."
+            quang embarrassed "Ừ."
 
-            tam neutral "Rồi sao ạ?"
+            "Anh đưa mắt nhìn sang chỗ khác."
 
-            quang "Rồi anh nhận ra có những câu nói ra chỉ để người nói nhẹ lòng hơn."
+            "Rất vụng."
 
-            tam neutral "Nhưng nếu không nói thì người kia không biết."
+            "Vụng đến mức Tâm thấy hơi buồn cười, nhưng cô không cười."
 
-            quang "Có thể."
+            tam neutral "Nếu không nói, chị em có thể sẽ không bao giờ biết."
 
-            "Quang nhìn Tâm."
+            quang melancholic "Chị em không phải người không biết."
 
-            quang "Nhưng An không phải người không biết."
+            tam confused "Vậy?"
 
-            tam confused "Vậy chị ấy biết?"
+            quang neutral "Biết và muốn nghe là hai chuyện khác nhau."
 
-            quang "Anh không chắc."
+            "Tâm im lặng."
 
-            "Anh cười nhẹ."
+            "Quang cầm túi giấy bằng cả hai tay, như thể nó nặng hơn thực tế rất nhiều."
 
-            quang "Và anh cũng không đủ can đảm để chắc."
+            quang smile "Nhưng anh sẽ nghĩ về chuyện đó."
 
-            "Tâm nhìn anh."
-
-            "Người đàn ông này không yếu."
-
-            "Chỉ là có những người càng nghiêm túc, càng không dám dùng tình cảm của mình để ép người khác phải trả lời."
-
-        "\"Anh cũng nên nghĩ cho mình.\"":
+        "Anh nên nghĩ cho mình nhiều hơn":
+            $ story_add('tam_quang_interest', 2)
+            $ story_add('quang_persistence', -1)
+            $ story_flag('tam_tells_quang_to_choose_himself')
             $ story_flag('tam_quang_interest_seed')
-            $ story_add('tam_self_clarity', 1)
-            $ story_add('tam_observation', 1)
+            $ unlock_character_section("tam", "inner_layer")
+            $ unlock_character_section("quang", "core_traits")
 
-            tam neutral "Anh cũng nên nghĩ cho mình."
+            tam melancholic "Anh cũng nên nghĩ cho mình nhiều hơn."
 
-            "Quang hơi ngạc nhiên."
+            quang confused "Anh?"
 
-            quang "Anh?"
+            tam neutral "Vâng."
 
-            tam neutral "Vâng. Anh."
+            "Tâm nhìn túi giấy trong tay anh."
 
-            "Tâm siết nhẹ tay vào tay áo."
+            tam neutral "Anh cứ chuẩn bị mọi thứ cho chị ấy. Nhưng nếu một ngày chị ấy vẫn không quay lại nhìn anh thì sao?"
 
-            tam neutral "Em không biết chuyện giữa anh và chị An là gì. Nhưng nếu một người cứ đứng mãi một chỗ..."
+            "Quang không trả lời."
 
-            "Cô dừng lại."
+            "Một lúc lâu sau, anh mới cười."
 
-            "Không biết nên nói tiếp thế nào cho đúng."
+            quang melancholic "Thì ít nhất mấy thứ đó vẫn có ích."
 
-            quang "Sẽ mỏi chân?"
+            tam hurt "Anh đừng nói như vậy."
 
-            tam embarrassed "Đại khái vậy."
+            "Câu đó bật ra nhanh hơn Tâm nghĩ."
 
-            "Quang bật cười rất khẽ."
+            "Quang nhìn cô."
 
-            quang "Ừ. Cũng có lúc mỏi."
+            "Tâm cũng hơi bất ngờ với chính mình."
 
-            "Tâm ngẩng lên."
+            tam embarrassed "Ý em là... nghe không công bằng lắm."
 
-            "Lần đầu tiên, trong mắt Quang có một chút mệt mỏi không kịp giấu."
+            quang smile "Ừ. Có lẽ vậy."
 
-            "Rất nhanh thôi."
+    "Quang đặt túi giấy vào tay Tâm."
 
-            "Nhưng cô đã thấy."
+    quang neutral "Nhờ em."
 
-    thienan "Anh Quang."
+    tam neutral "Dạ."
 
-    "Giọng Thiên An gọi từ ngoài cửa."
+    "Tâm ôm túi giấy."
 
-    quang "Anh ra ngay."
+    "Nó không nặng."
 
-    "Quang quay lại với Tâm."
-
-    quang "Cảm ơn em."
-
-    tam neutral "Vì chuyện gì ạ?"
-
-    quang "Vì đã dậy sớm."
-
-    tam confused "Chỉ vậy thôi?"
-
-    quang "Ừ."
-
-    "Quang đi ra ngoài."
-
-    "Tâm đứng trong cửa, nhìn hai người bước tới xe."
-
-    "Thiên An ngồi vào ghế sau, đã mở laptop."
-
-    "Quang cúi xuống nói gì đó với tài xế, rồi vòng sang phía còn lại."
-
-    "Trước khi đóng cửa xe, anh nhìn về phía Tâm, gật nhẹ."
-
-    "Tâm gật lại."
-
-    "Chiếc xe rời khỏi cổng."
-
-    "Buổi sáng còn rất mỏng."
-
-    "Trong phòng khách, chiếc cốc nước Thiên An uống dở tối qua vẫn đặt trên bàn."
-
-    "Tâm cầm lên."
-
-    "Nước đã lạnh."
+    "Nhưng lúc quay vào nhà, cô vẫn phải dùng cả hai tay."
 
     return

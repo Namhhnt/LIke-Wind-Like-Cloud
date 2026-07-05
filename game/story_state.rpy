@@ -12,6 +12,8 @@ default story_state = {
 
     # Tâm
     "tam_hoang_interest": 0,
+    "tam_quang_interest": 20,
+    "tam_quan_interest": 0,
     "tam_minh_drawn": 0,
     "tam_self_clarity": 0,
     "tam_respect_yuuka": 0,
@@ -28,6 +30,7 @@ default story_state = {
 
     # Huyền
     "huyen_quan_trust": 0,
+    "huyen_quan_interest": 0,
     "huyen_hoang_interest": 0,
     "career_huyen": 0,
 
@@ -36,6 +39,7 @@ default story_state = {
     "thienan_minh_residue": 0,
     "family_pressure_thienan": 0,
     "thienan_self_assertion": 0,
+    "quang_persistance": 50,
 
     # Minh-Yuuka
     "minh_yuuka_trust": 0,

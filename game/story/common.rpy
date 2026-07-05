@@ -234,7 +234,7 @@ define quan = Character(
     what_outlines=LWLC_DIALOGUE_OUTLINES
 )
 
-define quan = Character(
+define quang = Character(
     "Quang",
     image="quang",
     who_color=COLOR_QUANG,

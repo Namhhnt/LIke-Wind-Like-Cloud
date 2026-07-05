@@ -2,199 +2,194 @@
 # Scene file.
 
 label tam_c03_thienan_family_s03_family_pressure:
-    scene bg_tam_family_dining_room_evening
-    with dissolve
+    scene black
+    with fade
 
-    "Bữa tối muộn diễn ra trong một nhịp hơi lạ."
+    $ story_flag('thienan_family_pressure_introduced')
+    $ unlock_character_section("thienan", "core_traits")
 
-    "Mẹ Tâm hâm lại canh."
+    "Ba ngày sau, Thiên An về nhà."
 
-    "Bố Tâm ngồi ở đầu bàn, thỉnh thoảng hỏi Thiên An vài câu về chi nhánh miền Nam."
+    "Cô mang theo một chiếc vali nhỏ hơn lúc đi, nhưng vẻ mệt mỏi thì nhiều hơn."
 
-    "Quang đã ra về."
+    "Bữa cơm tối hôm ấy có đủ người."
 
-    "Chiếc bát anh dùng được úp riêng trên giá, nước vẫn còn đọng ở vành."
+    "Mẹ Tâm nấu canh bí, món Thiên An thường ăn được nhiều nhất sau mỗi chuyến công tác."
 
-    tam_mother "Lần này con đi mấy ngày?"
+    "Nhưng tối nay, bát cơm của Thiên An vơi rất chậm."
 
-    thienan neutral "Chưa chắc. Nếu thuận lợi thì ba ngày."
+    tam_mother "Bên đó ổn hơn chưa con?"
 
-    tam_father "Không thuận lợi?"
+    thienan neutral "Tạm ổn rồi ạ."
 
-    thienan neutral "Năm ngày."
+    tam_father "Tạm ổn nghĩa là vẫn còn vấn đề."
 
-    "Bố Tâm đặt đũa xuống."
+    thienan neutral "Dạ. Nhưng đã kiểm soát được phần lớn."
 
-    tam_father "Con đừng ôm hết mọi việc. Bên dưới có quản lý chi nhánh, có phòng vận hành, có pháp chế."
+    tam_father "Ừ."
 
-    thienan neutral "Con biết."
+    "Bố Tâm gật đầu."
 
-    tam_father "Biết là một chuyện. Làm được lại là chuyện khác."
+    "Ông không khen."
 
-    "Thiên An không phản bác."
+    "Nhưng Tâm biết với bố, chữ 'ừ' ở nhịp này đã gần giống một lời công nhận."
 
-    "Cô chỉ gắp một miếng rau vào bát, nhưng không ăn ngay."
+    tam_mother "Con cũng nên giữ sức. Công ty quan trọng, nhưng không thể cứ một mình con chạy qua chạy lại mãi."
 
-    tam_mother "Ba con nói đúng. Công việc quan trọng, nhưng sức khỏe cũng quan trọng."
+    thienan smile "Con biết."
 
-    thienan neutral "Con sẽ chú ý."
+    tam_mother "Biết thì tốt."
 
-    tam_mother "Và chuyện riêng của con cũng quan trọng."
+    "Mẹ Tâm múc thêm canh vào bát Thiên An."
 
-    "Đũa của Tâm khựng lại."
+    "Rồi như thể tiện miệng, bà nói tiếp."
 
-    "Thiên An thì không."
+    tam_mother "Quang lần này cũng đi cùng con đúng không?"
 
-    "Cô vẫn giữ nguyên vẻ mặt bình tĩnh đến mức gần như đã đoán trước câu nói này từ trước khi mẹ mở miệng."
+    thienan neutral "Dạ."
+
+    tam_mother "Thằng bé vẫn cẩn thận như mọi khi."
+
+    thienan neutral "Anh Quang làm việc rất chắc."
+
+    tam_mother "Mẹ biết."
+
+    "Một khoảng lặng nhỏ rơi xuống bàn ăn."
+
+    "Thiên An đặt đũa xuống, rất nhẹ."
+
+    tam_father "Mẹ con không có ý gì đâu."
+
+    thienan neutral "Con cũng chưa nói gì mà bố."
+
+    tam_mother "Thật ra nếu có thể thì Quang rất tốt."
+
+    "Tâm nhìn lên."
+
+    "Thiên An không đổi sắc mặt."
+
+    "Chỉ có bàn tay đặt bên cạnh bát cơm hơi khựng lại."
 
     thienan neutral "Mẹ."
 
-    tam_mother "Mẹ chỉ nhắc thôi."
+    tam_mother "Mẹ biết. Mẹ không ép con với Quang."
 
-    thienan neutral "Mẹ nhắc ba lần trong tháng này rồi."
+    tam_mother "Hai đứa làm việc với nhau bao nhiêu năm rồi. Nếu có gì thì chắc cũng không cần đợi mẹ nhắc."
 
-    tam_mother "Vì con nghe như không nghe."
+    "Câu nói ấy đáng lẽ nên làm không khí nhẹ đi."
 
-    "Không khí trên bàn ăn hơi chùng xuống."
+    "Nhưng không."
 
-    "Tâm nhìn sang bố."
+    "Nó chỉ khiến sự im lặng trên bàn ăn có hình dạng rõ hơn."
 
-    "Ông không nói gì, nhưng cũng không ngăn lại."
+    tam_father "Ý mẹ con là, nếu không phải Quang thì cũng nên nghĩ đến người khác."
 
-    tam_mother "Con không còn nhỏ nữa. Nhà mình không ép con phải kết hôn ngay, nhưng ít nhất con cũng nên nghiêm túc nghĩ đến chuyện gặp gỡ ai đó."
+    thienan neutral "Con hiện tại không có thời gian nghĩ đến chuyện đó."
 
-    thienan neutral "Hiện tại con không có thời gian."
+    tam_mother "Chính vì lúc nào con cũng nói không có thời gian nên mẹ mới lo."
 
-    tam_mother "Con lúc nào cũng không có thời gian."
+    thienan tired "Con đang xử lý việc công ty."
 
-    thienan neutral "Vì công ty lúc nào cũng có việc."
+    tam_mother "Và sau đó thì sao?"
 
-    tam_mother "Quang làm với con bao nhiêu năm như vậy còn không được, thì mẹ cũng không biết con định đợi đến lúc nào."
+    "Thiên An không trả lời ngay."
 
-    "Câu nói ấy rơi xuống bàn ăn rất nhẹ."
+    "Tâm nhìn bát canh trước mặt chị."
 
-    "Nhẹ đến mức chính vì thế mà khó tránh."
+    "Một miếng bí bị chiếc thìa cắt lệch, nằm chìm một nửa trong nước."
 
-    "Thiên An đặt đũa xuống."
-
-    thienan neutral "Chuyện của anh Quang không liên quan."
-
-    tam_mother "Mẹ biết. Mẹ có nói gì Quang đâu."
-
-    "Mẹ Tâm thở ra."
-
-    tam_mother "Chỉ là mẹ tiếc. Thằng bé tốt. Lại hiểu con. Nhưng nếu con không có ý gì, thì thôi."
-
-    thienan neutral "Vậy thì thôi."
-
-    "Không phải câu nói giận."
-
-    "Cũng không phải lạnh."
-
-    "Chỉ là một cánh cửa được đóng lại bằng tay rất sạch."
-
-    "Tâm nhìn chị."
-
-    "Rồi nhìn chiếc bát trước mặt mình."
-
-    "Miếng rau cô vừa gắp rơi lệch khỏi bát, nằm im trên mặt bàn."
+    "Chị cô rất ít khi làm thứ gì lệch."
 
     menu:
         "Tâm phản ứng thế nào?"
 
-        "Hỏi nhẹ mẹ về áp lực này":
+        "Nhẹ nhàng hỏi mẹ có thể để chị nghỉ tối nay không":
             $ story_add('thienan_self_assertion', 2)
             $ story_add('tam_observation', 1)
-            $ story_flag('tam_questioned_family_pressure')
+            $ story_flag('tam_softly_defended_thienan')
+            $ story_flag('tam_supports_thienan')
+            $ unlock_character_section("tam", "narrative_function")
+            $ unlock_character_section("thienan", "inner_layer")
 
             tam neutral "Mẹ."
 
             tam_mother "Sao con?"
 
-            tam neutral "Nếu chị An đang phải xử lý nhiều việc như vậy... có thể để chuyện này sau được không ạ?"
+            tam melancholic "Chị An mới về. Hay để chị ăn xong đã ạ."
 
-            "Mẹ Tâm nhìn cô."
+            "Mẹ Tâm khựng lại."
 
-            "Thiên An cũng nhìn cô."
+            "Bố Tâm nhìn Tâm một thoáng."
 
-            "Tâm hơi siết tay quanh đôi đũa, nhưng vẫn nói tiếp."
+            "Thiên An không nhìn em gái."
 
-            tam neutral "Con nghĩ chị ấy không phải không nghe. Chỉ là... bây giờ hỏi thêm chuyện đó, chị ấy cũng không có chỗ để trả lời."
+            "Nhưng bàn tay cô buông chiếc thìa ra."
 
-            "Một khoảng im lặng ngắn."
+            thienan neutral "Không sao."
 
-            tam_father "Ăn cơm đi."
+            tam neutral "Có sao đấy."
 
-            "Giọng bố Tâm không nặng."
+            "Tâm nói nhỏ."
 
-            "Nhưng câu nói ấy đủ để đẩy bữa ăn trở lại mặt bàn."
+            "Nhỏ đến mức gần như chỉ Thiên An nghe được."
 
-            "Thiên An không nói cảm ơn."
+            "Thiên An nhìn cô."
 
-            "Chỉ gắp lại miếng rau bị rơi lệch vào bát Tâm."
+            "Lần này, cô không nói 'chị xử lý được'."
 
-            thienan neutral "Ăn đi. Đừng diễn thuyết lúc đói."
-
-            tam embarrassed "Em nói có hai câu."
-
-            thienan smile "Hai câu dài."
-
-        "Im lặng":
+        "Im lặng vì sợ làm không khí nặng hơn":
             $ story_add('family_pressure_thienan', 2)
             $ story_add('tam_insecurity', 1)
-            $ story_flag('tam_stayed_silent_family_pressure')
+            $ story_flag('tam_silent_during_thienan_pressure')
+            $ unlock_character_section("tam", "inner_layer")
 
-            "Tâm cúi xuống ăn tiếp."
+            "Tâm cúi xuống bát cơm."
 
-            "Cô không biết nên nói gì."
+            "Cô biết mình nên nói gì đó."
 
-            "Cũng không chắc mình có quyền xen vào chuyện của chị."
+            "Nhưng lời vừa lên tới cổ lại bị nuốt xuống."
 
-            "Thiên An vẫn ngồi thẳng lưng."
+            "Ở bàn ăn nhà mình, có những lúc im lặng còn dễ hơn cả yêu thương."
 
-            "Rất đẹp."
+            thienan neutral "Con hiểu rồi."
 
-            "Rất đúng mực."
+            "Thiên An cầm đũa lên."
 
-            "Và một mình."
+            "Miếng bí trong bát vẫn nằm lệch."
 
-        "Đánh trống lảng sang công việc":
+        "Đánh trống lảng sang chuyện công việc":
             $ story_add('career_tam', 1)
+            $ story_add('tam_observation', 1)
             $ story_add('family_pressure_thienan', 1)
-            $ story_flag('tam_deflected_family_pressure_with_work')
+            $ story_flag('tam_deflected_thienan_pressure_with_work')
+            $ unlock_character_section("tam", "core_traits")
 
-            tam neutral "Chị An, chi nhánh trong Nam là mảng phân phối đúng không ạ?"
+            tam smile "À, chị An, bên chi nhánh phía Nam có phải dùng hệ thống quản lý khác bên này không ạ?"
 
-            "Mẹ Tâm nhìn Tâm."
+            "Câu hỏi hơi vụng."
 
-            "Thiên An cũng nhìn cô."
+            "Nhưng đủ để kéo ánh mắt mọi người khỏi chuyện kết hôn."
 
-            "Tâm giả vờ không nhận ra mình vừa đổi chủ đề hơi vụng."
+            thienan confused "Sao em hỏi vậy?"
 
-            thienan neutral "Ừ. Phân phối và một phần vận hành kho."
+            tam embarrassed "Em tò mò thôi. Công ty em cũng đang nói về quy trình."
 
-            tam neutral "Vậy nếu có sai lệch số liệu thì phát hiện khó không?"
+            "Thiên An nhìn Tâm thêm một giây."
 
-            "Thiên An nhìn cô thêm một nhịp."
+            "Rồi cô hiểu."
 
-            thienan neutral "Tùy sai lệch nằm ở đâu."
+            thienan neutral "Ừ. Có khác. Và chính vì khác nên mới phiền."
 
-            tam_mother "Hai chị em con đúng là..."
+            tam_mother "Hai chị em nhà này đúng là..."
 
-            "Mẹ Tâm lắc đầu."
+            "Mẹ Tâm lắc đầu, nhưng cuối cùng không nói tiếp chuyện vừa rồi."
 
-            "Nhưng ít nhất bà không nhắc tiếp chuyện kết hôn."
+    "Bữa cơm kết thúc muộn hơn bình thường."
 
-    "Bữa tối kết thúc muộn."
+    "Không ai lớn tiếng."
 
-    "Không có ai cãi nhau."
+    "Không ai thật sự giận."
 
-    "Nhưng khi Thiên An đứng dậy dọn bát, Tâm thấy chị rửa một chiếc thìa lâu hơn cần thiết."
-
-    "Nước chảy qua mu bàn tay cô."
-
-    "Lạnh."
-
-    "Trong một căn bếp rất sáng."
+    "Nhưng có những thứ trong nhà không cần vỡ ra mới khiến người ta nghe thấy tiếng nứt."
 
     return

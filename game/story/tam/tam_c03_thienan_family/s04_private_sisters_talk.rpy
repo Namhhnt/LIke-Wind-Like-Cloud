@@ -2,260 +2,189 @@
 # Scene file.
 
 label tam_c03_thienan_family_s04_private_sisters_talk:
-    scene bg_tam_family_balcony_night
-    with dissolve
+    scene black
+    with fade
+
+    $ story_flag('tam_private_talk_with_thienan')
+    $ unlock_character_section("thienan", "inner_layer")
+    $ unlock_character_section("tam", "inner_layer")
 
     "Sau bữa tối, Thiên An ra ban công."
 
-    "Tâm đi theo sau vài phút."
+    "Tâm đứng trong phòng khách một lúc, tay cầm hai cốc nước ấm."
 
-    "Không phải vì đã quyết định sẽ nói chuyện gì đó sâu sắc."
+    "Cô phân vân gần nửa phút."
 
-    "Chỉ là cô thấy chị cầm theo cốc nước nhưng để quên không uống."
+    "Rồi vẫn bước ra."
 
-    tam neutral "Chị."
+    tam neutral "Nước này."
 
-    thienan neutral "Ừ?"
+    thienan neutral "Cảm ơn."
 
-    tam neutral "Nước của chị."
+    "Thiên An nhận cốc nước."
 
-    "Thiên An nhìn xuống tay mình."
+    "Hai chị em đứng cạnh nhau, nhìn xuống con đường nhỏ trước nhà."
 
-    "Cốc nước vẫn đầy."
+    "Một chiếc xe chạy qua, ánh đèn lướt lên hàng cây rồi mất hút."
 
-    thienan smile "À."
+    tam melancholic "Chị giận em không?"
 
-    "Cô uống một ngụm nhỏ."
+    thienan confused "Vì chuyện gì?"
 
-    "Gió đêm thổi qua ban công, kéo một lọn tóc của Thiên An lệch khỏi vai."
+    tam embarrassed "Vì lúc nãy."
 
-    "Cô không vén lại ngay."
+    thienan neutral "Em nói đúng."
 
-    "Điều đó khiến Tâm thấy lạ hơn cả những câu mẹ vừa nói trong bữa cơm."
+    tam surprised "Thật ạ?"
 
-    tam neutral "Chị có mệt không?"
+    thienan smile "Sao? Em nghĩ chị nhỏ mọn vậy à?"
 
-    thienan neutral "Có."
+    tam bashful "Không. Nhưng chị An bình thường rất... khó đoán."
 
-    "Tâm hơi bất ngờ."
+    thienan teasing "Cách nói lịch sự của 'khó gần'?"
 
-    "Thiên An ít khi trả lời thẳng như vậy."
+    tam embarrassed "Em không nói thế."
 
-    thienan neutral "Nhưng mệt không có nghĩa là không làm được."
+    thienan smile "Nhưng nghĩ vậy."
 
-    tam neutral "Em không hỏi chuyện làm được."
+    "Tâm cúi đầu uống một ngụm nước."
 
-    "Thiên An quay sang."
+    "Nước hơi nóng. Cô suýt nhăn mặt, nhưng kịp giữ lại."
 
-    thienan neutral "Vậy em hỏi chuyện gì?"
+    thienan neutral "Cẩn thận."
 
-    "Tâm nhìn cốc nước trong tay chị."
+    tam neutral "Em biết rồi."
 
-    "Trên thành cốc có một vệt nước nhỏ trượt xuống rất chậm."
+    "Thiên An nhìn cốc nước trong tay mình."
+
+    "Rất lâu sau, cô mới nói tiếp."
+
+    thienan tired "Mẹ không sai."
+
+    tam worried "Vậy chị..."
+
+    thienan neutral "Nhưng mẹ cũng không đúng hẳn."
+
+    "Tâm im lặng."
+
+    "Thiên An nói bằng giọng rất bình thường."
+
+    "Nhưng chính vì bình thường nên Tâm mới thấy câu ấy mệt."
 
     menu:
-        "Tâm hỏi gì?"
+        "Tâm hỏi Thiên An điều gì?"
 
         "Chị có hạnh phúc không?":
-            $ story_flag('tam_asked_thienan_happiness')
             $ story_add('thienan_self_assertion', 1)
             $ story_add('tam_observation', 1)
+            $ story_flag('tam_asked_thienan_happiness')
+            $ unlock_character_section("thienan", "core_traits")
+            $ unlock_character_section("tam", "narrative_function")
+
+            tam melancholic "Chị An."
+
+            thienan neutral "Ừ?"
 
             tam neutral "Chị có hạnh phúc không?"
 
-            "Thiên An im lặng."
+            "Thiên An không trả lời ngay."
 
-            "Không phải kiểu im vì khó chịu."
+            "Cô xoay cốc nước trong tay. Hơi nóng phủ một lớp mỏng lên thành cốc."
 
-            "Là kiểu im vì câu hỏi đi thẳng hơn dự kiến."
+            thienan smile "Câu hỏi này lớn quá."
 
-            thienan neutral "Em học câu đó ở đâu vậy?"
+            tam worried "Vậy trả lời nhỏ thôi cũng được."
 
-            tam embarrassed "Không học ở đâu cả."
+            "Thiên An nhìn em gái."
 
-            thienan smile "Nghe giống câu trong phim."
+            "Một lúc sau, cô bật cười rất khẽ."
 
-            tam neutral "Vậy chị trả lời như ngoài đời đi."
+            thienan melancholic "Có những ngày chị thấy ổn."
 
-            "Thiên An nhìn ra ngoài."
+            tam neutral "Còn những ngày khác?"
 
-            "Đèn đường dưới xa xếp thành những đốm vàng nhỏ."
+            thienan neutral "Thì chị vẫn làm việc."
 
-            thienan neutral "Chị không bất hạnh."
+            "Câu trả lời không buồn."
 
-            tam neutral "Đó không phải câu trả lời."
+            "Nhưng Tâm lại thấy cổ họng mình khô đi."
 
-            thienan neutral "Với người lớn, đôi khi đó đã là một câu trả lời khá tốt rồi."
-
-            tam sad "Nghe không tốt lắm."
-
-            "Thiên An bật cười khẽ."
-
-            thienan neutral "Ừ. Chắc là không."
-
-        "Chị có từng thích ai thật lòng chưa?":
+        "Chị từng thích ai chưa?":
             $ story_add('thienan_minh_residue', 1)
+            $ story_add('tam_observation', 1)
             $ story_flag('tam_heard_minh_hint')
-            $ story_flag('tam_asked_thienan_past_love')
+            $ unlock_character_section("thienan", "notes")
 
-            tam neutral "Chị có từng thích ai thật lòng chưa?"
+            tam neutral "Chị từng thích ai chưa?"
 
-            "Thiên An không quay lại ngay."
+            thienan surprised "Sao tự nhiên hỏi vậy?"
 
-            "Gió đêm làm mặt nước trong cốc khẽ rung."
+            tam embarrassed "Em chỉ... tò mò."
 
-            thienan neutral "Sao tự nhiên hỏi vậy?"
+            thienan teasing "Tò mò kiểu em gái, hay tò mò kiểu thám tử nghiệp dư?"
 
-            tam neutral "Không tự nhiên lắm. Mẹ vừa nhắc chuyện kết hôn mà."
+            tam bashful "Hai cái đó khác nhau ạ?"
 
-            thienan neutral "Vậy đáng lẽ em nên hỏi chị có muốn kết hôn không."
+            "Thiên An cười."
 
-            tam neutral "Câu đó dễ né hơn."
+            "Nhưng nụ cười ấy chậm rãi tắt đi khi cô nhìn ra ngoài đường."
 
-            "Thiên An nhìn Tâm."
-
-            "Một lúc sau, cô cười."
-
-            thienan smile "Em lớn hơn chị nghĩ rồi đấy."
-
-            tam embarrassed "Đừng nói như em mới học xong cấp hai."
-
-            thienan neutral "Từng có."
-
-            "Tâm khựng lại."
+            thienan neutral "Từng."
 
             tam surprised "Thật ạ?"
 
-            thienan neutral "Ừ."
+            thienan smile "Chị cũng là người mà."
 
-            tam neutral "Người đó..."
+            tam neutral "Người đó... như thế nào?"
 
-            thienan neutral "Qua rồi."
+            "Thiên An im lặng rất lâu."
 
-            "Thiên An nói rất nhẹ."
-
-            "Nhẹ đến mức nếu Tâm không đứng gần, có lẽ cô sẽ tưởng đó là tiếng gió."
-
-            tam neutral "Vậy sao chị vẫn nhớ?"
-
-            "Thiên An nhìn cốc nước."
-
-            thienan neutral "Có những chuyện qua rồi nhưng không biến mất. Chỉ là mình không sống dựa vào nó nữa."
-
-            "Tâm không hỏi tiếp."
-
-            "Cô bỗng cảm thấy cái tên mình chưa được nghe cũng có trọng lượng."
-
-        "Chị thấy anh Quang thế nào?":
-            $ story_add('thienan_quang_trust', 1)
-            $ story_flag('tam_asked_about_quang')
-            $ story_flag('quang_an_route_seed')
-
-            tam neutral "Chị thấy anh Quang thế nào?"
-
-            thienan neutral "Là sao?"
-
-            tam neutral "Thì... anh ấy làm với chị lâu như vậy."
-
-            thienan neutral "Anh Quang rất đáng tin."
+            thienan melancholic "Rất giỏi."
 
             tam neutral "Chỉ vậy thôi ạ?"
 
-            thienan neutral "Với công việc, đó là đánh giá rất cao."
+            thienan neutral "Rất tử tế."
 
-            tam neutral "Còn ngoài công việc?"
+            "Cô dừng lại."
 
-            "Thiên An nhìn Tâm."
+            thienan smile "Và rất không thuộc về chị."
 
-            "Tâm hơi rụt cổ."
+            "Tâm không hỏi tên."
 
-            tam embarrassed "Em hỏi hơi nhiều à?"
-
-            thienan neutral "Hơi."
-
-            tam neutral "Vậy chị có thể trả lời hơi ít cũng được."
-
-            "Khóe môi Thiên An nhích lên rất nhẹ."
-
-            thienan neutral "Anh ấy là người tốt."
-
-            tam neutral "Câu đó nghe nguy hiểm lắm."
-
-            thienan confused "Nguy hiểm?"
-
-            tam teasing "Thường trong chuyện tình cảm, ai bị gọi là người tốt thì hơi đáng lo."
-
-            "Thiên An bật cười."
-
-            "Lần này là cười thật."
-
-            thienan smile "Em đọc linh tinh ít thôi."
-
-            tam smile "Nhưng em nói đúng không?"
-
-            "Thiên An không trả lời."
-
-            "Cô uống thêm một ngụm nước."
-
-            "Cốc nước lần này vơi đi thật."
+            "Có lẽ vì cô biết, nếu Thiên An muốn nói, chị đã nói rồi."
 
         "Không hỏi gì, chỉ đứng cạnh chị":
             $ story_add('thienan_quang_trust', 1)
-            $ story_add('tam_observation', 1)
-            $ story_flag('tam_sat_with_thienan_silently')
+            $ story_add('thienan_self_assertion', 1)
+            $ story_flag('tam_sat_with_thienan_in_silence')
+            $ unlock_character_section("tam", "core_traits")
 
-            "Tâm không hỏi nữa."
+            "Tâm định hỏi."
 
-            "Cô chỉ đứng cạnh Thiên An, cùng nhìn xuống khoảng sân tối dưới nhà."
+            "Rồi lại thôi."
 
-            "Hai chị em im lặng một lúc lâu."
+            "Cô chỉ đứng cạnh Thiên An, hai tay ôm cốc nước."
 
-            "Cái im lặng ấy không thoải mái hẳn."
+            "Gió đêm hơi lạnh."
 
-            "Nhưng cũng không khó chịu."
+            "Thiên An nhìn em gái, ánh mắt mềm hơn một chút."
 
-            "Thiên An uống nước."
+            thienan neutral "Em không hỏi gì à?"
 
-            "Tâm tựa tay lên lan can."
+            tam smile "Hôm nay chị bị hỏi đủ rồi."
 
-            "Một lúc sau, Thiên An kéo nhẹ tay cô ra khỏi mép sắt lạnh."
+            "Thiên An khựng lại."
 
-            thienan neutral "Lạnh."
+            "Rồi cô quay đi."
 
-            tam neutral "À."
+            thienan smile "Ừ. Đủ thật."
 
-            "Tâm rút tay lại."
+    "Hai cốc nước nguội dần."
 
-            "Cô không nói cảm ơn."
+    "Không ai nhắc đến chuyện hôn nhân nữa."
 
-            "Thiên An cũng không cần."
+    "Nhưng từ đêm đó, Tâm bắt đầu hiểu rằng Thiên An không phải không có điều muốn nói."
 
-    thienan neutral "Tâm."
-
-    tam neutral "Vâng?"
-
-    thienan neutral "Chuyện của chị, em không cần gánh."
-
-    tam neutral "Em biết."
-
-    thienan neutral "Biết thật không?"
-
-    tam smile "Không chắc."
-
-    "Thiên An nhìn cô."
-
-    "Rồi cô thở ra rất nhẹ."
-
-    thienan neutral "Vậy ít nhất đừng gánh một mình."
-
-    "Tâm chớp mắt."
-
-    "Câu đó vốn nên là câu em gái nói với chị."
-
-    "Nhưng Thiên An nói trước."
-
-    "Đúng là chị cô."
-
-    "Có mệt đến đâu cũng phải thắng trước nửa câu."
+    "Chỉ là chị đã quen sống như thể mình không cần nói ra."
 
     return

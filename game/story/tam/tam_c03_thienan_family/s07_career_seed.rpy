@@ -2,203 +2,227 @@
 # Scene file.
 
 label tam_c03_thienan_family_s07_career_seed:
-    scene bg_tam_room_morning
+    scene black
     with fade
 
-    "Sau khi Thiên An đi, Tâm lên phòng."
+    $ story_flag('tam_c03_career_seed_seen')
+    $ unlock_character_section("tam", "narrative_function")
+    $ unlock_character_section("thienan", "narrative_function")
 
-    "Cô định ngủ tiếp."
+    "Đêm trước khi Thiên An bay lại vào Nam, Tâm thấy trên bàn học của mình có một cuốn sổ nhỏ."
 
-    "Ít nhất là cô tự nói với mình như vậy."
+    "Bìa màu xanh đậm."
 
-    "Nhưng khi đặt lưng xuống giường, cô lại nhìn thấy một tập giấy để trên bàn học."
+    "Không có hoa văn."
 
-    "Không phải của cô."
+    "Chỉ có một tờ giấy nhớ dán ở góc trên."
 
-    "Tập giấy được kẹp rất gọn, bên trên dán một tờ note nhỏ."
+    "Nét chữ của Thiên An rất gọn."
 
-    "Nét chữ của Thiên An."
+    thienan neutral "Cho em. Không phải giáo trình. Đừng sợ."
 
-    thienan "Nếu em bắt đầu đi làm thật sự, đọc cái này trước."
+    "Tâm cầm cuốn sổ lên."
 
-    "Tâm ngồi dậy."
+    "Bên trong là vài trang ghi chú về cách đọc hợp đồng lao động, cách kiểm tra email công việc, cách ghi lại những trao đổi quan trọng sau cuộc họp."
 
-    "Cô cầm tập giấy lên."
+    "Mỗi mục đều ngắn."
 
-    "Bên trong không phải tài liệu chuyên ngành gì cao siêu."
+    "Không dạy đời."
 
-    "Chỉ là vài trang checklist."
+    "Không có câu nào kiểu 'em phải cố gắng'."
 
-    "Cách chuẩn bị trước cuộc họp."
+    "Chỉ toàn những thứ rất thực tế."
 
-    "Cách ghi lại việc cần làm."
+    "Ở trang cuối, Thiên An viết một dòng."
 
-    "Cách đọc một email mà không bị cuốn theo giọng điệu của người gửi."
-
-    "Cách từ chối việc không thuộc trách nhiệm mà vẫn giữ được quan hệ."
-
-    "Ở trang cuối, Thiên An viết thêm một dòng."
-
-    thienan "Đừng làm việc chăm chỉ chỉ để người khác thấy em chăm chỉ. Làm việc đúng."
+    thienan neutral "Đừng làm việc chăm chỉ trước khi em biết mình đang làm đúng việc."
 
     "Tâm đọc đi đọc lại câu đó."
 
-    "Rất Thiên An."
+    "Ngoài hành lang có tiếng bước chân."
 
-    "Khô."
+    tam neutral "Chị An."
 
-    "Gọn."
+    thienan neutral "Em thấy rồi à?"
 
-    "Và hơi đáng ghét vì đúng."
+    tam smile "Vâng."
+
+    thienan neutral "Cầm lấy mà dùng. Mấy thứ này không ai dạy kỹ đâu."
+
+    tam confused "Sao chị không đưa trực tiếp cho em?"
+
+    thienan bored "Vì đưa trực tiếp thì em sẽ hỏi rất nhiều."
+
+    tam irritated "Em đâu có hỏi nhiều."
+
+    thienan teasing "Câu vừa rồi tính là một câu."
+
+    "Tâm mím môi."
+
+    "Thiên An nhìn cô, ánh mắt dịu hơn thường ngày."
+
+    thienan neutral "Công việc đầu tiên dễ khiến người ta nghĩ rằng chỉ cần ngoan là đủ."
+
+    tam neutral "Không đủ ạ?"
+
+    thienan neutral "Không."
+
+    thienan neutral "Ngoan chỉ giúp em ít bị ghét."
+
+    thienan neutral "Còn muốn đi xa, em phải biết mình đang ký gì, nghe gì, im lặng lúc nào, và lúc nào không được im."
+
+    "Tâm nhìn cuốn sổ trong tay."
+
+    "Bỗng nhiên cô thấy nó không giống một món quà."
+
+    "Nó giống một cái áo khoác được gấp sẵn."
+
+    "Thiên An không nói giữ ấm."
+
+    "Nhưng đã để nó ở đó trước khi trời lạnh."
 
     menu:
         "Tâm tiếp nhận lời khuyên của Thiên An thế nào?"
 
-        "Dùng nó nghiêm túc":
+        "Nghiêm túc ghi nhớ":
             $ story_add('career_tam', 2)
             $ story_add('tam_self_clarity', 1)
-            $ story_flag('tam_uses_thienan_career_notes')
+            $ story_flag('tam_took_thienan_career_advice_seriously')
+            $ unlock_character_section("tam", "core_traits")
+            $ unlock_character_section("thienan", "core_traits")
 
-            "Tâm lấy một chiếc bút."
+            tam neutral "Em sẽ đọc kỹ."
 
-            "Cô gạch chân vài dòng."
+            thienan smile "Tốt."
 
-            "Rồi mở điện thoại, tạo một checklist mới cho ngày làm việc tiếp theo."
+            tam neutral "Và nếu không hiểu, em sẽ hỏi."
 
-            "Cô không chắc mình có thể giống Thiên An."
+            thienan tired "Hỏi vừa thôi."
 
-            "Nhưng có lẽ cô không cần giống."
+            tam smile "Chị vừa bảo lúc nào không được im mà."
 
-            "Cô chỉ cần học cách đứng vững bằng nhịp của mình."
+            "Thiên An nhìn cô."
+
+            "Rồi cô bật cười."
+
+            thienan smile "Ừ. Chị tự chuốc lấy."
 
         "Cảm thấy mình bị so sánh với chị":
             $ story_add('tam_insecurity', 1)
             $ story_add('career_tam', 1)
-            $ story_flag('tam_feels_compared_to_thienan')
+            $ story_flag('tam_felt_compared_to_thienan')
+            $ unlock_character_section("tam", "inner_layer")
 
-            "Tâm đặt tập giấy xuống."
+            tam melancholic "Chị lúc nào cũng biết mấy chuyện này nhỉ."
 
-            "Cô biết Thiên An có ý tốt."
+            thienan confused "Không phải lúc nào."
 
-            "Chính vì biết nên cảm giác khó chịu ấy mới làm cô thấy mình nhỏ nhen."
+            tam smile "Nhưng trông giống vậy."
 
-            "Chị cô làm gì cũng gọn."
+            "Thiên An im lặng."
 
-            "Ngay cả quan tâm người khác cũng gọn."
+            "Một lúc sau, cô kéo ghế ngồi xuống cạnh Tâm."
 
-            "Còn Tâm thì chỉ đọc vài trang checklist đã thấy mình như một học sinh vừa nhận bài kiểm tra chưa làm."
+            thienan neutral "Chị cũng từng không biết."
 
-            "Cô thở ra."
+            tam surprised "Thật ạ?"
 
-            "Rồi vẫn cầm bút lên."
+            thienan bored "Em nghĩ chị sinh ra đã biết đọc hợp đồng à?"
 
-            "Khó chịu thì khó chịu."
+            tam embarrassed "Không. Nhưng..."
 
-            "Đúng vẫn là đúng."
+            thienan neutral "Chị học vì từng ký nhầm một bản phụ lục rất ngu."
 
-        "Nhắn tin cảm ơn chị":
+            "Tâm chớp mắt."
+
+            thienan teasing "Đừng nhìn chị như thấy thú quý hiếm."
+
+            tam laughing "Em xin lỗi."
+
+            "Lần đầu tiên trong tối đó, khoảng cách giữa hai chị em nhẹ đi một chút."
+
+        "Cảm ơn chị thật lòng":
             $ story_add('thienan_self_assertion', 1)
-            $ story_add('career_tam', 1)
+            $ story_add('tam_self_clarity', 1)
             $ story_flag('tam_thanked_thienan_honestly')
+            $ unlock_character_section("thienan", "inner_layer")
+            $ unlock_character_section("tam", "fixed_relationships")
 
-            "Tâm mở điện thoại."
+            tam neutral "Cảm ơn chị."
 
-            "Cô gõ một dòng."
+            thienan neutral "Ừ."
 
-            tam "Em đọc rồi. Cảm ơn chị."
+            tam smile "Em nói thật đấy."
 
-            "Nghĩ một lúc, cô xóa đi."
+            "Thiên An khựng lại."
 
-            "Gõ lại."
+            "Tâm ôm cuốn sổ vào ngực, hơi ngại nhưng vẫn nhìn thẳng vào chị."
 
-            tam "Em đọc rồi. Có vài chỗ hơi khó chịu vì đúng quá. Cảm ơn chị."
+            tam bashful "Em biết chị bận. Vậy mà vẫn chuẩn bị cái này cho em."
 
-            "Cô nhìn màn hình thêm vài giây rồi bấm gửi."
+            thienan neutral "Không mất nhiều thời gian."
 
-            "Tin nhắn hiện trạng thái đã gửi."
+            tam neutral "Nhưng chị vẫn làm."
 
-            "Một phút sau, Thiên An trả lời."
+            "Thiên An quay mặt đi."
 
-            thienan "Khó chịu là dấu hiệu tốt."
+            "Một lúc sau, cô đưa tay chỉnh lại mép giấy nhớ trên bìa sổ."
 
-            "Tâm nhìn dòng chữ ấy."
+            thienan smile "Dán hơi lệch."
 
-            tam bored "Đúng là chị mình."
+            tam smile "Không sao. Em thích vậy."
 
-            "Cô định đặt điện thoại xuống thì lại có tin nhắn thứ hai."
+    if story_has_flag('tam_support_quang'):
+        $ unlock_character_section("quang", "notes")
+        "Tâm định hỏi thêm về Quang."
 
-            thienan "Cố lên."
+        "Nhưng nhìn vẻ mệt trên mặt Thiên An, cô lại thôi."
 
-            "Hai chữ rất ngắn."
-
-            "Không hoa mỹ."
-
-            "Không dịu dàng quá mức."
-
-            "Nhưng Tâm nhìn nó lâu hơn cần thiết."
-
-    if story_has_flag('tam_promised_quang_support'):
-        "Điện thoại rung thêm một lần."
-
-        "Lần này là tin nhắn từ Quang."
-
-        quang "An ngủ trên xe rồi. Cảm ơn em sáng nay."
-
-        "Tâm nhìn dòng tin nhắn."
-
-        "Cô không biết vì sao anh phải báo với cô chuyện đó."
-
-        "Có lẽ vì cô đã hứa sẽ giúp anh."
-
-        "Có lẽ vì anh cần nói với một người rằng cuối cùng Thiên An cũng ngủ."
-
-        "Tâm gõ lại."
-
-        tam "Anh cũng ngủ đi nếu có thể."
-
-        "Quang trả lời rất nhanh."
-
-        quang "Anh sẽ cố."
-
-        "Nghe không giống một lời hứa."
-
-        "Nhưng ít nhất cũng là một ý định."
+        "Có những chuyện nếu muốn đẩy, cũng phải chọn lúc người kia còn sức để bước."
 
     elif story_has_flag('tam_quang_interest_seed'):
-        "Tâm mở điện thoại, nhưng không nhắn cho Thiên An ngay."
+        $ unlock_character_section("quang", "inner_layer")
+        "Tâm nhớ đến túi giấy Quang gửi lúc sáng."
 
-        "Danh bạ dừng ở tên Quang."
+        "Cô bỗng không biết nên đặt nó ở đâu trong câu chuyện của Thiên An."
 
-        "Cô nhìn cái tên ấy lâu hơn một chút."
-
-        "Rồi tắt màn hình."
-
-        "Có những cảm giác nếu gọi tên quá sớm sẽ trở nên rất phiền."
-
-        "Tâm hiện tại chưa muốn phiền đến thế."
-
-    elif story_has_flag('tam_encouraged_quang_confession'):
-        "Tâm nhớ lại vẻ mặt của Quang lúc cô bảo anh nên nói rõ với Thiên An."
-
-        "Một người tốt chưa chắc sẽ được yêu."
-
-        "Một người kiên nhẫn chưa chắc sẽ được đợi lại."
-
-        "Nhưng nếu không ai nói gì, mọi chuyện sẽ tiếp tục giống như cốc nước để qua đêm."
-
-        "Không hỏng."
-
-        "Chỉ lạnh đi."
+        "Hay trong câu chuyện của chính mình."
 
     else:
-        "Ngoài cửa sổ, trời đã sáng hẳn."
+        "Tâm đặt cuốn sổ vào ngăn bàn."
 
-        "Tâm đặt tập giấy vào ngăn bàn."
+        "Rất cẩn thận."
 
-        "Cô có cảm giác chương này của gia đình mình chưa kết thúc."
+    thienan neutral "Tâm."
 
-        "Chỉ là tạm thời được gấp lại."
+    tam neutral "Dạ?"
+
+    thienan neutral "Sau này đi làm, nếu có ai khiến em cảm thấy mình phải nhỏ lại mới vừa với chỗ đó..."
+
+    "Thiên An dừng một chút."
+
+    thienan neutral "Thì chỗ đó không đáng."
+
+    "Tâm nhìn chị."
+
+    "Thiên An đã đứng lên, vẻ mặt trở lại bình thường."
+
+    thienan tired "Muộn rồi. Ngủ đi."
+
+    tam smile "Chị cũng vậy."
+
+    thienan smile "Ừ."
+
+    "Thiên An đi ra cửa."
+
+    "Trước khi rời phòng, cô dừng lại, kéo tay nắm cửa khép nhẹ hơn mọi khi."
+
+    "Cánh cửa không đóng hẳn."
+
+    "Để lại một khe sáng mỏng ngoài hành lang."
 
     $ story_flag('tam_c03_thienan_family_completed_seed')
+    $ unlock_character_section("thienan", "notes")
+    $ unlock_character_section("tam", "notes")
 
     return

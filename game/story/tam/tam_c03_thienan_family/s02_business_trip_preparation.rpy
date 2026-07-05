@@ -2,146 +2,178 @@
 # Scene file.
 
 label tam_c03_thienan_family_s02_business_trip_preparation:
-    scene bg_tam_family_living_room_evening
-    with dissolve
+    scene black
+    with fade
 
-    "Sau khi ăn tạm bát canh nóng dưới sự giám sát không khoan nhượng của mẹ Tâm, Quang ở lại thêm một lúc để cùng Thiên An rà soát hồ sơ."
+    $ story_flag('thienan_business_trip_south')
+    $ story_flag('family_business_trouble_seed')
+    $ unlock_character_section("thienan", "narrative_function")
+    $ unlock_character_section("quang", "narrative_function")
 
-    "Hai người ngồi ở hai đầu bàn trà."
+    "Sáng hôm sau, phòng khách yên tĩnh hơn thường lệ."
 
-    "Giữa họ là laptop, hợp đồng, bút ký, kẹp giấy, và một danh sách công việc được in ra trên giấy A4."
+    "Chiếc vali của Thiên An đặt cạnh cửa."
 
-    thienan neutral "Báo cáo tồn kho?"
+    "Một chiếc túi laptop đặt lên trên, dây đeo được cuộn gọn. Bên cạnh là áo khoác mỏng và một tập hồ sơ đã được bọc bằng túi chống nước."
 
-    quang "Đã gửi vào mail. Bản in ở tập thứ hai."
+    "Tâm đứng ở bậc cầu thang, nhìn chị mình kiểm tra lại mọi thứ."
 
-    thienan neutral "Số liệu quý trước?"
+    thienan neutral "Laptop."
 
-    quang "Có chênh lệch giữa bản chi nhánh gửi và bản kế toán tổng hợp."
+    quang neutral "Trong túi. Sạc ở ngăn phải."
 
-    thienan neutral "Bao nhiêu?"
+    thienan neutral "USB backup."
 
-    quang "Không lớn. Nhưng đủ khó chịu."
+    quang neutral "Ngăn trước. Cái màu đen."
 
-    thienan neutral "Đánh dấu lại."
+    thienan neutral "Hợp đồng bản cứng."
 
-    quang "Anh đánh rồi."
+    quang neutral "Vali. Lớp trên cùng. Anh để kẹp xanh."
 
-    "Thiên An dừng tay."
+    thienan neutral "Bản sao giấy phép."
 
-    "Cô lật thêm hai trang. Đúng là có một tờ giấy nhỏ dán ở mép phải."
+    quang neutral "Túi hồ sơ. Phía sau báo cáo tài chính."
 
-    thienan neutral "Màu vàng?"
+    "Hai người nói chuyện như đang đọc một đoạn script đã tập rất nhiều lần."
 
-    quang "Màu xanh em dùng cho việc đã xử lý. Màu vàng cho việc cần nhìn lại."
+    "Không ai nhìn ai quá lâu."
 
-    thienan neutral "Em đổi màu từ khi nào?"
+    "Không ai cần nhắc lại."
 
-    quang "Từ tháng Ba."
+    "Tâm bỗng thấy họ giống một cặp đôi đã sống cùng nhau nhiều năm."
 
-    "Thiên An nhìn anh."
+    "Rồi ngay sau đó, cô lại thấy không giống."
 
-    quang "Em quên à?"
+    "Vì giữa hai người có sự ăn ý của công việc, nhưng không có sự lơ đãng của thân mật."
 
-    thienan neutral "Không. Em chỉ không nghĩ anh nhớ."
+    tam neutral "Hai người lúc nào cũng kiểm tra kiểu này ạ?"
 
-    quang "Có vài thứ nhớ dễ hơn quên."
+    quang smile "Khi đi với chị An thì nên kiểm tra hai lần."
 
-    "Tâm ngồi ở bàn ăn, giả vờ uống nước."
+    thienan irritated "Ý anh là em hay quên?"
 
-    "Cô không cố nghe lén."
+    quang neutral "Ý anh là em thường nhớ quá nhiều việc cùng lúc."
 
-    "Nhưng phòng khách không rộng đến thế."
+    "Thiên An khựng lại."
 
-    "Sự ăn ý giữa hai người khiến cô hơi ngạc nhiên. Không phải kiểu ngọt ngào. Không có ánh mắt kéo dài, không có câu nói dư."
+    "Câu nói ấy không giống khen. Cũng không giống trách."
 
-    "Chỉ là người này vừa dừng, người kia đã biết cần đưa thứ gì tiếp theo."
+    "Nó giống một người đã nhìn thấy phần mệt của cô từ lâu, nhưng chọn cách nói thật nhẹ."
 
-    "Giống như một chiếc máy đã chạy chung quá lâu."
+    thienan neutral "Anh cũng không cần đi cùng lần này."
 
-    "Tốt. Chính xác."
+    quang smile "Anh biết."
 
-    "Và hơi buồn."
+    thienan confused "Vậy sao vẫn đi?"
+
+    quang neutral "Vì bên đó có vài người sẽ nói chuyện dễ hơn nếu anh có mặt."
+
+    thienan bored "Anh đang nói giảm."
+
+    quang embarrassed "Ừ. Hơi nhiều người."
+
+    tam confused "Có vấn đề lớn lắm ạ?"
+
+    "Quang nhìn Thiên An."
+
+    "Thiên An kéo khóa vali lại."
+
+    thienan neutral "Chưa lớn. Nhưng nếu để lâu thì sẽ lớn."
+
+    tam worried "Vậy sao chị không nói với bố mẹ?"
+
+    thienan neutral "Bố mẹ biết phần cần biết rồi."
+
+    tam melancholic "Còn phần không cần biết?"
+
+    "Thiên An nhìn Tâm."
+
+    "Ánh mắt ấy rất bình tĩnh."
+
+    "Cũng rất mệt."
+
+    thienan smile "Để chị biết là đủ."
 
     menu:
-        "Tâm nghĩ gì khi nhìn Thiên An và Quang làm việc?"
+        "Tâm nhìn sự ăn ý giữa Thiên An và Quang thế nào?"
 
-        "Hai người thật sự tin nhau":
+        "Họ thật sự tin nhau":
             $ story_add('thienan_quang_trust', 2)
-            $ story_add('tam_observation', 1)
+            $ story_add('quang_persistence', 1)
             $ story_flag('tam_noticed_thienan_quang_work_trust')
+            $ unlock_character_section("quang", "core_traits")
+            $ unlock_character_section("thienan", "fixed_relationships")
 
-            "Tin nhau không nhất thiết phải nói bằng lời."
+            "Tâm nhìn cách Quang cầm túi hồ sơ thay Thiên An."
 
-            "Đôi khi nó nằm ở việc một người có thể đưa tài liệu mà không cần giải thích, và người kia nhận lấy mà không nghi ngờ."
+            "Anh không giành việc."
 
-            "Tâm không biết giữa họ có tình cảm hay không."
+            "Chỉ cầm đúng thứ cô đang định với tới."
 
-            "Nhưng cô biết có một loại gắn bó ở đó."
+            "Thiên An không cảm ơn."
 
-        "Có lẽ họ chỉ là đồng nghiệp quá lâu":
-            $ story_flag('tam_reads_quang_as_colleague')
-            $ story_add('family_pressure_thienan', 1)
+            "Cũng không từ chối."
 
-            "Có những người làm việc cùng nhau lâu đến mức trở nên quen thuộc."
+            "Sự tin tưởng đôi khi trông giống hệt thói quen."
 
-            "Quen thuộc không hẳn là thân mật."
+        "Họ chỉ là đồng nghiệp quá quen việc":
+            $ story_add('career_tam', 1)
+            $ story_add('tam_observation', 1)
+            $ story_flag('tam_reads_quang_thienan_as_professional')
+            $ unlock_character_section("thienan", "public_identity")
 
-            "Nhiều khi nó chỉ là một dạng hiệu suất được luyện quá kỹ."
+            "Tâm tự nhắc mình đừng nghĩ quá nhiều."
 
-            "Tâm tự nhắc mình đừng suy diễn."
+            "Người làm việc chung lâu năm vốn sẽ ăn ý."
 
-        "Họ hiểu nhau đến mức hơi đáng sợ":
-            $ story_flag('tam_noticed_quang_silent_care')
-            $ story_add('tam_observation', 2)
+            "Nhất là với người như Thiên An, ai ở cạnh chị đủ lâu mà không học được nhịp của chị thì chắc đã bị loại từ vòng gửi xe rồi."
+
+        "Anh Quang hiểu chị ấy hơn chị muốn thừa nhận":
             $ story_add('thienan_quang_trust', 1)
+            $ story_add('tam_observation', 2)
+            $ story_add('quang_persistence', 1)
+            $ story_flag('tam_noticed_quang_understands_thienan')
+            $ unlock_character_section("quang", "inner_layer")
+            $ unlock_character_section("thienan", "inner_layer")
 
-            "Tâm nhìn chiếc kẹp giấy màu vàng."
+            "Quang không hỏi Thiên An có mệt không."
 
-            "Một chi tiết quá nhỏ."
+            "Anh chỉ lấy từ túi ra một chai nước nhỏ, vặn nắp trước rồi đặt cạnh tay cô."
 
-            "Nhỏ đến mức chính Thiên An cũng không chắc mình đã từng nói với Quang."
+            "Thiên An liếc nhìn."
 
-            "Vậy mà anh nhớ."
+            "Không uống ngay."
 
-            "Không phải nhớ kiểu cố tình gây ấn tượng."
+            "Nhưng cũng không đẩy ra."
 
-            "Là nhớ vì đã để ý quá lâu."
+    tam_father "Ra sân bay thì gọi chú một tiếng."
 
-    thienan neutral "Chuyến bay sáng mai mấy giờ?"
+    thienan neutral "Dạ."
 
-    quang "Bảy giờ mười."
+    tam_mother "Đừng bỏ bữa."
 
-    thienan tired "Sớm vậy?"
+    thienan smile "Dạ."
 
-    quang "Em còn lịch họp lúc mười một giờ."
+    tam_mother "Mẹ nói thật đấy."
 
-    thienan neutral "Đổi sang họp online."
+    thienan neutral "Con cũng trả lời thật mà."
 
-    quang "Anh thử rồi. Bên đó nói cần gặp trực tiếp."
+    "Tâm nhìn mẹ chỉnh lại cổ áo cho Thiên An."
 
-    thienan neutral "Ai nói?"
+    "Thiên An đứng yên."
 
-    quang "Anh Bình."
+    "Rất ngoan."
 
-    "Thiên An khựng lại rất nhẹ."
+    "Rất giống một người đã quen để người khác yên tâm bằng dáng vẻ của mình."
 
-    thienan neutral "Anh Bình thường không thích họp trực tiếp."
+    quang neutral "Đến giờ rồi."
 
-    quang "Ừ."
+    thienan neutral "Ừ."
 
-    "Quang đẩy một tập giấy mỏng về phía cô."
+    "Thiên An kéo vali."
 
-    quang "Nên anh in thêm phần lịch sử trao đổi với bên đó. Em xem trên xe cũng được."
+    "Bánh xe lăn qua nền nhà, phát ra một tiếng rất nhỏ."
 
-    "Thiên An không nói gì."
-
-    "Cô nhận tập giấy."
-
-    "Mép giấy hơi cong lên vì được đọc qua trước đó."
-
-    "Tâm nhìn thấy điều đó."
-
-    $ story_flag('business_irregularity_seeded')
+    "Tâm bỗng thấy căn nhà rộng hơn khi cánh cửa đóng lại."
 
     return

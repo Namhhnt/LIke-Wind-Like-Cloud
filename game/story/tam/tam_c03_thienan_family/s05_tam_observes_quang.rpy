@@ -2,235 +2,206 @@
 # Scene file.
 
 label tam_c03_thienan_family_s05_tam_observes_quang:
-    scene bg_tam_family_living_room_evening
-    with dissolve
+    scene black
+    with fade
 
-    "Gần mười một giờ, Quang quay lại."
+    $ story_flag('tam_observed_quang_after_trip')
+    $ unlock_character_section("quang", "inner_layer")
 
-    "Lần này anh không bấm chuông."
+    "Tối hôm sau, Quang quay lại."
 
-    "Anh gọi điện trước cho Thiên An, nhưng người nghe máy là Tâm."
+    "Lần này anh không bấm chuông lâu."
 
-    tam neutral "Chị An ngủ rồi ạ."
+    "Chỉ một tiếng rất ngắn."
 
-    quang "À... vậy thôi. Anh để mai cũng được."
+    "Tâm ra mở cửa, thấy anh đứng bên ngoài với một phong bì hồ sơ trên tay."
 
-    tam neutral "Anh cần lấy gì sao?"
+    quang neutral "Xin lỗi. Anh để sót bản xác nhận bên chị An."
 
-    quang "Không. Anh thấy trong bản hồ sơ còn thiếu một giấy xác nhận. Anh mang qua để sáng mai An khỏi tìm."
+    tam neutral "Chị An đang ở phòng khách. Nhưng hình như chị ngủ rồi."
 
-    "Tâm nhìn về phía phòng khách."
+    quang confused "Ngủ?"
 
-    "Thiên An đã ngủ gục trên sofa từ lúc nào."
+    "Tâm nghiêng người để Quang nhìn vào."
 
-    "Laptop mở trước mặt cô."
+    "Thiên An đang ngồi trên sofa."
 
-    "Một tay cô vẫn đặt trên tập giấy, như thể ngủ cũng chưa chịu buông công việc ra."
+    "Laptop đặt trên đùi. Màn hình đã tối. Đầu cô hơi nghiêng, một tay vẫn đặt trên bàn phím."
 
-    tam neutral "Anh vào đi. Em mở cửa."
+    "Quang đứng yên một nhịp."
 
-    scene bg_tam_family_entry_evening
-    with dissolve
+    "Rồi anh hạ giọng."
 
-    "Quang bước vào rất khẽ."
+    quang neutral "Anh vào một chút được không?"
 
-    "Anh không hỏi Thiên An đâu."
+    tam neutral "Dạ."
 
-    "Cũng không nói câu nào dư."
+    "Quang đi rất khẽ."
 
-    "Chỉ đi vào phòng khách, đặt tập giấy lên bàn."
+    "Anh không gọi Thiên An dậy."
 
-    scene bg_tam_family_living_room_evening
-    with dissolve
+    "Chỉ đặt phong bì lên bàn, rồi cẩn thận rút laptop khỏi tay cô."
 
-    "Thiên An không tỉnh."
+    "Động tác của anh chậm đến mức gần như không phát ra tiếng."
 
-    "Quang đứng yên một lúc."
+    "Anh kiểm tra màn hình, lưu lại file đang mở, rồi gập máy."
 
-    "Tâm đứng ở gần cầu thang, bỗng thấy mình không nên lên tiếng."
+    "Sau đó, anh lấy chiếc áo khoác treo trên thành ghế, phủ lên vai Thiên An."
 
-    "Quang cúi xuống, nhìn màn hình laptop."
+    "Thiên An hơi cựa mình."
 
-    "Anh không đọc nội dung."
+    thienan tired "Quang...?"
 
-    "Chỉ lưu file đang mở, đóng laptop lại, rồi kéo dây sạc ra khỏi mép bàn để nó không vướng vào tay Thiên An."
+    quang neutral "Ừ. Ngủ tiếp đi."
 
-    "Sau đó anh lấy chiếc áo khoác trên ghế, phủ lên vai cô."
+    thienan confused "Hồ sơ..."
 
-    "Động tác rất nhẹ."
+    quang smile "Anh để trên bàn rồi."
 
-    "Nhẹ đến mức Thiên An chỉ hơi cau mày rồi lại ngủ tiếp."
+    thienan tired "Chuyến bay..."
 
-    "Quang nhìn cô thêm một nhịp."
+    quang neutral "Đổi sang chiều mai. Em không cần dậy lúc năm giờ."
 
-    "Rồi anh lùi lại."
+    "Thiên An mở mắt."
 
-    tam neutral "Anh không gọi chị ấy dậy à?"
+    "Cô nhìn Quang, vẻ tỉnh táo trở lại một nửa."
 
-    quang "Không cần."
+    thienan neutral "Ai cho anh đổi?"
 
-    tam neutral "Nhỡ chị ấy còn việc?"
+    quang embarrassed "Anh."
 
-    quang "Nếu thật sự gấp, cô ấy sẽ tự tỉnh."
+    thienan irritated "Anh Quang."
 
-    tam neutral "Còn nếu không?"
+    quang neutral "Nếu em muốn mắng thì mai mắng. Bây giờ ngủ."
 
-    quang "Thì việc đó không đáng để đánh thức cô ấy."
+    "Thiên An nhìn anh."
 
-    "Tâm nhìn anh."
+    "Quang nhìn lại."
 
-    "Quang nói rất bình thường."
+    "Không ai nói gì trong vài giây."
 
-    "Như thể đây không phải một câu dịu dàng."
+    "Cuối cùng, Thiên An kéo áo khoác lại."
 
-    "Như thể anh chỉ đang đọc một điều khoản trong hợp đồng."
+    thienan bored "Mai em mắng thật đấy."
 
-    tam neutral "Anh làm mấy chuyện này thường xuyên à?"
+    quang smile "Ừ."
 
-    quang "Chuyện nào?"
+    "Thiên An nhắm mắt."
 
-    tam neutral "Lưu file. Kéo dây sạc. Đắp áo. Để tài liệu đúng chỗ."
+    "Quang đứng thêm một lúc."
 
-    quang "À."
+    "Rồi anh quay ra, thấy Tâm vẫn đứng gần cửa."
 
-    "Quang hơi ngẫm nghĩ."
+    tam neutral "Anh hay làm vậy à?"
 
-    quang "Chắc vậy."
+    quang surprised "Làm gì?"
 
-    tam confused "Chắc vậy?"
+    tam teasing "Tự ý đổi lịch bay của chị An rồi chờ mai bị mắng."
 
-    quang "Làm lâu rồi nên anh không đếm."
+    quang embarrassed "Không hay lắm."
 
-    "Câu trả lời ấy làm Tâm im mất một lúc."
+    tam smile "Nhưng có làm."
 
-    "Người ta thường nhớ những lần mình hy sinh."
+    quang neutral "Khi cần."
 
-    "Quang thì không."
+    "Anh nói rất khẽ."
 
-    "Hoặc anh đã giả vờ không nhớ quá giỏi."
+    "Như thể chuyện đó không đáng nhắc tới."
 
     menu:
-        "Tâm nghĩ gì về Quang lúc này?"
+        "Tâm nghĩ gì sau khi nhìn thấy cách Quang chăm sóc Thiên An?"
 
         "Anh ấy xứng đáng có một cơ hội":
+            $ story_add('thienan_quang_trust', 1)
+            $ story_add('quang_persistence', 2)
             $ story_flag('tam_support_quang')
-            $ story_flag('quang_an_route_seed')
-            $ story_add_direction('thienan', 'quang')
-            $ story_add('thienan_quang_trust', 1)
-            $ story_add('tam_observation', 1)
+            $ story_flag('tam_sees_quang_as_possible_for_thienan')
+            $ unlock_character_section("quang", "narrative_function")
+            $ unlock_character_section("thienan", "fixed_relationships")
 
-            "Tâm không chắc Thiên An có thể nhìn Quang theo cách khác không."
+            "Tâm nhìn Quang cúi xuống chỉnh lại đôi dép đi trong nhà cho ngay ngắn trước khi rời đi."
 
-            "Nhưng cô bỗng thấy nếu không ai thử kéo nhẹ cánh cửa ấy ra, có lẽ Quang sẽ đứng ngoài hiên thêm rất lâu."
+            "Một người nhớ được những điều nhỏ như vậy."
 
-            "Mưa không nhất thiết phải rơi."
+            "Một người ở cạnh lâu như vậy."
 
-            "Có người vẫn ướt vì chờ quá lâu."
+            "Nếu nói hoàn toàn không có cơ hội, có lẽ hơi tàn nhẫn."
 
-        "Có lẽ chị An chưa từng nhận ra":
-            $ story_flag('tam_noticed_quang_unseen_care')
+        "Chị An chưa từng nhìn anh ấy theo cách đó":
             $ story_add('tam_observation', 2)
-            $ story_add('thienan_quang_trust', 1)
+            $ story_add('family_pressure_thienan', 1)
+            $ story_flag('tam_knows_thienan_not_open_to_quang_yet')
+            $ unlock_character_section("thienan", "inner_layer")
+            $ unlock_character_section("quang", "inner_layer")
 
-            "Thiên An rất giỏi nhìn vấn đề."
+            "Tâm thấy rõ sự dịu dàng trong từng động tác của Quang."
 
-            "Nhưng có lẽ cũng chính vì thế, những điều quá gần lại dễ bị cô xem như một phần của trật tự."
+            "Cũng thấy rõ sự bình thản trong cách Thiên An nhận lấy nó."
 
-            "Một chiếc áo khoác được phủ lên vai."
+            "Có những việc được làm quá lâu sẽ trở thành hiển nhiên."
 
-            "Một file được lưu kịp."
-
-            "Một người luôn đứng vừa đủ gần."
+            "Mà hiển nhiên thì đôi khi rất khó trở thành tình yêu."
 
         "Có lẽ anh ấy nên dừng lại":
+            $ story_add('tam_quang_interest', 1)
+            $ story_add('tam_observation', 1)
             $ story_flag('tam_quang_interest_seed')
-            $ story_add('tam_self_clarity', 1)
-            $ story_add('thienan_quang_trust', -1)
+            $ story_flag('tam_thinks_quang_should_let_go')
+            $ unlock_character_section("quang", "core_traits")
+            $ unlock_character_section("tam", "inner_layer")
 
-            "Tâm không biết vì sao mình nghĩ như vậy."
+            "Không hiểu sao, Tâm thấy hơi khó chịu."
 
-            "Có lẽ vì nhìn một người kiên nhẫn quá lâu cũng hơi đau."
+            "Không phải với Quang."
 
-            "Có lẽ vì cô không chắc Thiên An sẽ quay lại."
+            "Cũng không phải với Thiên An."
 
-            "Hoặc có lẽ..."
+            "Chỉ là có một người cứ lặng lẽ đứng đó, chuẩn bị mọi thứ, rồi tự xem mình là phần ngoài lề."
 
-            "Tâm dừng suy nghĩ đó lại."
+            "Tâm bỗng nghĩ, nếu là cô, có lẽ cô sẽ không nỡ để người đó chờ mãi."
 
-            "Cô nhìn Quang."
-
-            "Lần đầu tiên, cô không chỉ nhìn anh như trợ lý của chị mình."
+    quang neutral "Anh về đây."
 
     tam neutral "Anh Quang."
 
-    quang "Ừ?"
+    quang confused "Ừ?"
 
-    tam neutral "Anh thích chị em à?"
+    tam neutral "Anh thích chị em lâu rồi đúng không?"
 
-    "Quang khựng lại."
+    "Câu hỏi rơi xuống rất thẳng."
 
-    "Rất nhẹ."
+    "Quang hơi khựng lại."
 
-    "Nhưng đủ."
+    "Rồi anh cười."
 
-    quang "Câu hỏi này hơi trực tiếp đấy."
+    "Không phủ nhận."
 
-    tam embarrassed "Em biết."
+    "Cũng không thừa nhận."
 
-    quang "Ai dạy em hỏi vậy?"
+    quang smile "Em còn nhỏ mà hỏi chuyện người lớn ghê."
 
-    tam neutral "Không ai cả."
+    tam irritated "Em đi làm rồi."
 
-    quang "Vậy em nên đổi giáo trình."
+    quang embarrassed "Ừ. Anh xin lỗi."
 
-    "Tâm không cười."
+    "Anh nhìn về phía phòng khách."
 
-    "Quang nhìn cô một lúc, rồi ánh mắt dịu xuống."
+    "Thiên An vẫn ngủ. Chiếc áo khoác trên vai cô hơi trượt xuống một bên."
 
-    quang "Anh không muốn làm cô ấy khó xử."
+    quang neutral "Có những chuyện không phải cứ thích là nên nói."
 
-    tam neutral "Đó không phải câu trả lời."
+    tam neutral "Vậy cứ im mãi ạ?"
 
-    quang "Với người lớn, đôi khi đó là câu trả lời an toàn nhất."
+    quang melancholic "Im không tốt."
 
-    tam neutral "Chị An cũng vừa nói gần giống vậy."
+    quang smile "Nhưng nói sai lúc còn tệ hơn."
 
-    quang "Vậy chắc anh bị lây."
+    "Tâm không biết đáp gì."
 
-    "Quang cầm túi tài liệu rỗng lên."
+    "Quang cúi đầu chào cô, rồi bước ra ngoài."
 
-    quang "Anh về đây. Em khóa cửa cẩn thận."
+    "Cánh cửa khép lại rất nhẹ."
 
-    tam neutral "Vâng."
-
-    "Anh đi ra đến cửa thì dừng lại."
-
-    quang "Tâm."
-
-    tam neutral "Dạ?"
-
-    quang "Đừng nói với An chuyện áo khoác."
-
-    tam confused "Vì sao?"
-
-    quang "Cô ấy sẽ trả lại."
-
-    "Quang cười rất nhẹ."
-
-    quang "Mà tối nay trời lạnh."
-
-    "Cánh cửa khép lại."
-
-    "Tâm đứng yên trong phòng khách."
-
-    "Sau lưng cô, Thiên An vẫn ngủ."
-
-    "Chiếc áo khoác trên vai chị rơi lệch một góc."
-
-    "Tâm bước tới, kéo lại cho ngay."
-
-    "Rồi cô chợt nhận ra mình vừa làm điều Quang đã làm."
-
-    $ story_flag('tam_saw_quang_private_care')
+    "Nhẹ đến mức Thiên An không tỉnh."
 
     return

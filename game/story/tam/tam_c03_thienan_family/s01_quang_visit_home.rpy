@@ -2,199 +2,208 @@
 # Scene file.
 
 label tam_c03_thienan_family_s01_quang_visit_home:
-    scene bg_tam_family_entry_evening
-    with dissolve
+    scene black
+    with fade
 
-    "Chuông cửa vang lên lúc gần chín giờ."
+    $ story_flag('quang_introduced')
+    $ story_flag('quang_familiar_with_tam_family')
+    $ unlock_library_character("quang")
+    $ unlock_character_section("quang", "role")
+    $ unlock_character_section("quang", "public_identity")
+    $ unlock_character_section("quang", "fixed_relationships")
+    $ unlock_character_section("thienan", "fixed_relationships")
 
-    "Tâm vừa đi xuống cầu thang thì thấy mẹ đã ra mở cửa."
+    "Hơn tám giờ tối, chuông cửa vang lên."
 
-    tam_mother "Quang à, vào đi cháu."
+    "Tâm vừa đi ra hành lang thì mẹ cô đã từ bếp nói vọng ra."
 
-    quang "Dạ, cháu chào cô."
+    tam_mother "Tâm, ra mở cửa giúp mẹ. Chắc Quang đấy."
 
-    "Người đàn ông đứng ngoài cửa mặc sơ mi trắng, tay cầm một túi tài liệu màu đen."
+    tam surprised "Anh Quang ạ?"
 
-    "Anh hơi cúi đầu khi bước vào nhà, rất đúng mực, rất quen đường."
+    tam_mother "Ừ. Chị con bảo cậu ấy ghé lấy ít hồ sơ."
 
-    "Quen đến mức không cần ai nhắc, anh tự đổi dép trong nhà, đặt ô vào góc tủ, rồi kéo nhẹ cánh cửa cho khỏi va vào khung."
+    "Cách mẹ nói rất tự nhiên."
 
-    tam_mother "Ăn tối chưa?"
+    "Tự nhiên như thể người tên Quang ấy vốn đã nằm trong danh sách những người có thể xuất hiện ở nhà vào buổi tối mà không cần giải thích nhiều."
 
-    quang "Dạ cháu ăn rồi ạ."
+    "Tâm mở cửa."
 
-    tam_mother "Câu này cô nghe chắc ba năm rồi."
+    quang neutral "Chào Tâm."
 
-    quang "Lần này là thật ạ."
+    tam smile "Em chào anh."
 
-    "Mẹ Tâm nhìn anh."
+    "Quang đứng ngoài cửa, tay cầm một túi tài liệu màu xám. Áo sơ mi của anh phẳng phiu, nhưng cổ tay áo có một nếp gấp nhỏ, giống như vừa bị kéo vội xuống sau một cuộc họp dài."
 
-    "Quang im lặng đúng hai giây."
+    quang smile "Anh làm phiền giờ này không?"
 
-    quang "Dạ... cháu có ăn một ít bánh mì trên xe."
+    tam teasing "Nếu anh nói không thì mẹ em vẫn sẽ hỏi anh ăn tối chưa."
 
-    tam_mother "Ừ, vậy là chưa ăn."
+    quang embarrassed "Anh đoán vậy."
 
-    "Tâm đứng ở bậc cầu thang, không nhịn được cười."
+    tam_mother "Quang à, ăn tối chưa cháu?"
 
-    tam smile "Anh Quang vẫn thua mẹ em như mọi khi."
+    "Từ trong bếp, giọng mẹ Tâm vang ra gần như ngay lập tức."
 
-    quang "Anh chỉ đang tôn trọng sự thật khách quan."
+    "Tâm nhướng mày."
 
-    tam teasing "Sự thật khách quan là anh chưa ăn tối."
+    quang embarrassed "Dạ cháu ăn rồi ạ."
 
-    quang "Ừ. Cũng khá khách quan."
+    tam_mother "Câu này cháu nói ba năm rồi."
 
-    "Quang cười hiền."
+    quang bashful "Dạ... lần này là thật ạ."
 
-    "Không phải kiểu cười để lấy lòng người lớn. Cũng không phải kiểu cười xã giao. Anh giống một người đã quen bị căn nhà này bắt tại trận trong những chuyện rất nhỏ."
+    "Tâm bật cười."
 
-    scene bg_tam_family_living_room_evening
-    with dissolve
+    tam laughing "Anh vào đi."
 
-    "Thiên An từ phòng khách bước ra."
+    "Quang thay dép rất gọn."
 
-    thienan neutral "Anh đến nhanh vậy?"
+    "Anh không cần Tâm chỉ. Đôi dép dành cho khách nằm ở kệ thứ hai, anh lấy đúng đôi màu nâu sẫm như mọi lần."
 
-    quang "Anh đang ở gần đây. Hợp đồng bản cứng em cần."
+    "Khi đi ngang qua phòng khách, anh hơi cúi người chào bố Tâm."
 
-    "Quang đưa túi tài liệu cho cô."
+    quang neutral "Cháu chào chú."
 
-    "Thiên An nhận lấy, mở ra kiểm tra ngay."
+    tam_father "Ừ, Quang đấy à. Lại việc công ty?"
 
-    thienan neutral "Bản phụ lục đâu?"
+    quang neutral "Dạ. Có vài hồ sơ chị An cần mang đi sáng mai."
 
-    quang "Ngăn trong. Anh đánh dấu bằng kẹp xanh."
+    tam_father "Ngồi đi. Uống trà không?"
 
-    thienan neutral "Báo cáo rủi ro?"
+    quang smile "Dạ thôi ạ. Cháu lấy tài liệu rồi về ngay, không làm phiền nhà mình."
 
-    quang "Sau phụ lục. Có thêm bản tóm tắt một trang."
+    tam_mother "Cứ nói chuyện khách sáo mãi."
 
-    thienan neutral "Em chưa yêu cầu bản tóm tắt."
+    "Quang chỉ cười."
 
-    quang "Anh biết."
+    "Một nụ cười hiền, hơi ngại, nhưng không hề lúng túng."
 
-    "Thiên An ngẩng lên nhìn anh."
+    "Anh quen với căn nhà này vừa đủ để không xa lạ."
 
-    quang "Nhưng em sẽ đọc trên máy bay. Một trang đỡ mỏi mắt hơn mười sáu trang."
+    "Nhưng cũng giữ khoảng cách vừa đủ để không ai có thể gọi anh là người nhà."
 
-    "Thiên An nhìn anh thêm một nhịp."
+    thienan neutral "Anh đến rồi à?"
 
-    thienan neutral "Cảm ơn."
+    "Thiên An từ cầu thang đi xuống."
 
-    quang "Không có gì."
+    "Cô đã thay sang một bộ đồ ở nhà đơn giản, tóc buộc thấp sau gáy. Trên tay vẫn cầm điện thoại."
 
-    "Hai người nói chuyện rất bình thường."
+    quang neutral "Ừ. Anh mang bản hợp đồng bổ sung và báo cáo kiểm kê."
 
-    "Bình thường đến mức nếu không để ý, người ta sẽ tưởng họ chỉ là đồng nghiệp lâu năm."
+    thienan neutral "Cảm ơn anh."
 
-    "Nhưng Tâm để ý."
+    "Cách Thiên An nhận tập hồ sơ rất tự nhiên."
 
-    "Quang biết Thiên An đọc tài liệu trên máy bay."
+    "Cách Quang đưa nó cho cô cũng vậy."
 
-    "Biết cô hay đọc đến đau mắt."
+    "Không dư một cử chỉ."
 
-    "Biết phần nào cần kẹp màu gì."
+    "Không thiếu một nhịp hiểu nhau."
 
-    "Còn Thiên An thì nhận tất cả những điều đó như một thói quen công việc."
+    tam neutral "Hai người hẹn nhau từ trước ạ?"
 
-    "Không tránh. Nhưng cũng không bước gần hơn."
+    thienan neutral "Không hẳn. Chị nhờ anh ấy ghé qua sau cuộc họp."
 
-    tam_mother "Quang ở lại ăn chút gì đi. Cô hâm canh cho."
+    quang smile "Anh tiện đường."
 
-    quang "Dạ thôi, cháu không phiền cô đâu ạ."
+    thienan bored "Nhà anh ngược hướng."
 
-    tam_mother "Cháu phiền cô từ năm thứ nhất đại học của con An rồi, giờ mới ngại thì muộn quá."
+    quang embarrassed "Thì... cũng không ngược lắm."
 
-    tam surprised "Năm nhất đại học?"
+    "Thiên An nhìn anh."
 
-    quang "Anh và An học cùng trường kinh tế."
+    "Quang ho khẽ."
 
-    thienan neutral "Cùng khóa."
+    quang neutral "Ngược. Nhưng không xa."
 
-    quang "Cùng vài môn."
+    tam teasing "Anh Quang thật thà ghê."
 
-    thienan neutral "Và cùng khá nhiều bài nhóm."
+    thienan smile "Từ hồi đại học đã vậy rồi."
 
-    quang "Vì có người chọn thành viên nhóm theo tiêu chí ai làm việc được thì giữ."
+    tam surprised "Hai người học chung đại học ạ?"
 
-    thienan smile "Tiêu chí đó rất hợp lý."
+    quang neutral "Ừ. Bọn anh học cùng trường kinh tế. Khác lớp, nhưng có vài môn chung."
 
-    quang "Ừ. Hợp lý đến mức anh bị giữ tới tận bây giờ."
+    thienan neutral "Sau đó làm cùng công ty."
 
-    "Quang nói với giọng rất bình thường."
+    tam smile "Lâu thật."
 
-    "Thiên An cũng chỉ nhìn xuống hồ sơ, khóe môi nhích lên rất nhẹ."
+    thienan neutral "Ừ. Cũng lâu rồi."
 
-    "Một câu đùa nhỏ rơi xuống giữa phòng khách."
+    "Thiên An nói vậy, rồi cúi xuống lật hồ sơ."
 
-    "Không ai nhặt lên quá lâu."
+    "Giọng cô bình thường."
+
+    "Bình thường đến mức Tâm không biết nên hiểu chữ 'lâu' kia là thân thiết, hay chỉ đơn giản là nhiều năm."
 
     menu:
-        "Tâm thấy Quang là người như thế nào?"
+        "Tâm ấn tượng thế nào về Quang?"
 
-        "Đáng tin":
-            $ story_flag('tam_quang_first_impression_reliable')
+        "Anh ấy đáng tin":
             $ story_add('thienan_quang_trust', 1)
             $ story_add('tam_observation', 1)
+            $ story_flag('tam_sees_quang_as_reliable')
+            $ unlock_character_section("quang", "core_traits")
 
-            "Tâm từng gặp Quang vài lần trước đây."
+            "Tâm nhìn Quang đặt từng tập hồ sơ xuống bàn theo thứ tự Thiên An cần."
 
-            "Lần nào anh cũng vừa phải. Không nhiệt tình quá mức, không xa cách khó chịu."
+            "Anh không hỏi lại."
 
-            "Nhưng tối nay, khi nhìn anh đặt tập tài liệu đúng ngay bên tay thuận của Thiên An, cô bỗng thấy anh đáng tin theo một cách rất lặng."
+            "Thiên An cũng không giải thích."
 
-        "Hiền quá":
-            $ story_flag('tam_quang_first_impression_gentle')
+            "Có lẽ sự ăn ý lâu năm chính là như vậy. Không gây chú ý, nhưng khi thiếu đi sẽ lập tức lệch nhịp."
+
+        "Anh ấy hiền quá":
+            $ story_add('quang_persistence', 1)
+            $ story_add('tam_quang_interest', 1)
+            $ story_flag('tam_notices_quang_gentleness')
+            $ unlock_character_section("quang", "inner_layer")
+
+            "Quang nói chuyện rất nhỏ nhẹ."
+
+            "Không phải kiểu yếu đuối."
+
+            "Chỉ là anh giống người luôn chừa cho người khác một khoảng để thở."
+
+            "Tâm bỗng nghĩ, với một người như Thiên An, điều đó có lẽ vừa tốt... vừa rất khó."
+
+        "Chị An vẫn giữ khoảng cách":
+            $ story_add('tam_observation', 2)
             $ story_add('family_pressure_thienan', 1)
+            $ story_flag('tam_noticed_thienan_distance_from_quang')
+            $ unlock_character_section("thienan", "inner_layer")
 
-            "Quang hiền."
+            "Thiên An cảm ơn Quang."
 
-            "Có lẽ hơi quá hiền."
+            "Lịch sự. Tự nhiên. Đúng mực."
 
-            "Ở cạnh Thiên An, sự tử tế của anh đôi khi giống một chiếc áo khoác được đặt sẵn trên ghế."
+            "Nhưng cũng chỉ đến thế."
 
-            "Có cũng tốt. Không ai ghét."
+            "Tâm không hiểu vì sao mình lại thấy hơi tiếc."
 
-            "Nhưng không chắc người cần nó có nhớ khoác lên hay không."
+    quang neutral "Vậy anh về trước. Sáng mai anh sẽ ra sân bay sớm."
 
-        "Khó nói rõ":
-            $ story_flag('tam_quang_first_impression_uncertain')
-            $ story_add('tam_observation', 1)
+    thienan neutral "Không cần. Em tự đi được."
 
-            "Tâm không chắc nên gọi cảm giác ấy là gì."
+    quang smile "Anh biết. Nhưng anh cũng phải đi."
 
-            "Quang không nổi bật theo kiểu khiến người khác phải quay đầu."
+    thienan confused "Anh cũng đi?"
 
-            "Nhưng anh có mặt ở đó, vừa đủ gần, vừa đủ im, như thể nếu có chuyện gì xảy ra, anh sẽ là người đầu tiên kéo chiếc ghế bị lệch lại đúng chỗ."
+    quang neutral "Anh gửi mail rồi. Chắc em chưa đọc."
 
-    tam_father "Quang."
+    "Thiên An im lặng một nhịp."
 
-    quang "Dạ chú."
+    thienan tired "Ừ. Chắc vậy."
 
-    tam_father "Công việc trong Nam lần này, cháu đi cùng An?"
+    quang smile "Không sao. Anh in lịch trình rồi."
 
-    quang "Dạ. Cháu đi trước một ngày để kiểm tra hồ sơ bên chi nhánh."
+    "Anh đặt một tờ giấy gấp đôi lên mặt bàn."
 
-    tam_father "Ừ. Vất vả cho cháu."
+    "Thiên An nhìn tờ giấy."
 
-    quang "Việc của cháu mà chú."
+    "Không nói gì."
 
-    "Bố Tâm gật đầu."
-
-    "Không khen thêm."
-
-    "Nhưng với ông, một cái gật đầu đã là khá nhiều."
-
-    "Tâm nhìn cả nhà."
-
-    "Cô bỗng hiểu vì sao ba mẹ chưa bao giờ nhắc đến chuyện yêu đương giữa Quang và Thiên An."
-
-    "Không phải vì họ không quý anh."
-
-    "Mà có lẽ vì họ đã quý anh quá lâu, chờ quá lâu, rồi tự hiểu rằng có những chuyện nếu bên trong không tự mở cửa, người ngoài đứng mãi ở hiên cũng vô ích."
-
-    $ story_flag('quang_intro_seen')
-    $ story_flag('tam_knows_quang_university_history')
+    "Nhưng cô không trả lại."
 
     return

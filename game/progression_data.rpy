@@ -464,11 +464,15 @@ init -2 python:
                            'title': 'Buổi tiệc công ty',
                            'type': 'core',
                            'unlocks': ['tam_c03_thienan_family']},
- 'tam_c03_thienan_family': {'character_flags_set': {},
+ 'tam_c03_thienan_family': {'character_flags_set': {
+                               "tam": ["family_thread_opened"],
+                               "thienan": ["introduced", "family_pressure_introduced"],
+                               "quang": ["introduced"]   
+                            },
                             'choice_unlocks': [],
                             'emotional_effects': {},
                             'excludes': [],
-                            'flags_set': ['thienan_family_introduced'],
+                            'flags_set': ['thienan_family_introduced', 'tam_c03_thienan_family_unlocked'],
                             'id': 'tam_c03_thienan_family',
                             'label': 'tam_c03_thienan_family',
                             'optional_conditions': [],

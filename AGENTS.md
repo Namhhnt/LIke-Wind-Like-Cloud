@@ -1,11 +1,11 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-07-03
+**Generated:** 2026-07-05
 **Commit:** working tree
-**Branch:** library-screen (based on develop)
+**Branch:** chapter_03 (based on develop)
 
 ## OVERVIEW
-Ren'Py visual novel with a warm custom-themed UI, a full data-driven progression system across 8 routes / 36 chapters / 24 endings, a recent Library screen with character profiles and custom side stories, and a large authored chapter tree under `game/story/`. The project has moved beyond prototype scaffold into a playable multi-route narrative with branching endings.
+Ren'Py visual novel with a warm custom-themed UI, a full data-driven progression system across 8 routes / 36 chapters / 24 endings, a Library screen with character profiles and custom side stories, a newly introduced smartphone simulation system, an interactive location-based map, a music room with 18 tracks, and a large authored chapter tree under `game/story/` (202 files, ~9,300 lines). The project has moved beyond prototype scaffold into a playable multi-route narrative with branching endings and growing secondary systems.
 
 ## STRUCTURE
 ```text
@@ -32,7 +32,13 @@ LikeWindLikeCloud/
 | Library system | `game/data/library_data.rpy`, `game/screens/library_screen.rpy`, `game/screens/library_subscreens.rpy` | 6 categories, 21 character profiles, custom styles. |
 | Library story reader | `game/story_library.rpy`, `game/story_parser.rpy`, `game/story_player.rpy` | Markdown side story parser + reader screen with investment point system. |
 | Library minigame data | `game/data/library_minigame_data.rpy` | Minigame replay data for the library. |
-| Main story content (authored) | `game/story/` | ~194 scene files across prologue, tam, hoang, yuuka, flashback_minyuu, thienan, huyen, work, group, minyuu, final branches. |
+| Library music data | `game/data/library_music_data.rpy` | 18 music tracks scanned from `game/audio/music/` with chapter unlock gates. |
+| Character status data | `game/data/character_status_data.rpy` | Per-character runtime status (job, inventory, known info). |
+| Phone/smartphone system | `game/smartphone/phone_state.rpy`, `game/smartphone/phone_logic.rpy` | Phone state, logic, contacts, mail, social, threads. Newly implemented. |
+| Phone UI screens | `game/screens/phone_screen.rpy`, `game/screens/phone_subscreens.rpy` | Phone main screen, messaging, contacts, social feed, notifications. |
+| Phone data | `game/data/phone_contacts.rpy`, `game/data/phone_mail.rpy`, `game/data/phone_social.rpy`, `game/data/phone_threads.rpy` | Contacts, mail, social posts, and messaging threads data. |
+| Interactive Map | `game/map_data.rpy`, `game/map_screen_with_interactions.rpy`, `game/map_logic_with_interactions.rpy`, `game/map_location_interactions.rpy`, `game/map_hub_with_interactions.rpy` | Location-based chapter selection, free-time actions, time management. |
+| Main story content (authored) | `game/story/` | 202 scene files across prologue, tam, hoang, yuuka, flashback_minyuu, thienan, huyen, work, group, minyuu, final branches. |
 | Legacy/demo Hoang route | `game/demo_route_hoang.rpy` | Older POV/bonus demo labels and seed-ending flow. |
 | Custom side stories | `game/stories/` | Markdown files for library custom stories reader. |
 | Menus, save/load, preferences, help | `game/screens.rpy` | Core Ren'Py UI surface; includes desktop and touch variants. |
@@ -98,6 +104,9 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 - UI palette is warm beige/brown, not Ren'Py default blue.
 - Both main menu and game menu backgrounds point at `gui/theme/background_full.png`.
 - The project contains PC/mobile visual references under `Specs/Design/` and `Specs/Base_assets/`.
+- UI palette is warm beige/brown, not Ren'Py default blue.
+- Both main menu and game menu backgrounds point at `gui/theme/background_full.png`.
+- The project contains PC/mobile visual references under `Specs/Design/` and `Specs/Base_assets/`.
 - Progression runtime tracks recommendations, route focus, emotional state, relationship directions, validation issues, and seeded ending eligibility across 8 routes and 24 endings.
 - Library system supports 6 content categories, 21 character profiles, and Markdown-based custom story reading with investment point unlocks.
 - The current playable build starts on Tâm by default; all 8 routes have authored content in the story tree.
@@ -112,8 +121,8 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 | Library Shell | **DONE** | 6 categories (Characters, Stories, CG, Music, Minigames, Extras), card-based navigation, warm palette matching main menu. |
 | Character Profiles | **DONE** | 21 profiles with unlocked/locked states per playthrough. |
 | Minigame Runtime | **DONE** | Two minigames: Problem Diagnosis, Speech Ordering. Global runtime. |
-| Interactive Map | **DONE** | Location-based chapter selection with fixed + temp locations, unlock logic, label dispatch. |
-| Character Sprites (side) | **DONE** | 7 characters with 30+ expressions each. |
+| Interactive Map | **DONE** | Location-based chapter selection with fixed + temp locations, unlock logic, label dispatch, free-time actions, time management. |
+| Character Sprites (side) | **DONE** | 7 characters with 30+ expressions each. Expanded Hoàng, Quân, Quang sprite sets in working tree. |
 | Background / CG Definitions | **DONE** | Background and CG image declarations. |
 | Story Parser | **DONE** | Markdown/txt parser for custom Library stories. |
 | Investment Points Engine | **DONE** | Point earning/spending for story unlocks, tied to manifest.json. |
@@ -122,9 +131,10 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 | Feature | Status | Notes |
 |---------|--------|-------|
 | Prologue (Rain Dream) | **DONE** | 3 scene files, ~420 lines, full dialogue. |
-| Tam Route C01 (Interview Day) | **DONE** | 4 files, ~1,180 lines, full dialogue. Eng TL synced. |
-| Tam Route C02 (Company Party) | **DONE** | Multiple files, ~1,380 lines, authored content. |
-| Tam Route (remaining chapters) | **AUTHORED** | C03, C05, C06, C07, C20a, C20b — scaffold-level scene structure with branching choices, minimal dialogue. |
+| Tam Route C01 (Interview Day) | **DONE** | 4 files, ~1,300 lines, full dialogue. Eng TL synced. |
+| Tam Route C02 (Company Party) | **DONE** | 7 files, ~1,900 lines, authored content. Eng TL synced. |
+| Tam Route C03 (Thiên An Family) | **DONE** | 8 files, ~1,580 lines, full dialogue. Branching choices with Thiên An/Quang. Eng TL synced. |
+| Tam Route (remaining chapters) | **SKELETON** | C05, C06, C07, C20a, C20b — scaffold-level scene structure with branching choices, minimal dialogue (~67-89 lines each). |
 | Flashback Minyuu | **AUTHORED** | ~570 lines across 33 files, authored backstory content. |
 
 ### — Skeleton / Scaffold (Minimal Content) —
@@ -143,16 +153,17 @@ No `.rpy` LSP is configured in this workspace. Use these file-level anchors inst
 |---------|--------|-------|
 | Ending Narratives (e01-e24) | **STUB** | All 24 ending labels exist with condition helpers (`can_get_*`), but each is an ~11-line stub with no narrative content. Only `ending_resolver.rpy` has real routing logic. |
 | CG Gallery | **STUB** | Category exists in library; no CG entries populated. |
-| Music Room | **STUB** | Category exists; actions use `NullAction()`. No music tracks registered. |
-| Extras | **STUB** | Category exists; no content. |
+| Music Room | **IMPL** | 18 tracks scanned from `game/audio/music/`, play/pause/stop UI, chapter-unlock gating. Fully functional. |
+| Extras | **STUB** | Category exists; screen with SECRET_DEFINITIONS framework; content minimal. |
 
 ### — Partially Implemented / Needs Polish —
 | Feature | Status | Notes |
 |---------|--------|-------|
-| English Translations | **PARTIAL** | 116 TL files (4,760 lines). Prologue + Tam C01 clean-synced. Other routes have TL coverage but may be out of sync with source changes. |
+| English Translations | **PARTIAL** | 137 TL files (7,499 lines). Prologue + Tam C01 + Tam C02 clean-synced. Other routes have TL coverage but may be out of sync with source changes. |
 | Vietnamese TL | **KNOWN ISSUE** | `traceback.txt` reports duplicate `old` entries in `game/tl/vietnamese/screens.rpy`. |
 | Library Stories | **3 STORIES** | Tam (2) + Yuuka/Minh (1). Reader, parser, investment unlock work. Needs more content. |
 | Interactive Map | **BASIC** | Implemented but likely needs content tuning. Some features from spec (temporary location locking, animation) may not be fully wired. |
+| Phone/Smartphone System | **NEW/BETA** | UI, state management, contacts/mail/social/threads data all implemented. Awaiting gameplay integration — no in-story phone usage calls yet. |
 | Mobile Adaptation | **NOT STARTED** | PC-first. Touch quick menu exists; no tablet/phone layout adaptation. |
 | Full-size Character Sprites | **NOT STARTED** | Only side sprites defined. No full-body character art. |
 | Main Menu BG Assets | **FALLBACK** | Uses `gui/theme/background_full.png`. Design mockups exist but may not match final art. |
@@ -169,3 +180,8 @@ grep -RInE '^(label|screen|translate [^ ]+ strings|define )' game
 - `traceback.txt` currently records a translation issue: duplicate `old` entries in `game/tl/vietnamese/screens.rpy`.
 - The most recent work added custom side stories (Yuuka/Minh "Sunday Market") with CG assets and fixed a bracket interpolation bug in the character profiles screen.
 - Prologue and Tam C01 English translation files were synced to reflect updated story lines (7 TL files under `game/tl/english/story/prologue/prologue_rain_dream/` and `game/tl/english/story/tam/tam_c01_interview_day/`). Every Vietnamese source string and `"..."` silence has a matching `translate english strings:` entry; no orphan entries remain. The sync was automated via a Python extraction/parsing pipeline.
+- Tam Route C03 (Thiên An Family) was recently completed with 8 scene files (~1,580 lines), introducing branching choices involving Thiên An and Quang and expanding the authored story content significantly.
+- The smartphone simulation system (phone_state, phone_logic, phone screens, plus contacts/mail/social/threads data) was implemented across 8 files (~1,673 lines total). It is structurally complete and integrated into the game bootstrap, but has no in-story phone usage calls yet — awaiting narrative integration.
+- The interactive map was redesigned with location interactions, free-time actions, time management, and hub navigation (~2,819 lines across 5 files).
+- Hoàng and Quân/Quang sprite sets were significantly expanded in the working tree with new expression variants and updated file naming conventions.
+- Ending condition helpers (`can_get_*`) were refined with additional validation through `story_has_ending_support()` pattern.
