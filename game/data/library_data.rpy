@@ -483,6 +483,96 @@ init -5 python:
         },
 
         {
+            "id": "quang",
+            "name": "Vũ Đình Quang",
+            "route": "tam",
+            "sprite": "side quang neutral",
+            "description": (
+                "Thiên An's long-time assistant and deputy, a gentle but capable man who has stood beside her for years "
+                "without ever forcing her to turn around."
+            ),
+            "profile": {
+                "role": "Family-business supporting character; potential romance route for Thiên An or Tâm.",
+                "public_identity": (
+                    "Quang is known as Thiên An's reliable assistant and deputy in the family business. "
+                    "He is capable, careful, mild-mannered, and almost too patient for his own good. "
+                    "At work, he rarely raises his voice, but he remembers details others miss and often prepares solutions "
+                    "before anyone notices there is a problem."
+                ),
+                "inner_layer": (
+                    "Quang has loved Thiên An quietly since their university years, but he is not simply timid. "
+                    "He understands her well enough to know that forcing a confession would only corner her. "
+                    "His restraint comes from care, intelligence, and fear of becoming another pressure in her life. "
+                    "Behind his ordinary professional image, Quang is the youngest son of a powerful business family. "
+                    "He refuses to return to his family conglomerate because he wants to avoid inheritance conflict and live by his own competence. "
+                    "However, if Thiên An's or Tâm's family falls into serious crisis, he may be forced to reveal that identity and use the influence he has long avoided."
+                ),
+                "core_traits": [
+                    "gentle",
+                    "competent",
+                    "patient",
+                    "observant",
+                    "loyal",
+                    "self-effacing",
+                    "quietly strategic",
+                    "conflict-avoidant",
+                    "honest",
+                    "protective without pressure",
+                ],
+                "narrative_function": (
+                    "Quang gives Thiên An's route a quiet, long-burn alternative to unresolved feelings and family pressure. "
+                    "He represents a form of love built on years of presence, service, patience, and small acts of care. "
+                    "For Tâm, Quang can become either someone she helps move closer to Thiên An, or someone she gradually sees as a man in his own right. "
+                    "His hidden family background also becomes a major crisis lever during the future family-business scandal arc."
+                ),
+                "fixed_relationships": [
+                    {
+                        "character_id": "thienan",
+                        "relationship": "Long-time university friend, assistant/deputy, and unspoken admirer.",
+                        "dynamic": (
+                            "Quang understands Thiên An's habits, workload, and silences better than most people. "
+                            "Thiên An trusts him deeply in work, but keeps emotional distance. "
+                            "Their relationship should feel familiar, efficient, and quietly intimate without being openly romantic unless the route earns it."
+                        ),
+                    },
+                    {
+                        "character_id": "tam",
+                        "relationship": "Familiar family acquaintance and potential emotional pivot.",
+                        "dynamic": (
+                            "Tâm has known Quang from his visits to the family home for work with Thiên An. "
+                            "She initially sees him as reliable and kind, but depending on player choices, she may either support his feelings for Thiên An "
+                            "or begin noticing his quiet loneliness and emotional steadiness herself."
+                        ),
+                    },
+                ],
+                "notes": [
+                    "Prioritize Quang as gentle but not weak. His softness should come from restraint, not lack of ability.",
+                    "Do not make him confess too early. His romance value comes from accumulated care and long-term presence.",
+                    "Avoid turning him into a backup option for Thiên An after Minh. Quang should feel like a distinct emotional path: steady, patient, and difficult precisely because he has waited too long.",
+                    "His hidden identity as the youngest son of a major business family should be seeded lightly before the crisis arc, not revealed casually.",
+                    "When writing Quang, show care through small actions: preparing documents, remembering habits, placing water nearby, saving files, checking routes, covering for Thiên An's exhaustion.",
+                    "His flaw is over-restraint. He can mistake patience for virtue even when silence starts hurting everyone involved.",
+                    "If the Quang-Tâm route opens, avoid making Tâm fall for him suddenly. It should begin from observation, pity resisted, respect, then quiet emotional recognition.",
+                ],
+            },
+            "relationships": [
+                # {
+                #     "target": "thienan",
+                #     "type": "unspoken_love",
+                #     "status": "long_term_unresolved",
+                #     "route_potential": "hard",
+                # },
+                # {
+                #     "target": "tam",
+                #     "type": "family_acquaintance",
+                #     "status": "familiar_and_respected",
+                #     "route_potential": "new_ending_seed",
+                # },
+            ],
+            "tags": ["supporting", "family_business", "romance_candidate", "hidden_identity", "slow_burn"],
+        },
+
+        {
             "id": "akiko",
             "name": "Kobayashi Akiko",
             "route": "yuuka",

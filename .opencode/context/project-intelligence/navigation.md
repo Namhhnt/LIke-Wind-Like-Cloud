@@ -1,4 +1,4 @@
-<!-- Context: project-intelligence/navigation | Priority: high | Version: 1.2 | Updated: 2026-06-26 -->
+<!-- Context: project-intelligence/navigation | Priority: high | Version: 1.3 | Updated: 2026-07-05 -->
 
 # Project Intelligence
 
@@ -25,9 +25,18 @@
 | Library screens | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/screens/library_screen.rpy` |
 | Library subscreens | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/screens/library_subscreens.rpy` |
 | Library data | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/data/library_data.rpy` |
+| Library minigame data | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/data/library_minigame_data.rpy` |
+| Library music data | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/data/library_music_data.rpy` |
+| Character status data | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/data/character_status_data.rpy` |
 | Library story reader | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/story_library.rpy` |
 | Story parser | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/story_parser.rpy` |
 | Story player screen | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/story_player.rpy` |
+| Phone state / logic | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/smartphone/phone_state.rpy`, `phone_logic.rpy` |
+| Phone UI screens | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/screens/phone_screen.rpy`, `phone_subscreens.rpy` |
+| Phone data | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/data/phone_contacts.rpy`, `phone_mail.rpy`, `phone_social.rpy`, `phone_threads.rpy` |
+| Interactive Map screens | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/map_screen_with_interactions.rpy`, `map_hub_with_interactions.rpy` |
+| Map logic / interactions | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/map_logic_with_interactions.rpy`, `map_location_interactions.rpy` |
+| Map data | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/map_data.rpy` |
 | Core menu/UI behavior | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/screens.rpy` |
 | Custom main menu | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/screens/screens_main_menu_custom.rpy` |
 | Theme system | `/mnt/d/Projects/RenPy_Games/LikeWindLikeCloud/game/gui.rpy` |
@@ -52,5 +61,7 @@
 - Startup initializes progression state and jumps directly into the route-map flow.
 - Tam is the default unlocked route; 7 other routes unlock through chapter completion.
 - The library system (Character Profiles, Original Stories, CG Gallery, Music Room, Minigames, Extras) is live with a Markdown-based story reader and investment point unlocks.
-- ~194 authored scene files across 8 routes / 36 chapters / 24 endings in `game/story/`.
+- The smartphone simulation (contacts, mail, social feed, messaging threads) is implemented across 8 files (~1,673 lines) but awaits in-story integration.
+- The interactive map provides location-based chapter selection with free-time actions and time management (~2,819 lines across 5 files).
+- 202 authored scene files across 8 routes / 36 chapters / 24 endings in `game/story/` (~9,300 lines).
 - Prefer the AGENTS files above for maintained high-level context, then drill into the listed `.rpy` and spec files.
