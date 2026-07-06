@@ -12,7 +12,7 @@ label tam_c03_thienan_family:
     call tam_c03_thienan_family_s07_career_seed
 
     $ story_complete_chapter('tam_c03_thienan_family')
-    $ activity_start_free_time_session(40)
+    $ time_start_period_after_chapter('tam_c03_thienan_family')
 
     if renpy.has_label('route_map'):
         jump route_map

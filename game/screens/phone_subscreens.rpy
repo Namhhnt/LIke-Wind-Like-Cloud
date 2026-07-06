@@ -333,6 +333,97 @@ screen phone_status_tab(selected_status_id=None):
             vbox:
                 spacing 10
 
+                # ── Financial summary ──────────────────────────────────
+                $ fin = time_get_financial_summary()
+                $ money_str = activity_format_money(fin["money"])
+                frame:
+                    xfill True
+                    background Solid(PHONE_PANEL)
+                    padding (16, 12)
+
+                    vbox:
+                        spacing 6
+
+                        text _("Finance"):
+                            style "phone_card_title"
+                            color PHONE_ACCENT
+
+                        # Money balance
+                        text "[money_str]":
+                            style "phone_card_title"
+                            size 26
+
+                        null height 4
+
+                        # Employment & salary line
+                        if fin["is_employed"]:
+                            $ salary_str = activity_format_money(fin["monthly_salary"])
+                            hbox:
+                                xfill True
+                                text _("Monthly Salary:") style "phone_card_meta"
+                                text "[salary_str]/mo":
+                                    style "phone_card_meta"
+                                    color PHONE_ACCENT
+                                    xalign 1.0
+                        else:
+                            text _("Status: Unemployed") style "phone_card_meta"
+
+                        # Paycheck progress
+                        if fin["is_employed"]:
+                            $ progress = fin["next_salary_progress"]
+                            $ pct = int(float(progress) / 30.0 * 100.0)
+                            $ attend_str = str(fin["work_attendance_this_month"])
+                            $ absent_str = str(fin["work_absence_this_month"])
+                            hbox:
+                                xfill True
+                                text _("Paycheck in [progress]/30 days") style "phone_card_meta"
+                                text "[pct]%":
+                                    style "phone_card_meta"
+                                    color PHONE_ACCENT
+                                    xalign 1.0
+
+                            text _("Attendance this month: [attend_str] work · [absent_str] absences"):
+                                style "phone_card_meta"
+
+                        null height 4
+
+                        # Pending bills warning
+                        if fin["pending_bills_total"] > 0:
+                            $ bills_total_str = activity_format_money(fin["pending_bills_total"])
+                            text _("Pending bills: [bills_total_str]"):
+                                style "phone_card_meta"
+                                color PHONE_UNREAD
+
+                            for bill in fin["pending_bills"]:
+                                $ bill_label = bill.get("label", "")
+                                $ bill_amount_str = activity_format_money(bill.get("amount", 0))
+                                hbox:
+                                    xfill True
+                                    text "[bill_label]" style "phone_card_meta"
+                                    text "[bill_amount_str]":
+                                        style "phone_card_meta"
+                                        xalign 1.0
+                        elif fin["is_employed"]:
+                            text _("No pending bills") style "phone_card_meta"
+
+                        if fin["unpaid_bill_months"] > 0:
+                            $ overdue_str = str(fin["unpaid_bill_months"])
+                            text _("⚠ Overdue: [overdue_str] month(s) unpaid"):
+                                style "phone_card_meta"
+                                color PHONE_UNREAD
+
+                        # Last paycheck
+                        $ last_pay = fin["last_salary"]
+                        if last_pay:
+                            $ last_amount_str = activity_format_money(last_pay.get("amount", 0))
+                            $ last_day_str = str(last_pay.get("day", ""))
+                            null height 4
+                            text _("Last Paycheck: +[last_amount_str] (Day [last_day_str])"):
+                                style "phone_card_meta"
+
+                null height 4
+
+                # ── Character status entries ───────────────────────────
                 if not phone_get_visible_status_ids():
                     text _("No public status entries yet.") style "phone_card_body"
 

@@ -11,7 +11,7 @@ label tam_c02_company_party:
 
     $ story_complete_chapter('tam_c02_company_party')
 
-    $ activity_start_free_time_session(40)
+    $ time_start_period_after_chapter('tam_c02_company_party')
 
     if renpy.has_label('route_map'):
         jump route_map

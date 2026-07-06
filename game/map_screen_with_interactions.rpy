@@ -140,26 +140,11 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                 for label_entry in interactive_map_label_entries(entries):
                     use interactive_map_label_button(label_entry, hovered_entry=hovered_entry, map_zoom=map_zoom)
 
-        frame:
-            xpos 58
-            ypos 48
-            xsize 620
-            ysize 144
-            background frame_bg
-
-            vbox:
-                spacing 6
-                xfill True
-
-                text (title_override if title_override else _(context.get("title", "City Map"))):
-                    style "interactive_map_title"
-
-                text _(context.get("subtitle", "Choose where the story goes next.")):
-                    style "interactive_map_subtitle"
+        use interactive_map_daily_hud(context_id=context_id, title_override=title_override)
 
         frame:
             xpos 58
-            ypos 204
+            ypos 376
             xsize 620
             ysize 58
             background ui_frame_or_solid("gui/library/panel.png", "#100c09d8", 18)
@@ -169,7 +154,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
         button:
             xpos 58
-            ypos 282
+            ypos 456
             style "interactive_map_phone_button"
             action Return({"_action": "phone"})
 
@@ -177,6 +162,18 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                 xalign 0.5
                 yalign 0.5
                 style "interactive_map_phone_button_icon"
+
+        if time_skip_is_available():
+            button:
+                xpos 58
+                ypos 530
+                style "interactive_map_phone_button"
+                action Return({"_action": "time_skip"})
+
+                text "⏭":
+                    xalign 0.5
+                    yalign 0.5
+                    style "interactive_map_phone_button_icon"
 
         frame:
             xpos 1492

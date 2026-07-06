@@ -231,6 +231,116 @@ init -1 python:
     if "FIXED_MAP_LOCATIONS" not in globals():
         FIXED_MAP_LOCATIONS = {}
 
+    MAP_LOCATION_ACTIONS.setdefault("company", []).insert(0, {
+        "id": "company_work_full_day",
+        "title": "Work at Company",
+        "summary": "Spend a full workday at the company.",
+        "category": "Main",
+        "time_cost": 10,
+        "requires": {"time_points": 10, "energy_min": 15},
+        "effects": {"time_points": -10, "energy": -16, "stress": 7, "work_skill": 2, "main_work_focus": 1},
+        "story_effects": {"career_tam": 1},
+        "daily_limit_key": "company_work_full_day",
+        "marks_work_completed": True,
+        "weekday_only": True,
+        "time_skip_allowed": True,
+        "message": "Tâm đi làm trọn một ngày. Không phải ngày nào cũng đáng nhớ, nhưng có những ngày cần được hoàn thành tử tế.",
+    })
+
+    for _sleep_action in [
+        {
+            "id": "sleep_6h_home",
+            "title": "Sleep 6 Hours",
+            "time_cost": 6,
+            "effects": {"time_points": -6, "energy": 24, "stress": -8, "health": 1, "mood": 2},
+        },
+        {
+            "id": "sleep_8h_home",
+            "title": "Sleep 8 Hours",
+            "time_cost": 8,
+            "effects": {"time_points": -8, "energy": 35, "stress": -15, "health": 2, "mood": 4},
+        },
+        {
+            "id": "sleep_10h_home",
+            "title": "Sleep 10 Hours",
+            "time_cost": 10,
+            "effects": {"time_points": -10, "energy": 42, "stress": -18, "health": 3, "mood": 4},
+        },
+    ]:
+        _sleep_action.setdefault("summary", "End the day with proper sleep.")
+        _sleep_action.setdefault("category", "Sleep")
+        _sleep_action.setdefault("requires", {"time_points": _sleep_action["time_cost"]})
+        _sleep_action.setdefault("ends_day", True)
+        _sleep_action.setdefault("location_id", "tam_apartment")
+        _sleep_action.setdefault("daily_limit_key", _sleep_action["id"])
+        _sleep_action.setdefault("time_skip_allowed", True)
+        _sleep_action.setdefault("message", "Tâm để ngày khép lại bằng một giấc ngủ tử tế hơn thường lệ.")
+        if not any(existing.get("id") == _sleep_action["id"] for existing in MAP_LOCATION_ACTIONS.setdefault("tam_apartment", [])):
+            MAP_LOCATION_ACTIONS["tam_apartment"].append(_sleep_action)
+
+    for _special_action in [
+        {
+            "location_id": "huyen_apartment",
+            "id": "visit_huyen_after_first_job",
+            "title": "Visit Huyền After the First Job",
+            "summary": "A small catch-up after the first chapter's turning point.",
+            "category": "Social",
+            "time_cost": 3,
+            "requires": {"time_points": 3},
+            "effects": {"time_points": -3, "mood": 4, "stress": -3},
+            "story_effects": {"career_huyen": 1, "tam_self_clarity": 1},
+            "flags": ["visited_huyen_after_first_job"],
+            "daily_limit_key": "visit_character:huyen",
+            "required_period_ids": ["after_tam_c01"],
+            "important": True,
+            "missable": True,
+            "expires_after_period_day": 5,
+            "missed_flag": "missed_huyen_after_first_job",
+            "message": "Một buổi ghé qua ngắn thôi, nhưng đủ để giữ nhịp thân thuộc giữa những ngày mới đi làm.",
+        },
+        {
+            "location_id": "huyen_apartment",
+            "id": "visit_huyen_after_company_party",
+            "title": "Visit Huyền",
+            "summary": "Check in with Huyền after the company party.",
+            "category": "Social",
+            "time_cost": 3,
+            "requires": {"time_points": 3},
+            "effects": {"time_points": -3, "mood": 5, "stress": -4},
+            "story_effects": {"career_huyen": 1, "tam_self_clarity": 1},
+            "flags": ["visited_huyen_after_company_party"],
+            "daily_limit_key": "visit_character:huyen",
+            "required_period_ids": ["after_tam_c02"],
+            "important": True,
+            "missable": True,
+            "expires_after_period_day": 5,
+            "missed_flag": "missed_huyen_party_followup",
+            "message": "Huyền vẫn nói nhanh như cũ, nhưng lần này Tâm nghe thấy rõ phần lo lắng được giấu khéo phía sau.",
+        },
+        {
+            "location_id": "hoang_house",
+            "id": "visit_hoang_house_casual_followup",
+            "title": "Visit Hoàng's House",
+            "summary": "A casual follow-up after the company party opens new subtext.",
+            "category": "Social",
+            "time_cost": 4,
+            "requires": {"time_points": 4},
+            "effects": {"time_points": -4, "mood": 4, "stress": -2},
+            "story_effects": {"tam_hoang_interest": 1, "hoang_tam_trust": 1},
+            "flags": ["visited_hoang_house_after_company_party"],
+            "daily_limit_key": "visit_character:hoang",
+            "required_period_ids": ["after_tam_c02"],
+            "important": True,
+            "missable": True,
+            "expires_after_period_day": 6,
+            "missed_flag": "missed_hoang_house_followup",
+            "message": "Cuộc ghé thăm không dài, nhưng bầu không khí đủ để để lại một dư âm riêng giữa Tâm và Hoàng.",
+        },
+    ]:
+        _target_actions = MAP_LOCATION_ACTIONS.setdefault(_special_action["location_id"], [])
+        if not any(existing.get("id") == _special_action["id"] for existing in _target_actions):
+            _target_actions.append(_special_action)
+
     # -------------------------------------------------------------------------
     # Location hub visuals and private-location expansion
     # -------------------------------------------------------------------------
@@ -874,6 +984,11 @@ init -1 python:
         for key, default_value in ACTIVITY_STATE_DEFAULTS.items():
             state.setdefault(key, default_value)
 
+        extender = globals().get("time_management_extend_activity_state", None)
+        if callable(extender):
+            state = extender(state)
+            progress["activity_state"] = state
+
         inventory = state.setdefault("inventory", {})
         if inventory is None or not isinstance(inventory, dict):
             inventory = {}
@@ -901,6 +1016,12 @@ init -1 python:
 
     def activity_set(key, value):
         state = ensure_activity_state()
+        if key in ("time_units", "time_points"):
+            sync_value = globals().get("time_sync_time_keys", None)
+            normalized_value = sync_value(value) if callable(sync_value) else max(0, int(value or 0))
+            state["time_units"] = normalized_value
+            state["time_points"] = normalized_value
+            return normalized_value
         low, high = ACTIVITY_CLAMPS.get(key, (-999999999, 999999999))
         if isinstance(value, (int, float)):
             value = min(max(value, low), high)
@@ -965,6 +1086,7 @@ init -1 python:
 
     def activity_start_free_time_session(time_units=5, reset_part_time_counter=True):
         ensure_activity_state()
+        activity_set("daily_time_points", time_units)
         activity_set("time_units", time_units)
         if reset_part_time_counter:
             activity_set("part_time_count_this_period", 0)
@@ -978,9 +1100,9 @@ init -1 python:
         if money_required and activity_get("money") < money_required:
             return "Not enough money. Need %s." % activity_format_money(money_required)
 
-        time_required = requires.get("time_units", action.get("time_cost", 0))
-        if time_required and activity_get("time_units") < time_required:
-            return "Not enough free time. Need %s time unit(s)." % time_required
+        time_required = requires.get("time_points", requires.get("time_units", action.get("time_cost", 0)))
+        if time_required and activity_get("time_points") < time_required:
+            return "Not enough time points. Need %s." % time_required
 
         energy_min = requires.get("energy_min", None)
         if energy_min is not None and activity_get("energy") < energy_min:
@@ -994,6 +1116,12 @@ init -1 python:
         for item_id, required_count in inventory_requires.items():
             if activity_inventory_get(item_id) < required_count:
                 return "Missing item: %s x%s." % (item_id.replace("_", " ").title(), required_count)
+
+        extra_failure = globals().get("time_action_requirement_failure", None)
+        if callable(extra_failure):
+            failure = extra_failure(action)
+            if failure:
+                return failure
 
         return None
 
@@ -1114,8 +1242,17 @@ init -1 python:
         for flag_id in action.get("flags", []) or []:
             activity_add_flag(flag_id)
 
-        if action.get("once") and action.get("id"):
-            add_unique(activity_completed_actions(), action.get("id"))
+        action_id = action.get("id")
+        if action_id:
+            add_unique(activity_completed_actions(), action_id)
+
+        mark_daily_limit = globals().get("activity_mark_daily_limit_used", None)
+        if callable(mark_daily_limit):
+            mark_daily_limit(action)
+
+        mark_visit = globals().get("time_mark_action_visit", None)
+        if callable(mark_visit):
+            mark_visit(action)
 
         messages = []
         action_message = loc_pick_message(action)
@@ -1141,10 +1278,27 @@ init -1 python:
                 activity_apply_story_effects({"career_tam": -1, "tam_insecurity": 1})
                 messages.append("Làm thêm hơi dày rồi. Công việc chính và sức khỏe bắt đầu trả phí âm thầm.")
 
+        if action.get("marks_work_completed"):
+            current_state = ensure_activity_state()
+            if not current_state.get("work_completed_today"):
+                current_state["work_completed_today"] = True
+                current_state["work_attendance_this_month"] += 1
+
+        if action.get("adds_ot_bonus"):
+            current_state = ensure_activity_state()
+            current_state["pending_ot_bonus"] += int(action.get("adds_ot_bonus", 0) or 0)
+            current_state["ot_days_this_month"] += 1
+
         if activity_get("energy") <= 12 or activity_get("stress") >= 90:
             activity_add("health", -5)
             activity_add("mood", -4)
             messages.append("Cơ thể bắt đầu phản đối. Không kịch tính, nhưng rất biết cách gửi hóa đơn.")
+
+        if action.get("ends_day"):
+            end_day = globals().get("time_end_day", None)
+            if callable(end_day):
+                end_result = end_day(reason=action.get("id", "action"))
+                return {"ok": True, "message": "\n\n".join(messages), "next_state": end_result}
 
         return {"ok": True, "message": "\n\n".join(messages)}
 
@@ -1202,7 +1356,7 @@ label location_interaction_hub(location_id):
     if action_message:
         "[action_message]"
 
-    return "stay_on_map"
+    return action_result.get("next_state", "stay_on_map")
 
 
 screen location_interaction_menu(location, actions):
