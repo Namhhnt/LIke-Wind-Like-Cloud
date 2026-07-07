@@ -83,7 +83,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     on "hide" action SetVariable("quick_menu", True)
 
     $ context = MAP_CONTEXTS.get(context_id, MAP_CONTEXTS["act1_default"])
-    $ bg = context.get("background", "images/maps/city_map_day.png")
+    $ bg = time_get_map_background(context.get("background", "images/maps/city_map_day.png"))
     $ panel_bg = ui_frame_or_solid("gui/library/panel.png", "#140f0be6", 26)
     $ frame_bg = ui_frame_or_solid("gui/library/panel.png", "#201812f0", 26)
     $ map_zoom = 2.0
@@ -382,9 +382,9 @@ style interactive_map_hover_body is gui_text
 style interactive_map_hover_locked is gui_text
 
 style interactive_map_title:
-    size 45
+    size 34
     bold True
-    color "#f5d7a6"
+    color "#ffbc51"
     outlines [(2, "#1a0e05", 0, 0)]
 
 style interactive_map_subtitle:
@@ -395,7 +395,7 @@ style interactive_map_subtitle:
 style interactive_map_panel_title:
     size 30
     bold True
-    color "#f2dfbf"
+    color "#ff6434"
 
 style interactive_map_panel_body:
     size 19

@@ -11,6 +11,31 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     "Chiếc điện thoại nằm úp trên bàn, bên cạnh một tập portfolio đã được cô kiểm tra đến mức mép giấy hơi cong lên."
 
+    "Cô cầm điện thoại lên, mở màn hình."
+
+    "Một email mới hiện ra ở đầu hộp thư."
+
+    "{i}Interview Invitation — October 12th (Friday){/i}"
+
+    "Tâm mở email ra đọc lại dù đã biết nội dung từ hôm qua."
+
+    "{i}We are pleased to invite you to an interview for the Junior Staff position...{/i}"
+
+    "{i}Date: Friday, October 12th — 9:00 AM{/i}"
+
+    "Cô đọc đến dòng thứ ba thì dừng, không phải vì có gì mới, mà vì nhìn thấy giờ giấc in đậm ở giữa màn hình."
+
+    "Thứ Sáu, ngày 12 tháng 10."
+
+    "Chín giờ sáng."
+
+    "Cô tắt màn hình, đặt điện thoại ngửa lên bàn."
+
+    "Đây là email đầu tiên cô nhận được từ công ty."
+
+    "Và cũng là thứ duy nhất mở đầu cho một ngày mà cô không thể đoán trước kết thúc."
+
+
     tam tired "Mình đúng là rảnh thật..."
 
     "Cô nói vậy, nhưng vẫn kéo tập hồ sơ lại gần."
@@ -25,9 +50,12 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     "Tâm tháo ra, kẹp lại."
 
-    "Lần này ngay hơn một chút."
+    "Lần này ngay ngắn hơn một chút."
 
     "Chuông cửa reo đúng lúc cô vừa bỏ tập hồ sơ vào túi."
+
+    scene bg_tam_living_room_morning
+    with dissolve
 
     huyen happy "Tâm ơi, mở cửa. Tao đến giải cứu mày đây."
 

@@ -1,4 +1,8 @@
 label tam_c02_company_party_shopping_area_menu:
+    $ office_outfit_cost = 1650000
+    $ luxury_dress_cost = 7500000
+    $ tam_current_money = tam_get_available_money()
+
     scene bg_company_lobby_afternoon
     with dissolve
 
@@ -9,6 +13,8 @@ label tam_c02_company_party_shopping_area_menu:
     "Tâm và Huyền đi cạnh nhau, không vội."
 
     "Lương đầu tiên trong tài khoản khiến mỗi chiếc váy treo sau lớp kính đều có vẻ biết nói hơn bình thường."
+
+    "Tâm liếc nhanh số dư hiện có: [activity_format_money(tam_current_money)]."
 
     huyen neutral "Mục tiêu hôm nay: mua đồ đi tiệc."
 
@@ -68,6 +74,11 @@ label tam_c02_company_party_shopping_area_menu:
         "Tâm chọn mua gì?"
 
         "Váy áo công sở":
+            $ purchase_ok, remaining_money = tam_try_spend_money(office_outfit_cost)
+            if not purchase_ok:
+                "Tâm nhìn giá rồi khựng lại. Số tiền hiện có không đủ cho bộ này. Cần [activity_format_money(office_outfit_cost)], nhưng cô chỉ còn [activity_format_money(remaining_money)]."
+                jump tam_c02_company_party_shopping_area_menu
+
             $ story_add('career_tam', 2)
             $ story_add('tam_self_clarity', 1)
             $ story_flag('tam_c02_outfit_office_elegant')
@@ -103,7 +114,22 @@ label tam_c02_company_party_shopping_area_menu:
 
             huyen happy "Quyết định sáng suốt. Ví tiền của mày vừa thở phào."
 
-        "Váy dự tiệc sang trọng" if story_has_flag('tam_perfect_interview'):
+            "Nhân viên báo giá [activity_format_money(office_outfit_cost)]. Sau khi thanh toán, Tâm còn lại [activity_format_money(remaining_money)]."
+
+        "Váy dự tiệc sang trọng":
+            $ purchase_ok, remaining_money = tam_try_spend_money(luxury_dress_cost)
+            if not purchase_ok:
+                $ story_add('tam_insecurity', 1)
+                $ story_flag('tam_c02_luxury_dress_seen_but_unaffordable')
+
+                "Tâm nhìn chiếc váy dự tiệc rồi nhìn lại số dư của mình. Cô cần [activity_format_money(luxury_dress_cost)], nhưng hiện chỉ có [activity_format_money(remaining_money)]."
+
+                huyen neutral "Không đủ thì thôi. Mình chọn bộ nào hợp túi tiền trước đã."
+
+                tam neutral "Ừ. Để lần khác vậy."
+
+                jump tam_c02_company_party_shopping_area_menu_office_fallback
+
             $ story_add('tam_hoang_interest', 3)
             $ story_add('hoang_tam_trust', 2)
             $ story_add('tam_self_clarity', 2)
@@ -181,50 +207,24 @@ label tam_c02_company_party_shopping_area_menu:
 
             "Nhưng nghe rất giống tiếng một cánh cửa vừa mở."
 
-        "Váy dự tiệc sang trọng" if not story_has_flag('tam_perfect_interview'):
-            $ story_add('tam_insecurity', 1)
-            $ story_flag('tam_c02_luxury_dress_seen_but_unaffordable')
-
-            "Tâm nhìn chiếc váy dự tiệc."
-
-            "Rồi nhìn giá tiền."
-
-            "Một phép tính rất ngắn chạy qua đầu."
-
-            "Kết quả không đẹp bằng chiếc váy."
-
-            tam neutral "Thôi."
-
-            huyen neutral "Ừ."
-
-            "Lần này Huyền không trêu."
-
-            "Điều đó khiến Tâm hơi ngạc nhiên."
-
-            huyen smile "Không phải hôm nay thì hôm khác."
-
-            tam neutral "Tao biết."
-
-            huyen neutral "Và bộ công sở bên kia cũng đẹp."
-
-            tam smile "Ừ. Tao thử bộ đó."
-
-            "Tâm rời mắt khỏi chiếc váy."
-
-            "Không đến mức buồn."
-
-            "Chỉ hơi tiếc."
-
-            "Một chút tiếc nhỏ, đủ để cô nhớ rằng có những thứ mình chưa mua được."
-
-            "Và cũng đủ để cô muốn sau này mua bằng cảm giác nhẹ nhàng hơn."
-
-            jump tam_c02_company_party_shopping_area_menu_office_fallback
+            "Nhân viên báo giá [activity_format_money(luxury_dress_cost)]. Sau khi thanh toán, Tâm còn lại [activity_format_money(remaining_money)]."
 
     return
 
 
 label tam_c02_company_party_shopping_area_menu_office_fallback:
+    $ office_outfit_cost = 1650000
+    $ purchase_ok, remaining_money = tam_try_spend_money(office_outfit_cost)
+    if not purchase_ok:
+        "Tâm nhìn lại khu váy công sở rồi thở ra. Ngay cả bộ này cũng chưa vừa với số tiền cô còn lại. Cần [activity_format_money(office_outfit_cost)], nhưng cô chỉ có [activity_format_money(remaining_money)]."
+
+        huyen neutral "Không sao. Mình giữ tiền lại trước đã."
+
+        tam neutral "Ừ. Hôm nay tao không mua nữa."
+
+        $ story_flag('tam_c02_saved_first_salary')
+        return
+
     $ story_add('career_tam', 2)
     $ story_add('tam_self_clarity', 1)
     $ story_flag('tam_c02_outfit_office_elegant')
@@ -249,5 +249,7 @@ label tam_c02_company_party_shopping_area_menu_office_fallback:
     "Nhưng là lựa chọn cô có thể trả tiền mà không cần thở dài quá sâu."
 
     tam smile "Tao lấy bộ này."
+
+    "Sau khi thanh toán [activity_format_money(office_outfit_cost)], Tâm còn lại [activity_format_money(remaining_money)]."
 
     return

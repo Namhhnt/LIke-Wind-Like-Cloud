@@ -336,6 +336,21 @@ init python:
             for note in notes:
                 char_add_known_info(character_id, note)
 
+
+        for chapter_id in effects.get("chapter_unlocks", []):
+            if chapter_id in CHAPTERS:
+                _prog = globals().get("progress", None)
+                if isinstance(_prog, dict):
+                    _avail = _prog.get("available", [])
+                    if chapter_id not in _avail and chapter_id not in _prog.get("completed", []):
+                        _avail.append(chapter_id)
+                        _recalc = globals().get("recalculate_chapter_availability", None)
+                        if callable(_recalc):
+                            _recalc()
+                        _update = globals().get("update_recommended_next", None)
+                        if callable(_update):
+                            _update()
+
     def phone_reply_was_sent(thread_id, reply_id):
         sent_replies = phone_dict_get("sent_replies")
         return reply_id in sent_replies.get(thread_id, [])

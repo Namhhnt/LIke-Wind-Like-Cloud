@@ -168,6 +168,16 @@ init -2 python:
             "temporarily_locked_locations": {},
             "force_only_locations": [],
         },
+        "after_tam_c01_locked_company": {
+            "background": "images/maps/city_map_evening.png",
+            "title": "City at Evening",
+            "subtitle": "The city settles into evening as the next choice opens up.",
+            "show_locked_fixed_locations": True,
+            "temporarily_locked_locations": {
+                "company": "The company is unlocked, but you cannot return there until chapter 02 starts.",
+            },
+            "force_only_locations": [],
+        },
         "night_default": {
             "background": "images/maps/city_map_night.png",
             "title": "City at Night",
@@ -183,6 +193,14 @@ init -2 python:
             "show_locked_fixed_locations": True,
             "temporarily_locked_locations": {},
             "force_only_locations": ["conference_hall"],
+        },
+        "shopping_area_visit": {
+            "background": "images/maps/city_map_evening.png",
+            "title": "Evening Shopping",
+            "subtitle": "The shopping district is lively tonight. Huyền is already waiting.",
+            "show_locked_fixed_locations": True,
+            "temporarily_locked_locations": {},
+            "force_only_locations": [],
         },
     }
 
@@ -237,6 +255,7 @@ init -2 python:
     }
 
     MAP_CONTEXT_BY_CHAPTER = {
+        "tam_c01_interview_day": "after_tam_c01_locked_company",
         "tam_c02_company_party": "evening_default",
         "yuuka_c08_festival_arrival": "afternoon_default",
         "final_c24_last_choices": "festival_finale",

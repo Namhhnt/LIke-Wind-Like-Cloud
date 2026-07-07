@@ -28,7 +28,16 @@ label interactive_map(map_entries=None, context_id="act1_default", allow_back=Tr
             call screen time_skip_screen()
             $ time_skip_request = _return
             if isinstance(time_skip_request, dict):
-                $ skip_result = time_skip_execute(time_skip_request.get("mode", "next_day"), time_skip_request.get("target_day"))
+                $ skip_estimate = time_skip_build_estimate(time_skip_request.get("mode", "next_day"), time_skip_request.get("target_day"), time_skip_request.get("routine_plan", []))
+                if skip_estimate.get("can_skip") and skip_estimate.get("loading_seconds", 0.0) > 0.0:
+                    call screen time_passage_loading_screen(
+                        skip_estimate.get("loading_seconds", 2.0),
+                        title=_("Routine In Progress"),
+                        body=_("Repeating the selected routine across the skip period..."),
+                    )
+                $ skip_result = time_skip_execute(time_skip_request.get("mode", "next_day"), time_skip_request.get("target_day"), time_skip_request.get("routine_plan", []))
+                if skip_result == "blocked_negative_estimate":
+                    "The projected routine would push at least one tracked status below zero, so the skip was cancelled."
                 if skip_result == "force_next_event":
                     $ forced_label = time_resolve_next_event_label(clear_period=True)
                     if forced_label:

@@ -2,6 +2,18 @@
 # Scene file.
 
 label tam_c02_company_party_s00_onboarding:
+    $ tam_monthly_salary = 15000000 if story_has_flag("tam_perfect_interview") else 12000000
+    $ phone_update_character_status("tam", job_title="Junior Staff", job_level=1, income_monthly=tam_monthly_salary)
+    $ phone_update_character_status("huyen", job_title="Junior Staff", job_level=1, income_monthly=12000000)
+    python:
+        activity_state = ensure_activity_state()
+        activity_state["player_is_employed"] = True
+        activity_state["monthly_salary"] = tam_monthly_salary
+    if not story_has_flag("tam_c02_party_invitation_sent"):
+        $ story_flag("tam_c02_party_invitation_sent")
+        $ phone_unlock_mail("company_party_invitation")
+        $ phone_refresh_all()
+
     scene bg_company_open_office_day
     with fade
 

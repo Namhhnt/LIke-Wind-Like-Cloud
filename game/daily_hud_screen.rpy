@@ -22,6 +22,9 @@ screen interactive_map_daily_hud(context_id="act1_default", title_override=None)
             text time_get_header_line():
                 style "interactive_map_title"
 
+            text time_get_clock_header_line():
+                style "interactive_map_panel_body"
+
             text time_get_secondary_header_line():
                 style "interactive_map_subtitle"
 

@@ -1,3 +1,58 @@
+screen time_passage_loading_screen(duration=2.0, title=None, body=None):
+    tag menu
+    modal True
+
+    default elapsed = 0.0
+    $ safe_duration = max(0.25, float(duration or 0.25))
+    $ progress_ratio = min(1.0, elapsed / safe_duration)
+    timer 0.05 repeat True action If(
+        elapsed < safe_duration,
+        true=SetScreenVariable("elapsed", min(safe_duration, elapsed + 0.05)),
+        false=Return(True),
+    )
+
+    fixed:
+        xysize (1920, 1080)
+
+        add Solid("#050403cc")
+
+        frame:
+            xalign 0.5
+            yalign 0.5
+            xsize 820
+            ysize 280
+            background ui_frame_or_solid("gui/library/panel.png", "#15100cf2", 28)
+            padding (34, 30)
+
+            vbox:
+                spacing 20
+                xfill True
+
+                text (title if title else _("Time Passes")):
+                    style "interactive_map_panel_title"
+
+                text (body if body else _("Letting the routine play out...")):
+                    style "interactive_map_panel_body"
+
+                frame:
+                    xfill True
+                    ysize 28
+                    background Solid("#2a2118")
+                    padding (4, 4)
+
+                    fixed:
+                        xfill True
+                        yfill True
+
+                        add Solid("#7c5940"):
+                            xsize int(772 * progress_ratio)
+                            ysize 20
+
+                text ("%d%%" % int(progress_ratio * 100)):
+                    style "interactive_map_panel_body"
+                    xalign 0.5
+
+
 screen time_skip_screen():
     tag menu
     modal True
@@ -5,67 +60,215 @@ screen time_skip_screen():
     $ s = ensure_activity_state()
     $ can_choose_any_day = time_skip_can_choose_any_day()
     $ day_choices = time_skip_target_day_choices()
+    $ routine_actions = time_skip_get_routine_actions()
+    default selected_mode = "next_day"
     default selected_day = day_choices[-1] if day_choices else s.get("period_day", 1)
+    default selected_plan_ids = time_skip_default_plan_ids()
+    $ normalized_plan_ids = time_skip_normalize_plan(selected_plan_ids)
+    $ estimate = time_skip_build_estimate(selected_mode, selected_day, normalized_plan_ids)
+    $ confirm_action = Return({"mode": selected_mode, "target_day": selected_day, "routine_plan": normalized_plan_ids}) if estimate.get("can_skip") else NullAction()
 
     frame:
         xalign 0.5
         yalign 0.5
-        xsize 760
-        ysize 520
+        xsize 1180
+        ysize 860
         background ui_frame_or_solid("gui/library/panel.png", "#15100cf2", 28)
         padding (28, 24)
 
-        vbox:
-            spacing 18
+        hbox:
+            spacing 24
             xfill True
 
-            text _("Time Skip"):
-                style "interactive_map_panel_title"
+            vbox:
+                spacing 16
+                xsize 560
 
-            text _("Automate routine days until tomorrow or the next story deadline."):
-                style "interactive_map_panel_body"
+                text _("Time Skip"):
+                    style "interactive_map_panel_title"
 
-            text time_get_header_line():
-                style "interactive_map_panel_body"
+                text _("Build a repeatable routine for the skip period. The game will preview the projected stat and character score changes before committing."):
+                    style "interactive_map_panel_body"
 
-            text time_get_secondary_header_line():
-                style "interactive_map_panel_body"
+                text time_get_header_line():
+                    style "interactive_map_panel_body"
 
-            hbox:
-                spacing 14
+                text time_get_secondary_header_line():
+                    style "interactive_map_panel_body"
 
-                textbutton _("Skip 1 Day"):
-                    style "interactive_map_secondary_button"
-                    text_style "interactive_map_secondary_button_text"
-                    action Return({"mode": "next_day"})
+                text _("Skip Target"):
+                    style "interactive_map_panel_title"
 
-                textbutton _("Skip to Next Event"):
-                    style "interactive_map_secondary_button"
-                    text_style "interactive_map_secondary_button_text"
-                    action Return({"mode": "to_next_event"})
+                hbox:
+                    spacing 12
 
-            if can_choose_any_day and len(day_choices) > 1:
-                vbox:
-                    spacing 10
-
-                    text _("Choose a target period day"):
-                        style "interactive_map_panel_body"
-
-                    bar value ScreenVariableValue("selected_day", max(1, day_choices[-1]), step=1):
-                        xmaximum 620
-
-                    text ("Day %d" % selected_day):
-                        style "interactive_map_panel_body"
-
-                    textbutton _("Skip to Selected Day"):
+                    textbutton _("1 Day"):
                         style "interactive_map_secondary_button"
                         text_style "interactive_map_secondary_button_text"
-                        action Return({"mode": "to_target_day", "target_day": selected_day})
+                        action SetScreenVariable("selected_mode", "next_day")
 
-            null:
+                    textbutton _("Next Event"):
+                        style "interactive_map_secondary_button"
+                        text_style "interactive_map_secondary_button_text"
+                        action SetScreenVariable("selected_mode", "to_next_event")
+
+                    if can_choose_any_day and len(day_choices) > 1:
+                        textbutton _("Selected Day"):
+                            style "interactive_map_secondary_button"
+                            text_style "interactive_map_secondary_button_text"
+                            action SetScreenVariable("selected_mode", "to_target_day")
+
+                if can_choose_any_day and len(day_choices) > 1:
+                    vbox:
+                        spacing 8
+
+                        text _("Choose a target period day"):
+                            style "interactive_map_panel_body"
+
+                        bar value ScreenVariableValue("selected_day", max(1, day_choices[-1]), step=1):
+                            xmaximum 520
+
+                        text ("Day %d" % selected_day):
+                            style "interactive_map_panel_body"
+
+                text _("Routine Tasks"):
+                    style "interactive_map_panel_title"
+
+                if routine_actions:
+                    viewport:
+                        draggable True
+                        mousewheel True
+                        xsize 560
+                        ysize 430
+
+                        vbox:
+                            spacing 10
+                            xfill True
+
+                            for action in routine_actions:
+                                $ is_selected = action.get("id") in normalized_plan_ids
+                                $ tag_bits = []
+                                if action.get("weekday_only"):
+                                    $ tag_bits.append("Weekday")
+                                if action.get("weekend_only"):
+                                    $ tag_bits.append("Weekend")
+                                if action.get("ends_day"):
+                                    $ tag_bits.append("Ends Day")
+                                if action.get("marks_work_completed"):
+                                    $ tag_bits.append("Counts as Work")
+                                $ tag_line = " | ".join(tag_bits)
+
+                                button:
+                                    background Solid("#3a2a1fdd" if is_selected else "#241b15dd")
+                                    padding (16, 14)
+                                    xfill True
+                                    action SetScreenVariable("selected_plan_ids", time_skip_toggle_plan_ids(normalized_plan_ids, action.get("id")))
+
+                                    vbox:
+                                        spacing 6
+                                        xfill True
+
+                                        text (("Selected: " if is_selected else "Available: ") + action.get("title", action.get("id", "Action"))):
+                                            style "interactive_map_panel_body"
+                                            color "#f5e7d7"
+
+                                        text action.get("summary", ""):
+                                            style "interactive_map_panel_body"
+                                            color "#d1b89f"
+
+                                        text ("Category: %s | Time Cost: %s" % (action.get("category", "Action"), action.get("time_cost", 0))):
+                                            style "interactive_map_panel_body"
+                                            color "#cda885"
+
+                                        if tag_line:
+                                            text tag_line:
+                                                style "interactive_map_panel_body"
+                                                color "#c68f73"
+                else:
+                    text _("No automated routine actions are available in this period yet."):
+                        style "interactive_map_panel_body"
+
+                null:
+                    yfill True
+
+                hbox:
+                    spacing 12
+
+                    textbutton _("Back"):
+                        style "interactive_map_secondary_button"
+                        text_style "interactive_map_secondary_button_text"
+                        action Return(None)
+
+                    textbutton _("Start Routine Skip"):
+                        style "interactive_map_secondary_button"
+                        text_style "interactive_map_secondary_button_text"
+                        action confirm_action
+
+            frame:
+                xsize 540
                 yfill True
+                background Solid("#120d0acc")
+                padding (22, 20)
 
-            textbutton _("Back"):
-                style "interactive_map_secondary_button"
-                text_style "interactive_map_secondary_button_text"
-                action Return(None)
+                vbox:
+                    spacing 14
+                    xfill True
+
+                    text _("Projected Outcome"):
+                        style "interactive_map_panel_title"
+
+                    text ("Selected tasks: %d | Estimated skip: %d day(s)" % (time_skip_selected_action_count(normalized_plan_ids), estimate.get("days_skipped", 0))):
+                        style "interactive_map_panel_body"
+
+                    text ("Progress bar time: %.1f seconds" % estimate.get("loading_seconds", 0.0)):
+                        style "interactive_map_panel_body"
+
+                    if estimate.get("reason"):
+                        text estimate.get("reason"):
+                            style "interactive_map_panel_body"
+                            color "#e59a80"
+
+                    if estimate.get("negative_rows"):
+                        text _("Blocked statuses"):
+                            style "interactive_map_panel_title"
+
+                        for row in estimate.get("negative_rows", []):
+                            text ("%s: %s" % (row.get("label", row.get("key", "Stat")), row.get("final", 0))):
+                                style "interactive_map_panel_body"
+                                color "#f09b82"
+
+                    text _("Stats"):
+                        style "interactive_map_panel_title"
+
+                    if estimate.get("activity_rows"):
+                        for row in estimate.get("activity_rows", []):
+                            $ row_color = "#f09b82" if row.get("delta", 0) < 0 else "#cfe6b8"
+                            text ("%s  %s -> %s" % (row.get("label", row.get("key", "Stat")), time_skip_format_delta(row.get("delta", 0)), row.get("final", 0))):
+                                style "interactive_map_panel_body"
+                                color row_color
+                    else:
+                        text _("No tracked stat changes."):
+                            style "interactive_map_panel_body"
+
+                    text _("Character Scores"):
+                        style "interactive_map_panel_title"
+
+                    if estimate.get("story_rows"):
+                        viewport:
+                            draggable True
+                            mousewheel True
+                            xsize 496
+                            ysize 280
+
+                            vbox:
+                                spacing 8
+                                xfill True
+
+                                for row in estimate.get("story_rows", []):
+                                    $ row_color = "#f09b82" if row.get("delta", 0) < 0 else "#cfe6b8"
+                                    text ("%s  %s -> %s" % (row.get("label", row.get("key", "Score")), time_skip_format_delta(row.get("delta", 0)), row.get("final", 0))):
+                                        style "interactive_map_panel_body"
+                                        color row_color
+                    else:
+                        text _("No tracked character score changes."):
+                            style "interactive_map_panel_body"

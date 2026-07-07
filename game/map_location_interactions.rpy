@@ -103,10 +103,10 @@ init -2 python:
                 "title": "Buy elegant office clothes",
                 "summary": "Improves confidence, style, and professional presence.",
                 "category": "Shopping",
-                "money_cost": 650000,
+                "money_cost": 1650000,
                 "time_cost": 1,
-                "requires": {"money": 650000, "time_units": 1},
-                "effects": {"money": -650000, "time_units": -1, "confidence": 5, "style": 4, "mood": 3},
+                "requires": {"money": 1650000, "time_units": 1},
+                "effects": {"money": -1650000, "time_units": -1, "confidence": 5, "style": 4, "mood": 3},
                 "story_effects": {"career_tam": 1},
                 "flags": ["tam_has_elegant_office_clothes"],
                 "message": "Bộ đồ không làm Tâm thành người khác. Nó chỉ khiến cô đứng thẳng hơn một chút khi bước vào văn phòng.",
@@ -116,10 +116,10 @@ init -2 python:
                 "title": "Buy a party dress",
                 "summary": "Expensive, but gives a strong confidence/style boost for social events.",
                 "category": "Shopping",
-                "money_cost": 1250000,
+                "money_cost": 7500000,
                 "time_cost": 1,
-                "requires": {"money": 1250000, "time_units": 1},
-                "effects": {"money": -1250000, "time_units": -1, "confidence": 7, "style": 8, "mood": 4},
+                "requires": {"money": 7500000, "time_units": 1},
+                "effects": {"money": -7500000, "time_units": -1, "confidence": 7, "style": 8, "mood": 4},
                 "flags": ["tam_has_party_dress"],
                 "message": "Chiếc váy được đặt vào túi giấy rất gọn. Tâm cầm lấy, tự dưng thấy buổi tiệc sắp tới bớt đáng sợ hơn.",
             },
@@ -1349,6 +1349,14 @@ label location_interaction_hub(location_id):
         $ routed_location_id = selected_action.get("location_id", location_id)
         call location_interaction_scene_router(routed_location_id, routed_interaction_id, default_scene_label)
         return "stay_on_map"
+
+    $ action_loading_seconds = time_skip_loading_duration_for_action(selected_action)
+    if action_loading_seconds > 0.0:
+        call screen time_passage_loading_screen(
+            action_loading_seconds,
+            title=_("Time Passes"),
+            body=selected_action.get("summary") or _("Letting the action play out..."),
+        )
 
     $ action_result = perform_location_action(selected_action)
     $ action_message = action_result.get("message", "")

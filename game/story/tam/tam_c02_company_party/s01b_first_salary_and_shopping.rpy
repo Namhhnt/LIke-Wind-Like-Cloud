@@ -7,11 +7,90 @@
 # if current_chapter == "tam_c02_company_party" and location_id == "shopping_area" and story_has_flag("tam_c02_shopping_area_unlocked"):
 #     call tam_c02_company_party_shopping_area_menu
 
+init -4 python:
+    def tam_get_monthly_salary_amount():
+        return 15000000 if story_has_flag("tam_perfect_interview") else 12000000
+
+    def tam_get_first_paycheck_amount():
+        return tam_get_monthly_salary_amount() // 2
+
+    def tam_get_available_money():
+        status = phone_get_character_status("tam")
+        try:
+            return int(status.get("salary") or 0)
+        except Exception:
+            return 0
+
+    def tam_set_available_money(amount):
+        safe_amount = max(0, int(amount or 0))
+        phone_update_character_status(
+            "tam",
+            salary=safe_amount,
+            public_stats={"current_money": safe_amount},
+        )
+        return safe_amount
+
+    def tam_add_available_money(amount):
+        updated_amount = tam_set_available_money(tam_get_available_money() + int(amount or 0))
+        try:
+            activity_add("money", int(amount or 0))
+        except Exception:
+            pass
+        return updated_amount
+
+    def tam_try_spend_money(amount):
+        cost = max(0, int(amount or 0))
+        current_amount = tam_get_available_money()
+        if current_amount < cost:
+            return False, current_amount
+
+        remaining_amount = tam_set_available_money(current_amount - cost)
+        try:
+            activity_add("money", -cost)
+        except Exception:
+            pass
+        return True, remaining_amount
+
 label tam_c02_company_party_s01b_first_salary_and_shopping:
     scene bg_company_open_office_day
     with fade
 
-    $ story_flag('tam_c02_first_salary_received')
+    $ tam_monthly_salary = tam_get_monthly_salary_amount()
+    $ tam_first_paycheck = tam_get_first_paycheck_amount()
+    if not story_has_flag('tam_c02_first_salary_received'):
+        $ story_flag('tam_c02_first_salary_received')
+        $ tam_current_money = tam_add_available_money(tam_first_paycheck)
+        python:
+            activity_state = ensure_activity_state()
+            activity_state["monthly_salary"] = tam_monthly_salary
+            activity_state["player_is_employed"] = True
+            activity_state["salary_cycle_day"] = 1
+            activity_state["last_salary_day"] = activity_state.get("current_day", 1)
+            activity_state["pending_ot_bonus"] = 0
+            activity_state["pending_salary_penalty"] = 0
+            activity_state["work_attendance_this_month"] = 0
+            activity_state["work_absence_this_month"] = 0
+            activity_state["unexcused_absence_this_month"] = 0
+            activity_state["ot_days_this_month"] = 0
+            activity_state.setdefault("salary_history", []).append({
+                "day": activity_state.get("current_day", 1),
+                "amount": tam_first_paycheck,
+                "type": "partial_october_first_salary",
+                "chapter": "tam_c02_company_party",
+            })
+        $ phone_update_character_status(
+            "tam",
+            job_title="Junior Staff",
+            job_level=1,
+            income_monthly=tam_monthly_salary,
+            known_info=["Received first partial salary payment for the last two weeks of October."],
+        )
+        $ story_flag("tam_c02_salary_mail_sent")
+        $ phone_unlock_mail("company_salary_first_month")
+        $ phone_refresh_all()
+    else:
+        $ tam_current_money = tam_get_available_money()
+
 
     "Thứ Năm, một ngày trước buổi tiệc kỷ niệm công ty, Tâm nhận được tháng lương đầu tiên."
 
@@ -20,6 +99,8 @@ label tam_c02_company_party_s01b_first_salary_and_shopping:
     "Không có nhạc nền chiến thắng."
 
     "Chỉ có một thông báo ngân hàng hiện lên trên màn hình điện thoại lúc cô vừa định đứng dậy đi lấy nước."
+
+    "Đây là khoản lương một phần vì Tâm chỉ làm việc hai tuần trong tháng Mười — nhưng vẫn đủ để cô nhận ra mình vừa có một thứ thật sự thuộc về mình."
 
     tam surprised "..."
 
@@ -87,6 +168,8 @@ label tam_c02_company_party_s01b_first_salary_and_shopping:
 
     "Nếu muốn mua gì đó, tối nay là lúc hợp lý nhất."
 
+    "Số dư dành riêng cho lần mua sắm này hiện là [activity_format_money(tam_current_money)]."
+
     menu:
         "Sau giờ làm, Tâm có đi mua sắm không?"
 
@@ -110,7 +193,7 @@ label tam_c02_company_party_s01b_first_salary_and_shopping:
 
             "Dù chưa biết sẽ mua gì, cô bỗng thấy lòng mình nhẹ hơn một chút."
 
-            call tam_c02_company_party_shopping_area_menu
+            call tam_c02_company_party_shopping_map
 
         "Không mua gì, để dành tiền":
             $ story_add('career_tam', 2)
@@ -155,3 +238,41 @@ label tam_c02_company_party_s01b_first_salary_and_shopping:
             "Nhưng chắc."
 
     return
+label tam_c02_company_party_shopping_map:
+    python:
+        map_entries = []
+        for loc_id, loc in FIXED_MAP_LOCATIONS.items():
+            if fixed_location_is_unlocked(loc_id):
+                map_entries.append({
+                    "id": "locked_{}".format(loc_id),
+                    "location_id": loc_id,
+                    "title": loc.get("name", loc_id),
+                    "x": loc.get("x", 960),
+                    "y": loc.get("y", 540),
+                    "state": "locked",
+                    "kind": "location_hub",
+                    "lock_reason": "Nơi này hiện không khả dụng.",
+                })
+        shop_loc = FIXED_MAP_LOCATIONS.get("shopping_area", {})
+        map_entries.append({
+            "id": "shopping_area_active",
+            "location_id": "shopping_area",
+            "title": shop_loc.get("name", "Shopping Area"),
+            "description": "Đi mua váy dự tiệc với Huyền.",
+            "x": shop_loc.get("x", 960),
+            "y": shop_loc.get("y", 540),
+            "state": "available",
+            "kind": "temporary",
+            "target_label": "tam_c02_company_party_shopping_area_menu",
+        })
+
+    call screen interactive_map_screen(map_entries, context_id="shopping_area_visit", allow_back=False, allow_timeline=False)
+
+    $ selected = _return
+    if isinstance(selected, dict) and selected.get("target_label"):
+        $ target = selected["target_label"]
+        if renpy.has_label(target):
+            jump expression target
+
+    jump tam_c02_company_party_shopping_area_menu
+
