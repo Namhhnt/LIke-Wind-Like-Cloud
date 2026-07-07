@@ -252,19 +252,27 @@ init -1 python:
             "id": "sleep_6h_home",
             "title": "Sleep 6 Hours",
             "time_cost": 6,
-            "effects": {"time_points": -6, "energy": 24, "stress": -8, "health": 1, "mood": 2},
+            "effects": {"time_points": -6, "energy": 70, "stress": -8, "health": 1, "mood": 2},
         },
         {
             "id": "sleep_8h_home",
             "title": "Sleep 8 Hours",
             "time_cost": 8,
-            "effects": {"time_points": -8, "energy": 35, "stress": -15, "health": 2, "mood": 4},
+            "effects": {"time_points": -8, "energy": 80, "stress": -15, "health": 2, "mood": 4},
         },
         {
             "id": "sleep_10h_home",
             "title": "Sleep 10 Hours",
             "time_cost": 10,
-            "effects": {"time_points": -10, "energy": 42, "stress": -18, "health": 3, "mood": 4},
+            "effects": {"time_points": -10, "energy": 90, "stress": -18, "health": 3, "mood": 4},
+        },
+        {
+            "id": "sleep_12h_home",
+            "title": "Sleep 12 Hours",
+            "time_cost": 12,
+            "effects": {"time_points": -12, "energy": 100, "stress": -12, "health": -4, "mood": -2},
+            "summary": "Oversleep to fully recover energy, but it can leave your health worse off.",
+            "message": "Tâm sleeps far too long. The extra rest restores energy, but the day leaves a sluggish ache behind.",
         },
     ]:
         _sleep_action.setdefault("summary", "End the day with proper sleep.")

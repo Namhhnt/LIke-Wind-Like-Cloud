@@ -649,6 +649,16 @@ init -1 python:
         return normalized_ids + [action_id]
 
 
+    def time_skip_total_time_cost(plan_ids):
+        total_cost = 0
+        for action_id in time_skip_normalize_plan(plan_ids):
+            action = time_skip_get_routine_action(action_id)
+            if not action:
+                continue
+            total_cost += max(0, int(action.get("time_cost", 0) or 0))
+        return total_cost
+
+
     def time_skip_get_routine_actions():
         actions = []
         seen_ids = set()
@@ -703,7 +713,7 @@ init -1 python:
         if time_skip_get_routine_action("company_work_full_day"):
             fallback_ids.append("company_work_full_day")
 
-        for sleep_id in ["sleep_8h_home", "sleep_10h_home", "sleep_6h_home"]:
+        for sleep_id in ["sleep_8h_home", "sleep_10h_home", "sleep_12h_home", "sleep_6h_home"]:
             if time_skip_get_routine_action(sleep_id):
                 fallback_ids.append(sleep_id)
                 break
@@ -810,6 +820,7 @@ init -1 python:
 
     def time_skip_build_estimate(mode="next_day", target_day=None, routine_plan=None):
         normalized_ids = time_skip_normalize_plan(routine_plan)
+        daily_time_cost = time_skip_total_time_cost(normalized_ids)
         if not time_skip_is_available():
             return {
                 "can_skip": False,
@@ -819,6 +830,7 @@ init -1 python:
                 "negative_rows": [],
                 "days_skipped": 0,
                 "loading_seconds": 0.0,
+                "daily_time_cost": daily_time_cost,
             }
 
         if not normalized_ids:
@@ -830,6 +842,19 @@ init -1 python:
                 "negative_rows": [],
                 "days_skipped": 0,
                 "loading_seconds": 0.0,
+                "daily_time_cost": daily_time_cost,
+            }
+
+        if daily_time_cost < 0 or daily_time_cost > 24:
+            return {
+                "can_skip": False,
+                "reason": "The routine spends %d hours per day. Keep the daily total between 0 and 24 hours." % daily_time_cost,
+                "activity_rows": [],
+                "story_rows": [],
+                "negative_rows": [],
+                "days_skipped": 0,
+                "loading_seconds": 0.0,
+                "daily_time_cost": daily_time_cost,
             }
 
         snapshot = _time_skip_capture_snapshot()
@@ -908,6 +933,7 @@ init -1 python:
             "negative_rows": negative_rows,
             "days_skipped": days_skipped,
             "loading_seconds": loading_seconds,
+            "daily_time_cost": daily_time_cost,
         }
 
 
