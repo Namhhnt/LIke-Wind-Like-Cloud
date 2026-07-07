@@ -2,13 +2,12 @@
 # Scene file.
 
 label tam_c02_company_party_s00_onboarding:
-    $ tam_monthly_salary = 15000000 if story_has_flag("tam_perfect_interview") else 12000000
-    $ phone_update_character_status("tam", job_title="Junior Staff", job_level=1, income_monthly=tam_monthly_salary)
-    $ phone_update_character_status("huyen", job_title="Junior Staff", job_level=1, income_monthly=12000000)
+    $ career_assign_level("tam", 1)
+    $ career_assign_level("huyen", 1)
     python:
         activity_state = ensure_activity_state()
         activity_state["player_is_employed"] = True
-        activity_state["monthly_salary"] = tam_monthly_salary
+        activity_state["monthly_salary"] = phone_get_character_status("tam").get("income_monthly") or activity_state.get("monthly_salary", 0)
     if not story_has_flag("tam_c02_party_invitation_sent"):
         $ story_flag("tam_c02_party_invitation_sent")
         $ phone_unlock_mail("company_party_invitation")

@@ -238,6 +238,10 @@ init -1 python:
         if callable(refresh_phone):
             refresh_phone()
 
+        refresh_career = globals().get("career_check_all_promotions", None)
+        if callable(refresh_career):
+            refresh_career()
+
     def apply_direct_unlocks(chapter):
         for unlocked_chapter_id in chapter.get("unlocks", []):
             if unlocked_chapter_id not in CHAPTERS:

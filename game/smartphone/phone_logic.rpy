@@ -1,5 +1,6 @@
 init python:
     PHONE_CHARACTER_IDS = ["tam", "hoang", "huyen", "minh", "yuuka", "thienan"]
+    _career_promotion_guard = False
 
     def phone_default_state_template():
         return {
@@ -81,20 +82,40 @@ init python:
 
     def phone_has_completed(chapter_id):
         if callable(globals().get("story_chapter_done", None)):
-            return story_chapter_done(chapter_id)
+            if story_chapter_done(chapter_id):
+                return True
         try:
             return chapter_id in story_completed_chapters
         except Exception:
-            return False
+            pass
+
+        progress = globals().get("progress", None)
+        if isinstance(progress, dict):
+            return chapter_id in progress.get("completed", [])
+        return False
 
     def phone_has_flag(flag_name):
         try:
-            return story_has_flag(flag_name)
+            if story_has_flag(flag_name):
+                return True
         except Exception:
-            try:
-                return flag_name in story_flags
-            except Exception:
-                return False
+            pass
+
+        try:
+            if flag_name in story_flags:
+                return True
+        except Exception:
+            pass
+
+        progress = globals().get("progress", None)
+        if isinstance(progress, dict):
+            if flag_name in progress.get("player_flags", []):
+                return True
+            for flags in progress.get("character_flags", {}).values():
+                if flag_name in flags:
+                    return True
+
+        return False
 
     def phone_has_direction(character_id, direction):
         return phone_has_flag("direction_%s_%s" % (character_id, direction))
@@ -286,6 +307,175 @@ init python:
                     char_add_item(character_id, item_id)
             else:
                 status[key] = value
+
+    def career_get_track(character_id):
+        return globals().get("CHARACTER_CAREER_TRACKS", {}).get(character_id)
+
+    def career_get_score_key(character_id):
+        track = career_get_track(character_id)
+        if not track:
+            return None
+        return track.get("score_key")
+
+    def career_get_character_for_score(score_key):
+        return globals().get("CAREER_SCORE_TO_CHARACTER", {}).get(score_key)
+
+    def career_get_level_data(character_id, level):
+        track = career_get_track(character_id)
+        if not track:
+            return None
+        for level_data in track.get("levels", []):
+            if int(level_data.get("level", 0)) == int(level or 0):
+                return level_data
+        return None
+
+    def career_get_salary_for_level(character_id, level_data):
+        if not level_data:
+            return None
+
+        salary_amount = int(level_data.get("salary", 0) or 0)
+        track = career_get_track(character_id) or {}
+        for flag_name, salary_overrides in track.get("salary_flag_overrides", {}).items():
+            if story_has_flag(flag_name):
+                salary_amount = int(salary_overrides.get(level_data.get("level"), salary_amount) or salary_amount)
+        return salary_amount
+
+    def career_sync_level_status(character_id, level=None, known_info=None):
+        status = phone_get_character_status(character_id)
+        target_level = int(level if level is not None else status.get("job_level", 0) or 0)
+        if target_level <= 0:
+            return None
+
+        level_data = career_get_level_data(character_id, target_level)
+        if not level_data:
+            return None
+
+        salary_amount = career_get_salary_for_level(character_id, level_data)
+        status_patch = {
+            "job_title": level_data.get("title"),
+            "job_level": target_level,
+            "income_monthly": salary_amount,
+        }
+        if known_info:
+            status_patch["known_info"] = known_info
+        phone_update_character_status(character_id, **status_patch)
+
+        track = career_get_track(character_id) or {}
+        if track.get("sync_activity_salary"):
+            activity_state = ensure_activity_state()
+            activity_state["monthly_salary"] = salary_amount
+
+        return level_data
+
+    def career_assign_level(character_id, level, known_info=None):
+        status = phone_get_character_status(character_id)
+        current_level = int(status.get("job_level", 0) or 0)
+        target_level = max(current_level, int(level or 0))
+        level_data = career_sync_level_status(character_id, level=target_level, known_info=known_info)
+        career_check_character_promotion(character_id)
+        return level_data
+
+    def career_requirements_met(level_data):
+        if not level_data:
+            return False
+
+        for flag_name in level_data.get("required_flags", []):
+            if not phone_has_flag(flag_name):
+                return False
+
+        for score_key, minimum_value in level_data.get("required_scores", {}).items():
+            if story_get_score(score_key) < int(minimum_value or 0):
+                return False
+
+        for score_key, maximum_value in level_data.get("required_max_scores", {}).items():
+            if story_get_score(score_key) > int(maximum_value or 0):
+                return False
+
+        for chapter_id in level_data.get("required_completed_chapters", []):
+            if not phone_has_completed(chapter_id):
+                return False
+
+        return True
+
+    def career_get_pending_level(character_id):
+        status = phone_get_character_status(character_id)
+        current_level = int(status.get("job_level", 0) or 0)
+        return career_get_level_data(character_id, current_level + 1)
+
+    def career_consume_score(character_id):
+        score_key = career_get_score_key(character_id)
+        if not score_key:
+            return
+        story_state[score_key] = max(0, int(story_state.get(score_key, 0) or 0) - 100)
+
+    def career_apply_promotion(character_id, level_data):
+        if not level_data:
+            return False
+
+        career_consume_score(character_id)
+        career_sync_level_status(
+            character_id,
+            level=int(level_data.get("level", 0)),
+            known_info=["Promoted to %s." % level_data.get("title", "the next role")],
+        )
+        story_flag("career_%s_level_%s" % (character_id, level_data.get("level")))
+        return True
+
+    def career_check_character_promotion(character_id):
+        track = career_get_track(character_id)
+        if not track:
+            return False
+
+        status = phone_get_character_status(character_id)
+        if int(status.get("job_level", 0) or 0) <= 0:
+            return False
+
+        promoted_any = False
+        score_key = track.get("score_key")
+        if not score_key:
+            return False
+
+        while story_get_score(score_key) >= 100:
+            next_level_data = career_get_pending_level(character_id)
+            if not next_level_data or not career_requirements_met(next_level_data):
+                break
+            if not career_apply_promotion(character_id, next_level_data):
+                break
+            promoted_any = True
+
+        return promoted_any
+
+    def career_refresh_all_statuses():
+        for character_id in globals().get("CHARACTER_CAREER_TRACKS", {}).keys():
+            status = phone_get_character_status(character_id)
+            if int(status.get("job_level", 0) or 0) > 0:
+                career_sync_level_status(character_id)
+
+    def career_check_all_promotions():
+        promoted_any = False
+        for character_id in globals().get("CHARACTER_CAREER_TRACKS", {}).keys():
+            if career_check_character_promotion(character_id):
+                promoted_any = True
+        return promoted_any
+
+    def career_handle_story_state_change(changed_key=None):
+        global _career_promotion_guard
+
+        if _career_promotion_guard:
+            return
+
+        try:
+            _career_promotion_guard = True
+
+            if changed_key and changed_key not in globals().get("CAREER_SCORE_TO_CHARACTER", {}) and changed_key not in globals().get("STORY_SCORE_KEYS", set()):
+                return
+
+            if changed_key and changed_key in globals().get("CAREER_SCORE_TO_CHARACTER", {}):
+                career_check_character_promotion(career_get_character_for_score(changed_key))
+            else:
+                career_check_all_promotions()
+        finally:
+            _career_promotion_guard = False
 
     def char_add_item(character_id, item_id):
         status = phone_get_character_status(character_id)

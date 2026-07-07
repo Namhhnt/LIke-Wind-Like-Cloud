@@ -28,6 +28,7 @@ default story_state = {
     "hoang_insecurity": 30,
     "hoang_self_acceptance": 35,
     "hoang_professional_credit": 30,
+    "career_hoang": 20,
 
     # Huyền
     "huyen_quan_trust": 10,
@@ -41,6 +42,7 @@ default story_state = {
     "family_pressure_thienan": 70,
     "thienan_self_assertion": 35,
     "quang_persistence": 60,
+    "career_thienan": 10,
 
     # Minh-Yuuka shared flashback arc.
     # Trust / intimacy / branch scores grow upward; unresolved and boundary should be reduced.
@@ -52,6 +54,8 @@ default story_state = {
     "still_lover_score": 0,
     "romantic_score": 0,
     "boundary_score": 50,
+    "career_minh": 40,
+    "career_yuuka": 35,
 
     # Ending nudges selected in late-game chapters.
     "ending_support": [],
@@ -68,12 +72,12 @@ init python:
         "doom_score",
         "tam_hoang_interest", "tam_quang_interest", "tam_quan_interest", "tam_minh_drawn",
         "tam_self_clarity", "tam_respect_yuuka", "tam_insecurity", "tam_observation", "career_tam",
-        "hoang_tam_trust", "hoang_huyen_interest", "hoang_insecurity", "hoang_self_acceptance", "hoang_professional_credit",
+        "hoang_tam_trust", "hoang_huyen_interest", "hoang_insecurity", "hoang_self_acceptance", "hoang_professional_credit", "career_hoang",
         "huyen_quan_trust", "huyen_quan_interest", "huyen_hoang_interest", "career_huyen",
-        "thienan_quang_trust", "thienan_minh_residue", "family_pressure_thienan", "thienan_self_assertion",
+        "thienan_quang_trust", "thienan_minh_residue", "family_pressure_thienan", "thienan_self_assertion", "career_thienan",
         "quang_persistance", "quang_persistence",
         "minh_yuuka_trust", "minh_yuuka_intimacy", "minh_yuuka_unresolved",
-        "old_friend_score", "ex_lover_score", "still_lover_score", "romantic_score", "boundary_score",
+        "old_friend_score", "ex_lover_score", "still_lover_score", "romantic_score", "boundary_score", "career_minh", "career_yuuka",
     ])
 
     def clamp_story_score(value):
@@ -94,11 +98,17 @@ init python:
     def story_get_score(key, default=0):
         return clamp_story_score(story_state.get(key, default))
 
+    def story_notify_state_change(key=None):
+        callback = globals().get("career_handle_story_state_change", None)
+        if callable(callback):
+            callback(key)
+
     def story_add(key, amount=1):
         if key in STORY_SCORE_KEYS:
             story_state[key] = clamp_story_score(story_state.get(key, 0) + amount)
         else:
             story_state[key] = story_state.get(key, 0) + amount
+        story_notify_state_change(key)
 
     def story_sub(key, amount=1):
         story_add(key, -amount)
@@ -108,9 +118,11 @@ init python:
             story_state[key] = clamp_story_score(value)
         else:
             story_state[key] = value
+        story_notify_state_change(key)
 
     def story_flag(flag):
         add_unique(story_flags, flag)
+        story_notify_state_change()
 
     def story_unflag(flag):
         remove_value(story_flags, flag)
@@ -184,6 +196,7 @@ init python:
             real_complete(chapter_id)
         else:
             add_unique(story_completed_chapters, chapter_id)
+            story_notify_state_change()
 
     def story_chapter_done(chapter_id):
         # Adapter: support both this MVP fallback and the existing progression data if available.
@@ -191,6 +204,9 @@ init python:
             return True
         progress = globals().get("progress", None)
         if isinstance(progress, dict):
-            completed = progress.get("completed_chapters", [])
-            return chapter_id in completed
+            completed = progress.get("completed", [])
+            if chapter_id in completed:
+                return True
+            legacy_completed = progress.get("completed_chapters", [])
+            return chapter_id in legacy_completed
         return False

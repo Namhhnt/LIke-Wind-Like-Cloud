@@ -55,14 +55,18 @@ label tam_c02_company_party_s01b_first_salary_and_shopping:
     scene bg_company_open_office_day
     with fade
 
-    $ tam_monthly_salary = tam_get_monthly_salary_amount()
     $ tam_first_paycheck = tam_get_first_paycheck_amount()
     if not story_has_flag('tam_c02_first_salary_received'):
         $ story_flag('tam_c02_first_salary_received')
         $ tam_current_money = tam_add_available_money(tam_first_paycheck)
+        $ career_assign_level(
+            "tam",
+            1,
+            known_info=["Received first partial salary payment for the last two weeks of October."],
+        )
         python:
             activity_state = ensure_activity_state()
-            activity_state["monthly_salary"] = tam_monthly_salary
+            activity_state["monthly_salary"] = phone_get_character_status("tam").get("income_monthly") or activity_state.get("monthly_salary", 0)
             activity_state["player_is_employed"] = True
             activity_state["salary_cycle_day"] = 1
             activity_state["last_salary_day"] = activity_state.get("current_day", 1)
@@ -78,13 +82,6 @@ label tam_c02_company_party_s01b_first_salary_and_shopping:
                 "type": "partial_october_first_salary",
                 "chapter": "tam_c02_company_party",
             })
-        $ phone_update_character_status(
-            "tam",
-            job_title="Junior Staff",
-            job_level=1,
-            income_monthly=tam_monthly_salary,
-            known_info=["Received first partial salary payment for the last two weeks of October."],
-        )
         $ story_flag("tam_c02_salary_mail_sent")
         $ phone_unlock_mail("company_salary_first_month")
         $ phone_refresh_all()
@@ -275,4 +272,3 @@ label tam_c02_company_party_shopping_map:
             jump expression target
 
     jump tam_c02_company_party_shopping_area_menu
-

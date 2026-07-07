@@ -64,5 +64,7 @@ label after_load:
     $ initialize_progression()
     $ refresh_validation_state()
     $ phone_ensure_state()
+    $ career_refresh_all_statuses()
+    $ career_check_all_promotions()
     $ phone_refresh_all()
     return
