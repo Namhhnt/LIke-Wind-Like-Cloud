@@ -40,9 +40,9 @@ C08 — Yuuka xuất hiện  | yuuka_c08_festival_arrival             | yuuka   
 C09 — Buổi chiếu phim  | yuuka_c09_yuukas_work                  | yuuka     | SKELETON
 C10 — Dự án lệch nhịp  | work_c10_project_festival_overlap      | work      | SKELETON
 C11 — Bữa tối người cũ | group_c11_social_dinner                | group     | SKELETON
-C12 — Minyuu flashback | fb_minyuu_01-03                        | minh      | DONE/SKELETON MIX
+C12 — Minyuu flashback | fb_minyuu_01-03                        | minh      | SKELETON
 C13 — Tâm chọn vị trí  | tam_c20a_tam_minh_possible             | tam       | SKELETON
-C14 — Điểm gãy Minyuu  | fb_minyuu_04a/b/c + fb_05b             | minh      | DONE/SKELETON MIX
+C14 — Điểm gãy Minyuu  | fb_minyuu_04a/b/c + fb_05b             | minh      | SKELETON
 C15 — Yuuka interlude  | yuuka_c18a/b/c                         | yuuka     | SKELETON
 C16 — Khủng hoảng dự án| work_c16_project_crisis                | work      | SKELETON
 C17 — Bóng Minh        | hoang_h05_shadow_of_minh               | hoang     | SKELETON
@@ -148,8 +148,7 @@ thienan_quang_trust        = 35
 thienan_minh_residue       = 65
 family_pressure_thienan    = 70
 thienan_self_assertion     = 35
-quang_persistance          = 60   # legacy spelling
-quang_persistence          = 60   # corrected spelling
+quang_persistence          = 60
 
 # Minh / Yuuka
 minh_yuuka_trust           = 0
@@ -1325,6 +1324,7 @@ minh_romance_open_after_yuuka
 ```
 
 Result:
+
 - Minh/Yuuka had affection, maybe even mutual awareness, but never officially became lovers.
 - Minh can later open to Tâm or Thiên An if current route earns it.
 - Yuuka can end as friend, late confession, career, or single depending later support.
@@ -1353,6 +1353,7 @@ lock_yuuka_romance_except_minh
 ```
 
 Result:
+
 - Canon separation/reunion path.
 - Minh is locked away from Tâm/Thiên An romance.
 - Yuuka has strongest career growth in this branch.
@@ -1378,6 +1379,7 @@ lock_yuuka_romance_except_minh
 ```
 
 Result:
+
 - Minh/Yuuka never fully separate.
 - Yuuka becomes known, but less brilliant than canon because the long solitude did not refine her as brutally.
 - No Tâm-Minh or Thiên An-Minh route.
@@ -2109,6 +2111,7 @@ minh_finds_child_late
 ```
 
 Ending handling options:
+
 - Fold into `e17_yuuka_single` if MVP needs fewer endings.
 - Or create future `e25_yuuka_single_mother_late_reunion` if expanding beyond 24 endings.
 
