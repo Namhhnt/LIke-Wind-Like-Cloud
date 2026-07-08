@@ -2,34 +2,30 @@
 """
 batch_remove_black_bg.py
 
-Batch remove black / near-black background connected to image borders.
+Batch remove black / near-black background connected to selected image borders.
 
 Features:
 - Scan images from input folder.
 - Output cleaned PNG files to output folder.
-- Remove only dark pixels connected to image borders.
+- Remove only dark pixels connected to allowed image borders.
+- Exclude specific borders from background detection via --exclude.
+- Protect near-black regions connected to excluded borders.
 - Support near-black threshold via --range.
 - Feather alpha edge via --smooth-padding.
 - Clear border artifacts via per-edge --safe-padding.
+- If a border is excluded, safe-padding will not clear that border.
 
 Dependencies:
     pip install pillow numpy
 
 Examples:
     python batch_remove_black_bg.py --input ./input --output ./output
-
     python batch_remove_black_bg.py --input ./input --output ./output --range 28
-
+    python batch_remove_black_bg.py --input ./input --output ./output --range 28 --exclude b
+    python batch_remove_black_bg.py --input ./input --output ./output --range 28 --exclude b --safe-padding 4 2 4 0
     python batch_remove_black_bg.py --input ./input --output ./output --range 28 --smooth-padding 6
-
-    python batch_remove_black_bg.py --input ./input --output ./output --safe-padding 4
-
-    python batch_remove_black_bg.py --input ./input --output ./output --safe-padding 4 2 4 0
-
     python batch_remove_black_bg.py --input ./input --output ./output --opacity
-
     python batch_remove_black_bg.py --input ./input --output ./output --opacity 0.65
-
     python batch_remove_black_bg.py --input ./input --output ./output --recursive
 """
 
@@ -38,7 +34,7 @@ from __future__ import annotations
 import argparse
 from collections import deque
 from pathlib import Path
-from typing import Iterable, NamedTuple
+from typing import NamedTuple
 
 import numpy as np
 from PIL import Image
@@ -53,6 +49,8 @@ SUPPORTED_EXTENSIONS = {
     ".tif",
     ".tiff",
 }
+
+ALL_BORDERS = {"l", "t", "r", "b"}
 
 
 class SafePadding(NamedTuple):
@@ -113,6 +111,47 @@ def parse_safe_padding(values: list[int]) -> SafePadding:
     )
 
 
+def parse_exclude_borders(value: str | None) -> set[str]:
+    """
+    Parse --exclude.
+
+    Border keys:
+        l = left
+        t = top
+        r = right
+        b = bottom
+
+    Examples:
+        --exclude b
+            exclude and protect bottom edge
+
+        --exclude lr
+            exclude and protect left + right edges
+
+        --exclude tlr
+            exclude and protect top + left + right edges,
+            so only bottom edge is used as removable background seed
+    """
+    if value is None:
+        return set()
+
+    value = value.strip().lower()
+
+    if value in {"", "none", "no", "false", "0"}:
+        return set()
+
+    exclude = set(value)
+    invalid = exclude - ALL_BORDERS
+
+    if invalid:
+        raise ValueError(
+            f"Invalid --exclude value: {value}. "
+            "Allowed characters are only: l, t, r, b."
+        )
+
+    return exclude
+
+
 def is_inside_path(path: Path, parent: Path) -> bool:
     """
     Return True if path is inside parent.
@@ -125,26 +164,38 @@ def is_inside_path(path: Path, parent: Path) -> bool:
         return False
 
 
-def find_border_connected_dark(
+def make_dark_mask(
     rgb: np.ndarray,
     black_range: int,
+) -> np.ndarray:
+    """
+    A pixel is considered dark/background-candidate if:
+        R <= black_range and G <= black_range and B <= black_range
+    """
+    return np.all(rgb <= black_range, axis=2)
+
+
+def flood_fill_dark_from_borders(
+    dark: np.ndarray,
+    borders: set[str],
     safe_padding: SafePadding,
 ) -> np.ndarray:
     """
-    Detect dark pixels connected to image borders.
+    Flood-fill dark pixels from selected border seed areas.
 
-    A pixel is considered background candidate if:
-        R <= black_range and G <= black_range and B <= black_range
+    This function does not decide what should be removed.
+    It only returns all dark pixels connected to the given borders.
 
-    The safe-padding area is also used as an expanded seed zone.
-    This helps remove near-edge artifacts that may not touch the exact image edge.
+    borders:
+        {"l", "t", "r", "b"}
     """
-    h, w, _ = rgb.shape
-
-    dark = np.all(rgb <= black_range, axis=2)
+    h, w = dark.shape
 
     visited = np.zeros((h, w), dtype=bool)
     q: deque[tuple[int, int]] = deque()
+
+    if not borders:
+        return visited
 
     left = min(safe_padding.left, w)
     top = min(safe_padding.top, h)
@@ -156,38 +207,44 @@ def find_border_connected_dark(
             visited[y, x] = True
             q.append((y, x))
 
-    # Always seed the true outer border.
-    for x in range(w):
-        push(0, x)
-        push(h - 1, x)
-
-    for y in range(h):
-        push(y, 0)
-        push(y, w - 1)
-
-    # Expanded top seed band.
-    for y in range(top):
+    # Top edge + optional seed band.
+    if "t" in borders:
         for x in range(w):
-            push(y, x)
+            push(0, x)
 
-    # Expanded bottom seed band.
-    if bottom > 0:
-        for y in range(h - bottom, h):
+        for y in range(top):
             for x in range(w):
                 push(y, x)
 
-    # Expanded left seed band.
-    for y in range(h):
-        for x in range(left):
-            push(y, x)
+    # Bottom edge + optional seed band.
+    if "b" in borders:
+        for x in range(w):
+            push(h - 1, x)
 
-    # Expanded right seed band.
-    if right > 0:
+        if bottom > 0:
+            for y in range(h - bottom, h):
+                for x in range(w):
+                    push(y, x)
+
+    # Left edge + optional seed band.
+    if "l" in borders:
         for y in range(h):
-            for x in range(w - right, w):
+            push(y, 0)
+
+        for y in range(h):
+            for x in range(left):
                 push(y, x)
 
-    # 8-connected flood fill.
+    # Right edge + optional seed band.
+    if "r" in borders:
+        for y in range(h):
+            push(y, w - 1)
+
+        if right > 0:
+            for y in range(h):
+                for x in range(w - right, w):
+                    push(y, x)
+
     neighbors = (
         (-1, -1), (-1, 0), (-1, 1),
         (0, -1),           (0, 1),
@@ -207,6 +264,53 @@ def find_border_connected_dark(
                     q.append((ny, nx))
 
     return visited
+
+
+def find_background_and_protected_masks(
+    rgb: np.ndarray,
+    black_range: int,
+    safe_padding: SafePadding,
+    exclude_borders: set[str],
+) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Return:
+        bg_mask:
+            dark pixels that should be removed
+
+        protected_mask:
+            dark pixels connected to excluded borders, preserved from removal
+            and also protected from feathering
+
+    New behavior:
+        If --exclude b is used, dark regions connected to bottom edge are protected.
+
+    Why this fixes the hair case:
+        Earlier, hair attached to bottom could still be reached from top/left/right
+        through a continuous near-black region. Now bottom-connected dark pixels are
+        marked protected and subtracted from the remove mask.
+    """
+    dark = make_dark_mask(
+        rgb=rgb,
+        black_range=black_range,
+    )
+
+    active_borders = ALL_BORDERS - exclude_borders
+
+    removable_from_active = flood_fill_dark_from_borders(
+        dark=dark,
+        borders=active_borders,
+        safe_padding=safe_padding,
+    )
+
+    protected_from_excluded = flood_fill_dark_from_borders(
+        dark=dark,
+        borders=exclude_borders,
+        safe_padding=safe_padding,
+    )
+
+    bg_mask = removable_from_active & ~protected_from_excluded
+
+    return bg_mask, protected_from_excluded
 
 
 def dilate_8(mask: np.ndarray) -> np.ndarray:
@@ -232,12 +336,13 @@ def apply_edge_feather(
     alpha: np.ndarray,
     bg_mask: np.ndarray,
     smooth_padding: int,
+    protected_mask: np.ndarray | None = None,
 ) -> np.ndarray:
     """
     Remove background alpha and feather nearby edge pixels.
 
-    Background pixels become alpha 0.
-    Pixels near the cut edge gradually recover toward their original alpha.
+    protected_mask pixels are never made transparent by feathering.
+    This matters for black hair/clothing connected to an excluded border.
     """
     original_alpha = alpha.copy()
     alpha[bg_mask] = 0
@@ -245,14 +350,20 @@ def apply_edge_feather(
     if smooth_padding <= 0:
         return alpha
 
+    if protected_mask is None:
+        protected_mask = np.zeros_like(bg_mask, dtype=bool)
+
     expanded = bg_mask.copy()
 
     for i in range(1, smooth_padding + 1):
         dilated = dilate_8(expanded)
+
+        # Do not feather into protected regions,
+        # and do not let feather expansion pass through them.
+        dilated &= ~protected_mask
+
         ring = dilated & ~expanded
 
-        # Nearer to the removed background = more transparent.
-        # Farther from the removed background = closer to original alpha.
         factor = i / float(smooth_padding + 1)
 
         alpha[ring] = np.minimum(
@@ -268,6 +379,7 @@ def apply_edge_feather(
 def clear_safe_padding(
     alpha: np.ndarray,
     safe_padding: SafePadding,
+    exclude_borders: set[str],
 ) -> np.ndarray:
     """
     Force-clear selected border areas.
@@ -275,17 +387,7 @@ def clear_safe_padding(
     Order:
         left, top, right, bottom
 
-    Example:
-        --safe-padding 4 2 4 0
-
-    Means:
-        clear left 4px
-        clear top 2px
-        clear right 4px
-        clear bottom 0px
-
-    Warning:
-        If the subject touches a cleared border, that part will be trimmed.
+    If a border is excluded via --exclude, this function will not clear that side.
     """
     h, w = alpha.shape
 
@@ -294,16 +396,16 @@ def clear_safe_padding(
     right = min(safe_padding.right, w)
     bottom = min(safe_padding.bottom, h)
 
-    if top > 0:
+    if top > 0 and "t" not in exclude_borders:
         alpha[:top, :] = 0
 
-    if bottom > 0:
+    if bottom > 0 and "b" not in exclude_borders:
         alpha[h - bottom:, :] = 0
 
-    if left > 0:
+    if left > 0 and "l" not in exclude_borders:
         alpha[:, :left] = 0
 
-    if right > 0:
+    if right > 0 and "r" not in exclude_borders:
         alpha[:, w - right:] = 0
 
     return alpha
@@ -316,6 +418,7 @@ def remove_background_from_image(
     opacity: float | None,
     black_range: int,
     safe_padding: SafePadding,
+    exclude_borders: set[str],
 ) -> None:
     image = Image.open(input_path).convert("RGBA")
     arr = np.array(image)
@@ -323,21 +426,24 @@ def remove_background_from_image(
     rgb = arr[:, :, :3]
     alpha = arr[:, :, 3].astype(np.float32)
 
-    bg_mask = find_border_connected_dark(
+    bg_mask, protected_mask = find_background_and_protected_masks(
         rgb=rgb,
         black_range=black_range,
         safe_padding=safe_padding,
+        exclude_borders=exclude_borders,
     )
 
     alpha = apply_edge_feather(
         alpha=alpha,
         bg_mask=bg_mask,
         smooth_padding=smooth_padding,
+        protected_mask=protected_mask,
     )
 
     alpha = clear_safe_padding(
         alpha=alpha,
         safe_padding=safe_padding,
+        exclude_borders=exclude_borders,
     )
 
     if opacity is not None:
@@ -401,6 +507,7 @@ def process_folder(
     recursive: bool,
     black_range: int,
     safe_padding: SafePadding,
+    exclude_borders: set[str],
 ) -> None:
     if not input_dir.exists():
         raise FileNotFoundError(f"Input folder does not exist: {input_dir}")
@@ -431,6 +538,8 @@ def process_folder(
     success = 0
     failed = 0
 
+    active_borders = ALL_BORDERS - exclude_borders
+
     print(f"Input folder      : {input_dir}")
     print(f"Output folder     : {output_dir}")
     print(f"Recursive         : {recursive}")
@@ -443,8 +552,24 @@ def process_folder(
         f"right={safe_padding.right}, "
         f"bottom={safe_padding.bottom}"
     )
+    print(
+        "Excluded/protected: "
+        f"{''.join(sorted(exclude_borders)) if exclude_borders else 'none'}"
+    )
+    print(
+        "Active borders    : "
+        f"{''.join(sorted(active_borders)) if active_borders else 'none'}"
+    )
     print(f"Global opacity    : {opacity if opacity is not None else 'unchanged'}")
     print()
+
+    if not active_borders:
+        print(
+            "Warning: all borders are excluded. "
+            "No border-connected background will be removed. "
+            "Only global opacity may be applied."
+        )
+        print()
 
     for index, input_file in enumerate(image_files, start=1):
         output_file = build_output_path(
@@ -461,6 +586,7 @@ def process_folder(
                 opacity=opacity,
                 black_range=black_range,
                 safe_padding=safe_padding,
+                exclude_borders=exclude_borders,
             )
 
             success += 1
@@ -513,6 +639,17 @@ def parse_args() -> argparse.Namespace:
     )
 
     parser.add_argument(
+        "--exclude",
+        type=str,
+        default="",
+        help=(
+            "Exclude and protect borders from background removal. "
+            "Use letters: l=left, t=top, r=right, b=bottom. "
+            "Examples: --exclude b, --exclude lr, --exclude tlr."
+        ),
+    )
+
+    parser.add_argument(
         "--range",
         dest="black_range",
         type=int,
@@ -549,6 +686,7 @@ def main() -> None:
     args = parse_args()
 
     safe_padding = parse_safe_padding(args.safe_padding)
+    exclude_borders = parse_exclude_borders(args.exclude)
 
     process_folder(
         input_dir=Path(args.input),
@@ -558,6 +696,7 @@ def main() -> None:
         recursive=args.recursive,
         black_range=args.black_range,
         safe_padding=safe_padding,
+        exclude_borders=exclude_borders,
     )
 
 
