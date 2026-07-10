@@ -61,8 +61,10 @@ label tam_c04_w01_s04_quang_after_work:
         "Khuyên Quang tự mang hồ sơ tới cho Thiên An":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_observation", 5)
             $ story_flag("tam_c04_w01_tam_supports_quang_thienan")
+            $ story_flag("quang_thienan_direct_action")
 
             tam neutral "Anh tự mang qua đi."
 
@@ -105,8 +107,11 @@ label tam_c04_w01_s04_quang_after_work:
 
         "Trêu Quang vì vẫn vòng qua mình để hỏi Thiên An":
             $ story_add("tam_quang_interest", 5)
+            $ tam_c04_add_extended_score("quang_tam_warmth", 3)
+            $ tam_c04_add_extended_score("quang_tam_awareness", 2)
             $ story_add("tam_observation", 5)
             $ story_flag("tam_c04_w01_tam_notices_quang_familiarity")
+            $ story_flag("quang_tam_familiarity_reframed")
 
             tam teasing "Anh lo cho chị An thì cứ nói là lo cho chị An. Sao lần nào cũng vòng qua em vậy?"
 

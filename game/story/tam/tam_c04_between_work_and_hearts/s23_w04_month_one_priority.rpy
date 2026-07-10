@@ -25,6 +25,7 @@ label tam_c04_w04_s06_month_one_priority:
             $ story_add("huyen_quan_trust", 3)
             $ story_add("career_huyen", 3)
             $ story_add("thienan_quang_trust", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add_direction("tam", "tam_hoang_open")
             $ story_flag("tam_c04_w04_focus_hoang")
 
@@ -54,8 +55,12 @@ label tam_c04_w04_s06_month_one_priority:
         "Để Huyền tự gửi outline cho Quân":
             $ story_add("career_huyen", 5)
             $ story_add("huyen_quan_trust", 5)
+            $ story_add("huyen_quan_interest", 3)
             $ story_add("tam_observation", 5)
             $ story_add("hoang_self_acceptance", 3)
+            $ story_add("thienan_quang_trust", 3)
+            $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_flag("tam_c04_w04_focus_huyen_quan")
 
             tam neutral "Outline của mày thì mày tự gửi. Đừng thêm tao vào chỉ để đỡ run."
@@ -69,6 +74,11 @@ label tam_c04_w04_s06_month_one_priority:
         "Nhắn Quang rằng anh đã có chỗ ở bàn ăn, đừng chỉ đứng ngoài cửa":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
+            $ story_add("huyen_quan_trust", 3)
+            $ story_add("career_huyen", 3)
+            $ story_add_direction("quang", "quang_thienan_open")
+            $ story_add_direction("thienan", "thienan_quang_open")
             $ story_add("tam_self_clarity", 5)
             $ story_add_direction("tam", "tam_support_quang_thienan")
             $ story_flag("tam_c04_w04_focus_quang_thienan")
@@ -83,8 +93,12 @@ label tam_c04_w04_s06_month_one_priority:
 
         "Hỏi Quang khi nào anh định trả lời câu hỏi về chiếc ô":
             $ story_add("tam_quang_interest", 5)
+            $ tam_c04_add_extended_score("quang_tam_warmth", 3)
+            $ tam_c04_add_extended_score("quang_tam_awareness", 5)
             $ story_add("tam_observation", 5)
             $ story_add("quang_persistence", 3)
+            $ story_add_direction("quang", "quang_tam_open")
+            $ story_flag("quang_tam_route_seeded")
             $ story_add("career_huyen", 3)
             $ story_flag("tam_c04_w04_focus_quang_personal")
 
@@ -108,6 +122,7 @@ label tam_c04_w04_s06_month_one_priority:
             $ story_add("career_huyen", 3)
             $ story_add("hoang_self_acceptance", 3)
             $ story_add("thienan_quang_trust", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add_direction("tam", "tam_career_focus")
             $ story_flag("tam_c04_w04_focus_career")
 

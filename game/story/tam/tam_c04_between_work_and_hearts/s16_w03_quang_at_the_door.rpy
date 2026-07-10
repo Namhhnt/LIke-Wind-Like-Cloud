@@ -25,6 +25,7 @@ label tam_c04_w03_s05_quang_at_the_door:
         "Mở cổng, bảo Quang vào đợi trong nhà":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_observation", 3)
             $ story_flag("tam_c04_w03_tam_invites_quang_inside_for_thienan")
 
@@ -41,8 +42,10 @@ label tam_c04_w03_s05_quang_at_the_door:
         "Để Quang tự quyết định có chờ hay không":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_self_clarity", 5)
             $ story_flag("tam_c04_w03_tam_does_not_mediate_quang_waiting")
+            $ story_flag("quang_thienan_stayed_by_choice")
 
             tam neutral "Em vào trước. Anh muốn đợi thì tự nói với chị ấy. Muốn về thì cũng tự về."
 
@@ -56,9 +59,12 @@ label tam_c04_w03_s05_quang_at_the_door:
 
         "Nhận chiếc ô và hỏi vì sao Quang vẫn nhớ cách cô buộc":
             $ story_add("tam_quang_interest", 5)
+            $ tam_c04_add_extended_score("quang_tam_warmth", 3)
+            $ tam_c04_add_extended_score("quang_tam_awareness", 3)
             $ story_add("tam_observation", 5)
             $ story_add("quang_persistence", 3)
             $ story_flag("tam_c04_w03_tam_notices_quang_old_habit")
+            $ story_flag("quang_tam_old_habit_noticed")
 
             tam neutral "Anh vẫn nhớ em buộc nút thế này à?"
 

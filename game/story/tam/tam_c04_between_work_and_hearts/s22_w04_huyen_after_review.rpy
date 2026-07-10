@@ -52,6 +52,7 @@ label tam_c04_w04_s05_huyen_after_review:
         "Để Huyền tự dựng outline":
             $ story_add("career_huyen", 5)
             $ story_add("huyen_quan_trust", 5)
+            $ story_add("huyen_quan_interest", 1)
             $ story_add("tam_observation", 5)
             $ story_flag("tam_c04_w04_tam_leaves_huyen_month_two_ownership")
 
@@ -65,6 +66,7 @@ label tam_c04_w04_s05_huyen_after_review:
 
         "Hỏi Huyền có vui vì được Quân tin không":
             $ story_add("huyen_quan_trust", 5)
+            $ story_add("huyen_quan_interest", 3)
             $ story_add("tam_observation", 5)
             $ story_flag("tam_c04_w04_tam_asks_huyen_about_quan_trust")
 

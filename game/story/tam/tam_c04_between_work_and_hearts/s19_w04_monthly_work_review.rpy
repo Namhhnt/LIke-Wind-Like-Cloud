@@ -68,6 +68,7 @@ label tam_c04_w04_s02_monthly_work_review:
         "Để Huyền nhận phần đối ngoại dưới sự review của Quân":
             $ story_add("career_huyen", 5)
             $ story_add("huyen_quan_trust", 5)
+            $ story_add("huyen_quan_interest", 2)
             $ story_add("tam_observation", 5)
             $ story_flag("tam_c04_w04_huyen_gets_quan_review_track")
 

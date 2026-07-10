@@ -221,6 +221,9 @@ init -5 python:
                         "thienan_quang_trust": 1,
                         "quang_persistence": 1,
                     },
+                    "tam_c04_extended_story_add": {
+                        "quang_thienan_resolve": 1,
+                    },
                     "flags": ["tam_c04_w01_phone_support_quang_thienan"],
                 },
                 "response_messages": [
@@ -245,6 +248,9 @@ init -5 python:
                 "effects": {
                     "story_add": {
                         "tam_quang_interest": 1,
+                    },
+                    "tam_c04_extended_story_add": {
+                        "quang_tam_warmth": 1,
                     },
                     "flags": ["tam_c04_w01_phone_teased_quang"],
                 },

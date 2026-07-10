@@ -28,6 +28,7 @@ label tam_c04_w02_s06_friday_second_priority:
             $ story_add("career_huyen", 3)
             $ story_add("thienan_quang_trust", 3)
             $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add_direction("tam", "tam_hoang_open")
             $ story_flag("tam_c04_w02_focus_hoang")
 
@@ -46,6 +47,7 @@ label tam_c04_w02_s06_friday_second_priority:
             $ story_add("hoang_self_acceptance", 3)
             $ story_add("thienan_quang_trust", 3)
             $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add_direction("tam", "tam_support_huyen")
             $ story_flag("tam_c04_w02_focus_huyen")
 
@@ -61,10 +63,13 @@ label tam_c04_w02_s06_friday_second_priority:
 
         "Chỉ góp ý một lần rồi để Huyền tự chốt với Quân":
             $ story_add("huyen_quan_trust", 5)
+            $ story_add("huyen_quan_interest", 1)
             $ story_add("career_huyen", 5)
             $ story_add("tam_observation", 5)
             $ story_add("hoang_self_acceptance", 3)
             $ story_add("thienan_quang_trust", 3)
+            $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_flag("tam_c04_w02_focus_huyen_quan")
             $ story_flag("tam_c04_w02_tam_steps_back_again")
 
@@ -83,6 +88,7 @@ label tam_c04_w02_s06_friday_second_priority:
         "Nhắc Quang đừng đọc quá nhiều vào chiếc hộp sạch":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_self_clarity", 5)
             $ story_add("huyen_quan_trust", 3)
             $ story_add("career_huyen", 3)
@@ -100,8 +106,11 @@ label tam_c04_w02_s06_friday_second_priority:
 
         "Trêu Quang về chiếc nắp lệch lần trước":
             $ story_add("tam_quang_interest", 5)
+            $ tam_c04_add_extended_score("quang_tam_warmth", 3)
+            $ tam_c04_add_extended_score("quang_tam_awareness", 3)
             $ story_add("tam_observation", 5)
             $ story_add("quang_persistence", 3)
+            $ story_flag("quang_tam_personal_attention")
             $ story_add("career_huyen", 3)
             $ story_add("hoang_self_acceptance", 3)
             $ story_flag("tam_c04_w02_focus_quang_personal")
@@ -127,6 +136,7 @@ label tam_c04_w02_s06_friday_second_priority:
             $ story_add("career_huyen", 3)
             $ story_add("thienan_quang_trust", 3)
             $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add("hoang_self_acceptance", 3)
             $ story_add_direction("tam", "tam_career_focus")
             $ story_flag("tam_c04_w02_focus_career")

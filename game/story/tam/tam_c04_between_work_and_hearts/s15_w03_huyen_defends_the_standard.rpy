@@ -40,6 +40,7 @@ label tam_c04_w03_s04_huyen_defends_the_standard:
     menu:
         "Trêu Huyền rằng cô đã thành học trò của Quân":
             $ story_add("huyen_quan_trust", 3)
+            $ story_add("huyen_quan_interest", 1)
             $ story_add("tam_observation", 5)
             $ story_add("career_huyen", 3)
             $ story_flag("tam_c04_w03_tam_teases_huyen_quan_standard")
@@ -69,6 +70,7 @@ label tam_c04_w03_s04_huyen_defends_the_standard:
 
         "Để Huyền tự chốt và nhìn phản ứng của Quân":
             $ story_add("huyen_quan_trust", 5)
+            $ story_add("huyen_quan_interest", 2)
             $ story_add("career_huyen", 5)
             $ story_add("tam_observation", 5)
             $ story_flag("tam_c04_w03_tam_leaves_huyen_to_defend_standard")

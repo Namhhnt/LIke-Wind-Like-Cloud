@@ -65,6 +65,7 @@ label tam_c04_w02_s03_huyen_knows_the_mark:
 
         "Để khoảnh khắc đó thuộc về Huyền":
             $ story_add("huyen_quan_trust", 5)
+            $ story_add("huyen_quan_interest", 1)
             $ story_add("career_huyen", 5)
             $ story_add("tam_observation", 5)
             $ story_flag("tam_c04_w02_tam_leaves_huyen_credit")

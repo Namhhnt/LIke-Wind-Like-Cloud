@@ -38,6 +38,7 @@ label tam_c04_w01_s05_friday_first_priority:
             $ story_add("career_huyen", 3)
             $ story_add("thienan_quang_trust", 3)
             $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add_direction("tam", "tam_hoang_open")
             $ story_flag("tam_c04_w01_first_focus_hoang")
 
@@ -60,6 +61,7 @@ label tam_c04_w01_s05_friday_first_priority:
             $ story_add("hoang_self_acceptance", 3)
             $ story_add("thienan_quang_trust", 3)
             $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add_direction("tam", "tam_support_huyen")
             $ story_flag("tam_c04_w01_first_focus_huyen")
 
@@ -84,6 +86,8 @@ label tam_c04_w01_s05_friday_first_priority:
             $ story_add("career_huyen", 5)
             $ story_add("hoang_self_acceptance", 3)
             $ story_add("thienan_quang_trust", 3)
+            $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_flag("tam_c04_w01_first_focus_huyen_quan")
             $ story_flag("tam_c04_w01_tam_steps_back_from_huyen_quan")
 
@@ -108,6 +112,7 @@ label tam_c04_w01_s05_friday_first_priority:
             $ story_add("tam_self_clarity", 5)
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("huyen_quan_trust", 3)
             $ story_add("career_huyen", 3)
             $ story_add("hoang_self_acceptance", 3)
@@ -135,6 +140,7 @@ label tam_c04_w01_s05_friday_first_priority:
             $ story_add("career_huyen", 3)
             $ story_add("thienan_quang_trust", 3)
             $ story_add("quang_persistence", 3)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 3)
             $ story_add("hoang_self_acceptance", 3)
             $ story_add_direction("tam", "tam_career_focus")
             $ story_flag("tam_c04_w01_first_focus_career")

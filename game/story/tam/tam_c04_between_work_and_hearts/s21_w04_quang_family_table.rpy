@@ -29,6 +29,7 @@ label tam_c04_w04_s04_quang_family_table:
         "Đỡ lời để Quang và Thiên An bớt phòng thủ":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_observation", 3)
             $ story_add_direction("tam", "tam_support_quang_thienan")
             $ story_flag("tam_c04_w04_tam_supports_quang_at_family_table")
@@ -44,8 +45,10 @@ label tam_c04_w04_s04_quang_family_table:
         "Không chen vào cuộc đối đáp của hai người":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_self_clarity", 5)
             $ story_flag("tam_c04_w04_tam_leaves_quang_thienan_space")
+            $ story_flag("quang_thienan_family_space")
 
             "Tâm cúi xuống gỡ một mảnh xương cá."
 
@@ -57,9 +60,12 @@ label tam_c04_w04_s04_quang_family_table:
 
         "Nhận ra Quang cũng luôn nhớ phần của Tâm":
             $ story_add("tam_quang_interest", 5)
+            $ tam_c04_add_extended_score("quang_tam_warmth", 5)
+            $ tam_c04_add_extended_score("quang_tam_awareness", 5)
             $ story_add("tam_observation", 5)
             $ story_add("quang_persistence", 3)
             $ story_flag("tam_c04_w04_tam_notices_quang_remembers_her_too")
+            $ story_flag("quang_tam_remembers_small_habits")
 
             "Khi Tâm vừa đưa đũa về phía bát canh, Quang đã đặt chiếc muôi sang bên tay thuận của cô."
 

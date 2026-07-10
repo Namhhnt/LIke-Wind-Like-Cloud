@@ -39,6 +39,7 @@ label tam_c04_w02_s04_quang_stops_asking_around:
         "Nhắn Quang rằng Thiên An đã ăn":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_observation", 3)
             $ story_flag("tam_c04_w02_tam_confirms_thienan_ate")
 
@@ -57,8 +58,10 @@ label tam_c04_w02_s04_quang_stops_asking_around:
         "Không làm người trung gian nữa":
             $ story_add("thienan_quang_trust", 5)
             $ story_add("quang_persistence", 5)
+            $ tam_c04_add_extended_score("quang_thienan_resolve", 5)
             $ story_add("tam_self_clarity", 5)
             $ story_flag("tam_c04_w02_tam_refuses_middle_role")
+            $ story_flag("quang_stops_using_tam_as_middle")
 
             "Tâm đặt điện thoại úp xuống bàn."
 
@@ -68,9 +71,12 @@ label tam_c04_w02_s04_quang_stops_asking_around:
 
         "Chụp chiếc nắp bị lệch và trêu Quang":
             $ story_add("tam_quang_interest", 5)
+            $ tam_c04_add_extended_score("quang_tam_warmth", 3)
+            $ tam_c04_add_extended_score("quang_tam_awareness", 2)
             $ story_add("tam_observation", 5)
             $ story_add("quang_persistence", 3)
             $ story_flag("tam_c04_w02_tam_notices_quang_was_flustered")
+            $ story_flag("quang_tam_flustered_attention")
 
             "Tâm chụp chiếc nắp hộp bị lệch."
 
