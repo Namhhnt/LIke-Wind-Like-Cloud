@@ -1,4 +1,6 @@
 init -1 python:
+    _map_rollback_saved = True
+
     def interactive_map_focus_entry(entry, map_zoom, canvas_size, viewport_size, focus_center):
         if not entry:
             return
@@ -79,8 +81,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     tag menu
     modal True
 
-    on "show" action SetVariable("quick_menu", False)
-    on "hide" action SetVariable("quick_menu", True)
+    on "show" action [SetVariable("quick_menu", False), SetVariable("_map_rollback_saved", config.rollback_enabled), SetVariable("config.rollback_enabled", False)]
+    on "hide" action [SetVariable("quick_menu", True), SetVariable("config.rollback_enabled", _map_rollback_saved)]
 
     $ context = MAP_CONTEXTS.get(context_id, MAP_CONTEXTS["act1_default"])
     $ bg = time_get_map_background(context.get("background", "images/maps/city_map_day.png"))

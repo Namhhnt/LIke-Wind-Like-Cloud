@@ -2,6 +2,9 @@ screen time_passage_loading_screen(duration=2.0, title=None, body=None):
     tag menu
     modal True
 
+    on "show" action [SetVariable("quick_menu", False), SetVariable("_map_rollback_saved", config.rollback_enabled), SetVariable("config.rollback_enabled", False)]
+    on "hide" action [SetVariable("quick_menu", True), SetVariable("config.rollback_enabled", _map_rollback_saved)]
+
     default elapsed = 0.0
     $ safe_duration = max(0.25, float(duration or 0.25))
     $ progress_ratio = min(1.0, elapsed / safe_duration)
@@ -56,6 +59,9 @@ screen time_passage_loading_screen(duration=2.0, title=None, body=None):
 screen time_skip_screen():
     tag menu
     modal True
+
+    on "show" action [SetVariable("quick_menu", False), SetVariable("_map_rollback_saved", config.rollback_enabled), SetVariable("config.rollback_enabled", False)]
+    on "hide" action [SetVariable("quick_menu", True), SetVariable("config.rollback_enabled", _map_rollback_saved)]
 
     $ s = ensure_activity_state()
     $ can_choose_any_day = time_skip_can_choose_any_day()

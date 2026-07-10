@@ -2,8 +2,8 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
     tag menu
     modal True
 
-    on "show" action SetVariable("quick_menu", False)
-    on "hide" action SetVariable("quick_menu", True)
+    on "show" action [SetVariable("quick_menu", False), SetVariable("_map_rollback_saved", config.rollback_enabled), SetVariable("config.rollback_enabled", False)]
+    on "hide" action [SetVariable("quick_menu", True), SetVariable("config.rollback_enabled", _map_rollback_saved)]
 
     default selected_route = timeline_normalize_route_id(route_id)
     default active_node_id = selected_node_id if selected_node_id else timeline_get_first_selectable_node(selected_route)
