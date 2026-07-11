@@ -1,0 +1,6 @@
+init -5 python:
+    PHONE_SOCIAL_POSTS.update({
+        "hoang_c04_m05_no_excuse": {"id":"hoang_c04_m05_no_excuse","author":"hoang","content":"Có những ngày gặp nhau không cần lý do. Chỉ cần cả hai đều tới.","image":None,"unlock_conditions":["flag:tam_c04_w17_tam_keeps_hoang_sunday"],"sort_order":1610,"comments":[],"effects_on_read":{"flags":["read_hoang_c04_m05_no_excuse"]},"effects_on_like":{"story_add":{"tam_hoang_interest":1}}},
+        "huyen_c04_m05_bridge": {"id":"huyen_c04_m05_bridge","author":"huyen","content":"Cầu que gỗ đã đứng. Người làm cầu yêu cầu không công bố số lần sửa.","image":None,"unlock_conditions":["flag:tam_c04_w19_huyen_builds_bridge_with_anhni"],"sort_order":1620,"comments":[{"author":"tam","text":"Ba lần?"},{"author":"huyen","text":"Chặn."}],"effects_on_read":{"flags":["read_huyen_c04_m05_bridge"]},"effects_on_like":{}},
+        "tam_c04_m05_independent": {"id":"tam_c04_m05_independent","author":"tam","content":"Một cuối tuần trống không nhất thiết là một chỗ đang chờ ai đó.","image":None,"unlock_conditions":["flag:tam_c04_tam_independent"],"sort_order":1630,"comments":[{"author":"huyen","text":"Cuối cùng cũng biết nghỉ à?"}],"effects_on_read":{"flags":["read_tam_c04_m05_independent"]},"effects_on_like":{}},
+    })

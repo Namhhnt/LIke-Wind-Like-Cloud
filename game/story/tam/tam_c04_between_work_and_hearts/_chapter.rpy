@@ -1,7 +1,7 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/_chapter.rpy
 # Chapter 04 entry wrapper and weekly checkpoint wrappers.
 # Weekly checkpoints remain internal; only the final C04 checkpoint completes the chapter.
-# Wrapper version: 1.8 — includes Week 09–12 (Month 03).
+# Wrapper version: 1.9 — includes Week 13–24 (Months 04–06) and final phase transition.
 
 label tam_c04_between_work_and_hearts:
     $ tam_c04_ensure_extended_story_state()
@@ -34,9 +34,31 @@ label tam_c04_between_work_and_hearts:
         jump tam_c04_w11_cannot_pretend
     if not story_has_flag("tam_c04_w12_completed"):
         jump tam_c04_w12_three_month_review
+    if not story_has_flag("tam_c04_w13_completed"):
+        jump tam_c04_w13_departures
+    if not story_has_flag("tam_c04_w14_completed"):
+        jump tam_c04_w14_quiet_house
+    if not story_has_flag("tam_c04_w15_completed"):
+        jump tam_c04_w15_distance_has_weight
+    if not story_has_flag("tam_c04_w16_completed"):
+        jump tam_c04_w16_month_four_review
+    if not story_has_flag("tam_c04_w17_completed"):
+        jump tam_c04_w17_returns
+    if not story_has_flag("tam_c04_w18_completed"):
+        jump tam_c04_w18_choose_an_answer
+    if not story_has_flag("tam_c04_w19_completed"):
+        jump tam_c04_w19_after_the_answer
+    if not story_has_flag("tam_c04_w20_completed"):
+        jump tam_c04_w20_month_five_review
+    if not story_has_flag("tam_c04_w21_completed"):
+        jump tam_c04_w21_new_routine
+    if not story_has_flag("tam_c04_w22_completed"):
+        jump tam_c04_w22_when_work_interrupts
+    if not story_has_flag("tam_c04_w23_completed"):
+        jump tam_c04_w23_new_balance
+    if not story_has_flag("tam_c04_w24_completed"):
+        jump tam_c04_w24_six_month_finale
 
-    if renpy.has_label("tam_c04_w13_fourth_month"):
-        jump tam_c04_w13_fourth_month
     jump route_map
 
 
@@ -294,7 +316,267 @@ label tam_c04_w12_three_month_review:
     $ time_start_period_after_chapter("tam_c04_w12_three_month_review")
     jump route_map
 
-label tam_c04_w13_fourth_month:
-    $ story_flag("tam_c04_month_04_pending")
+label tam_c04_w13_departures:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w13")
+    if story_has_flag("tam_c04_w12_completed") and not story_has_flag("tam_c04_w12_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w12")
+    $ time_story_advance_days_once("tam_c04_w12_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w13_calendar_started")
+    call tam_c04_w13_s01_monday_phone_pulse
+    call tam_c04_w13_s02_south_assignment
+    call tam_c04_w13_s03_hoang_fixed_evening
+    call tam_c04_w13_s04_quan_asks_huyen_pickup
+    call tam_c04_w13_s05_friday_departures
+    call career_bonus_process_checkpoint("tam_c04_w13")
+    $ time_story_advance_days_once("tam_c04_w13_calendar_advanced", 5)
+    $ story_flag("tam_c04_w13_completed")
+    $ story_flag("tam_c04_w13_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w13_departures")
+    jump route_map
+
+label tam_c04_w14_quiet_house:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w14")
+    if story_has_flag("tam_c04_w13_completed") and not story_has_flag("tam_c04_w13_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w13")
+    $ time_story_advance_days_once("tam_c04_w13_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w14_calendar_started")
+    call tam_c04_w14_s01_monday_phone_pulse
+    call tam_c04_w14_s02_huyen_meets_anh_nhi
+    call tam_c04_w14_s03_hoang_missed_call
+    call tam_c04_w14_s04_tam_carries_own_work
+    call tam_c04_w14_s05_friday_quiet_house
+    call career_bonus_process_checkpoint("tam_c04_w14")
+    $ time_story_advance_days_once("tam_c04_w14_calendar_advanced", 5)
+    $ story_flag("tam_c04_w14_completed")
+    $ story_flag("tam_c04_w14_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w14_quiet_house")
+    jump route_map
+
+label tam_c04_w15_distance_has_weight:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w15")
+    if story_has_flag("tam_c04_w14_completed") and not story_has_flag("tam_c04_w14_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w14")
+    $ time_story_advance_days_once("tam_c04_w14_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w15_calendar_started")
+    call tam_c04_w15_s01_monday_phone_pulse
+    call tam_c04_w15_s02_south_branch_late_night
+    call tam_c04_w15_s03_quang_message_after_midnight
+    call tam_c04_w15_s04_huyen_weekend_with_anh_nhi
+    call tam_c04_w15_s05_friday_distance_choice
+    call career_bonus_process_checkpoint("tam_c04_w15")
+    $ time_story_advance_days_once("tam_c04_w15_calendar_advanced", 5)
+    $ story_flag("tam_c04_w15_completed")
+    $ story_flag("tam_c04_w15_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w15_distance_has_weight")
+    jump route_map
+
+label tam_c04_w16_month_four_review:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w16")
+    if story_has_flag("tam_c04_w15_completed") and not story_has_flag("tam_c04_w15_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w15")
+    $ time_story_advance_days_once("tam_c04_w15_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w16_calendar_started")
+    call tam_c04_w16_s01_monday_phone_pulse
+    call tam_c04_w16_s02_trip_return_delay
+    call tam_c04_w16_s03_hoang_one_evening
+    call tam_c04_w16_s04_quan_returns_home
+    call tam_c04_w16_s05_month_four_priority
+    call tam_c04_w16_s06_month_four_snapshot
+    call career_bonus_process_checkpoint("tam_c04_w16")
+    $ time_story_advance_days_once("tam_c04_w16_calendar_advanced", 5)
+    $ story_flag("tam_c04_w16_completed")
+    $ story_flag("tam_c04_month_04_completed")
+    $ story_flag("tam_c04_w16_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w16_month_four_review")
+    jump route_map
+
+label tam_c04_w17_returns:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w17")
+    if story_has_flag("tam_c04_w16_completed") and not story_has_flag("tam_c04_w16_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w16")
+    $ time_story_advance_days_once("tam_c04_w16_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w17_calendar_started")
+    call tam_c04_w17_s01_monday_phone_pulse
+    call tam_c04_w17_s02_south_return
+    call tam_c04_w17_s03_quang_chooses_conversation
+    call tam_c04_w17_s04_huyen_knows_the_house
+    call tam_c04_w17_s05_hoang_sunday_plan
+    call tam_c04_w17_s06_friday_before_answer
+    call career_bonus_process_checkpoint("tam_c04_w17")
+    $ time_story_advance_days_once("tam_c04_w17_calendar_advanced", 5)
+    $ story_flag("tam_c04_w17_completed")
+    $ story_flag("tam_c04_w17_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w17_returns")
+    jump route_map
+
+label tam_c04_w18_choose_an_answer:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w18")
+    if story_has_flag("tam_c04_w17_completed") and not story_has_flag("tam_c04_w17_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w17")
+    $ time_story_advance_days_once("tam_c04_w17_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w18_calendar_started")
+    call tam_c04_w18_s01_monday_phone_pulse
+    call tam_c04_w18_s02_tam_romance_decision
+    call tam_c04_w18_s03_after_decision
+    call tam_c04_w18_s04_career_ownership
+    call tam_c04_w18_s05_friday_new_phase
+    call career_bonus_process_checkpoint("tam_c04_w18")
+    $ time_story_advance_days_once("tam_c04_w18_calendar_advanced", 5)
+    $ story_flag("tam_c04_w18_completed")
+    $ story_flag("tam_c04_w18_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w18_choose_an_answer")
+    jump route_map
+
+label tam_c04_w19_after_the_answer:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w19")
+    if story_has_flag("tam_c04_w18_completed") and not story_has_flag("tam_c04_w18_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w18")
+    $ time_story_advance_days_once("tam_c04_w18_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w19_calendar_started")
+    call tam_c04_w19_s01_monday_phone_pulse
+    call tam_c04_w19_s02_first_week_after_choice
+    call tam_c04_w19_s03_quang_thienan_no_longer_refuses
+    call tam_c04_w19_s04_huyen_anh_nhi_school_project
+    call tam_c04_w19_s05_hoang_contact_or_silence
+    call tam_c04_w19_s06_friday_phase_check
+    call career_bonus_process_checkpoint("tam_c04_w19")
+    if relationship_get_phase("tam_hoang") == "dating":
+        $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w19")
+    $ time_story_advance_days_once("tam_c04_w19_calendar_advanced", 5)
+    $ story_flag("tam_c04_w19_completed")
+    $ story_flag("tam_c04_w19_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w19_after_the_answer")
+    jump route_map
+
+label tam_c04_w20_month_five_review:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w20")
+    if story_has_flag("tam_c04_w19_completed") and not story_has_flag("tam_c04_w19_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w19")
+    $ time_story_advance_days_once("tam_c04_w19_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w20_calendar_started")
+    call tam_c04_w20_s01_monday_phone_pulse
+    call tam_c04_w20_s02_relationship_maintenance_result
+    call tam_c04_w20_s03_quang_thienan_month_five_choice
+    call tam_c04_w20_s04_huyen_quan_or_hoang_seed_check
+    call tam_c04_w20_s05_month_five_snapshot
+    call career_bonus_process_checkpoint("tam_c04_w20")
+    # if relationship_get_phase("tam_hoang") == "dating":
+    #     $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w20")
+    $ time_story_advance_days_once("tam_c04_w20_calendar_advanced", 5)
+    $ story_flag("tam_c04_w20_completed")
+    $ story_flag("tam_c04_month_05_completed")
+    $ story_flag("tam_c04_w20_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w20_month_five_review")
+    jump route_map
+
+label tam_c04_w21_new_routine:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w21")
+    if story_has_flag("tam_c04_w20_completed") and not story_has_flag("tam_c04_w20_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w20")
+    $ time_story_advance_days_once("tam_c04_w20_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w21_calendar_started")
+    call tam_c04_w21_s01_monday_phone_pulse
+    call tam_c04_w21_s02_ordinary_day_after_labels
+    call tam_c04_w21_s03_quan_second_trip_request
+    call tam_c04_w21_s04_independent_opportunity
+    call tam_c04_w21_s05_friday_new_routine
+    call career_bonus_process_checkpoint("tam_c04_w21")
+    if relationship_get_phase("tam_hoang") == "dating":
+        $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w21")
+    $ time_story_advance_days_once("tam_c04_w21_calendar_advanced", 5)
+    $ story_flag("tam_c04_w21_completed")
+    $ story_flag("tam_c04_w21_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w21_new_routine")
+    jump route_map
+
+label tam_c04_w22_when_work_interrupts:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w22")
+    if story_has_flag("tam_c04_w21_completed") and not story_has_flag("tam_c04_w21_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w21")
+    $ time_story_advance_days_once("tam_c04_w21_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w22_calendar_started")
+    call tam_c04_w22_s01_monday_phone_pulse
+    call tam_c04_w22_s02_route_specific_busy_week
+    call tam_c04_w22_s03_thienan_keeps_door_open
+    call tam_c04_w22_s04_huyen_anh_nhi_sleepover
+    call tam_c04_w22_s05_friday_maintenance
+    call career_bonus_process_checkpoint("tam_c04_w22")
+    if relationship_get_phase("tam_hoang") == "dating":
+        $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w22")
+    $ time_story_advance_days_once("tam_c04_w22_calendar_advanced", 5)
+    $ story_flag("tam_c04_w22_completed")
+    $ story_flag("tam_c04_w22_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w22_when_work_interrupts")
+    jump route_map
+
+label tam_c04_w23_new_balance:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w23")
+    if story_has_flag("tam_c04_w22_completed") and not story_has_flag("tam_c04_w22_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w22")
+    $ time_story_advance_days_once("tam_c04_w22_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w23_calendar_started")
+    call tam_c04_w23_s01_monday_phone_pulse
+    call tam_c04_w23_s02_group_dinner_new_balance
+    call tam_c04_w23_s03_huyen_hoang_friend_seed
+    call tam_c04_w23_s04_career_delivery_without_quan
+    call tam_c04_w23_s05_friday_before_final_review
+    call career_bonus_process_checkpoint("tam_c04_w23")
+    if relationship_get_phase("tam_hoang") == "dating":
+        $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w23")
+    $ time_story_advance_days_once("tam_c04_w23_calendar_advanced", 5)
+    $ story_flag("tam_c04_w23_completed")
+    $ story_flag("tam_c04_w23_weekend_open")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w23_new_balance")
+    jump route_map
+
+label tam_c04_w24_six_month_finale:
+    $ tam_c04_ensure_extended_story_state()
+    $ career_bonus_begin_checkpoint("tam_c04_w24")
+    if story_has_flag("tam_c04_w23_completed") and not story_has_flag("tam_c04_w23_calendar_advanced"):
+        call career_bonus_process_checkpoint("tam_c04_w23")
+    $ time_story_advance_days_once("tam_c04_w23_calendar_advanced", 5)
+    $ time_story_begin_workweek("tam_c04_w24_calendar_started")
+    call tam_c04_w24_s01_monday_phone_pulse
+    call tam_c04_w24_s02_six_month_work_review
+    call tam_c04_w24_s03_tam_route_finale
+    call tam_c04_w24_s04_quang_thienan_finale
+    call tam_c04_w24_s05_huyen_quan_finale
+    call tam_c04_w24_s06_final_snapshot
+    call tam_c04_w24_s07_chapter_close
+    call career_bonus_process_checkpoint("tam_c04_w24")
+    # if relationship_get_phase("tam_hoang") == "dating":
+    #     $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w24")
+    $ time_story_advance_days_once("tam_c04_w24_calendar_advanced", 5)
+    $ story_flag("tam_c04_w24_completed")
+    $ story_flag("tam_c04_month_06_completed")
+    $ story_complete_chapter("tam_c04_between_work_and_hearts")
+    $ phone_refresh_all()
+    $ time_start_period_after_chapter("tam_c04_w24_six_month_finale")
+    jump route_map
+
+label tam_c04_post_season_handoff:
+    $ story_flag("tam_c04_post_season_ready")
     $ phone_refresh_all()
     jump route_map

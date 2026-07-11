@@ -1,0 +1,6 @@
+init -5 python:
+    PHONE_SOCIAL_POSTS.update({
+        "huyen_c04_m06_ten_days": {"id":"huyen_c04_m06_ten_days","author":"huyen","content":"Mười ngày, hai hộp bút màu, một bình nước mới và bốn cuộc gọi đúng giờ. Tạm đạt.","image":None,"unlock_conditions":["flag:tam_c04_w21_huyen_accepts_anhni_ten_days"],"sort_order":1710,"comments":[{"author":"tam","text":"Ai tạm đạt?"},{"author":"huyen","text":"Không phải tao."}],"effects_on_read":{"flags":["read_huyen_c04_m06_ten_days"]},"effects_on_like":{}},
+        "hoang_c04_m06_ten_minutes": {"id":"hoang_c04_m06_ten_minutes","author":"hoang","content":"Mười phút đúng lúc đôi khi tốt hơn một buổi tối không ai chắc có xảy ra.","image":None,"unlock_conditions":["flag:tam_c04_w22_hoang_tam_ten_minute_call"],"sort_order":1720,"comments":[],"effects_on_read":{"flags":["read_hoang_c04_m06_ten_minutes"]},"effects_on_like":{"story_add":{"hoang_tam_trust":1}}},
+        "company_c04_six_month": {"id":"company_c04_six_month","author":"company","content":"Six-month performance review cycle completed. Updated workstream ownership will take effect next week.","image":None,"unlock_conditions":["flag:tam_c04_w24_completed"],"sort_order":1740,"comments":[],"effects_on_read":{"flags":["read_company_c04_six_month"]},"effects_on_like":{}},
+    })

@@ -241,7 +241,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "afternoon_default": {
-            "background": "images/maps/city_map_afternoon.png",
+            "background": "images/maps/city_map_extend_afternoon.png",
             "title": "City Map",
             "subtitle": "The city is still bright, but the day is starting to turn.",
             "show_locked_fixed_locations": True,
