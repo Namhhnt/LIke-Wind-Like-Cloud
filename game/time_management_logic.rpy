@@ -659,6 +659,44 @@ init -1 python:
         return total_cost
 
 
+    def time_skip_current_map_context():
+        s = ensure_activity_state()
+        context_id = None
+        context_for_target = globals().get("map_context_for_story_target", None)
+        if callable(context_for_target):
+            current_period = INTER_CHAPTER_PERIODS.get(s.get("current_period_id"), {})
+            start_after = current_period.get("start_after")
+            if start_after:
+                context_id = context_for_target(chapter_id=start_after)
+
+            if not context_id:
+                last_completed_chapter = globals().get("get_last_completed_chapter", None)
+                if callable(last_completed_chapter):
+                    context_id = context_for_target(chapter_id=last_completed_chapter())
+
+        return globals().get("MAP_CONTEXTS", {}).get(context_id, {})
+
+
+    def time_skip_location_is_available(location_id):
+        if not location_id:
+            return True
+
+        location_unlocked = globals().get("fixed_location_is_unlocked", None)
+        if callable(location_unlocked) and not location_unlocked(location_id):
+            return False
+
+        context = time_skip_current_map_context()
+        temp_locks = context.get("temporarily_locked_locations", {}) if context else {}
+        if location_id in temp_locks:
+            return False
+
+        force_only = context.get("force_only_locations", []) if context else []
+        if force_only and location_id not in force_only:
+            return False
+
+        return True
+
+
     def time_skip_get_routine_actions():
         actions = []
         seen_ids = set()
@@ -674,6 +712,8 @@ init -1 python:
                 action.setdefault("location_id", location_id)
                 action.setdefault("category", "Action")
                 action.setdefault("summary", "")
+                if not time_skip_location_is_available(action.get("location_id")):
+                    continue
                 if not location_action_is_visible(action):
                     continue
                 seen_ids.add(action_id)
@@ -690,12 +730,16 @@ init -1 python:
 
 
     def time_skip_normalize_plan(plan_ids):
-        valid_ids = {action.get("id") for action in time_skip_get_routine_actions()}
-        normalized_ids = []
+        routine_actions = time_skip_get_routine_actions()
+        action_by_id = {action.get("id"): action for action in routine_actions if action.get("id")}
+        selected_ids = []
         for action_id in plan_ids or []:
-            if action_id in valid_ids and action_id not in normalized_ids:
-                normalized_ids.append(action_id)
-        return normalized_ids
+            if action_id in action_by_id and action_id not in selected_ids:
+                selected_ids.append(action_id)
+
+        active_ids = [action_id for action_id in selected_ids if not action_by_id[action_id].get("ends_day")]
+        end_day_ids = [action_id for action_id in selected_ids if action_by_id[action_id].get("ends_day")]
+        return active_ids + end_day_ids
 
 
     def time_skip_default_plan_ids():

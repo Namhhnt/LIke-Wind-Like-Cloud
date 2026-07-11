@@ -142,40 +142,22 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                 for label_entry in interactive_map_label_entries(entries):
                     use interactive_map_label_button(label_entry, hovered_entry=hovered_entry, map_zoom=map_zoom)
 
-        use interactive_map_daily_hud(context_id=context_id, title_override=title_override)
+        use interactive_map_daily_hud(
+            context_id=context_id,
+            title_override=title_override,
+            phone_action=Return({"_action": "phone"}),
+            skip_action=(Return({"_action": "time_skip"}) if time_skip_is_available() else None),
+        )
 
         frame:
             xpos 58
-            ypos 376
+            ypos 265
             xsize 620
             ysize 58
-            background ui_frame_or_solid("gui/library/panel.png", "#100c09d8", 18)
+            background ui_frame_or_solid("gui/library/panel.png", "#100c0933", 18)
 
             text _("Drag the map to explore the city. Use Focus to jump back to the current point of interest."):
                 style "interactive_map_drag_hint"
-
-        button:
-            xpos 58
-            ypos 456
-            style "interactive_map_phone_button"
-            action Return({"_action": "phone"})
-
-            text "📱":
-                xalign 0.5
-                yalign 0.5
-                style "interactive_map_phone_button_icon"
-
-        if time_skip_is_available():
-            button:
-                xpos 58
-                ypos 530
-                style "interactive_map_phone_button"
-                action Return({"_action": "time_skip"})
-
-                text "⏭":
-                    xalign 0.5
-                    yalign 0.5
-                    style "interactive_map_phone_button_icon"
 
         frame:
             xpos 1492
@@ -311,7 +293,7 @@ screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0
     frame:
         xpos 58
         ypos 900
-        xsize 1336
+        xsize 1280
         ysize 150
         background ui_frame_or_solid("gui/library/panel.png", "#120f0cf2", 24)
 
@@ -343,11 +325,15 @@ screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0
                         style "interactive_map_hover_body"
 
             if focus_entry:
-                textbutton _("Focus"):
-                    style "interactive_map_focus_button"
-                    text_style "interactive_map_focus_button_text"
-                    yalign 0.5
-                    action Function(interactive_map_focus_entry, focus_entry, map_zoom, map_canvas_size, map_viewport_size, map_focus_center)
+                vbox:
+                    spacing 6
+                    xfill True
+                    textbutton _("Focus"):
+                        # xpos 1136
+                        style "interactive_map_focus_button"
+                        text_style "interactive_map_focus_button_text"
+                        yalign 0.5
+                        action Function(interactive_map_focus_entry, focus_entry, map_zoom, map_canvas_size, map_viewport_size, map_focus_center)
 
 
 style interactive_map_title is gui_text
@@ -367,8 +353,8 @@ style interactive_map_list_meta is gui_text
 style interactive_map_list_meta_locked is gui_text
 style interactive_map_secondary_button is button
 style interactive_map_secondary_button_text is button_text
-style interactive_map_phone_button is button
-style interactive_map_phone_button_icon is gui_text
+style interactive_map_header_action_button is button
+style interactive_map_header_action_button_text is button_text
 style interactive_map_marker is button
 style interactive_map_marker_main is button
 style interactive_map_marker_locked is button
@@ -427,8 +413,8 @@ style interactive_map_drag_hint:
     yalign 0.5
 
 style interactive_map_focus_button:
-    background Solid("#1a1510d8")
-    hover_background Solid("#3a2c1ef0")
+    background Solid("#9a451fe6")
+    hover_background Solid("#c85d2af0")
     xsize 156
     ysize 56
     xpadding 18
@@ -437,8 +423,8 @@ style interactive_map_focus_button:
 style interactive_map_focus_button_text:
     size 24
     bold True
-    color "#f5e5cb"
-    hover_color "#ffddaa"
+    color "#fff0d6"
+    hover_color "#fff8e8"
 
 style interactive_map_list_button:
     background Solid("#211912cc")
@@ -467,7 +453,7 @@ style interactive_map_list_meta_locked:
     color "#ad9b8a"
 
 style interactive_map_secondary_button:
-    background Solid("#1a1510cc")
+    background Solid("#473019cc")
     hover_background Solid("#3a2c1ecc")
     insensitive_background Solid("#17120dcc")
     xfill True
@@ -476,22 +462,24 @@ style interactive_map_secondary_button:
 
 style interactive_map_secondary_button_text:
     size 22
-    color "#f5e5cb"
+    color "#ffcf83"
     hover_color "#ffddaa"
+    xalign 0.5
 
-style interactive_map_phone_button:
-    background Solid("#1a1510e6")
-    hover_background Solid("#3a2c1ee6")
-    insensitive_background Solid("#17120dcc")
-    xsize 64
-    ysize 84
+style interactive_map_header_action_button:
+    background Solid("#1a151000")
+    hover_background Solid("#bd7d3df0")
+    xysize (125, 125)
     xpadding 0
     ypadding 0
 
-style interactive_map_phone_button_icon:
-    size 64
+style interactive_map_header_action_button_text:
+    size 80
     color "#ffcf84"
     hover_color "#fff0bf"
+    text_align 0.5
+    xalign 0.5
+    yalign 0.5
     outlines [(1, "#130c08cc", 0, 0)]
 
 style interactive_map_marker:

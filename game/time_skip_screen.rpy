@@ -89,7 +89,7 @@ screen time_skip_screen():
 
             vbox:
                 spacing 16
-                xsize 500
+                xsize 600
 
                 text _("Time Skip"):
                     style "interactive_map_panel_title"
@@ -112,7 +112,7 @@ screen time_skip_screen():
 
                 hbox:
                     spacing 12
-                    xfill False
+                    xfill True
 
                     textbutton _("1 Day"):
                         style "interactive_map_secondary_button"
@@ -128,13 +128,19 @@ screen time_skip_screen():
                         xminimum 165
                         action SetScreenVariable("selected_mode", "to_next_event")
 
-                    if can_choose_any_day and len(day_choices) > 1:
+                    if len(day_choices) > 1:
                         textbutton _("Selected Day"):
                             style "interactive_map_secondary_button"
                             text_style "interactive_map_secondary_button_text"
                             xfill False
-                            xminimum 165
-                            action SetScreenVariable("selected_mode", "to_target_day")
+                            xminimum 180
+                            sensitive can_choose_any_day
+                            action (SetScreenVariable("selected_mode", "to_target_day") if can_choose_any_day else NullAction())
+
+                if len(day_choices) > 1 and not can_choose_any_day:
+                    text _("Selected Day is unavailable in this story period. You can only skip one day at a time or continue until the next event."):
+                        style "interactive_map_panel_body"
+                        color "#b9a692"
 
                 if can_choose_any_day and len(day_choices) > 1:
                     vbox:
@@ -144,7 +150,7 @@ screen time_skip_screen():
                             style "interactive_map_panel_body"
 
                         bar value ScreenVariableValue("selected_day", max(1, day_choices[-1]), step=1):
-                            xmaximum 520
+                            xmaximum 560
 
                         text ("Day %d" % selected_day):
                             style "interactive_map_panel_body"
@@ -166,8 +172,8 @@ screen time_skip_screen():
 
                 if routine_actions:
                     frame:
-                        xsize 500
-                        ysize 330
+                        xfill True
+                        ysize 350
                         background Solid("#120d0acc")
                         padding (10, 10)
 
@@ -213,6 +219,7 @@ screen time_skip_screen():
                                                 button:
                                                     background None
                                                     hover_background Solid("#4b382a88")
+                                                    xmaximum 452
                                                     xfill True
                                                     yminimum 42
                                                     action SetScreenVariable("selected_plan_ids", time_skip_toggle_plan_ids(normalized_plan_ids, action.get("id")))
@@ -232,14 +239,14 @@ screen time_skip_screen():
                                                         text ("%sh" % action.get("time_cost", 0)):
                                                             style "interactive_map_panel_body"
                                                             color "#cda885"
-                                                            yalign 0.5
+                                                            yalign 1.0
 
                                                 textbutton (_("^") if is_expanded else _("v")):
-                                                    style "interactive_map_secondary_button"
-                                                    text_style "interactive_map_secondary_button_text"
+                                                    style "time_skip_compact_button"
+                                                    text_style "time_skip_compact_button_text"
                                                     xfill False
-                                                    xsize 52
-                                                    yminimum 42
+                                                    xsize 42
+                                                    ysize 42
                                                     action SetScreenVariable(
                                                         "expanded_detail_ids",
                                                         [detail_id for detail_id in expanded_detail_ids if detail_id != action.get("id")]
@@ -363,3 +370,20 @@ screen time_skip_screen():
                             xsize 220
                             ysize 54
                             action confirm_action
+
+
+style time_skip_compact_button is button:
+    background Solid("#1a1510cc")
+    hover_background Solid("#3a2c1ecc")
+    insensitive_background Solid("#17120dcc")
+    xfill False
+    xpadding 0
+    ypadding 0
+
+style time_skip_compact_button_text is button_text:
+    size 22
+    color "#f5e5cb"
+    hover_color "#ffddaa"
+    text_align 0.5
+    xalign 0.5
+    yalign 0.5

@@ -51,7 +51,24 @@ init -4 python:
             pass
         return True, remaining_amount
 
+    def tam_sync_c02_after_work_time():
+        if story_has_flag("tam_c02_after_work_time_synced"):
+            return
+
+        activity_state = ensure_activity_state()
+        current_points = int(activity_state.get("time_points", activity_state.get("time_units", 24)) or 0)
+        if current_points > 14:
+            current_points = 14
+
+        synchronized_points = time_sync_time_keys(current_points)
+        activity_state["time_points"] = synchronized_points
+        activity_state["time_units"] = synchronized_points
+        activity_state["work_completed_today"] = True
+        story_flag("tam_c02_after_work_time_synced")
+
 label tam_c02_company_party_s01b_first_salary_and_shopping:
+    $ tam_sync_c02_after_work_time()
+
     scene bg_company_open_office_day
     with fade
 

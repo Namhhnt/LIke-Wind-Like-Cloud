@@ -49,9 +49,9 @@ init -5 python:
             "force_trigger": True,
             "allow_skip_to_any_day": False,
             "warning_days": [3, 1],
-            "allowed_main_actions": ["company_work_full_day", "sleep_8h_home"],
+            "allowed_main_actions": ["library_study_work_skill", "sleep_8h_home"],
             "important_interactions": ["visit_huyen_after_first_job"],
-            "player_is_employed": True,
+            "player_is_employed": False,
         },
         "after_tam_c02": {
             "id": "after_tam_c02",
