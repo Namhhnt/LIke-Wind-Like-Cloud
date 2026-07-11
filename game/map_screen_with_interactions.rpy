@@ -88,8 +88,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     $ bg = time_get_map_background(context.get("background", "images/maps/city_map_day.png"))
     $ panel_bg = ui_frame_or_solid("gui/library/panel.png", "#140f0be6", 26)
     $ frame_bg = ui_frame_or_solid("gui/library/panel.png", "#201812f0", 26)
-    $ map_zoom = 2.0
-    $ map_canvas_size = (3344, 1882)
+    $ map_zoom = 2.45
+    $ map_canvas_size = (4096, 2305)
     $ map_viewport_size = (1920, 1080)
     $ map_focus_center = (760, 460)
 
@@ -303,7 +303,7 @@ screen interactive_map_label_button(label_entry, hovered_entry=None, map_zoom=1.
         action label_action
 
 
-screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0, map_canvas_size=(3344, 1882), map_viewport_size=(1920, 1080), map_focus_center=(760, 460)):
+screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0, map_canvas_size=(4096, 2305), map_viewport_size=(1920, 1080), map_focus_center=(760, 460)):
     $ state = entry.get("state", "available")
     $ title = entry.get("title", entry.get("name", ""))
     $ route_line = _("Location Hub") if entry.get("kind") == "location_hub" else (route_title(entry.get("route_id")) if entry.get("route_id") else _("Location"))

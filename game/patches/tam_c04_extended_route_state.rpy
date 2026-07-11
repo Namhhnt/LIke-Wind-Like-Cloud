@@ -9,6 +9,9 @@
 init 101 python:
 
     TAM_C04_EXTENDED_SCORE_DEFAULTS = {
+        # Shared work rhythm between Tâm and Huyền.
+        "tam_huyen_work_sync": 20,
+
         # Quang and Tam are already close before Chapter 04. This baseline is
         # familiar care, not romantic commitment.
         "quang_tam_warmth": 35,
