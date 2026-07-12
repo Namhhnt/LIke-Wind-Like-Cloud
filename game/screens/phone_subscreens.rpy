@@ -559,8 +559,3 @@ screen phone_status_detail(character_id):
                             text item.get("description", ""):
                                 style "phone_card_meta"
 
-            if data.get("profile_id"):
-                textbutton _("Open Library Profile"):
-                    style "phone_nav_button"
-                    text_style "phone_nav_button_text"
-                    action ShowMenu("library_character_detail", character_id=data.get("profile_id"))

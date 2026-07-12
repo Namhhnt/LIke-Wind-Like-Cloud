@@ -122,12 +122,6 @@ screen main_menu_navigation():
             )
 
             use main_menu_nav_button(
-                label=_("Phone"),
-                action=ShowMenu("phone_home"),
-                icon_text="◉"
-            )
-
-            use main_menu_nav_button(
                 label=_("Settings"),
                 action=ShowMenu("preferences"),
                 icon_text="⚙"
@@ -578,8 +572,6 @@ screen game_menu_navigation_contents():
 
         use game_menu_nav_button(_("Load"), ShowMenu("load"))
         use game_menu_nav_button(_("Preferences"), ShowMenu("preferences"))
-        use game_menu_nav_button(_("Phone"), ShowMenu("phone_home", back_action=Return()))
-
         if not main_menu:
             use game_menu_nav_button(_("Main Menu"), MainMenu())
 
