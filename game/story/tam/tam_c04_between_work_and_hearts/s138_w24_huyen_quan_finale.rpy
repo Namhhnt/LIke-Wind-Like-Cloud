@@ -8,7 +8,7 @@ label tam_c04_w24_s05_huyen_quan_finale:
     quan neutral "Cô có thể đánh thức con bé rồi về."
     huyen tired "Anh nói nhỏ thôi."
     "Quân lấy chiếc chăn mỏng phủ lên Ánh Nhi."
-    if story_state.get("huyen_quan_trust", 0) >= 65:
+    if tam_c04_huyen_quan_deep_trust_ready():
         $ tam_c04_commit_huyen_quan_deep_trust()
         $ story_add("huyen_quan_trust", 7)
         $ story_add("huyen_quan_interest", 3)

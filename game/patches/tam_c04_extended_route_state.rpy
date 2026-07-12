@@ -12,6 +12,12 @@ init 101 python:
         # Shared work rhythm between Tâm and Huyền.
         "tam_huyen_work_sync": 20,
 
+        # Huyền–Hoàng starts as easy friendship and off-screen interest.
+        # Both directions are tracked separately so Chapter 05 can let Hoàng
+        # decide whether he wants to commit.
+        "huyen_hoang_interest": 0,
+        "hoang_huyen_interest": 0,
+
         # Quang and Tam are already close before Chapter 04. This baseline is
         # familiar care, not romantic commitment.
         "quang_tam_warmth": 35,

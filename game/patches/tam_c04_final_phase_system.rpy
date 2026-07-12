@@ -36,7 +36,14 @@ init 130 python:
         )
 
     def tam_c04_huyen_quan_deep_trust_ready():
-        return story_state.get("huyen_quan_trust", 0) >= 60
+        active_lane_fn = globals().get("tam_c04_huyen_quan_active_lane_ready")
+        active_lane = active_lane_fn() if callable(active_lane_fn) else (
+            story_state.get("huyen_quan_interest", 0) >= 25
+        )
+        return (
+            story_state.get("huyen_quan_trust", 0) >= 60
+            and active_lane
+        )
 
     def tam_c04_lock_tam_romance(route_id):
         route_id = str(route_id)
@@ -88,14 +95,14 @@ init 130 python:
         return True
 
     def tam_c04_seed_huyen_hoang_if_eligible():
+        # Compatibility helper for older scene calls. The monthly resolver now
+        # owns growth; this helper only records final availability.
         if story_has_flag("tam_c04_tam_hoang_dating"):
             return False
-        if story_state.get("huyen_quan_interest", 0) >= 25:
-            return False
-        if story_state.get("huyen_quan_trust", 0) < 45:
-            return False
 
-        story_flag("tam_c04_huyen_hoang_future_seed")
-        story_add_direction("huyen", "huyen_hoang_open")
-        story_add_direction("hoang", "hoang_huyen_open")
-        return True
+        finalize_fn = globals().get("tam_c04_finalize_huyen_lane_flags")
+        if callable(finalize_fn):
+            finalize_fn()
+            return story_has_flag("tam_c04_huyen_hoang_future_open")
+
+        return False

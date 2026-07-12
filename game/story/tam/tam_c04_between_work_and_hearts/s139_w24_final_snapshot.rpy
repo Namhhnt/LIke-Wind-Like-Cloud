@@ -9,11 +9,17 @@ label tam_c04_w24_s06_final_snapshot:
         $ story_flag("tam_c04_final_tam_independent")
     if story_has_flag("tam_c04_quang_thienan_committed"):
         $ story_flag("tam_c04_final_quang_thienan_closer")
-    if story_has_flag("tam_c04_huyen_quan_deep_trust"):
+    $ _tam_c04_huyen_lane_found = False
+    if story_has_flag("tam_c04_huyen_quan_deep_trust") or story_has_flag("tam_c04_huyen_quan_deep_trust_available"):
         $ story_flag("tam_c04_final_huyen_quan_deep_trust")
-    elif story_has_flag("tam_c04_huyen_hoang_future_seed"):
+        $ _tam_c04_huyen_lane_found = True
+    if story_has_flag("tam_c04_huyen_hoang_future_open") or story_has_flag("tam_c04_huyen_hoang_future_seed"):
         $ story_flag("tam_c04_final_huyen_hoang_future_open")
-    else:
+        $ _tam_c04_huyen_lane_found = True
+    elif story_has_flag("tam_c04_huyen_hoang_interest_developing"):
+        $ story_flag("tam_c04_final_huyen_hoang_interest_developing")
+        $ _tam_c04_huyen_lane_found = True
+    if not _tam_c04_huyen_lane_found:
         $ story_flag("tam_c04_final_huyen_independent_career")
     $ _tam_c04_final_career_tam = career_bonus_get_progress_since_chapter_start("tam_c04_between_work_and_hearts", "tam")
     $ _tam_c04_final_career_huyen = career_bonus_get_progress_since_chapter_start("tam_c04_between_work_and_hearts", "huyen")

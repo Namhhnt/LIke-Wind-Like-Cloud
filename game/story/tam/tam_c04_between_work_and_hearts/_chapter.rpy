@@ -1,10 +1,11 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/_chapter.rpy
 # Chapter 04 entry wrapper and weekly checkpoint wrappers.
 # Weekly checkpoints remain internal; only the final C04 checkpoint completes the chapter.
-# Wrapper version: 1.9 — includes Week 13–24 (Months 04–06) and final phase transition.
+# Wrapper version: 2.0 — adds monthly Huyền–Hoàng/Huyền–Quân lane resolution.
 
 label tam_c04_between_work_and_hearts:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_capture_chapter_start("tam_c04_between_work_and_hearts", ["tam", "huyen"])
 
     if not story_has_flag("tam_c04_started"):
@@ -64,6 +65,7 @@ label tam_c04_between_work_and_hearts:
 
 label tam_c04_w01_new_rhythm:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w01")
     $ time_story_begin_workweek("tam_c04_w01_calendar_started")
     call tam_c04_w01_s01_monday_phone_pulse
@@ -81,6 +83,7 @@ label tam_c04_w01_new_rhythm:
 
 label tam_c04_w02_first_priorities:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w02")
     if story_has_flag("tam_c04_w01_completed") and not story_has_flag("tam_c04_w01_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w01")
@@ -102,6 +105,7 @@ label tam_c04_w02_first_priorities:
 
 label tam_c04_w03_pressure_and_distance:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w03")
     if story_has_flag("tam_c04_w02_completed") and not story_has_flag("tam_c04_w02_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w02")
@@ -123,6 +127,7 @@ label tam_c04_w03_pressure_and_distance:
 
 label tam_c04_w04_month_one_review:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w04")
     if story_has_flag("tam_c04_w03_completed") and not story_has_flag("tam_c04_w03_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w03")
@@ -134,6 +139,7 @@ label tam_c04_w04_month_one_review:
     call tam_c04_w04_s04_quang_family_table
     call tam_c04_w04_s05_huyen_after_review
     call tam_c04_w04_s06_month_one_priority
+    $ tam_c04_resolve_huyen_lanes("m01", phase="early")
     call tam_c04_w04_s07_month_one_snapshot
     call career_bonus_process_checkpoint("tam_c04_w04")
     $ time_story_advance_days_once("tam_c04_w04_calendar_advanced", 5)
@@ -146,6 +152,7 @@ label tam_c04_w04_month_one_review:
 
 label tam_c04_w05_new_month:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w05")
     if story_has_flag("tam_c04_w04_completed") and not story_has_flag("tam_c04_w04_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w04")
@@ -167,6 +174,7 @@ label tam_c04_w05_new_month:
 
 label tam_c04_w06_the_empty_chair:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w06")
     if story_has_flag("tam_c04_w05_completed") and not story_has_flag("tam_c04_w05_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w05")
@@ -188,6 +196,7 @@ label tam_c04_w06_the_empty_chair:
 
 label tam_c04_w07_someone_notices_first:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w07")
     if story_has_flag("tam_c04_w06_completed") and not story_has_flag("tam_c04_w06_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w06")
@@ -209,6 +218,7 @@ label tam_c04_w07_someone_notices_first:
 
 label tam_c04_w08_month_two_review:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w08")
     if story_has_flag("tam_c04_w07_completed") and not story_has_flag("tam_c04_w07_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w07")
@@ -220,6 +230,7 @@ label tam_c04_w08_month_two_review:
     call tam_c04_w08_s04_quang_choose_a_door
     call tam_c04_w08_s05_huyen_stays_without_tam
     call tam_c04_w08_s06_month_two_priority
+    $ tam_c04_resolve_huyen_lanes("m02", phase="early")
     call tam_c04_w08_s07_month_two_snapshot
     call career_bonus_process_checkpoint("tam_c04_w08")
     $ time_story_advance_days_once("tam_c04_w08_calendar_advanced", 5)
@@ -232,6 +243,7 @@ label tam_c04_w08_month_two_review:
 
 label tam_c04_w09_named_gaps:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w09")
     if story_has_flag("tam_c04_w08_completed") and not story_has_flag("tam_c04_w08_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w08")
@@ -253,6 +265,7 @@ label tam_c04_w09_named_gaps:
 
 label tam_c04_w10_no_one_stands_in:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w10")
     if story_has_flag("tam_c04_w09_completed") and not story_has_flag("tam_c04_w09_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w09")
@@ -274,6 +287,7 @@ label tam_c04_w10_no_one_stands_in:
 
 label tam_c04_w11_cannot_pretend:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w11")
     if story_has_flag("tam_c04_w10_completed") and not story_has_flag("tam_c04_w10_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w10")
@@ -295,6 +309,7 @@ label tam_c04_w11_cannot_pretend:
 
 label tam_c04_w12_three_month_review:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w12")
     if story_has_flag("tam_c04_w11_completed") and not story_has_flag("tam_c04_w11_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w11")
@@ -306,6 +321,7 @@ label tam_c04_w12_three_month_review:
     call tam_c04_w12_s04_quang_at_family_dinner
     call tam_c04_w12_s05_huyen_after_quarter_review
     call tam_c04_w12_s06_month_three_priority
+    $ tam_c04_resolve_huyen_lanes("m03", phase="early")
     call tam_c04_w12_s07_month_three_snapshot
     call career_bonus_process_checkpoint("tam_c04_w12")
     $ time_story_advance_days_once("tam_c04_w12_calendar_advanced", 5)
@@ -318,6 +334,7 @@ label tam_c04_w12_three_month_review:
 
 label tam_c04_w13_departures:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w13")
     if story_has_flag("tam_c04_w12_completed") and not story_has_flag("tam_c04_w12_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w12")
@@ -338,6 +355,7 @@ label tam_c04_w13_departures:
 
 label tam_c04_w14_quiet_house:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w14")
     if story_has_flag("tam_c04_w13_completed") and not story_has_flag("tam_c04_w13_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w13")
@@ -358,6 +376,7 @@ label tam_c04_w14_quiet_house:
 
 label tam_c04_w15_distance_has_weight:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w15")
     if story_has_flag("tam_c04_w14_completed") and not story_has_flag("tam_c04_w14_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w14")
@@ -378,6 +397,7 @@ label tam_c04_w15_distance_has_weight:
 
 label tam_c04_w16_month_four_review:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w16")
     if story_has_flag("tam_c04_w15_completed") and not story_has_flag("tam_c04_w15_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w15")
@@ -388,6 +408,7 @@ label tam_c04_w16_month_four_review:
     call tam_c04_w16_s03_hoang_one_evening
     call tam_c04_w16_s04_quan_returns_home
     call tam_c04_w16_s05_month_four_priority
+    $ tam_c04_resolve_huyen_lanes("m04", phase="late")
     call tam_c04_w16_s06_month_four_snapshot
     call career_bonus_process_checkpoint("tam_c04_w16")
     $ time_story_advance_days_once("tam_c04_w16_calendar_advanced", 5)
@@ -400,6 +421,7 @@ label tam_c04_w16_month_four_review:
 
 label tam_c04_w17_returns:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w17")
     if story_has_flag("tam_c04_w16_completed") and not story_has_flag("tam_c04_w16_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w16")
@@ -421,6 +443,7 @@ label tam_c04_w17_returns:
 
 label tam_c04_w18_choose_an_answer:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w18")
     if story_has_flag("tam_c04_w17_completed") and not story_has_flag("tam_c04_w17_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w17")
@@ -428,6 +451,7 @@ label tam_c04_w18_choose_an_answer:
     $ time_story_begin_workweek("tam_c04_w18_calendar_started")
     call tam_c04_w18_s01_monday_phone_pulse
     call tam_c04_w18_s02_tam_romance_decision
+    $ tam_c04_resolve_huyen_lane_after_tam_choice()
     call tam_c04_w18_s03_after_decision
     call tam_c04_w18_s04_career_ownership
     call tam_c04_w18_s05_friday_new_phase
@@ -441,6 +465,7 @@ label tam_c04_w18_choose_an_answer:
 
 label tam_c04_w19_after_the_answer:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w19")
     if story_has_flag("tam_c04_w18_completed") and not story_has_flag("tam_c04_w18_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w18")
@@ -464,6 +489,7 @@ label tam_c04_w19_after_the_answer:
 
 label tam_c04_w20_month_five_review:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w20")
     if story_has_flag("tam_c04_w19_completed") and not story_has_flag("tam_c04_w19_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w19")
@@ -473,10 +499,9 @@ label tam_c04_w20_month_five_review:
     call tam_c04_w20_s02_relationship_maintenance_result
     call tam_c04_w20_s03_quang_thienan_month_five_choice
     call tam_c04_w20_s04_huyen_quan_or_hoang_seed_check
+    $ tam_c04_resolve_huyen_lanes("m05", phase="late")
     call tam_c04_w20_s05_month_five_snapshot
     call career_bonus_process_checkpoint("tam_c04_w20")
-    # if relationship_get_phase("tam_hoang") == "dating":
-    #     $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w20")
     $ time_story_advance_days_once("tam_c04_w20_calendar_advanced", 5)
     $ story_flag("tam_c04_w20_completed")
     $ story_flag("tam_c04_month_05_completed")
@@ -487,6 +512,7 @@ label tam_c04_w20_month_five_review:
 
 label tam_c04_w21_new_routine:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w21")
     if story_has_flag("tam_c04_w20_completed") and not story_has_flag("tam_c04_w20_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w20")
@@ -509,6 +535,7 @@ label tam_c04_w21_new_routine:
 
 label tam_c04_w22_when_work_interrupts:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w22")
     if story_has_flag("tam_c04_w21_completed") and not story_has_flag("tam_c04_w21_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w21")
@@ -531,6 +558,7 @@ label tam_c04_w22_when_work_interrupts:
 
 label tam_c04_w23_new_balance:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w23")
     if story_has_flag("tam_c04_w22_completed") and not story_has_flag("tam_c04_w22_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w22")
@@ -553,6 +581,7 @@ label tam_c04_w23_new_balance:
 
 label tam_c04_w24_six_month_finale:
     $ tam_c04_ensure_extended_story_state()
+    $ tam_c04_migrate_huyen_lane_resolution()
     $ career_bonus_begin_checkpoint("tam_c04_w24")
     if story_has_flag("tam_c04_w23_completed") and not story_has_flag("tam_c04_w23_calendar_advanced"):
         call career_bonus_process_checkpoint("tam_c04_w23")
@@ -563,11 +592,11 @@ label tam_c04_w24_six_month_finale:
     call tam_c04_w24_s03_tam_route_finale
     call tam_c04_w24_s04_quang_thienan_finale
     call tam_c04_w24_s05_huyen_quan_finale
+    $ tam_c04_resolve_huyen_lanes("m06", phase="late")
+    $ tam_c04_finalize_huyen_lane_flags()
     call tam_c04_w24_s06_final_snapshot
     call tam_c04_w24_s07_chapter_close
     call career_bonus_process_checkpoint("tam_c04_w24")
-    # if relationship_get_phase("tam_hoang") == "dating":
-    #     $ relationship_resolve_contact_period("tam_hoang", "tam_c04_w24")
     $ time_story_advance_days_once("tam_c04_w24_calendar_advanced", 5)
     $ story_flag("tam_c04_w24_completed")
     $ story_flag("tam_c04_month_06_completed")
