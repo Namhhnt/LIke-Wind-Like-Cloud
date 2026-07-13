@@ -100,7 +100,7 @@ label tam_c06_minh_returns_s04_drive_home:
 
             hoang neutral "Có."
 
-            "Tâm nhìn cậu."
+            "Tâm nhìn sang."
 
             hoang smile "Nhưng em đã kể anh nghe rồi."
 
