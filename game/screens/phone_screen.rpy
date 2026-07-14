@@ -91,7 +91,7 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
     tag menu
 
     on "show" action Function(phone_ensure_state)
-    on "show" action Function(phone_refresh_all)
+    on "show" action Function(phone_refresh_all_if_needed)
 
     default active_tab = (initial_tab if initial_tab else "home")
     default selected_thread_id = None

@@ -8,15 +8,15 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
     default selected_route = timeline_normalize_route_id(route_id)
     default active_node_id = selected_node_id if selected_node_id else timeline_get_first_selectable_node(selected_route)
 
-    $ nodes = timeline_get_nodes(selected_route)
-    $ resolved_node = timeline_resolve_selected_node(selected_route, active_node_id)
-    $ active_node_id = resolved_node["id"] if resolved_node else None
-    $ selected_node = resolved_node
-    $ selected_chapter_id = selected_node.get("chapter_id") if selected_node else None
-    $ selected_node_state = timeline_get_node_state(selected_node) if selected_node else None
-    $ selected_can_play = (selected_node_state == "current" and timeline_has_runtime_chapter(selected_chapter_id)) if selected_chapter_id else False
-    $ canvas_w, canvas_h = timeline_get_canvas_size(selected_route)
-    $ viewport_xinitial = timeline_get_viewport_xinitial(selected_route, active_node_id, 1744)
+    $ screen_state = timeline_build_screen_state(selected_route, active_node_id, 1744)
+    $ nodes = screen_state["nodes"]
+    $ active_node_id = screen_state["active_node_id"]
+    $ selected_node = screen_state["resolved_node"]
+    $ selected_chapter_id = screen_state["selected_chapter_id"]
+    $ selected_node_state = screen_state["selected_node_state"]
+    $ selected_can_play = screen_state["selected_can_play"]
+    $ canvas_w, canvas_h = screen_state["canvas_size"]
+    $ viewport_xinitial = screen_state["viewport_xinitial"]
 
     fixed:
         xysize (1920, 1080)
@@ -91,20 +91,17 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
                         xysize (canvas_w, canvas_h)
 
                         if nodes:
-                            for label in timeline_get_lane_labels(selected_route):
-                                if timeline_should_render_lane_label(selected_route, label):
-                                    use timeline_lane_label(selected_route, label)
+                            for label in screen_state["visible_lane_labels"]:
+                                use timeline_lane_label(selected_route, label)
 
-                            for connection in timeline_get_connections(selected_route):
-                                if timeline_should_render_connection(selected_route, connection):
-                                    use timeline_connection_line(selected_route, connection)
+                            for connection in screen_state["visible_connections"]:
+                                use timeline_connection_line(selected_route, connection)
 
-                            for node in nodes:
-                                if timeline_should_render_node(node, selected_route):
-                                    if timeline_node_is_marker(node):
-                                        use timeline_time_marker(selected_route, node)
-                                    else:
-                                        use timeline_node_card(selected_route, node, active_node_id)
+                            for node in screen_state["visible_nodes"]:
+                                if timeline_node_is_marker(node):
+                                    use timeline_time_marker(selected_route, node)
+                                else:
+                                    use timeline_node_card(selected_route, node, active_node_id)
                         else:
                             text "This timeline does not have nodes yet.":
                                 style "timeline_empty_state"

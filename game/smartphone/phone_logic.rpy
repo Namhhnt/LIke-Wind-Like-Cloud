@@ -1,6 +1,9 @@
 init python:
     PHONE_CHARACTER_IDS = ["tam", "hoang", "huyen", "minh", "yuuka", "thienan"]
     _career_promotion_guard = False
+    _phone_refresh_generation = 0
+    _phone_refreshed_generation = -1
+    _phone_sorted_cache = {}
 
     def phone_default_state_template():
         return {
@@ -28,6 +31,35 @@ init python:
             "known_info": [],
             "public_stats": {},
         }
+
+    def phone_invalidate_sorted_cache(*cache_keys):
+        global _phone_sorted_cache
+
+        if not cache_keys:
+            _phone_sorted_cache = {}
+            return
+
+        for cache_key in cache_keys:
+            _phone_sorted_cache.pop(cache_key, None)
+
+    def phone_mark_refresh_dirty(invalidate_cache=True):
+        global _phone_refresh_generation
+
+        _phone_refresh_generation += 1
+        if invalidate_cache:
+            phone_invalidate_sorted_cache()
+
+    def phone_get_cached_sequence(cache_key, signature, builder):
+        cached = _phone_sorted_cache.get(cache_key)
+        if cached and cached.get("signature") == signature:
+            return list(cached.get("values", ()))
+
+        values = list(builder())
+        _phone_sorted_cache[cache_key] = {
+            "signature": signature,
+            "values": tuple(values),
+        }
+        return values
 
     def phone_ensure_state():
         global phone_state
@@ -175,6 +207,8 @@ init python:
         if contact_id not in contacts:
             contacts.append(contact_id)
             phone_add_notification("contact", contact_id)
+            phone_mark_refresh_dirty(invalidate_cache=False)
+            phone_invalidate_sorted_cache("contact_ids")
         return True
 
     def phone_has_contact(contact_id):
@@ -195,6 +229,8 @@ init python:
         if thread_id not in unlocked:
             unlocked.append(thread_id)
             phone_add_notification("thread", thread_id)
+            phone_mark_refresh_dirty(invalidate_cache=False)
+            phone_invalidate_sorted_cache("thread_ids")
 
         if mark_unread and thread_id not in phone_state.get("read_threads", []):
             if thread_id not in unread:
@@ -229,6 +265,8 @@ init python:
         if mail_id not in unlocked:
             unlocked.append(mail_id)
             phone_add_notification("mail", mail_id)
+            phone_mark_refresh_dirty(invalidate_cache=False)
+            phone_invalidate_sorted_cache("mail_ids")
         return True
 
     def phone_mark_mail_read(mail_id):
@@ -254,6 +292,8 @@ init python:
         if post_id not in unlocked:
             unlocked.append(post_id)
             phone_add_notification("post", post_id)
+            phone_mark_refresh_dirty(invalidate_cache=False)
+            phone_invalidate_sorted_cache("post_ids")
         return True
 
     def phone_mark_post_read(post_id):
@@ -280,11 +320,19 @@ init python:
                 phone_unlock_post(post_id)
 
     def phone_refresh_all():
+        global _phone_refreshed_generation
+
         phone_ensure_state()
         phone_refresh_contacts()
         phone_refresh_threads()
         phone_refresh_mails()
         phone_refresh_posts()
+        _phone_refreshed_generation = _phone_refresh_generation
+
+    def phone_refresh_all_if_needed(force=False):
+        phone_ensure_state()
+        if force or _phone_refreshed_generation != _phone_refresh_generation:
+            phone_refresh_all()
 
     def phone_get_character_status(character_id):
         global character_status
@@ -307,6 +355,9 @@ init python:
                     char_add_item(character_id, item_id)
             else:
                 status[key] = value
+
+        phone_mark_refresh_dirty(invalidate_cache=False)
+        phone_invalidate_sorted_cache("visible_status_ids")
 
     def career_get_track(character_id):
         return globals().get("CHARACTER_CAREER_TRACKS", {}).get(character_id)
@@ -614,31 +665,56 @@ init python:
         }
 
     def phone_get_sorted_contact_ids():
-        contacts = list(phone_state.get("unlocked_contacts", []))
-        contacts.sort(key=lambda contact_id: phone_get_contact_display_name(contact_id).lower())
-        return contacts
+        contacts = tuple(phone_state.get("unlocked_contacts", []))
+        return phone_get_cached_sequence(
+            "contact_ids",
+            contacts,
+            lambda: sorted(contacts, key=lambda contact_id: phone_get_contact_display_name(contact_id).lower()),
+        )
 
     def phone_get_sorted_thread_ids():
-        threads = list(phone_state.get("unlocked_threads", []))
-        threads.sort(key=lambda thread_id: globals().get("PHONE_THREADS", {}).get(thread_id, {}).get("sort_order", 0), reverse=True)
-        return threads
+        threads = tuple(phone_state.get("unlocked_threads", []))
+        return phone_get_cached_sequence(
+            "thread_ids",
+            threads,
+            lambda: sorted(
+                threads,
+                key=lambda thread_id: globals().get("PHONE_THREADS", {}).get(thread_id, {}).get("sort_order", 0),
+                reverse=True,
+            ),
+        )
 
     def phone_get_sorted_mail_ids():
-        mails = list(phone_state.get("unlocked_mails", []))
-        mails.sort(key=lambda mail_id: globals().get("PHONE_MAILS", {}).get(mail_id, {}).get("sort_order", 0), reverse=True)
-        return mails
+        mails = tuple(phone_state.get("unlocked_mails", []))
+        return phone_get_cached_sequence(
+            "mail_ids",
+            mails,
+            lambda: sorted(
+                mails,
+                key=lambda mail_id: globals().get("PHONE_MAILS", {}).get(mail_id, {}).get("sort_order", 0),
+                reverse=True,
+            ),
+        )
 
     def phone_get_sorted_post_ids():
-        posts = list(phone_state.get("unlocked_posts", []))
-        posts.sort(key=lambda post_id: globals().get("PHONE_SOCIAL_POSTS", {}).get(post_id, {}).get("sort_order", 0), reverse=True)
-        return posts
+        posts = tuple(phone_state.get("unlocked_posts", []))
+        return phone_get_cached_sequence(
+            "post_ids",
+            posts,
+            lambda: sorted(
+                posts,
+                key=lambda post_id: globals().get("PHONE_SOCIAL_POSTS", {}).get(post_id, {}).get("sort_order", 0),
+                reverse=True,
+            ),
+        )
 
     def phone_get_visible_status_ids():
-        result = []
-        for character_id in PHONE_CHARACTER_IDS:
-            if phone_character_status_visible(character_id):
-                result.append(character_id)
-        return result
+        signature = tuple((character_id, phone_character_status_visible(character_id)) for character_id in PHONE_CHARACTER_IDS)
+        return phone_get_cached_sequence(
+            "visible_status_ids",
+            signature,
+            lambda: [character_id for character_id, is_visible in signature if is_visible],
+        )
 
     def phone_format_currency(value):
         if value is None:

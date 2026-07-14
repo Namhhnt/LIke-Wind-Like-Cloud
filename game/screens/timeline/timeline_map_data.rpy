@@ -21,6 +21,14 @@ init -2 python:
     TIMELINE_LOCKED_TITLE = "Chương chưa mở khóa"
     TIMELINE_LOCKED_SUMMARY = "Tiếp tục câu chuyện để mở khóa thông tin của chương này."
     TIMELINE_LOCKED_REQUIREMENT = "Tiếp tục các chương đang mở để hé lộ nhánh này."
+    TIMELINE_SCREEN_STATE_CACHE = {}
+
+    def timeline_freeze_signature(value):
+        if isinstance(value, dict):
+            return tuple(sorted((key, timeline_freeze_signature(item)) for key, item in value.items()))
+        if isinstance(value, (list, tuple, set)):
+            return tuple(timeline_freeze_signature(item) for item in value)
+        return value
 
     TIMELINE_MAP_NODES = {'chronology': [{'id': 'fb_minyuu_01_first_frame',
                      'chapter_id': 'fb_minyuu_01_first_frame',
@@ -775,6 +783,68 @@ init -2 python:
 
     def timeline_get_default_route_id():
         return TIMELINE_DEFAULT_ROUTE_ID
+
+    def timeline_get_render_state_signature(route_id=None):
+        route_id = timeline_normalize_route_id(route_id)
+        progress_state = globals().get("progress", {})
+        return (
+            route_id,
+            timeline_freeze_signature(progress_state.get("completed", [])),
+            timeline_freeze_signature(progress_state.get("available", [])),
+            timeline_freeze_signature(progress_state.get("excluded", [])),
+            timeline_freeze_signature(progress_state.get("hidden", [])),
+            timeline_freeze_signature(progress_state.get("temporarily_hidden", [])),
+            timeline_freeze_signature(progress_state.get("route_status", {})),
+            timeline_freeze_signature(progress_state.get("route_focus", {})),
+            timeline_freeze_signature(progress_state.get("relationship_directions", {})),
+            timeline_freeze_signature(progress_state.get("player_flags", [])),
+            timeline_freeze_signature(getattr(persistent, "timeline_bookmarks", [])),
+            bool(timeline_debug_reveal_spoilers()),
+        )
+
+    def timeline_build_screen_state(route_id=None, selected_node_id=None, viewport_width=1744):
+        route_id = timeline_normalize_route_id(route_id)
+        cache_key = (timeline_get_render_state_signature(route_id), selected_node_id, viewport_width)
+        cached = TIMELINE_SCREEN_STATE_CACHE.get(cache_key)
+        if cached:
+            return cached
+
+        nodes = timeline_get_nodes(route_id)
+        resolved_node = timeline_resolve_selected_node(route_id, selected_node_id)
+        active_node_id = resolved_node["id"] if resolved_node else None
+        selected_chapter_id = resolved_node.get("chapter_id") if resolved_node else None
+        selected_node_state = timeline_get_node_state(resolved_node) if resolved_node else None
+        screen_state = {
+            "route_id": route_id,
+            "nodes": nodes,
+            "visible_nodes": [node for node in nodes if timeline_should_render_node(node, route_id)],
+            "visible_connections": [
+                connection
+                for connection in timeline_get_connections(route_id)
+                if timeline_should_render_connection(route_id, connection)
+            ],
+            "visible_lane_labels": [
+                label
+                for label in timeline_get_lane_labels(route_id)
+                if timeline_should_render_lane_label(route_id, label)
+            ],
+            "resolved_node": resolved_node,
+            "active_node_id": active_node_id,
+            "selected_chapter_id": selected_chapter_id,
+            "selected_node_state": selected_node_state,
+            "selected_can_play": bool(
+                selected_chapter_id
+                and selected_node_state == "current"
+                and timeline_has_runtime_chapter(selected_chapter_id)
+            ),
+            "canvas_size": timeline_get_canvas_size(route_id),
+            "viewport_xinitial": timeline_get_viewport_xinitial(route_id, active_node_id, viewport_width),
+        }
+
+        if len(TIMELINE_SCREEN_STATE_CACHE) >= 24:
+            TIMELINE_SCREEN_STATE_CACHE.clear()
+        TIMELINE_SCREEN_STATE_CACHE[cache_key] = screen_state
+        return screen_state
 
     def timeline_normalize_route_id(route_id=None):
         if route_id in TIMELINE_MAP_NODES:

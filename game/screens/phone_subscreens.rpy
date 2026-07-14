@@ -1,5 +1,7 @@
 screen phone_messages_tab(selected_thread_id=None):
     if selected_thread_id is None:
+        $ sorted_thread_ids = phone_get_sorted_thread_ids()
+
         viewport:
             yfill True
             mousewheel True
@@ -9,10 +11,10 @@ screen phone_messages_tab(selected_thread_id=None):
             vbox:
                 spacing 10
 
-                if not phone_get_sorted_thread_ids():
+                if not sorted_thread_ids:
                     text _("No conversations unlocked yet.") style "phone_card_body"
 
-                for thread_id in phone_get_sorted_thread_ids():
+                for thread_id in sorted_thread_ids:
                     $ thread = PHONE_THREADS.get(thread_id, {})
                     $ title = thread.get("title", thread_id)
                     $ unread = thread_id in phone_state.get("unread_threads", [])
@@ -117,6 +119,8 @@ screen phone_message_bubble(message):
 
 screen phone_mail_tab(selected_mail_id=None):
     if selected_mail_id is None:
+        $ sorted_mail_ids = phone_get_sorted_mail_ids()
+
         viewport:
             yfill True
             mousewheel True
@@ -126,10 +130,10 @@ screen phone_mail_tab(selected_mail_id=None):
             vbox:
                 spacing 10
 
-                if not phone_get_sorted_mail_ids():
+                if not sorted_mail_ids:
                     text _("No mail unlocked yet.") style "phone_card_body"
 
-                for mail_id in phone_get_sorted_mail_ids():
+                for mail_id in sorted_mail_ids:
                     $ mail = PHONE_MAILS.get(mail_id, {})
                     $ unread = mail_id not in phone_state.get("read_mails", [])
 
@@ -192,6 +196,8 @@ screen phone_mail_view(mail_id):
 
 
 screen phone_social_tab():
+    $ sorted_post_ids = phone_get_sorted_post_ids()
+
     viewport:
         yfill True
         mousewheel True
@@ -201,10 +207,10 @@ screen phone_social_tab():
         vbox:
             spacing 10
 
-            if not phone_get_sorted_post_ids():
+            if not sorted_post_ids:
                 text _("No public posts yet.") style "phone_card_body"
 
-            for post_id in phone_get_sorted_post_ids():
+            for post_id in sorted_post_ids:
                 $ post = PHONE_SOCIAL_POSTS.get(post_id, {})
                 $ author_id = post.get("author", "")
                 $ is_read = post_id in phone_state.get("read_posts", [])
@@ -265,6 +271,8 @@ screen phone_social_tab():
 
 
 screen phone_contacts_tab():
+    $ sorted_contact_ids = phone_get_sorted_contact_ids()
+
     viewport:
         yfill True
         mousewheel True
@@ -274,10 +282,10 @@ screen phone_contacts_tab():
         vbox:
             spacing 10
 
-            if not phone_get_sorted_contact_ids():
+            if not sorted_contact_ids:
                 text _("No contacts unlocked yet.") style "phone_card_body"
 
-            for contact_id in phone_get_sorted_contact_ids():
+            for contact_id in sorted_contact_ids:
                 $ contact = PHONE_CONTACTS.get(contact_id, {})
                 $ profile = phone_find_profile(contact_id)
 
@@ -324,6 +332,8 @@ screen phone_contacts_tab():
 
 screen phone_status_tab(selected_status_id=None):
     if selected_status_id is None:
+        $ visible_status_ids = phone_get_visible_status_ids()
+
         viewport:
             yfill True
             mousewheel True
@@ -424,10 +434,10 @@ screen phone_status_tab(selected_status_id=None):
                 null height 4
 
                 # ── Character status entries ───────────────────────────
-                if not phone_get_visible_status_ids():
+                if not visible_status_ids:
                     text _("No public status entries yet.") style "phone_card_body"
 
-                for character_id in phone_get_visible_status_ids():
+                for character_id in visible_status_ids:
                     $ data = phone_status_display(character_id)
 
                     button:
@@ -558,4 +568,3 @@ screen phone_status_detail(character_id):
                                 style "phone_card_body"
                             text item.get("description", ""):
                                 style "phone_card_meta"
-

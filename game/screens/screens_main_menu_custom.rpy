@@ -201,13 +201,14 @@ screen main_menu_start_prompt():
         frame:
             xpos 690
             ypos 266
-            xsize 540
-            ysize 472
+            xsize 550
+            ysize 480
             background panel_bg
 
             vbox:
                 xpos 34
                 ypos 30
+                xsize 420
                 spacing 16
 
                 text _("Choose how you want to begin."):
@@ -216,12 +217,8 @@ screen main_menu_start_prompt():
                     color "#f4e4c5"
                     outlines [(1, "#00000088", 0, 1)]
 
-                text _("Continue from last save point"):
-                    size 28
-                    color ("#f4d59f" if continue_enabled else "#b3a291")
-
                 text _("Load the progression autosave created the last time you reached the map."):
-                    size 20
+                    size 18
                     color ("#d9c7ae" if continue_enabled else "#99897a")
 
                 use main_menu_nav_button(
@@ -234,17 +231,13 @@ screen main_menu_start_prompt():
 
                 if not continue_enabled:
                     text _("No map autosave has been created yet."):
-                        size 18
+                        size 16
                         color "#b8aa99"
 
                 null height 8
 
-                text _("New Game"):
-                    size 28
-                    color "#f4d59f"
-
                 text _("Start over from the beginning and replace the current progression autosave."):
-                    size 20
+                    size 18
                     color "#d9c7ae"
 
                 use main_menu_nav_button(

@@ -1,5 +1,6 @@
 init -1 python:
     _map_rollback_saved = True
+    _interactive_map_view_model_cache = {}
 
     def interactive_map_focus_entry(entry, map_zoom, canvas_size, viewport_size, focus_center):
         if not entry:
@@ -18,28 +19,70 @@ init -1 python:
         max_x = max(0, canvas_size[0] - viewport_size[0])
         max_y = max(0, canvas_size[1] - viewport_size[1])
 
-        viewport.xadjustment.value = min(max(target_x, 0), max_x)
-        viewport.yadjustment.value = min(max(target_y, 0), max_y)
+        clamped_x = min(max(target_x, 0), max_x)
+        clamped_y = min(max(target_y, 0), max_y)
+
+        if int(viewport.xadjustment.value) == clamped_x and int(viewport.yadjustment.value) == clamped_y:
+            return
+
+        viewport.xadjustment.value = clamped_x
+        viewport.yadjustment.value = clamped_y
         renpy.restart_interaction()
 
 
-    def interactive_map_label_entries(entries):
+    def interactive_map_entries_signature(entries):
+        return tuple(
+            (
+                entry.get("id"),
+                entry.get("location_id"),
+                entry.get("kind"),
+                entry.get("category"),
+                entry.get("state"),
+                entry.get("title"),
+                entry.get("name"),
+                entry.get("route_id"),
+                entry.get("x"),
+                entry.get("y"),
+                entry.get("description"),
+                entry.get("lock_reason"),
+            )
+            for entry in entries
+        )
+
+    def interactive_map_build_view_model(entries):
+        signature = interactive_map_entries_signature(entries)
+        cached = _interactive_map_view_model_cache.get(signature)
+        if cached:
+            return cached
+
         labels = []
         first_entries_by_location = {}
         hub_entries_by_location = {}
         ordered_location_ids = []
+        panel_entries = []
 
         for entry in entries:
             location_id = entry.get("location_id")
-            if not location_id:
-                continue
+            if location_id:
+                if location_id not in first_entries_by_location:
+                    first_entries_by_location[location_id] = entry
+                    ordered_location_ids.append(location_id)
 
-            if location_id not in first_entries_by_location:
-                first_entries_by_location[location_id] = entry
-                ordered_location_ids.append(location_id)
+                if entry.get("kind") == "location_hub":
+                    hub_entries_by_location[location_id] = entry
 
-            if entry.get("kind") == "location_hub":
-                hub_entries_by_location[location_id] = entry
+            state = entry.get("state", "available")
+            title = entry.get("title", entry.get("name", ""))
+            description = entry.get("description", "")
+            route_line = _("Location Hub") if entry.get("kind") == "location_hub" else (route_title(entry.get("route_id")) if entry.get("route_id") else _("Location"))
+
+            panel_entries.append({
+                "entry": entry,
+                "state": state,
+                "title": title,
+                "description": description,
+                "route_line": route_line,
+            })
 
         for location_id in ordered_location_ids:
             if not fixed_location_is_unlocked(location_id):
@@ -74,7 +117,23 @@ init -1 python:
                     "source_entry": entry,
                 })
 
-        return labels
+        view_model = {
+            "default_focus_entry": next((entry for entry in entries if entry.get("state") == "available"), entries[0] if entries else None),
+            "label_entries": labels,
+            "panel_entries": panel_entries,
+        }
+
+        if len(_interactive_map_view_model_cache) >= 24:
+            _interactive_map_view_model_cache.clear()
+        _interactive_map_view_model_cache[signature] = view_model
+        return view_model
+
+    def interactive_map_get_default_focus_entry(entries):
+        return interactive_map_build_view_model(entries).get("default_focus_entry")
+
+
+    def interactive_map_label_entries(entries):
+        return list(interactive_map_build_view_model(entries).get("label_entries", []))
 
 
 screen interactive_map_screen(entries, context_id="act1_default", allow_back=True, allow_timeline=False, title_override=None):
@@ -94,9 +153,10 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     $ map_focus_center = (760, 460)
 
     default hovered_entry = None
-    default focus_target_entry = next((entry for entry in entries if entry.get("state") == "available"), entries[0] if entries else None)
+    default focus_target_entry = interactive_map_get_default_focus_entry(entries)
     default events_panel_collapsed = False
 
+    $ map_view_model = interactive_map_build_view_model(entries)
     $ focus_entry = hovered_entry if hovered_entry else focus_target_entry
     $ events_panel_height = 158 if events_panel_collapsed else 798
     $ events_viewport_height = 0 if events_panel_collapsed else 544
@@ -139,7 +199,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                 for entry in entries:
                     use interactive_map_marker(entry, hovered_entry=hovered_entry, map_zoom=map_zoom)
 
-                for label_entry in interactive_map_label_entries(entries):
+                for label_entry in map_view_model["label_entries"]:
                     use interactive_map_label_button(label_entry, hovered_entry=hovered_entry, map_zoom=map_zoom)
 
         use interactive_map_daily_hud(
@@ -198,11 +258,12 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                         vbox:
                             spacing 10
 
-                            for entry in entries:
-                                $ state = entry.get("state", "available")
-                                $ title = entry.get("title", entry.get("name", ""))
-                                $ description = entry.get("description", "")
-                                $ route_line = _("Location Hub") if entry.get("kind") == "location_hub" else (route_title(entry.get("route_id")) if entry.get("route_id") else _("Location"))
+                            for panel_entry in map_view_model["panel_entries"]:
+                                $ entry = panel_entry["entry"]
+                                $ state = panel_entry["state"]
+                                $ title = panel_entry["title"]
+                                $ description = panel_entry["description"]
+                                $ route_line = panel_entry["route_line"]
                                 $ list_action = Return(entry) if state == "available" else NullAction()
 
                                 button:
