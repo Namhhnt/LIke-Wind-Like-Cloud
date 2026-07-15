@@ -40,6 +40,18 @@ define gui.about = _p("""
 define build.name = "LikeWindLikeCloud"
 
 
+## Development and release safety ##############################################
+
+## "auto" keeps developer tools available while running the project from the
+## Ren'Py SDK, but disables them automatically in packaged distributions.
+
+define config.developer = "auto"
+
+## Never enable the Shift+O console independently in release builds.
+
+define config.console = False
+
+
 ## Sounds and music ############################################################
 
 ## These three variables control, among other things, which mixers are shown
@@ -109,7 +121,7 @@ define config.end_game_transition = None
 define config.window = "auto"
 
 
-## Transitions used to show and hide the dialogue window
+## Transitions used to show and hide the dialogue window.
 
 define config.window_show_transition = Dissolve(.2)
 define config.window_hide_transition = Dissolve(.2)
@@ -134,7 +146,7 @@ default preferences.afm_time = 15
 ## Controls the platform-specific place Ren'Py will place the save files for
 ## this game. The save files will be placed in:
 ##
-## Windows: %APPDATA\RenPy\<config.save_directory>
+## Windows: %APPDATA%\RenPy\<config.save_directory>
 ##
 ## Macintosh: $HOME/Library/RenPy/<config.save_directory>
 ##
@@ -156,44 +168,159 @@ define config.window_icon = "gui/window_icon.png"
 ## Build configuration #########################################################
 ##
 ## This section controls how Ren'Py turns your project into distribution files.
+##
+## Release goals:
+## - Do not distribute .rpy/.rpym source files.
+## - Distribute compiled .rpyc/.rpymc scripts.
+## - Package runtime files into several .rpa archives.
+## - Keep startup presplash assets outside archives.
+## - Exclude editor files, source artwork, caches, saves, and temporary files.
 
 init python:
 
-    ## The following functions take file patterns. File patterns are case-
-    ## insensitive, and matched against the path relative to the base directory,
-    ## with and without a leading /. If multiple patterns match, the first is
-    ## used.
+    ## Archive declarations.
     ##
-    ## In a pattern:
-    ##
-    ## / is the directory separator.
-    ##
-    ## * matches all characters, except the directory separator.
-    ##
-    ## ** matches all characters, including the directory separator.
-    ##
-    ## For example, "*.txt" matches txt files in the base directory, "game/
-    ## **.ogg" matches ogg files in the game directory or any of its
-    ## subdirectories, and "**.psd" matches psd files anywhere in the project.
+    ## Splitting archives keeps the distribution tidy and avoids rebuilding one
+    ## single giant archive whenever only scripts or a specific asset group
+    ## changes.
 
-    ## Classify files as None to exclude them from the built distributions.
+    build.archive("scripts", "all")
+    build.archive("gui", "all")
+    build.archive("images", "all")
+    build.archive("audio", "all")
+    build.archive("video", "all")
+    build.archive("data", "all")
 
-    build.classify('**~', None)
-    build.classify('**.bak', None)
-    build.classify('**/.**', None)
-    build.classify('**/#**', None)
-    build.classify('**/thumbs.db', None)
 
-    ## To archive files, classify them as 'archive'.
+    ## Exclude temporary, hidden, editor, cache, save, and source-art files.
+    ##
+    ## build.classify uses the FIRST matching rule, so exclusions and special
+    ## files must appear before the broader archive rules below.
 
-    # build.classify('game/**.png', 'archive')
-    # build.classify('game/**.jpg', 'archive')
+    build.classify("**~", None)
+    build.classify("**.bak", None)
+    build.classify("**.tmp", None)
+    build.classify("**.temp", None)
+    build.classify("**.orig", None)
+    build.classify("**.rej", None)
+    build.classify("**.swp", None)
+    build.classify("**/#**", None)
+    build.classify("**/.**", None)
+    build.classify("**/thumbs.db", None)
+    build.classify("**/desktop.ini", None)
+    build.classify("**.zip", None)
+
+    build.classify("**.md", None)
+    build.classify("Specs/**", None)
+    build.classify("tools/**", None)
+    build.classify("game/cache/**", None)
+    build.classify("game/saves/**", None)
+    build.classify("game/images/reserved/**", None)
+    build.classify("game/images/characters/**_expression_**.png", None)    
+
+    build.classify("**.psd", None)
+    build.classify("**.psb", None)
+    build.classify("**.kra", None)
+    build.classify("**.xcf", None)
+    build.classify("**.clip", None)
+    build.classify("**.ase", None)
+    build.classify("**.aseprite", None)
+    build.classify("**.blend", None)
+
+
+    ## Keep presplash files outside .rpa archives.
+    ##
+    ## These files can be needed before Ren'Py has fully initialized and loaded
+    ## the game archives.
+
+    build.classify("game/presplash.png", "all")
+    build.classify("game/presplash.jpg", "all")
+    build.classify("game/presplash_background.png", "all")
+    build.classify("game/presplash_background.jpg", "all")
+    build.classify("game/presplash_foreground.png", "all")
+    build.classify("game/presplash_foreground.jpg", "all")
+
+    build.classify("game/android-presplash.jpg", "all")
+    build.classify("game/android-downloading.jpg", "all")
+
+
+    ## Scripts.
+    ##
+    ## Source Ren'Py scripts are excluded. Their compiled counterparts are
+    ## included in scripts.rpa.
+
+    build.classify("game/**.rpy", None)
+    build.classify("game/**.rpym", None)
+
+    build.classify("game/**.rpyc", "scripts")
+    build.classify("game/**.rpymc", "scripts")
+    build.classify("game/**.pyc", "scripts")
+
+    ## Keep required custom Python modules. They are hidden inside scripts.rpa,
+    ## but remain Python source and can still be reverse-engineered/extracted.
+    ## Do not place secrets or private keys in client-side Python files.
+
+    build.classify("game/**.py", "scripts")
+
+
+    ## GUI assets and fonts.
+
+    build.classify("game/gui/**", "gui")
+    build.classify("game/**.ttf", "gui")
+    build.classify("game/**.otf", "gui")
+    build.classify("game/**.woff", "gui")
+    build.classify("game/**.woff2", "gui")
+
+
+    ## Image assets.
+    ##
+    ## The directory rule covers uncommon image formats stored under images/.
+    ## Extension rules also catch images stored elsewhere in game/.
+
+    build.classify("game/images/**", "images")
+    build.classify("game/**.png", "images")
+    build.classify("game/**.jpg", "images")
+    build.classify("game/**.jpeg", "images")
+    build.classify("game/**.webp", "images")
+    build.classify("game/**.avif", "images")
+    build.classify("game/**.svg", "images")
+    build.classify("game/**.gif", "images")
+
+
+    ## Audio assets.
+
+    build.classify("game/audio/**", "audio")
+    build.classify("game/**.ogg", "audio")
+    build.classify("game/**.opus", "audio")
+    build.classify("game/**.mp3", "audio")
+    build.classify("game/**.wav", "audio")
+    build.classify("game/**.flac", "audio")
+    build.classify("game/**.m4a", "audio")
+
+
+    ## Video assets.
+
+    build.classify("game/video/**", "video")
+    build.classify("game/videos/**", "video")
+    build.classify("game/**.webm", "video")
+    build.classify("game/**.mp4", "video")
+    build.classify("game/**.mkv", "video")
+    build.classify("game/**.ogv", "video")
+
+
+    ## Any remaining runtime file under game/ goes into data.rpa.
+    ##
+    ## This includes JSON, CSV, YAML, shaders, and other custom runtime data
+    ## that does not match a more specific rule above.
+
+    build.classify("game/**", "data")
+
 
     ## Files matching documentation patterns are duplicated in a mac app build,
     ## so they appear in both the app and the zip file.
 
-    build.documentation('*.html')
-    build.documentation('*.txt')
+    build.documentation("*.html")
+    build.documentation("*.txt")
 
 
 ## A Google Play license key is required to perform in-app purchases. It can be
