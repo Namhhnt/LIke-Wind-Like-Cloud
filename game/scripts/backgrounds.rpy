@@ -20,3 +20,7 @@ image bg_tam_family_entry_evening = Solid("#17120f")
 image bg_tam_family_hallway_night = Solid("#121014")
 image bg_tam_family_balcony_night = Solid("#10151d")
 image bg_tam_family_thienan_room_night = Solid("#17151a")
+
+image bg_airport_arrival_day = "images/assets/bg/bg_airport_arrival_day.png"
+image bg_hoang_house_front_door_day = "images/assets/bg/bg_hoang_house_front_door_day.png"
+image bg_hoang_house_living_room_day = "images/assets/bg/bg_hoang_house_living_room_day.png"
