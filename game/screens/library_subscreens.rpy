@@ -224,11 +224,6 @@ screen library_character_detail(character_id):
                                 style "library_story_meta"
                                 color LIB_MUTED
 
-                        textbutton _("Open Phone Status"):
-                            background None
-                            action ShowMenu("phone_home", initial_tab="status", focus_character_id=cid, back_action=ShowMenu("library_character_detail", character_id=cid), back_label=_("Back to Profile"))
-                            text_style "library_back_button_text"
-
                     # Profile sections column
                     viewport:
                         scrollbars "vertical"
