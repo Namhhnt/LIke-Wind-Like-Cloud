@@ -12,11 +12,11 @@ label tam_c07_minh_at_company_s03_working_logic:
     "Anh Minh nói dữ liệu nghiệm thu phải khóa quyền sửa sau khi duyệt."
     "Anh Minh bảo đừng để IT ôm hết lỗi nghiệp vụ."
 
-    quan happy "Cuối cùng cũng có người nói tiếng người."
+    c07_truong happy "Cuối cùng cũng có người nói tiếng người."
 
     huyen teasing "Anh nói như thể trước giờ anh làm việc với động vật."
 
-    quan irritated "Anh không nói thế."
+    c07_truong irritated "Anh không nói thế."
 
     huyen grinning "Nhưng mặt anh có."
 
@@ -29,13 +29,17 @@ label tam_c07_minh_at_company_s03_working_logic:
     scene bg_meeting_room_day
     with dissolve
 
-    "Chiều thứ Năm, phòng họp nhỏ chỉ còn Tâm, Minh và Quân. Quân đeo tai nghe xử lý lỗi phân quyền trên hệ thống demo, gần như tách khỏi thế giới."
+    "Chiều thứ Năm, phòng họp nhỏ chỉ còn Tâm, Minh và Trường."
+
+    "Trường đeo tai nghe xử lý lỗi phân quyền trên hệ thống demo, gần như tách khỏi thế giới."
 
     tam neutral "Em sửa lại flow phê duyệt vật tư theo góp ý hôm trước. Nhưng đoạn này vẫn hơi vướng."
 
     minh neutral "Vướng chỗ nào?"
 
-    tam neutral "Nếu để Vật tư tạo yêu cầu, Thiết bị xác nhận thông số rồi Tài chính duyệt ngân sách thì hợp lý. Nhưng phần vật liệu lại cần đội kỹ thuật kiểm tra tiêu chuẩn trước. Nếu thêm một bước nữa thì flow dài quá."
+    tam neutral "Nếu để Vật tư tạo yêu cầu, Thiết bị xác nhận thông số rồi Tài chính duyệt ngân sách thì hợp lý."
+
+    tam neutral "Nhưng phần vật liệu lại cần đội kỹ thuật kiểm tra tiêu chuẩn trước. Nếu thêm một bước nữa thì flow dài quá."
 
     "Minh kéo ghế lại gần vừa đủ để nhìn màn hình, không gần hơn."
 
@@ -43,7 +47,9 @@ label tam_c07_minh_at_company_s03_working_logic:
 
     tam confused "Dạ?"
 
-    minh neutral "Mua thiết bị cần thông số. Duyệt vật liệu cần tiêu chuẩn nghiệm thu. Nếu ép chung, người dùng phải điền nhiều trường không liên quan. Sau đó họ sẽ bỏ qua."
+    minh neutral "Mua thiết bị cần thông số. Duyệt vật liệu cần tiêu chuẩn nghiệm thu."
+
+    minh neutral "Nếu ép chung, người dùng phải điền nhiều trường không liên quan. Sau đó họ sẽ bỏ qua."
 
     "Anh chỉ vào điểm giao giữa hai nhánh."
 
@@ -63,8 +69,10 @@ label tam_c07_minh_at_company_s03_working_logic:
 
     if c07_tam_mode == "uncommitted":
         "Niềm vui đến nhanh hơn Tâm kịp giữ. Cô cúi xuống ghi chú để giấu nụ cười, nhưng đầu bút chạy nhanh đến mức chữ hơi nghiêng."
+
     elif c07_tam_mode == "hoang_uncertain":
         "Tâm thấy vui theo một cách ngay ngắn, giống như được người nghiêm khắc gật đầu công nhận. Nhưng chính vì vui, cô lại thấy mình cần cẩn thận hơn."
+
     elif c07_tam_mode == "hoang_clear":
         "Tâm mỉm cười. Một lời công nhận nghề nghiệp, rõ ràng và vừa đủ. Cô nhận nó đúng như thế."
 
@@ -80,9 +88,9 @@ label tam_c07_minh_at_company_s03_working_logic:
 
             tam neutral "Em hiểu rồi. Em sẽ tách flow và gửi lại bản mới trước thứ Hai."
 
-            minh neutral "Được. Nếu còn vướng thì hỏi Quân trước. Phần phân quyền anh ấy nắm rõ hơn."
+            minh neutral "Được. Nếu còn vướng thì hỏi Trường trước. Phần phân quyền anh ấy nắm rõ hơn."
 
-            quan neutral "Cuối cùng anh cũng được nhớ tới."
+            c07_truong neutral "Cuối cùng anh cũng được nhớ tới."
 
             minh neutral "Anh vẫn ở đây mà."
 
@@ -136,14 +144,17 @@ label tam_c07_minh_at_company_s03_working_logic:
 
             if c07_tam_mode == "uncommitted":
                 "Tâm biết mình nên quay về bàn. Nhưng cô vẫn đứng thêm một nhịp, chỉ để ghi nhớ giọng anh ngoài căn phòng của giấc mơ."
+
             else:
                 "Tâm nghe thấy tên Hoàng trong phần im lặng của chính mình. Cô khép laptop hơi nhanh."
 
     # The small work correction is a chapter-wide career gain.
     $ story_add("career_tam", 10)
     $ story_add("tam_observation", 10)
+
     if c07_tam_mode != "hoang_clear" and c07_work_choice != "keep_distance":
         $ story_add("tam_minh_drawn", 5)
+
     $ story_flag("minh_helped_tam_work_error")
 
     "Trước khi Tâm rời phòng, Minh gọi lại."

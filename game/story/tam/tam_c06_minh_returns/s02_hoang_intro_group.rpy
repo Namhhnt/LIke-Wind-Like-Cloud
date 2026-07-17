@@ -535,11 +535,11 @@ label tam_c06_minh_returns_s02_huyen_fangirl_report:
 
     huyen happy "Buổi họp chiều qua giảm gần nửa thời gian."
 
+    tam teasing "Mày thổi phồng vừa thôi."
+
+    huyen irritated "Thề! Tao chỉ đang nói chuyện công việc."
+
     tam teasing "Đồ mê trai."
-
-    huyen irritated "Tao đang nói chuyện công việc."
-
-    tam teasing "Mày thổi bóng vừa thôi."
 
     huyen irritated "Tao mới kể đúng sự thật."
 

@@ -14,7 +14,7 @@ label tam_c07_minh_at_company_s05_evening_routes:
 
         hoang neutral "Gọi đi. Cùng lắm cuối tháng ăn mì gói."
 
-        "Tâm kể chuyện dự án. Kể chị Linh muốn bỏ nghề bán bánh mì. Kể Quân cuối cùng cũng tìm được người chịu nói hộ nỗi oan của IT."
+        "Tâm kể chuyện dự án. Kể chị Linh muốn bỏ nghề bán bánh mì. Kể Trường cuối cùng cũng tìm được người chịu nói hộ nỗi oan của IT."
 
         "Rồi cô kể về Minh."
 
@@ -43,7 +43,7 @@ label tam_c07_minh_at_company_s05_evening_routes:
         $ story_add("hoang_tam_trust", 10)
         $ story_add("tam_self_clarity", 10)
         $ story_sub("tam_minh_drawn", 10)
-        $ story_sub("hoang_insecurity", 5)
+        $ story_sub("hoang_insecurity", -5)
         $ story_flag("tam_hoang_stable_path")
         $ story_flag("tam_c07_admiration_only")
 
@@ -67,7 +67,7 @@ label tam_c07_minh_at_company_s05_evening_routes:
 
         "Bữa ăn bắt đầu rất nhẹ. Nhẹ đến mức Tâm suýt quên cảm giác nặng trong lòng mấy ngày vừa qua."
 
-        "Cô kể chuyện chị Linh dọa học thêm ngoại ngữ chỉ để chửi bên Vật tư cho chính xác. Kể chuyện Quân đặt tên folder dài đến mức chính anh cũng quên."
+        "Cô kể chuyện chị Linh dọa học thêm ngoại ngữ chỉ để chửi bên Vật tư cho chính xác. Kể chuyện Trường đặt tên folder dài đến mức chính anh cũng quên."
 
         "Rồi câu chuyện trượt sang dự án."
 
@@ -113,7 +113,7 @@ label tam_c07_minh_at_company_s05_evening_routes:
             $ story_add("hoang_tam_trust", 10)
             $ story_add("tam_self_clarity", 10)
             $ story_sub("tam_insecurity", 10)
-            $ story_sub("hoang_insecurity", 5)
+            $ story_sub("hoang_insecurity", -5)
             $ story_flag("tam_c07_early_honesty")
 
             "Hơi nóng bốc lên giữa hai người. Lần này nó không dùng để che mặt ai cả."
@@ -205,17 +205,27 @@ label tam_c07_minh_at_company_s05_evening_routes:
 
         if c07_huyen_hoang_commit:
             huyen neutral "Tao phải đi trước. Hoàng đang đợi."
+
             huyen teasing "Mày đừng nhìn tao như thế. Người có lịch hẹn cũng có quyền sống."
+
             tam neutral "Tao có nhìn gì đâu."
+
             huyen grinning "Tốt. Dành ánh mắt cho người trong mơ đi."
+
         elif c07_huyen_quan_commit:
             quan neutral "Huyền, xuống chưa?"
+
             huyen neutral "Đấy. Cai ngục gọi."
+
             quan irritated "Anh nghe thấy."
+
             huyen grinning "Em biết."
+
         else:
             huyen neutral "Đi ăn không?"
+
             tam neutral "Mày không bận à?"
+
             huyen teasing "Tình bạn đang mở bán khuyến mãi. Chốt nhanh."
 
         "Điện thoại Tâm rung lên. Một tin nhắn công việc mới."
@@ -236,6 +246,7 @@ label tam_c07_minh_at_company_s05_evening_routes:
 
             if c07_huyen_hoang_commit or c07_huyen_quan_commit:
                 huyen teasing "Mặt đó không phải mặt đọc checklist."
+
             else:
                 huyen teasing "Mày có muốn tao đi trước để tiện cười một mình không?"
 

@@ -11,7 +11,7 @@ label tam_c07_minh_at_company_s02_northbridge_arrival:
 
     "Cửa phòng họp mở ra."
 
-    "Trưởng ban đi vào trước. Sau anh là một phụ nữ mặc vest màu kem. Người còn lại bước sau nửa nhịp."
+    "Quân đi vào trước. Sau anh là một phụ nữ mặc vest màu kem. Người còn lại bước sau nửa nhịp."
 
     "Áo sơ mi trắng. Quần âu tối màu. Không thắt cà vạt."
 
@@ -73,6 +73,7 @@ label tam_c07_minh_at_company_s02_northbridge_arrival:
 
     else:
         "Tâm nhận ra Minh, nhưng chỉ để sự bất ngờ đi qua trong một nhịp."
+
         $ story_add("tam_observation", 5)
 
     "Minh chưa nhìn thấy cô ngay. Ánh mắt anh lướt qua căn phòng, lịch sự và đều đặn."
@@ -87,20 +88,28 @@ label tam_c07_minh_at_company_s02_northbridge_arrival:
 
     "Tâm gật lại."
 
-    c07_truongban "Giới thiệu với mọi người, đây là anh Huỳnh Nhật Minh, đại diện NorthBridge trong giai đoạn triển khai. Anh Minh sẽ tham gia giám sát tiến độ và cố vấn giải pháp. Bên cạnh anh là chị Mai, phụ trách kiểm soát hồ sơ đầu tư."
+    quan neutral "Giới thiệu với mọi người, đây là anh Huỳnh Nhật Minh, đại diện NorthBridge trong giai đoạn triển khai. Anh Minh sẽ tham gia giám sát tiến độ và cố vấn giải pháp."
+
+    quan neutral "Bên cạnh anh là chị Nguyễn Thị Phương Mai, phụ trách kiểm soát hồ sơ đầu tư."
+
+    c07_mai neutral "Chào mọi người. Trong giai đoạn đầu, tôi sẽ phối hợp chủ yếu về hồ sơ, ngân sách và các điều kiện kiểm soát đầu tư. Mong được mọi người hỗ trợ."
 
     "Huỳnh Nhật Minh."
 
     if c07_tam_mode == "uncommitted":
         "Tên anh nằm lại trong đầu Tâm rõ đến mức gần như có âm vang."
+
     elif c07_tam_mode == "hoang_uncertain":
         "Hóa ra người cô từng giữ trong một góc ký ức có một cái tên đầy đủ, một công việc, một đời sống thật — và một người em trai cô đang yêu."
+
     else:
         "Tâm ghi tên anh vào đầu trang tài liệu, ngay dưới dòng 'NorthBridge'."
 
-    minh neutral "Tôi sẽ không can thiệp vào cách team vận hành nếu mọi thứ đang đi đúng hướng. Nhưng nếu có vấn đề về logic triển khai, phân quyền, nguồn dữ liệu hoặc rủi ro nghiệm thu, tôi sẽ hỏi khá kỹ. Mong mọi người thông cảm trước."
+    minh neutral "Tôi sẽ không can thiệp vào cách team vận hành nếu mọi thứ đang đi đúng hướng."
 
-    quan neutral "Hỏi kỹ là kỹ cỡ nào anh?"
+    minh neutral "Nhưng nếu có vấn đề về logic triển khai, phân quyền, nguồn dữ liệu hoặc rủi ro nghiệm thu, tôi sẽ hỏi khá kỹ. Mong mọi người thông cảm trước."
+
+    c07_truong neutral "Hỏi kỹ là kỹ cỡ nào anh?"
 
     minh neutral "Đủ để sau này khi lỗi xảy ra, không ai phải nói câu 'em tưởng'."
 
@@ -109,7 +118,7 @@ label tam_c07_minh_at_company_s02_northbridge_arrival:
 
     huyen grinning "Em thấy bên IT vừa được cứu rỗi."
 
-    quan irritated "Anh vẫn đang ngồi đây đấy."
+    c07_truong irritated "Anh vẫn đang ngồi đây đấy."
 
     huyen teasing "Em biết. Em nói cho anh nghe mà."
 
@@ -129,65 +138,106 @@ label tam_c07_minh_at_company_s02_northbridge_arrival:
     if c07_tam_mode == "uncommitted":
         if c07_huyen_knows_dream:
             huyen surprised "Đừng nói với tao."
+
             tam flustered "Gì?"
+
             huyen teasing "Người trong mơ."
+
             "Tâm nhìn thẳng phía trước. Tai nóng lên rất nhanh."
+
             tam flustered "Ừ."
+
             huyen shocked "Ừ là sao? Mày xác nhận nhẹ như xác nhận lịch họp thế à?"
 
             if c07_huyen_hoang_commit:
-                huyen teasing "May mà lần này mày nhìn đúng người anh. Phần người em... tao không định nhường đâu."
-                tam shocked "Mày nói cái gì đấy?"
-                huyen grinning "Nói cho cơ cấu gia đình rõ ràng thôi."
+                huyen teasing "May mà tao đã có người để bận tâm rồi. Không tranh suất fan với mày."
+
+                tam shocked "Ai tranh với mày?"
+
+                huyen grinning "Tốt. Giữ tinh thần đó."
+
             elif c07_huyen_quan_commit:
                 huyen teasing "Gu của mày là kiểu người nhìn bảng dữ liệu như sắp bắt nó khai cung à? Tao không phán xét. Gu của tao cũng chẳng hiền hơn."
+
                 "Quân đi phía trước chậm lại nửa bước."
+
                 quan neutral "Anh nghe thấy."
+
                 huyen grinning "Em nói cho anh nghe mà."
+
             else:
                 huyen grinning "Người trong mơ ngoài đời còn biết sửa flow nghiệp vụ. Hơi quá tay rồi đấy."
+
         else:
             huyen teasing "Mày làm rơi bút hai lần."
+
             tam neutral "Một lần."
+
             huyen neutral "Lần thứ hai là suýt. Tao tính luôn."
+
             huyen teasing "Biết anh ấy à?"
+
             "Tâm im một nhịp."
+
             tam flustered "Tao từng mơ thấy anh ấy."
+
             huyen shocked "...Mày giấu bản đặc biệt này đến giờ?"
+
             tam irritated "Đừng làm quá."
+
             huyen grinning "Tao còn chưa bắt đầu làm quá."
 
     elif c07_tam_mode == "hoang_uncertain":
         if c07_huyen_knows_dream:
             huyen teasing "Anh trai người yêu mày lại là người trong mơ. Đời mày viết tình tiết hơi lười."
+
             tam irritated "Mày bé mồm thôi."
+
             huyen neutral "Tao đang bé mà."
+
             "Huyền nhìn cô thêm một chút, rồi không trêu nữa."
+
             huyen neutral "Ổn không?"
+
             tam neutral "Ổn."
+
             "Câu trả lời nhanh quá. Cả hai đều nghe thấy."
+
         else:
             huyen teasing "Mày biết anh Minh trước à?"
+
             tam neutral "Gặp một lần thôi."
+
             huyen neutral "Một lần mà mặt mày như vừa nhận mail lỗi production."
+
             tam irritated "Tao không sao."
+
             huyen neutral "Ừ. Tao chưa hỏi mày có sao không."
 
     elif c07_tam_mode == "hoang_clear":
         if c07_huyen_knows_dream:
             huyen teasing "Thế là bí ẩn người trong mơ được giải rồi nhé. Có rung rinh không?"
+
             tam smile "Không."
+
             huyen surprised "Nhanh thế?"
+
             tam neutral "Vì tao biết cảm giác muốn về kể chuyện cho ai là gì."
+
             "Huyền nhìn cô hai giây, rồi bật cười."
+
             huyen grinning "Được. Câu này đạt chuẩn self-awareness."
+
         else:
             huyen teasing "Anh trai Hoàng được đấy. Mày có thấy nguy hiểm không?"
+
             tam smile "Nguy hiểm cho tiến độ dự án thì có."
+
             huyen grinning "Tỉnh thế. Hơi chán nhưng đáng tin."
 
     else:
         huyen neutral "Anh Minh khó đọc thật."
+
         tam neutral "Nhưng hỏi đúng."
 
     return

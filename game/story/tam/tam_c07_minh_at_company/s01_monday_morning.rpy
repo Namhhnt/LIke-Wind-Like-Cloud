@@ -77,6 +77,7 @@ label tam_c07_minh_at_company_s01_monday_morning:
 
     else:
         "Sáng thứ Hai bắt đầu bằng một lịch họp dày và ba email gắn cờ đỏ."
+
         "Tâm chuẩn bị đi làm như thường lệ, cố đặt cuộc gặp bất ngờ hôm trước vào đúng ngăn của nó: một chuyện chưa cần gọi tên."
 
     scene bg_company_open_office_day
@@ -88,17 +89,17 @@ label tam_c07_minh_at_company_s01_monday_morning:
 
     "Nói cho oai là điều phối nghiệp vụ giữa các phòng ban. Nói thẳng ra là người phải hỏi vì sao cùng một file mà năm phòng hiểu thành sáu kiểu."
 
-    c07_linh "Kẹt đời rồi."
+    c07_linh tired "Kẹt đời rồi."
 
     tam confused "Máy in à chị?"
 
-    c07_linh "Tối qua vừa sửa xong phụ lục hợp đồng. Sáng nay Vật tư đổi danh mục thiết bị. Chị muốn nghỉ việc đi bán bánh mì."
+    c07_linh frustrated "Tối qua vừa sửa xong phụ lục hợp đồng. Sáng nay Vật tư đổi danh mục thiết bị. Chị muốn nghỉ việc đi bán bánh mì."
 
-    quan neutral "Bán bánh mì cũng phải quản lý nguyên vật liệu. Không thoát được đâu."
+    c07_truong neutral "Bán bánh mì cũng phải quản lý nguyên vật liệu. Không thoát được đâu."
 
-    c07_linh "Im."
+    c07_linh irritated "Im."
 
-    "Quân im thật."
+    "Trường im thật."
 
     huyen grinning "Thứ Hai rất công bằng. Nó ghét tất cả mọi người như nhau."
 
@@ -106,13 +107,15 @@ label tam_c07_minh_at_company_s01_monday_morning:
 
     tam tired "Công bằng thật."
 
-    c07_truongban "Mọi người chuẩn bị vào phòng họp nhé. Bên NorthBridge đến rồi."
+    quan neutral "Mọi người chuẩn bị vào phòng họp nhé. Bên NorthBridge đến rồi."
 
     "Tâm cầm laptop, sổ tay và một cây bút."
 
     if c07_tam_mode == "uncommitted":
         "Cô đứng dậy nhanh hơn bình thường nửa nhịp."
+
         "Huyền nhìn sang. Không nói gì. Chỉ nhướng một bên mày."
+
     else:
         "Lúc đứng dậy, cô có cảm giác như bước xuống cầu thang trong bóng tối: biết rõ còn một bậc cuối, nhưng chân vẫn hụt đi nửa nhịp."
 

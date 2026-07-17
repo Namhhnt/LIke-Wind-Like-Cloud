@@ -7,11 +7,13 @@ label tam_c07_minh_at_company_s04_recognition_and_huyen:
 
     "Cuối tháng, ban triển khai được khen trong cuộc họp tổng kết giai đoạn một."
 
-    c07_truongban "Phần mapping giữa mua sắm, nhập khẩu và nghiệm thu đã giúp NorthBridge duyệt hồ sơ nhanh hơn dự kiến. Tâm tiến bộ rõ ở phần liên phòng ban. Em giữ nhịp này nhé."
+    quan neutral "Phần mapping giữa mua sắm, nhập khẩu và nghiệm thu đã giúp NorthBridge duyệt hồ sơ nhanh hơn dự kiến."
+
+    quan smile "Tâm tiến bộ rõ ở phần liên phòng ban. Em giữ nhịp này nhé."
 
     "Mọi người vỗ tay."
 
-    quan teasing "Có thưởng nhớ mời trà sữa."
+    c07_truong teasing "Có thưởng nhớ mời trà sữa."
 
     tam irritated "Anh mơ đi."
 
@@ -46,6 +48,7 @@ label tam_c07_minh_at_company_s04_recognition_and_huyen:
 
         if c07_work_choice == "follow_pull":
             "Cô không còn đủ thành thật để gọi cảm giác ấy là ngưỡng mộ đơn thuần."
+
         else:
             "Cô vẫn chưa biết phải gọi cảm giác ấy là gì. Nhưng nó có thật, và đang lớn nhanh hơn dự tính."
 
@@ -55,6 +58,7 @@ label tam_c07_minh_at_company_s04_recognition_and_huyen:
         "Không có cảm giác tim đập lệch như khi Hoàng nhìn cô rồi nói một câu rất bình thường: 'Hôm nay em xinh đấy.'"
 
         "Chính sự khác nhau ấy đáng lẽ phải làm mọi thứ đơn giản."
+
         "Nhưng Tâm lại bắt đầu sợ câu hỏi khác: nếu cô không rung động với Minh, tại sao cô vẫn hoang mang?"
 
     elif c07_tam_mode == "hoang_clear":
@@ -67,7 +71,7 @@ label tam_c07_minh_at_company_s04_recognition_and_huyen:
 
     "Minh cầm tập hồ sơ lên."
 
-    minh neutral "Chiều nay xem lại phần phân quyền dữ liệu lần cuối. Quân sửa đúng hướng rồi, nhưng còn một chỗ dễ bị hiểu sai."
+    minh neutral "Chiều nay xem lại phần phân quyền dữ liệu lần cuối. Trường sửa đúng hướng rồi, nhưng còn một chỗ dễ bị hiểu sai."
 
     tam neutral "Vâng."
 
@@ -122,23 +126,34 @@ label tam_c07_minh_at_company_s04_recognition_and_huyen:
         tam flustered "Mày đừng gọi thế ở công ty."
 
         if c07_huyen_hoang_commit:
-            huyen teasing "Được. Tao sẽ gọi là anh trai người yêu tao. Nghe còn nguy hiểm hơn."
-            tam shocked "Huyền."
-            huyen grinning "Tao nói nhỏ mà."
+            huyen teasing "Được. Tao sẽ gọi là anh Minh bên NorthBridge. Đủ an toàn chưa?"
+
+            tam irritated "Mày không gọi gì thì an toàn hơn."
+
+            huyen grinning "Khó. Tao đã biết chuyện rồi."
+
         elif c07_huyen_quan_commit:
             huyen neutral "Tao hiểu cảm giác ngưỡng mộ người giỏi. Nhưng mày đang cười kiểu không hoàn toàn nghề nghiệp đâu."
+
             tam flustered "Tao có cười gì đâu."
+
             huyen teasing "Ừ. Chắc cơ mặt tự triển khai độc lập."
+
         else:
             huyen grinning "Không sao. Nếu là tao, tao cũng rung. Đẹp trai đã phiền, còn sửa được cả dự án thì quá phạm quy."
 
         if c07_work_choice == "follow_pull":
             tam neutral "Tao muốn biết thêm về anh ấy."
+
             "Huyền thôi cười một nhịp."
+
             huyen neutral "Thì biết. Nhưng nhớ nhìn người thật, đừng yêu bản dựng trong đầu."
+
             tam neutral "Tao biết."
+
         else:
             tam neutral "Tao chỉ... thấy anh ấy đặc biệt."
+
             huyen neutral "Ừ. Cái đó tao nhìn ra. Phần còn lại từ từ."
 
     elif c07_tam_mode == "hoang_uncertain":
@@ -181,11 +196,14 @@ label tam_c07_minh_at_company_s04_recognition_and_huyen:
 
         if c07_huyen_quan_commit:
             huyen neutral "Tao mà rõ được nửa thế này thì đỡ phải cãi nhau với một người nào đó mỗi tuần."
+
             quan neutral "Anh nghe thấy."
+
             huyen grinning "Tốt. Em nói cho anh nghe."
 
     else:
         huyen neutral "Dự án này xem ra giúp mày lên tay thật."
+
         tam smile "Ừ. Ít nhất cũng đáng với số email đỏ."
 
     return
