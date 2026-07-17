@@ -376,7 +376,7 @@ init -1 python:
     # falls back to a dark placeholder instead of crashing.
     MAP_LOCATION_VISUALS = {
         "tam_apartment": {
-            "background": "images/assets/bg/bg_tam_room_morning.png",
+            "background": "images/assets/bg/bg_tam_room_morning.webp",
             "thumbnail": "images/ui/location_hubs/tam_apartment.png",
             "theme_color": "#6b4a32",
         },
@@ -416,17 +416,17 @@ init -1 python:
             "theme_color": "#65465f",
         },
         "restaurant": {
-            "background": "images/assets/bg/bg_luxury_restaurant_evening.png",
+            "background": "images/assets/bg/bg_luxury_restaurant_evening.webp",
             "thumbnail": "images/ui/location_hubs/restaurant.png",
             "theme_color": "#6f4b30",
         },
         "company": {
-            "background": "images/assets/bg/bg_company_open_office_day.png",
+            "background": "images/assets/bg/bg_company_open_office_day.webp",
             "thumbnail": "images/ui/location_hubs/company.png",
             "theme_color": "#344b5f",
         },
         "conference_hall": {
-            "background": "images/assets/bg/bg_company_year_end_party.png",
+            "background": "images/assets/bg/bg_company_year_end_party.webp",
             "thumbnail": "images/ui/location_hubs/conference_hall.png",
             "theme_color": "#60405a",
         },

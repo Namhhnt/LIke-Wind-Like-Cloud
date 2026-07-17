@@ -225,7 +225,7 @@ init -2 python:
 
     MAP_CONTEXTS = {
         "act1_default": {
-            "background": "images/maps/city_map_extend_day.png",
+            "background": "images/maps/city_map_extend_day.webp",
             "title": "City Map",
             "subtitle": "Choose where the story goes next.",
             "show_locked_fixed_locations": True,
@@ -233,7 +233,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "day_default": {
-            "background": "images/maps/city_map_extend_day.png",
+            "background": "images/maps/city_map_extend_day.webp",
             "title": "City Map",
             "subtitle": "Choose where the story goes next.",
             "show_locked_fixed_locations": True,
@@ -241,7 +241,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "afternoon_default": {
-            "background": "images/maps/city_map_extend_afternoon.png",
+            "background": "images/maps/city_map_extend_afternoon.webp",
             "title": "City Map",
             "subtitle": "The city is still bright, but the day is starting to turn.",
             "show_locked_fixed_locations": True,
@@ -249,7 +249,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "evening_default": {
-            "background": "images/maps/city_map_extend_evening.png",
+            "background": "images/maps/city_map_extend_evening.webp",
             "title": "City at Evening",
             "subtitle": "The city settles into evening as the next choice opens up.",
             "show_locked_fixed_locations": True,
@@ -257,7 +257,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "after_tam_c01_locked_company": {
-            "background": "images/maps/city_map_extend_evening.png",
+            "background": "images/maps/city_map_extend_evening.webp",
             "title": "City at Evening",
             "subtitle": "The city settles into evening as the next choice opens up.",
             "show_locked_fixed_locations": True,
@@ -267,7 +267,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "night_default": {
-            "background": "images/maps/city_map_extend_night.png",
+            "background": "images/maps/city_map_extend_night.webp",
             "title": "City at Night",
             "subtitle": "Some routes narrow when the city grows quieter.",
             "show_locked_fixed_locations": True,
@@ -275,7 +275,7 @@ init -2 python:
             "force_only_locations": [],
         },
         "festival_finale": {
-            "background": "images/maps/city_map_extend_night.png",
+            "background": "images/maps/city_map_extend_night.webp",
             "title": "Festival Night",
             "subtitle": "The city closes in around the event that matters most.",
             "show_locked_fixed_locations": True,
@@ -283,7 +283,7 @@ init -2 python:
             "force_only_locations": ["conference_hall"],
         },
         "shopping_area_visit": {
-            "background": "images/maps/city_map_extend_evening.png",
+            "background": "images/maps/city_map_extend_evening.webp",
             "title": "Evening Shopping",
             "subtitle": "The shopping district is lively tonight. Huyền is already waiting.",
             "show_locked_fixed_locations": True,

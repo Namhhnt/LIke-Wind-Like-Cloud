@@ -24,7 +24,7 @@ screen tam_speech_minigame(items, attempt=1, can_skip=False):
         add "bg_interview_room"
         add Solid("#140e0acc")
 
-        add "images/characters/tam/expressions/tam_serious.png" at tam_speech_portrait_pos
+        add "images/characters/tam/expressions/tam_serious.webp" at tam_speech_portrait_pos
 
         vbox:
             xpos 560

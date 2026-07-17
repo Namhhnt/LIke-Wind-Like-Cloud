@@ -152,18 +152,18 @@ Declared in `game/scripts/backgrounds.rpy`. Use with `scene <name>` or `show <na
 
 | Image Name | File | Description |
 |-----------|------|-------------|
-| `bg_tam_room_morning` | `images/assets/bg/bg_tam_room_morning.png` | Tâm's room in the morning |
-| `bg_apartment_lobby_morning` | `images/assets/bg/bg_apartment_lobby_morning.png` | Apartment lobby, morning |
-| `bg_company_lobby_morning` | `images/assets/bg/bg_company_lobby_morning.png` | Company lobby, morning |
-| `bg_interview_waiting_room` | `images/assets/bg/bg_interview_waiting_room.png` | Interview waiting area |
-| `bg_interview_room` | `images/assets/bg/bg_interview_room.png` | Interview room |
-| `bg_company_lobby_noon` | `images/assets/bg/bg_company_lobby_noon.png` | Company lobby, noon |
-| `bg_company_lobby_afternoon` | `images/assets/bg/bg_company_lobby_afternoon.png` | Company lobby, afternoon |
-| `bg_luxury_restaurant_evening` | `images/assets/bg/bg_luxury_restaurant_evening.png` | Luxury restaurant, evening |
-| `bg_company_open_office_day` | `images/assets/bg/bg_company_open_office_day.png` | Open office, daytime |
-| `bg_meeting_room_day` | `images/assets/bg/bg_meeting_room_day.png` | Meeting room, daytime |
-| `bg_company_year_end_party` | `images/assets/bg/bg_company_year_end_party.png` | Year-end party venue |
-| `bg_company_year_end_party_late` | `images/assets/bg/bg_company_year_end_party_late.png` | Year-end party, late |
+| `bg_tam_room_morning` | `images/assets/bg/bg_tam_room_morning.webp` | Tâm's room in the morning |
+| `bg_apartment_lobby_morning` | `images/assets/bg/bg_apartment_lobby_morning.webp` | Apartment lobby, morning |
+| `bg_company_lobby_morning` | `images/assets/bg/bg_company_lobby_morning.webp` | Company lobby, morning |
+| `bg_interview_waiting_room` | `images/assets/bg/bg_interview_waiting_room.webp` | Interview waiting area |
+| `bg_interview_room` | `images/assets/bg/bg_interview_room.webp` | Interview room |
+| `bg_company_lobby_noon` | `images/assets/bg/bg_company_lobby_noon.webp` | Company lobby, noon |
+| `bg_company_lobby_afternoon` | `images/assets/bg/bg_company_lobby_afternoon.webp` | Company lobby, afternoon |
+| `bg_luxury_restaurant_evening` | `images/assets/bg/bg_luxury_restaurant_evening.webp` | Luxury restaurant, evening |
+| `bg_company_open_office_day` | `images/assets/bg/bg_company_open_office_day.webp` | Open office, daytime |
+| `bg_meeting_room_day` | `images/assets/bg/bg_meeting_room_day.webp` | Meeting room, daytime |
+| `bg_company_year_end_party` | `images/assets/bg/bg_company_year_end_party.webp` | Year-end party venue |
+| `bg_company_year_end_party_late` | `images/assets/bg/bg_company_year_end_party_late.webp` | Year-end party, late |
 
 ### Additional Background Files Available (not yet declared)
 
@@ -198,14 +198,14 @@ Eight CGs are available. Declared in `game/scripts/cgs.rpy`.
 
 | Image Name | File |
 |-----------|------|
-| `cg_yuuka_minh_market_walk` | `images/assets/cg/cg_yuuka_minh_market_walk.png` |
-| `cg_yuuka_minh_choose_strawberries` | `images/assets/cg/cg_yuuka_minh_choose_strawberries.png` |
-| `cg_yuuka_minh_blue_apron` | `images/assets/cg/cg_yuuka_minh_blue_apron.png` |
-| `cg_yuuka_minh_bench_rest` | `images/assets/cg/cg_yuuka_minh_bench_rest.png` |
-| `cg_yuuka_minh_clean_strawberry` | `images/assets/cg/cg_yuuka_minh_clean_strawberry.png` |
-| `cg_yuuka_minh_hair_touch` | `images/assets/cg/cg_yuuka_minh_hair_touch.png` |
-| `cg_yuuka_minh_strawberry_smile` | `images/assets/cg/cg_yuuka_minh_strawberry_smile.png` |
-| `cg_yuuka_minh_finger_touch` | `images/assets/cg/cg_yuuka_minh_finger_touch.png` |
+| `cg_yuuka_minh_market_walk` | `images/assets/cg/cg_yuuka_minh_market_walk.webp` |
+| `cg_yuuka_minh_choose_strawberries` | `images/assets/cg/cg_yuuka_minh_choose_strawberries.webp` |
+| `cg_yuuka_minh_blue_apron` | `images/assets/cg/cg_yuuka_minh_blue_apron.webp` |
+| `cg_yuuka_minh_bench_rest` | `images/assets/cg/cg_yuuka_minh_bench_rest.webp` |
+| `cg_yuuka_minh_clean_strawberry` | `images/assets/cg/cg_yuuka_minh_clean_strawberry.webp` |
+| `cg_yuuka_minh_hair_touch` | `images/assets/cg/cg_yuuka_minh_hair_touch.webp` |
+| `cg_yuuka_minh_strawberry_smile` | `images/assets/cg/cg_yuuka_minh_strawberry_smile.webp` |
+| `cg_yuuka_minh_finger_touch` | `images/assets/cg/cg_yuuka_minh_finger_touch.webp` |
 
 Usage:
 
@@ -231,7 +231,7 @@ image side <character> <expression> = "characters/<character>/expressions/<chara
 Example:
 
 ```renpy
-image side tam determined = "characters/tam/expressions/tam_determined.png"
+image side tam determined = "characters/tam/expressions/tam_determined.webp"
 ```
 
 Then use it in dialogue:
@@ -536,7 +536,7 @@ register_library_item({
     "point_cost": 0,
     "unlock_mode": "free",
     "prerequisites": ["yuuka_c08_festival_arrival"],
-    "image": "images/assets/cg/cg_yuuka_minh_market_walk.png",
+    "image": "images/assets/cg/cg_yuuka_minh_market_walk.webp",
     "tags": ["cg", "yuuka", "minh"],
 })
 ```

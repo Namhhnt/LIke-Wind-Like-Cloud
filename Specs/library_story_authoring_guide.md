@@ -300,8 +300,8 @@ The story reader tries these forms internally:
 Because the project declares backgrounds like this:
 
 ```renpy
-image bg_tam_room_morning = "images/assets/bg/bg_tam_room_morning.png"
-image bg_interview_room = "images/assets/bg/bg_interview_room.png"
+image bg_tam_room_morning = "images/assets/bg/bg_tam_room_morning.webp"
+image bg_interview_room = "images/assets/bg/bg_interview_room.webp"
 ```
 
 the safest format is:
@@ -380,9 +380,9 @@ It resolves against declared Ren'Py image names.
 For example, `game/scripts/tam_sprites.rpy` contains:
 
 ```renpy
-image side tam neutral = "characters/tam/expressions/tam_neutral.png"
-image side tam smile = "characters/tam/expressions/tam_smile.png"
-image side tam serious = "characters/tam/expressions/tam_serious.png"
+image side tam neutral = "characters/tam/expressions/tam_neutral.webp"
+image side tam smile = "characters/tam/expressions/tam_smile.webp"
+image side tam serious = "characters/tam/expressions/tam_serious.webp"
 ```
 
 And `game/story/common.rpy` contains:

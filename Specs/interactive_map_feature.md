@@ -739,7 +739,7 @@ call interactive_map(map_entries=forced_entries, allow_back=False)
 
 ```python
 MAP_CONTEXTS["post_storm"] = {
-    "background": "images/maps/city_map_night.png",
+    "background": "images/maps/city_map_night.webp",
     "title": "After the Storm",
     "subtitle": "Some areas are still closed off.",
     "show_locked_fixed_locations": True,

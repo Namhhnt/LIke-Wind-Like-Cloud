@@ -149,14 +149,14 @@ Use a 16:9 map background image.
 Recommended path:
 
 ```text
-game/images/maps/city_map_01_day.png
+game/images/maps/city_map_01_day.webp
 ```
 
 For future variations:
 
 ```text
-game/images/maps/city_map_01_evening.png
-game/images/maps/city_map_01_night.png
+game/images/maps/city_map_01_evening.webp
+game/images/maps/city_map_01_night.webp
 game/images/maps/city_map_01_rain.png
 ```
 
@@ -337,7 +337,7 @@ init python:
 
     MAP_CONTEXTS = {
         "act1_default": {
-            "background": "images/maps/city_map_01_day.png",
+            "background": "images/maps/city_map_01_day.webp",
             "title": "City Map",
             "show_locked_fixed_locations": True,
             "temporarily_locked_locations": {},
@@ -345,7 +345,7 @@ init python:
         },
 
         "tam_c02_evening": {
-            "background": "images/maps/city_map_01_evening.png",
+            "background": "images/maps/city_map_01_evening.webp",
             "title": "Evening",
             "show_locked_fixed_locations": True,
 
@@ -366,7 +366,7 @@ init python:
         },
 
         "festival_finale": {
-            "background": "images/maps/city_map_01_night.png",
+            "background": "images/maps/city_map_01_night.webp",
             "title": "Festival Night",
             "show_locked_fixed_locations": False,
             "temporarily_locked_locations": {},
@@ -758,7 +758,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     tag menu
 
     $ context = MAP_CONTEXTS.get(context_id, MAP_CONTEXTS["act1_default"])
-    $ bg = context.get("background", "images/maps/city_map_01_day.png")
+    $ bg = context.get("background", "images/maps/city_map_01_day.webp")
 
     default hovered_entry = None
 
@@ -992,7 +992,7 @@ During a serious route moment, force the player to go to Hoàng’s house.
 
 ```python
 "hoang_conflict_night": {
-    "background": "images/maps/city_map_01_night.png",
+    "background": "images/maps/city_map_01_night.webp",
     "title": "Night",
     "show_locked_fixed_locations": True,
     "temporarily_locked_locations": {
@@ -1198,7 +1198,7 @@ Create a debug screen to tune positions.
 ```renpy
 screen map_debug_grid():
 
-    add "images/maps/city_map_01_day.png"
+    add "images/maps/city_map_01_day.webp"
 
     for x in range(0, 1921, 100):
         add Solid("#ffffff33"):

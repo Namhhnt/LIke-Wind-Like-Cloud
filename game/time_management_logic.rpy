@@ -251,7 +251,7 @@ init -1 python:
         return visual_context_ids.get(phase_id, "day_default")
 
 
-    def time_get_map_background(default_background="images/maps/city_map_day.png"):
+    def time_get_map_background(default_background="images/maps/city_map_day.webp"):
         context_id = time_get_map_visual_context_id()
         context = globals().get("MAP_CONTEXTS", {}).get(context_id, {})
         return context.get("background", default_background)
