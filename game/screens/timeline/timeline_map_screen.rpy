@@ -17,6 +17,8 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
     $ selected_can_play = screen_state["selected_can_play"]
     $ canvas_w, canvas_h = screen_state["canvas_size"]
     $ viewport_xinitial = screen_state["viewport_xinitial"]
+    $ node_render_positions = screen_state["node_render_positions"]
+    $ node_states = screen_state["node_states"]
 
     fixed:
         xysize (1920, 1080)
@@ -92,16 +94,17 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
 
                         if nodes:
                             for label in screen_state["visible_lane_labels"]:
-                                use timeline_lane_label(selected_route, label)
+                                use timeline_lane_label(label)
 
                             for connection in screen_state["visible_connections"]:
-                                use timeline_connection_line(selected_route, connection)
+                                use timeline_connection_line(connection)
 
                             for node in screen_state["visible_nodes"]:
+                                $ render_x = node_render_positions.get(node["id"], node.get("x", 0))
                                 if timeline_node_is_marker(node):
-                                    use timeline_time_marker(selected_route, node)
+                                    use timeline_time_marker(node, render_x)
                                 else:
-                                    use timeline_node_card(selected_route, node, active_node_id)
+                                    use timeline_node_card(node, active_node_id, render_x, node_states.get(node["id"]))
                         else:
                             text "This timeline does not have nodes yet.":
                                 style "timeline_empty_state"
@@ -178,10 +181,10 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
             ypos 1038
 
 
-screen timeline_lane_label(route_id, label):
+screen timeline_lane_label(label):
     frame:
         style "timeline_lane_label_frame"
-        xpos timeline_get_lane_label_render_x(route_id, label)
+        xpos label.get("render_x", label.get("x", 0))
         ypos label.get("y", 0)
         xysize (label.get("w", 300), 34)
 
@@ -191,12 +194,12 @@ screen timeline_lane_label(route_id, label):
             yalign 0.5
 
 
-screen timeline_time_marker(route_id, node):
+screen timeline_time_marker(node, render_x=0):
     $ marker_w = node.get("w", 150)
     $ marker_h = node.get("h", 150)
 
     fixed:
-        xpos timeline_get_node_render_x(route_id, node)
+        xpos render_x
         ypos node["y"]
         xysize (marker_w, marker_h)
 
@@ -217,8 +220,8 @@ screen timeline_time_marker(route_id, node):
             xmaximum marker_w - 20
 
 
-screen timeline_node_card(route_id, node, selected_node_id):
-    $ state = timeline_get_node_state(node)
+screen timeline_node_card(node, selected_node_id, render_x=0, node_state=None):
+    $ state = node_state if node_state is not None else timeline_get_node_state(node)
     $ is_selected = node["id"] == selected_node_id
     $ node_type = node.get("type", "core")
     $ is_revealed = timeline_should_reveal_node(node)
@@ -228,7 +231,7 @@ screen timeline_node_card(route_id, node, selected_node_id):
     $ node_title = timeline_get_node_display_title(node)
 
     button:
-        xpos timeline_get_node_render_x(route_id, node)
+        xpos render_x
         ypos node["y"]
         xysize (node_w, node_h)
         style node_style
@@ -301,24 +304,18 @@ screen timeline_node_card(route_id, node, selected_node_id):
                         ypos 112
 
 
-screen timeline_connection_line(route_id, connection):
-    $ from_node = timeline_find_node(route_id, connection["from"])
-    $ to_node = timeline_find_node(route_id, connection["to"])
+screen timeline_connection_line(connection):
     $ style_name = connection.get("style", "normal")
-    $ line_color = "#f0cc72" if style_name in ["branch", "merge", "dashed"] else "#d7b77d"
-    $ dot_color = "#f5d7a6"
-    $ from_w = from_node.get("w", 200) + (0 if timeline_node_is_marker(from_node) else 44) if from_node else 0
-    $ from_h = from_node.get("h", 200) + (0 if timeline_node_is_marker(from_node) else 38) if from_node else 0
-    $ to_h = to_node.get("h", 200) + (0 if timeline_node_is_marker(to_node) else 38) if to_node else 0
+    $ line_color = connection.get("line_color", "#f0cc72" if style_name in ["branch", "merge", "dashed"] else "#d7b77d")
+    $ dot_color = connection.get("dot_color", "#f5d7a6")
+    $ from_x = connection.get("from_x")
+    $ from_y = connection.get("from_y")
+    $ to_x = connection.get("to_x")
+    $ to_y = connection.get("to_y")
+    $ mid_x = connection.get("mid_x")
+    $ horizontal_width = connection.get("horizontal_width", 1)
 
-    if from_node and to_node:
-        $ from_x = timeline_get_node_render_x(route_id, from_node) + from_w
-        $ from_y = from_node["y"] + int(from_h / 2)
-        $ to_x = timeline_get_node_render_x(route_id, to_node)
-        $ to_y = to_node["y"] + int(to_h / 2)
-        $ mid_x = int((from_x + to_x) / 2)
-        $ horizontal_width = max(1, to_x - from_x)
-
+    if from_x is not None and from_y is not None and to_x is not None and to_y is not None and mid_x is not None:
         if abs(from_y - to_y) < 20:
             if style_name == "dashed":
                 for dash_x in range(from_x, to_x, 22):

@@ -1,0 +1,383 @@
+#!/usr/bin/env python3
+"""
+Git pre-commit hook for automatically bumping Ren'Py config.version.
+
+Version policy, based on staged changes:
+- < 10 changed lines AND exactly 1 changed file: patch +1
+- < 25 changed lines AND <= 5 changed files: patch +2
+- < 1000 changed lines: minor +1, reset patch to 0
+- >= 1000 changed lines: major +1, reset minor and patch to 0
+
+The hook:
+- Reads only staged changes.
+- Ignores its own generated config.version line when calculating change size.
+- Updates the Git index directly, so unrelated unstaged changes in options.rpy
+  are not accidentally staged.
+- Updates the working-tree version line as well.
+- Is idempotent: retrying the same commit will not bump the version again.
+
+Optional environment variables:
+- RENPY_OPTIONS_FILE=path/to/options.rpy
+- SKIP_RENPY_VERSION_BUMP=1
+"""
+
+from __future__ import annotations
+
+import difflib
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+
+
+VERSION_RE = re.compile(
+    r'^(?P<prefix>\s*define\s+config\.version\s*=\s*)'
+    r'(?P<quote>["\'])'
+    r'(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)'
+    r'(?P=quote)'
+    r'(?P<suffix>\s*(?:#.*)?)$',
+    re.MULTILINE,
+)
+
+VERSION_PLACEHOLDER = 'define config.version = "__AUTO_VERSION__"'
+
+
+class HookError(RuntimeError):
+    pass
+
+
+def run_git(
+    args: list[str],
+    *,
+    input_bytes: bytes | None = None,
+    check: bool = True,
+) -> subprocess.CompletedProcess[bytes]:
+    result = subprocess.run(
+        ["git", *args],
+        input=input_bytes,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+
+    if check and result.returncode != 0:
+        stderr = result.stderr.decode("utf-8", errors="replace").strip()
+        raise HookError(f"git {' '.join(args)} failed: {stderr}")
+
+    return result
+
+
+def repo_root() -> Path:
+    output = run_git(["rev-parse", "--show-toplevel"]).stdout
+    return Path(output.decode("utf-8").strip())
+
+
+def has_head() -> bool:
+    return run_git(["rev-parse", "--verify", "HEAD"], check=False).returncode == 0
+
+
+def git_path(path: Path, root: Path) -> str:
+    return path.relative_to(root).as_posix()
+
+
+def find_options_file(root: Path) -> Path:
+    configured = os.environ.get("RENPY_OPTIONS_FILE")
+
+    candidates: list[Path] = []
+    if configured:
+        candidates.append(root / configured)
+
+    candidates.extend([
+        root / "game" / "options.rpy",
+        root / "options.rpy",
+    ])
+
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+
+    attempted = ", ".join(str(p.relative_to(root)) for p in candidates)
+    raise HookError(
+        "Could not find Ren'Py options.rpy. "
+        f"Checked: {attempted}. "
+        "Set RENPY_OPTIONS_FILE to the correct repository-relative path."
+    )
+
+
+def decode_text(data: bytes, source: str) -> str:
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise HookError(f"{source} must be UTF-8 encoded.") from exc
+
+
+def read_index_file(path: str) -> bytes:
+    result = run_git(["show", f":{path}"], check=False)
+    if result.returncode != 0:
+        raise HookError(
+            f"{path} is not tracked in the Git index. "
+            "Add it once before using this hook."
+        )
+    return result.stdout
+
+
+def read_head_file(path: str) -> bytes | None:
+    if not has_head():
+        return None
+
+    result = run_git(["show", f"HEAD:{path}"], check=False)
+    if result.returncode != 0:
+        return None
+
+    return result.stdout
+
+
+def parse_version(text: str, source: str) -> tuple[int, int, int]:
+    match = VERSION_RE.search(text)
+    if not match:
+        raise HookError(
+            f'Could not find `define config.version = "x.y.z"` in {source}.'
+        )
+
+    return (
+        int(match.group("major")),
+        int(match.group("minor")),
+        int(match.group("patch")),
+    )
+
+
+def replace_version(text: str, version: tuple[int, int, int]) -> str:
+    major, minor, patch = version
+
+    def replacement(match: re.Match[str]) -> str:
+        quote = match.group("quote")
+        return (
+            f"{match.group('prefix')}"
+            f"{quote}{major}.{minor}.{patch}{quote}"
+            f"{match.group('suffix')}"
+        )
+
+    updated, count = VERSION_RE.subn(replacement, text, count=1)
+    if count != 1:
+        raise HookError("Unable to update config.version exactly once.")
+
+    return updated
+
+
+def normalize_version_line(text: str) -> str:
+    return VERSION_RE.sub(VERSION_PLACEHOLDER, text, count=1)
+
+
+def changed_line_count(old_text: str, new_text: str) -> int:
+    old_lines = old_text.splitlines()
+    new_lines = new_text.splitlines()
+    matcher = difflib.SequenceMatcher(a=old_lines, b=new_lines)
+
+    changed = 0
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag == "equal":
+            continue
+        changed += (i2 - i1) + (j2 - j1)
+
+    return changed
+
+
+def staged_paths() -> list[str]:
+    output = run_git([
+        "diff",
+        "--cached",
+        "--name-only",
+        "--diff-filter=ACMRD",
+        "-z",
+    ]).stdout
+
+    return [
+        item.decode("utf-8", errors="surrogateescape")
+        for item in output.split(b"\0")
+        if item
+    ]
+
+
+def numstat_for_path(path: str) -> int:
+    output = run_git([
+        "diff",
+        "--cached",
+        "--numstat",
+        "--",
+        path,
+    ]).stdout.decode("utf-8", errors="replace")
+
+    total = 0
+    for line in output.splitlines():
+        parts = line.split("\t", 2)
+        if len(parts) < 2:
+            continue
+
+        additions, deletions = parts[0], parts[1]
+
+        # Git reports "-" for binary files. Count one logical change so the
+        # file contributes to the file count without pretending to know lines.
+        if additions == "-" or deletions == "-":
+            total += 1
+        else:
+            total += int(additions) + int(deletions)
+
+    return total
+
+
+def calculate_change_size(options_path: str) -> tuple[int, int]:
+    paths = staged_paths()
+    file_count = 0
+    line_count = 0
+
+    for path in paths:
+        if path != options_path:
+            file_count += 1
+            line_count += numstat_for_path(path)
+            continue
+
+        index_bytes = read_index_file(path)
+        head_bytes = read_head_file(path) or b""
+
+        index_text = normalize_version_line(
+            decode_text(index_bytes, f"staged {path}")
+        )
+        head_text = normalize_version_line(
+            decode_text(head_bytes, f"HEAD {path}") if head_bytes else ""
+        )
+
+        option_changes = changed_line_count(head_text, index_text)
+        if option_changes > 0:
+            file_count += 1
+            line_count += option_changes
+
+    return file_count, line_count
+
+
+def choose_bump(file_count: int, line_count: int) -> tuple[str, int]:
+    if line_count >= 1000:
+        return "major", 1
+
+    if line_count < 10 and file_count == 1:
+        return "patch", 1
+
+    if line_count < 25 and file_count <= 5:
+        return "patch", 2
+
+    return "minor", 1
+
+
+def bump_version(
+    version: tuple[int, int, int],
+    bump_kind: str,
+    amount: int,
+) -> tuple[int, int, int]:
+    major, minor, patch = version
+
+    if bump_kind == "major":
+        return major + amount, 0, 0
+
+    if bump_kind == "minor":
+        return major, minor + amount, 0
+
+    if bump_kind == "patch":
+        return major, minor, patch + amount
+
+    raise HookError(f"Unsupported bump kind: {bump_kind}")
+
+
+def index_mode(path: str) -> str:
+    output = run_git(["ls-files", "-s", "--", path]).stdout.decode("utf-8")
+    lines = output.splitlines()
+    if not lines:
+        raise HookError(f"Could not determine Git index mode for {path}.")
+    return lines[0].split()[0]
+
+
+def update_index_file(path: str, content: bytes) -> None:
+    blob_hash = run_git(
+        ["hash-object", "-w", "--stdin"],
+        input_bytes=content,
+    ).stdout.decode("ascii").strip()
+
+    mode = index_mode(path)
+    run_git([
+        "update-index",
+        "--cacheinfo",
+        f"{mode},{blob_hash},{path}",
+    ])
+
+
+def update_worktree_file(
+    path: Path,
+    target_version: tuple[int, int, int],
+) -> None:
+    current = path.read_text(encoding="utf-8")
+    updated = replace_version(current, target_version)
+
+    if updated != current:
+        path.write_text(updated, encoding="utf-8", newline="")
+
+
+def main() -> int:
+    if os.environ.get("SKIP_RENPY_VERSION_BUMP") == "1":
+        print("[version] Skipped by SKIP_RENPY_VERSION_BUMP=1.")
+        return 0
+
+    root = repo_root()
+    options_file = find_options_file(root)
+    options_git_path = git_path(options_file, root)
+
+    file_count, line_count = calculate_change_size(options_git_path)
+
+    if file_count == 0:
+        print("[version] No staged source changes; version unchanged.")
+        return 0
+
+    staged_options = decode_text(
+        read_index_file(options_git_path),
+        f"staged {options_git_path}",
+    )
+    head_options_bytes = read_head_file(options_git_path)
+
+    # Derive the target from HEAD to keep retries idempotent. On an initial
+    # commit, use the staged version as the baseline.
+    if head_options_bytes is not None:
+        base_version = parse_version(
+            decode_text(head_options_bytes, f"HEAD {options_git_path}"),
+            f"HEAD {options_git_path}",
+        )
+    else:
+        base_version = parse_version(
+            staged_options,
+            f"staged {options_git_path}",
+        )
+
+    bump_kind, amount = choose_bump(file_count, line_count)
+    target_version = bump_version(base_version, bump_kind, amount)
+
+    updated_staged_options = replace_version(staged_options, target_version)
+    update_index_file(
+        options_git_path,
+        updated_staged_options.encode("utf-8"),
+    )
+    update_worktree_file(options_file, target_version)
+
+    old = ".".join(map(str, base_version))
+    new = ".".join(map(str, target_version))
+    print(
+        f"[version] {old} -> {new} "
+        f"({bump_kind} +{amount}; "
+        f"{file_count} staged file(s), {line_count} changed line(s))"
+    )
+
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except HookError as exc:
+        print(f"[version] ERROR: {exc}", file=sys.stderr)
+        raise SystemExit(1)

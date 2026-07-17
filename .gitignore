@@ -34,3 +34,4 @@
 
 // temporary files
 tmp_*.*
+**/__pycache__

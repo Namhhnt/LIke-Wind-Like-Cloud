@@ -810,6 +810,81 @@ init -2 python:
             return cached
 
         nodes = timeline_get_nodes(route_id)
+        node_lookup = {
+            node.get("id"): node
+            for node in nodes
+            if node.get("id")
+        }
+        visible_nodes = [node for node in nodes if timeline_should_render_node(node, route_id)]
+        visible_node_ids = {
+            node.get("id")
+            for node in visible_nodes
+            if node.get("id")
+        }
+        render_offset_x = timeline_get_render_offset_x(route_id, visible_nodes=visible_nodes)
+        node_render_positions = {
+            node["id"]: node.get("x", 0) - render_offset_x
+            for node in visible_nodes
+            if node.get("id")
+        }
+        node_states = {
+            node["id"]: timeline_get_node_state(node)
+            for node in visible_nodes
+            if node.get("id")
+        }
+
+        visible_connections = []
+        for connection in timeline_get_connections(route_id):
+            from_node = node_lookup.get(connection.get("from"))
+            to_node = node_lookup.get(connection.get("to"))
+
+            if not from_node or not to_node:
+                continue
+
+            from_node_id = from_node.get("id")
+            to_node_id = to_node.get("id")
+            if from_node_id not in visible_node_ids or to_node_id not in visible_node_ids:
+                continue
+
+            style_name = connection.get("style", "normal")
+            line_color = "#f0cc72" if style_name in ["branch", "merge", "dashed"] else "#d7b77d"
+            from_w = from_node.get("w", 200) + (0 if timeline_node_is_marker(from_node) else 44)
+            from_h = from_node.get("h", 200) + (0 if timeline_node_is_marker(from_node) else 38)
+            to_h = to_node.get("h", 200) + (0 if timeline_node_is_marker(to_node) else 38)
+            from_x = node_render_positions.get(from_node_id, from_node.get("x", 0) - render_offset_x) + from_w
+            from_y = from_node["y"] + int(from_h / 2)
+            to_x = node_render_positions.get(to_node_id, to_node.get("x", 0) - render_offset_x)
+            to_y = to_node["y"] + int(to_h / 2)
+            mid_x = int((from_x + to_x) / 2)
+
+            connection_model = dict(connection)
+            connection_model.update({
+                "from_x": from_x,
+                "from_y": from_y,
+                "to_x": to_x,
+                "to_y": to_y,
+                "mid_x": mid_x,
+                "horizontal_width": max(1, to_x - from_x),
+                "line_color": line_color,
+                "dot_color": "#f5d7a6",
+            })
+            visible_connections.append(connection_model)
+
+        visible_lane_labels = []
+        for label in timeline_get_lane_labels(route_id):
+            if not timeline_should_render_lane_label(route_id, label, visible_nodes=visible_nodes):
+                continue
+
+            label_model = dict(label)
+            label_model["render_x"] = label.get("x", 0) - render_offset_x
+            visible_lane_labels.append(label_model)
+
+        canvas_size = timeline_get_canvas_size(
+            route_id,
+            visible_nodes=visible_nodes,
+            node_render_positions=node_render_positions,
+            render_offset_x=render_offset_x,
+        )
         resolved_node = timeline_resolve_selected_node(route_id, selected_node_id)
         active_node_id = resolved_node["id"] if resolved_node else None
         selected_chapter_id = resolved_node.get("chapter_id") if resolved_node else None
@@ -817,17 +892,13 @@ init -2 python:
         screen_state = {
             "route_id": route_id,
             "nodes": nodes,
-            "visible_nodes": [node for node in nodes if timeline_should_render_node(node, route_id)],
-            "visible_connections": [
-                connection
-                for connection in timeline_get_connections(route_id)
-                if timeline_should_render_connection(route_id, connection)
-            ],
-            "visible_lane_labels": [
-                label
-                for label in timeline_get_lane_labels(route_id)
-                if timeline_should_render_lane_label(route_id, label)
-            ],
+            "visible_nodes": visible_nodes,
+            "visible_connections": visible_connections,
+            "visible_lane_labels": visible_lane_labels,
+            "node_lookup": node_lookup,
+            "node_render_positions": node_render_positions,
+            "node_states": node_states,
+            "render_offset_x": render_offset_x,
             "resolved_node": resolved_node,
             "active_node_id": active_node_id,
             "selected_chapter_id": selected_chapter_id,
@@ -837,8 +908,16 @@ init -2 python:
                 and selected_node_state == "current"
                 and timeline_has_runtime_chapter(selected_chapter_id)
             ),
-            "canvas_size": timeline_get_canvas_size(route_id),
-            "viewport_xinitial": timeline_get_viewport_xinitial(route_id, active_node_id, viewport_width),
+            "canvas_size": canvas_size,
+            "viewport_xinitial": timeline_get_viewport_xinitial(
+                route_id,
+                active_node_id,
+                viewport_width,
+                node=resolved_node,
+                canvas_size=canvas_size,
+                node_render_positions=node_render_positions,
+                render_offset_x=render_offset_x,
+            ),
         }
 
         if len(TIMELINE_SCREEN_STATE_CACHE) >= 24:
@@ -1152,23 +1231,25 @@ init -2 python:
         to_node = timeline_find_node(route_id, connection.get("to"))
         return bool(from_node and to_node and timeline_should_render_node(from_node, route_id) and timeline_should_render_node(to_node, route_id))
 
-    def timeline_get_render_offset_x(route_id=None):
+    def timeline_get_render_offset_x(route_id=None, visible_nodes=None):
         route_id = timeline_normalize_route_id(route_id)
-        visible = timeline_get_visible_nodes(route_id)
+        visible = visible_nodes if visible_nodes is not None else timeline_get_visible_nodes(route_id)
         if not visible:
             return 0
         min_x = min(node.get("x", 0) for node in visible)
         return max(0, min_x - 80)
 
-    def timeline_get_node_render_x(route_id, node):
+    def timeline_get_node_render_x(route_id, node, render_offset_x=None):
         if not node:
             return 0
-        return node.get("x", 0) - timeline_get_render_offset_x(route_id)
+        offset_x = render_offset_x if render_offset_x is not None else timeline_get_render_offset_x(route_id)
+        return node.get("x", 0) - offset_x
 
-    def timeline_get_lane_label_render_x(route_id, label):
-        return label.get("x", 0) - timeline_get_render_offset_x(route_id)
+    def timeline_get_lane_label_render_x(route_id, label, render_offset_x=None):
+        offset_x = render_offset_x if render_offset_x is not None else timeline_get_render_offset_x(route_id)
+        return label.get("x", 0) - offset_x
 
-    def timeline_should_render_lane_label(route_id, label):
+    def timeline_should_render_lane_label(route_id, label, visible_nodes=None):
         route_id = timeline_normalize_route_id(route_id)
         if timeline_debug_reveal_spoilers():
             return True
@@ -1177,7 +1258,8 @@ init -2 python:
         label_w = label.get("w", 300)
         label_end = label_x + label_w
 
-        for node in timeline_get_visible_nodes(route_id):
+        relevant_nodes = visible_nodes if visible_nodes is not None else timeline_get_visible_nodes(route_id)
+        for node in relevant_nodes:
             node_x = node.get("x", 0)
             node_end = node_x + node.get("w", 200)
             if node_end >= label_x and node_x <= label_end:
@@ -1368,25 +1450,33 @@ init -2 python:
             return "%s is still locked." % timeline_get_detail_title(node)
         return "%s is planned but not implemented yet." % timeline_get_detail_title(node)
 
-    def timeline_get_canvas_size(route_id=None):
+    def timeline_get_canvas_size(route_id=None, visible_nodes=None, node_render_positions=None, render_offset_x=None):
         route_id = timeline_normalize_route_id(route_id)
         max_x = 0
         max_y = 0
-        for node in timeline_get_visible_nodes(route_id):
-            render_x = timeline_get_node_render_x(route_id, node)
+        relevant_nodes = visible_nodes if visible_nodes is not None else timeline_get_visible_nodes(route_id)
+        positions = node_render_positions or {}
+        for node in relevant_nodes:
+            node_id = node.get("id")
+            render_x = positions.get(node_id)
+            if render_x is None:
+                render_x = timeline_get_node_render_x(route_id, node, render_offset_x=render_offset_x)
             node_extra_w = 44 if not timeline_node_is_marker(node) else 0
             node_extra_h = 44 if not timeline_node_is_marker(node) else 0
             max_x = max(max_x, render_x + node.get("w", 200) + node_extra_w + 120)
             max_y = max(max_y, node.get("y", 0) + node.get("h", 200) + node_extra_h + 110)
         return (max(1792, max_x), max(950, max_y))
 
-    def timeline_get_viewport_xinitial(route_id=None, selected_node_id=None, viewport_width=1744):
+    def timeline_get_viewport_xinitial(route_id=None, selected_node_id=None, viewport_width=1744, node=None, canvas_size=None, node_render_positions=None, render_offset_x=None):
         route_id = timeline_normalize_route_id(route_id)
-        canvas_w, _canvas_h = timeline_get_canvas_size(route_id)
+        canvas_w, _canvas_h = canvas_size if canvas_size is not None else timeline_get_canvas_size(route_id)
         scrollable_w = max(1, canvas_w - viewport_width)
-        node = timeline_resolve_selected_node(route_id, selected_node_id)
+        node = node if node is not None else timeline_resolve_selected_node(route_id, selected_node_id)
         if not node:
             return 0.0
-        render_x = timeline_get_node_render_x(route_id, node)
+        positions = node_render_positions or {}
+        render_x = positions.get(node.get("id"))
+        if render_x is None:
+            render_x = timeline_get_node_render_x(route_id, node, render_offset_x=render_offset_x)
         target_x = max(0, render_x - int(viewport_width / 2) + int(node.get("w", 200) / 2))
         return max(0.0, min(1.0, float(target_x) / float(scrollable_w)))

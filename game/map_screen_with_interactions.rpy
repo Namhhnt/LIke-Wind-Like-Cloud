@@ -1,6 +1,21 @@
 init -1 python:
     _map_rollback_saved = True
     _interactive_map_view_model_cache = {}
+    INTERACTIVE_MAP_BASE_SIZE = (1680, 945)
+    INTERACTIVE_MAP_MAX_TEXTURE_SIZE = 4096
+
+    def interactive_map_get_safe_zoom(base_size, desired_zoom, max_texture_size=INTERACTIVE_MAP_MAX_TEXTURE_SIZE):
+        base_width, base_height = base_size
+        if base_width <= 0 or base_height <= 0:
+            return desired_zoom
+
+        max_zoom_x = float(max_texture_size) / float(base_width)
+        max_zoom_y = float(max_texture_size) / float(base_height)
+        return min(desired_zoom, max_zoom_x, max_zoom_y)
+
+    def interactive_map_get_canvas_size(base_size, zoom):
+        base_width, base_height = base_size
+        return (int(round(base_width * zoom)), int(round(base_height * zoom)))
 
     def interactive_map_focus_entry(entry, map_zoom, canvas_size, viewport_size, focus_center):
         if not entry:
@@ -147,8 +162,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     $ bg = time_get_map_background(context.get("background", "images/maps/city_map_extend_day.png"))
     $ panel_bg = ui_frame_or_solid("gui/library/panel.png", "#140f0be6", 26)
     $ frame_bg = ui_frame_or_solid("gui/library/panel.png", "#201812f0", 26)
-    $ map_zoom = 2.45
-    $ map_canvas_size = (4096, 2305)
+    $ map_zoom = interactive_map_get_safe_zoom(INTERACTIVE_MAP_BASE_SIZE, 2.45)
+    $ map_canvas_size = interactive_map_get_canvas_size(INTERACTIVE_MAP_BASE_SIZE, map_zoom)
     $ map_viewport_size = (1920, 1080)
     $ map_focus_center = (760, 460)
 
@@ -164,12 +179,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     fixed:
         xysize (1920, 1080)
 
-        if renpy.loadable(bg):
-            add bg fit "cover"
-        elif renpy.loadable("images/maps/city_map_extend_day.png"):
-            add "images/maps/city_map_extend_day.png" fit "cover"
-        else:
-            add (mm_theme_asset("background_full.png") if mm_loadable(mm_theme_asset("background_full.png")) else Solid("#15120f")) fit "cover"
+        add Solid("#15120f")
 
         add Solid("#05040355")
         add Solid("#1a120755") ypos 760 ysize 320
@@ -268,8 +278,16 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
                                 button:
                                     style "interactive_map_list_button"
-                                    hovered [SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)]
-                                    unhovered SetScreenVariable("hovered_entry", None)
+                                    hovered If(
+                                        hovered_entry != entry or focus_target_entry != entry,
+                                        true=[SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)],
+                                        false=NullAction(),
+                                    )
+                                    unhovered If(
+                                        hovered_entry is not None,
+                                        true=SetScreenVariable("hovered_entry", None),
+                                        false=NullAction(),
+                                    )
                                     sensitive state == "available"
                                     action list_action
 
@@ -320,8 +338,16 @@ screen interactive_map_marker(entry, hovered_entry=None, map_zoom=1.0):
         style marker_style
         pos (int(entry.get("x", 960) * map_zoom), int(entry.get("y", 540) * map_zoom))
         anchor (0.5, 0.5)
-        hovered [SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)]
-        unhovered SetScreenVariable("hovered_entry", None)
+        hovered If(
+            hovered_entry != entry or focus_target_entry != entry,
+            true=[SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)],
+            false=NullAction(),
+        )
+        unhovered If(
+            hovered_entry is not None,
+            true=SetScreenVariable("hovered_entry", None),
+            false=NullAction(),
+        )
         sensitive state == "available"
         action marker_action
 
@@ -340,8 +366,16 @@ screen interactive_map_label_button(label_entry, hovered_entry=None, map_zoom=1.
         xanchor 0.5
         style "interactive_map_marker_label_button"
         text_style "interactive_map_marker_label_button_text"
-        hovered [SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)]
-        unhovered SetScreenVariable("hovered_entry", None)
+        hovered If(
+            hovered_entry != entry or focus_target_entry != entry,
+            true=[SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)],
+            false=NullAction(),
+        )
+        unhovered If(
+            hovered_entry is not None,
+            true=SetScreenVariable("hovered_entry", None),
+            false=NullAction(),
+        )
         sensitive state == "available"
         action label_action
 
