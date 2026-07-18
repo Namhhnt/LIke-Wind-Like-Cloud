@@ -7,34 +7,30 @@ label yuuka_c08_festival_arrival_s03_hoang_introduces_yuuka:
 
     centered "{size=34}Tám ngày trước Liên hoan phim{/size}"
 
-    # New background asset suggested:
-    # bg_airport_arrival_day
     scene bg_airport_arrival_day
     with dissolve
 
-    "Máy bay hạ cánh vào gần trưa."
+    "Máy bay từ Nhật hạ cánh vào gần trưa."
 
-    "Vừa bước khỏi khu kiểm soát, Yuuka đã cảm thấy không khí nơi này khác Nhật Bản."
+    "Khi bước ra khỏi khu kiểm soát, Yuuka chậm lại một nhịp."
 
-    "Ấm hơn."
+    "Không khí nơi này ấm hơn Tokyo."
 
     "Dày hơn."
 
-    "Tiếng bánh xe vali lăn trên nền gạch, tiếng Việt vọng từ các quầy đón khách và mùi cà phê trong sảnh đều quen theo một cách khiến cô hơi khó chịu."
+    "Tiếng Việt vang giữa sảnh, tiếng bánh xe vali kéo trên nền gạch, mùi cà phê lẫn trong hơi điều hòa — tất cả đều quen theo một cách không nên còn quen nữa."
 
-    "Không phải nơi này giống ký ức."
+    "Hoàng đứng phía ngoài hàng rào đón khách."
 
-    "Mà là cơ thể cô vẫn nhớ nó."
-
-    "Hoàng đứng gần hàng rào đón khách."
-
-    "Cậu giơ tay lên trước."
+    "Yuuka nhận ra cậu gần như ngay lập tức."
 
     hoang happy "Yuu-san."
 
     yuuka happy "Ha-kun."
 
-    "Yuuka bước tới, nhìn cậu từ đầu đến chân."
+    "Cô giơ tay lên, bước nhanh hơn."
+
+    "Hoàng nhận lấy vali. Yuuka thuận thế khoác tay cậu, tự nhiên như thể bốn năm vừa rồi chỉ là một chuyến đi hơi dài."
 
     yuuka teasing "Still sweet as ever."
 
@@ -44,210 +40,360 @@ label yuuka_c08_festival_arrival_s03_hoang_introduces_yuuka:
 
     yuuka smile "I had a long flight. I deserve entertainment."
 
-    "Hoàng nhận lấy vali từ tay cô."
+    hoang smile "Welcome back to Vietnam."
 
-    hoang smile "Welcome back."
+    "Nụ cười trên môi Yuuka dừng lại rất khẽ."
 
-    "Hai chữ cuối làm Yuuka chớp mắt chậm hơn một nhịp."
+    "Cô quay sang nhìn qua lớp cửa kính, như thể phía ngoài kia có thứ gì đáng chú ý hơn."
 
     yuuka neutral "Thank you."
 
-    "Cô quay sang nhìn dòng người phía sau như thể chỉ đang kiểm tra xem còn hành lý nào chưa lấy."
-
     "Hoàng không hỏi."
 
-    "Cậu chỉ kéo vali đi chậm hơn để cô bước kịp."
+    "Cậu chỉ kéo vali đi chậm lại để cô vẫn có thể khoác tay mình mà không phải bước vội."
 
-    scene black
-    with dissolve
+    # -------------------------------------------------------------------------
+    # Tâm's perspective.
+    # -------------------------------------------------------------------------
 
-    "Trên đường về, Yuuka nói nhiều hơn bình thường."
+    "Ở phía bên kia sảnh đến, Tâm đang đứng gần một cột chỉ dẫn."
 
-    "Đồ ăn trên máy bay."
+    "Cô tới đón Thiên An sau chuyến công tác."
 
-    "Thời tiết."
+    "Mấy hôm sau, hai chị em còn phải đến dự đám cưới của Duyên và Kim — những người bạn học cũ của Thiên An."
 
-    "Lịch giao lưu."
-
-    "Việc cô ghét thảm đỏ nhưng vẫn phải đi trên đó với vẻ mặt như thể mình sinh ra cho chuyện ấy."
-
-    "Cô hỏi mọi người có khỏe không."
-
-    "Hỏi căn nhà còn cái máy pha cà phê cũ không."
-
-    "Hỏi Minh còn làm việc quá giờ không."
-
-    "Nhưng không hỏi câu mình muốn biết nhất."
-
-    scene black
-    with dissolve
-
-    "Cũng vào buổi chiều hôm ấy, Tâm rời công ty sớm."
-
-    "Cô phải ghé đón Thiên An để cùng đến đám cưới Duyên và Kim."
-
-    "Chiếc taxi vừa rẽ vào tuyến đường từ sân bay về trung tâm thì dừng ở một đèn đỏ."
-
-    "Tâm đang nhắn cho chị gái thì nghe tiếng động cơ quen thuộc ở làn bên cạnh."
+    "Tâm vừa kiểm tra lại số hiệu chuyến bay thì nghe một giọng cười quen."
 
     "Cô ngẩng lên."
 
-    "Xe của Hoàng."
+    "Hoàng."
 
-    "Anh đang lái."
+    "Anh đang kéo một chiếc vali lớn."
 
-    "Bên ghế phụ là một người phụ nữ có mái tóc dài, gương mặt chỉ nhìn nghiêng cũng đủ khiến người khác phải nhìn lại."
+    "Bên cạnh anh là một cô gái cao, nổi bật, mái tóc dài ánh nâu nhẹ dưới nắng từ cửa kính."
 
-    "Cô ấy đang nói gì đó."
+    "Cô ấy khoác tay Hoàng."
 
-    "Hoàng bật cười."
+    "Không phải cái khoác tay xã giao ngập ngừng của hai người lâu ngày không gặp."
 
-    "Đèn chuyển xanh."
-
-    "Chiếc xe đi trước."
+    "Nó thân thuộc đến mức Hoàng chẳng hề nhìn xuống."
 
     if c08_tam_hoang_active:
-        "Tâm vẫn cầm điện thoại trong tay."
+        "Tâm đứng yên."
 
-        "Tin nhắn gửi Thiên An mới gõ được một nửa."
+        "Điện thoại đã nằm trong tay cô trước khi cô kịp quyết định mình muốn làm gì."
 
-        "Hoàng không nói hôm nay anh ra sân bay."
+        "Cô gọi cho Hoàng."
 
-        "Cũng không nhắc đến một người phụ nữ."
+        "Ở phía xa, tiếng chuông vang lên."
 
-        "Một phần trong Tâm biết chỉ cần gọi điện là có câu trả lời."
+        "Hoàng đưa tay vào túi áo."
 
-        "Phần còn lại đã nhìn theo chiếc xe quá lâu."
+        "Anh nhìn màn hình."
+
+        "Nụ cười trên môi chậm lại rất nhẹ."
+
+        "Một hồi chuông."
+
+        "Hai hồi."
+
+        "Cuối cùng anh cũng nhận cuộc gọi."
+
+        hoang neutral "A lô?"
+
+        "Giọng nói vang trong điện thoại và từ phía bên kia sảnh gần như cùng lúc."
+
+        "Đúng là anh."
+
+        tam neutral "..."
+
+        "Tâm ngắt máy."
+
+        "Hoàng nhìn màn hình thêm một giây, rồi ngẩng lên quan sát dòng người."
+
+        "Nhưng một nhóm khách vừa bước ra chắn giữa hai người."
+
+        "Yuuka nói gì đó."
+
+        "Cô lại kéo tay Hoàng đi."
+
+        "Tâm nhìn theo cho đến khi hai bóng người khuất sau cửa ra."
+
+    else:
+        "Tâm chậm bước."
+
+        "Cô không có lý do để khó chịu."
+
+        "Nhưng cảnh tượng ấy vẫn đủ khiến cô tò mò."
+
+        "Hoàng chưa bao giờ nhắc đến một cô gái nào thân thiết đến mức có thể khoác tay anh giữa sân bay như vậy."
+
+    "Một bàn tay chạm nhẹ vào vai Tâm."
+
+    thienan neutral "Tâm."
+
+    tam surprised "Ơ?"
+
+    thienan confused "Em đứng đây làm gì mà như mất hồn thế?"
+
+    "Thiên An đứng phía sau cô với một chiếc vali nhỏ."
+
+    "Áo khoác màu ngà phủ ngoài bộ đồ công sở, tóc búi gọn sau đầu. Chuyến bay vừa rồi dường như chỉ khiến chị mệt, không làm chị bớt chỉn chu."
+
+    "Tâm nhận lấy chiếc vali."
+
+    tam neutral "Không có gì. Mình về thôi chị."
+
+    "Thiên An nhìn cô một giây."
+
+    "Không hỏi ngay."
+
+    # -------------------------------------------------------------------------
+    # Existing Tâm–Hoàng route.
+    # -------------------------------------------------------------------------
+
+    if c08_tam_hoang_active:
+        scene bg_taxi_interior_day
+        with dissolve
+
+        "Taxi rời sân bay."
+
+        "Thiên An mở điện thoại xem lại tin nhắn công việc. Tâm ngồi bên cạnh, mắt vẫn nhìn qua cửa kính."
+
+        "Cô biết nhà Hoàng ở đâu."
+
+        "Cũng biết anh sống cùng Minh."
+
+        "Điều duy nhất cô không biết là người phụ nữ vừa khoác tay anh là ai."
 
         menu:
             "Tâm làm gì?"
 
-            "Nhờ tài xế đi theo xe Hoàng.":
+            "Ghé qua nhà Hoàng trước.":
                 $ c08_tam_followed_hoang = True
                 $ c08_yuuka_intro_source = "house"
 
                 $ story_add("tam_observation", 5)
-
-                if c08_tam_high_clarity:
-                    $ story_add("tam_self_clarity", 5)
-                else:
-                    $ story_add("tam_insecurity", 10)
+                $ story_add("tam_insecurity", 10)
+                $ story_sub("hoang_tam_trust", 5)
 
                 $ story_flag("tam_followed_hoang_home")
-                $ story_flag("tam_delayed_wedding_pickup")
+                $ story_flag("tam_delayed_thienan_trip")
 
-                tam neutral "Chú đi theo chiếc xe phía trước giúp cháu."
+                tam neutral "Chú lái xe, cho cháu ghé qua một chỗ trước được không ạ?"
 
-                "Bác tài nhìn vào gương."
+                thienan confused "Đi đâu vậy em?"
 
-                "Không hỏi."
+                tam neutral "Em cần gặp Hoàng một chút."
 
-                "Đó là một kiểu chuyên nghiệp Tâm rất biết ơn vào lúc này."
+                "Thiên An khóa màn hình."
 
-                "Cô nhắn nhanh cho Thiên An."
+                thienan neutral "Có chuyện gì?"
 
-                tam neutral "Em có chút việc. Chị đợi em thêm mười lăm phút nhé."
+                tam irritated "Em chưa biết."
 
-                thienan neutral "Việc gì?"
+                thienan neutral "Em vừa nói một câu rất đáng lo."
 
-                "Tâm nhìn chiếc xe phía trước rẽ vào con đường quen."
+                tam neutral "Em chỉ muốn hỏi cho rõ thôi."
 
-                tam neutral "Em chưa biết."
+                "Tâm đọc địa chỉ cho tài xế."
 
-                thienan irritated "Câu trả lời rất đáng tin."
+                "Thiên An không hỏi thêm. Nhưng khi chiếc taxi rẽ vào con phố yên tĩnh, chị bắt đầu nhìn ra ngoài lâu hơn."
+
+                "Đến lúc xe dừng trước cổng, Thiên An khựng lại."
+
+                thienan surprised "Là nhà này sao?"
+
+                tam confused "Chị biết chỗ này à?"
+
+                "Thiên An nhìn cánh cổng."
+
+                "Màu sơn đã khác đôi chút. Cây trong sân cũng cao hơn trước."
+
+                "Nhưng chị vẫn nhận ra."
+
+                thienan neutral "Đây là nhà Minh."
+
+                tam neutral "Vâng."
+
+                tam neutral "Anh Hoàng là em trai anh ấy. Hai người đang ở cùng nhau."
+
+                "Thiên An quay sang nhìn Tâm."
+
+                "Trong ánh mắt chị có một khoảnh khắc hiếm hoi hoàn toàn không che giấu được sự sửng sốt."
+
+                thienan confused "Bạn trai em là em trai Minh?"
+
+                tam neutral "Em tưởng em đã kể rồi."
+
+                thienan neutral "Em chỉ nói tên anh ta là Hoàng."
+
+                tam neutral "..."
+
+                thienan irritated "Một thông tin hơi thiếu cấu trúc."
+
+                "Tâm mở cửa xe."
+
+                tam neutral "Chị cứ về trước nhé. Chìa khóa của em đây."
+
+                thienan neutral "Tâm."
+
+                "Tâm dừng lại."
+
+                thienan neutral "Hỏi cho rõ. Đừng tự viết phần còn lại trong đầu rồi giận thay cho sự thật."
+
+                tam neutral "Em biết."
+
+                "Cô đóng cửa xe."
+
+                "Chiếc taxi bắt đầu lăn bánh."
+
+                "Thiên An nhìn qua cửa kính, thấy Tâm đẩy cổng bước vào."
+
+                "Chị tựa lưng vào ghế."
+
+                thienan melancholic "Oan gia ngõ hẹp."
+
+                $ story_flag("thienan_discovers_hoang_is_minhs_brother")
+                $ story_flag("thienan_recognizes_minh_house")
+                $ story_flag("thienan_oa_gia_ngo_hep")
 
                 scene bg_hoang_house_front_door_day
                 with dissolve
 
-                "Khi Tâm đến nơi, xe Hoàng đã nằm trong sân."
+                "Xe Hoàng đã nằm trong gara."
 
-                "Cô đứng ngoài cổng vài giây."
+                "Tâm đi thẳng đến cửa."
 
-                "Rồi bấm chuông."
+                "Lúc ở sân bay, cô đã nghĩ ra khá nhiều câu để hỏi."
 
-                "Tiếng bước chân từ bên trong tiến lại gần."
+                "Đến khi bấm chuông, chúng lại chen nhau đến mức không câu nào còn rõ."
+
+                "Có tiếng bước chân bên trong."
 
                 "Cánh cửa mở ra."
 
-                "Người phụ nữ Tâm vừa nhìn thấy trên xe đang đứng trước mặt cô."
+                "Người đứng sau cửa không phải Hoàng."
 
-                "Ngoài đời, cô ấy còn nổi bật hơn qua lớp kính ô tô."
+                "Là cô gái ở sân bay."
 
-                "Gương mặt mềm, sáng. Mái tóc dài mang ánh nâu nhẹ dưới nắng. Dáng người cao và thanh thoát đến mức chiếc áo đơn giản cũng trông như được chọn riêng."
+                "Nhìn gần, Tâm mới hiểu vì sao chỉ một bóng nghiêng cũng đủ khiến người khác chú ý."
 
-                "Nhưng điều làm Tâm khựng lại không hoàn toàn là vẻ ngoài."
+                "Gương mặt cô mềm và sáng. Mái tóc dài phủ qua vai. Không cần trang điểm cầu kỳ, từng đường nét vẫn rõ đến mức có phần thiếu công bằng."
 
-                "Là cách cô ấy mở cửa căn nhà này."
+                "Cô đang cười khi mở cửa."
 
-                "Tự nhiên."
-
-                "Không cần hỏi ai."
+                "Nhưng lúc nhận ra người ngoài cửa không phải người mình chờ, nụ cười ấy khựng lại rất nhẹ."
 
                 yuuka smile "Hi."
 
                 tam shocked "..."
 
-                "Yuuka cũng nhìn cô."
+                "Hai người nhìn nhau."
 
-                "Nụ cười vẫn còn đó, nhưng ánh mắt vừa đổi rất nhẹ."
+                "Tâm nghĩ đến bàn tay cô đang khoác trên tay Hoàng."
 
-                "Hai người phụ nữ đứng trước nhau, mỗi người đều vừa nghĩ ra một giả thuyết không mấy dễ chịu."
+                "Yuuka nhìn một cô gái trẻ biết chính xác phải tìm đến căn nhà này."
+
+                "Mỗi người đều vừa dựng lên một giả thuyết không mấy dễ chịu."
 
                 yuuka neutral "Are you looking for someone?"
 
                 tam flustered "Tôi..."
 
-                "Từ bên trong, giọng Hoàng vọng ra."
+                "Từ trong nhà, giọng Hoàng vọng ra."
 
-                hoang neutral "Ai đấy, Yuu-san?"
+                hoang neutral "Ai đấy, Yuu-san? Không phải anh Minh à?"
 
-                "Tâm nghe thấy cách gọi ấy."
+                "Ánh mắt Yuuka đổi nhẹ."
 
-                "Yuuka nghe thấy Hoàng biết người ngoài cửa."
+                "Không phải anh Minh."
 
-                "Cả hai cùng thả lỏng một phần rất nhỏ."
+                "Vậy cô gái này rất có thể không đến tìm Minh."
 
-                hoang surprised "Tâm?"
+                "Tâm cũng nghe rõ cách Hoàng gọi người trước mặt."
 
-                "Hoàng bước tới, nhìn cô rồi nhìn chiếc taxi vẫn đợi ngoài cổng."
+                "Yuu-san."
 
-                hoang confused "Sao em lại ở đây?"
+                "Không giống cách một người đàn ông gọi cô gái đang giấu bạn gái mình."
 
-                tam irritated "Em cũng đang định hỏi anh câu đó."
+                "Ít nhất là không hoàn toàn."
 
-                "Yuuka hơi nghiêng đầu."
+                Yuuka teasing "No."
 
-                "Khóe môi cô cong lên như vừa hiểu được một phần tình huống."
+                yuuka grinning "Just a strange lady. She keeps staring at me."
+
+                tam irritated "Tôi không—"
+
+                "Hoàng bước ra."
+
+                "Khi nhìn thấy Tâm, anh dừng hẳn lại."
+
+                hoang shocked "Tâm?"
+
+                tam irritated "Em cũng đang định hỏi anh đây."
+
+                "Hoàng nhìn khuôn mặt cô."
+
+                "Rồi nhìn Yuuka."
+
+                "Mọi thứ nối lại trong đầu anh nhanh đến mức đáng ghét."
 
                 hoang neutral "À."
 
-                hoang smile "Đây là Yuuka. Bạn cũ của anh và anh Minh."
+                hoang smile "Yuu-san, đây là Tâm."
 
-                yuuka smile "Yuuka Nakamura."
+                hoang neutral "Bạn gái anh."
 
-                "Cái tên khớp vào một dòng credit Tâm đã nhìn thấy hai ngày trước."
-
-                tam surprised "Đạo diễn Yuuka Nakamura?"
+                "Sự cảnh giác trong mắt Yuuka biến mất gần như ngay lập tức."
 
                 yuuka surprised "Oh."
 
-                yuuka teasing "That sounds much more impressive when someone else says it."
+                yuuka smile "So you are Tâm."
 
-                tam neutral "Công ty tôi đang tham gia phần vận hành Festival."
+                tam confused "Chị biết em?"
+
+                yuuka teasing "Ha-kun is not very subtle."
+
+                hoang irritated "Anh chỉ kể chuyện bình thường."
+
+                yuuka grinning "Repeatedly."
+
+                tam flustered "..."
+
+                hoang neutral "Tâm, đây là Yuuka."
+
+                hoang neutral "Bạn cũ của anh và anh Minh."
+
+                "Tâm không bất ngờ vì mối liên hệ với Minh."
+
+                "Cô đã biết hai anh em từ chương trước."
+
+                "Điều khiến cô khựng lại là cái tên."
+
+                tam surprised "Yuuka Nakamura?"
+
+                yuuka surprised "You know me?"
+
+                tam neutral "Công ty em đang tham gia phần vận hành Liên hoan phim."
+
+                tam neutral "Team em vừa xem trailer phim của chị."
 
                 if c08_tam_leads_festival:
-                    tam neutral "Tôi phụ trách nhóm điều phối hồ sơ và lịch khách mời."
+                    tam neutral "Em phụ trách nhóm điều phối hồ sơ và lịch khách mời."
 
-                    yuuka smile "Then I should behave carefully around you."
+                    yuuka smile "Then I should be very careful around you."
 
                 else:
-                    tam neutral "Tôi đang hỗ trợ phần hồ sơ và lịch khách mời."
+                    tam neutral "Em đang hỗ trợ hồ sơ và lịch khách mời."
 
-                    yuuka smile "Then we may see each other again."
+                    yuuka smile "Then we will probably meet again."
 
-                hoang teasing "Hai người định đứng ngoài cửa họp luôn à?"
+                "Hoàng chống một tay lên khung cửa."
 
-                "Yuuka lánh sang một bên."
+                hoang teasing "Hai người định đứng đây tổ chức buổi giao lưu trước Festival à?"
+
+                "Yuuka lánh sang bên."
 
                 yuuka smile "Come in."
 
@@ -256,193 +402,200 @@ label yuuka_c08_festival_arrival_s03_hoang_introduces_yuuka:
                 $ story_add("tam_respect_yuuka", 10)
                 $ story_add("tam_observation", 5)
 
-                if c08_tam_minh_lean:
-                    $ story_add("tam_insecurity", 15)
-                    $ story_add("tam_observation", 5)
-                    $ story_flag("tam_step_back_choice")
-                    $ story_flag("yuuka_rival_not_rival_scene")
-
+                if c08_tam_high_clarity:
+                    $ story_sub("tam_insecurity", 5)
+                    $ story_add("hoang_tam_trust", 5)
+                    $ story_flag("tam_c08_airport_misunderstanding_cleared")
                 else:
                     $ story_add("tam_insecurity", 5)
+                    $ story_flag("tam_c08_yuuka_first_impression_unsettled")
 
                 $ story_flag("tam_met_yuuka_at_hoang_house")
-                $ story_flag("tam_learns_minh_hoang_are_brothers")
 
-            "Gọi Hoàng và hỏi thẳng.":
+            "Gọi lại và hỏi Hoàng ngay.":
+                $ c08_tam_followed_hoang = False
                 $ c08_yuuka_intro_source = "hoang_phone"
 
                 $ story_add("hoang_tam_trust", 10)
                 $ story_add("tam_self_clarity", 10)
                 $ story_sub("tam_insecurity", 5)
+
                 $ story_flag("tam_asked_hoang_about_yuuka_directly")
 
-                "Tâm bấm gọi."
+                "Tâm gọi lại."
 
-                "Hoàng bắt máy sau hai hồi chuông."
+                "Lần này Hoàng nhận máy gần như ngay lập tức."
 
-                hoang neutral "Anh nghe."
+                hoang neutral "Tâm?"
 
-                tam teasing "Em vừa thấy anh đi với một cô gái rất đẹp."
+                tam neutral "Anh vừa ở sân bay đúng không?"
 
-                hoang surprised "Em đang ở đâu?"
+                "Hoàng im một nhịp."
 
-                tam neutral "Đường sân bay."
+                hoang neutral "Ừ."
 
-                "Phía bên kia im một nhịp."
+                tam teasing "Cô gái đẹp khoác tay anh là ai thế?"
 
-                hoang teasing "Theo dõi anh à?"
+                hoang teasing "Câu hỏi có vẻ rất bình tĩnh."
 
-                tam irritated "Tình cờ."
+                tam irritated "Anh trả lời đi."
 
                 hoang smile "Yuu-san. Bạn cũ của anh với anh Minh."
 
-                hoang neutral "Cô ấy là đạo diễn khách mời của Festival. Anh ra sân bay đón."
-
-                "Tâm nhìn về phía chiếc xe đã khuất."
+                hoang neutral "Cô ấy là đạo diễn khách mời của Festival. Anh ra đón."
 
                 tam surprised "Yuuka Nakamura?"
 
-                hoang neutral "Ừ. Em biết à?"
+                hoang neutral "Em biết à?"
 
-                tam neutral "Team em đang chuẩn bị hồ sơ cho Festival."
+                tam neutral "Team em đang chuẩn bị phần vận hành."
 
-                hoang teasing "Thế thì sau này gặp nhớ đối xử tốt với người già."
+                "Một giọng nữ vọng vào từ phía bên kia."
 
-                "Một giọng nữ ở phía xa lập tức vọng vào điện thoại."
+                yuuka teasing "Is that your girlfriend?"
 
-                yuuka irritated "I heard that, Ha-kun."
+                hoang neutral "Ừ."
 
-                "Tâm bật cười."
+                yuuka grinning "Tell her you are innocent. Mostly."
 
-                "Cảm giác khó chịu ban nãy rút xuống, không biến mất hoàn toàn nhưng đã có hình dạng hợp lý hơn."
+                tam irritated "Em nghe thấy đấy."
+
+                hoang laughing "Thế thì anh đỡ phải dịch."
+
+                "Tâm nhìn ra cửa kính."
+
+                "Cục nghẹn trong lòng rút xuống, để lại một chút ngượng không mấy dễ chịu."
 
                 $ story_flag("tam_knows_yuuka_as_old_family_friend")
-                $ story_flag("tam_learns_minh_hoang_are_brothers")
 
-            "Tiếp tục đi đón Thiên An.":
+            "Không đuổi theo. Đợi Hoàng tự giải thích.":
+                $ c08_tam_followed_hoang = False
                 $ c08_yuuka_intro_source = "trusted_hoang"
 
                 $ story_add("hoang_tam_trust", 10)
                 $ story_add("tam_self_clarity", 5)
                 $ story_sub("tam_insecurity", 5)
+
                 $ story_flag("tam_chose_not_to_follow_hoang")
 
-                "Tâm nhìn theo chiếc xe thêm một nhịp."
+                "Tâm đặt điện thoại úp xuống đùi."
 
-                "Rồi cúi xuống hoàn thành tin nhắn."
+                "Cô vẫn khó chịu."
 
-                tam neutral "Em sắp tới rồi."
+                "Nhưng khó chịu không có nghĩa là phải lập tức kết tội một người."
 
-                thienan neutral "Ừ. Chị đang chờ."
+                thienan neutral "Không định hỏi à?"
 
-                "Tâm không hỏi Hoàng ngay."
+                tam neutral "Có."
 
-                "Không phải vì cô không tò mò."
+                tam neutral "Nhưng không phải lúc này."
 
-                "Mà vì lần đầu tiên, cô muốn cho sự tin tưởng một cơ hội đi trước trí tưởng tượng."
+                "Thiên An nhìn cô, rồi khẽ gật."
 
-                "Tối đó, Hoàng chủ động nhắn."
+                "Tối hôm ấy, Hoàng chủ động nhắn."
 
-                hoang neutral "Hôm nay anh ra sân bay đón một người bạn cũ của anh với anh Minh."
+                hoang neutral "Hôm nay anh ra sân bay đón Yuu-san."
 
-                hoang neutral "Cô ấy sang dự Festival. Khi nào tiện anh giới thiệu."
+                hoang neutral "Bạn cũ của anh với anh Minh. Cô ấy sang dự Festival."
 
-                tam teasing "Cô ấy đẹp."
+                tam teasing "Em thấy rồi."
 
-                hoang teasing "Anh không phủ nhận sự thật khách quan."
+                hoang surprised "Thấy?"
 
-                tam irritated "Anh giỏi."
+                tam neutral "Cả đoạn khoác tay."
 
-                hoang grinning "Cảm ơn."
+                hoang neutral "..."
+
+                tam teasing "Giải thích đi."
+
+                hoang teasing "Anh đang cân nhắc thuê luật sư."
+
+                "Tâm bật cười dù không định."
 
                 $ story_flag("tam_knows_yuuka_as_old_family_friend")
-                $ story_flag("tam_learns_minh_hoang_are_brothers")
+
+    # -------------------------------------------------------------------------
+    # No active Tâm–Hoàng route.
+    # -------------------------------------------------------------------------
 
     else:
-        "Tâm nhìn chiếc xe đi xa."
+        scene bg_taxi_interior_day
+        with dissolve
 
-        "Cô không có lý do để chạy theo."
+        "Taxi rời sân bay."
 
-        "Chỉ có một chút tò mò rất bình thường trước cảnh Hoàng xuất hiện cùng một người phụ nữ nổi bật đến mức ấy."
+        "Tâm vẫn nhớ cảnh Hoàng kéo vali cho cô gái kia."
+
+        "Không phải vì ghen."
+
+        "Chỉ vì sự thân thuộc giữa họ quá rõ để xem như một cuộc gặp xã giao."
 
         if c08_huyen_hoang_active:
             $ c08_yuuka_intro_source = "huyen"
 
-            "Tâm chụp được một tấm ảnh rất mờ của đuôi xe."
+            "Tâm gửi Huyền một tin nhắn."
 
-            "Cô gửi cho Huyền."
+            tam teasing "Người yêu tin đồn của mày vừa đón một cô gái rất đẹp ở sân bay."
 
-            tam neutral "Người yêu tin đồn của mày đi với gái đẹp."
+            huyen neutral "Cô gái Nhật?"
 
-            huyen neutral "Gì?"
+            tam surprised "Mày biết?"
 
-            "Ba chấm hiện lên."
+            huyen neutral "Hoàng có kể."
 
-            "Biến mất."
+            huyen teasing "Bạn cũ của hai anh em."
 
-            "Hiện lại."
+            tam neutral "Tên gì?"
 
-            huyen surprised "À."
+            huyen neutral "Yuuka."
 
-            tam teasing "À là sao?"
-
-            huyen neutral "Yuu-san. Hoàng có kể hôm nay ra sân bay đón."
-
-            tam neutral "Ai thế?"
-
-            huyen teasing "Bạn cũ của Hoàng và anh Minh."
-
-            huyen grinning "Đạo diễn khách mời của Festival nhà mày đấy."
+            "Tâm nhìn lại tài liệu Festival trong điện thoại."
 
             tam surprised "Yuuka Nakamura?"
 
             huyen neutral "Chắc thế."
 
-            huyen teasing "Mày soi giúp tao xem ngoài đời có đẹp quá mức khai báo không."
+            huyen teasing "Mày gặp ngoài đời rồi thì báo cáo giúp tao xem ảnh có khai gian không."
 
-            tam teasing "Tự soi."
+            tam teasing "Tự đi mà hỏi."
 
-            $ story_add("huyen_hoang_interest", 5)
-            $ story_add("hoang_huyen_interest", 5)
             $ story_add("tam_observation", 5)
-            $ story_flag("huyen_question_minh")
+            $ story_add("huyen_hoang_interest", 5)
             $ story_flag("tam_knows_yuuka_as_old_family_friend")
-            $ story_flag("tam_learns_minh_hoang_are_brothers")
 
         else:
             $ c08_yuuka_intro_source = "hoang"
 
             "Tâm gửi Hoàng một tin nhắn."
 
-            tam teasing "Xe đẹp. Người ngồi bên cạnh còn đẹp hơn."
+            tam teasing "Vừa thấy anh ở sân bay."
 
-            "Hoàng trả lời gần như ngay lập tức."
+            hoang neutral "Thế à?"
 
-            hoang teasing "Cảm ơn. Xe anh biết rồi."
+            tam teasing "Xe đẹp. Cô gái đi cùng còn đẹp hơn."
 
-            tam irritated "Em không khen anh."
+            hoang teasing "Anh sẽ chuyển lời khen."
 
-            hoang neutral "Yuu-san. Bạn cũ của anh và anh Minh."
+            tam irritated "Ai thế?"
 
-            hoang neutral "Cô ấy sang dự Festival. Anh ra sân bay đón."
+            hoang neutral "Yuu-san. Bạn cũ của anh với anh Minh."
+
+            hoang neutral "Cô ấy sang dự Festival."
 
             tam surprised "Yuuka Nakamura?"
 
-            hoang neutral "Ừ. Em biết cô ấy à?"
+            hoang neutral "Ừ. Team em phụ trách cô ấy à?"
 
-            tam neutral "Team em vừa xem trailer phim."
+            tam neutral "Một phần hồ sơ."
 
-            hoang teasing "Thế thì anh không cần quảng cáo thêm."
+            hoang teasing "Thế thì nhớ đối xử tử tế với người nhà."
 
-            "Tâm nhìn cái tên trong đoạn chat."
+            tam irritated "Bạn cũ mà thành người nhà nhanh thế?"
 
-            "Một người đã xuất hiện trước bằng tác phẩm."
-
-            "Sau đó mới có một gương mặt chưa kịp nhìn rõ qua cửa kính xe."
+            hoang grinning "Bạn rất cũ."
 
             $ story_add("tam_observation", 5)
             $ story_flag("tam_knows_yuuka_as_old_family_friend")
-            $ story_flag("tam_learns_minh_hoang_are_brothers")
 
     $ story_flag("yuuka_arrived_eight_days_before_festival")
 

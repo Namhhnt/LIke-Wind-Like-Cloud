@@ -2,216 +2,333 @@
 # Scene file.
 
 label yuuka_c08_festival_arrival_s04_minh_neutral_pause:
-    # The reunion always happens at Minh / Hoàng's house.
-    # Tâm only witnesses it if she followed Hoàng in scene 03.
-
-    scene bg_hoang_house_living_room_day
-    with dissolve
+    # -------------------------------------------------------------------------
+    # Tâm followed Hoàng and is present for the reunion.
+    # -------------------------------------------------------------------------
 
     if c08_tam_met_yuuka:
-        "Trong phòng khách, vali của Yuuka vẫn dựng cạnh sofa."
+        scene bg_hoang_house_living_room_day
+        with dissolve
 
-        "Một chiếc áo khoác mỏng đặt trên tay vịn."
+        "Vali của Yuuka vẫn dựng cạnh sofa."
 
-        "Cô ngồi rất tự nhiên, nhưng hai bàn tay lại giữ cốc nước lâu hơn mức cần thiết."
+        "Chiếc áo khoác mỏng được gấp trên tay vịn ghế, nhưng chiếc khăn quàng lại nằm lệch trên bàn."
 
-        "Hoàng giải thích ngắn gọn rằng Yuuka từng học cùng Minh ở nước ngoài."
+        "Một chi tiết nhỏ không hợp với vẻ chỉn chu của cô."
 
-        "Không nói thêm."
+        "Tâm ngồi đối diện Yuuka."
 
-        "Tâm cũng không hỏi."
+        "Cơn bực ở sân bay đã lắng xuống đủ để cô nhìn người trước mặt rõ hơn."
 
-        yuuka teasing "So."
+        "Yuuka không giống một người vừa cố ý chen vào quan hệ của ai."
 
-        yuuka smile "You are Tâm."
+        "Cô nói chuyện dễ chịu, đôi khi hơi tinh nghịch, có lúc còn cố tình làm Hoàng khó xử."
 
-        tam confused "Chị biết em ạ?"
+        yuuka teasing "Ha-kun talked about you."
 
-        "Yuuka liếc sang Hoàng."
+        tam flustered "Anh ấy kể gì ạ?"
 
-        yuuka teasing "Ha-kun is not very subtle."
+        yuuka grinning "Enough."
 
-        hoang irritated "Anh kể chuyện bình thường."
+        hoang irritated "Yuu-san."
 
-        yuuka grinning "Yes. Repeatedly."
+        yuuka smile "Only good things."
 
-        tam flustered "..."
+        hoang neutral "Câu sau không cứu được câu trước đâu."
 
-        hoang neutral "Yuu-san."
+        "Tâm bật cười."
 
-        yuuka smile "What? I am helping."
+        "Không khí ở sân bay rút xuống thêm một chút."
 
-        "Tâm không biết Yuuka đang giúp ai."
+        "Nhưng giữa những câu nói, Tâm nhận ra Yuuka thường liếc về phía cửa."
 
-        "Nhưng vẻ căng thẳng ở cửa đã nhẹ đi."
+        "Không nhiều."
 
-        "Yuuka không giống hình dung ban đầu của cô."
+        "Chỉ khi có tiếng xe ngoài đường."
 
-        "Không xa cách. Không kiểu cách."
+        "Hoặc lúc chìa khóa của ai đó va vào nhau ngoài cổng."
 
-        "Cô hoạt bát hơn, thậm chí hơi trẻ con."
+        "Hoàng mang thêm nước ra."
 
-        "Chỉ có đôi lúc, giữa hai câu đùa, ánh mắt cô lại vô thức dừng ở phía cửa."
+        hoang neutral "Anh Minh chắc sắp về."
 
-        "Rất nhanh."
+        "Yuuka cầm cốc lên."
 
-        "Như thể chính cô cũng không muốn ai phát hiện mình đang đợi."
+        "Không uống."
 
-        "Tiếng khóa cửa vang lên."
+        yuuka neutral "I am not waiting."
 
-        "Yuuka im giữa một câu nói."
+        hoang teasing "Anh chưa nói em đang đợi."
+
+        yuuka irritated "You implied it."
+
+        hoang grinning "Em tự khai."
+
+        "Yuuka nhìn cậu bằng vẻ mặt rất muốn đuổi người."
+
+        "Đúng lúc ấy, tiếng khóa cửa vang lên."
+
+        "Cốc nước trong tay cô dừng lại."
 
         "Hoàng quay đầu."
 
-        hoang neutral "Anh Minh về."
+        "Tâm cũng nhìn ra cửa."
 
-        "Cửa mở."
+        "Minh bước vào."
 
-        "Minh bước vào, tay vẫn cầm chìa khóa."
-
-        "Anh nhìn thấy Tâm trước."
+        "Ánh mắt anh chạm Tâm trước."
 
         minh neutral "Tâm."
 
         tam neutral "Chào anh."
 
-        "Sau đó ánh mắt anh chuyển sang người đang ngồi cạnh sofa."
+        "Sau đó anh nhìn sang sofa."
 
         "Yuuka đã đứng dậy."
 
-        "Không ai nói gì trong một nhịp."
+        "Cả hai dừng lại."
 
-        "Một nhịp rất nhỏ."
+        "Không lâu."
 
-        "Nhưng căn phòng đủ yên để nó có trọng lượng."
+        "Chỉ một nhịp nhỏ đến mức nếu trong phòng có thêm tiếng nói, có lẽ chẳng ai nhận ra."
+
+        "Nhưng căn phòng đang yên."
+
+        "Và sự im lặng giữa họ không hề trống."
 
         minh neutral "..."
 
         yuuka neutral "..."
 
-        "Minh đặt chìa khóa lên kệ."
+        "Yuuka bước về phía anh trước."
 
-        minh neutral "Chuyến bay ổn chứ?"
+        "Minh giơ một tay lên, đặt nhẹ lên đầu cô, giữ cô lại ngoài tầm ôm."
 
-        yuuka smile "Barely survivable."
+        minh smile "Oh. Akuma-chan."
 
-        yuuka teasing "The food was an international crime."
+        minh neutral "Fancy meeting you here."
 
-        minh neutral "Vậy là vẫn bình thường."
+        "Yuuka nhìn bàn tay trên đầu mình."
 
-        "Yuuka bật cười."
+        "Rồi nhìn anh."
 
-        "Minh cũng hơi cong khóe môi."
+        yuuka irritated "Put."
 
-        "Không có cái ôm."
+        yuuka irritated "Your hand."
 
-        "Không có lời nào đủ để xác nhận hai người từng là gì."
+        yuuka irritated "Away."
 
-        "Chỉ có một sự thân thuộc không cần được giới thiệu lại."
+        "Minh buông tay."
+
+        yuuka teasing "Let me hug you, Otou-chan."
+
+        "Cô bước tới ôm anh."
+
+        "Nhanh."
+
+        "Tự nhiên."
+
+        "Nhưng chặt hơn mức một câu đùa cần đến."
+
+        "Minh khựng lại rất nhẹ."
+
+        "Sau đó một tay anh đặt lên lưng cô."
+
+        "Không kéo gần hơn."
+
+        "Cũng không đẩy ra."
+
+        minh neutral "Careful."
+
+        minh teasing "You are acting like you missed me."
+
+        yuuka neutral "Acting, yes."
+
+        "Giọng cô bị vai áo anh chặn mất một phần."
+
+        "Khi Yuuka buông ra, nụ cười đã trở lại trên mặt cô."
+
+        "Sáng."
+
+        "Tròn vai."
+
+        "Chỉ có đầu ngón tay vẫn giữ nhẹ lấy tay áo anh thêm nửa giây."
+
+        if c08_tam_high_clarity:
+            "Điều đầu tiên Tâm cảm thấy là nhẹ nhõm."
+
+            "Thẳng thắn mà nói, không đẹp đẽ lắm."
+
+            "Nhưng rõ ràng."
+
+            "Yuuka không đến đây vì Hoàng."
+
+            "Và cách cô nhìn Minh cũng không cho phép ai hiểu nhầm điều đó."
+
+        elif c08_tam_minh_lean:
+            "Cảm giác ghen với Hoàng vừa lắng xuống, một điều khó gọi tên khác đã nổi lên."
+
+            "Không mạnh."
+
+            "Chỉ là Tâm chợt nhận ra mình chưa từng thấy Minh để một ai bước vào khoảng cách ấy."
+
+        else:
+            "Tâm hiểu vì sao Hoàng chỉ giới thiệu bằng hai chữ 'bạn cũ'."
+
+            "Đó là cách gọi an toàn nhất cho một mối quan hệ rõ ràng không hề đơn giản."
 
         $ story_add("minh_yuuka_trust", 10)
         $ story_add("minh_yuuka_intimacy", 10)
         $ story_add("minh_yuuka_unresolved", 10)
+
         $ story_flag("yuuka_route_unlocked")
-        $ story_flag("group_notices_past")
+        $ story_flag("group_notices_minyuu_history")
+        $ story_flag("minyuu_reunion_not_yet_defined")
 
         menu:
-            "Tâm chú ý đến điều gì?"
+            "Điều gì khiến Tâm chú ý nhất?"
 
-            "Nhịp dừng trước câu chào.":
+            "Nhịp dừng trước khi họ chào nhau.":
                 $ story_add("tam_observation", 10)
                 $ story_add("minh_yuuka_unresolved", 5)
                 $ story_flag("noticed_minyuu_pause")
 
-                "Tâm không biết bên trong một giây im lặng ấy có gì."
+                "Một người bạn cũ có thể bất ngờ."
 
-                "Nhưng nó không giống sự ngượng ngùng của hai người lâu ngày chưa gặp."
+                "Nhưng sự im lặng vừa rồi không giống bất ngờ."
 
-                "Nó giống một cánh cửa cả hai đều biết nằm ở đó, nhưng chưa ai đặt tay lên."
+                "Nó giống hai người cùng chạm vào một cánh cửa đã đóng rất lâu, rồi đồng thời chưa biết ai nên mở trước."
 
-            "Cách Yuuka giấu căng thẳng bằng một câu đùa.":
+            "Cái ôm không giống một cuộc tái ngộ xã giao.":
+                $ story_add("tam_observation", 10)
+                $ story_add("tam_respect_yuuka", 5)
+                $ story_flag("noticed_minyuu_familiarity")
+
+                if c08_tam_minh_lean:
+                    $ story_add("tam_insecurity", 10)
+
+                    "Tâm không cần biết quá khứ của họ là gì để hiểu một điều."
+
+                    "Yuuka đã từng có một vị trí rất gần."
+
+                    "Có thể vị trí ấy vẫn còn ở đó."
+
+                else:
+                    "Tâm nhìn cách Minh đặt tay sau lưng Yuuka."
+
+                    "Một cử chỉ rất nhỏ."
+
+                    "Nhưng nó có độ chính xác của một thói quen chưa mất."
+
+            "Cách Yuuka chỉ mất vai diễn khi Minh bước vào.":
                 $ story_add("tam_respect_yuuka", 10)
-                $ story_add("tam_observation", 5)
+                $ story_add("tam_observation", 10)
                 $ story_flag("tam_noticed_yuuka_emotional_control")
 
-                "Từ lúc Minh bước vào, giọng Yuuka sáng hơn một chút."
+                "Ở cửa, Yuuka có thể cười trước một người lạ."
 
-                "Không run."
+                "Trong phòng khách, cô có thể trêu Hoàng như không có gì đáng lo."
 
-                "Không yếu."
+                "Nhưng khi Minh bước vào, cô đã quên cười đúng một giây."
 
-                "Chỉ sáng hơn mức tự nhiên."
+                "Chỉ một giây ấy thôi cũng đủ thật hơn mọi câu đùa trước đó."
 
-                "Tâm từng làm điều tương tự: nói nhanh hơn để không ai hỏi vì sao mình im."
+        "Minh đặt chìa khóa lên kệ."
 
-            "Giữ cách hiểu đơn giản: họ là bạn cũ.":
-                $ story_add("tam_self_clarity", 10)
-                $ story_add("tam_respect_yuuka", 5)
-                $ story_flag("tam_does_not_project_onto_minyuu")
+        minh neutral "Em đã ăn gì chưa?"
 
-                "Có thể giữa họ từng có chuyện."
+        yuuka neutral "Airline food."
 
-                "Cũng có thể không."
+        minh neutral "Anh hỏi đồ ăn."
 
-                "Tâm không lấy vài giây quan sát được để viết thay cả quá khứ của hai người."
+        yuuka irritated "That was supposed to be food."
 
-                "Ít nhất, lần này cô không cần biến điều mình chưa biết thành điều đáng sợ."
+        "Minh nhìn sang Hoàng."
 
-        "Điện thoại Tâm rung lên."
+        minh neutral "Trong tủ còn gì?"
 
-        thienan irritated "Mười lăm phút của em dài hơn giờ hành chính à?"
+        hoang neutral "Còn cá, rau với ít thịt."
 
-        "Tâm nhìn đồng hồ."
+        minh neutral "Anh nấu."
+
+        "Yuuka quay mặt đi rất nhẹ."
+
+        "Tâm vẫn nhìn thấy khóe môi cô cong lên."
+
+        "Điện thoại Tâm rung."
+
+        thienan irritated "Em định để chị mang cả vali của em về luôn à?"
+
+        "Tâm nhìn màn hình."
 
         tam shocked "Chết rồi."
 
         hoang confused "Sao thế?"
 
-        tam neutral "Em phải đi đón chị An tới đám cưới Duyên."
+        tam neutral "Chị An đang đợi em ở nhà. Mai bọn em còn đi đám cưới Duyên."
 
-        hoang neutral "Anh đưa em đi."
+        "Minh đang cởi đồng hồ thì dừng lại."
 
-        "Tâm nhìn vali cạnh sofa, rồi nhìn Yuuka."
+        minh neutral "Duyên?"
 
-        tam neutral "Anh ở lại đi. Em gọi xe được."
+        tam neutral "Vâng. Chị Duyên và anh Kim."
 
-        yuuka smile "Please go. I have already stolen enough of your afternoon."
+        "Một khoảng lặng khác xuất hiện."
 
-        tam smile "Hẹn gặp chị ở Festival."
+        "Lần này, người khựng lại là Minh."
 
-        yuuka smile "I will try not to create extra paperwork."
+        "Rất ngắn."
 
-        tam teasing "Em không tin đạo diễn."
+        "Nhưng Yuuka đã nhìn thấy."
 
-        yuuka grinning "Smart girl."
+        "Cô không hỏi."
 
-        "Tâm bước ra cửa."
+        "Hoàng cũng không."
 
-        "Trước khi cánh cửa khép lại, cô nghe Hoàng hỏi Yuuka có đói không."
+        "Một sợi dây khác của quá khứ vừa được kéo ra, nhưng chưa đến lúc chạm vào."
 
-        "Rồi tiếng Minh từ phía bếp vọng ra, bình tĩnh như thể bốn năm hay bốn ngày đều có thể được đặt vào cùng một câu."
+        $ story_flag("minh_hears_duyen_wedding")
+        $ story_flag("duyen_kim_wedding_seeded")
 
-        minh neutral "Trong tủ còn đồ. Anh nấu."
+        tam neutral "Em xin phép về trước."
 
-        "Tâm không quay lại."
+        yuuka smile "See you at the Festival."
+
+        tam smile "Hẹn gặp chị."
+
+        "Tâm đi ra cửa."
+
+        "Lúc cánh cửa khép lại, cô nghe Yuuka hỏi rất nhỏ."
+
+        yuuka neutral "Duyen?"
+
+        "Và giọng Minh đáp lại, đều đến mức gần như không có gì."
+
+        minh neutral "Chuyện cũ thôi."
+
+    # -------------------------------------------------------------------------
+    # Tâm did not follow. Reunion is shown from Yuuka's perspective.
+    # -------------------------------------------------------------------------
 
     else:
-        # Yuuka POV branch when Tâm did not follow Hoàng home.
+        scene bg_hoang_house_living_room_day
+        with dissolve
+
         "Căn nhà gần như không thay đổi."
 
         "Chiếc sofa cũ."
 
         "Bàn trà."
 
-        "Khung cửa sổ nhìn ra khoảng sân."
+        "Khung cửa sổ nhìn ra sân."
 
-        "Cả góc bếp nằm ở nơi Yuuka vẫn nhớ."
+        "Cả góc bếp vẫn nằm ở nơi Yuuka nhớ."
 
         "Mọi thứ gọn gàng đến mức có phần bất lịch sự với thời gian."
 
-        "Hoàng mang nước ra rồi vào phòng cất hành lý giúp cô."
+        "Hoàng mang nước ra rồi vào trong cất hành lý giúp cô."
 
-        "Yuuka ngồi một mình trong phòng khách."
+        "Yuuka ngồi một mình."
 
         "Cô nhìn cốc nước."
 
@@ -219,7 +336,7 @@ label yuuka_c08_festival_arrival_s04_minh_neutral_pause:
 
         "Tiếng khóa cửa vang lên."
 
-        "Bàn tay cô giữ cốc chặt hơn một chút."
+        "Bàn tay cô khép lại quanh thành cốc."
 
         "Minh bước vào."
 
@@ -235,35 +352,49 @@ label yuuka_c08_festival_arrival_s04_minh_neutral_pause:
 
         "Minh đặt chìa khóa lên kệ."
 
+        "Anh nhìn cô một lúc."
+
         minh neutral "Chuyến bay ổn chứ?"
 
         "Một câu rất bình thường."
 
-        "Nhờ thế, Yuuka mới nhớ cách thở."
+        "Nhờ vậy Yuuka mới nhớ cách thở."
 
         menu:
-            "Yuuka trả lời thế nào?"
+            "Yuuka bước qua khoảng cách đầu tiên thế nào?"
 
-            "Dùng một câu đùa để phá khoảng im.":
+            "Bám vào nhịp cũ và đòi một cái ôm.":
                 $ c08_minyuu_greeting_mode = "old_joke"
 
-                $ story_add("minh_yuuka_intimacy", 5)
+                $ story_add("minh_yuuka_intimacy", 10)
                 $ story_add("minh_yuuka_unresolved", 5)
                 $ story_flag("yuuka_used_old_rhythm")
 
-                yuuka teasing "No."
+                "Yuuka bước về phía anh."
 
-                yuuka irritated "The airline tried to kill me with steamed vegetables."
+                "Minh đặt tay lên đầu cô, giữ lại."
 
-                minh neutral "Em vẫn còn đủ sức phàn nàn."
+                minh smile "Oh. Akuma-chan."
 
-                yuuka smile "A professional survives."
+                minh neutral "Fancy meeting you here."
 
-                "Khóe môi Minh cong lên rất nhẹ."
+                yuuka irritated "Put your hand away."
 
-                "Chỉ một chút."
+                yuuka teasing "Let me hug you, Otou-chan."
 
-                "Nhưng đủ để Yuuka biết anh vẫn nhận ra nhịp cũ."
+                "Minh buông tay."
+
+                "Yuuka ôm anh."
+
+                "Chặt hơn dự tính."
+
+                minh neutral "Careful."
+
+                minh teasing "You are acting like you missed me."
+
+                yuuka neutral "Acting, yes."
+
+                "Không ai sửa lời nói dối ấy."
 
             "Chào anh như một người bạn lâu ngày gặp lại.":
                 $ c08_minyuu_greeting_mode = "formal_friend"
@@ -274,7 +405,9 @@ label yuuka_c08_festival_arrival_s04_minh_neutral_pause:
 
                 yuuka smile "Long time no see, Minh."
 
-                minh neutral "Ừ. Lâu rồi."
+                minh neutral "Ừ."
+
+                minh neutral "Lâu rồi."
 
                 "Câu trả lời không lạnh."
 
@@ -282,10 +415,10 @@ label yuuka_c08_festival_arrival_s04_minh_neutral_pause:
 
                 "Nó đặt giữa hai người một khoảng vừa đủ để không ai phải lùi thêm."
 
-            "Chỉ nói điều thật nhất lúc này.":
+            "Nói điều thật nhất lúc này.":
                 $ c08_minyuu_greeting_mode = "returned"
 
-                $ story_add("minh_yuuka_trust", 5)
+                $ story_add("minh_yuuka_trust", 10)
                 $ story_add("minh_yuuka_intimacy", 5)
                 $ story_add("minh_yuuka_unresolved", 5)
                 $ story_flag("yuuka_said_she_returned")
@@ -294,24 +427,28 @@ label yuuka_c08_festival_arrival_s04_minh_neutral_pause:
 
                 "Minh nhìn cô."
 
-                "Không hỏi cô gọi nơi nào là nơi để về."
+                "Không hỏi cô đang gọi nơi nào là nơi để về."
 
                 minh neutral "Ừ."
 
                 minh neutral "Chào mừng em trở lại."
 
-                "Yuuka cúi mắt xuống cốc nước."
+                "Yuuka cúi mắt xuống."
 
-                "Mặt nước rung rất nhẹ."
+                "Mặt nước trong cốc rung rất nhẹ."
 
-        # Core arrival state. This does not resolve the past relationship.
         $ story_add("minh_yuuka_trust", 10)
         $ story_add("minh_yuuka_intimacy", 10)
         $ story_add("minh_yuuka_unresolved", 10)
+
         $ story_flag("yuuka_route_unlocked")
         $ story_flag("minyuu_reunion_not_yet_defined")
 
-        "Hoàng quay lại phòng khách, nhìn hai người."
+        "Hoàng quay lại phòng khách."
+
+        "Cậu nhìn Minh."
+
+        "Rồi nhìn Yuuka."
 
         hoang neutral "Hai người nói chuyện xong chưa?"
 

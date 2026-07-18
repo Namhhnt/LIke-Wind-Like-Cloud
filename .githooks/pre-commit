@@ -256,13 +256,13 @@ def calculate_change_size(options_path: str) -> tuple[int, int]:
 
 
 def choose_bump(file_count: int, line_count: int) -> tuple[str, int]:
-    if line_count >= 1000:
+    if line_count >= 5000:
         return "major", 1
 
     if line_count < 10 and file_count == 1:
         return "patch", 1
 
-    if line_count < 25 and file_count <= 5:
+    if line_count < 250 and file_count <= 5:
         return "patch", 2
 
     return "minor", 1
@@ -279,7 +279,10 @@ def bump_version(
         return major + amount, 0, 0
 
     if bump_kind == "minor":
-        return major, minor + amount, 0
+        if minor + amount > 25:
+            bump_kind = "major"
+        else:
+            return major, minor + amount, 0
 
     if bump_kind == "patch":
         return major, minor, patch + amount

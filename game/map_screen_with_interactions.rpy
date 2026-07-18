@@ -207,10 +207,10 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                 add Solid("#0806031c")
 
                 for entry in entries:
-                    use interactive_map_marker(entry, hovered_entry=hovered_entry, map_zoom=map_zoom)
+                    use interactive_map_marker(entry, hovered_entry=hovered_entry, focus_target_entry=focus_target_entry, map_zoom=map_zoom)
 
                 for label_entry in map_view_model["label_entries"]:
-                    use interactive_map_label_button(label_entry, hovered_entry=hovered_entry, map_zoom=map_zoom)
+                    use interactive_map_label_button(label_entry, hovered_entry=hovered_entry, focus_target_entry=focus_target_entry, map_zoom=map_zoom)
 
         use interactive_map_daily_hud(
             context_id=context_id,
@@ -326,7 +326,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
             use map_hover_panel(entries[0], empty_prompt=True, focus_entry=focus_entry, map_zoom=map_zoom, map_canvas_size=map_canvas_size, map_viewport_size=map_viewport_size, map_focus_center=map_focus_center)
 
 
-screen interactive_map_marker(entry, hovered_entry=None, map_zoom=1.0):
+screen interactive_map_marker(entry, hovered_entry=None, focus_target_entry=None, map_zoom=1.0):
     $ state = entry.get("state", "available")
     $ kind = entry.get("kind", "extra")
     $ glyph = "◎" if kind == "location_hub" else ("◆" if kind == "main" else ("●" if kind in ["character", "bonus", "extra"] else "◌"))
@@ -355,7 +355,7 @@ screen interactive_map_marker(entry, hovered_entry=None, map_zoom=1.0):
             style marker_text_style
 
 
-screen interactive_map_label_button(label_entry, hovered_entry=None, map_zoom=1.0):
+screen interactive_map_label_button(label_entry, hovered_entry=None, focus_target_entry=None, map_zoom=1.0):
     $ entry = label_entry.get("source_entry")
     $ state = label_entry.get("state", "available")
     $ label_action = Return(entry) if state == "available" else NullAction()

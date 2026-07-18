@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "3.0.0"
+define config.version = "4.0.2"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -140,6 +140,11 @@ default preferences.text_cps = 0
 
 default preferences.afm_time = 15
 
+## ## Limit framerate for PC performance ## ## 
+## Graphics stability and performance defaults.
+default preferences.gl_powersave = False
+default preferences.gl_framerate = 60
+default preferences.gl_tearing = False
 
 ## Save directory ##############################################################
 ##
