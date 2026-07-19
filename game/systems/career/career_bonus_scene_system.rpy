@@ -399,13 +399,16 @@ init 102 python:
                 apply_fn(character_id)
             else:
                 second_name = positional[1].name.lower()
-                if "level" in second_name:
+                pending_data = item.get("pending_data") or career_bonus_get_pending(character_id)
+                if pending_data is None and target_level is not None:
+                    pending_data = career_bonus_get_level_definition(character_id, target_level)
+
+                if "data" in second_name or "pending" in second_name:
+                    apply_fn(character_id, pending_data)
+                elif second_name in ("level", "target_level", "level_number", "rank"):
                     apply_fn(character_id, target_level)
                 else:
-                    apply_fn(
-                        character_id,
-                        item.get("pending_data") or career_bonus_get_pending(character_id),
-                    )
+                    apply_fn(character_id, pending_data)
         except (TypeError, ValueError):
             apply_fn(character_id)
 
