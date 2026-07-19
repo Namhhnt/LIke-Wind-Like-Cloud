@@ -2,7 +2,7 @@
 # Scene file.
 
 label tam_c03_thienan_family_s06_support_choice:
-    scene black
+    scene bg_hoangminh_villa_day
     with fade
 
     $ story_flag('tam_quang_support_choice_seen')

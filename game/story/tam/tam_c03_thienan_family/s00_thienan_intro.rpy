@@ -5,6 +5,11 @@ label tam_c03_thienan_family_s00_thienan_intro:
     scene black
     with fade
 
+    centered "{size=46}CHAPTER 03{/size}\n{size=30}Thiên An và gia đình{/size}"
+
+    scene bg_tam_family_living_room_evening
+    with dissolve
+
     $ story_flag('tam_c03_thienan_family_started')
     $ unlock_library_character("tam")
     $ unlock_library_character("thienan")

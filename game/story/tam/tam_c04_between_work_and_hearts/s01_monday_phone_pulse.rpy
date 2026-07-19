@@ -2,8 +2,13 @@
 # Week 01 — Monday morning phone pulse.
 
 label tam_c04_w01_s01_monday_phone_pulse:
-    scene bg_tam_room_morning
+    scene black
     with fade
+
+    centered "{size=46}CHAPTER 04{/size}\n{size=30}Những ngày lệch nhịp{/size}"
+
+    scene bg_tam_room_morning
+    with dissolve
 
     $ story_flag("tam_c04_w01_started")
     $ phone_refresh_all()

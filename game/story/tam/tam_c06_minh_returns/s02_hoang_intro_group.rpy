@@ -12,7 +12,7 @@ label tam_c06_minh_returns_s02_hoang_intro_group:
 
 
 label tam_c06_minh_returns_s02_home_door:
-    scene black
+    scene bg_hoang_house_front_door_day
     with fade
 
     "Tâm đổi hai túi đồ sang tay trái."
@@ -429,7 +429,7 @@ label tam_c06_minh_returns_s02_stay_after_door:
 
 
 label tam_c06_minh_returns_s02_company_side_information:
-    scene black
+    scene bg_company_open_office_day
     with fade
 
     $ _huyen_quan_mature = story_state.get("tam_c06_huyen_quan_mature", False)

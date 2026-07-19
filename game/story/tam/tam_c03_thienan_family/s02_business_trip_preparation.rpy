@@ -2,7 +2,7 @@
 # Scene file.
 
 label tam_c03_thienan_family_s02_business_trip_preparation:
-    scene black
+    scene bg_hoangminh_villa_living_room_day
     with fade
 
     $ story_flag('thienan_business_trip_south')

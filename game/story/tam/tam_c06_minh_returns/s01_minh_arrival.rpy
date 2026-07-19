@@ -4,6 +4,14 @@
 # - Company-rumor branch when Tâm has not committed to Hoàng.
 
 label tam_c06_minh_returns_s01_minh_arrival:
+    scene black
+    with fade
+
+    centered "{size=46}CHAPTER 06{/size}\n{size=30}Minh về nước{/size}"
+
+    scene black
+    with dissolve
+
     $ _tam_hoang_committed = (
         story_has_flag("romance_hoang_tam_confirmed")
         or story_has_flag("tam_hoang_anniversary_route_reinforced")
@@ -30,7 +38,7 @@ label tam_c06_minh_returns_s01_minh_arrival:
 
 
 label tam_c06_minh_returns_s01_home_invitation:
-    scene black
+    scene bg_tam_room_morning
     with fade
 
     "Trời mưa rả rích."
@@ -199,7 +207,7 @@ label tam_c06_minh_returns_s01_home_invitation:
 
 
 label tam_c06_minh_returns_s01_company_rumor_begins:
-    scene black
+    scene bg_company_open_office_day
     with fade
 
     "Tin đồn xuất hiện vào cuối một buổi chiều."

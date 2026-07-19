@@ -351,7 +351,7 @@ label tam_c06_minh_returns_s03_after_flee:
 
 
 label tam_c06_minh_returns_s03_prepare_for_partner_visit:
-    scene black
+    scene bg_company_open_office_day
     with fade
 
     "Tin đồn không làm khối lượng công việc giảm đi."

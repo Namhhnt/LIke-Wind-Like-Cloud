@@ -5,6 +5,14 @@
 label tam_c05_sunday_date_s01_route_check:
     $ _anniversary_route = story_state.get("hoang_anniversary_route", "friend_group")
 
+    scene black
+    with fade
+
+    centered "{size=46}CHAPTER 05{/size}\n{size=30}Buổi hẹn Chủ Nhật{/size}"
+
+    scene black
+    with dissolve
+
     # Compatibility fallback for old/debug saves that enter C05 directly.
     if _anniversary_route not in ("tam", "huyen", "friend_group"):
         if story_has_flag("romance_hoang_tam_confirmed"):
@@ -213,7 +221,7 @@ label tam_c05_sunday_date_s01_tam_morning:
 
 
 label tam_c05_sunday_date_s01_huyen_morning:
-    scene black
+    scene bg_bed_room_01_morning
     with fade
 
     "Bảy giờ ba mươi tám."
@@ -351,7 +359,7 @@ label tam_c05_sunday_date_s01_huyen_morning:
 
 
 label tam_c05_sunday_date_s01_group_morning:
-    scene black
+    scene bg_tam_room_morning
     with fade
 
     "Bảy giờ bốn mươi ba."

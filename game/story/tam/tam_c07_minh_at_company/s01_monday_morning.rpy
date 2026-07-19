@@ -2,7 +2,7 @@
 # Scene file.
 
 label tam_c07_minh_at_company_s01_monday_morning:
-    scene black
+    scene bg_tam_room_morning
     with fade
 
     centered "{size=46}CHAPTER 07{/size}\n{size=30}Khoảng cách của một cái bóng{/size}"

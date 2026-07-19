@@ -2,7 +2,7 @@
 # Scene file.
 
 label yuuka_c08_festival_arrival_s03_hoang_introduces_yuuka:
-    scene black
+    scene bg_airport_arrival_day
     with fade
 
     centered "{size=34}Tám ngày trước Liên hoan phim{/size}"

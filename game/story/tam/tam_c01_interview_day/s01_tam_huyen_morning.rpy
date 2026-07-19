@@ -2,8 +2,13 @@
 # Scene file.
 
 label tam_c01_interview_day_s01_tam_huyen_morning:
-    scene bg_tam_room_morning
+    scene black
     with fade
+
+    centered "{size=46}CHAPTER 01{/size}\n{size=30}Ngày phỏng vấn{/size}"
+
+    scene bg_tam_room_morning
+    with dissolve
 
     "Buổi sáng hôm ấy, Tâm thức dậy trước chuông báo thức năm phút."
 

@@ -17,7 +17,7 @@ label tam_c05_sunday_date_s02_date_or_group:
 
 
 label tam_c05_sunday_date_s02_tam_date:
-    scene black
+    scene bg_apartment_lobby_morning
     with fade
 
     "Cửa thang máy mở ra."
@@ -426,7 +426,7 @@ label tam_c05_sunday_date_s02_tam_date:
 
 
 label tam_c05_sunday_date_s02_huyen_date:
-    scene black
+    scene bg_apartment_lobby_morning
     with fade
 
     "Huyền xuống sảnh muộn tám phút."

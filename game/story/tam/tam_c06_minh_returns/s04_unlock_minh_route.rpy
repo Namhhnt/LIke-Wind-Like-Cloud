@@ -651,7 +651,7 @@ label tam_c06_minh_returns_s04_four_person_dinner:
 
 
 label tam_c06_minh_returns_s04_company_meeting_pending:
-    scene black
+    scene bg_meeting_room_day
     with fade
 
     "Chiều thứ Sáu, một lịch họp mới xuất hiện trong hộp thư của Tâm."

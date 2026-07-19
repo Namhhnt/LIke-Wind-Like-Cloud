@@ -2,7 +2,7 @@
 # Scene file.
 
 label tam_c03_thienan_family_s04_private_sisters_talk:
-    scene black
+    scene bg_tam_family_balcony_night
     with fade
 
     $ story_flag('tam_private_talk_with_thienan')

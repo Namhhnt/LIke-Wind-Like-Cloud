@@ -2,7 +2,7 @@
 # Scene file.
 
 label tam_c03_thienan_family_s03_family_pressure:
-    scene black
+    scene bg_tam_family_dining_room_evening
     with fade
 
     $ story_flag('thienan_family_pressure_introduced')

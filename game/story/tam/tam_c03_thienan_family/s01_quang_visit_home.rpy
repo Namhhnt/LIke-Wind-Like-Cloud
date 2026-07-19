@@ -2,7 +2,7 @@
 # Scene file.
 
 label tam_c03_thienan_family_s01_quang_visit_home:
-    scene black
+    scene bg_tam_family_entry_evening
     with fade
 
     $ story_flag('quang_introduced')

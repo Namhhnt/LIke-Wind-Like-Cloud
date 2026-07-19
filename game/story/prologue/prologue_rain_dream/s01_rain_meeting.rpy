@@ -5,6 +5,11 @@ label prologue_rain_dream_s01_rain_meeting:
     scene black
     with fade
 
+    centered "{size=46}PROLOGUE{/size}\n{size=30}Giấc mơ trong mưa{/size}"
+
+    scene black
+    with dissolve
+
     "Mưa rơi rất nhẹ."
 
     "Không phải kiểu mưa đủ lớn để người ta phải chạy đi tìm chỗ trú."

@@ -2,7 +2,7 @@
 # Scene file.
 
 label tam_c03_thienan_family_s07_career_seed:
-    scene black
+    scene bg_asset_0008
     with fade
 
     $ story_flag('tam_c03_career_seed_seen')

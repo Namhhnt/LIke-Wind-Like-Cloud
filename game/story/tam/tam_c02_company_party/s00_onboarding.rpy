@@ -13,8 +13,13 @@ label tam_c02_company_party_s00_onboarding:
         $ phone_unlock_mail("company_party_invitation")
         $ phone_refresh_all()
 
-    scene bg_company_open_office_day
+    scene black
     with fade
+
+    centered "{size=46}CHAPTER 02{/size}\n{size=30}Buổi tiệc công ty{/size}"
+
+    scene bg_company_open_office_day
+    with dissolve
 
     "Ngày đầu tiên đi làm không có tiếng trống khai giảng, cũng chẳng có ai đứng ở cửa rắc hoa giấy."
 

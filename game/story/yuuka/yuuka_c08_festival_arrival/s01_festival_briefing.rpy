@@ -2,7 +2,7 @@
 # Scene file.
 
 label yuuka_c08_festival_arrival_s01_festival_briefing:
-    scene black
+    scene bg_meeting_room_day
     with fade
 
     centered "{size=46}CHAPTER 08{/size}\n{size=30}Người ngoài khung hình{/size}"
