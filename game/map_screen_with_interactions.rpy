@@ -162,10 +162,10 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     $ bg = time_get_map_background(context.get("background", "images/maps/city_map_extend_day.webp"))
     $ panel_bg = ui_frame_or_solid("gui/library/panel.png", "#140f0be6", 26)
     $ frame_bg = ui_frame_or_solid("gui/library/panel.png", "#201812f0", 26)
-    $ map_zoom = interactive_map_get_safe_zoom(INTERACTIVE_MAP_BASE_SIZE, 2.45)
+    $ map_zoom = interactive_map_get_safe_zoom(INTERACTIVE_MAP_BASE_SIZE, 1.0)
     $ map_canvas_size = interactive_map_get_canvas_size(INTERACTIVE_MAP_BASE_SIZE, map_zoom)
-    $ map_viewport_size = (1920, 1080)
-    $ map_focus_center = (760, 460)
+    $ map_viewport_size = (1350, 680)
+    $ map_focus_center = (675, 340)
 
     default hovered_entry = None
     default focus_target_entry = interactive_map_get_default_focus_entry(entries)
@@ -186,8 +186,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
         viewport:
             id "interactive_map_canvas"
-            xpos 0
-            ypos 0
+            xpos 58
+            ypos 190
             xsize map_viewport_size[0]
             ysize map_viewport_size[1]
             draggable True
@@ -206,11 +206,12 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
                 add Solid("#0806031c")
 
-                for entry in entries:
+                for entry in sorted(entries, key=lambda item, target=focus_target_entry: item == target):
                     use interactive_map_marker(entry, hovered_entry=hovered_entry, focus_target_entry=focus_target_entry, map_zoom=map_zoom)
 
                 for label_entry in map_view_model["label_entries"]:
-                    use interactive_map_label_button(label_entry, hovered_entry=hovered_entry, focus_target_entry=focus_target_entry, map_zoom=map_zoom)
+                    if focus_entry and label_entry["source_entry"].get("location_id") == focus_entry.get("location_id"):
+                        use interactive_map_label_button(label_entry, hovered_entry=hovered_entry, focus_target_entry=focus_target_entry, map_zoom=map_zoom)
 
         use interactive_map_daily_hud(
             context_id=context_id,
@@ -220,8 +221,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
         )
 
         frame:
-            xpos 58
-            ypos 265
+            xpos 78
+            ypos 800
             xsize 620
             ysize 58
             background ui_frame_or_solid("gui/library/panel.png", "#100c0933", 18)
@@ -230,11 +231,12 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                 style "interactive_map_drag_hint"
 
         frame:
-            xpos 1492
-            ypos 48
-            xsize 370
-            ysize events_panel_height
+            xpos 1432
+            ypos 190
+            xsize 430
+            ysize (158 if events_panel_collapsed else 680)
             background panel_bg
+            padding (28, 28)
 
             vbox:
                 spacing 16
@@ -246,6 +248,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
                     text _("Map Locations & Story Events"):
                         style "interactive_map_panel_title"
+                        xmaximum 300
 
                     null:
                         xfill True
@@ -263,7 +266,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                         scrollbars "vertical"
                         mousewheel True
                         draggable True
-                        ysize events_viewport_height
+                        ysize 340
 
                         vbox:
                             spacing 10
@@ -274,7 +277,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                                 $ title = panel_entry["title"]
                                 $ description = panel_entry["description"]
                                 $ route_line = panel_entry["route_line"]
-                                $ list_action = Return(entry) if state == "available" else NullAction()
+                                $ list_action = [SetScreenVariable("focus_target_entry", entry), Function(interactive_map_focus_entry, entry, map_zoom, map_canvas_size, map_viewport_size, map_focus_center)]
 
                                 button:
                                     style "interactive_map_list_button"
@@ -288,7 +291,6 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                                         true=SetScreenVariable("hovered_entry", None),
                                         false=NullAction(),
                                     )
-                                    sensitive state == "available"
                                     action list_action
 
                                     vbox:
@@ -322,17 +324,17 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
         if hovered_entry:
             use map_hover_panel(hovered_entry, empty_prompt=False, focus_entry=focus_entry, map_zoom=map_zoom, map_canvas_size=map_canvas_size, map_viewport_size=map_viewport_size, map_focus_center=map_focus_center)
-        elif entries:
-            use map_hover_panel(entries[0], empty_prompt=True, focus_entry=focus_entry, map_zoom=map_zoom, map_canvas_size=map_canvas_size, map_viewport_size=map_viewport_size, map_focus_center=map_focus_center)
+        elif focus_entry:
+            use map_hover_panel(focus_entry, focus_entry=focus_entry, map_zoom=map_zoom, map_canvas_size=map_canvas_size, map_viewport_size=map_viewport_size, map_focus_center=map_focus_center)
 
 
 screen interactive_map_marker(entry, hovered_entry=None, focus_target_entry=None, map_zoom=1.0):
     $ state = entry.get("state", "available")
     $ kind = entry.get("kind", "extra")
     $ glyph = "◎" if kind == "location_hub" else ("◆" if kind == "main" else ("●" if kind in ["character", "bonus", "extra"] else "◌"))
-    $ marker_style = "interactive_map_marker_main" if kind == "main" else ("interactive_map_marker_locked" if state != "available" else "interactive_map_marker")
+    $ marker_style = "interactive_map_marker_locked" if state != "available" else ("interactive_map_marker_main" if kind == "main" else "interactive_map_marker")
     $ marker_text_style = "interactive_map_marker_text_locked" if state != "available" else ("interactive_map_marker_text_main" if kind == "main" else "interactive_map_marker_text")
-    $ marker_action = Return(entry) if state == "available" else NullAction()
+    $ marker_action = SetScreenVariable("focus_target_entry", entry)
 
     button:
         style marker_style
@@ -348,17 +350,16 @@ screen interactive_map_marker(entry, hovered_entry=None, focus_target_entry=None
             true=SetScreenVariable("hovered_entry", None),
             false=NullAction(),
         )
-        sensitive state == "available"
         action marker_action
 
-        text glyph:
-            style marker_text_style
+        add MapPin(locked=state != "available", selected=entry == focus_target_entry):
+            align (0.5, 0.5)
 
 
 screen interactive_map_label_button(label_entry, hovered_entry=None, focus_target_entry=None, map_zoom=1.0):
     $ entry = label_entry.get("source_entry")
     $ state = label_entry.get("state", "available")
-    $ label_action = Return(entry) if state == "available" else NullAction()
+    $ label_action = SetScreenVariable("focus_target_entry", entry)
 
     textbutton label_entry.get("title", ""):
         xpos int(label_entry.get("x", 960) * map_zoom)
@@ -376,7 +377,6 @@ screen interactive_map_label_button(label_entry, hovered_entry=None, focus_targe
             true=SetScreenVariable("hovered_entry", None),
             false=NullAction(),
         )
-        sensitive state == "available"
         action label_action
 
 
@@ -387,10 +387,11 @@ screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0
 
     frame:
         xpos 58
-        ypos 900
-        xsize 1280
-        ysize 150
+        ypos 888
+        xsize 1804
+        ysize 164
         background ui_frame_or_solid("gui/library/panel.png", "#120f0cf2", 24)
+        padding (40, 24)
 
         hbox:
             spacing 24
@@ -401,7 +402,7 @@ screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0
 
             vbox:
                 spacing 6
-                xfill True
+                xsize 1190
 
                 text title:
                     style "interactive_map_hover_title"
@@ -422,7 +423,15 @@ screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0
             if focus_entry:
                 vbox:
                     spacing 6
-                    xfill True
+                    xsize 310
+                    button:
+                        id "map_go_to_location"
+                        style "interactive_map_secondary_button"
+                        sensitive state == "available"
+                        action Return(entry)
+                        text _("Go to location"):
+                            style "interactive_map_secondary_button_text"
+                            color ("#ffcf83" if state == "available" else "#9b8a74")
                     textbutton _("Focus"):
                         # xpos 1136
                         style "interactive_map_focus_button"
@@ -476,9 +485,9 @@ style interactive_map_subtitle:
     outlines [(1, "#00000099", 0, 0)]
 
 style interactive_map_panel_title:
-    size 30
+    size 26
     bold True
-    color "#ff6434"
+    color "#e4bf7a"
 
 style interactive_map_panel_body:
     size 19
@@ -508,8 +517,8 @@ style interactive_map_drag_hint:
     yalign 0.5
 
 style interactive_map_focus_button:
-    background Solid("#9a451fe6")
-    hover_background Solid("#c85d2af0")
+    background Solid("#38291fe6")
+    hover_background Solid("#604631f0")
     xsize 156
     ysize 56
     xpadding 18

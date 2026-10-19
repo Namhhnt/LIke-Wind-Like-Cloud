@@ -36,3 +36,7 @@
 tmp_*.*
 **/__pycache__
 **backup/
+
+# Isolated UI test saves and generated review captures.
+/tests/ui_refresh_saves/
+/tests/screenshots/

@@ -54,4 +54,27 @@ translate vietnamese strings:
     old "Unlock Requirements"
     new "Yêu cầu mở khóa"
 
+translate vietnamese strings:
+
+    old "Story Timeline"
+    new "Dòng thời gian"
+
+    old "Your journey through the story"
+    new "Hành trình qua những chương truyện"
+
+    old "Completed"
+    new "Đã hoàn thành"
+
+    old "Select a chapter to inspect it."
+    new "Chọn một chương để xem chi tiết."
+
+    old "This timeline does not have nodes yet."
+    new "Dòng thời gian này chưa có chương truyện."
+
+    old "Drag horizontally to travel through the story chronology"
+    new "Kéo ngang để khám phá dòng thời gian câu chuyện"
+
+    old "Timeline positions are chronological; unrevealed structure is hidden from the player view."
+    new "Các chương chưa được khám phá sẽ được ẩn để tránh tiết lộ câu chuyện."
+
 

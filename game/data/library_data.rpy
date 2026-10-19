@@ -65,6 +65,9 @@ init -5 python:
 
 
     def library_get_progress_text(category_id):
+        if category_id == "minigames":
+            items = [item for item in library_items.values() if item.get("category") == "minigames"]
+            return "%d / %d" % (sum(1 for item in items if is_library_content_unlocked(item["id"])), len(items))
         if category_id == "stories" and "get_story_library_progress_text" in globals():
             return get_story_library_progress_text()
         if category_id == "extras":
@@ -100,7 +103,7 @@ init -5 python:
         if renpy.loadable(path):
             return Frame(path, border, border)
 
-        return Solid(color)
+        return ui_panel(color)
 
 
     SECRET_DEFINITIONS = {

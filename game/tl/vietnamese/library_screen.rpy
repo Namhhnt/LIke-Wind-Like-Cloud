@@ -11,3 +11,8 @@ translate vietnamese strings:
 
     old "Locked"
     new "Bị khóa"
+
+translate vietnamese strings:
+
+    old "No content yet"
+    new "Chưa có nội dung"

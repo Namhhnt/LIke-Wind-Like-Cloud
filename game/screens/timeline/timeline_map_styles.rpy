@@ -87,7 +87,7 @@ style timeline_route_tab_text_selected:
     color "#ffffff"
 
 style timeline_map_panel:
-    background Solid("#111111d6")
+    background ui_panel("#211a15d6")
     xpadding 0
     ypadding 0
 
@@ -101,14 +101,14 @@ style timeline_empty_state:
     text_align 0.5
 
 style timeline_node:
-    background Solid("#1b1714ee")
-    hover_background Solid("#2a221cee")
+    background ui_panel("#1b1714ee")
+    hover_background ui_panel("#2a221cee", "#e4bf7a")
     xpadding 0
     ypadding 0
 
 style timeline_node_selected:
-    background Solid("#684321ee")
-    hover_background Solid("#7e5228ee")
+    background ui_panel("#684321ee", "#e4bf7a")
+    hover_background ui_panel("#7e5228ee", "#ffe2ae")
     xpadding 0
     ypadding 0
 
@@ -116,7 +116,7 @@ style timeline_node_code:
     size 20
     color "#f5d7a6"
     bold True
-    align (0.5, 0.5)
+    align (0.0, 0.0)
 
 style timeline_node_title:
     size 20
@@ -166,7 +166,7 @@ style timeline_badge_pov:
     ypadding 2
 
 style timeline_detail_panel:
-    background Solid("#110d0bf0")
+    background ui_panel("#211a15ed")
     xpadding 0
     ypadding 0
 
@@ -228,7 +228,7 @@ style timeline_secondary_button_text:
     hover_color "#fff4e4"
 
 style timeline_legend_panel:
-    background Solid("#16110eea")
+    background ui_panel("#211a15ea")
     xpadding 0
     ypadding 0
 

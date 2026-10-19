@@ -19,6 +19,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
     $ viewport_xinitial = screen_state["viewport_xinitial"]
     $ node_render_positions = screen_state["node_render_positions"]
     $ node_states = screen_state["node_states"]
+    $ viewport_yinitial = max(0.0, min(1.0, float((selected_node or {}).get("y", 0) - 80) / max(1, canvas_h - 450)))
 
     fixed:
         xysize (1920, 1080)
@@ -26,17 +27,17 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
         add timeline_get_background_displayable()
         add Solid("#00000099")
 
-        text "Continuous Story Timeline":
+        text _("Story Timeline"):
             style "timeline_title"
             xpos 80
             ypos 42
 
-        text "Past, present, branches, and final choices share one chronology. Locked chapters stay hidden until unlocked.":
+        text _("Your journey through the story"):
             style "timeline_subtitle"
             xpos 84
             ypos 118
 
-        textbutton "Back":
+        textbutton _("Back"):
             style "timeline_back_button"
             text_style "timeline_back_button_text"
             xpos 1670
@@ -48,7 +49,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
             ypos 158
             spacing 14
 
-            for route in TIMELINE_ROUTES:
+            for route in (TIMELINE_ROUTES if len(TIMELINE_ROUTES) > 1 else []):
                 $ is_selected = route["id"] == selected_route
                 $ route_style = "timeline_route_tab_selected" if is_selected else "timeline_route_tab"
                 $ route_text_style = "timeline_route_tab_text_selected" if is_selected else "timeline_route_tab_text"
@@ -61,12 +62,6 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
                         SetScreenVariable("active_node_id", timeline_get_first_selectable_node(route["id"]))
                     ]
 
-            if timeline_can_show_debug_reveal_toggle():
-                textbutton timeline_debug_reveal_button_label():
-                    style "timeline_route_tab"
-                    text_style "timeline_route_tab_text"
-                    action Function(timeline_toggle_debug_reveal)
-
         frame:
             style "timeline_map_panel"
             xpos 64
@@ -74,7 +69,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
             xysize (1792, 506)
 
             fixed:
-                text "Drag horizontally to travel through the story chronology":
+                text _("Drag horizontally to travel through the story chronology"):
                     style "timeline_scroll_hint"
                     xalign 0.5
                     ypos 16
@@ -88,6 +83,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
                     draggable True
                     mousewheel True
                     xinitial viewport_xinitial
+                    yinitial viewport_yinitial
 
                     fixed:
                         xysize (canvas_w, canvas_h)
@@ -106,7 +102,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
                                 else:
                                     use timeline_node_card(node, active_node_id, render_x, node_states.get(node["id"]))
                         else:
-                            text "This timeline does not have nodes yet.":
+                            text _("This timeline does not have nodes yet."):
                                 style "timeline_empty_state"
                                 xpos 700
                                 ypos 170
@@ -127,7 +123,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
                 ypos 730
                 xysize (1430, 300)
 
-                text "Select a chapter to inspect it.":
+                text _("Select a chapter to inspect it."):
                     style "timeline_empty_state"
                     xalign 0.5
                     yalign 0.5
@@ -144,27 +140,27 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
                     ypos 24
                     spacing 14
 
-                    text "Actions" style "timeline_legend_title"
+                    text _("Actions") style "timeline_legend_title"
 
-                    textbutton "Play Chapter":
+                    textbutton _("Play Chapter"):
                         style "timeline_play_button"
                         text_style "timeline_play_button_text"
                         sensitive selected_can_play
                         action Return(("play", selected_chapter_id, selected_route, selected_node["id"]))
 
-                    textbutton "Preview":
+                    textbutton _("Preview"):
                         style "timeline_secondary_button"
                         text_style "timeline_secondary_button_text"
                         sensitive bool(selected_chapter_id)
                         action Return(("preview", selected_chapter_id, selected_route, selected_node["id"]))
 
                     if selected_chapter_id and timeline_is_bookmarked(selected_chapter_id):
-                        textbutton "Remove Bookmark":
+                        textbutton _("Remove Bookmark"):
                             style "timeline_secondary_button"
                             text_style "timeline_secondary_button_text"
                             action Return(("bookmark", selected_chapter_id, selected_route, selected_node["id"]))
                     else:
-                        textbutton "Bookmark":
+                        textbutton _("Bookmark"):
                             style "timeline_secondary_button"
                             text_style "timeline_secondary_button_text"
                             sensitive bool(selected_chapter_id)
@@ -175,7 +171,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
             xpos 80
             ypos 1038
 
-        text "Timeline positions are chronological; unrevealed structure is hidden from the player view.":
+        text _("Timeline positions are chronological; unrevealed structure is hidden from the player view."):
             style "timeline_footer_hint"
             xalign 0.5
             ypos 1038
@@ -277,28 +273,28 @@ screen timeline_node_card(node, selected_node_id, render_x=0, node_state=None):
 
                 if state == "completed":
                     text "✓" style "timeline_status_completed_icon"
-                    text "Completed" style "timeline_status_completed_text"
+                    text _("Completed") style "timeline_status_completed_text"
                 elif state == "current":
                     text "◷" style "timeline_status_current_icon"
-                    text "Current" style "timeline_status_current_text"
+                    text _("Current") style "timeline_status_current_text"
                 else:
                     text "○" style "timeline_status_locked_icon"
-                    text "Locked" style "timeline_status_locked_text"
+                    text _("Locked") style "timeline_status_locked_text"
 
             if timeline_is_bookmarked(node.get("chapter_id")):
-                text "Saved":
+                text _("Saved"):
                     style "timeline_badge_bonus"
                     xpos node_w - 82
                     ypos 14
 
             if is_revealed:
                 if node_type == "bonus":
-                    text "Bonus":
+                    text _("Bonus"):
                         style "timeline_badge_bonus"
                         xpos 16
                         ypos 112
                 elif node_type == "pov":
-                    text "POV":
+                    text _("POV"):
                         style "timeline_badge_pov"
                         xpos 16
                         ypos 112
@@ -400,23 +396,15 @@ screen timeline_detail_panel(route_id, node):
                 spacing 24
 
                 text "Track [route_label]" style "timeline_detail_meta"
-                text "Time [node.get('duration', 'Approx. 20 min')]" style "timeline_detail_meta"
 
                 if state == "locked":
-                    text "Locked" style "timeline_detail_meta_locked"
+                    text _("Locked") style "timeline_detail_meta_locked"
                 elif state == "completed":
-                    text "Completed" style "timeline_detail_meta"
+                    text _("Completed") style "timeline_detail_meta"
                 else:
-                    text "Unlocked" style "timeline_detail_meta"
+                    text _("Unlocked") style "timeline_detail_meta"
 
-            if timeline_debug_reveal_spoilers():
-                text timeline_get_debug_node_line(node):
-                    style "timeline_detail_meta"
-                    xpos 442
-                    ypos 274
-                    xmaximum 500
-
-            text "Unlock Requirements":
+            text _("Unlock Requirements"):
                 style "timeline_requirements_title"
                 xpos 960
                 ypos 36
@@ -432,7 +420,7 @@ screen timeline_detail_panel(route_id, node):
                     use timeline_requirement_line(done, label)
 
             # if stat_modifiers:
-            #     text "Planned Stat Modifiers":
+            #     text _("Planned Stat Modifiers"):
             #         style "timeline_requirements_title"
             #         xpos 960
             #         ypos 188

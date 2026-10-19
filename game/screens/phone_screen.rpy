@@ -1,8 +1,8 @@
 init -2:
     define PHONE_BG = "#120d0bf6"
-    define PHONE_SHELL = "#1a1411f6"
-    define PHONE_PANEL = "#221913f0"
-    define PHONE_PANEL_ALT = "#2c2018f0"
+    define PHONE_SHELL = "#30231cf8"
+    define PHONE_PANEL = "#38291ff0"
+    define PHONE_PANEL_ALT = "#604631f0"
     define PHONE_PANEL_HOVER = "#3a2a1ff0"
     define PHONE_TEXT = "#f5e8d0"
     define PHONE_MUTED = "#c8b69a"
@@ -27,8 +27,8 @@ style phone_subtitle_text is default:
     font gui.interface_text_font
 
 style phone_nav_button is button:
-    background Solid(PHONE_PANEL_ALT)
-    hover_background Solid(PHONE_PANEL_HOVER)
+    background ui_panel(PHONE_PANEL_ALT)
+    hover_background ui_panel(PHONE_PANEL_HOVER, PHONE_ACCENT)
     padding (14, 10)
 
 style phone_nav_button_text is button_text:
@@ -38,11 +38,11 @@ style phone_nav_button_text is button_text:
     font gui.interface_text_font
 
 style phone_home_tile_button is button:
-    background Solid(PHONE_PANEL)
-    hover_background Solid(PHONE_PANEL_HOVER)
+    background ui_panel(PHONE_PANEL)
+    hover_background ui_panel(PHONE_PANEL_HOVER, PHONE_ACCENT)
     insensitive_background Solid(PHONE_PANEL)
-    xsize 166
-    ysize 146
+    xsize 242
+    ysize 162
     padding (14, 14)
 
 style phone_home_tile_button_text is button_text:
@@ -53,8 +53,8 @@ style phone_home_tile_button_text is button_text:
     text_align 0.5
 
 style phone_card_button is button:
-    background Solid(PHONE_PANEL)
-    hover_background Solid(PHONE_PANEL_HOVER)
+    background ui_panel(PHONE_PANEL)
+    hover_background ui_panel(PHONE_PANEL_HOVER, PHONE_ACCENT)
     insensitive_background Solid(PHONE_PANEL)
     xfill True
     padding (16, 14)
@@ -115,6 +115,8 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
         "status": _("Visible notes, work status, and keepsakes."),
     }
     $ shell_title = title_map.get(active_tab, _("Phone"))
+    if active_tab == "messages" and selected_thread_id:
+        $ shell_title = PHONE_THREADS.get(selected_thread_id, {}).get("title", shell_title)
     $ shell_subtitle = subtitle_map.get(active_tab, "")
     $ return_home_action = [
         SetScreenVariable("active_tab", "home"),
@@ -122,9 +124,11 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
         SetScreenVariable("selected_mail_id", None),
         SetScreenVariable("selected_status_id", None),
     ]
+    $ shell_back_action = SetScreenVariable("selected_thread_id", None) if active_tab == "messages" and selected_thread_id else (SetScreenVariable("selected_mail_id", None) if active_tab == "mail" and selected_mail_id else (SetScreenVariable("selected_status_id", None) if active_tab == "status" and selected_status_id else return_home_action))
+    key "game_menu" action (back_action if active_tab == "home" else shell_back_action)
 
     add (mm_theme_asset("background_full.png") if mm_loadable(mm_theme_asset("background_full.png")) else Solid("#15120f")) fit "cover"
-    add Solid("#0000009a")
+    add Solid("#00000066")
 
     fixed:
         xysize (1920, 1080)
@@ -132,8 +136,8 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
         frame:
             xalign 0.5
             yalign 0.5
-            xsize 432
-            ysize 768
+            xsize 620
+            ysize 972
             background ui_frame_or_solid("gui/library/panel.png", PHONE_BG, 28)
             padding (18, 14)
 
@@ -151,7 +155,7 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
                     hbox:
                         xfill True
 
-                        text phone_status_bar_time():
+                        text time_get_clock_label():
                             style "phone_status_text"
 
                         null xfill True
@@ -167,7 +171,7 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
 
                         fixed:
                             xfill True
-                            ysize 102
+                            ysize 96
 
                             if active_tab != "home":
                                 textbutton _("‹"):
@@ -175,7 +179,7 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
                                     ypos 8
                                     style "phone_nav_button"
                                     text_style "phone_nav_button_text"
-                                    action return_home_action
+                                    action shell_back_action
 
                             vbox:
                                 xalign 0.5
@@ -184,20 +188,18 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
                                 text shell_title:
                                     xalign 0.5
                                     style "phone_title_text"
+                                    xmaximum 430
+                                    text_align 0.5
 
                                 text "──────── ✦ ────────":
                                     xalign 0.5
                                     style "phone_subtitle_text"
                                     color PHONE_ACCENT
 
-                                text shell_subtitle:
-                                    xalign 0.5
-                                    style "phone_subtitle_text"
-                                    text_align 0.5
 
                     frame:
                         xfill True
-                        ysize 560
+                        ysize 650
                         background Solid("#00000000")
                         padding (0, 0)
 
@@ -214,51 +216,13 @@ screen phone_home(initial_tab="home", focus_character_id=None, back_action=ShowM
                         else:
                             use phone_status_tab(selected_status_id)
 
-                    if active_tab == "home":
-                        vbox:
-                            spacing 10
-                            xfill True
-
-                            textbutton back_label:
-                                style "phone_nav_button"
-                                text_style "phone_nav_button_text"
-                                xfill True
-                                action back_action
-
-                    else:
-                        hbox:
-                            xfill True
-                            spacing 10
-
-                            textbutton _("Home"):
-                                style "phone_nav_button"
-                                text_style "phone_nav_button_text"
-                                xfill True
-                                action return_home_action
-
-                            if active_tab == "messages":
-                                textbutton _("Threads"):
-                                    style "phone_nav_button"
-                                    text_style "phone_nav_button_text"
-                                    xfill True
-                                    action SetScreenVariable("selected_thread_id", None)
-                                    sensitive (selected_thread_id is not None)
-                            elif active_tab == "mail":
-                                textbutton _("Inbox"):
-                                    style "phone_nav_button"
-                                    text_style "phone_nav_button_text"
-                                    xfill True
-                                    action SetScreenVariable("selected_mail_id", None)
-                                    sensitive (selected_mail_id is not None)
-                            elif active_tab == "status":
-                                textbutton _("Profiles"):
-                                    style "phone_nav_button"
-                                    text_style "phone_nav_button_text"
-                                    xfill True
-                                    action SetScreenVariable("selected_status_id", None)
-                                    sensitive (selected_status_id is not None)
-                            else:
-                                null width 1
+                    textbutton _("Close phone"):
+                        style "phone_nav_button"
+                        text_style "phone_nav_button_text"
+                        xfill True
+                        ysize 58
+                        text_xalign 0.5
+                        action back_action
 
 screen phone_app_home(back_action, back_label):
     $ unread_threads = len(phone_state.get("unread_threads", []))
@@ -272,7 +236,7 @@ screen phone_app_home(back_action, back_label):
         hbox:
             spacing 16
             xalign 0.5
-            use phone_home_tile(_("Messages"), "✉", unread_threads, [SetScreenVariable("active_tab", "messages"), SetScreenVariable("selected_thread_id", None)])
+            use phone_home_tile(_("Messages"), "✉", unread_threads, [SetScreenVariable("active_tab", "messages"), SetScreenVariable("selected_thread_id", None)], app_id="messages")
             use phone_home_tile(_("Mail"), "✦", unread_mail, [SetScreenVariable("active_tab", "mail"), SetScreenVariable("selected_mail_id", None)])
 
         hbox:
@@ -285,7 +249,7 @@ screen phone_app_home(back_action, back_label):
             spacing 16
             xalign 0.5
             use phone_home_tile(_("Status"), "✧", 0, [SetScreenVariable("active_tab", "status"), SetScreenVariable("selected_status_id", None)])
-            null width 166
+            null width 242
 
         frame:
             xfill True
@@ -297,8 +261,9 @@ screen phone_app_home(back_action, back_label):
                 text_align 0.5
                 xalign 0.5
 
-screen phone_home_tile(label, icon_text, badge_count, action):
+screen phone_home_tile(label, icon_text, badge_count, action, app_id=None):
     button:
+        id ("phone_app_" + app_id if app_id else None)
         style "phone_home_tile_button"
         action action
 
@@ -322,7 +287,7 @@ screen phone_home_tile(label, icon_text, badge_count, action):
 
             if badge_count:
                 frame:
-                    xpos 126
+                    xalign 1.0
                     ypos 8
                     xminimum 30
                     yminimum 30

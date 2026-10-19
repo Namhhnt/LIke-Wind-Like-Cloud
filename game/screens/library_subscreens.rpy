@@ -45,6 +45,7 @@ screen library_placeholder_page(category_id):
 
 screen library_characters():
     tag menu
+    default selected_profile_id = next((p["id"] for p in CHARACTER_PROFILES if is_character_unlocked(p)), None)
 
     use library_menu_shell(
         page_title=_("Character Profiles"),
@@ -52,17 +53,83 @@ screen library_characters():
         back_action=ShowMenu("library")
     ):
 
-        viewport:
-            scrollbars "vertical"
-            mousewheel True
-            draggable True
-            ysize 620
+        hbox:
+            spacing 36
 
-            vbox:
-                spacing 18
+            viewport:
+                xsize 360
+                ysize 648
+                scrollbars "vertical"
+                mousewheel True
+                draggable True
 
-                for profile in CHARACTER_PROFILES:
-                    use library_character_card(profile)
+                vbox:
+                    spacing 10
+                    for profile in CHARACTER_PROFILES:
+                        $ unlocked = is_character_unlocked(profile)
+                        button:
+                            xsize 336
+                            ysize 82
+                            padding (20, 12)
+                            background Solid(LIB_PANEL_HOVER if profile["id"] == selected_profile_id else LIB_PANEL)
+                            hover_background Solid(LIB_PANEL_HOVER)
+                            sensitive unlocked
+                            action SetScreenVariable("selected_profile_id", profile["id"])
+                            text (profile["name"] if unlocked else _("Locked")):
+                                style "library_story_card_title"
+                                size 26
+                                yalign 0.5
+                                color (LIB_TEXT if unlocked else LIB_DISABLED)
+
+            $ selected_profile = next((p for p in CHARACTER_PROFILES if p["id"] == selected_profile_id and is_character_unlocked(p)), None)
+            if selected_profile:
+                use library_profile_preview(selected_profile)
+
+
+screen library_profile_preview(profile):
+    $ cid = profile["id"]
+    $ details = profile.get("profile", {})
+    viewport:
+        xsize 1240
+        ysize 648
+        mousewheel True
+        draggable True
+        scrollbars "vertical"
+        vbox:
+            spacing 20
+            hbox:
+                spacing 28
+                if profile.get("sprite"):
+                    add profile["sprite"] xysize (180, 180)
+                vbox:
+                    xsize 950
+                    spacing 16
+                    text profile["name"] style "library_placeholder_title"
+                    text profile.get("description", "") style "library_story_summary_text"
+
+            for field, heading in [("role", _("Role")), ("public_identity", _("Public Identity")), ("inner_layer", _("Inner Layer")), ("core_traits", _("Core Traits")), ("narrative_function", _("Narrative Function")), ("hidden_identity", _("Hidden Identity")), ("aliases", _("Aliases")), ("notes", _("Notes"))]:
+                if details.get(field):
+                    frame:
+                        xsize 1190
+                        padding (24, 18)
+                        background Solid(LIB_PANEL)
+                        vbox:
+                            spacing 8
+                            text heading style "library_story_meta" color LIB_GOLD
+                            if field in ("role", "public_identity") or is_character_section_unlocked(cid, field):
+                                $ value = details[field]
+                                text (", ".join(value) if isinstance(value, (list, tuple)) else value):
+                                    style "library_story_summary_text"
+                            else:
+                                text _("Character locked. Progress the story to unlock their profile.") style "library_story_meta"
+
+            if profile.get("relationships"):
+                text _("Relationships") style "library_story_meta" color LIB_GOLD
+                if is_character_section_unlocked(cid, "relationships"):
+                    for relation in profile["relationships"]:
+                        text "%s (%s)" % (relation["target"].title(), relation["type"].title()) style "library_story_summary_text"
+                else:
+                    text _("Locked") style "library_story_meta"
 
 
 screen library_character_card(profile):

@@ -22,7 +22,7 @@ screen library_menu_shell(page_title, page_subtitle, back_action=ShowMenu("main_
             ypos 210
             xsize 1760
             ysize 740
-            background (Frame(mm_theme_asset("content_panel_frame.png"), 40, 40) if mm_loadable(mm_theme_asset("content_panel_frame.png")) else Solid(LIB_PANEL_SOFT))
+            background ui_frame_or_solid(mm_theme_asset("content_panel_frame.png"), LIB_PANEL_SOFT, 40)
 
             fixed:
                 xpos 42
@@ -39,7 +39,6 @@ screen library_menu_shell(page_title, page_subtitle, back_action=ShowMenu("main_
             text_style "library_back_button_text"
 
     use main_menu_top_controls
-    use main_menu_asset_debug
 
 
 screen library():
@@ -51,15 +50,19 @@ screen library():
         page_subtitle=_("Explore special contents of Like Wind, Like Cloud")
     ):
 
-        vbox:
-            spacing 22
-
-            text _("Browse unlocked side materials, memories, and replayable moments."):
-                style "library_placeholder_body"
+        hbox:
+            spacing 38
+            vbox:
+                xsize 370
+                spacing 20
+                textbutton _("Start") action Show("main_menu_start_prompt") text_style "library_back_button_text"
+                textbutton _("Continue") action ShowMenu("load") text_style "library_back_button_text"
+                textbutton _("Story Chapters") action Start("route_map_timeline") text_style "library_back_button_text"
+                text _("Library") style "library_back_button_text" color LIB_GOLD
+                textbutton _("Settings") action ShowMenu("preferences") text_style "library_back_button_text"
 
             grid 3 2:
-                spacing 28
-
+                spacing 24
                 for category in LIBRARY_CATEGORIES:
                     use library_category_card(category)
 
@@ -68,6 +71,7 @@ screen library_category_card(category):
 
     $ unlocked = library_category_is_unlocked(category["id"])
     $ progress_text = library_get_progress_text(category["id"])
+    $ empty_category = progress_text.replace(" ", "") == "0/0"
     $ action = ShowMenu(category["screen"]) if unlocked else NullAction()
     $ idle_background = ui_frame_or_solid("gui/library/card_idle.png", LIB_PANEL, 24)
     $ hover_background = ui_frame_or_solid("gui/library/card_hover.png", LIB_PANEL_HOVER, 24)
@@ -76,6 +80,7 @@ screen library_category_card(category):
         xsize 382
         ysize 292
         action action
+        sensitive unlocked
         background idle_background
         hover_background hover_background
         insensitive_background idle_background
@@ -89,11 +94,11 @@ screen library_category_card(category):
 
             text category["icon_text"]:
                 style "library_card_icon_text"
-                color (LIB_GOLD if unlocked else LIB_DISABLED)
+                color (LIB_GOLD if unlocked and not empty_category else LIB_DISABLED)
 
             text _(category["title"]):
                 style "library_card_title"
-                color (LIB_TEXT if unlocked else LIB_DISABLED)
+                color (LIB_TEXT if unlocked and not empty_category else LIB_DISABLED)
 
             text _(category["subtitle"]):
                 style "library_card_subtitle"
@@ -105,7 +110,7 @@ screen library_category_card(category):
                 xfill True
                 yalign 1.0
 
-                text progress_text:
+                text (_("No content yet") if empty_category else progress_text):
                     style "library_card_progress"
                     color (LIB_GOLD if unlocked else LIB_DISABLED)
 

@@ -16,7 +16,7 @@ init -2 python:
 
     TIMELINE_MAP_BACKGROUND = "images/assets/bg/ui/bg_timeline_map_blur.webp"
     TIMELINE_FALLBACK_BACKGROUND = "gui/theme/background_full.png"
-    TIMELINE_FALLBACK_THUMBNAIL = "gui/game_menu.png"
+    TIMELINE_FALLBACK_THUMBNAIL = "gui/theme/background_full.png"
     TIMELINE_LOCKED_THUMBNAIL = None
     TIMELINE_LOCKED_TITLE = "Chương chưa mở khóa"
     TIMELINE_LOCKED_SUMMARY = "Tiếp tục câu chuyện để mở khóa thông tin của chương này."
@@ -24,9 +24,11 @@ init -2 python:
     TIMELINE_SCREEN_STATE_CACHE = {}
 
     def timeline_freeze_signature(value):
-        if isinstance(value, dict):
+        # Handle both native Python containers and Ren'Py rollback containers.
+        from collections.abc import Mapping, Sequence, Set
+        if isinstance(value, Mapping):
             return tuple(sorted((key, timeline_freeze_signature(item)) for key, item in value.items()))
-        if isinstance(value, (list, tuple, set)):
+        if isinstance(value, (Sequence, Set)) and not isinstance(value, (str, bytes)):
             return tuple(timeline_freeze_signature(item) for item in value)
         return value
 

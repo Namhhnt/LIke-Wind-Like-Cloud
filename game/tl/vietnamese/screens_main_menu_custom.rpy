@@ -45,10 +45,10 @@ translate vietnamese strings:
     new "Truyện Yuuka  •  Truyện Minh  •  Truyện Tâm"
 
     old "Like wind,"
-    new "Tựa như ngọn gió,"
+    new "Tựa gió,"
 
     old "like cloud"
-    new "tựa làn mây"
+    new "tựa mây"
 
     old "Missing Main Menu Assets:"
     new "Thiếu tài nguyên Menu Chính:"

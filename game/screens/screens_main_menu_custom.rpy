@@ -22,7 +22,6 @@ screen main_menu_pc():
     use main_menu_navigation
     use main_menu_top_controls
     use main_menu_bottom_text
-    use main_menu_asset_debug
 
 
 screen main_menu_touch():
@@ -63,23 +62,19 @@ screen main_menu_logo():
                 spacing 4
 
                 text _("Like wind,"):
-                    size 88
+                    font "fonts/NotoSerif-Italic.ttf"
+                    size 78
                     color "#fff0d6"
                     italic True
                     outlines [(2, "#00000088", 0, 2)]
 
                 text _("like cloud"):
-                    size 88
+                    font "fonts/NotoSerif-Italic.ttf"
+                    size 78
                     color "#fff0d6"
                     italic True
                     outlines [(2, "#00000088", 0, 2)]
 
-        text _("Yuuka Story  •  Minh Story  •  Tam Story"):
-            xpos 50
-            ypos 238
-            size 25
-            color "#efe1cb"
-            outlines [(1, "#00000088", 0, 1)]
 
 
 screen main_menu_navigation():
@@ -89,7 +84,7 @@ screen main_menu_navigation():
         ypos 410
         xsize 560
         ysize 500
-        background (Frame(mm_theme_asset("menu_panel_frame.png"), 36, 36) if mm_loadable(mm_theme_asset("menu_panel_frame.png")) else Solid("#2d261fc4"))
+        background ui_frame_or_solid(mm_theme_asset("menu_panel_frame.png"), "#2d261fe8", 36)
 
         vbox:
             xpos 30
@@ -97,16 +92,16 @@ screen main_menu_navigation():
             spacing 4
 
             use main_menu_nav_button(
-                label=_("Start"),
-                action=Show("main_menu_start_prompt"),
+                label=_("Continue"),
+                action=(FileLoad(progression_autosave_slot, confirm=False, slot=True) if has_progression_autosave() else ShowMenu("load")),
                 primary=True,
-                icon_text="❧"
+                icon_text="◷"
             )
 
             use main_menu_nav_button(
-                label=_("Continue"),
-                action=ShowMenu("load"),
-                icon_text="◷"
+                label=_("Start"),
+                action=Show("main_menu_start_prompt"),
+                icon_text="❧"
             )
 
             use main_menu_nav_button(
@@ -142,36 +137,38 @@ screen main_menu_nav_button(label, action, primary=False, icon_text="•", sensi
     button:
         xsize 500
         ysize 62
-        background idle_bg
-        hover_background hover_bg
+        background (ui_panel("#654a2cbb", "#c9a46baa") if primary else ui_panel("#211a1566", "#a6885633"))
+        hover_background ui_panel("#795a37bb", "#e4bf7acc")
         insensitive_background idle_bg
         sensitive sensitive
         action action
 
-        hbox:
+        fixed:
             xfill True
-            yalign 0.5
-            spacing 18
+            yfill True
 
             text icon_text:
+                xpos 14
                 min_width 34
                 size 27
                 color ("#efe4d4" if sensitive else "#9c9185")
                 yalign 0.5
 
             text label:
+                xpos 68
+                xanchor 0.0
+                xsize 370
+                text_align 0.0
                 size 29
                 color ("#efe4d4" if sensitive else "#9c9185")
                 hover_color ("#fff4dd" if sensitive else "#9c9185")
                 yalign 0.5
 
             if primary:
-                null xfill True
-
                 text "›":
                     size 40
                     color ("#fff2d0" if sensitive else "#9c9185")
-                    xalign 1.0
+                    xpos 460
                     yalign 0.5
 
 
@@ -199,16 +196,15 @@ screen main_menu_start_prompt():
             yfill True
 
         frame:
-            xpos 690
-            ypos 266
-            xsize 550
-            ysize 480
-            background panel_bg
+            xpos 650
+            ypos 230
+            xsize 620
+            ysize 620
+            padding (42, 36)
+            background ui_panel("#2d261ff5")
 
             vbox:
-                xpos 34
-                ypos 30
-                xsize 420
+                xsize 520
                 spacing 16
 
                 text _("Choose how you want to begin."):
@@ -330,22 +326,6 @@ screen language_menu():
 
 screen main_menu_bottom_text():
 
-    text _mm_quote_text:
-        xpos 96
-        ypos 914
-        size 24
-        color "#e9dcc7cc"
-        italic True
-        line_spacing 10
-        outlines [(1, "#00000088", 0, 1)]
-
-    text _("Press to begin"):
-        xalign 0.63
-        ypos 744
-        size 31
-        color "#f2e1c8"
-        italic True
-        outlines [(1, "#00000088", 0, 1)]
 
     text "v[config.version]":
         xpos 1760

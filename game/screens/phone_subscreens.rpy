@@ -23,30 +23,46 @@ screen phone_messages_tab(selected_thread_id=None):
 
                     button:
                         style "phone_card_button"
+                        ysize 126
                         action [SetScreenVariable("selected_thread_id", thread_id), Function(phone_mark_thread_read, thread_id)]
 
-                        vbox:
-                            spacing 6
+                        fixed:
                             xfill True
+                            ysize 98
 
-                            hbox:
-                                xfill True
+                            frame:
+                                pos (0, 8)
+                                xysize (52, 52)
+                                padding (0, 0)
+                                background ui_panel(PHONE_PANEL_ALT)
+                                text title[:1]:
+                                    align (0.5, 0.5)
+                                    size 26
+                                    color PHONE_ACCENT
 
-                                text title:
-                                    style "phone_card_title"
-                                    color (PHONE_ACCENT if unread else PHONE_TEXT)
+                            text (title[:24] + "…" if len(title) > 24 else title):
+                                pos (68, 0)
+                                style "phone_card_title"
+                                color (PHONE_ACCENT if unread else PHONE_TEXT)
+                                xmaximum 300
 
-                                null xfill True
+                            text last_message.get("time", ""):
+                                xpos 470
+                                xanchor 1.0
+                                style "phone_card_meta"
 
-                                if unread:
-                                    text _("new"):
-                                        style "phone_card_meta"
-                                        color PHONE_UNREAD
-
-                            text preview:
+                            text (preview[:62] + "…" if len(preview) > 62 else preview):
+                                pos (68, 34)
                                 style "phone_card_body"
                                 color PHONE_MUTED
-                                first_indent 0
+                                xmaximum 398
+                                ymaximum 56
+
+                            if unread:
+                                text "•":
+                                    pos (18, 66)
+                                    size 24
+                                    color PHONE_ACCENT
 
     else:
         use phone_thread_view(selected_thread_id)
@@ -54,22 +70,34 @@ screen phone_messages_tab(selected_thread_id=None):
 
 screen phone_thread_view(thread_id):
     $ thread = PHONE_THREADS.get(thread_id, {})
+    $ reply_data = PHONE_REPLY_CHOICES.get(thread_id, []) if "PHONE_REPLY_CHOICES" in globals() else []
+    $ pending_replies = [reply for reply in reply_data if not phone_reply_was_sent(thread_id, reply.get("id"))]
 
-    viewport:
-        yfill True
-        mousewheel True
-        draggable True
-        scrollbars "vertical"
+    vbox:
+        spacing 16
+        xfill True
 
-        vbox:
-            spacing 10
+        viewport:
+            ysize (414 if pending_replies else 650)
+            xfill True
+            yinitial 1.0
+            mousewheel True
+            draggable True
+            scrollbars "vertical"
 
-            for message in thread.get("messages", []):
-                use phone_message_bubble(message)
+            vbox:
+                xfill True
+                spacing 18
 
-            $ reply_data = PHONE_REPLY_CHOICES.get(thread_id, []) if "PHONE_REPLY_CHOICES" in globals() else []
+                for message in thread.get("messages", []):
+                    use phone_message_bubble(message)
 
-            if reply_data:
+        if pending_replies:
+            viewport:
+                ysize 220
+                mousewheel True
+                draggable True
+                scrollbars "vertical"
                 frame:
                     xfill True
                     background Solid(PHONE_PANEL)
@@ -82,13 +110,12 @@ screen phone_thread_view(thread_id):
                             style "phone_card_meta"
                             color PHONE_ACCENT
 
-                        for reply in reply_data:
-                            $ sent = phone_reply_was_sent(thread_id, reply.get("id"))
-                            if not sent:
-                                textbutton reply.get("text", "..."):
-                                    style "phone_nav_button"
-                                    text_style "phone_nav_button_text"
-                                    action Function(phone_send_reply, thread_id, reply.get("id"))
+                        for reply in pending_replies:
+                            textbutton reply.get("text", "..."):
+                                style "phone_nav_button"
+                                text_style "phone_nav_button_text"
+                                xfill True
+                                action Function(phone_send_reply, thread_id, reply.get("id"))
 
 
 screen phone_message_bubble(message):
@@ -97,24 +124,31 @@ screen phone_message_bubble(message):
     $ text_value = message.get("text", "")
     $ time_value = message.get("time", "")
 
-    frame:
+    vbox:
         xfill True
-        background Solid(PHONE_PANEL if sender != "player" else PHONE_PANEL_ALT)
-        padding (14, 12)
+        spacing 5
 
-        vbox:
-            spacing 4
+        frame:
+            xalign (1.0 if sender == "player" else 0.0)
+            xmaximum 420
+            background Solid(PHONE_PANEL if sender != "player" else PHONE_PANEL_ALT)
+            padding (16, 14)
 
-            text sender_label:
-                style "phone_card_meta"
-                color PHONE_ACCENT
+            vbox:
+                spacing 6
 
-            text text_value:
-                style "phone_card_body"
-
-            if time_value:
-                text time_value:
+                text sender_label:
                     style "phone_card_meta"
+                    color PHONE_ACCENT
+
+                text text_value:
+                    style "phone_card_body"
+                    xmaximum 388
+
+        if time_value:
+            text time_value:
+                style "phone_card_meta"
+                xalign (1.0 if sender == "player" else 0.0)
 
 
 screen phone_mail_tab(selected_mail_id=None):

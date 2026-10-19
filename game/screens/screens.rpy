@@ -51,14 +51,18 @@ style vbar:
     bottom_bar Frame("gui/bar/bottom.png", gui.vbar_borders, tile=gui.bar_tile)
 
 style scrollbar:
-    ysize gui.scrollbar_size
-    base_bar Frame("gui/scrollbar/horizontal_[prefix_]bar.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
+    ysize 10
+    base_bar Solid("#30251c")
+    thumb Solid("#b38c57")
+    hover_thumb Solid("#e4bf7a")
+    unscrollable "hide"
 
 style vscrollbar:
-    xsize gui.scrollbar_size
-    base_bar Frame("gui/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
+    xsize 10
+    base_bar Solid("#30251c")
+    thumb Solid("#b38c57")
+    hover_thumb Solid("#e4bf7a")
+    unscrollable "hide"
 
 style slider:
     ysize gui.slider_size
