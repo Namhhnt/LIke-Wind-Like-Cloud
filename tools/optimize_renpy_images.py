@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Batch-optimize Ren'Py PNG assets to WebP.
+Batch-optimize Ren'Py PNG assets to WebP or JPEG.
 
 Designed for visual novels with:
 - Opaque photographic / illustrated backgrounds.
@@ -12,8 +12,8 @@ Safety:
 - --apply is required to modify files.
 - Originals and modified source files are backed up.
 - Output is validated before replacement.
-- A file is kept as PNG when WebP does not save enough space.
-- Explicit .png references in project text files can be rewritten to .webp.
+- A file is kept as PNG when the output file does not save enough space.
+- Explicit .png references in project text files can be rewritten to the output extension.
 
 Requires:
     python -m pip install --upgrade Pillow
@@ -24,6 +24,9 @@ Examples:
 
     # Recommended balanced conversion.
     python tools/optimize_renpy_images.py --project-root . --apply
+
+    # Output JPEG files instead of WebP.
+    python tools/optimize_renpy_images.py --project-root . --apply --ext jpeg
 
     # Also shrink backgrounds so they fit within 1920x1080.
     python tools/optimize_renpy_images.py --project-root . --apply \
@@ -147,6 +150,40 @@ PROFILES = {
 }
 
 
+@dataclass(frozen=True)
+class OutputFormat:
+    extension: str
+    pillow_format: str
+    display_name: str
+    supports_alpha: bool
+    pillow_feature: str
+
+
+OUTPUT_FORMATS = {
+    "webp": OutputFormat(
+        extension=".webp",
+        pillow_format="WEBP",
+        display_name="WebP",
+        supports_alpha=True,
+        pillow_feature="webp",
+    ),
+    "jpg": OutputFormat(
+        extension=".jpg",
+        pillow_format="JPEG",
+        display_name="JPEG",
+        supports_alpha=False,
+        pillow_feature="jpg",
+    ),
+    "jpeg": OutputFormat(
+        extension=".jpeg",
+        pillow_format="JPEG",
+        display_name="JPEG",
+        supports_alpha=False,
+        pillow_feature="jpg",
+    ),
+}
+
+
 @dataclass
 class JobResult:
     source: str
@@ -166,6 +203,16 @@ class JobResult:
     encoding: str = ""
     temp_path: Optional[str] = None
     message: str = ""
+
+
+def parse_output_extension(value: str) -> str:
+    normalized = value.lower().lstrip(".")
+    if normalized not in OUTPUT_FORMATS:
+        allowed = ", ".join(sorted(OUTPUT_FORMATS))
+        raise argparse.ArgumentTypeError(
+            f"Unsupported output extension: {value}. Choose one of: {allowed}."
+        )
+    return normalized
 
 
 def parse_size(value: str) -> tuple[int, int]:
@@ -249,7 +296,8 @@ def fit_background(
     return resized, True
 
 
-def validate_webp(
+
+def validate_encoded_image(
     source_image: Image.Image,
     output_path: Path,
     expected_size: tuple[int, int],
@@ -285,8 +333,9 @@ def encode_one(
     force_convert: bool,
     overwrite: bool,
     preserve_icc: bool,
+    output_format: OutputFormat,
 ) -> JobResult:
-    destination = source.with_suffix(".webp")
+    destination = source.with_suffix(output_format.extension)
     relative_path = source.relative_to(assets_root)
     before_size = source.stat().st_size
 
@@ -301,7 +350,7 @@ def encode_one(
 
     temp_file = tempfile.NamedTemporaryFile(
         prefix=f".{source.stem}.",
-        suffix=".webp.tmp",
+        suffix=f"{output_format.extension}.tmp",
         dir=source.parent,
         delete=False,
     )
@@ -323,67 +372,120 @@ def encode_one(
             original_size = opened.size
             kind, alpha = classify_asset(relative_path, opened)
 
+            if alpha and not output_format.supports_alpha:
+                temp_path.unlink(missing_ok=True)
+                return JobResult(
+                    source=str(source),
+                    destination=str(destination),
+                    status="skipped",
+                    kind=kind,
+                    width_before=original_size[0],
+                    height_before=original_size[1],
+                    bytes_before=before_size,
+                    has_alpha=True,
+                    message=(
+                        f"{output_format.display_name} does not support "
+                        "alpha/transparency."
+                    ),
+                )
+
             working = opened
             resized = False
             if kind == "background":
                 working, resized = fit_background(working, max_bg_size)
 
-            # Normalize uncommon PNG modes to formats that WebP handles reliably.
+            # Normalize uncommon PNG modes to formats encoders handle reliably.
             if alpha:
                 working = working.convert("RGBA")
             else:
                 working = working.convert("RGB")
 
-            save_options: dict[str, object] = {
-                "format": "WEBP",
-                "method": profile.method,
-            }
+            icc_profile = opened.info.get("icc_profile") if preserve_icc else None
+            icc_profile_bytes = (
+                icc_profile if isinstance(icc_profile, bytes) else None
+            )
 
-            if preserve_icc and opened.info.get("icc_profile"):
-                save_options["icc_profile"] = opened.info["icc_profile"]
-
-            if kind == "ui":
-                save_options.update(
-                    lossless=True,
-                    quality=100,  # Effort in Pillow's lossless mode.
-                    exact=alpha,
-                )
-                encoding = "webp-lossless-ui"
-                exact_alpha = alpha
-            elif alpha:
-                if profile.transparent_lossless:
-                    save_options.update(
-                        lossless=True,
-                        quality=100,
-                        exact=profile.exact_alpha_rgb,
-                    )
-                    encoding = "webp-lossless-alpha"
+            if output_format.pillow_format == "WEBP":
+                if kind == "ui":
+                    webp_lossless = True
+                    webp_quality = 100  # Effort in Pillow's lossless mode.
+                    webp_exact = alpha
+                    encoding = "webp-lossless-ui"
+                    exact_alpha = alpha
+                elif alpha:
+                    webp_lossless = profile.transparent_lossless
+                    if profile.transparent_lossless:
+                        webp_quality = 100
+                        encoding = "webp-lossless-alpha"
+                    else:
+                        webp_quality = profile.transparent_quality
+                        encoding = (
+                            f"webp-lossy-rgb-q{profile.transparent_quality}"
+                            f"+lossless-alpha"
+                        )
+                    webp_exact = profile.exact_alpha_rgb
+                    exact_alpha = profile.alpha_quality == 100
+                elif profile.name == "lossless":
+                    webp_lossless = True
+                    webp_quality = 100
+                    webp_exact = False
+                    encoding = "webp-lossless"
+                    exact_alpha = False
                 else:
-                    save_options.update(
-                        lossless=False,
-                        quality=profile.transparent_quality,
+                    webp_lossless = False
+                    webp_quality = profile.background_quality
+                    webp_exact = False
+                    encoding = f"webp-lossy-q{profile.background_quality}"
+                    exact_alpha = False
+
+                if icc_profile_bytes:
+                    working.save(
+                        temp_path,
+                        format="WEBP",
+                        method=profile.method,
+                        lossless=webp_lossless,
+                        quality=webp_quality,
                         alpha_quality=profile.alpha_quality,
-                        exact=profile.exact_alpha_rgb,
+                        exact=webp_exact,
+                        icc_profile=icc_profile_bytes,
                     )
-                    encoding = (
-                        f"webp-lossy-rgb-q{profile.transparent_quality}"
-                        f"+lossless-alpha"
+                else:
+                    working.save(
+                        temp_path,
+                        format="WEBP",
+                        method=profile.method,
+                        lossless=webp_lossless,
+                        quality=webp_quality,
+                        alpha_quality=profile.alpha_quality,
+                        exact=webp_exact,
                     )
-                exact_alpha = profile.alpha_quality == 100
-            elif profile.name == "lossless":
-                save_options.update(lossless=True, quality=100)
-                encoding = "webp-lossless"
-                exact_alpha = False
             else:
-                save_options.update(
-                    lossless=False,
-                    quality=profile.background_quality,
+                jpeg_quality = (
+                    100 if profile.name == "lossless" else profile.background_quality
                 )
-                encoding = f"webp-lossy-q{profile.background_quality}"
+                if kind == "ui":
+                    jpeg_quality = max(jpeg_quality, 95)
+                encoding = f"{output_format.display_name.lower()}-q{jpeg_quality}"
                 exact_alpha = False
 
-            working.save(temp_path, **save_options)
-            validate_webp(
+                if icc_profile_bytes:
+                    working.save(
+                        temp_path,
+                        format="JPEG",
+                        quality=jpeg_quality,
+                        optimize=True,
+                        progressive=True,
+                        icc_profile=icc_profile_bytes,
+                    )
+                else:
+                    working.save(
+                        temp_path,
+                        format="JPEG",
+                        quality=jpeg_quality,
+                        optimize=True,
+                        progressive=True,
+                    )
+            validate_encoded_image(
                 working,
                 temp_path,
                 expected_size=working.size,
@@ -415,8 +517,8 @@ def encode_one(
                     has_alpha=alpha,
                     encoding=encoding,
                     message=(
-                        f"WebP saved less than {min_savings_percent:.1f}%; "
-                        "original PNG kept."
+                        f"{output_format.display_name} saved less than "
+                        f"{min_savings_percent:.1f}%; original PNG kept."
                     ),
                 )
 
@@ -638,7 +740,7 @@ def cleanup_temps(results: Iterable[JobResult]) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Safely batch-convert Ren'Py PNG assets to WebP.",
+        description="Safely batch-convert Ren'Py PNG assets to optimized image files.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
@@ -660,6 +762,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="Compression profile.",
     )
     parser.add_argument(
+        "--ext",
+        type=parse_output_extension,
+        default="webp",
+        metavar="EXT",
+        help="Output file extension/format: webp, jpg, or jpeg.",
+    )
+    parser.add_argument(
         "--apply",
         action="store_true",
         help="Modify files. Without this flag the script performs a dry-run.",
@@ -678,17 +787,17 @@ def build_parser() -> argparse.ArgumentParser:
         "--min-savings-percent",
         type=float,
         default=3.0,
-        help="Keep PNG when WebP saves less than this percentage.",
+        help="Keep PNG when the output file saves less than this percentage.",
     )
     parser.add_argument(
         "--force-convert",
         action="store_true",
-        help="Convert even when WebP is not smaller enough.",
+        help="Convert even when the output file is not smaller enough.",
     )
     parser.add_argument(
         "--overwrite",
         action="store_true",
-        help="Replace an existing .webp file after backing it up.",
+        help="Replace an existing output file after backing it up.",
     )
     parser.add_argument(
         "--no-rewrite",
@@ -733,9 +842,12 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     args = build_parser().parse_args()
 
-    if not features.check("webp"):
+    output_format = OUTPUT_FORMATS[args.ext]
+
+    if not features.check(output_format.pillow_feature):
         print(
-            "ERROR: This Pillow build has no WebP encoder support.\n"
+            f"ERROR: This Pillow build has no {output_format.display_name} "
+            "encoder support.\n"
             "Install a current official Pillow wheel:\n"
             "  python -m pip install --upgrade --force-reinstall Pillow",
             file=sys.stderr,
@@ -782,7 +894,7 @@ def main() -> int:
             excluded_results.append(
                 JobResult(
                     source=str(source),
-                    destination=str(source.with_suffix(".webp")),
+                    destination=str(source.with_suffix(output_format.extension)),
                     status="excluded",
                     bytes_before=source.stat().st_size,
                     message=f"Matched exclusion: {matched}",
@@ -795,6 +907,7 @@ def main() -> int:
     print(f"[{mode}] Project: {project_root}")
     print(f"[{mode}] Assets : {assets_root}")
     print(f"[{mode}] Profile: {profile.name}")
+    print(f"[{mode}] Output : {output_format.extension} ({output_format.display_name})")
     if args.max_bg_size:
         print(
             f"[{mode}] Background limit: "
@@ -821,6 +934,7 @@ def main() -> int:
                 args.force_convert,
                 args.overwrite,
                 not args.strip_icc,
+                output_format,
             ): source
             for source in sources
         }
@@ -865,13 +979,14 @@ def main() -> int:
     try:
         if args.apply and ready:
             timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-            backup_root = project_root / ".image-backup" / timestamp
-            backup_root.mkdir(parents=True, exist_ok=False)
+            backup_dir = project_root / ".image-backup" / timestamp
+            backup_dir.mkdir(parents=True, exist_ok=False)
+            backup_root = backup_dir
 
             files_changed, references_changed = commit_conversions(
                 project_root=project_root,
                 assets_root=assets_root,
-                backup_root=backup_root,
+                backup_root=backup_dir,
                 conversions=ready,
                 rewrite_refs=not args.no_rewrite,
                 rewrite_basenames=args.rewrite_basenames,
@@ -895,29 +1010,32 @@ def main() -> int:
     total_saved = total_before - total_after
     total_percent = (total_saved / total_before * 100.0) if total_before else 0.0
 
+    summary: dict[str, int | float] = {
+        "png_candidates": len(sources),
+        "converted_or_ready": len(converted_or_ready),
+        "kept_png": sum(r.status == "kept-png" for r in results),
+        "skipped": sum(r.status == "skipped" for r in results),
+        "excluded": sum(r.status == "excluded" for r in results),
+        "errors": sum(r.status == "error" for r in results),
+        "bytes_before": total_before,
+        "bytes_after": total_after,
+        "bytes_saved": total_saved,
+        "savings_percent": round(total_percent, 2),
+        "elapsed_seconds": round(elapsed, 2),
+    }
     report = {
         "mode": mode,
         "project_root": str(project_root),
         "assets_root": str(assets_root),
         "profile": asdict(profile),
+        "output_extension": output_format.extension,
+        "output_format": output_format.display_name,
         "max_bg_size": args.max_bg_size,
         "min_savings_percent": args.min_savings_percent,
         "backup_root": str(backup_root) if backup_root else None,
         "reference_files_changed": files_changed,
         "reference_occurrences_changed": references_changed,
-        "summary": {
-            "png_candidates": len(sources),
-            "converted_or_ready": len(converted_or_ready),
-            "kept_png": sum(r.status == "kept-png" for r in results),
-            "skipped": sum(r.status == "skipped" for r in results),
-            "excluded": sum(r.status == "excluded" for r in results),
-            "errors": sum(r.status == "error" for r in results),
-            "bytes_before": total_before,
-            "bytes_after": total_after,
-            "bytes_saved": total_saved,
-            "savings_percent": round(total_percent, 2),
-            "elapsed_seconds": round(elapsed, 2),
-        },
+        "summary": summary,
         "files": [asdict(result) for result in results],
     }
     report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -930,10 +1048,10 @@ def main() -> int:
     print("=" * 72)
     print(f"Mode                  : {mode}")
     print(f"Converted / ready     : {len(converted_or_ready)}")
-    print(f"Kept as PNG           : {report['summary']['kept_png']}")
-    print(f"Skipped               : {report['summary']['skipped']}")
-    print(f"Excluded              : {report['summary']['excluded']}")
-    print(f"Errors                : {report['summary']['errors']}")
+    print(f"Kept as PNG           : {summary['kept_png']}")
+    print(f"Skipped               : {summary['skipped']}")
+    print(f"Excluded              : {summary['excluded']}")
+    print(f"Errors                : {summary['errors']}")
     print(f"Selected bytes before : {human_bytes(total_before)}")
     print(f"Selected bytes after  : {human_bytes(total_after)}")
     print(
@@ -951,7 +1069,7 @@ def main() -> int:
         print("No project files were modified. Add --apply after reviewing the report.")
     print("=" * 72)
 
-    return 1 if report["summary"]["errors"] else 0
+    return 1 if summary["errors"] else 0
 
 
 if __name__ == "__main__":
