@@ -10,8 +10,9 @@ Use `game/images/characters/{tam,huyen,hoang}/expressions/*_neutral.webp` as
 the respective identity references, never interchangeable faces. Tam has long
 half-up dark hair; Huyen has shoulder-length dark hair with a loose half-up
 ponytail and wispy bangs. Tam wears a white office blouse and beige skirt;
-Huyen wears a powder-blue collared shirt and charcoal trousers throughout the
-interview day and dinner. Hoang wears a dark navy blazer over charcoal shirt.
+Huyen wears a powder-blue collared shirt and charcoal trousers during the
+interview day. For dinner, Tam changes into a pale peach-pink chiffon dress and
+Huyen into a light jade-green dress. Hoang wears a dark navy blazer over charcoal shirt.
 
 Style reference: `game/images/assets/cg/cg_tam_company_anniversary_party_01.webp`.
 Keep its semi-realistic natural rendering, not the party dress. Full-bleed 16:9,
@@ -26,7 +27,7 @@ interviewers and background extras have occluded or out-of-focus faces.
 | `collar_coffee` | Candid medium two-shot at Tam's front door. Tam left gently straightens Huyen's crooked collar; Huyen right holds two plain coffee cups in a cardboard carrier. Warm morning rim light, beige/wood/green apartment decor. | Collar adjustment through their teasing exchange; return to living room before coffee is placed on table. |
 | `interview_portfolio` | From the panel side of the long wood table, Tam clearly presents an open portfolio. Exactly three anonymous interviewers frame her in soft foreground: two women and one man. Glass of water to her right, pen parallel to paper. Soft city-window daylight, controlled nervousness. Quân is absent. | Perfect and pass presentation labels after the ordering minigame. Skip retains the interview-room background. Restore room after the minigame returns. |
 | `offer_hug` | Huyen leans across to hug Tam on lobby seating, both laughing in relief. Distinct recognizable faces, phone face-down on Tam's lap, portfolio beside seat. Candid diagonal medium two-shot, warm midday window light and marble lobby. | Common hug before all result-response choices; restore lobby before menu. |
-| `celebration_toast` | Tam left and Huyen right gently touch stemless water glasses at chest height. Small white-tablecloth table, foreground candle bokeh, golden restaurant light against blue city windows. Same office clothes, friendship celebration. | First clink of glasses, before Hoang introduction. |
+| `celebration_toast` | Tam left and Huyen right gently touch water glasses at chest height, looking into each other's eyes. Tam wears pale peach-pink chiffon; Huyen wears light jade green. Small white-tablecloth table, foreground candle bokeh, golden restaurant light against blue city windows, friendship celebration. | First clink of glasses, before Hoang introduction. |
 | `hoang_window` | Hoang alone beside the restaurant window, quiet reserved expression, gazing toward the city. 85mm three-quarter view, subject on right with negative space left, amber sidelight and blue rim. Hand beside wine glass, almost untouched dinner. | Establishing shot before he looks toward the women; return to restaurant background before his head turn and all notice-choice branches. |
 
 Setting references under `game/images/assets/bg/`: `bg_tam_living_room_morning`,
@@ -43,6 +44,27 @@ the face, pose, framing and lighting were preserved. Final generation ID:
 `967225af-19ee-4d16-a44d-7cd861af0d82`.
 
 ## Validation
+
+### Identity and dinner revisions (2026-10-20)
+
+Built-in ImageGen edit prompts used the original scene as the edit target and
+the character portraits as identity references. The approved collar revision
+(`bedf3bc1-310e-433f-9f0e-76e5693bd9ff`) corrects Huyen's compact rounded face,
+short soft chin, natural small eyes and lifted inner brows while retaining the
+morning wardrobe and collar-adjustment staging.
+
+The dinner revision (`cf121958-4a8d-4da3-a9eb-3381240b7c7d`) uses that approved
+Huyen revision plus Huyen's smiling portrait and Tam's neutral portrait.
+Prompt: preserve the restaurant, lighting and clinking water glasses; have both
+women exchange warm smiles with mutual eye contact, neither looking at camera;
+replace Tam's office outfit with an elegant pale peach-pink chiffon dress and
+Huyen's with a bright light jade-green dress; preserve distinct identities,
+semi-realistic rendering, wide framing and no text or watermark.
+
+Both replacements were visually inspected and decoded as opaque 1920×1080
+WebP (quality 94, Lanczos fit). They replace the existing asset paths, so no
+script or translation changes are required. The playthrough results below
+describe the original integration run, before these image-only revisions.
 
 Run the opening story suite with a separate save directory:
 
