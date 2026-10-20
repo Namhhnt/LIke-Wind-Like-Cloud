@@ -18,7 +18,7 @@ label tam_c05_sunday_date_s04_commit_or_keep_open:
 
 
 label tam_c05_sunday_date_s04_tam_return_home:
-    scene black
+    scene bg_c05_car_night
     with fade
 
     "Hoàng đưa Tâm về khi trời đã tối."
@@ -53,13 +53,20 @@ label tam_c05_sunday_date_s04_tam_return_home:
 
     "Cậu xuống theo."
 
+    scene bg_c05_lobby_night
+    with dissolve
+
     "Hai người đứng trước cửa sảnh."
 
     "Tâm đi được một bước."
 
     "Rồi quay lại."
 
+    scene cg_tam_c05_tam_collar
+    with dissolve
     "Cô đưa tay chỉnh cổ áo bên trái của Hoàng."
+    scene bg_c05_lobby_night
+    with dissolve
 
     "Phần vải bị gập từ sáng cuối cùng cũng nằm đúng chỗ."
 
@@ -269,7 +276,7 @@ label tam_c05_sunday_date_s04_tam_return_home:
 
 
 label tam_c05_sunday_date_s04_huyen_return_home:
-    scene black
+    scene bg_c05_car_night
     with fade
 
     "Hoàng đưa Huyền về muộn hơn dự kiến."
@@ -290,7 +297,11 @@ label tam_c05_sunday_date_s04_huyen_return_home:
 
     huyen "Nếu lúc đầu Tâm thích anh hơn một chút..."
 
+    scene cg_tam_c05_huyen_car
+    with dissolve
     "Cô xoay dây túi quanh ngón tay."
+    scene bg_c05_car_night
+    with dissolve
 
     huyen "Hôm nay người ngồi trên xe có phải tôi không?"
 
@@ -491,7 +502,7 @@ label tam_c05_sunday_date_s04_huyen_return_home:
 
 
 label tam_c05_sunday_date_s04_group_afterward:
-    scene black
+    scene bg_tam_living_room_night
     with fade
 
     "Tối hôm đó, ba người đã về nhà."
@@ -500,7 +511,11 @@ label tam_c05_sunday_date_s04_group_afterward:
 
     huyen "Ảnh mới đây."
 
+    scene cg_tam_c05_group_afterward
+    with dissolve
     "Tấm ảnh ở công viên xuất hiện."
+    scene bg_tam_living_room_night
+    with dissolve
 
     "Tâm mở mắt."
 

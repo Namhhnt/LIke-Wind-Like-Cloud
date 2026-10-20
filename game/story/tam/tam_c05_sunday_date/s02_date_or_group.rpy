@@ -30,7 +30,11 @@ label tam_c05_sunday_date_s02_tam_date:
 
     "Tâm bước ra."
 
+    scene cg_tam_c05_tam_pickup
+    with dissolve
     "Hoàng nhìn cô."
+    scene bg_apartment_lobby_morning
+    with dissolve
 
     "Rất ngắn."
 
@@ -76,11 +80,18 @@ label tam_c05_sunday_date_s02_tam_date:
 
     hoang "Em lên xe đi."
 
+    scene bg_c05_breakfast
+    with dissolve
+
     "Quán ăn sáng nằm trên một con phố yên, bàn sát cửa kính đã được đặt trước."
 
     "Hoàng gọi món mà không cần hỏi lại Tâm có uống lạnh hay không."
 
+    scene cg_tam_c05_tam_breakfast
+    with dissolve
     "Cốc nước của cô không có đá."
+    scene bg_c05_breakfast
+    with dissolve
 
     "Phần ăn cũng không có hành."
 
@@ -108,6 +119,9 @@ label tam_c05_sunday_date_s02_tam_date:
 
     tam "Anh cứ nghĩ thế đi."
 
+    scene bg_taxi_interior_day
+    with dissolve
+
     "Sau bữa sáng, xe rời khu trung tâm."
 
     "Tâm tự mở ngăn trước ghế lấy khăn giấy."
@@ -128,6 +142,9 @@ label tam_c05_sunday_date_s02_tam_date:
 
     "Cậu đã biết."
 
+    scene bg_c05_glasshouse
+    with dissolve
+
     "Điểm đến là một công viên lớn ở phía bên kia thành phố."
 
     "Hoàng định đưa Tâm đến khu vườn kính nằm sâu bên trong."
@@ -136,7 +153,11 @@ label tam_c05_sunday_date_s02_tam_date:
 
     "TẠM ĐÓNG ĐỂ BẢO TRÌ HỆ THỐNG ĐIỆN."
 
+    scene cg_tam_c05_tam_glasshouse
+    with dissolve
     "Hoàng đứng trước tấm biển."
+    scene bg_c05_glasshouse
+    with dissolve
 
     "Tâm đứng bên cạnh."
 
@@ -380,13 +401,20 @@ label tam_c05_sunday_date_s02_tam_date:
                 $ story_add("hoang_tam_trust", 5)
                 $ story_flag("tam_refuses_to_be_decided_for")
 
+    scene bg_c05_park
+    with dissolve
+
     "Cuối cùng, hai người ngồi trên một chiếc ghế đá dưới hàng cây."
 
     "Không có vườn kính."
 
     "Không có góc chụp Hoàng đã xem trước."
 
+    scene cg_tam_c05_tam_bench
+    with dissolve
     "Chỉ có hai cốc giấy, túi bánh đặt giữa, và vài chiếc lá khô bị gió đẩy ngang lối đi."
+    scene bg_c05_park
+    with dissolve
 
     "Tâm nghiêng người lấy khăn giấy."
 
@@ -447,7 +475,11 @@ label tam_c05_sunday_date_s02_huyen_date:
 
     hoang "Tiến bộ đáng ghi nhận."
 
+    scene cg_tam_c05_huyen_pickup
+    with dissolve
     "Huyền nhận cốc từ tay anh."
+    scene bg_apartment_lobby_morning
+    with dissolve
 
     "Không lạnh."
 
@@ -483,6 +515,9 @@ label tam_c05_sunday_date_s02_huyen_date:
 
     "Hoàng không sửa câu nói ấy."
 
+    scene bg_c05_market_cafe
+    with dissolve
+
     "Buổi sáng bắt đầu ở một quán nhỏ gần khu chợ cuối tuần."
 
     "Không có khăn trải bàn trắng."
@@ -499,7 +534,11 @@ label tam_c05_sunday_date_s02_huyen_date:
 
     huyen "Tôi đang khen khả năng phòng ngừa."
 
+    scene cg_tam_c05_huyen_breakfast
+    with dissolve
     "Hoàng đẩy đĩa bánh về phía cô."
+    scene bg_c05_market_cafe
+    with dissolve
 
     hoang "Cô chưa ăn sáng."
 
@@ -516,6 +555,9 @@ label tam_c05_sunday_date_s02_huyen_date:
     "Sau đó là miếng thứ hai."
 
     "Cô không tiếp tục tranh luận với bằng chứng."
+
+    scene bg_c05_market_day
+    with dissolve
 
     "Rời quán, họ đi bộ qua khu chợ."
 
@@ -565,7 +607,11 @@ label tam_c05_sunday_date_s02_huyen_date:
 
     huyen "Tôi không—"
 
+    scene cg_tam_c05_huyen_photo
+    with dissolve
     "Máy ảnh chớp."
+    scene bg_c05_market_day
+    with dissolve
 
     huyen irritated "Xấu thì xóa."
 
@@ -585,13 +631,20 @@ label tam_c05_sunday_date_s02_huyen_date:
 
     "Rồi thêm nhiều giọt khác."
 
+    scene bg_c05_rain_awning
+    with dissolve
+
     "Hai người chạy vào dưới mái hiên của một cửa hàng đã đóng."
 
     "Mưa đổ xuống rất nhanh."
 
     "Khu chợ trước mặt lập tức co lại dưới những tấm bạt."
 
+    scene cg_tam_c05_huyen_rain
+    with dissolve
     "Huyền phủi nước trên tóc."
+    scene bg_c05_rain_awning
+    with dissolve
 
     huyen neutral "Kế hoạch đẹp thật."
 
@@ -831,7 +884,7 @@ label tam_c05_sunday_date_s02_huyen_date:
 
 
 label tam_c05_sunday_date_s02_friend_group:
-    scene black
+    scene bg_c05_breakfast
     with fade
 
     "Hoàng đưa hai người đến một quán ăn nằm không xa nơi họ từng gặp nhau lần đầu."
@@ -850,7 +903,11 @@ label tam_c05_sunday_date_s02_friend_group:
 
     huyen "Anh đang làm tôi mất mặt trước đồ ăn đấy."
 
+    scene cg_tam_c05_group_meal
+    with dissolve
     "Tâm bật cười."
+    scene bg_c05_breakfast
+    with dissolve
 
     "Một năm trước, cô đã ngồi đối diện Hoàng trong một bữa ăn khác."
 
@@ -950,6 +1007,9 @@ label tam_c05_sunday_date_s02_friend_group:
 
             $ story_flag("hoang_avoids_first_impression_question")
 
+    scene bg_c05_park
+    with dissolve
+
     "Sau bữa ăn, ba người đi bộ sang công viên."
 
     "Huyền nhất quyết bắt chụp lại một tấm ảnh gần giống ảnh ở tiệc công ty."
@@ -976,7 +1036,11 @@ label tam_c05_sunday_date_s02_friend_group:
 
     "Tay còn lại lên vai Huyền."
 
+    scene cg_tam_c05_group_photo
+    with dissolve
     "Máy ảnh chớp đúng lúc Huyền quay sang nhìn cậu."
+    scene bg_c05_park
+    with dissolve
 
     "Tấm ảnh không hoàn hảo."
 

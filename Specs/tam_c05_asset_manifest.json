@@ -1,0 +1,345 @@
+{
+  "generator": "built-in ImageGen",
+  "baseline": "0f2ab80",
+  "format": "Opaque RGB WebP, 1920x1080, Lanczos fit, quality 94",
+  "wardrobe": "Tam date branch: exact C01 celebration peach-pink chiffon dress, including gathered bodice and sheer puff sleeves. Morning dress held before changing. Huyen: mint open overshirt over ivory tee, charcoal trousers. Group Tam: ivory blouse, beige trousers.",
+  "assets": [
+    {
+      "id": "bg_c05_breakfast",
+      "type": "bg",
+      "scene": "Quiet Vietnamese city breakfast restaurant beside large street windows, small wooden tables, simple ceramic plates, clear water glasses, soft early Sunday sunlight, no white tablecloth, empty foreground table, no people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_breakfast.webp"
+    },
+    {
+      "id": "bg_c05_glasshouse",
+      "type": "bg",
+      "scene": "Entrance to a large botanical park conservatory, elegant glasshouse beyond a CLOSED gate, maintenance barrier and small blank notice board with no writing, lush plants, late morning light. No people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_glasshouse.webp"
+    },
+    {
+      "id": "bg_c05_park",
+      "type": "bg",
+      "scene": "Quiet leafy city park afternoon, old stone stone park bench beneath trees, path and distant conservatory, space for two or three people on bench, no people or abandoned props, warm natural daylight.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_park.webp"
+    },
+    {
+      "id": "bg_c05_market_cafe",
+      "type": "bg",
+      "scene": "Small Vietnamese weekend market cafe with street-facing glass windows, unpretentious wooden tables, pastry counter and espresso machine, handwritten-menu-like blank boards without lettering. Soft overcast daylight, stalls outside, no people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_market_cafe.webp"
+    },
+    {
+      "id": "bg_c05_rain_awning",
+      "type": "bg",
+      "scene": "View from under a closed Vietnamese storefront awning looking out toward weekend market stalls covered with tarps in heavy daytime rain. Dry sheltered threshold, closed metal shutter on one side, puddles and soft reflections. No people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_rain_awning.webp"
+    },
+    {
+      "id": "bg_c05_car_night",
+      "type": "bg",
+      "scene": "Interior of an understated modern private car at night, parked and engine off outside a warm apartment entrance. View from back seat toward empty driver and front passenger seats, steering wheel left, dashboard cubby and closed passenger door visible, no text or logos. No people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_car_night.webp"
+    },
+    {
+      "id": "bg_c05_lobby_night",
+      "type": "bg",
+      "scene": "Exterior of a residential apartment glass entrance at night, warm light under canopy reflecting on parked car windshield at edge, quiet empty pavement and glass doors, no people. Not an office building or restaurant.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_lobby_night.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_morning",
+      "type": "cg",
+      "scene": "Tam alone standing by her open wardrobe holding on a hanger the EXACT pale peach pink chiffon dress from dinner reference (not wearing it yet), three other outfits on bed, one blouse on floor, early Sunday morning. She wears a plain ivory home top and beige lounge trousers, thoughtful gentle expression. Bedroom, no Hoang or Huyen.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_morning.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_morning",
+      "type": "cg",
+      "scene": "Huyen just waking seated on bed with slightly tousled shoulder-length half-up hair, reading vibrating phone, simple lavender sleep shirt, prepared mint overshirt and white tee on chair, power bank beside phone, early morning room. Alone.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_morning.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_morning",
+      "type": "cg",
+      "scene": "Inside parked private car morning, Hoang at driver left glancing in rearview mirror, Tam front passenger in ivory casual blouse and beige trousers, Huyen just sitting in back seat in mint overshirt over ivory tee with charcoal trousers, playful expressions exchanged through mirror. Three distinct adults, not couples posing.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_group_morning.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_pickup",
+      "type": "cg",
+      "scene": "Morning apartment lobby, Hoang stands by entrance holding car keys, light shirt under thin navy casual jacket, left collar subtly folded inward. Tam walks toward him wearing EXACT peach pink chiffon dress from dinner reference, shy warm eye contact. Two adults only.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_pickup.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_breakfast",
+      "type": "cg",
+      "scene": "Tam and Hoang at small window-side breakfast table on quiet sunny street. Tam in exact peach pink chiffon dress, Hoang light shirt navy thin jacket with left collar subtly folded. Her clear water without ice and plate without scallions, ordinary breakfast, fond familiar banter, no gifts yet.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_breakfast.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_glasshouse",
+      "type": "cg",
+      "scene": "Tam and Hoang stand beside CLOSED conservatory gate and small blank maintenance notice board. Hoang has phone lowered and thoughtful slightly disappointed expression, Tam looks gently at him. Exact peach chiffon dress; Hoang light shirt navy jacket with left collar folded. Neutral moment BEFORE choosing response, no hand touch.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_glasshouse.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_bench",
+      "type": "cg",
+      "scene": "Tam and Hoang sit side by side on old stone stone park bench, paper pastry bag and two takeaway cups nearby, companionable afternoon pause, hands separate, no gifts or earrings. Exact peach chiffon dress, Hoang light shirt navy jacket subtly folded left collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_bench.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_pickup",
+      "type": "cg",
+      "scene": "Hoang at apartment lobby beside private car holding TWO plain warm drink cups, Huyen reaches to accept one with mock-annoyed fond smile. Huyen mint lightweight open overshirt over ivory tee charcoal trousers, loose half-up shoulder hair; Hoang light shirt thin navy casual jacket. Only these two.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_pickup.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_breakfast",
+      "type": "cg",
+      "scene": "Huyen and Hoang at casual small weekend market cafe wooden table with pastry plates and drinks, quiet teasing mutual gaze, no fancy tablecloth. Huyen mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_breakfast.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_photo",
+      "type": "cg",
+      "scene": "At weekend market in soft daylight before rain: Hoang holds Huyen's phone taking candid photograph of her, Huyen surprised facing him naturally with food bag in hand, wind moves wispy bangs. Mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket. No screen text.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_photo.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_rain",
+      "type": "cg",
+      "scene": "Hoang and Huyen shelter under closed shop awning looking toward heavy rain and tarped market, a few droplets in her hair, amused frustration, no grabbing or forced embrace. Mint overshirt ivory tee charcoal trousers, Hoang navy jacket light shirt. Before any weather-response choice.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_rain.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_meal",
+      "type": "cg",
+      "scene": "Exactly Tam, Huyen and Hoang around casual restaurant table with four shared main dishes, Huyen joking, Tam laughing, Hoang dryly amused. Friendship, no romantic couple framing. Tam ivory blouse beige trousers, Huyen mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_group_meal.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_photo",
+      "type": "cg",
+      "scene": "In leafy park, Hoang CENTER one arm lightly across Tam's shoulder at left and other across Huyen's shoulder at right, all standing close as friends. Tam eyes open facing timer-camera, Huyen turns amused gaze toward Hoang, Hoang relaxed. Tam ivory blouse beige trousers, Huyen mint overshirt ivory tee charcoal trousers. Candid self timer photograph.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_group_photo.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_topaz",
+      "type": "cg",
+      "scene": "Park bench afternoon, Tam opens small jewelry box with a pair of SMALL pale yellow topaz earrings in delicate white metal, looking touched; Hoang watching quietly beside her. Earrings still IN BOX; Tam wears old tiny pearl earrings. Exact peach chiffon dress and his navy jacket light shirt folded collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_topaz.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_fastening",
+      "type": "cg",
+      "scene": "Intimate medium stone park bench two-shot: Tam has swept long hair behind one ear, Hoang delicately fastens a SMALL pale yellow topaz earring, both focused on tiny clasp. Exact peach chiffon dress, light shirt navy jacket with folded left collar. Hands and ear above textbox. No kiss.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_fastening.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_expensive",
+      "type": "cg",
+      "scene": "Park bench afternoon, Tam looks uneasy at an open jewelry box holding an overly LARGE brilliant pale yellow topaz jewelry piece, Hoang beside her noticing hesitation. Box still in her hands BEFORE choice to accept or return. Exact peach chiffon dress, navy jacket light shirt folded collar. No small topaz pair.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_expensive.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_card",
+      "type": "cg",
+      "scene": "Park bench afternoon, Hoang offers Tam a folded breakfast receipt with handwritten-like marks turned AWAY and illegible, no jewelry box. Tam listening with soft curiosity, no promise of acceptance. Exact peach chiffon dress; navy jacket light shirt folded collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_card.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_printer",
+      "type": "cg",
+      "scene": "Window-side street cafe afternoon: Huyen opens rectangular gift box revealing a compact unbranded pocket photo printer; Hoang beside/opposite watches quietly. No album visible so image also fits printer-only branch. Mint overshirt ivory tee, navy jacket light shirt. Gift above bottom quarter.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_printer.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_album",
+      "type": "cg",
+      "scene": "Window-side cafe, Huyen holds small open album at chest height, first page contains candid image of HER beneath awning holding food bag, windblown hair, not looking at camera. Hoang beside her attentive. No captions or writing. Mint overshirt white tee, navy jacket light shirt. Must show a personal Huyen photograph, not group photo.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_album.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_print",
+      "type": "cg",
+      "scene": "Window-side cafe, Huyen and Hoang watch one small photograph emerge from compact pocket printer on table raised within upper two thirds. Image on paper faces away, no readable text; no album visible. Huyen mint overshirt ivory tee, Hoang light shirt navy jacket. Focus on hands printer and amused faces.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_print.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_envelopes",
+      "type": "cg",
+      "scene": "Leafy park afternoon, Hoang offers two of THREE thin paper photo envelopes to Tam and Huyen, each person has one identical plain envelope with one small photograph, no readable lettering. Three distinct adults in casual wardrobe: Tam ivory blouse beige trousers, Huyen mint overshirt tee charcoal trousers, Hoang light shirt navy jacket. Equal friendship.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_group_envelopes.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_collar",
+      "type": "cg",
+      "scene": "Night outside warmly lit apartment glass entrance, Tam gently straightens Hoang LEFT shirt collar while they look at each other with affectionate restrained smiles. EXACT peach pink chiffon dress from C01 dinner, same neckline gathered bodice sheer puff sleeves; Hoang light shirt navy thin jacket. Tam ear obscured by long hair so no forced jewelry outcome. NO kiss, no hand holding beyond collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_tam_collar.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_car",
+      "type": "cg",
+      "scene": "Inside parked private car at apartment entrance NIGHT, Huyen front passenger with gift BAG on lap fingers lightly twisting handle, looking out side window with vulnerable thoughtful expression, Hoang driver listens. Mint open overshirt ivory tee, navy jacket light shirt. No forced smile or physical contact, neutral before branch outcome. Camera through windshield, key faces above lower quarter.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_car.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_afterward",
+      "type": "cg",
+      "scene": "Night Tam alone at her cozy home holding phone with an indistinct SMALL group photograph of Tam Huyen Hoang visible but no text, quiet thankful smile. Ivory casual blouse, long half-up hair. No other people physically present; not collage, other two only in small phone image.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "output": "game/images/assets/cg/cg_tam_c05_group_afterward.webp"
+    },
+    {
+      "id": "bg_c05_market_day",
+      "type": "bg",
+      "scene": "Same Vietnamese weekend market street as rain_awning reference, now DRY and overcast before rain. View from pedestrian path between colorful flower and food stalls and tarps, closed storefront awning at side. No people, no text or logos, cinematic semi-realistic 16:9 empty environment, warm natural late morning light.",
+      "references": [
+        "game/images/assets/bg/bg_c05_rain_awning.webp"
+      ],
+      "output": "game/images/assets/bg/bg_c05_market_day.webp"
+    }
+  ]
+}

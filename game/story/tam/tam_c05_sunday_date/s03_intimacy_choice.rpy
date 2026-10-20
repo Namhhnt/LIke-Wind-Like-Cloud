@@ -20,7 +20,7 @@ label tam_c05_sunday_date_s03_intimacy_choice:
 
 
 label tam_c05_sunday_date_s03_tam_gift:
-    scene black
+    scene bg_c05_park
     with fade
 
     "Buổi chiều, công viên bớt đông."
@@ -64,7 +64,11 @@ label tam_c05_sunday_date_s03_tam_gift:
 
         "Bên trong là một đôi bông tai nhỏ."
 
+        scene cg_tam_c05_tam_topaz
+        with dissolve
         "Viên hoàng ngọc màu vàng nhạt, được giữ bằng phần viền trắng rất mảnh."
+        scene bg_c05_park
+        with dissolve
 
         "Không quá sáng."
 
@@ -116,7 +120,11 @@ label tam_c05_sunday_date_s03_tam_gift:
 
                 tam "Anh sửa đi."
 
+                scene cg_tam_c05_tam_fastening
+                with dissolve
                 "Hoàng chỉnh nhẹ phần khóa."
+                scene bg_c05_park
+                with dissolve
 
                 "Đầu ngón tay chạm vào vành tai cô chưa đến một giây."
 
@@ -152,7 +160,11 @@ label tam_c05_sunday_date_s03_tam_gift:
                 if story_state.get("hoang_self_acceptance", 0) >= 55:
                     "Tay Hoàng giữ rất chắc."
 
+                    scene cg_tam_c05_tam_fastening
+                    with dissolve
                     "Chỉ đến lúc phần khóa khép lại, đầu ngón tay cậu mới chạm nhẹ vào da cô."
+                    scene bg_c05_park
+                    with dissolve
 
                     tam teasing "Anh run à?"
 
@@ -183,7 +195,11 @@ label tam_c05_sunday_date_s03_tam_gift:
 
                     "Tâm giữ cổ tay cậu một nhịp."
 
+                    scene cg_tam_c05_tam_fastening
+                    with dissolve
                     "Lần thứ hai, phần khóa vào đúng chỗ."
+                    scene bg_c05_park
+                    with dissolve
 
                     $ story_add("hoang_self_acceptance", 5)
                     $ story_add("hoang_insecurity", -5)
@@ -231,7 +247,11 @@ label tam_c05_sunday_date_s03_tam_gift:
 
         "Cũng lớn hơn mọi món trang sức cô thường đeo."
 
+        scene cg_tam_c05_tam_expensive
+        with dissolve
         "Nụ cười của Tâm chậm lại."
+        scene bg_c05_park
+        with dissolve
 
         tam neutral "Đẹp lắm."
 
@@ -339,7 +359,11 @@ label tam_c05_sunday_date_s03_tam_gift:
     else:
         "Hoàng không lấy ra một chiếc hộp."
 
+        scene cg_tam_c05_tam_card
+        with dissolve
         "Cậu lấy ra một tấm vé gấp đôi."
+        scene bg_c05_park
+        with dissolve
 
         "Là hóa đơn bữa sáng."
 
@@ -425,7 +449,7 @@ label tam_c05_sunday_date_s03_tam_gift:
 
 
 label tam_c05_sunday_date_s03_huyen_gift:
-    scene black
+    scene bg_c05_market_cafe
     with fade
 
     "Buổi chiều, mưa đã tạnh."
@@ -448,7 +472,11 @@ label tam_c05_sunday_date_s03_huyen_gift:
 
     "Huyền mở giấy bọc."
 
+    scene cg_tam_c05_huyen_printer
+    with dissolve
     "Bên trong là một máy in ảnh bỏ túi và một cuốn album nhỏ."
+    scene bg_c05_market_cafe
+    with dissolve
 
     huyen surprised "Anh nghĩ tôi chụp chưa đủ nhiều à?"
 
@@ -465,7 +493,11 @@ label tam_c05_sunday_date_s03_huyen_gift:
 
         "Cô không nhìn vào máy."
 
+        scene cg_tam_c05_huyen_album
+        with dissolve
         "Cô đang cười với người ngoài khung hình."
+        scene bg_c05_market_cafe
+        with dissolve
 
         "Người đó là Hoàng."
 
@@ -528,7 +560,11 @@ label tam_c05_sunday_date_s03_huyen_gift:
 
                 "Cô gửi ảnh sang máy in."
 
+                scene cg_tam_c05_huyen_print
+                with dissolve
                 "Tờ ảnh nhỏ trượt ra."
+                scene bg_c05_market_cafe
+                with dissolve
 
                 "Huyền đặt nó vào trang thứ hai."
 
@@ -715,7 +751,11 @@ label tam_c05_sunday_date_s03_huyen_gift:
     else:
         "Huyền mở hộp."
 
+        scene cg_tam_c05_huyen_printer
+        with dissolve
         "Bên trong vẫn là máy in ảnh."
+        scene bg_c05_market_cafe
+        with dissolve
 
         "Không có album."
 
@@ -748,7 +788,7 @@ label tam_c05_sunday_date_s03_huyen_gift:
 
 
 label tam_c05_sunday_date_s03_group_gift:
-    scene black
+    scene bg_c05_park
     with fade
 
     "Trước khi rời công viên, Hoàng lấy từ túi ra ba phong bì mỏng."
@@ -769,7 +809,11 @@ label tam_c05_sunday_date_s03_group_gift:
 
     tam smile "Mở đi."
 
+    scene cg_tam_c05_group_envelopes
+    with dissolve
     "Mỗi phong bì có một tấm ảnh."
+    scene bg_c05_park
+    with dissolve
 
     "Ảnh ba người ở buổi tiệc công ty."
 

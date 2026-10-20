@@ -1,0 +1,643 @@
+{
+  "generator": "built-in ImageGen",
+  "format": "Opaque RGB WebP, 1920x1080, Lanczos fit, quality 94",
+  "assets": [
+    {
+      "id": "bg_c05_breakfast",
+      "type": "bg",
+      "scene": "Quiet Vietnamese city breakfast restaurant beside large street windows, small wooden tables, simple ceramic plates, clear water glasses, soft early Sunday sunlight, no white tablecloth, empty foreground table, no people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. BACKGROUND ONLY, no characters. Quiet Vietnamese city breakfast restaurant beside large street windows, small wooden tables, simple ceramic plates, clear water glasses, soft early Sunday sunlight, no white tablecloth, empty foreground table, no people.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-cde9fb78-9f24-4e0d-878e-d52445db8f92.png",
+      "output": "game/images/assets/bg/bg_c05_breakfast.webp"
+    },
+    {
+      "id": "bg_c05_glasshouse",
+      "type": "bg",
+      "scene": "Entrance to a large botanical park conservatory, elegant glasshouse beyond a CLOSED gate, maintenance barrier and small blank notice board with no writing, lush plants, late morning light. No people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. BACKGROUND ONLY, no characters. Entrance to a large botanical park conservatory, elegant glasshouse beyond a CLOSED gate, maintenance barrier and small blank notice board with no writing, lush plants, late morning light. No people.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-08c6428b-e7a0-4ee7-8139-3a14de010c04.png",
+      "output": "game/images/assets/bg/bg_c05_glasshouse.webp"
+    },
+    {
+      "id": "bg_c05_park",
+      "type": "bg",
+      "scene": "Quiet leafy city park afternoon, old stone stone park bench beneath trees, path and distant conservatory, space for two or three people on bench, no people or abandoned props, warm natural daylight.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. BACKGROUND ONLY, no characters. Quiet leafy city park afternoon, old wooden bench with backrest beneath trees, path and distant conservatory, space for two or three people on bench, no people or abandoned props, warm natural daylight.",
+      "correction_prompt": "Use case: precise-object-edit. Change ONLY the foreground wooden bench into a pale weathered stone park bench (seat and back solid stone). Preserve park layout, conservatory, tree, plants, composition, lighting and empty setting exactly. Full bleed 16:9, no people, no text.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png",
+      "output": "game/images/assets/bg/bg_c05_park.webp",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-a372adcc-c2dc-4817-8dc4-b839c3832823.png",
+      "correction_references": [
+        "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-a372adcc-c2dc-4817-8dc4-b839c3832823.png"
+      ],
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Change ONLY the foreground wooden bench into a pale weathered stone park bench (seat and back solid stone). Preserve park layout, conservatory, tree, plants, composition, lighting and empty setting exactly. Full bleed 16:9, no people, no text.",
+          "references": [
+            "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-a372adcc-c2dc-4817-8dc4-b839c3832823.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+        }
+      ]
+    },
+    {
+      "id": "bg_c05_market_cafe",
+      "type": "bg",
+      "scene": "Small Vietnamese weekend market cafe with street-facing glass windows, unpretentious wooden tables, pastry counter and espresso machine, handwritten-menu-like blank boards without lettering. Soft overcast daylight, stalls outside, no people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. BACKGROUND ONLY, no characters. Small Vietnamese weekend market cafe with street-facing glass windows, unpretentious wooden tables, pastry counter and espresso machine, handwritten-menu-like blank boards without lettering. Soft overcast daylight, stalls outside, no people.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-39c5f846-8d81-4bfc-8b82-46701e454022.png",
+      "output": "game/images/assets/bg/bg_c05_market_cafe.webp"
+    },
+    {
+      "id": "bg_c05_rain_awning",
+      "type": "bg",
+      "scene": "View from under a closed Vietnamese storefront awning looking out toward weekend market stalls covered with tarps in heavy daytime rain. Dry sheltered threshold, closed metal shutter on one side, puddles and soft reflections. No people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. BACKGROUND ONLY, no characters. View from under a closed Vietnamese storefront awning looking out toward weekend market stalls covered with tarps in heavy daytime rain. Dry sheltered threshold, closed metal shutter on one side, puddles and soft reflections. No people.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-493cbe81-4e87-4ffb-bd03-0ff4f3c95663.png",
+      "output": "game/images/assets/bg/bg_c05_rain_awning.webp"
+    },
+    {
+      "id": "bg_c05_car_night",
+      "type": "bg",
+      "scene": "Interior of an understated modern private car at night, parked and engine off outside a warm apartment entrance. View from back seat toward empty driver and front passenger seats, steering wheel left, dashboard cubby and closed passenger door visible, no text or logos. No people.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. BACKGROUND ONLY, no characters. Interior of an understated modern private car at night, parked and engine off outside a warm apartment entrance. View from back seat toward empty driver and front passenger seats, steering wheel left, dashboard cubby and closed passenger door visible, no text or logos. No people.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-0c7991cc-bc37-462e-8d49-02a27080889b.png",
+      "output": "game/images/assets/bg/bg_c05_car_night.webp"
+    },
+    {
+      "id": "bg_c05_lobby_night",
+      "type": "bg",
+      "scene": "Exterior of a residential apartment glass entrance at night, warm light under canopy reflecting on parked car windshield at edge, quiet empty pavement and glass doors, no people. Not an office building or restaurant.",
+      "references": [
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. BACKGROUND ONLY, no characters. Exterior of a residential apartment glass entrance at night, warm light under canopy reflecting on parked car windshield at edge, quiet empty pavement and glass doors, no people. Not an office building or restaurant.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-db3f871e-e3d0-4f24-b07b-5ea7502405f2.png",
+      "output": "game/images/assets/bg/bg_c05_lobby_night.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_morning",
+      "type": "cg",
+      "scene": "Tam alone standing by her open wardrobe holding on a hanger the EXACT pale peach pink chiffon dress from dinner reference (not wearing it yet), three other outfits on bed, one blouse on floor, early Sunday morning. She wears a plain ivory home top and beige lounge trousers, thoughtful gentle expression. Bedroom, no Hoang or Huyen.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Tam alone standing by her open wardrobe holding on a hanger the EXACT pale peach pink chiffon dress from dinner reference (not wearing it yet), three other outfits on bed, one blouse on floor, early Sunday morning. She wears a plain ivory home top and beige lounge trousers, thoughtful gentle expression. Bedroom, no Hoang or Huyen. Input images: 1: tam identity only, ignore portrait outfit; 2: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strict continuity of identities and specified wardrobe.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-5fae6188-fc63-4aa8-abf2-accbf1cd879c.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_morning.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_morning",
+      "type": "cg",
+      "scene": "Huyen just waking seated on bed with slightly tousled shoulder-length half-up hair, reading vibrating phone, simple lavender sleep shirt, prepared mint overshirt and white tee on chair, power bank beside phone, early morning room. Alone.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Huyen just waking seated on bed with slightly tousled shoulder-length half-up hair, reading vibrating phone, simple lavender sleep shirt, prepared mint overshirt and white tee on chair, power bank beside phone, early morning room. Alone. Input images: 1: huyen identity only, ignore portrait outfit; 2: style; Tam LEFT long hair, Huyen RIGHT shorter compact face. Strict continuity of identities and specified wardrobe.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-23aeb076-8f18-4147-b7f5-d2f1060b96be.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_morning.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_morning",
+      "type": "cg",
+      "scene": "Inside parked private car morning, Hoang at driver left glancing in rearview mirror, Tam front passenger in ivory casual blouse and beige trousers, Huyen just sitting in back seat in mint overshirt over ivory tee with charcoal trousers, playful expressions exchanged through mirror. Three distinct adults, not couples posing.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Inside parked private car morning, Hoang at driver left glancing in rearview mirror, Tam front passenger in ivory casual blouse and beige trousers, Huyen just sitting in back seat in mint overshirt over ivory tee with charcoal trousers, playful expressions exchanged through mirror. Three distinct adults, not couples posing. Input images: 1: tam identity only, ignore portrait outfit; 2: huyen identity only, ignore portrait outfit; 3: hoang identity only, ignore portrait outfit; 4: style; Tam LEFT long hair, Huyen RIGHT shorter compact face. Strict continuity of identities and specified wardrobe.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-1652dade-b502-44e7-b67a-3964290022d2.png",
+      "output": "game/images/assets/cg/cg_tam_c05_group_morning.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_pickup",
+      "type": "cg",
+      "scene": "Morning apartment lobby, Hoang stands by entrance holding car keys, light shirt under thin navy casual jacket, left collar subtly folded inward. Tam walks toward him wearing EXACT peach pink chiffon dress from dinner reference, shy warm eye contact. Two adults only.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Morning apartment lobby, Hoang stands by entrance holding car keys, light shirt under thin navy casual jacket, left collar subtly folded inward. Tam walks toward him wearing EXACT peach pink chiffon dress from dinner reference, shy warm eye contact. Two adults only. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strict continuity of identities and specified wardrobe.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-6635b394-2a38-4a06-af78-b46e8bd76bbc.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_pickup.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_breakfast",
+      "type": "cg",
+      "scene": "Tam and Hoang at small window-side breakfast table on quiet sunny street. Tam in exact peach pink chiffon dress, Hoang light shirt navy thin jacket with left collar subtly folded. Her clear water without ice and plate without scallions, ordinary breakfast, fond familiar banter, no gifts yet.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Tam and Hoang at small window-side breakfast table on quiet sunny street. Tam in exact peach pink chiffon dress, Hoang light shirt navy thin jacket with left collar subtly folded. Her clear water without ice and plate without scallions, ordinary breakfast, fond familiar banter, no gifts yet. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strict continuity of identities and specified wardrobe.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-f6c1cd45-c41a-430e-abf2-ae692cf12557.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_breakfast.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_glasshouse",
+      "type": "cg",
+      "scene": "Tam and Hoang stand beside CLOSED conservatory gate and small blank maintenance notice board. Hoang has phone lowered and thoughtful slightly disappointed expression, Tam looks gently at him. Exact peach chiffon dress; Hoang light shirt navy jacket with left collar folded. Neutral moment BEFORE choosing response, no hand touch.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Tam and Hoang stand beside CLOSED conservatory gate and small blank maintenance notice board. Hoang has phone lowered and thoughtful slightly disappointed expression, Tam looks gently at him. Exact peach chiffon dress; Hoang light shirt navy jacket with left collar folded. Neutral moment BEFORE choosing response, no hand touch. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strict continuity of identities and specified wardrobe.",
+      "correction_prompt": "Use case: lighting-weather. Edit image1: change ONLY nighttime/evening setting to late MORNING natural sunlit daylight, matching conservatory gate in image2. No glowing street lamps or fairy lights, no dark sky. Closed gate, blank maintenance sign and barrier. Preserve exact Tam and Hoang faces, pale peach chiffon dress, navy jacket pale blue shirt, poses and composition. Her outfit must be unchanged.",
+      "correction_history": [
+        {
+          "prompt": "Use case: lighting-weather. Edit image1: change ONLY nighttime/evening setting to late MORNING natural sunlit daylight, matching conservatory gate in image2. No glowing street lamps or fairy lights, no dark sky. Closed gate, blank maintenance sign and barrier. Preserve exact Tam and Hoang faces, pale peach chiffon dress, navy jacket pale blue shirt, poses and composition. Her outfit must be unchanged.",
+          "references": [
+            "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-5e3cb6be-cc23-4b8f-9c0b-ae9139aa468c.png",
+            "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-08c6428b-e7a0-4ee7-8139-3a14de010c04.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-006853f2-c11e-41ab-98bb-13dbb6f6c7ee.png"
+        }
+      ],
+      "correction_references": [
+        "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-5e3cb6be-cc23-4b8f-9c0b-ae9139aa468c.png",
+        "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-08c6428b-e7a0-4ee7-8139-3a14de010c04.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-006853f2-c11e-41ab-98bb-13dbb6f6c7ee.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-5e3cb6be-cc23-4b8f-9c0b-ae9139aa468c.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_glasshouse.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_bench",
+      "type": "cg",
+      "scene": "Tam and Hoang sit side by side on old stone stone park bench, paper pastry bag and two takeaway cups nearby, companionable afternoon pause, hands separate, no gifts or earrings. Exact peach chiffon dress, Hoang light shirt navy jacket subtly folded left collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Tam and Hoang sit side by side on old park bench, paper pastry bag and two takeaway cups nearby, companionable afternoon pause, hands separate, no gifts or earrings. Exact peach chiffon dress, Hoang light shirt navy jacket subtly folded left collar. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strict wardrobe continuity.",
+      "correction_prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Raise paper cups and pastry bag onto bench back/side at mid-frame so clearly visible above textbox. No text or logos.",
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Raise paper cups and pastry bag onto bench back/side at mid-frame so clearly visible above textbox. No text or logos.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-eb83d687-3001-45ea-a863-d736619b620e.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-08efaa66-7cbc-46bb-a578-6dc33234d496.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-eb83d687-3001-45ea-a863-d736619b620e.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-08efaa66-7cbc-46bb-a578-6dc33234d496.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-eb83d687-3001-45ea-a863-d736619b620e.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_bench.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_pickup",
+      "type": "cg",
+      "scene": "Hoang at apartment lobby beside private car holding TWO plain warm drink cups, Huyen reaches to accept one with mock-annoyed fond smile. Huyen mint lightweight open overshirt over ivory tee charcoal trousers, loose half-up shoulder hair; Hoang light shirt thin navy casual jacket. Only these two.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Hoang at apartment lobby beside private car holding TWO plain warm drink cups, Huyen reaches to accept one with mock-annoyed fond smile. Huyen mint lightweight open overshirt over ivory tee charcoal trousers, loose half-up shoulder hair; Hoang light shirt thin navy casual jacket. Only these two. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style; Tam LEFT long hair, Huyen RIGHT shorter hair compact face. Strict wardrobe continuity.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_pickup.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_breakfast",
+      "type": "cg",
+      "scene": "Huyen and Hoang at casual small weekend market cafe wooden table with pastry plates and drinks, quiet teasing mutual gaze, no fancy tablecloth. Huyen mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Huyen and Hoang at casual small weekend market cafe wooden table with pastry plates and drinks, quiet teasing mutual gaze, no fancy tablecloth. Huyen mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style; Tam LEFT long hair, Huyen RIGHT shorter hair compact face. Strict wardrobe continuity.",
+      "correction_prompt": "Use case: identity-preserve. Edit target image1. LEFT woman is incorrectly Tam. Replace her with HUYEN the woman from image2, exact compact rounded face, short soft chin, smaller natural eyes, lifted inner brows, shoulder-length layered half-up hair with wispy bangs. Keep mint overshirt white tee. Keep Hoang, food, pose and cafe composition. Replace iced drink with warm drink, no ice. The pair is HUYEN and HOANG, Tam absent.",
+      "correction_history": [
+        {
+          "prompt": "Use case: identity-preserve. Edit target image1. LEFT woman is incorrectly Tam. Replace her with HUYEN the woman from image2, exact compact rounded face, short soft chin, smaller natural eyes, lifted inner brows, shoulder-length layered half-up hair with wispy bangs. Keep mint overshirt white tee. Keep Hoang, food, pose and cafe composition. Replace iced drink with warm drink, no ice. The pair is HUYEN and HOANG, Tam absent.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-331d64e6-ccc7-44d7-96e8-8f781c53186e.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-64d194e4-8b30-419a-a2ea-f0b67486024d.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-331d64e6-ccc7-44d7-96e8-8f781c53186e.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-64d194e4-8b30-419a-a2ea-f0b67486024d.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-331d64e6-ccc7-44d7-96e8-8f781c53186e.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_breakfast.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_photo",
+      "type": "cg",
+      "scene": "At weekend market in soft daylight before rain: Hoang holds Huyen's phone taking candid photograph of her, Huyen surprised facing him naturally with food bag in hand, wind moves wispy bangs. Mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket. No screen text.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. At weekend market in soft daylight before rain: Hoang holds Huyen's phone taking candid photograph of her, Huyen surprised facing him naturally with food bag in hand, wind moves wispy bangs. Mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket. No screen text. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style; Tam LEFT long hair, Huyen RIGHT shorter hair compact face. Strict wardrobe continuity.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-acf39a4c-3e7c-4c36-9315-ef800e3b56a4.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_photo.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_rain",
+      "type": "cg",
+      "scene": "Hoang and Huyen shelter under closed shop awning looking toward heavy rain and tarped market, a few droplets in her hair, amused frustration, no grabbing or forced embrace. Mint overshirt ivory tee charcoal trousers, Hoang navy jacket light shirt. Before any weather-response choice.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Hoang and Huyen shelter under closed shop awning looking toward heavy rain and tarped market, a few droplets in her hair, amused frustration, no grabbing or forced embrace. Mint overshirt ivory tee charcoal trousers, Hoang navy jacket light shirt. Before any weather-response choice. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style; Tam LEFT long hair, Huyen RIGHT shorter hair compact face. Strict wardrobe continuity.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-1c26a87b-ef41-4ca3-b9af-9d7328746c1e.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_rain.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_meal",
+      "type": "cg",
+      "scene": "Exactly Tam, Huyen and Hoang around casual restaurant table with four shared main dishes, Huyen joking, Tam laughing, Hoang dryly amused. Friendship, no romantic couple framing. Tam ivory blouse beige trousers, Huyen mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Exactly Tam, Huyen and Hoang around casual restaurant table with four shared main dishes, Huyen joking, Tam laughing, Hoang dryly amused. Friendship, no romantic couple framing. Tam ivory blouse beige trousers, Huyen mint open overshirt ivory tee charcoal trousers, Hoang light shirt navy jacket. Input images: 1: tam identity only, ignore portrait outfit; 2: huyen identity only, ignore portrait outfit; 3: hoang identity only, ignore portrait outfit; 4: rendering style; Tam LEFT long hair, Huyen RIGHT shorter hair compact face. Strict wardrobe continuity.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-e0a96e47-b553-442a-a091-ad10986d7d33.png",
+      "output": "game/images/assets/cg/cg_tam_c05_group_meal.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_photo",
+      "type": "cg",
+      "scene": "In leafy park, Hoang CENTER one arm lightly across Tam's shoulder at left and other across Huyen's shoulder at right, all standing close as friends. Tam eyes open facing timer-camera, Huyen turns amused gaze toward Hoang, Hoang relaxed. Tam ivory blouse beige trousers, Huyen mint overshirt ivory tee charcoal trousers. Candid self timer photograph.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. In leafy park, Hoang CENTER one arm lightly across Tam's shoulder at left and other across Huyen's shoulder at right, all standing close as friends. Tam eyes open facing timer-camera, Huyen turns amused gaze toward Hoang, Hoang relaxed. Tam ivory blouse beige trousers, Huyen mint overshirt ivory tee charcoal trousers. Candid self timer photograph. Input images: 1: tam identity only, ignore portrait outfit; 2: huyen identity only, ignore portrait outfit; 3: hoang identity only, ignore portrait outfit; 4: rendering style, Tam LEFT long hair, Huyen RIGHT compact face shorter hair. Strictly keep specified identities, clothes and gift branch.",
+      "correction_prompt": "Use case: precise-object-edit. Change ONLY Hoang's gray crewneck tee under navy jacket to a pale blue button-front COLLARED shirt matching the man in image2. Keep exact three identities, poses, gaze, hands on shoulders, clothes of Tam and Huyen, park, framing and lighting. No other changes.",
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Change ONLY Hoang's gray crewneck tee under navy jacket to a pale blue button-front COLLARED shirt matching the man in image2. Keep exact three identities, poses, gaze, hands on shoulders, clothes of Tam and Huyen, park, framing and lighting. No other changes.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-025ce8ff-c6dd-4dc6-9561-280048f2f941.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-7226072a-19b7-4d13-84d0-f5fb8e899dd4.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-025ce8ff-c6dd-4dc6-9561-280048f2f941.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-7226072a-19b7-4d13-84d0-f5fb8e899dd4.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-025ce8ff-c6dd-4dc6-9561-280048f2f941.png",
+      "output": "game/images/assets/cg/cg_tam_c05_group_photo.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_topaz",
+      "type": "cg",
+      "scene": "Park bench afternoon, Tam opens small jewelry box with a pair of SMALL pale yellow topaz earrings in delicate white metal, looking touched; Hoang watching quietly beside her. Earrings still IN BOX; Tam wears old tiny pearl earrings. Exact peach chiffon dress and his navy jacket light shirt folded collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Park bench afternoon, Tam opens small jewelry box with a pair of SMALL pale yellow topaz earrings in delicate white metal, looking touched; Hoang watching quietly beside her. Earrings still IN BOX; Tam wears old tiny pearl earrings. Exact peach chiffon dress and his navy jacket light shirt folded collar. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strictly keep specified identities, clothes and gift branch.",
+      "correction_prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Keep exact jewelry and box without changing size or type. Box stays at chest height above textbox. No text or logos.",
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Keep exact jewelry and box without changing size or type. Box stays at chest height above textbox. No text or logos.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-1f5005d2-6e46-4446-a87d-f1413c9dffba.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-599e2aa2-f281-4e88-b029-440fff7d2376.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-1f5005d2-6e46-4446-a87d-f1413c9dffba.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-599e2aa2-f281-4e88-b029-440fff7d2376.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-1f5005d2-6e46-4446-a87d-f1413c9dffba.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_topaz.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_fastening",
+      "type": "cg",
+      "scene": "Intimate medium stone park bench two-shot: Tam has swept long hair behind one ear, Hoang delicately fastens a SMALL pale yellow topaz earring, both focused on tiny clasp. Exact peach chiffon dress, light shirt navy jacket with folded left collar. Hands and ear above textbox. No kiss.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Intimate medium park bench two-shot: Tam has swept long hair behind one ear, Hoang delicately fastens a SMALL pale yellow topaz earring, both focused on tiny clasp. Exact peach chiffon dress, light shirt navy jacket with folded left collar. Hands and ear above textbox. No kiss. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strictly keep specified identities, clothes and gift branch.",
+      "correction_prompt": "Edit target image1. Preserve exact Tam face and pale peach chiffon dress, Hoang face and delicate earring-fastening gesture. Change setting ONLY from night city restaurant to AFTERNOON leafy park with pale stone bench, natural soft daylight, no night lights no restaurant no waterfront. Replace Hoang gray tee under navy jacket with pale blue COLLARED shirt (left collar subtly folded). His earring clasp and their hands stay above lower quarter. Keep exact framing, no other people, no text.",
+      "correction_history": [
+        {
+          "prompt": "Edit target image1. Preserve exact Tam face and pale peach chiffon dress, Hoang face and delicate earring-fastening gesture. Change setting ONLY from night city restaurant to AFTERNOON leafy park with pale stone bench, natural soft daylight, no night lights no restaurant no waterfront. Replace Hoang gray tee under navy jacket with pale blue COLLARED shirt (left collar subtly folded). His earring clasp and their hands stay above lower quarter. Keep exact framing, no other people, no text.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-284da2e6-e13d-4ceb-96cd-ceb74f1cb65a.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-7d489a72-7e66-4984-88a7-1f68241e4000.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-284da2e6-e13d-4ceb-96cd-ceb74f1cb65a.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-7d489a72-7e66-4984-88a7-1f68241e4000.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-284da2e6-e13d-4ceb-96cd-ceb74f1cb65a.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_fastening.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_expensive",
+      "type": "cg",
+      "scene": "Park bench afternoon, Tam looks uneasy at an open jewelry box holding an overly LARGE brilliant pale yellow topaz jewelry piece, Hoang beside her noticing hesitation. Box still in her hands BEFORE choice to accept or return. Exact peach chiffon dress, navy jacket light shirt folded collar. No small topaz pair.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Park bench afternoon, Tam looks uneasy at an open jewelry box holding an overly LARGE brilliant pale yellow topaz jewelry piece, Hoang beside her noticing hesitation. Box still in her hands BEFORE choice to accept or return. Exact peach chiffon dress, navy jacket light shirt folded collar. No small topaz pair. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strictly keep specified identities, clothes and gift branch.",
+      "correction_prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Keep exact jewelry and box without changing size or type. Box stays at chest height above textbox. No text or logos.",
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Keep exact jewelry and box without changing size or type. Box stays at chest height above textbox. No text or logos.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-f2d10325-ac71-4ad8-935c-28f31b2dbc1a.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-490322b0-5363-416a-b462-f760ba178a1c.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-f2d10325-ac71-4ad8-935c-28f31b2dbc1a.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-490322b0-5363-416a-b462-f760ba178a1c.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-f2d10325-ac71-4ad8-935c-28f31b2dbc1a.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_expensive.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_card",
+      "type": "cg",
+      "scene": "Park bench afternoon, Hoang offers Tam a folded breakfast receipt with handwritten-like marks turned AWAY and illegible, no jewelry box. Tam listening with soft curiosity, no promise of acceptance. Exact peach chiffon dress; navy jacket light shirt folded collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Park bench afternoon, Hoang offers Tam a simple folded ivory card with handwritten-like marks turned AWAY and illegible, no jewelry box. Tam listening with soft curiosity, no promise of acceptance. Exact peach chiffon dress; navy jacket light shirt folded collar. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strictly keep specified identities, clothes and gift branch.",
+      "correction_prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Replace greeting card with a SMALL narrow folded breakfast RECEIPT, blank reverse facing viewer, no legible words, Hoang holding it at chest height. No text or logos.",
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Edit target image1. Preserve exact two faces, Tam's peach pink chiffon dress with sheer puff sleeves and gathered bodice, all gestures and emotional meaning. Replace wooden bench with weathered PALE STONE bench like image2, leafy city park in natural afternoon daylight (not sunset or night); no restaurant. Hoang wears a pale blue button front COLLARED shirt under same navy casual jacket, no tee. Keep key props above bottom 27 percent. Replace greeting card with a SMALL narrow folded breakfast RECEIPT, blank reverse facing viewer, no legible words, Hoang holding it at chest height. No text or logos.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-39242ef6-24ea-4bba-905a-90433d7fd982.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-3b55ead9-5207-49ec-8395-6899b1ee9145.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-39242ef6-24ea-4bba-905a-90433d7fd982.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-8d3a6be8-65a4-4102-a9a2-2b57601c0885.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-3b55ead9-5207-49ec-8395-6899b1ee9145.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-39242ef6-24ea-4bba-905a-90433d7fd982.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_card.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_printer",
+      "type": "cg",
+      "scene": "Window-side street cafe afternoon: Huyen opens rectangular gift box revealing a compact unbranded pocket photo printer; Hoang beside/opposite watches quietly. No album visible so image also fits printer-only branch. Mint overshirt ivory tee, navy jacket light shirt. Gift above bottom quarter.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Window-side street cafe afternoon: Huyen opens rectangular gift box revealing a compact unbranded pocket photo printer; Hoang beside/opposite watches quietly. No album visible so image also fits printer-only branch. Mint overshirt ivory tee, navy jacket light shirt. Gift above bottom quarter. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style, Tam LEFT long hair, Huyen RIGHT compact face shorter hair. Strictly keep specified identities, clothes and gift branch.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-443a659b-7660-4d4e-9a55-2f152038aa04.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_printer.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_album",
+      "type": "cg",
+      "scene": "Window-side cafe, Huyen holds small open album at chest height, first page contains candid image of HER beneath awning holding food bag, windblown hair, not looking at camera. Hoang beside her attentive. No captions or writing. Mint overshirt white tee, navy jacket light shirt. Must show a personal Huyen photograph, not group photo.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Window-side cafe, Huyen holds small open album at chest height, first page contains candid image of HER beneath awning holding food bag, windblown hair, not looking at camera. Hoang beside her attentive. No captions or writing. Mint overshirt white tee, navy jacket light shirt. Must show a personal Huyen photograph, not group photo. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style; Tam LEFT long hair, Huyen RIGHT compact face shorter hair. Strict wardrobe and identity continuity.",
+      "correction_prompt": "Use case: precise-object-edit. Edit ONLY the small printed photograph INSIDE the open album in image1. The woman in that printed photograph must be HUYEN from image2, with compact round face, shoulder-length layered half-up hair and wispy bangs, wearing mint overshirt ivory tee, smiling off-camera beneath a market awning while holding a food bag. The printed photo currently has long-haired Tam and is wrong. Keep BOTH actual people outside the album (Hoang left and Huyen right), all their faces, bodies, clothing, hands, cafe, lighting, book angle and composition EXACTLY unchanged. No captions, no text. This is a small contained replacement of the album photograph only.",
+      "correction_history": [
+        {
+          "prompt": "Edit target image1. It incorrectly contains Tam and Huyen. Replace LEFT long-haired woman entirely with HOANG the man from image2, navy jacket and pale blue collared shirt. RIGHT woman remains HUYEN with compact round face and shoulder-length layered half-up hair exactly as image2; change her lavender shirt to mint open overshirt over ivory tee. Keep Huyen holding open album with candid photo of herself. Only Hoang and Huyen present. Tam must be absent. Preserve cafe staging lighting album composition and framing. Key album and hands above bottom quarter.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-dee487aa-2f1a-401e-8b0a-b3101c4b8246.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-19edc06d-d1cd-4994-99f3-65fb25e4fa1c.png"
+        },
+        {
+          "prompt": "Use case: precise-object-edit. Edit ONLY the small printed photograph INSIDE the open album in image1. The woman in that printed photograph must be HUYEN from image2, with compact round face, shoulder-length layered half-up hair and wispy bangs, wearing mint overshirt ivory tee, smiling off-camera beneath a market awning while holding a food bag. The printed photo currently has long-haired Tam and is wrong. Keep BOTH actual people outside the album (Hoang left and Huyen right), all their faces, bodies, clothing, hands, cafe, lighting, book angle and composition EXACTLY unchanged. No captions, no text. This is a small contained replacement of the album photograph only.",
+          "references": [
+            "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-19edc06d-d1cd-4994-99f3-65fb25e4fa1c.png",
+            "D:/Projects/RenPy_Games/LikeWindLikeCloud/game/images/characters/huyen/expressions/huyen_neutral.webp"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-56d97040-8f5a-4c38-9a0f-d318ab96dc11.png"
+        }
+      ],
+      "correction_references": [
+        "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-19edc06d-d1cd-4994-99f3-65fb25e4fa1c.png",
+        "D:/Projects/RenPy_Games/LikeWindLikeCloud/game/images/characters/huyen/expressions/huyen_neutral.webp"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-56d97040-8f5a-4c38-9a0f-d318ab96dc11.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-dee487aa-2f1a-401e-8b0a-b3101c4b8246.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_album.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_print",
+      "type": "cg",
+      "scene": "Window-side cafe, Huyen and Hoang watch one small photograph emerge from compact pocket printer on table raised within upper two thirds. Image on paper faces away, no readable text; no album visible. Huyen mint overshirt ivory tee, Hoang light shirt navy jacket. Focus on hands printer and amused faces.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Window-side cafe, Huyen and Hoang watch one small photograph emerge from compact pocket printer on table raised within upper two thirds. Image on paper faces away, no readable text; no album visible. Huyen mint overshirt ivory tee, Hoang light shirt navy jacket. Focus on hands printer and amused faces. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style; Tam LEFT long hair, Huyen RIGHT compact face shorter hair. Strict wardrobe and identity continuity.",
+      "correction_prompt": "Edit target image1. Replace LEFT long-haired Tam with HUYEN the short-haired woman in image2: compact rounded face, short soft chin, natural small eyes, shoulder-length layered half-up hair with wispy bangs. Match image2 identity and mint open overshirt ivory tee exactly. Keep RIGHT Hoang identity and pale blue collared shirt navy jacket, same printer photograph, cafe lighting, poses and composition. Tam absent. Photo should visibly emerge from slot of printer rather than be inserted into top.",
+      "correction_history": [
+        {
+          "prompt": "Edit target image1. Replace LEFT long-haired Tam with HUYEN the short-haired woman in image2: compact rounded face, short soft chin, natural small eyes, shoulder-length layered half-up hair with wispy bangs. Match image2 identity and mint open overshirt ivory tee exactly. Keep RIGHT Hoang identity and pale blue collared shirt navy jacket, same printer photograph, cafe lighting, poses and composition. Tam absent. Photo should visibly emerge from slot of printer rather than be inserted into top.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-e70e6f86-47dd-45c4-93af-4f98656ce4b9.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-46103eb6-ea20-4dd7-8219-a670a69f6d3d.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-e70e6f86-47dd-45c4-93af-4f98656ce4b9.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-46103eb6-ea20-4dd7-8219-a670a69f6d3d.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-e70e6f86-47dd-45c4-93af-4f98656ce4b9.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_print.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_envelopes",
+      "type": "cg",
+      "scene": "Leafy park afternoon, Hoang offers two of THREE thin paper photo envelopes to Tam and Huyen, each person has one identical plain envelope with one small photograph, no readable lettering. Three distinct adults in casual wardrobe: Tam ivory blouse beige trousers, Huyen mint overshirt tee charcoal trousers, Hoang light shirt navy jacket. Equal friendship.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Leafy park afternoon, Hoang offers two of THREE thin paper photo envelopes to Tam and Huyen, each person has one identical plain envelope with one small photograph, no readable lettering. Three distinct adults in casual wardrobe: Tam ivory blouse beige trousers, Huyen mint overshirt tee charcoal trousers, Hoang light shirt navy jacket. Equal friendship. Input images: 1: tam identity only, ignore portrait outfit; 2: huyen identity only, ignore portrait outfit; 3: hoang identity only, ignore portrait outfit; 4: rendering style; Tam LEFT long hair, Huyen RIGHT compact face shorter hair. Strict wardrobe and identity continuity.",
+      "correction_prompt": "Use case: precise-object-edit. Change ONLY Hoang's gray crewneck tee under navy jacket to a pale blue button-front COLLARED shirt matching man in image2. Preserve faces, poses, equal three envelopes, photographs, wardrobe of both women, lighting and framing. Raise their envelopes and hands slightly to chest height so all main photo props clear bottom 27 percent. Keep printed photos mostly hidden inside envelopes so no incorrect costumes in prints.",
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Change ONLY Hoang's gray crewneck tee under navy jacket to a pale blue button-front COLLARED shirt matching man in image2. Preserve faces, poses, equal three envelopes, photographs, wardrobe of both women, lighting and framing. Raise their envelopes and hands slightly to chest height so all main photo props clear bottom 27 percent. Keep printed photos mostly hidden inside envelopes so no incorrect costumes in prints.",
+          "references": [
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-3f375b8b-a02b-4665-baed-9a78f0ecc075.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-afa7fbaa-3716-45cc-93e0-c83312f3be62.png"
+        }
+      ],
+      "correction_references": [
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-3f375b8b-a02b-4665-baed-9a78f0ecc075.png",
+        "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-afa7fbaa-3716-45cc-93e0-c83312f3be62.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-3f375b8b-a02b-4665-baed-9a78f0ecc075.png",
+      "output": "game/images/assets/cg/cg_tam_c05_group_envelopes.webp"
+    },
+    {
+      "id": "cg_tam_c05_tam_collar",
+      "type": "cg",
+      "scene": "Night outside warmly lit apartment glass entrance, Tam gently straightens Hoang LEFT shirt collar while they look at each other with affectionate restrained smiles. EXACT peach pink chiffon dress from C01 dinner, same neckline gathered bodice sheer puff sleeves; Hoang light shirt navy thin jacket. Tam ear obscured by long hair so no forced jewelry outcome. NO kiss, no hand holding beyond collar.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_celebration_toast.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Night outside warmly lit apartment glass entrance, Tam gently straightens Hoang LEFT shirt collar while they look at each other with affectionate restrained smiles. EXACT peach pink chiffon dress from C01 dinner, same neckline gathered bodice sheer puff sleeves; Hoang light shirt navy thin jacket. Tam ear obscured by long hair so no forced jewelry outcome. NO kiss, no hand holding beyond collar. Input images: 1: tam identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: C01 dinner: Tam LEFT exact dress and identity; Huyen RIGHT absent unless requested. Strict wardrobe and identity continuity.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-45a4a81a-205b-40bf-bc16-b56e13592439.png",
+      "output": "game/images/assets/cg/cg_tam_c05_tam_collar.webp"
+    },
+    {
+      "id": "cg_tam_c05_huyen_car",
+      "type": "cg",
+      "scene": "Inside parked private car at apartment entrance NIGHT, Huyen front passenger with gift BAG on lap fingers lightly twisting handle, looking out side window with vulnerable thoughtful expression, Hoang driver listens. Mint open overshirt ivory tee, navy jacket light shirt. No forced smile or physical contact, neutral before branch outcome. Camera through windshield, key faces above lower quarter.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Inside parked private car at apartment entrance NIGHT, Huyen front passenger with gift BAG on lap fingers lightly twisting handle, looking out side window with vulnerable thoughtful expression, Hoang driver listens. Mint open overshirt ivory tee, navy jacket light shirt. No forced smile or physical contact, neutral before branch outcome. Camera through windshield, key faces above lower quarter. Input images: 1: huyen identity only, ignore portrait outfit; 2: hoang identity only, ignore portrait outfit; 3: rendering style; Tam LEFT long hair, Huyen RIGHT compact face shorter hair. Strict wardrobe and identity continuity.",
+      "correction_prompt": "Use case: identity-preserve. In image1 completely replace ONLY the RIGHT passenger woman's facial identity with the EXACT face of HUYEN in portrait image2. Match her compact round cheek structure, short soft chin, small natural eyes, lifted inner brows, small mouth and wispy bangs; do NOT retain the long oval Tam face of the target. Keep shoulder-length half-up layered hairstyle and thoughtful vulnerable expression looking out the side window. Preserve mint overshirt ivory tee, hands gift bag, Hoang on left, car windshield, warm night entrance and exact composition. This is a facial identity correction only. No other changes.",
+      "correction_history": [
+        {
+          "prompt": "Use case: identity-preserve. Edit image1. RIGHT passenger wrongly has Tam face. Replace ONLY her face and hair with HUYEN woman from image2, exact compact rounded face, short soft chin, natural small eyes, lifted inner brows and shoulder-length layered half-up ponytail with wispy bangs. Keep thoughtful vulnerable gaze out window, mint open overshirt ivory tee, hands twisting gift bag handle. Keep left Hoang, parked car night setting and framing. Her seatbelt must be UNFASTENED because she has already unlocked car door and is about to get out. Keep gift bag handles within upper 73 percent. Tam absent.",
+          "references": [
+            "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-d95a4532-b083-4f7d-a94c-bbc65e2bd8d3.png",
+            "C:/Users/m3Noa/.codex/generated_images/01a1590b-13cd-7171-848b-72a03ffcf453/exec-72f9c708-9c7e-4358-9a92-5bb8baad3d8d.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-dbc1ac1f-56db-412a-b295-56950337f331.png"
+        },
+        {
+          "prompt": "Use case: identity-preserve. In image1 completely replace ONLY the RIGHT passenger woman's facial identity with the EXACT face of HUYEN in portrait image2. Match her compact round cheek structure, short soft chin, small natural eyes, lifted inner brows, small mouth and wispy bangs; do NOT retain the long oval Tam face of the target. Keep shoulder-length half-up layered hairstyle and thoughtful vulnerable expression looking out the side window. Preserve mint overshirt ivory tee, hands gift bag, Hoang on left, car windshield, warm night entrance and exact composition. This is a facial identity correction only. No other changes.",
+          "references": [
+            "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-dbc1ac1f-56db-412a-b295-56950337f331.png",
+            "D:/Projects/RenPy_Games/LikeWindLikeCloud/game/images/characters/huyen/expressions/huyen_neutral.webp"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-5fdaa154-b015-4011-935f-7b12d8506626.png"
+        }
+      ],
+      "correction_references": [
+        "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-dbc1ac1f-56db-412a-b295-56950337f331.png",
+        "D:/Projects/RenPy_Games/LikeWindLikeCloud/game/images/characters/huyen/expressions/huyen_neutral.webp"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-5fdaa154-b015-4011-935f-7b12d8506626.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-d95a4532-b083-4f7d-a94c-bbc65e2bd8d3.png",
+      "output": "game/images/assets/cg/cg_tam_c05_huyen_car.webp"
+    },
+    {
+      "id": "cg_tam_c05_group_afterward",
+      "type": "cg",
+      "scene": "Night Tam alone at her cozy home holding phone with an indistinct SMALL group photograph of Tam Huyen Hoang visible but no text, quiet thankful smile. Ivory casual blouse, long half-up hair. No other people physically present; not collage, other two only in small phone image.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Night Tam alone at her cozy home holding phone with an indistinct SMALL group photograph of Tam Huyen Hoang visible but no text, quiet thankful smile. Ivory casual blouse, long half-up hair. No other people physically present; not collage, other two only in small phone image. Input images: 1: tam identity only, ignore portrait outfit; 2: rendering style; Tam LEFT long hair, Huyen RIGHT compact face shorter hair. Strict wardrobe and identity continuity.",
+      "correction_prompt": "Use case: precise-object-edit. Edit image1. Remove the impossible photograph printed on BACK of phone. Tam is reading a group photograph ON THE SCREEN which faces HER and is not visible to viewer. Show only plain matte ivory back of phone with small camera lenses, no printed photo, no stickers, no text. Preserve Tam identity, hairstyle, ivory blouse, exact pose, smile, hands, warm night living room and framing.",
+      "correction_history": [
+        {
+          "prompt": "Use case: precise-object-edit. Edit image1. Remove the impossible photograph printed on BACK of phone. Tam is reading a group photograph ON THE SCREEN which faces HER and is not visible to viewer. Show only plain matte ivory back of phone with small camera lenses, no printed photo, no stickers, no text. Preserve Tam identity, hairstyle, ivory blouse, exact pose, smile, hands, warm night living room and framing.",
+          "references": [
+            "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-37fad665-5de8-417d-87b6-dab2fe87bb93.png"
+          ],
+          "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-39605cef-ad3a-4418-8f58-e4645db68e1d.png"
+        }
+      ],
+      "correction_references": [
+        "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-37fad665-5de8-417d-87b6-dab2fe87bb93.png"
+      ],
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-39605cef-ad3a-4418-8f58-e4645db68e1d.png",
+      "initial_source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-37fad665-5de8-417d-87b6-dab2fe87bb93.png",
+      "output": "game/images/assets/cg/cg_tam_c05_group_afterward.webp"
+    },
+    {
+      "id": "bg_c05_market_day",
+      "type": "bg",
+      "scene": "Same Vietnamese weekend market street as rain_awning reference, now DRY and overcast before rain. View from pedestrian path between colorful flower and food stalls and tarps, closed storefront awning at side. No people, no text or logos, cinematic semi-realistic 16:9 empty environment, warm natural late morning light.",
+      "references": [
+        "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-493cbe81-4e87-4ffb-bd03-0ff4f3c95663.png"
+      ],
+      "prompt": "Use case: illustration-story. ONE full-bleed cinematic semi-realistic 16:9 Vietnamese visual novel illustration, natural realistic faces and anatomy, photographic painterly rendering matching references. No panels, text, logos or watermark. Key faces, hands and props above bottom 27 percent reserved for textbox. Candid gaze at partner/action, never viewer. Background only. Same Vietnamese weekend market street as rain_awning reference, now DRY and overcast before rain. View from pedestrian path between colorful flower and food stalls and tarps, closed storefront awning at side. No people, no text or logos, cinematic semi-realistic 16:9 empty environment, warm natural late morning light.",
+      "source": "C:\\Users\\m3Noa\\.codex\\generated_images\\01a1590b-13cd-7171-848b-72a03ffcf453\\exec-bce1c3ed-f55d-48cc-a2c1-dfda99acd004.png",
+      "output": "game/images/assets/bg/bg_c05_market_day.webp"
+    }
+  ]
+}

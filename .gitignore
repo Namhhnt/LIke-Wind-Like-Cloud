@@ -44,3 +44,6 @@ tmp_*.*
 /tests/performance/
 /tests/opening_assets_saves/
 /tests/chapter_assets_saves/
+/tests/chapter_five_assets_saves/
+/tests/python_runtime/
+/tests/asset_validator_deps/

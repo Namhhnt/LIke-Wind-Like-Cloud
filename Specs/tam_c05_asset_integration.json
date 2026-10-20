@@ -1,0 +1,191 @@
+[
+  {
+    "file": "s01_route_check.rpy",
+    "label": "tam_c05_sunday_date_s01_tam_morning",
+    "id": "cg_tam_c05_tam_morning",
+    "anchor": "Tâm đứng trước tủ quần áo, tay giữ một chiếc váy màu cam hồng nhạt.",
+    "restore": "bg_tam_room_morning"
+  },
+  {
+    "file": "s01_route_check.rpy",
+    "label": "tam_c05_sunday_date_s01_huyen_morning",
+    "id": "cg_tam_c05_huyen_morning",
+    "anchor": "Huyền mở mắt vì điện thoại rung lần thứ hai.",
+    "restore": "bg_bed_room_01_morning"
+  },
+  {
+    "file": "s01_route_check.rpy",
+    "label": "tam_c05_sunday_date_s01_group_morning",
+    "id": "cg_tam_c05_group_morning",
+    "anchor": "Ba người nhìn nhau qua gương chiếu hậu.",
+    "restore": "bg_taxi_interior_day"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_tam_date",
+    "id": "cg_tam_c05_tam_pickup",
+    "anchor": "Hoàng nhìn cô.",
+    "restore": "bg_apartment_lobby_morning"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_tam_date",
+    "id": "cg_tam_c05_tam_breakfast",
+    "anchor": "Cốc nước của cô không có đá.",
+    "restore": "bg_c05_breakfast"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_tam_date",
+    "id": "cg_tam_c05_tam_glasshouse",
+    "anchor": "Hoàng đứng trước tấm biển.",
+    "restore": "bg_c05_glasshouse"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_tam_date",
+    "id": "cg_tam_c05_tam_bench",
+    "anchor": "Chỉ có hai cốc giấy, túi bánh đặt giữa, và vài chiếc lá khô bị gió đẩy ngang lối đi.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_huyen_date",
+    "id": "cg_tam_c05_huyen_pickup",
+    "anchor": "Huyền nhận cốc từ tay anh.",
+    "restore": "bg_apartment_lobby_morning"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_huyen_date",
+    "id": "cg_tam_c05_huyen_breakfast",
+    "anchor": "Hoàng đẩy đĩa bánh về phía cô.",
+    "restore": "bg_c05_market_cafe"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_huyen_date",
+    "id": "cg_tam_c05_huyen_photo",
+    "anchor": "Máy ảnh chớp.",
+    "restore": "bg_c05_market_day"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_huyen_date",
+    "id": "cg_tam_c05_huyen_rain",
+    "anchor": "Huyền phủi nước trên tóc.",
+    "restore": "bg_c05_rain_awning"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_friend_group",
+    "id": "cg_tam_c05_group_meal",
+    "anchor": "Tâm bật cười.",
+    "restore": "bg_c05_breakfast"
+  },
+  {
+    "file": "s02_date_or_group.rpy",
+    "label": "tam_c05_sunday_date_s02_friend_group",
+    "id": "cg_tam_c05_group_photo",
+    "anchor": "Máy ảnh chớp đúng lúc Huyền quay sang nhìn cậu.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_tam_gift",
+    "id": "cg_tam_c05_tam_topaz",
+    "anchor": "Viên hoàng ngọc màu vàng nhạt, được giữ bằng phần viền trắng rất mảnh.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_tam_gift",
+    "id": "cg_tam_c05_tam_fastening",
+    "anchor": "Hoàng chỉnh nhẹ phần khóa.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_tam_gift",
+    "id": "cg_tam_c05_tam_fastening",
+    "anchor": "Chỉ đến lúc phần khóa khép lại, đầu ngón tay cậu mới chạm nhẹ vào da cô.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_tam_gift",
+    "id": "cg_tam_c05_tam_fastening",
+    "anchor": "Lần thứ hai, phần khóa vào đúng chỗ.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_tam_gift",
+    "id": "cg_tam_c05_tam_expensive",
+    "anchor": "Nụ cười của Tâm chậm lại.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_tam_gift",
+    "id": "cg_tam_c05_tam_card",
+    "anchor": "Cậu lấy ra một tấm vé gấp đôi.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_huyen_gift",
+    "id": "cg_tam_c05_huyen_printer",
+    "anchor": "Bên trong là một máy in ảnh bỏ túi và một cuốn album nhỏ.",
+    "restore": "bg_c05_market_cafe"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_huyen_gift",
+    "id": "cg_tam_c05_huyen_printer",
+    "anchor": "Bên trong vẫn là máy in ảnh.",
+    "restore": "bg_c05_market_cafe"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_huyen_gift",
+    "id": "cg_tam_c05_huyen_album",
+    "anchor": "Cô đang cười với người ngoài khung hình.",
+    "restore": "bg_c05_market_cafe"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_huyen_gift",
+    "id": "cg_tam_c05_huyen_print",
+    "anchor": "Tờ ảnh nhỏ trượt ra.",
+    "restore": "bg_c05_market_cafe"
+  },
+  {
+    "file": "s03_intimacy_choice.rpy",
+    "label": "tam_c05_sunday_date_s03_group_gift",
+    "id": "cg_tam_c05_group_envelopes",
+    "anchor": "Mỗi phong bì có một tấm ảnh.",
+    "restore": "bg_c05_park"
+  },
+  {
+    "file": "s04_commit_or_keep_open.rpy",
+    "label": "tam_c05_sunday_date_s04_tam_return_home",
+    "id": "cg_tam_c05_tam_collar",
+    "anchor": "Cô đưa tay chỉnh cổ áo bên trái của Hoàng.",
+    "restore": "bg_c05_lobby_night"
+  },
+  {
+    "file": "s04_commit_or_keep_open.rpy",
+    "label": "tam_c05_sunday_date_s04_huyen_return_home",
+    "id": "cg_tam_c05_huyen_car",
+    "anchor": "Cô xoay dây túi quanh ngón tay.",
+    "restore": "bg_c05_car_night"
+  },
+  {
+    "file": "s04_commit_or_keep_open.rpy",
+    "label": "tam_c05_sunday_date_s04_group_afterward",
+    "id": "cg_tam_c05_group_afterward",
+    "anchor": "Tấm ảnh ở công viên xuất hiện.",
+    "restore": "bg_tam_living_room_night"
+  }
+]

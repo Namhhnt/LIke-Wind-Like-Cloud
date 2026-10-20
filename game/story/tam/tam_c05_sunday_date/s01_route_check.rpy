@@ -42,7 +42,11 @@ label tam_c05_sunday_date_s01_tam_morning:
 
     "Sáu giờ mười hai phút sáng Chủ Nhật."
 
+    scene cg_tam_c05_tam_morning
+    with dissolve
     "Tâm đứng trước tủ quần áo, tay giữ một chiếc váy màu cam hồng nhạt."
+    scene bg_tam_room_morning
+    with dissolve
 
     "Trên giường đã có ba bộ khác."
 
@@ -226,7 +230,11 @@ label tam_c05_sunday_date_s01_huyen_morning:
 
     "Bảy giờ ba mươi tám."
 
+    scene cg_tam_c05_huyen_morning
+    with dissolve
     "Huyền mở mắt vì điện thoại rung lần thứ hai."
+    scene bg_bed_room_01_morning
+    with dissolve
 
     "Tin nhắn của Hoàng nằm ngay trên màn hình."
 
@@ -400,6 +408,9 @@ label tam_c05_sunday_date_s01_group_morning:
 
     "Chỉ vì khi một buổi đi chơi có Huyền, mọi kế hoạch ăn mặc đều có nguy cơ kết thúc bằng việc ngồi xổm bên vỉa hè ăn thứ gì đó dính sốt."
 
+    scene bg_taxi_interior_day
+    with dissolve
+
     "Mười một phút sau, Tâm đã ngồi trong xe Hoàng."
 
     "Huyền gửi thêm một tin."
@@ -434,7 +445,11 @@ label tam_c05_sunday_date_s01_group_morning:
 
     "Cửa xe đóng lại."
 
+    scene cg_tam_c05_group_morning
+    with dissolve
     "Ba người nhìn nhau qua gương chiếu hậu."
+    scene bg_taxi_interior_day
+    with dissolve
 
     huyen smile "Rồi. Kỷ niệm một năm bắt đầu ở đâu?"
 
