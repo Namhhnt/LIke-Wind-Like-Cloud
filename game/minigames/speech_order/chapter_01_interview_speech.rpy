@@ -81,6 +81,9 @@ label tam_c01_speech_retry:
 
 label tam_c01_interview_perfect:
 
+    scene cg_tam_c01_interview_portfolio
+    with dissolve
+
     tam serious "I think a project implementation role is more than just relaying information from one side to another."
 
     tam serious "In a company with multiple functions like construction, materials, IT, legal, accounting, and quality management, the implementation team needs to understand where its work sits in the full project flow."
@@ -106,6 +109,9 @@ label tam_c01_interview_perfect:
 
 
 label tam_c01_interview_pass:
+
+    scene cg_tam_c01_interview_portfolio
+    with dissolve
 
     tam serious "I think project implementation work requires coordination skills and close attention to detail."
 

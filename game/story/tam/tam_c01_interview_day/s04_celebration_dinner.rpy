@@ -67,11 +67,17 @@ label tam_c01_interview_day_s04_celebration_dinner:
 
     huyen smile "Chúc mừng chúng ta."
 
+    scene cg_tam_c01_celebration_toast
+    with dissolve
+
     "Hai chiếc ly chạm nhẹ vào nhau."
 
     "Một âm thanh rất nhỏ."
 
     "Nhưng đủ làm buổi tối này có hình dạng riêng."
+
+    scene cg_tam_c01_hoang_window
+    with dissolve
 
     "Ở phía bên kia nhà hàng, một chàng trai trẻ ngồi một mình ở chiếc bàn gần khung cửa sổ."
 
@@ -86,6 +92,9 @@ label tam_c01_interview_day_s04_celebration_dinner:
     hoang_unknown neutral "Không sao. Cứ để thêm một lúc."
 
     "Giọng anh thấp, lịch sự, không gây chú ý."
+
+    scene bg_luxury_restaurant_evening
+    with dissolve
 
     "Nhưng khi Tâm và Huyền cụng ly lần nữa, anh hơi nghiêng đầu nhìn sang."
 

@@ -78,6 +78,9 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
 
     huyen surprised "Hả?"
 
+    scene cg_tam_c01_collar_coffee
+    with dissolve
+
     "Tâm đưa tay chỉnh lại cổ áo cho Huyền."
 
     huyen embarrassed "À... biết rồi. Đừng nhìn tao kiểu đó."
@@ -89,6 +92,9 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
     tam happy "Tao chưa nói gì nhá."
 
     huyen irritated "Nhưng mặt mày nói rồi."
+
+    scene bg_tam_living_room_morning
+    with dissolve
 
     "Huyền đặt một ly cà phê lên bàn, rồi đảo mắt nhìn căn phòng."
 
@@ -299,6 +305,9 @@ label tam_c01_interview_day_s01_tam_huyen_morning:
     "Chỉ có quai túi trên vai cô hơi siết vào lòng bàn tay."
 
     "Chiếc taxi lăn bánh rời khỏi khu chung cư, nhập vào dòng xe buổi sáng."
+
+    scene bg_taxi_interior_day
+    with dissolve
 
     "Ngoài cửa kính, thành phố trôi qua trong những mảng nắng còn nhạt. Tâm đặt tập hồ sơ lên đùi, còn Huyền thì tựa đầu vào ghế, cố tỏ ra bình thản."
 

@@ -114,6 +114,9 @@ label tam_c01_interview_day_s02_interview_room:
 
     call tam_c01_speech_game
 
+    scene bg_interview_room
+    with dissolve
+
     if tam_salary_tier == "high":
         $ story_flag('tam_perfect_interview')
         $ story_add('career_tam', 2)

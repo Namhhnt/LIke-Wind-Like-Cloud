@@ -42,3 +42,4 @@ tmp_*.*
 /tests/ui_refinement_saves/
 /tests/screenshots/
 /tests/performance/
+/tests/opening_assets_saves/

@@ -75,6 +75,9 @@ label tam_c01_interview_day_s03_success_result:
 
     "Hai giây."
 
+    scene cg_tam_c01_offer_hug
+    with dissolve
+
     "Rồi cô chồm tới ôm chầm lấy Tâm."
 
     huyen laughing "Qua rồi! Qua thật rồi!"
@@ -88,6 +91,9 @@ label tam_c01_interview_day_s03_success_result:
     "Vai cô hơi run."
 
     "Không biết vì vui, vì nhẹ nhõm, hay vì cuối cùng buổi sáng dài quá mức kia đã chịu kết thúc."
+
+    scene bg_company_lobby_noon
+    with dissolve
 
     menu:
         "How do they react?"
