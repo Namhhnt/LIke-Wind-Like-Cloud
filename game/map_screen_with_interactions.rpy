@@ -160,7 +160,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
     $ context = MAP_CONTEXTS.get(context_id, MAP_CONTEXTS["act1_default"])
     $ bg = time_get_map_background(context.get("background", "images/maps/city_map_extend_day.webp"))
-    $ panel_bg = ui_frame_or_solid("gui/library/panel.png", "#140f0be6", 26)
+    $ panel_bg = ui_panel("#352b22bb", "#bda178bb", radius=22)
     $ frame_bg = ui_frame_or_solid("gui/library/panel.png", "#201812f0", 26)
     $ map_zoom = interactive_map_get_safe_zoom(INTERACTIVE_MAP_BASE_SIZE, 1.0)
     $ map_canvas_size = interactive_map_get_canvas_size(INTERACTIVE_MAP_BASE_SIZE, map_zoom)
@@ -179,7 +179,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
     fixed:
         xysize (1920, 1080)
 
-        add Solid("#15120f")
+        add Transform("gui/theme/refined/rainy_library_v2.png", blur=6) fit "cover"
 
         add Solid("#05040355")
         add Solid("#1a120755") ypos 760 ysize 320
@@ -206,7 +206,7 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
 
                 add Solid("#0806031c")
 
-                for entry in sorted(entries, key=lambda item, target=focus_target_entry: item == target):
+                for entry index entry.get("id") in sorted(entries, key=lambda item, target=focus_target_entry: item == target):
                     use interactive_map_marker(entry, hovered_entry=hovered_entry, focus_target_entry=focus_target_entry, map_zoom=map_zoom)
 
                 for label_entry in map_view_model["label_entries"]:
@@ -218,6 +218,8 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
             title_override=title_override,
             phone_action=Return({"_action": "phone"}),
             skip_action=(Return({"_action": "time_skip"}) if time_skip_is_available() else None),
+            timeline_action=(Return({"_action": "timeline"}) if allow_timeline else None),
+            back_action=(Return(None) if allow_back else None),
         )
 
         frame:
@@ -234,13 +236,17 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
             xpos 1432
             ypos 190
             xsize 430
-            ysize (158 if events_panel_collapsed else 680)
+            ysize (158 if events_panel_collapsed else 862)
             background panel_bg
             padding (28, 28)
 
             vbox:
                 spacing 16
                 xfill True
+
+                if time_get_main_today_summary():
+                    text _("Main Today") style "interactive_map_panel_title"
+                    text time_get_main_today_summary() style "interactive_map_panel_body"
 
                 hbox:
                     xfill True
@@ -266,66 +272,55 @@ screen interactive_map_screen(entries, context_id="act1_default", allow_back=Tru
                         scrollbars "vertical"
                         mousewheel True
                         draggable True
-                        ysize 340
+                        xsize 374
+                        ysize (400 if time_get_main_today_summary() else 500)
 
                         vbox:
+                            # Keep text wrapping identical during scrollbar
+                            # measurement and the final draw; otherwise every
+                            # row is laid out repeatedly at different widths.
+                            xsize 350
                             spacing 10
 
-                            for panel_entry in map_view_model["panel_entries"]:
-                                $ entry = panel_entry["entry"]
-                                $ state = panel_entry["state"]
-                                $ title = panel_entry["title"]
-                                $ description = panel_entry["description"]
-                                $ route_line = panel_entry["route_line"]
-                                $ list_action = [SetScreenVariable("focus_target_entry", entry), Function(interactive_map_focus_entry, entry, map_zoom, map_canvas_size, map_viewport_size, map_focus_center)]
+                            for panel_entry index panel_entry["entry"].get("id") in map_view_model["panel_entries"]:
+                                use interactive_map_list_entry(panel_entry, hovered_entry, focus_target_entry, map_zoom, map_canvas_size, map_viewport_size, map_focus_center)
 
-                                button:
-                                    style "interactive_map_list_button"
-                                    hovered If(
-                                        hovered_entry != entry or focus_target_entry != entry,
-                                        true=[SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)],
-                                        false=NullAction(),
-                                    )
-                                    unhovered If(
-                                        hovered_entry is not None,
-                                        true=SetScreenVariable("hovered_entry", None),
-                                        false=NullAction(),
-                                    )
-                                    action list_action
-
-                                    vbox:
-                                        spacing 4
-                                        xfill True
-
-                                        text title:
-                                            style ("interactive_map_list_title_locked" if state != "available" else "interactive_map_list_title")
-
-                                        text route_line:
-                                            style "interactive_map_list_meta"
-
-                                        if state == "locked":
-                                            text entry.get("lock_reason", _("Locked.")):
-                                                style "interactive_map_list_meta_locked"
-                                        elif description:
-                                            text description:
-                                                style "interactive_map_list_meta"
-
-                if allow_timeline:
-                    textbutton _("Open Timeline View"):
-                        style "interactive_map_secondary_button"
-                        text_style "interactive_map_secondary_button_text"
-                        action Return({"_action": "timeline"})
-
-                if allow_back:
-                    textbutton _("Back"):
-                        style "interactive_map_secondary_button"
-                        text_style "interactive_map_secondary_button_text"
-                        action Return(None)
+        if not events_panel_collapsed:
+            add Transform("gui/theme/refined/botanical_sprig_v2.png", alpha=0.38):
+                pos (1694, 886)
+                xysize (142, 142)
 
         if hovered_entry:
             use map_hover_panel(hovered_entry, empty_prompt=False, focus_entry=focus_entry, map_zoom=map_zoom, map_canvas_size=map_canvas_size, map_viewport_size=map_viewport_size, map_focus_center=map_focus_center)
         elif focus_entry:
             use map_hover_panel(focus_entry, focus_entry=focus_entry, map_zoom=map_zoom, map_canvas_size=map_canvas_size, map_viewport_size=map_viewport_size, map_focus_center=map_focus_center)
+
+
+# A parameterized row has its own stable local scope. Reassigning title/state
+# in the parent loop invalidated every Text layout on every interaction.
+screen interactive_map_list_entry(panel_entry, hovered_entry, focus_target_entry, map_zoom, map_canvas_size, map_viewport_size, map_focus_center):
+    $ entry = panel_entry["entry"]
+    $ state = panel_entry["state"]
+    button:
+        id ("map_location_" + entry["id"])
+        style "interactive_map_list_button"
+        hovered If(
+            hovered_entry != entry or focus_target_entry != entry,
+            true=[SetScreenVariable("hovered_entry", entry), SetScreenVariable("focus_target_entry", entry)],
+            false=NullAction(),
+        )
+        unhovered If(hovered_entry is not None, true=SetScreenVariable("hovered_entry", None), false=NullAction())
+        action [SetScreenVariable("focus_target_entry", entry), Function(interactive_map_focus_entry, entry, map_zoom, map_canvas_size, map_viewport_size, map_focus_center)]
+        vbox:
+            spacing 4
+            xfill True
+            text panel_entry["title"]:
+                style ("interactive_map_list_title_locked" if state != "available" else "interactive_map_list_title")
+            text panel_entry["route_line"] style "interactive_map_list_meta"
+            if state == "locked":
+                text entry.get("lock_reason", _("Locked.")) style "interactive_map_list_meta_locked"
+            elif panel_entry["description"]:
+                text panel_entry["description"] style "interactive_map_list_meta"
 
 
 screen interactive_map_marker(entry, hovered_entry=None, focus_target_entry=None, map_zoom=1.0):
@@ -352,7 +347,7 @@ screen interactive_map_marker(entry, hovered_entry=None, focus_target_entry=None
         )
         action marker_action
 
-        add MapPin(locked=state != "available", selected=entry == focus_target_entry):
+        add ui_map_pin(locked=state != "available", selected=entry == focus_target_entry, kind={"company": "building", "airport": "plane", "cafe": "cup", "coffee_shop": "cup"}.get(entry.get("location_id"), "home")):
             align (0.5, 0.5)
 
 
@@ -384,25 +379,27 @@ screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0
     $ state = entry.get("state", "available")
     $ title = entry.get("title", entry.get("name", ""))
     $ route_line = _("Location Hub") if entry.get("kind") == "location_hub" else (route_title(entry.get("route_id")) if entry.get("route_id") else _("Location"))
+    $ preview_path = {"company": "images/assets/bg/bg_company_lobby_morning.webp", "airport": "images/assets/bg/bg_airport_arrival_day.webp", "nguyen_family_house": "images/assets/bg/bg_tam_family_entry_evening.webp", "tam_apartment": "images/assets/bg/bg_tam_living_room_morning.webp", "restaurant": "images/assets/bg/bg_luxury_restaurant_evening.webp"}.get(entry.get("location_id"), time_get_map_background("images/maps/city_map_extend_day.webp"))
 
     frame:
         xpos 58
         ypos 888
-        xsize 1804
+        xsize 1350
         ysize 164
-        background ui_frame_or_solid("gui/library/panel.png", "#120f0cf2", 24)
+        background ui_panel("#2a2018df", "#c3a06bba", ornate=True)
         padding (40, 24)
 
         hbox:
             spacing 24
             xfill True
 
-            text ("◆" if entry.get("kind") == "main" else "●"):
-                style "interactive_map_hover_icon"
+            add preview_path:
+                xysize (220, 116)
+                fit "cover"
 
             vbox:
                 spacing 6
-                xsize 1190
+                xsize 660
 
                 text title:
                     style "interactive_map_hover_title"
@@ -427,6 +424,8 @@ screen map_hover_panel(entry, empty_prompt=False, focus_entry=None, map_zoom=1.0
                     button:
                         id "map_go_to_location"
                         style "interactive_map_secondary_button"
+                        background ui_panel("#a78148bb", "#f5d49bee", radius=30)
+                        hover_background ui_panel("#bc965bcf", "#ffebc9", radius=30)
                         sensitive state == "available"
                         action Return(entry)
                         text _("Go to location"):
@@ -486,8 +485,9 @@ style interactive_map_subtitle:
 
 style interactive_map_panel_title:
     size 26
-    bold True
-    color "#e4bf7a"
+    bold False
+    font "fonts/NotoSerif-Italic.ttf"
+    color "#efe0c5"
 
 style interactive_map_panel_body:
     size 19
@@ -517,8 +517,8 @@ style interactive_map_drag_hint:
     yalign 0.5
 
 style interactive_map_focus_button:
-    background Solid("#38291fe6")
-    hover_background Solid("#604631f0")
+    background ui_panel("#38291f88", "#c3a67688", radius=24)
+    hover_background ui_panel("#604631aa", "#e4bf7abb", radius=24)
     xsize 156
     ysize 56
     xpadding 18
@@ -526,13 +526,13 @@ style interactive_map_focus_button:
 
 style interactive_map_focus_button_text:
     size 24
-    bold True
+    bold False
     color "#fff0d6"
     hover_color "#fff8e8"
 
 style interactive_map_list_button:
-    background Solid("#211912cc")
-    hover_background Solid("#3a2a1dde")
+    background ui_panel("#34291fa0", "#a6885666", radius=14)
+    hover_background ui_panel("#80613eaa", "#e4bf7abb", radius=14)
     insensitive_background Solid("#17110ccc")
     xfill True
     ypadding 12
@@ -540,12 +540,12 @@ style interactive_map_list_button:
 
 style interactive_map_list_title:
     size 24
-    bold True
+    bold False
     color "#f7e6c8"
 
 style interactive_map_list_title_locked:
     size 24
-    bold True
+    bold False
     color "#a99783"
 
 style interactive_map_list_meta:
@@ -557,8 +557,8 @@ style interactive_map_list_meta_locked:
     color "#ad9b8a"
 
 style interactive_map_secondary_button:
-    background Solid("#473019cc")
-    hover_background Solid("#3a2c1ecc")
+    background ui_panel("#60452d99", "#b8956388", radius=24)
+    hover_background ui_panel("#89643eaa", "#e4bf7abb", radius=24)
     insensitive_background Solid("#17120dcc")
     xfill True
     ypadding 12
@@ -623,16 +623,16 @@ style interactive_map_marker_text_locked:
     outlines [(2, "#120d09dd", 0, 0)]
 
 style interactive_map_marker_label_button:
-    background Solid("#120d0988")
-    hover_background Solid("#3b2a1ee8")
+    background ui_panel("#20170fbb", "#c3a67699", radius=8)
+    hover_background ui_panel("#3b2a1ee8", "#e4bf7abb", radius=8)
     xpadding 16
     ypadding 8
     xmaximum 300
     
 
 style interactive_map_marker_label_button_text:
-    size 16
-    bold True
+    size 20
+    bold False
     color "#f6e3c4"
     hover_color "#ffddaa"
     text_align 0.5
@@ -644,8 +644,9 @@ style interactive_map_hover_icon:
     yalign 0.5
 
 style interactive_map_hover_title:
-    size 30
-    bold True
+    size 34
+    bold False
+    font "fonts/NotoSerif-Italic.ttf"
     color "#f6e3c4"
 
 style interactive_map_hover_meta:

@@ -4,8 +4,8 @@ init -2:
     define LIB_GOLD = "#E8C27A"
     define LIB_GOLD_DARK = "#B98A4A"
     define LIB_PANEL = "#16120FCC"
-    define LIB_PANEL_SOFT = "#211A16AA"
-    define LIB_PANEL_HOVER = "#33261BCC"
+    define LIB_PANEL_SOFT = "#211A16EE"
+    define LIB_PANEL_HOVER = "#33261BF2"
     define LIB_DISABLED = "#8A8173"
     define LIB_BORDER = "#C99B5F"
 
@@ -55,6 +55,28 @@ style library_card_arrow is default:
     color LIB_GOLD
     size 34
     font gui.interface_text_font
+
+style library_compact_card_title is default:
+    color LIB_TEXT
+    size 44
+    font gui.interface_text_font
+    outlines [(1, "#00000088", 0, 1)]
+
+style library_compact_card_subtitle is default:
+    color LIB_MUTED
+    size 34
+    line_spacing 6
+    font gui.interface_text_font
+
+style library_compact_card_progress is default:
+    color LIB_GOLD
+    size 32
+    font gui.interface_text_font
+
+style library_compact_card_arrow is default:
+    color LIB_GOLD
+    size 48
+    font "DejaVuSans.ttf"
 
 style library_placeholder_title is default:
     color LIB_TEXT
@@ -118,10 +140,10 @@ style library_story_text is default:
     font gui.interface_text_font
 
 style library_story_button_button is button:
-    background Solid("#2C2018CC")
-    hover_background Solid("#5A3C24DD")
-    insensitive_background Solid("#221914AA")
-    padding (22, 12)
+    background ui_panel("#2c2018cc", "#c3a67688", radius=16)
+    hover_background ui_panel("#76583bcc", "#e1bc83dd", radius=16)
+    insensitive_background ui_panel("#22191488", "#c3a67644", radius=16)
+    padding (22, 8)
 
 style library_story_button_text is button_text:
     color LIB_TEXT

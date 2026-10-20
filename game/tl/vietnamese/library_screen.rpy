@@ -12,6 +12,12 @@ translate vietnamese strings:
     old "Locked"
     new "Bị khóa"
 
+    old "CG Gallery"
+    new "Bộ sưu tập CG"
+
+    old "Review memorable visual moments."
+    new "Xem lại những khoảnh khắc đáng nhớ."
+
 translate vietnamese strings:
 
     old "No content yet"

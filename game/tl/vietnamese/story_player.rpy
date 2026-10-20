@@ -1,7 +1,7 @@
 translate vietnamese strings:
 
     old "Back to Stories"
-    new "Quay lại Truyện gốc"
+    new "Quay lại Ngoại truyện"
 
     old "Return to the Library and try another story."
     new "Hãy quay lại Thư viện và thử một truyện khác."

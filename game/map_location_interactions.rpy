@@ -1002,7 +1002,12 @@ init -1 python:
 
 
     def ensure_activity_state():
-        initialize_progression()
+        # A HUD getter is not a progression mutation. Full initialization also
+        # validates every chapter and scans every phone unlock; doing that from
+        # each clock/money/time getter made one screen update run it 11 times.
+        # Bootstrap/after_load and chapter completion keep explicit refreshes.
+        if not isinstance(progress, dict) or not progress.get("initialized"):
+            initialize_progression()
 
         state = progress.setdefault("activity_state", {})
         if state is None or not isinstance(state, dict):

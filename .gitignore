@@ -39,4 +39,6 @@ tmp_*.*
 
 # Isolated UI test saves and generated review captures.
 /tests/ui_refresh_saves/
+/tests/ui_refinement_saves/
 /tests/screenshots/
+/tests/performance/

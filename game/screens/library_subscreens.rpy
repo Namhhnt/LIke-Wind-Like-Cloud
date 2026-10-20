@@ -50,6 +50,7 @@ screen library_characters():
     use library_menu_shell(
         page_title=_("Character Profiles"),
         page_subtitle=_("Learn about the characters in the story."),
+        split=True,
         back_action=ShowMenu("library")
     ):
 
@@ -69,17 +70,21 @@ screen library_characters():
                         $ unlocked = is_character_unlocked(profile)
                         button:
                             xsize 336
-                            ysize 82
+                            ysize (112 if ui_is_compact() else 82)
                             padding (20, 12)
-                            background Solid(LIB_PANEL_HOVER if profile["id"] == selected_profile_id else LIB_PANEL)
-                            hover_background Solid(LIB_PANEL_HOVER)
+                            background ui_panel("#98734588" if profile["id"] == selected_profile_id else LIB_PANEL, "#e8c27abb" if profile["id"] == selected_profile_id else "#a6885655", radius=24)
+                            hover_background ui_panel(LIB_PANEL_HOVER, LIB_GOLD, radius=24)
                             sensitive unlocked
                             action SetScreenVariable("selected_profile_id", profile["id"])
-                            text (profile["name"] if unlocked else _("Locked")):
-                                style "library_story_card_title"
-                                size 26
+                            hbox:
+                                spacing 18
                                 yalign 0.5
-                                color (LIB_TEXT if unlocked else LIB_DISABLED)
+                                add Transform(ui_icon("characters", muted=not unlocked), xysize=(48,48))
+                                text (profile["name"] if unlocked else _("Locked")):
+                                    style "library_story_card_title"
+                                    size (34 if ui_is_compact() else 24)
+                                    yalign 0.5
+                                    color (LIB_TEXT if unlocked else LIB_DISABLED)
 
             $ selected_profile = next((p for p in CHARACTER_PROFILES if p["id"] == selected_profile_id and is_character_unlocked(p)), None)
             if selected_profile:
@@ -99,27 +104,35 @@ screen library_profile_preview(profile):
             spacing 20
             hbox:
                 spacing 28
-                if profile.get("sprite"):
-                    add profile["sprite"] xysize (180, 180)
+                frame:
+                    xysize (240, 240)
+                    padding (12, 12)
+                    background ui_panel("#8d6c3e66", "#d7b57ccc", radius=120)
+                    if profile.get("sprite"):
+                        add profile["sprite"] xysize (216, 216) fit "contain"
+                    else:
+                        add Transform(ui_icon("characters"), xysize=(216,216))
                 vbox:
-                    xsize 950
+                    xsize 870
                     spacing 16
-                    text profile["name"] style "library_placeholder_title"
-                    text profile.get("description", "") style "library_story_summary_text"
+                    text profile["name"] style "library_placeholder_title" size 64
+                    add GoldDivider() xsize 820
+                    text profile.get("description", "") style "library_story_summary_text" size (36 if ui_is_compact() else 22)
 
             for field, heading in [("role", _("Role")), ("public_identity", _("Public Identity")), ("inner_layer", _("Inner Layer")), ("core_traits", _("Core Traits")), ("narrative_function", _("Narrative Function")), ("hidden_identity", _("Hidden Identity")), ("aliases", _("Aliases")), ("notes", _("Notes"))]:
                 if details.get(field):
                     frame:
                         xsize 1190
                         padding (24, 18)
-                        background Solid(LIB_PANEL)
+                        background ui_panel(LIB_PANEL)
                         vbox:
                             spacing 8
-                            text heading style "library_story_meta" color LIB_GOLD
+                            text heading style "library_story_meta" color LIB_GOLD size (34 if ui_is_compact() else 21)
                             if field in ("role", "public_identity") or is_character_section_unlocked(cid, field):
                                 $ value = details[field]
                                 text (", ".join(value) if isinstance(value, (list, tuple)) else value):
                                     style "library_story_summary_text"
+                                    size (36 if ui_is_compact() else 22)
                             else:
                                 text _("Character locked. Progress the story to unlock their profile.") style "library_story_meta"
 
@@ -524,8 +537,8 @@ screen library_story_card(item):
     $ read_status = _("Read") if item["id"] in persistent.read_library_content else _("Unread")
 
     frame:
-        xsize 1148
-        background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+        xsize 1612
+        background ui_panel("#322920f2", "#8f7755", radius=24)
         padding (24, 22)
 
         vbox:
@@ -539,36 +552,45 @@ screen library_story_card(item):
 
                     text item["title"]:
                         style "library_story_card_title"
+                        size (42 if ui_is_compact() else 34)
 
                     text item.get("series") or _("Original Stories"):
                         style "library_story_card_subtitle"
+                        size (34 if ui_is_compact() else 22)
 
                 null xfill True
 
                 text status_text:
                     style "library_story_status_text"
+                    size (32 if ui_is_compact() else 24)
 
             grid 2 3:
                 xfill True
                 spacing 16
 
-                text _("Series") + ": " + (item.get("series") or _("Original Stories")):
+                text ui_translate(_("Series")) + ": " + (item.get("series") or ui_translate(_("Original Stories"))):
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
-                text _("Type") + ": " + item.get("type", "original_story").replace("_", " ").title():
+                text ui_translate(_("Type")) + ": " + item.get("type", "original_story").replace("_", " ").title():
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
-                text _("Size") + ": " + item.get("size", "small").title():
+                text ui_translate(_("Size")) + ": " + item.get("size", "small").title():
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
-                text _("Points") + ": " + str(item.get("point_cost", 0)):
+                text ui_translate(_("Points")) + ": " + str(item.get("point_cost", 0)):
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
-                text _("Story Gate") + ": " + get_library_prerequisite_text(item):
+                text ui_translate(_("Story Gate")) + ": " + ui_translate(get_library_prerequisite_text(item)):
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
-                text _("Read status") + ": " + read_status:
+                text ui_translate(_("Read status")) + ": " + ui_translate(read_status):
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
             hbox:
                 xfill True
@@ -578,11 +600,15 @@ screen library_story_card(item):
                 if story_state in ["available", "read"]:
                     textbutton action_label:
                         style_prefix "library_story_button"
+                        text_size (40 if ui_is_compact() else 24)
+                        yminimum (104 if ui_is_compact() else 52)
                         action ShowMenu("library_story_reader", content_id=item["id"])
 
                 elif story_state == "unlockable":
                     textbutton action_label:
                         style_prefix "library_story_button"
+                        text_size (40 if ui_is_compact() else 24)
+                        yminimum (104 if ui_is_compact() else 52)
                         action Show("library_story_unlock_confirm", content_id=item["id"])
 
                 else:
@@ -612,12 +638,12 @@ screen library_stories():
             hbox:
                 xfill True
 
-                text _("Investment Points: %(points)s") % {"points": persistent.investment_points}:
+                text ui_translate(_("Investment Points: %(points)s")) % {"points": persistent.investment_points}:
                     style "library_story_summary_text"
 
                 null xfill True
 
-                text _("Read status: %(status)s") % {"status": get_story_library_progress_text()}:
+                text ui_translate(_("Read status: %(status)s")) % {"status": get_story_library_progress_text()}:
                     style "library_story_summary_text"
 
             if not story_items:
@@ -642,6 +668,7 @@ screen library_story_unlock_confirm(content_id):
 
     modal True
     zorder 250
+    key "game_menu" action Hide("library_story_unlock_confirm")
 
     $ item = get_library_item(content_id)
     $ cost = item.get("point_cost", 0) if item else 0
@@ -653,8 +680,8 @@ screen library_story_unlock_confirm(content_id):
     frame:
         xalign 0.5
         yalign 0.5
-        xsize 720
-        background ui_frame_or_solid("gui/library/panel.png", "#120f0cf2", 24)
+        xsize (1120 if ui_is_compact() else 800)
+        background ui_panel("#322920fa", "#8f7755", radius=24)
         padding (34, 30)
 
         vbox:
@@ -747,8 +774,8 @@ screen library_music_card(item):
     $ is_playing = is_library_music_playing(item["id"])
 
     frame:
-        xsize 1148
-        background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+        xsize 1612
+        background ui_panel("#322920f2", "#8f7755", radius=24)
         padding (24, 22)
 
         vbox:
@@ -762,9 +789,11 @@ screen library_music_card(item):
 
                     text item["title"]:
                         style "library_story_card_title"
+                        size (42 if ui_is_compact() else 34)
 
                     text item.get("series") or _("Original Soundtrack"):
                         style "library_story_card_subtitle"
+                        size (34 if ui_is_compact() else 22)
 
                 null xfill True
 
@@ -776,15 +805,17 @@ screen library_music_card(item):
                 else:
                     text _("Locked") style "library_story_status_text"
 
-            grid 2 2:
+            hbox:
                 xfill True
                 spacing 16
 
-                text _("Story Gate") + ": " + prereq_text:
+                text ui_translate(_("Story Gate")) + ": " + ui_translate(prereq_text):
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
-                text _("Status") + ": " + (_("Unlocked") if is_unlocked else _("Locked")):
+                text ui_translate(_("Status")) + ": " + ui_translate(_("Unlocked") if is_unlocked else _("Locked")):
                     style "library_story_meta"
+                    size (32 if ui_is_compact() else 21)
 
             hbox:
                 xfill True
@@ -793,14 +824,10 @@ screen library_music_card(item):
                 null xfill True
 
                 if is_unlocked and is_playing:
-                    textbutton _("Stop"):
-                        style_prefix "library_story_button"
-                        action Function(stop_library_music_preview)
+                    use library_media_action(_("Stop"), "stop", Function(stop_library_music_preview))
 
                 if is_unlocked:
-                    textbutton (_("Play Again") if is_playing else _("Play")):
-                        style_prefix "library_story_button"
-                        action Function(play_library_music_track, item["id"])
+                    use library_media_action((_("Play Again") if is_playing else _("Play")), "play", Function(play_library_music_track, item["id"]))
                 else:
                     textbutton _("Locked"):
                         style_prefix "library_story_button"
@@ -844,8 +871,15 @@ screen library_minigames():
                         style "library_placeholder_body"
 
             else:
-                for item in minigame_items:
-                    use library_minigame_card(item)
+                viewport:
+                    ysize 520
+                    scrollbars "vertical"
+                    mousewheel True
+                    draggable True
+                    vbox:
+                        spacing 20
+                        for item in minigame_items:
+                            use library_minigame_card(item)
 
 
 screen library_minigame_card(item):
@@ -856,8 +890,8 @@ screen library_minigame_card(item):
     $ can_replay = is_unlocked and replay_info is not None
 
     frame:
-        xsize 1148
-        background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+        xsize 1612
+        background ui_panel("#322920f2", "#8f7755", radius=24)
         padding (24, 22)
 
         vbox:
@@ -970,8 +1004,8 @@ screen library_extras():
                             $ desc = secret_def.get("description", "")
 
                             frame:
-                                xsize 1148
-                                background ui_frame_or_solid("gui/library/panel.png", "#120f0ccc", 24)
+                                xsize 1612
+                                background ui_panel("#322920f2", "#8f7755", radius=24)
                                 padding (24, 18)
 
                                 hbox:
@@ -985,7 +1019,7 @@ screen library_extras():
                                         yalign 0.5
 
                                     vbox:
-                                        xsize 1020
+                                        xsize 1490
                                         spacing 6
                                         yalign 0.5
 

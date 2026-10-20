@@ -1,3 +1,11 @@
+style timeline_compact_icon_button is button:
+    xysize (112, 112)
+    padding (20, 20)
+    background ui_panel("#322920f2", "#8f7755", radius=20)
+    hover_background ui_panel("#594432ee", "#d6b477", radius=20)
+    insensitive_background ui_panel("#241e1977", "#8f775555", radius=20)
+
+
 screen timeline_chapter_map(route_id=None, selected_node_id=None):
     tag menu
     modal True
@@ -7,6 +15,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
 
     default selected_route = timeline_normalize_route_id(route_id)
     default active_node_id = selected_node_id if selected_node_id else timeline_get_first_selectable_node(selected_route)
+    $ compact = ui_is_compact()
 
     $ screen_state = timeline_build_screen_state(selected_route, active_node_id, 1744)
     $ nodes = screen_state["nodes"]
@@ -32,38 +41,60 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
             xpos 80
             ypos 42
 
-        text _("Your journey through the story"):
-            style "timeline_subtitle"
-            xpos 84
-            ypos 118
+        if not compact:
+            text _("Your journey through the story"):
+                style "timeline_subtitle"
+                xpos 84
+                ypos 118
 
-        textbutton _("Back"):
-            style "timeline_back_button"
-            text_style "timeline_back_button_text"
-            xpos 1670
-            ypos 48
-            action MainMenu(confirm=False)
+        if compact:
+            button:
+                id "timeline_back"
+                style "timeline_compact_icon_button"
+                pos (1744, 32)
+                alt _("Back")
+                tooltip _("Back")
+                action MainMenu(confirm=False)
+                add ui_icon("back", medallion=False) xysize (72, 72)
+        else:
+            textbutton _("Back"):
+                style "timeline_back_button"
+                text_style "timeline_back_button_text"
+                background ui_panel("#322920f2", "#8f7755", radius=18)
+                hover_background ui_panel("#594432ee", "#d6b477", radius=18)
+                xpos 1670
+                ypos 48
+                action MainMenu(confirm=False)
 
-        hbox:
-            xpos 80
-            ypos 158
-            spacing 14
+        viewport:
+            xpos (650 if compact else 80)
+            ypos (32 if compact else 158)
+            xysize ((1040, 112) if compact else (1744, 50))
+            draggable True
+            mousewheel "horizontal"
+            hbox:
+                spacing 14
 
-            for route in (TIMELINE_ROUTES if len(TIMELINE_ROUTES) > 1 else []):
-                $ is_selected = route["id"] == selected_route
-                $ route_style = "timeline_route_tab_selected" if is_selected else "timeline_route_tab"
-                $ route_text_style = "timeline_route_tab_text_selected" if is_selected else "timeline_route_tab_text"
+                for route in (TIMELINE_ROUTES if len(TIMELINE_ROUTES) > 1 else []):
+                    $ is_selected = route["id"] == selected_route
+                    $ route_style = "timeline_route_tab_selected" if is_selected else "timeline_route_tab"
+                    $ route_text_style = "timeline_route_tab_text_selected" if is_selected else "timeline_route_tab_text"
 
-                textbutton route["label"]:
-                    style route_style
-                    text_style route_text_style
-                    action [
-                        SetScreenVariable("selected_route", route["id"]),
-                        SetScreenVariable("active_node_id", timeline_get_first_selectable_node(route["id"]))
-                    ]
+                    textbutton route["label"]:
+                        style route_style
+                        text_style route_text_style
+                        xysize ((248, 112) if compact else (160, 50))
+                        text_size (40 if compact else 24)
+                        background ui_panel("#594432ee" if is_selected else "#322920f2", "#d6b477" if is_selected else "#8f7755", radius=18)
+                        hover_background ui_panel("#594432ee", "#d6b477", radius=18)
+                        action [
+                            SetScreenVariable("selected_route", route["id"]),
+                            SetScreenVariable("active_node_id", timeline_get_first_selectable_node(route["id"]))
+                        ]
 
         frame:
             style "timeline_map_panel"
+            background ui_panel("#241e19ee", "#8f7755", radius=28)
             xpos 64
             ypos 210
             xysize (1792, 506)
@@ -119,6 +150,7 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
         else:
             frame:
                 style "timeline_detail_panel"
+                background ui_panel("#322920f2", "#8f7755", radius=24)
                 xpos 64
                 ypos 730
                 xysize (1430, 300)
@@ -128,9 +160,48 @@ screen timeline_chapter_map(route_id=None, selected_node_id=None):
                     xalign 0.5
                     yalign 0.5
 
-        if selected_node:
+        if selected_node and compact:
             frame:
                 style "timeline_legend_panel"
+                pos (1518, 730)
+                xysize (338, 300)
+                background ui_panel("#241e19ee", "#8f7755", radius=24)
+                fixed:
+                    text _("Actions") size 40 color "#d6b477" xalign 0.5 ypos 6
+                    button:
+                        id "timeline_play"
+                        style "timeline_compact_icon_button"
+                        pos (38, 64)
+                        alt _("Play Chapter")
+                        tooltip _("Play Chapter")
+                        sensitive selected_can_play
+                        action Return(("play", selected_chapter_id, selected_route, selected_node["id"]))
+                        text "▶" font "DejaVuSans.ttf" size 52 color "#f5e8d2" align (0.5, 0.5)
+                    button:
+                        id "timeline_preview"
+                        style "timeline_compact_icon_button"
+                        pos (188, 64)
+                        alt _("Preview")
+                        tooltip _("Preview")
+                        sensitive bool(selected_chapter_id)
+                        action Return(("preview", selected_chapter_id, selected_route, selected_node["id"]))
+                        add ui_icon("cg", medallion=False) xysize (72, 72)
+                    button:
+                        id "timeline_bookmark"
+                        style "timeline_compact_icon_button"
+                        pos (113, 180)
+                        alt (_("Remove Bookmark") if selected_chapter_id and timeline_is_bookmarked(selected_chapter_id) else _("Bookmark"))
+                        tooltip (_("Remove Bookmark") if selected_chapter_id and timeline_is_bookmarked(selected_chapter_id) else _("Bookmark"))
+                        sensitive bool(selected_chapter_id)
+                        selected bool(selected_chapter_id and timeline_is_bookmarked(selected_chapter_id))
+                        selected_background ui_panel("#594432ee", "#d6b477", radius=20)
+                        action Return(("bookmark", selected_chapter_id, selected_route, selected_node["id"]))
+                        add ui_icon("stories", medallion=False) xysize (72, 72)
+
+        elif selected_node:
+            frame:
+                style "timeline_legend_panel"
+                background ui_panel("#241e19ee", "#8f7755", radius=24)
                 xpos 1518
                 ypos 730
                 xysize (338, 300)
@@ -199,7 +270,7 @@ screen timeline_time_marker(node, render_x=0):
         ypos node["y"]
         xysize (marker_w, marker_h)
 
-        add Solid("#730f2fee"):
+        add ui_panel("#594432ee", "#8f7755", radius=18):
             xysize (marker_w, marker_h)
 
         add Solid("#f5d7a666"):
@@ -231,6 +302,8 @@ screen timeline_node_card(node, selected_node_id, render_x=0, node_state=None):
         ypos node["y"]
         xysize (node_w, node_h)
         style node_style
+        background ui_panel("#594432ee" if is_selected else "#322920f2", "#d6b477" if is_selected else "#8f7755", radius=18)
+        hover_background ui_panel("#594432ee", "#d6b477", radius=18)
         action SetScreenVariable("active_node_id", node["id"])
 
         fixed:
@@ -368,6 +441,7 @@ screen timeline_detail_panel(route_id, node):
 
     frame:
         style "timeline_detail_panel"
+        background ui_panel("#322920f2", "#8f7755", radius=24)
         xpos 64
         ypos 730
         xysize (1430, 300)

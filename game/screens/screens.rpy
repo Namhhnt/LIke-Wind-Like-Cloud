@@ -698,15 +698,17 @@ screen about():
         style_prefix "about"
 
         vbox:
+            spacing 24
+            xsize (1696 if ui_is_compact() else 1210)
 
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
+            label "[config.name!t]" text_size (56 if ui_is_compact() else 40)
+            text _("Version [config.version!t]\n") size (44 if ui_is_compact() else 32)
 
             ## gui.about is usually set in options.rpy.
             if gui.about:
-                text "[gui.about!t]\n"
+                text "[gui.about!t]\n" size (44 if ui_is_compact() else 32)
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]") size (40 if ui_is_compact() else 30)
 
 
 style about_label is gui_label
@@ -743,6 +745,9 @@ screen load():
 screen file_slots(title):
 
     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
+    $ compact = ui_is_compact()
+    $ slot_columns = 2 if compact else gui.file_slot_cols
+    $ slot_rows = (gui.file_slot_cols * gui.file_slot_rows + 1) // 2 if compact else gui.file_slot_rows
 
     use game_menu(title):
 
@@ -755,6 +760,7 @@ screen file_slots(title):
             ## The page name, which can be edited by clicking on a button.
             button:
                 style "page_label"
+                ysize (104 if compact else 48)
 
                 key_events True
                 xalign 0.5
@@ -763,34 +769,24 @@ screen file_slots(title):
                 input:
                     style "page_label_text"
                     value page_name_value
+                    size (44 if compact else 32)
 
             ## The grid of file slots.
-            grid gui.file_slot_cols gui.file_slot_rows:
-                style_prefix "slot"
-
-                xalign 0.5
-                yalign 0.5
-
-                spacing gui.slot_spacing
-
-                for i in range(gui.file_slot_cols * gui.file_slot_rows):
-
-                    $ slot = i + 1
-
-                    button:
-                        action FileAction(slot)
-
-                        has vbox
-
-                        add FileScreenshot(slot) xalign 0.5
-
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
-                            style "slot_time_text"
-
-                        text FileSaveName(slot):
-                            style "slot_name_text"
-
-                        key "save_delete" action FileDelete(slot)
+            viewport:
+                id "file_slots_scroll"
+                xsize (1728 if compact else 1238)
+                ysize (528 if compact else 542)
+                ypos (112 if compact else 52)
+                mousewheel True
+                draggable compact
+                scrollbars ("vertical" if compact else None)
+                grid slot_columns slot_rows:
+                    xspacing (24 if compact else gui.slot_spacing)
+                    yspacing (24 if compact else gui.slot_spacing)
+                    for i in range(gui.file_slot_cols * gui.file_slot_rows):
+                        use ui_file_slot(i + 1, compact)
+                    if compact and (gui.file_slot_cols * gui.file_slot_rows) % 2:
+                        null
 
             ## Buttons to access other pages.
             vbox:
@@ -804,20 +800,20 @@ screen file_slots(title):
 
                     spacing gui.page_spacing
 
-                    textbutton _("<") action FilePagePrevious()
+                    textbutton _("<") action FilePagePrevious() xysize ((104, 104) if compact else (60, 54)) text_size (44 if compact else 28)
                     key "save_page_prev" action FilePagePrevious()
 
                     if config.has_autosave:
-                        textbutton _("{#auto_page}A") action FilePage("auto")
+                        textbutton _("{#auto_page}A") action FilePage("auto") xysize ((104, 104) if compact else (60, 54)) text_size (40 if compact else 28)
 
                     if config.has_quicksave:
-                        textbutton _("{#quick_page}Q") action FilePage("quick")
+                        textbutton _("{#quick_page}Q") action FilePage("quick") xysize ((104, 104) if compact else (60, 54)) text_size (40 if compact else 28)
 
                     ## range(1, 10) gives the numbers from 1 to 9.
                     for page in range(1, 10):
-                        textbutton "[page]" action FilePage(page)
+                        textbutton "[page]" action FilePage(page) xysize ((104, 104) if compact else (60, 54)) text_size (40 if compact else 28)
 
-                    textbutton _(">") action FilePageNext()
+                    textbutton _(">") action FilePageNext() xysize ((104, 104) if compact else (60, 54)) text_size (44 if compact else 28)
                     key "save_page_next" action FilePageNext()
 
                 if config.has_sync:
@@ -829,6 +825,48 @@ screen file_slots(title):
                         textbutton _("Download Sync"):
                             action DownloadSync()
                             xalign 0.5
+
+
+screen ui_file_slot(slot, compact=False):
+    fixed:
+        xysize ((824, 300) if compact else (394, 255))
+        button:
+            style "slot_button"
+            xysize ((824, 300) if compact else (394, 255))
+            padding ((20, 20) if compact else (15, 12))
+            action FileAction(slot)
+            key "save_delete" action FileDelete(slot)
+            if compact:
+                fixed:
+                    add Transform(FileScreenshot(slot), xysize=(336, 189)) pos (0, 0)
+                    text FileTime(slot, format=_("{#file_time}%d/%m/%Y, %H:%M"), empty=_("empty slot")):
+                        style "ui_menu_text"
+                        pos (366, 0)
+                        xsize 410
+                        size 40
+                    text FileSaveName(slot):
+                        style "ui_menu_text"
+                        pos (366, 126)
+                        xsize 390
+                        ymaximum 104
+                        size 36
+            else:
+                vbox:
+                    add Transform(FileScreenshot(slot), xysize=(320, 180)) xalign 0.5
+                    text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")) style "slot_time_text"
+                    text FileSaveName(slot) style "slot_name_text"
+        if compact:
+            textbutton "\u00d7":
+                style "ui_menu_option"
+                text_font "DejaVuSans.ttf"
+                text_size 48
+                text_color "#d6b477"
+                alt _("Delete")
+                tooltip _("Delete")
+                pos (20, 192)
+                xysize (104, 104)
+                sensitive FileLoadable(slot)
+                action FileDelete(slot)
 
 
 style page_label is gui_label
@@ -874,100 +912,104 @@ style slot_button_text:
 screen preferences():
 
     tag menu
+    default preferences_tab = "display"
+    $ compact = ui_is_compact()
 
     use game_menu(_("Preferences"), scroll="viewport"):
-
-        hbox:
-            box_wrap True
-
-            if renpy.variant("pc") or renpy.variant("web"):
-
+        if compact:
+            hbox:
+                spacing 24
+                for tab_id, tab_caption in (("display", _("Display")), ("text", _("Text Speed")), ("audio", _("Music Volume")), ("development", _("Development"))):
+                    textbutton tab_caption:
+                        id ("preferences_tab_" + tab_id)
+                        style "ui_menu_option"
+                        text_style "ui_menu_option_text"
+                        text_size 40
+                        xysize (400, 104)
+                        selected preferences_tab == tab_id
+                        action SetScreenVariable("preferences_tab", tab_id)
+            null height 28
+            use ui_preferences_group(preferences_tab, compact=True)
+        else:
+            hbox:
+                spacing 40
                 vbox:
-                    style_prefix "radio"
-                    label _("Display")
-                    textbutton _("Window") action Preference("display", "window")
-                    textbutton _("Fullscreen") action Preference("display", "fullscreen")
+                    spacing 28
+                    use ui_preferences_group("display")
+                    use ui_preferences_group("text")
+                vbox:
+                    spacing 28
+                    use ui_preferences_group("audio")
+                    use ui_preferences_group("development")
 
-            vbox:
-                style_prefix "check"
-                label _("Skip")
-                textbutton _("Unseen Text") action Preference("skip", "toggle")
-                textbutton _("After Choices") action Preference("after choices", "toggle")
-                textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
-            vbox:
-                style_prefix "check"
-                label _("Language")
-                textbutton "English" action Language("english")
-                textbutton _("Vietnamese") action Language("vietnamese")
-                textbutton _("Japanese") action Language("japanese")
-
-        null height (4 * gui.pref_spacing)
-
-        hbox:
-            style_prefix "slider"
-            box_wrap True
-
-            vbox:
-
-                label _("Text Speed")
-
-                bar value Preference("text speed")
-
-                label _("Auto-Forward Time")
-
-                bar value Preference("auto-forward time")
-
-            vbox:
-
-                if config.has_music:
-                    label _("Music Volume")
-
-                    hbox:
-                        bar value Preference("music volume")
-
-                if config.has_sound:
-
-                    label _("Sound Volume")
-
-                    hbox:
-                        bar value Preference("sound volume")
-
+screen ui_preferences_group(group, compact=False):
+    $ control_width = 1648 if compact else 560
+    vbox:
+        spacing (24 if compact else 18)
+        if group == "display":
+            if renpy.variant("pc") or renpy.variant("web"):
+                text _("Display") style "ui_menu_heading" size (48 if compact else 34)
+                hbox:
+                    spacing 24
+                    use ui_preference_option(_("Window"), Preference("display", "window"), width=800 if compact else 268)
+                    use ui_preference_option(_("Fullscreen"), Preference("display", "fullscreen"), width=800 if compact else 268)
+            text _("Language") style "ui_menu_heading" size (48 if compact else 34)
+            if compact:
+                hbox:
+                    spacing 24
+                    use ui_preference_option("English", Language("english"), width=528, selected_override=(_preferences.language in (None, "english")))
+                    use ui_preference_option(_("Vietnamese"), Language("vietnamese"), width=528)
+                    use ui_preference_option(_("Japanese"), Language("japanese"), width=528)
+            else:
+                use ui_preference_option("English", Language("english"), selected_override=(_preferences.language in (None, "english")))
+                use ui_preference_option(_("Vietnamese"), Language("vietnamese"))
+                use ui_preference_option(_("Japanese"), Language("japanese"))
+        elif group == "text":
+            use ui_preference_slider(_("Text Speed"), "text speed", width=control_width)
+            use ui_preference_slider(_("Auto-Forward Time"), "auto-forward time", width=control_width)
+            text _("Skip") style "ui_menu_heading" size (48 if compact else 34)
+            if compact:
+                hbox:
+                    spacing 24
+                    use ui_preference_option(_("Unseen Text"), Preference("skip", "toggle"), width=528, check=True)
+                    use ui_preference_option(_("After Choices"), Preference("after choices", "toggle"), width=528, check=True)
+                    use ui_preference_option(_("Transitions"), InvertSelected(Preference("transitions", "toggle")), width=528, check=True)
+            else:
+                use ui_preference_option(_("Unseen Text"), Preference("skip", "toggle"), check=True)
+                use ui_preference_option(_("After Choices"), Preference("after choices", "toggle"), check=True)
+                use ui_preference_option(_("Transitions"), InvertSelected(Preference("transitions", "toggle")), check=True)
+        elif group == "audio":
+            hbox:
+                spacing 40
+                vbox:
+                    spacing 20
+                    if config.has_music:
+                        use ui_preference_slider(_("Music Volume"), "music volume", width=1040 if compact else 560)
+                    if config.has_sound:
+                        use ui_preference_slider(_("Sound Volume"), "sound volume", width=1040 if compact else 560)
                         if config.sample_sound:
-                            textbutton _("Test") action Play("sound", config.sample_sound)
-
-
-                if config.has_voice:
-                    label _("Voice Volume")
-
-                    hbox:
-                        bar value Preference("voice volume")
-
+                            textbutton _("Test") style "ui_menu_option" text_style "ui_menu_option_text" yminimum (104 if compact else 62) action Play("sound", config.sample_sound)
+                    if config.has_voice:
+                        use ui_preference_slider(_("Voice Volume"), "voice volume", width=1040 if compact else 560)
                         if config.sample_voice:
-                            textbutton _("Test") action Play("voice", config.sample_voice)
-
-                if config.has_music or config.has_sound or config.has_voice:
-                    null height gui.pref_spacing
-
-                    textbutton _("Mute All"):
-                        action Preference("all mute", "toggle")
-                        style "mute_all_button"
-
-        null height gui.pref_spacing
-
-        vbox:
-            style_prefix "check"
-            label _("Development")
-            textbutton _("Debugging Mode"):
-                action ToggleField(persistent, "debugging_mode")
-                selected persistent.debugging_mode
-            textbutton _("Route Map") action Jump("route_map")
-            textbutton _("Problem Diagnosis Debug"):
-                action ShowMenu("problem_diagnosis_debug_menu")
-                sensitive persistent.debugging_mode
-            textbutton _("Progress Debug"):
-                action ShowMenu("debug_progression")
-                sensitive persistent.debugging_mode
+                            textbutton _("Test") style "ui_menu_option" text_style "ui_menu_option_text" yminimum (104 if compact else 62) action Play("voice", config.sample_voice)
+                    if not compact:
+                        use ui_preference_option(_("Mute All"), Preference("all mute", "toggle"), check=True)
+                if compact:
+                    use ui_preference_option(_("Mute All"), Preference("all mute", "toggle"), width=568, check=True)
+        elif group == "development":
+            text _("Development") style "ui_menu_heading" size (48 if compact else 34)
+            use ui_preference_option(_("Debugging Mode"), ToggleField(persistent, "debugging_mode"), width=control_width, check=True)
+            if persistent.debugging_mode:
+                for caption, debug_action in ((_('Route Map'), Jump('route_map')), (_('Problem Diagnosis Debug'), ShowMenu('problem_diagnosis_debug_menu')), (_('Progress Debug'), ShowMenu('debug_progression'))):
+                    textbutton caption:
+                        style "ui_menu_option"
+                        text_style "ui_menu_option_text"
+                        text_size (40 if compact else 28)
+                        xsize control_width
+                        yminimum (104 if compact else 68)
+                        action debug_action
 
 
 style pref_label is gui_label
@@ -1056,34 +1098,32 @@ screen history():
     ## Avoid predicting this screen, as it can be very large.
     predict False
 
-    use game_menu(_("History"), scroll=("vpgrid" if gui.history_height else "viewport"), yinitial=1.0, spacing=gui.history_spacing):
-
-        style_prefix "history"
+    use game_menu(_("History"), scroll="viewport", yinitial=1.0, spacing=24):
 
         for h in _history_list:
 
-            window:
-
-                ## This lays things out properly if history_height is None.
-                has fixed:
-                    yfit True
-
-                if h.who:
-
-                    label h.who:
-                        style "history_name"
+            frame:
+                xsize (1696 if ui_is_compact() else 1210)
+                padding (24, 20)
+                background ui_panel("#241e19dd", "#8f775555", radius=16)
+                vbox:
+                    spacing 12
+                    if h.who:
+                        text h.who:
+                            style "ui_menu_heading"
+                            size (44 if ui_is_compact() else 32)
+                            substitute False
+                            if "color" in h.who_args:
+                                color h.who_args["color"]
+                    $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                    text what:
+                        style "ui_menu_text"
+                        xsize (1648 if ui_is_compact() else 1162)
+                        size (44 if ui_is_compact() else 32)
                         substitute False
 
-                        ## Take the color of the who text from the Character, if set.
-                        if "color" in h.who_args:
-                            text_color h.who_args["color"]
-
-                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
-                text what:
-                    substitute False
-
         if not _history_list:
-            label _("The dialogue history is empty.")
+            text _("The dialogue history is empty.") style "ui_menu_text" size (44 if ui_is_compact() else 32)
 
 
 ## This determines what tags are allowed to be displayed on the history
@@ -1145,18 +1185,19 @@ screen help():
 
     use game_menu(_("Help"), scroll="viewport"):
 
-        style_prefix "help"
+        style_prefix ("ui_touch_help" if ui_is_compact() else "help")
 
         vbox:
-            spacing gui.scale(15)
+            spacing 24
 
             hbox:
+                spacing 24
 
-                textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
-                textbutton _("Mouse") action SetScreenVariable("device", "mouse")
+                textbutton _("Keyboard") action SetScreenVariable("device", "keyboard") selected device == "keyboard"
+                textbutton _("Mouse") action SetScreenVariable("device", "mouse") selected device == "mouse"
 
                 if GamepadExists():
-                    textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
+                    textbutton _("Gamepad") action SetScreenVariable("device", "gamepad") selected device == "gamepad"
 
             if device == "keyboard":
                 use keyboard_help
@@ -1314,9 +1355,10 @@ screen confirm(message, yes_action, no_action):
 
     style_prefix "confirm"
 
-    add "gui/overlay/confirm.png"
+    add Solid("#100b06bb")
 
     frame:
+        xsize (1600 if ui_is_compact() else 1100)
 
         vbox:
             xalign .5
@@ -1326,13 +1368,15 @@ screen confirm(message, yes_action, no_action):
             label _(message):
                 style "confirm_prompt"
                 xalign 0.5
+                text_size (44 if ui_is_compact() else 34)
+                text_xmaximum (1480 if ui_is_compact() else 980)
 
             hbox:
                 xalign 0.5
                 spacing gui.scale(100)
 
-                textbutton _("Yes") action yes_action
-                textbutton _("No") action no_action
+                textbutton _("Yes") action yes_action xysize ((480, 104) if ui_is_compact() else (260, 72)) text_size (44 if ui_is_compact() else 30)
+                textbutton _("No") action no_action xysize ((480, 104) if ui_is_compact() else (260, 72)) text_size (44 if ui_is_compact() else 30)
 
     ## Right-click and escape answer "no".
     key "game_menu" action no_action

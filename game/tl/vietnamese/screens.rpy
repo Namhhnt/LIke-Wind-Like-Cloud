@@ -7,7 +7,7 @@ translate vietnamese strings:
     new "Tải"
 
     old "Preferences"
-    new "Tùy chọn"
+    new "Cài đặt"
 
     old "End Replay"
     new "Kết thúc phát lại"

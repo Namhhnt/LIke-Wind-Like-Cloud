@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "4.4.0"
+define config.version = "4.5.0"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -254,6 +254,8 @@ init python:
     ## Source Ren'Py scripts are excluded. Their compiled counterparts are
     ## included in scripts.rpa.
 
+    build.classify("game/screens/ui_review_**", None)
+    build.classify("game/tl/**/ui_review.*", None)
     build.classify("game/tests/**", None)
     build.classify("tests/**", None)
     build.classify("game/**.rpy", None)

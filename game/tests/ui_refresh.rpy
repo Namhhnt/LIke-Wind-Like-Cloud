@@ -30,6 +30,9 @@ testsuite ui_refresh:
         run ShowMenu("library")
         pause 0.5
         assert screen "library"
+        if eval language == "vietnamese":
+            assert eval renpy.translate_string("CG Gallery", language="vietnamese") == "Bộ sưu tập CG"
+            assert eval renpy.translate_string("Extras", language="vietnamese") == "Nội dung thêm"
         screenshot ("04_library_" + ui_test_suffix + ".png")
         run ShowMenu("library_characters")
         pause 0.5
@@ -61,7 +64,23 @@ testsuite ui_refresh:
         run ShowMenu("interactive_map_screen", entries=ui_test_entries, allow_timeline=True)
         pause 0.5
         assert screen "interactive_map_screen"
+        click id ("map_location_" + ui_test_entries[0]["id"])
+        assert eval renpy.get_screen_variable("focus_target_entry", screen="interactive_map_screen")["id"] == ui_test_entries[0]["id"]
+        move pos (10, 10)
+        pause 0.1
         screenshot ("02_map_" + ui_test_suffix + ".png")
+        $ ui_activity_fixture = ensure_activity_state()
+        $ ui_prior_activity_fixture = dict(ui_activity_fixture)
+        $ ui_activity_fixture["work_expected_today"] = True
+        $ ui_activity_fixture["work_completed_today"] = False
+        $ ui_activity_fixture["current_period_id"] = next(iter(INTER_CHAPTER_PERIODS))
+        $ renpy.restart_interaction()
+        pause 0.4
+        assert eval bool(time_get_main_today_summary()) and time_skip_is_available()
+        screenshot ("10_map_active_" + ui_test_suffix + ".png")
+        $ ui_activity_fixture.clear()
+        $ ui_activity_fixture.update(ui_prior_activity_fixture)
+        $ renpy.restart_interaction()
         $ ui_locked_entry = next((entry for entry in ui_test_entries if entry.get("state") == "locked"), None)
         if eval ui_locked_entry is not None:
             $ renpy.set_screen_variable("focus_target_entry", ui_locked_entry, screen="interactive_map_screen")

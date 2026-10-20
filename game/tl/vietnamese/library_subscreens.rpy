@@ -43,7 +43,7 @@ translate vietnamese strings:
     new "Trạng thái hiện tại"
 
     old "Extras"
-    new "Ngoại truyện"
+    new "Nội dung thêm"
 
     old "For now, this placeholder keeps the menu flow complete while profiles, galleries, music, and bonus materials are still being authored."
     new "Tạm thời, phần giữ chỗ này giúp luồng menu hoàn chỉnh trong khi hồ sơ, thư viện ảnh, nhạc và tư liệu thưởng vẫn đang được biên soạn."
@@ -103,7 +103,7 @@ translate vietnamese strings:
     new "Nhạc nền gốc"
 
     old "Original Stories"
-    new "Truyện gốc"
+    new "Ngoại truyện"
 
     old "Play"
     new "Phát"
