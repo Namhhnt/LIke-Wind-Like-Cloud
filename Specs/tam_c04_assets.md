@@ -99,3 +99,30 @@ Run the other two suite names with the same command. For inventory validation:
 ```powershell
 uv run --with pillow --no-project python tools/validate_chapter_four_assets.py
 ```
+
+### Runtime recheck — 2026-10-20, version 4.11.0
+
+Re-ran on Windows with Ren'Py 8.5.4.26101301+nightly / Python 3.12.7:
+
+- Inventory validator: PASS (45 images, 44 declarations, 38 used CGs,
+  141 source files preserve narrative/logic, 13.71 MiB).
+- `chapter_four_assets`: 2 cases, 4/4 assertions PASS at 1920x1080 and 1280x720.
+- `chapter_four_asset_branches`: 3 cases, 28/28 assertions PASS.
+- `chapter_four_family_assets`: 3 cases, 24/24 assertions PASS;
+  the saved `_test_c04_family` JumpOutException did not recur.
+- Lint exited 0 with the same 29 C07/C08 warnings; no C04 warnings.
+
+The SDK interpreter runs outside the restricted execution sandbox. Its
+Illegal System DLL Relocation error occurred inside that sandbox; no SDK repair
+was needed. The system `python` alias and existing uv-managed interpreter paths
+were unusable in this session. A separate uv Python installation under the
+ignored test directory successfully ran the Pillow validator without modifying
+the SDK. Reproduce in PowerShell from the project root:
+
+```powershell
+$env:UV_PYTHON_INSTALL_DIR = Join-Path (Get-Location) 'tests/python_runtime'
+uv run --python 3.12 --with pillow --no-project python tools/validate_chapter_four_assets.py
+```
+
+These checks cover C04 asset rendering and the tested scene branches, not a full
+24-week progression playthrough.
