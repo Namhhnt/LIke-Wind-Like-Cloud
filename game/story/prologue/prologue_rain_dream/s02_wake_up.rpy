@@ -30,7 +30,13 @@ label prologue_rain_dream_s02_wake_up:
     "Câu đó đáng lẽ phải làm cô nhẹ lòng hơn."
     "Nhưng nó không làm được."
 
+    scene cg_prologue_tam_wakes
+    with dissolve
+
     "Cô ngồi dậy, kéo chăn sang một bên."
+    scene bg_tam_room_morning
+    with dissolve
+
     "Dưới chân giường, đôi dép trong nhà nằm lệch nhau. Một chiếc quay ngang, một chiếc quay về phía cửa."
 
     "Tâm nhìn chúng vài giây."

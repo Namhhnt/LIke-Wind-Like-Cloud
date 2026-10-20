@@ -1,4 +1,6 @@
 # Background image declarations.
+# Prologue dream: a closed storefront awning and rain-soaked street.
+image bg_prologue_rain_street_night = "images/assets/bg/bg_prologue_rain_street_night.webp"
 # These map the files in game/images/assets/bg so story scripts can use them with `scene bg_*`.
 
 # Tam apartment - bedroom, living room, bathroom, and balcony variants.

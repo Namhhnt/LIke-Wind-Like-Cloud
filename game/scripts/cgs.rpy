@@ -1,3 +1,6 @@
+image cg_prologue_umbrella_touch = "images/assets/cg/cg_prologue_umbrella_touch.webp"
+image cg_prologue_tam_wakes = "images/assets/cg/cg_prologue_tam_wakes.webp"
+
 image cg_yuuka_minh_market_walk = "images/assets/cg/cg_yuuka_minh_market_walk.webp"
 image cg_yuuka_minh_choose_strawberries = "images/assets/cg/cg_yuuka_minh_choose_strawberries.webp"
 image cg_yuuka_minh_blue_apron = "images/assets/cg/cg_yuuka_minh_blue_apron.webp"

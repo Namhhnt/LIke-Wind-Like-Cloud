@@ -7,7 +7,7 @@ label prologue_rain_dream_s01_rain_meeting:
 
     centered "{size=46}PROLOGUE{/size}\n{size=30}Giấc mơ trong mưa{/size}"
 
-    scene black
+    scene bg_prologue_rain_street_night
     with dissolve
 
     "Mưa rơi rất nhẹ."
@@ -54,6 +54,9 @@ label prologue_rain_dream_s01_rain_meeting:
 
     "Người kia không trả lời ngay."
 
+    scene cg_prologue_umbrella_touch
+    with dissolve
+
     "Anh chỉ đưa tay, chỉnh lại nan ô bị lệch cho cô."
     "Đầu ngón tay anh chạm rất nhẹ vào cán ô. Một cái chạm gần như không đáng kể."
 
@@ -73,6 +76,9 @@ label prologue_rain_dream_s01_rain_meeting:
 
     "Mưa rơi dày hơn."
 
+    scene bg_prologue_rain_street_night
+    with dissolve
+
     "Bóng người trước mặt mờ dần."
 
     tam shocked "Khoan đã..."
@@ -85,6 +91,9 @@ label prologue_rain_dream_s01_rain_meeting:
     "Trong khoảnh khắc rất ngắn, cô tưởng mình đã nhìn thấy gương mặt anh."
 
     "Rồi tiếng mưa phủ xuống tất cả."
+
+    scene black
+    with dissolve
 
     menu:
         "Điều gì còn đọng lại sau giấc mơ?"
