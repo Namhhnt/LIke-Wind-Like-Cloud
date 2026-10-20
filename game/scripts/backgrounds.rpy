@@ -43,6 +43,7 @@ image bg_airport_rainy_day = "images/assets/bg/bg_airport_rainy_day.webp"
 image bg_airport_rainy_night = "images/assets/bg/bg_airport_rainy_night.webp"
 
 # Company lobby, office, meeting room, and party backgrounds.
+image bg_tam_c02_boutique_evening = "images/assets/bg/bg_tam_c02_boutique_evening.webp"
 image bg_company_lobby_morning = "images/assets/bg/bg_company_lobby_morning.webp"
 image bg_company_lobby_morning_empty = "images/assets/bg/bg_company_lobby_morning_empty.webp"
 image bg_company_lobby_noon = "images/assets/bg/bg_company_lobby_noon.webp"

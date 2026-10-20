@@ -132,11 +132,17 @@ label tam_c02_company_party_s01b_first_salary_and_shopping:
 
     "Huyền lập tức kéo ghế sang, nhanh đến mức bánh xe ghế kêu lên một tiếng nhỏ trên sàn."
 
+    scene cg_tam_c02_first_salary
+    with dissolve
+
     huyen happy "Cho tao xem. Không phải số tiền. Tao xem cảm xúc thôi."
 
     tam tired "Cảm xúc cũng cần xem màn hình à?"
 
     huyen grinning "Có những cảm xúc phải có sao kê mới đáng tin."
+
+    scene bg_company_open_office_day
+    with dissolve
 
     "Tâm tắt màn hình điện thoại, nhưng khóe môi vẫn không giấu được."
 

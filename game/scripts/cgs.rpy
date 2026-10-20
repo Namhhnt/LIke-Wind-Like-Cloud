@@ -18,3 +18,14 @@ image cg_yuuka_minh_finger_touch = "images/assets/cg/cg_yuuka_minh_finger_touch.
 
 
 image cg_tam_c02_party_premium_dress = "images/assets/cg/cg_tam_company_anniversary_party_01.webp"
+
+image cg_tam_c02_onboarding = "images/assets/cg/cg_tam_c02_onboarding.webp"
+image cg_tam_c02_quan_document = "images/assets/cg/cg_tam_c02_quan_document.webp"
+image cg_tam_c02_first_salary = "images/assets/cg/cg_tam_c02_first_salary.webp"
+image cg_tam_c02_shopping = "images/assets/cg/cg_tam_c02_shopping.webp"
+image cg_tam_c02_party_office = "images/assets/cg/cg_tam_c02_party_office.webp"
+image cg_tam_c02_party_default = "images/assets/cg/cg_tam_c02_party_default.webp"
+image cg_tam_c02_hoang_model = "images/assets/cg/cg_tam_c02_hoang_model.webp"
+image cg_tam_c02_party_end_premium = "images/assets/cg/cg_tam_c02_party_end_premium.webp"
+image cg_tam_c02_party_end_office = "images/assets/cg/cg_tam_c02_party_end_office.webp"
+image cg_tam_c02_party_end_default = "images/assets/cg/cg_tam_c02_party_end_default.webp"

@@ -41,6 +41,9 @@ label tam_c02_company_party_s02_party_start:
         huyen teasing "Muộn rồi. Váy đã đẹp thì không trả lại sự khiêm tốn được đâu."
 
     elif story_has_flag('tam_c02_outfit_office_elegant'):
+        scene cg_tam_c02_party_office
+        with dissolve
+
         "Chiếc váy công sở mới khiến Tâm trông gọn gàng hơn thường ngày."
 
         "Không quá nổi bật."
@@ -60,6 +63,9 @@ label tam_c02_company_party_s02_party_start:
         huyen grinning "Không. Đó là giới hạn nghệ thuật của tao."
 
     else:
+        scene cg_tam_c02_party_default
+        with dissolve
+
         "Chiếc váy công sở cô chọn không quá nổi bật."
 
         "Nhưng vừa đủ gọn gàng."

@@ -43,3 +43,4 @@ tmp_*.*
 /tests/screenshots/
 /tests/performance/
 /tests/opening_assets_saves/
+/tests/chapter_assets_saves/

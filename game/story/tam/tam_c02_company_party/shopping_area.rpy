@@ -3,7 +3,7 @@ label tam_c02_company_party_shopping_area_menu:
     $ luxury_dress_cost = 7500000
     $ tam_current_money = tam_get_available_money()
 
-    scene bg_company_lobby_afternoon
+    scene bg_tam_c02_boutique_evening
     with dissolve
 
     "Shopping Area buổi tối đông vừa đủ."
@@ -23,6 +23,9 @@ label tam_c02_company_party_shopping_area_menu:
     huyen teasing "Một mục tiêu thiếu tham vọng nhưng đáng tôn trọng."
 
     "Họ dừng trước một cửa hàng thời trang nữ."
+
+    scene cg_tam_c02_shopping
+    with dissolve
 
     "Bên trái là khu váy áo công sở, màu sắc nhã, form gọn, nhìn qua đã thấy an toàn."
 
@@ -69,6 +72,9 @@ label tam_c02_company_party_shopping_area_menu:
         huyen neutral "Đừng nhìn nữa. Nhìn lâu nó cũng không tự giảm giá đâu."
 
         tam tired "Tao biết."
+
+    scene bg_tam_c02_boutique_evening
+    with dissolve
 
     menu:
         "Tâm chọn mua gì?"

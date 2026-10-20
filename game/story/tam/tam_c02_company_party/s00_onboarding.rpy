@@ -83,6 +83,9 @@ label tam_c02_company_party_s00_onboarding:
 
     "Huyền tỉnh bơ mở nắp bút. Cái tem nhỏ trên thân bút vẫn còn dính một góc."
 
+    scene cg_tam_c02_onboarding
+    with dissolve
+
     "Tâm đưa tay bóc nó ra giúp."
 
     huyen surprised "Ơ?"
@@ -94,6 +97,9 @@ label tam_c02_company_party_s00_onboarding:
     "Tâm không cãi."
 
     "Cô chỉ đặt mảnh tem nhỏ vào góc bàn, ngay ngắn đến mức chính cô cũng thấy hơi buồn cười."
+
+    scene bg_company_open_office_day
+    with dissolve
 
     menu:
         "Tâm nên chuẩn bị cho hai tháng thử việc thế nào?"

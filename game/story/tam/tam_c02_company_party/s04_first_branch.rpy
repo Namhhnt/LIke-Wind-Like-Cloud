@@ -17,6 +17,14 @@ label tam_c02_company_party_s04_first_branch:
 
     "Tâm nhìn thấy nó."
 
+    if story_has_flag('tam_c02_outfit_party_elegant'):
+        scene cg_tam_c02_party_end_premium
+    elif story_has_flag('tam_c02_outfit_office_elegant'):
+        scene cg_tam_c02_party_end_office
+    else:
+        scene cg_tam_c02_party_end_default
+    with dissolve
+
     "Rồi không hiểu sao lại đưa tay chỉnh lại."
 
     huyen neutral "Mày có bệnh nghề nghiệp từ lúc nào thế?"
@@ -30,6 +38,9 @@ label tam_c02_company_party_s04_first_branch:
     huyen grinning "Ừ. Người ta thường bắt đầu mọi thói quen kỳ quặc bằng câu đó."
 
     "Tâm không cãi."
+
+    scene bg_company_year_end_party_late
+    with dissolve
 
     "Cô nhìn ra phía bàn mô hình."
 

@@ -1,0 +1,127 @@
+{
+  "generator": "built-in ImageGen",
+  "format": "Opaque WebP 1920x1080, Lanczos fit, quality 94",
+  "assets": [
+    {
+      "name": "cg_tam_c02_onboarding",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Tam identity; input2 Huyen identity; input3 office architecture; input4 approved two women identity/style reference. Candid intimate medium two-shot at neighboring desks in this modern glass and dark wood office, diagonal camera through blurred desk foreground, soft morning window light. Tam carefully peels a tiny plain sticker from Huyen's new pen, Huyen smiles looking at Tam's fingertips, open laptop and plain new notebook nearby. The sticker is small but action readable. Tam wears a white blouse and beige tailored skirt; Huyen wears a powder-blue collared shirt and charcoal trousers. ",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_smile.webp",
+        "game/images/assets/bg/bg_company_open_office_day.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "5c76e2f7-71f1-4dab-b383-9941c92d360d",
+      "output": "game/images/assets/cg/cg_tam_c02_onboarding.webp"
+    },
+    {
+      "name": "cg_tam_c02_quan_document",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 QUAN authoritative identity, not Quang; input2 office architecture; input3 rendering style only. Quan in dark charcoal business suit and dark open-collar shirt, stern restrained calm, standing beside an anonymous colleague's desk. He gently taps a pen tip against one line in a thin printed document, no legible lettering. Colleague seen only as defocused shoulder/back in foreground. Cinematic medium three-quarter view, face and pen in upper two-thirds, daylight and glass reflections, no anger or shouting. No Tam/Huyen required, this is the actual first sight of Quan, NOT a fantasy of a rumor.",
+      "references": [
+        "game/images/characters/quan/expressions/quan_neutral.webp",
+        "game/images/assets/bg/bg_company_open_office_day.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "reframe_prompt": "Use case: identity-preserve. Edit this exact scene only to REFRAME it for visual novel dialogue safe space. Keep this man's exact face/identity, clothes, expression, action, environment, lighting and beautiful semi-realistic rendering. Pull the camera BACK and slightly higher, placing his face in upper 15-40 percent and BOTH hands with the pen tip touching the document wholly within upper 65 percent. The BOTTOM 30 percent must contain only out-of-focus foreground desk/table edge with no important gestures or face. Add this lower foreground by changing framing, not by text or borders. Keep 16:9 wide, natural anatomy, no new characters, no letters or watermark. This is a framing correction, not a new scene or face.",
+      "initial_generation": "213ef334-9cb3-41a5-aa40-bbbd7ab77a84",
+      "generation_id": "b831272a-f294-4a85-9375-011087860e9c",
+      "output": "game/images/assets/cg/cg_tam_c02_quan_document.webp"
+    },
+    {
+      "name": "cg_tam_c02_first_salary",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Tam identity; input2 Huyen identity; input3 office setting; input4 approved identity/style. Golden late-afternoon office medium two-shot, Tam seated holding her smartphone close to chest height, looking down at its bank notification with restrained amazed happiness, Huyen rolls her chair closer and leans slightly to see, smiling at Tam and phone, eyes NOT camera. Phone tilted away so screen is bright soft shapes, no numbers or letters. Subtle first-paycheck emotional milestone. Laptop and desk in blurred foreground. Tam wears a white blouse and beige tailored skirt; Huyen wears a powder-blue collared shirt and charcoal trousers. ",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_smile.webp",
+        "game/images/assets/bg/bg_company_open_office_day.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "24393735-f2c0-44f4-a6a8-15a1a95eb8c2",
+      "output": "game/images/assets/cg/cg_tam_c02_first_salary.webp"
+    },
+    {
+      "name": "bg_tam_c02_boutique_evening",
+      "prompt": "Use case: illustration-story. A full-bleed wide 16:9 EMPTY background for a semi-realistic visual novel, warm upscale Vietnamese city shopping mall women's boutique at evening, no people. Cinematic eye-level establishing view, inviting open entrance, warm cream and pale oak, polished tile, elegant clothing rails LEFT with muted sage and taupe modest office dresses, RIGHT a single mannequin displaying a pale blush champagne-pink beaded spaghetti strap evening dress with fitted bodice and flowing skirt (not a wedding dress). Fitting room curtains farther back, tasteful gold accents, cool evening mall visible at side. Match natural realistic rendering and amber light of style input, but this is a boutique not restaurant. No logos, prices, labels, signs, letters, watermark. Lower quarter uncluttered floor for dialogue overlay.",
+      "references": [
+        "game/images/assets/bg/bg_luxury_restaurant_evening.webp"
+      ],
+      "generation_id": "0283c18a-e8ef-455f-b49e-fe11a5c5c712",
+      "output": "game/images/assets/bg/bg_tam_c02_boutique_evening.webp"
+    },
+    {
+      "name": "cg_tam_c02_party_office",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Use case: identity-preserve. Input1 is the EDIT TARGET; input2 is authoritative TAM identity. Keep the elegant ballroom rail, chandelier bokeh, cinematic tilted camera, her hair, jewelry, clutch, lighting and framing from input1. Replace ONLY Tam's premium beaded evening dress with a tasteful refined muted sage-green office dress: tailored short sleeves, shallow boat neckline, fitted waist, clean seams, knee-length, matte fine crepe, no beads, no sheer fabric. She is wearing the newly purchased elegant office outfit branch. Adjust her gaze slightly down toward her clutch/offscreen into the room, NOT at viewer. Preserve her exact facial identity.",
+      "references": [
+        "game/images/assets/cg/cg_tam_company_anniversary_party_01.webp",
+        "game/images/characters/tam/expressions/tam_neutral.webp"
+      ],
+      "generation_id": "4f35e54c-b405-4b77-8d1b-3943355b851a",
+      "output": "game/images/assets/cg/cg_tam_c02_party_office.webp"
+    },
+    {
+      "name": "cg_tam_c02_party_default",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Use case: identity-preserve. Input1 is the EDIT TARGET; input2 authoritative TAM identity. Keep ballroom rail, chandelier bokeh, cinematic tilted camera, hair, jewelry, clutch, lighting and framing. Replace ONLY Tam's beaded evening dress with a simple conservative beige-taupe office dress: modest round neckline, elbow-length sleeves, straight tidy silhouette, natural waist seam, matte plain fabric, no beads, no sheer layers. This is her existing safe everyday office dress, more ordinary than a new party outfit. Adjust gaze slightly down toward clutch/offscreen room rather than viewer, retain exact face.",
+      "references": [
+        "game/images/assets/cg/cg_tam_company_anniversary_party_01.webp",
+        "game/images/characters/tam/expressions/tam_neutral.webp"
+      ],
+      "generation_id": "a71f81c3-3785-4179-8a93-8ced55026170",
+      "output": "game/images/assets/cg/cg_tam_c02_party_default.webp"
+    },
+    {
+      "name": "cg_tam_c02_hoang_model",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Hoang identity; input2 anniversary party setting; input3 style. Cinematic medium three-quarter shot of Hoang at a small architectural customer-experience scale model exhibit table. Wearing a LIGHT shirt with minimalist dark navy blazer, no tie. Looking attentively DOWN at a small blank name card he gently straightens beside the scale model. His face clearly recognizable in three-quarter angle, relaxed reserved confidence. Warm gold event hall, glass reflections, blurred anonymous attendees behind, diagonal model foreground. No Tam/Huyen needed, no readable text.",
+      "references": [
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/bg/bg_company_year_end_party.webp",
+        "game/images/assets/cg/cg_tam_company_anniversary_party_01.webp"
+      ],
+      "reframe_prompt": "Use case: identity-preserve. Edit this exact scene only to REFRAME it for visual novel dialogue safe space. Keep this man's exact face/identity, clothes, expression, action, environment, lighting and beautiful semi-realistic rendering. Pull the camera BACK and slightly higher, placing his face in upper 15-40 percent and BOTH hands with the blank name card and architectural model wholly within upper 65 percent. The BOTTOM 30 percent must contain only out-of-focus foreground desk/table edge with no important gestures or face. Add this lower foreground by changing framing, not by text or borders. Keep 16:9 wide, natural anatomy, no new characters, no letters or watermark. This is a framing correction, not a new scene or face.",
+      "initial_generation": "f77d730d-e4c3-47fb-8844-03d5ce7ecacf",
+      "generation_id": "58ee1d45-d798-4643-b876-81e96be72a21",
+      "output": "game/images/assets/cg/cg_tam_c02_hoang_model.webp"
+    },
+    {
+      "name": "cg_tam_c02_shopping",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Tam identity; input2 Huyen identity; input3 EXACT boutique setting and dress display; input4 approved faces/style. Candid medium cinematic two-shot with mannequin to side: Tam and Huyen still in their OFFICE clothes, standing beside each other just outside the boutique's evening dress display. Tam gazes at the premium blush beaded spaghetti-strap dress on the mannequin with thoughtful hesitation; Huyen looks at Tam with teasing friendly smile. Neither has bought or tried on any dress yet, no shopping bags or boxes, no confirmed choice. Muted office dresses on LEFT racks, premium mannequin on RIGHT as setting input. Golden reflected shop light, mall bokeh foreground, no readable prices or lettering. Tam wears a white blouse and beige tailored skirt; Huyen wears a powder-blue collared shirt and charcoal trousers. ",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_smile.webp",
+        "exec-0283c18a-e8ef-455f-b49e-fe11a5c5c712.png",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "dd0ef0a9-d071-4012-8915-489e7c857909",
+      "output": "game/images/assets/cg/cg_tam_c02_shopping.webp"
+    },
+    {
+      "name": "cg_tam_c02_party_end_premium",
+      "prompt": "Use case: identity-preserve. Edit this exact scene, preserving both women's exact faces, hairstyles, clothes, golden event setting and napkin-straightening action. Keep Tam's blush beaded spaghetti strap dress and Huyen's light jade-green puff sleeve gown unchanged.  Essential framing correction: pull the camera back to show more setting; raise the buffet surface in the frame so Tam's fingers AND the entire white napkin are around 55-65% of image height, well ABOVE the bottom quarter. Put both faces near upper third. Bottom 28% must be only blurred foreground table edge with NO important hands/napkin. Action must remain visible when a visual novel textbox covers bottom26%. Wide16:9, natural anatomy, not a collage.",
+      "references": [
+        "exec-a103569e-6e8c-43ec-936d-d37b3d120c0d.png"
+      ],
+      "initial_generation": "a103569e-6e8c-43ec-936d-d37b3d120c0d",
+      "generation_id": "89ad79f2-6a54-4c61-92df-68fe59ed9595",
+      "output": "game/images/assets/cg/cg_tam_c02_party_end_premium.webp"
+    },
+    {
+      "name": "cg_tam_c02_party_end_office",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET late-party scene. Image2 is wardrobe reference ONLY for Tam. Change ONLY Tam's outfit (woman LEFT adjusting napkin) to the exact muted sage-green tailored matte office dress in image2, short sleeves and shallow boat neckline, fitted waist and clean seams. Preserve all of image1's Tam face and hair, Huyen identity and jade-green evening dress, both gazes and expressions, careful napkin action and hand anatomy, table, camera, golden lighting, setting and framing. No beading or spaghetti straps on Tam; keep Huyen's gown exactly unchanged. Same semi-realistic wide16:9 full scene, no text or inset. Essential framing correction: pull the camera back to show more setting; raise the buffet surface in the frame so Tam's fingers AND the entire white napkin are around 55-65% of image height, well ABOVE the bottom quarter. Put both faces near upper third. Bottom 28% must be only blurred foreground table edge with NO important hands/napkin. Action must remain visible when a visual novel textbox covers bottom26%. Wide16:9, natural anatomy, not a collage.",
+      "references": [
+        "exec-a103569e-6e8c-43ec-936d-d37b3d120c0d.png",
+        "game/images/assets/cg/cg_tam_c02_party_office.webp"
+      ],
+      "generation_id": "ae0d7620-3005-4075-9ded-54cbc27755db",
+      "output": "game/images/assets/cg/cg_tam_c02_party_end_office.webp"
+    },
+    {
+      "name": "cg_tam_c02_party_end_default",
+      "prompt": "Use case: identity-preserve. Image1 EDIT TARGET late-party scene. Image2 wardrobe reference ONLY for Tam. Change ONLY Tam's outfit (woman LEFT adjusting napkin) to the exact conservative plain beige-taupe office dress in image2, modest round neckline, elbow sleeves, tidy simple silhouette, natural waist seam. Preserve all of image1's Tam face and hair, Huyen identity and jade-green evening dress, both gazes and expressions, careful napkin action and hands, table, camera, golden lighting, setting and framing. No beads or spaghetti straps on Tam; keep Huyen's gown exactly unchanged. Same semi-realistic wide16:9 full scene, no lettering or inset. Essential framing correction: pull the camera back to show more setting; raise the buffet surface in the frame so Tam's fingers AND the entire white napkin are around 55-65% of image height, well ABOVE the bottom quarter. Put both faces near upper third. Bottom 28% must be only blurred foreground table edge with NO important hands/napkin. Action must remain visible when a visual novel textbox covers bottom26%. Wide16:9, natural anatomy, not a collage.",
+      "references": [
+        "exec-a103569e-6e8c-43ec-936d-d37b3d120c0d.png",
+        "game/images/assets/cg/cg_tam_c02_party_default.webp"
+      ],
+      "generation_id": "02329d63-3931-4a90-a2c5-b15726171388",
+      "output": "game/images/assets/cg/cg_tam_c02_party_end_default.webp"
+    }
+  ]
+}

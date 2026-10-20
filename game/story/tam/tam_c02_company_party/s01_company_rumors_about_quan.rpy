@@ -190,11 +190,17 @@ label tam_c02_company_party_s01_company_rumors_about_quan:
 
     "Không quát ai."
 
+    scene cg_tam_c02_quan_document
+    with dissolve
+
     "Chỉ gõ đầu bút vào một dòng trên giấy."
 
     quan neutral "Chỗ này thiếu căn cứ. Sửa lại trước năm giờ."
 
     coworker "Vâng anh."
+
+    scene bg_company_open_office_day
+    with dissolve
 
     "Quân gật đầu, đặt tập tài liệu xuống bàn người kia, rồi quay đi."
 

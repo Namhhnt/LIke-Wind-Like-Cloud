@@ -63,6 +63,9 @@ label tam_c02_company_party_s03_hoang_intro:
 
     tam embarrassed "Mày im đi."
 
+    scene cg_tam_c02_hoang_model
+    with dissolve
+
     "Ở bàn mô hình, Hoàng cúi xuống chỉnh lại tấm name card nhỏ bị lệch."
 
     "Một động tác rất nhanh."
@@ -78,6 +81,9 @@ label tam_c02_company_party_s03_hoang_intro:
     "Một điều rất nhỏ."
 
     "Nhưng có vẻ Hoàng cũng đã nhận ra. Anh nhìn nó hai giây, rồi hơi nghiêng đầu."
+
+    scene bg_company_year_end_party
+    with dissolve
 
     "Tâm bỗng thấy mình muốn hỏi."
 
