@@ -3,7 +3,11 @@
 label tam_c04_w13_s02_south_assignment:
     scene bg_meeting_room_day
     with dissolve
+    scene cg_tam_c04_quang_thienan_work
+    with dissolve
     "Thiên An đặt tập hồ sơ chi nhánh miền Nam xuống bàn."
+    scene bg_tam_family_living_room_evening
+    with dissolve
     thienan neutral "Ít nhất ba tuần. Có thể lâu hơn."
     quang "Anh đi cùng."
     thienan neutral "Tôi chưa hỏi."

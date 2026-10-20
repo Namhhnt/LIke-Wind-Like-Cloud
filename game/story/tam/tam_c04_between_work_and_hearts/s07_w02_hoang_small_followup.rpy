@@ -15,7 +15,11 @@ label tam_c04_w02_s02_hoang_small_followup:
 
     "Chiều thứ Ba, Hoàng nhắn rằng anh đang ở gần công ty."
 
+    scene cg_tam_c04_hoang_lobby
+    with dissolve
     "Khi Tâm xuống sảnh, anh đứng cạnh cửa kính với một túi giấy nhỏ trên tay."
+    scene bg_company_lobby_afternoon
+    with dissolve
 
     tam confused "Anh thật sự mua dư à?"
 

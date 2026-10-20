@@ -2,10 +2,14 @@
 # Week 02 — Quang acts directly with Thiên An, while Tâm notices what familiarity costs.
 
 label tam_c04_w02_s04_quang_stops_asking_around:
-    scene black
+    scene bg_tam_family_living_room_evening
     with fade
 
+    scene cg_tam_c04_sisters_table
+    with dissolve
     "Tối thứ Năm, Tâm ghé qua nhà."
+    scene bg_tam_family_living_room_evening
+    with dissolve
 
     "Trên bàn ăn có một hộp giữ nhiệt màu xám. Nắp hộp được đặt lệch, như thể người mở đã quá mệt để vặn lại cho đúng ren."
 

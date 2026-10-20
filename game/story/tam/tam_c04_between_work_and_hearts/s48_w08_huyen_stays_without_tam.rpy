@@ -5,7 +5,11 @@ label tam_c04_w08_s05_huyen_stays_without_tam:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_huyen_quan_work
+    with dissolve
     "Thứ Sáu, sáu giờ."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Tâm thu laptop vào túi."
 

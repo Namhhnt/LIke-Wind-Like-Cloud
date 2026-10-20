@@ -18,7 +18,11 @@ label tam_c04_w05_s03_hoang_house_invitation:
     scene bg_company_lobby_afternoon
     with dissolve
 
+    scene cg_tam_c04_hoang_lobby
+    with dissolve
     "Chiều thứ Tư, Hoàng chờ Tâm ở sảnh với một chiếc chìa khóa xe trên tay."
+    scene bg_company_lobby_afternoon
+    with dissolve
 
     hoang neutral "Cuối tuần qua nhà anh ăn trưa không?"
 

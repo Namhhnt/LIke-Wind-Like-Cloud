@@ -5,7 +5,11 @@ label tam_c04_w19_s05_hoang_contact_or_silence:
         return
     scene bg_tam_room_morning
     with dissolve
+    scene cg_tam_c04_phone_night
+    with dissolve
     "Tối thứ Năm, công việc kéo dài hơn dự kiến. Lịch với Hoàng còn ba mươi phút."
+    scene bg_asset_0007
+    with dissolve
     menu:
         "Nhắn trước rằng Tâm sẽ muộn":
             $ relationship_mark_contact("tam_hoang", "tam_c04_w19", source="story")

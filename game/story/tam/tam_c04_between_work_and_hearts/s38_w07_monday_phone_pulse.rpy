@@ -8,7 +8,11 @@ label tam_c04_w07_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w07_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai, điện thoại Tâm có bốn thông báo đến trong vòng sáu phút."
+    scene bg_tam_room_morning
+    with dissolve
 
     if story_state.get("huyen_quan_interest", 0) >= 12:
         "Huyền gửi ảnh một comment của Quân và hỏi dấu chấm cuối câu có nghĩa gì."

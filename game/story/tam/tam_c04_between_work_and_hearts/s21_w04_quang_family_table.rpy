@@ -2,10 +2,14 @@
 # Week 04 — Quang occupies an old place at the family table, and Tâm sees it differently.
 
 label tam_c04_w04_s04_quang_family_table:
-    scene black
+    scene bg_tam_family_dining_room_evening
     with fade
 
+    scene cg_tam_c04_family_table
+    with dissolve
     "Tối thứ Năm, Thiên An trở về sau chuyến công tác ngắn."
+    scene bg_tam_family_dining_room_evening
+    with dissolve
 
     "Quang mang hồ sơ tới đúng lúc bữa cơm vừa được dọn. Mẹ Tâm giữ anh lại bằng một câu tự nhiên đến mức không ai kịp từ chối."
 

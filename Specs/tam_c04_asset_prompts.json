@@ -1,0 +1,568 @@
+[
+  {
+    "id": "anh_nhi_identity",
+    "prompt": "Create a single character reference sheet, landscape 16:9, semi-realistic cinematic Vietnamese visual novel. One ORIGINAL recurring Vietnamese girl aged about 8, unmistakably a child with round cheeks, dark brown eyes, straight black hair in two low pigtails, wispy bangs. Pale yellow cardigan, white cotton top, navy knee-length skirt, brown-red school backpack. Three views of SAME girl: head front, head three-quarter, full figure. Neutral warm beige studio background, natural proportions, no text, no labels. Soft natural light, realistic skin with subtly painterly finish matching reference rendering. Do not copy adult woman's identity. Fully clothed wholesome child character.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-3e548473-425b-439c-b060-906dcf1a02f7.png",
+    "output": "Specs/Design/anh_nhi_identity.webp"
+  },
+  {
+    "id": "quan_home_day",
+    "prompt": "Create an empty Vietnamese single father's modern apartment living room, day. Cinematic semi-realistic visual-novel BG 16:9. Medium-sized apartment, grey fabric sofa on right, walnut low rectangular coffee table centered, bookcase on back wall, warm cream walls, large curtained window left, small child's brown-red schoolbag beside cabinet, simple muted blue rug, a side-table lamp. Quiet lived-in tidy home, no people, no readable lettering or logos. Natural daylight, warm restrained palette, realistic materials. Match reference rendering finish, but a DIFFERENT apartment design; keep coherent layout for later night variant.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-b2b56da7-3fab-4a1b-926d-b848e1bd7ef6.png",
+    "output": "game/images/assets/bg/bg_c04_quan_home_day.webp"
+  },
+  {
+    "id": "huyen_home_day",
+    "prompt": "Create an empty small Vietnamese young professional woman's cozy apartment, daytime. Cinematic semi-realistic visual-novel BG 16:9. Cream two-seat sofa left, round low light-wood coffee table, sage green cushion, small potted plants at window right, compact open kitchen in back, warm light oak floor, a few child's colored pencils on table, one extra small pillow. No people, no writing, no logos. Warm natural daylight. Modest charming personal apartment clearly distinct from a father's larger grey-sofa apartment. Match rendering finish of reference without copying its layout.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-b5682a45-3f84-43fe-b83a-b266d2545606.png",
+    "output": "game/images/assets/bg/bg_c04_huyen_home_day.webp"
+  },
+  {
+    "id": "school_gate",
+    "prompt": "Create a Vietnamese primary school entrance exterior late afternoon, cinematic semi-realistic visual novel background, 16:9. Metal school gate, cream-yellow school walls, leafy trees with dappled sunlight, modest sidewalk and gatehouse. No legible lettering, signage turned away or blank; distant parents only indistinct out-of-focus silhouettes, no prominent faces. Calm school pickup atmosphere; clear foreground for characters. Match warm rendering finish of reference, natural light, no fantasy or anime outlines.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-31625698-7dda-4349-9eda-412847d6ef55.png",
+    "output": "game/images/assets/bg/bg_c04_school_gate.webp"
+  },
+  {
+    "id": "phone_morning",
+    "prompt": "Use case: illustration-story. Single finished CG for Vietnamese visual novel chapter 4. 16:9 landscape 1920x1080 composition. Tam alone seated at edge of pink bed in her own bedroom, morning. Ivory soft home top, phone held naturally near chest, eyes on phone, screen turned away. Side-window light, candid medium-wide composition. Identity reference 1 Tam; reference 2 location; last reference rendering style ONLY. Tam: refined longer oval face, long dark half-up wavy hair, small pearl earrings. White blouse and beige skirt at work; dusty-rose cardigan over ivory top at home. Semi-realistic cinematic polished illustration, natural skin and fabric, subtly painterly photographic lighting. Faces and important hands/props entirely within upper 70% frame; lower 25% quiet for dialogue overlay. Everyone looks at action or partner, never camera. No text, watermarks, fake lettering, borders, panels, extra people or extra fingers. Common reusable quiet moment, no implied romantic outcome.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/assets/bg/bg_tam_room_morning.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-5ba93294-cba4-400f-8144-22c33e6a0d74.png",
+    "output": "game/images/assets/cg/cg_tam_c04_phone_morning.webp"
+  },
+  {
+    "id": "phone_night",
+    "prompt": "Use case: illustration-story. Single finished CG for Vietnamese visual novel chapter 4. 16:9 landscape 1920x1080 composition. Tam alone at her bedroom desk at night, dusty rose cardigan, looking at a phone near chest with thoughtful neutral expression; warm desk lamp, dark city outside. Screen invisible. Identity reference 1 Tam; reference 2 location; last reference rendering style ONLY. Tam: refined longer oval face, long dark half-up wavy hair, small pearl earrings. White blouse and beige skirt at work; dusty-rose cardigan over ivory top at home. Semi-realistic cinematic polished illustration, natural skin and fabric, subtly painterly photographic lighting. Faces and important hands/props entirely within upper 70% frame; lower 25% quiet for dialogue overlay. Everyone looks at action or partner, never camera. No text, watermarks, fake lettering, borders, panels, extra people or extra fingers. Common reusable quiet moment, no implied romantic outcome.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/assets/bg/bg_tam_room_morning.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-0b2248d6-5c98-49fa-8be2-28eaaf7877a7.png",
+    "output": "game/images/assets/cg/cg_tam_c04_phone_night.webp"
+  },
+  {
+    "id": "tam_work_day",
+    "prompt": "Use case: illustration-story. Single finished CG for Vietnamese visual novel chapter 4. 16:9 landscape 1920x1080 composition. Tam alone at modern office desk in daylight, white blouse beige skirt, reading a folder beside laptop. Focused neutral expression. No signing or send button, no other prominent people. Identity reference 1 Tam; reference 2 location; last reference rendering style ONLY. Tam: refined longer oval face, long dark half-up wavy hair, small pearl earrings. White blouse and beige skirt at work; dusty-rose cardigan over ivory top at home. Semi-realistic cinematic polished illustration, natural skin and fabric, subtly painterly photographic lighting. Faces and important hands/props entirely within upper 70% frame; lower 25% quiet for dialogue overlay. Everyone looks at action or partner, never camera. No text, watermarks, fake lettering, borders, panels, extra people or extra fingers. Common reusable quiet moment, no implied romantic outcome.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-47aa4c72-f72c-4862-87ab-1276ea3bb2d1.png",
+    "output": "game/images/assets/cg/cg_tam_c04_tam_work_day.webp"
+  },
+  {
+    "id": "tam_work_evening",
+    "prompt": "Use case: illustration-story. Single finished CG for Vietnamese visual novel chapter 4. 16:9 landscape 1920x1080 composition. Tam alone at office desk in late afternoon fading to blue evening outside, white blouse beige skirt, laptop and phone on desk. She considers her schedule thoughtfully, no readable screens, no other characters. Identity reference 1 Tam; reference 2 location; last reference rendering style ONLY. Tam: refined longer oval face, long dark half-up wavy hair, small pearl earrings. White blouse and beige skirt at work; dusty-rose cardigan over ivory top at home. Semi-realistic cinematic polished illustration, natural skin and fabric, subtly painterly photographic lighting. Faces and important hands/props entirely within upper 70% frame; lower 25% quiet for dialogue overlay. Everyone looks at action or partner, never camera. No text, watermarks, fake lettering, borders, panels, extra people or extra fingers. Common reusable quiet moment, no implied romantic outcome.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-6fb338eb-ea72-4441-ab2b-166b3ff55b75.png",
+    "output": "game/images/assets/cg/cg_tam_c04_tam_work_evening.webp"
+  },
+  {
+    "id": "quan_home_night",
+    "prompt": "Edit the reference empty apartment into late night. Preserve EXACT camera, architecture, grey sofa right, walnut table center, bookshelf back, window left and schoolbag. Warm side-table lamp on, cool dark city outside. No people. Semi-realistic cinematic visual novel BG, 16:9, no writing.",
+    "references": [
+      "game/images/assets/bg/bg_c04_quan_home_day.webp"
+    ],
+    "source": "exec-a6d550e7-2e19-4daf-acf0-f8c30620fd0f.png",
+    "output": "game/images/assets/bg/bg_c04_quan_home_night.webp"
+  },
+  {
+    "id": "huyen_home_night",
+    "prompt": "Edit the reference empty small apartment into nighttime. Preserve EXACT layout, cream sofa left, round low table, kitchen back and window right. Warm lamps, dark cool windows, small pillow and colored pencils. No people. Semi-realistic cinematic visual novel BG, 16:9, no writing.",
+    "references": [
+      "game/images/assets/bg/bg_c04_huyen_home_day.webp"
+    ],
+    "source": "exec-8aac1ef4-71ba-4c7e-9858-0c0fb3e7ef15.png",
+    "output": "game/images/assets/bg/bg_c04_huyen_home_night.webp"
+  },
+  {
+    "id": "cafe_evening",
+    "prompt": "Create a small quiet Vietnamese cafe interior at early evening, warm wood tables, a two-person table by large window, muted warm beige and sage palette, hanging lamps. No clear people, no lettering, no logos, no visible menu. Semi-realistic cinematic visual novel BG, landscape 16:9. Match reference material quality and subtly painterly realistic lighting; different location.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-460f0829-33ce-4eff-9b10-5239f0567e4e.png",
+    "output": "game/images/assets/bg/bg_c04_cafe_evening.webp"
+  },
+  {
+    "id": "tam_huyen_work",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Hai cô gái đối chiếu hồ sơ bên laptop, chưa bấm gửi hay ký. Location: Văn phòng. References in order: tam, huyen individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Huyen: compact rounded face, short chin, small natural eyes, wispy bangs, shoulder-length layered half-up ponytail. Powder-blue blouse charcoal trousers at work; lavender knit at home. Exact approved collar-CG identity, distinct from Tam. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-98f13785-3b9c-4d13-b14a-883a566a79ab.png",
+    "output": "game/images/assets/cg/cg_tam_c04_tam_huyen_work.webp"
+  },
+  {
+    "id": "team_review",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Quân đọc báo cáo, Tâm và Huyền lắng nghe; cảm xúc trung tính. Location: Phòng họp. References in order: tam, huyen, quan individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Huyen: compact rounded face, short chin, small natural eyes, wispy bangs, shoulder-length layered half-up ponytail. Powder-blue blouse charcoal trousers at work; lavender knit at home. Exact approved collar-CG identity, distinct from Tam. Quan: own older stern angular male face, strong jaw, charcoal suit and dark shirt, short swept black hair. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/characters/quan/expressions/quan_neutral.webp",
+      "game/images/assets/bg/bg_meeting_room_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-942aa94c-f4f1-45b6-b6bb-25a3e231f96e.png",
+    "output": "game/images/assets/cg/cg_tam_c04_team_review.webp"
+  },
+  {
+    "id": "tam_presentation",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Tâm đứng thuyết trình; Huyền bên laptop, Quân và khách mờ ở hậu cảnh. Location: Phòng họp. References in order: tam, huyen, quan individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Huyen: compact rounded face, short chin, small natural eyes, wispy bangs, shoulder-length layered half-up ponytail. Powder-blue blouse charcoal trousers at work; lavender knit at home. Exact approved collar-CG identity, distinct from Tam. Quan: own older stern angular male face, strong jaw, charcoal suit and dark shirt, short swept black hair. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/characters/quan/expressions/quan_neutral.webp",
+      "game/images/assets/bg/bg_meeting_room_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-abf115ef-8174-40be-8453-4c3256bb86a8.png",
+    "output": "game/images/assets/cg/cg_tam_c04_tam_presentation.webp"
+  },
+  {
+    "id": "huyen_presentation",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Huyền dẫn trình bày; Tâm hỗ trợ, Quân quan sát, không thể hiện kết quả. Location: Phòng họp. References in order: huyen, tam, quan individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Huyen: compact rounded face, short chin, small natural eyes, wispy bangs, shoulder-length layered half-up ponytail. Powder-blue blouse charcoal trousers at work; lavender knit at home. Exact approved collar-CG identity, distinct from Tam. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Quan: own older stern angular male face, strong jaw, charcoal suit and dark shirt, short swept black hair. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/quan/expressions/quan_neutral.webp",
+      "game/images/assets/bg/bg_meeting_room_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-7d61b3c5-ef3d-4c00-8cb8-1ae2a0de2b32.png",
+    "output": "game/images/assets/cg/cg_tam_c04_huyen_presentation.webp"
+  },
+  {
+    "id": "huyen_quan_work",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Huyền và Quân cùng nhìn bản báo cáo tại bàn, không chạm thân mật. Location: Văn phòng. References in order: huyen, quan individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Huyen: compact rounded face, short chin, small natural eyes, wispy bangs, shoulder-length layered half-up ponytail. Powder-blue blouse charcoal trousers at work; lavender knit at home. Exact approved collar-CG identity, distinct from Tam. Quan: own older stern angular male face, strong jaw, charcoal suit and dark shirt, short swept black hair. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/characters/quan/expressions/quan_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-c40c228e-b5cc-4bac-a159-4df943ab0ffc.png",
+    "output": "game/images/assets/cg/cg_tam_c04_huyen_quan_work.webp"
+  },
+  {
+    "id": "hoang_lobby",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Tâm và Hoàng đứng trò chuyện cạnh cửa kính, tay không, không ôm. Location: Sảnh công ty. References in order: tam, hoang individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Hoang: own young masculine face, navy casual blazer light shirt. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/hoang/expressions/hoang_neutral.webp",
+      "game/images/assets/bg/bg_company_lobby_afternoon.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-c6e78df7-f531-4809-af2b-bb47a2394f07.png",
+    "output": "game/images/assets/cg/cg_tam_c04_hoang_lobby.webp"
+  },
+  {
+    "id": "hoang_home",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Hai người ngồi đối diện bàn, một cốc nước và khoảng cách lịch sự. Location: Nhà Hoàng. References in order: tam, hoang individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Hoang: own young masculine face, navy casual blazer light shirt. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/hoang/expressions/hoang_neutral.webp",
+      "game/images/assets/bg/bg_hoangminh_villa_living_room_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-7771072e-359a-448a-9644-f874672041cb.png",
+    "output": "game/images/assets/cg/cg_tam_c04_hoang_home.webp"
+  },
+  {
+    "id": "hoang_restaurant",
+    "prompt": "Use case illustration-story. Create ONE finished landscape 16:9 CG for Vietnamese visual novel chapter 4, semi-realistic cinematic natural skin, fabric and subtly painterly photographic lighting matching last reference. Scene: Tâm và Hoàng nói chuyện qua bàn; nét nghiêm túc trung tính, không nắm tay. Location: Nhà hàng tối. References in order: tam, hoang individual face portraits; next empty location background; last reference rendering style and Huyen approved identity only (Huyen is woman on RIGHT). Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Hoang: own young masculine face, navy casual blazer light shirt. Workplace women wear white blouse beige skirt Tam, powder-blue blouse charcoal trousers Huyen. At home Tam dusty rose cardigan ivory top. Restaurant Tam elegant simple ivory blouse and beige skirt, not party gown. Hoang navy blazer light shirt. Neutral reusable moment without assuming choice outcome. Eyes toward scene partner or work, never camera. Natural hands, no duplicated limbs. Cinematic candid medium-wide angle, important faces and action above 72% image height, lower 25% quiet for game textbox. Exactly described cast, no extra clear faces. No text, readable screens, logos, watermark, panels or collage.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/hoang/expressions/hoang_neutral.webp",
+      "game/images/assets/bg/bg_luxury_restaurant_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-ae131dbc-6bb9-4da8-8f7c-f6dd0bbd6ec1.png",
+    "output": "game/images/assets/cg/cg_tam_c04_hoang_restaurant.webp"
+  },
+  {
+    "id": "quang_lobby",
+    "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Quang giữ hai cốc nước, Tâm đứng đối diện; chưa trao cốc. Location: Sảnh công ty. Reference images: individual character portraits in order tam, quang; next location; last rendering reference ONLY, do not add those women if absent from scene. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_company_lobby_afternoon.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-c14db098-15e9-4ae1-8223-643476472322.png",
+    "output": "game/images/assets/cg/cg_tam_c04_quang_lobby.webp"
+  },
+  {
+    "id": "quang_door",
+    "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Quang đứng một mình cạnh cửa đóng với túi hồ sơ, bình tĩnh chờ. Location: Hành lang nhà Tâm. Reference images: individual character portraits in order quang; next location; last rendering reference ONLY, do not add those women if absent from scene. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+    "references": [
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_tam_family_hallway_night.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-19fa7c95-565e-4044-b1ce-e961db482fbf.png",
+    "output": "game/images/assets/cg/cg_tam_c04_quang_door.webp"
+  },
+  {
+    "id": "family_table",
+    "prompt": "Edit ONLY the table setting of this existing CG. Preserve exactly the three characters' faces/identities, hairstyles, clothing, positions, expressions, camera framing, room and lighting. Turn it into a modest Vietnamese family dinner: add three small rice bowls, chopsticks beside each setting, a small central plate of green vegetables and one shared bowl of soup on the existing table. Keep a few documents stacked off to the side so the table remains suitable for family-and-work conversation. Do not change hands or add people. No readable text. Semi-realistic cinematic 16:9. Keep faces and meaningful objects above the textbox's lower quarter wherever possible.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c04_family_table.webp"
+    ],
+    "revision": true,
+    "previous_generation": {
+      "id": "family_table",
+      "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Ba người tại bàn ăn có hồ sơ và cốc nước; không cử chỉ lãng mạn. Location: Bàn ăn nhà Tâm. Reference images: individual character portraits in order tam, thienan, quang; next location; last rendering reference ONLY, do not add those women if absent from scene. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Thien An: own mature composed face, low dark bun, ivory blouse charcoal trousers. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/thienan/expressions/thienan_neutral.webp",
+        "game/images/characters/quang/expressions/quang_neutral.webp",
+        "game/images/assets/bg/bg_tam_family_dining_room_evening.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "source": "exec-86b1fc80-81fa-488e-b0bf-5754b76c2a38.png"
+    },
+    "source": "exec-699ed3bb-ee52-4100-95f0-6412552c98d2.png",
+    "output": "game/images/assets/cg/cg_tam_c04_family_table.webp"
+  },
+  {
+    "id": "sisters_table",
+    "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Hai chị em nói chuyện qua bàn có hồ sơ; Thiên An mệt nhưng tỉnh táo. Location: Nhà Tâm. Reference images: individual character portraits in order tam, thienan; next location; last rendering reference ONLY, do not add those women if absent from scene. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Thien An: own mature composed face, low dark bun, ivory blouse charcoal trousers. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/thienan/expressions/thienan_neutral.webp",
+      "game/images/assets/bg/bg_tam_family_living_room_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-4b400403-7bef-4a11-a98d-fd1b5c1c6745.png",
+    "output": "game/images/assets/cg/cg_tam_c04_sisters_table.webp"
+  },
+  {
+    "id": "quang_thienan_work",
+    "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Cận hai người xem hồ sơ, hậu cảnh trung tính mờ; không mặc định là đôi tình nhân. Location: Nhà hoặc góc làm việc. Reference images: individual character portraits in order thienan, quang; next location; last rendering reference ONLY, do not add those women if absent from scene. Thien An: own mature composed face, low dark bun, ivory blouse charcoal trousers. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+    "references": [
+      "game/images/characters/thienan/expressions/thienan_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_tam_family_living_room_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-4455a713-a067-4439-8fe9-8955429af634.png",
+    "output": "game/images/assets/cg/cg_tam_c04_quang_thienan_work.webp"
+  },
+  {
+    "id": "empty_chair",
+    "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Huyền cầm cốc, nhìn về chiếc ghế trống của Quân. Location: Văn phòng. Reference images: individual character portraits in order huyen; next location; last rendering reference ONLY, do not add those women if absent from scene. Huyen: compact rounded face, short chin, small natural eyes, wispy bangs, shoulder-length layered half-up ponytail. Powder-blue blouse charcoal trousers at work; lavender knit at home. Exact approved collar-CG identity, distinct from Tam. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-a968f227-b25d-455d-bcfd-4c66c0bf65dd.png",
+    "output": "game/images/assets/cg/cg_tam_c04_empty_chair.webp"
+  },
+  {
+    "id": "south_late_night",
+    "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Thiên An day trán; Quang đặt nước ấm cạnh tay, hồ sơ phía trước. Location: Phòng họp chi nhánh miền Nam, đêm. Reference images: individual character portraits in order thienan, quang; next location; last rendering reference ONLY, do not add those women if absent from scene. Thien An: own mature composed face, low dark bun, ivory blouse charcoal trousers. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+    "references": [
+      "game/images/characters/thienan/expressions/thienan_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_meeting_room_night.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-9762ff1c-8801-4ba4-aa7c-3b986893053b.png",
+    "output": "game/images/assets/cg/cg_tam_c04_south_late_night.webp"
+  },
+  {
+    "id": "return_luggage",
+    "prompt": "Use case illustration-story. ONE cinematic landscape 16:9 visual novel CG, semi-realistic subtly painterly skin and photographic lighting consistent with last reference. Scene: Thiên An đi trước, Quang kéo hai vali phía sau thang máy. Location: Sảnh công ty. Reference images: individual character portraits in order thienan, quang; next location; last rendering reference ONLY, do not add those women if absent from scene. Thien An: own mature composed face, low dark bun, ivory blouse charcoal trousers. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. Respect exact cast. Home Tam dusty rose cardigan ivory top, work white blouse beige skirt. Huyen powderblue office blouse and charcoal trousers. Thien An ivory blouse dark trousers. Quang pale-blue shirt. Quang and Quan have different identities. Candid artistic framing, characters look at one another or action, never camera. Main faces, hands and important props in upper 70%; lower25% quiet for textbox. No readable writing on documents/screens, no logos, no watermark, no collages. Natural anatomy, restrained emotion.",
+    "references": [
+      "game/images/characters/thienan/expressions/thienan_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_company_lobby_morning.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-d102c33b-7e5c-4ef2-a9fe-4d90a23cd813.png",
+    "output": "game/images/assets/cg/cg_tam_c04_return_luggage.webp"
+  },
+  {
+    "id": "decision_bed",
+    "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Tâm ngồi mép giường, điện thoại úp bên cạnh; trước lựa chọn tình cảm. Location Phòng ngủ. Reference portraits in order tam; next location; last style only, don't add its cast. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/assets/bg/bg_tam_room_morning.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-106f8b7b-bdec-4428-9586-4c269783fac3.png",
+    "output": "game/images/assets/cg/cg_tam_c04_decision_bed.webp"
+  },
+  {
+    "id": "hoang_hands",
+    "prompt": "Reframe this same scene for a visual novel textbox. Preserve exact two faces, identities, hair, clothes, hand contact, restaurant and lighting. Raise the joined hands AND tabletop into middle of image at around 55–62% image height. Both faces remain fully visible in upper half. Use a slightly higher camera and show less lower torso, with quiet defocused table foreground in bottom25%. The hand contact must be clearly ABOVE y=750 in a 1080-high image. No text. Same cinematic semi-realistic 16:9. No new people.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c04_hoang_hands.webp"
+    ],
+    "revision": true,
+    "previous_generation": {
+      "id": "hoang_hands",
+      "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Sau khi đã chọn Hoàng: hai người đặt tay lên nhau qua mặt bàn. Location Nhà hàng. Reference portraits in order tam, hoang; next location; last style only, don't add its cast. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Hoang: own young masculine face, navy casual blazer light shirt. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/bg/bg_luxury_restaurant_evening.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "source": "exec-5f791fa7-f901-4586-a7cf-c055c5b338d0.png"
+    },
+    "source": "exec-64fe70c3-6fc8-480e-98cf-d1754ff2cbc4.png",
+    "output": "game/images/assets/cg/cg_tam_c04_hoang_hands.webp"
+  },
+  {
+    "id": "quang_confession",
+    "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Sau khi đã chọn Quang: hai người thổ lộ, đứng cách một cánh tay, nhìn nhau. Location Hành lang nhà Tâm. Reference portraits in order tam, quang; next location; last style only, don't add its cast. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_tam_family_hallway_night.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-7829cfb5-14d9-478d-986c-eb5fdb8f39ce.png",
+    "output": "game/images/assets/cg/cg_tam_c04_quang_confession.webp"
+  },
+  {
+    "id": "independent_plan",
+    "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Tâm một mình mở kế hoạch, điện thoại đặt úp, bình thản quyết tâm. Location Bàn làm việc. Reference portraits in order tam; next location; last style only, don't add its cast. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-7dbd6f47-bbe7-44ff-b649-926f462b0358.png",
+    "output": "game/images/assets/cg/cg_tam_c04_independent_plan.webp"
+  },
+  {
+    "id": "final_review",
+    "prompt": "Reframe this same three-person report-review scene for a game textbox. Preserve exact character faces, identities, outfits and room. Use a higher camera so the TWO evaluation folders and Quan's hands are clearly visible at image height 55–65%, ABOVE y=750 in a 1080-high image. All faces visible in upper half. Bottom25% quiet defocused desk foreground only. Same two women seated and man placing reports, no extra people, no fake writing. Semi-realistic cinematic 16:9.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c04_final_review.webp"
+    ],
+    "revision": true,
+    "previous_generation": {
+      "id": "final_review",
+      "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Quân đặt hai bản đánh giá xuống trước hai cô gái, chưa ký nhận kết quả nhánh. Location Phòng họp. Reference portraits in order tam, huyen, quan; next location; last style only, don't add its cast. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Huyen: compact rounded face, short chin, small natural eyes, wispy bangs, shoulder-length layered half-up ponytail. Powder-blue blouse charcoal trousers at work; lavender knit at home. Exact approved collar-CG identity, distinct from Tam. Quan: own older stern angular male face, strong jaw, charcoal suit and dark shirt, short swept black hair. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/quan/expressions/quan_neutral.webp",
+        "game/images/assets/bg/bg_meeting_room_day.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "source": "exec-06988084-7a79-4feb-bb75-d655d83f1bbb.png"
+    },
+    "source": "exec-92651e75-0999-4ccd-a792-5aed2e282e8f.png",
+    "output": "game/images/assets/cg/cg_tam_c04_final_review.webp"
+  },
+  {
+    "id": "thienan_open_door",
+    "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Thiên An giữ cửa hé, Quang quay lại nhìn; không ôm hay trao nhẫn. Location Cửa nhà Tâm. Reference portraits in order thienan, quang; next location; last style only, don't add its cast. Thien An: own mature composed face, low dark bun, ivory blouse charcoal trousers. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+    "references": [
+      "game/images/characters/thienan/expressions/thienan_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_tam_family_entry_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-ebae8d7f-109c-421d-a5f0-b0e0c4dda22f.png",
+    "output": "game/images/assets/cg/cg_tam_c04_thienan_open_door.webp"
+  },
+  {
+    "id": "hoang_final",
+    "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Hai người trao đổi nghiêm túc về cách duy trì quan hệ; không thể hiện đã hòa giải. Location Góc ngồi yên tĩnh. Reference portraits in order tam, hoang; next location; last style only, don't add its cast. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Hoang: own young masculine face, navy casual blazer light shirt. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/hoang/expressions/hoang_neutral.webp",
+      "game/images/assets/bg/bg_luxury_restaurant_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-d6c7816a-9891-4f52-99fc-19d3ece0561e.png",
+    "output": "game/images/assets/cg/cg_tam_c04_hoang_final.webp"
+  },
+  {
+    "id": "quang_final",
+    "prompt": "Use case illustration-story. ONE finished CG, 16:9 wide landscape, semi-realistic cinematic Vietnamese visual novel chapter 4. Artistically composed candid 50mm film still, subtle depth, natural skin and light, match last reference finish. Scene: Quang tới đón Tâm, đứng chờ bên cửa; hai người nhìn nhau, chưa rời đi. Location Cửa nhà Tâm. Reference portraits in order tam, quang; next location; last style only, don't add its cast. Tam: refined longer oval face, long dark half-up wavy hair, pearl earrings; white blouse beige skirt at work, dusty rose cardigan ivory top at home. Quang: own younger gentle male face, pale-blue open-collar shirt charcoal tailoring, never Quan's identity. At home Tam dustyrose cardigan ivory top beige skirt; at restaurant/work Tam white blouse beige skirt; Huyen powderblue blouse charcoal trousers. Thien An ivory blouse charcoal trousers, Quang pale blue shirt, Hoang navy blazer light shirt. Faces and crucial hands/action in upper70% of frame; lower25% unobtrusive textbox space. People look at each other or meaningful action, never viewer. No readable text, false writing, logos or watermark. Exactly described cast. Natural anatomy and realistic hand contact. No unrequested kissing or embraces.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_tam_family_entry_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-304eb230-bcc8-40d4-acc6-97bb436ee439.png",
+    "output": "game/images/assets/cg/cg_tam_c04_quang_final.webp"
+  },
+  {
+    "id": "tam_quang_cafe",
+    "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Tâm và Quang trò chuyện qua hai cốc nước, nét ấm áp vừa phải. Location: Quán cà phê.  Ordered references: tam, quang identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Tam: refined longer oval face, long dark half-up wavy hair, small pearl earrings. White blouse and beige skirt at work; dusty-rose cardigan over ivory top at home. Quang: younger gentle male face from own portrait, pale-blue open collar shirt and charcoal trousers, distinct from Quan. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+    "references": [
+      "game/images/characters/tam/expressions/tam_neutral.webp",
+      "game/images/characters/quang/expressions/quang_neutral.webp",
+      "game/images/assets/bg/bg_c04_cafe_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-89e026c5-e1e6-45f4-af13-96db2bb1052e.png",
+    "output": "game/images/assets/cg/cg_tam_c04_tam_quang_cafe.webp"
+  },
+  {
+    "id": "huyen_nhi_quan_home",
+    "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Huyền một mình gấp áo khoác nhỏ cạnh sofa nhà Quân, mệt và suy tư; Ánh Nhi đã ngủ ngoài khung trong phòng bên, không hiện trẻ đang thức. Location: Nhà Quân. IMPORTANT only Huyen physically visible; Anh Nhi asleep OFFSCREEN in another room. Huyen folds child's jacket beside sofa. Ordered references: huyen identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Huyen: distinct compact rounded face, short chin, natural small eyes, wispy bangs and shoulder-length layered half-up ponytail. Powder-blue blouse and charcoal trousers at work; lavender knit at home. Follow approved collar scene face for Huyen, never give her Tam's long face. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/assets/bg/bg_c04_quan_home_night.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-755c7b99-6aad-4ec7-bd2a-d1d8baa45721.png",
+    "output": "game/images/assets/cg/cg_tam_c04_huyen_nhi_quan_home.webp"
+  },
+  {
+    "id": "huyen_nhi_huyen_home",
+    "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Huyền và Ánh Nhi bên bàn bút màu; túi ngủ và gối nhỏ ở hậu cảnh. Location: Nhà Huyền.  Ordered references: huyen, anh_nhi identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Huyen: distinct compact rounded face, short chin, natural small eyes, wispy bangs and shoulder-length layered half-up ponytail. Powder-blue blouse and charcoal trousers at work; lavender knit at home. Follow approved collar scene face for Huyen, never give her Tam's long face. Anh Nhi: same 8-year-old child as reference sheet, round child face, two low pigtails and wispy bangs, pale yellow cardigan white top navy skirt. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "Specs/Design/anh_nhi_identity.webp",
+      "game/images/assets/bg/bg_c04_huyen_home_night.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-65f11bbc-3958-4f50-8c58-503d18a17b99.png",
+    "output": "game/images/assets/cg/cg_tam_c04_huyen_nhi_huyen_home.webp"
+  },
+  {
+    "id": "huyen_hoang_office",
+    "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Huyền và Hoàng tranh luận bản thiết kế, nét thân thiện trung tính. Location: Văn phòng.  Ordered references: huyen, hoang identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Huyen: distinct compact rounded face, short chin, natural small eyes, wispy bangs and shoulder-length layered half-up ponytail. Powder-blue blouse and charcoal trousers at work; lavender knit at home. Follow approved collar scene face for Huyen, never give her Tam's long face. Hoang: own young masculine portrait identity, navy casual blazer and light shirt. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "game/images/characters/hoang/expressions/hoang_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-b7009d4e-f4dd-4882-ae26-3317c74be6ce.png",
+    "output": "game/images/assets/cg/cg_tam_c04_huyen_hoang_office.webp"
+  },
+  {
+    "id": "huyen_hoang_hall",
+    "prompt": "Edit ONLY the child's backpack held by Huyen in reference1. Replace the pink bunny bag with the same brown-red simple school backpack worn by Anh Nhi in reference2. Preserve exact Huyen/Hoang faces, identities, hair, clothes, poses, hand anatomy, eye contact, hallway, camera and lighting. Bag handles remain naturally in Huyen's hands; do not add the child to this image. No other changes. Semi-realistic cinematic16:9, no writing.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c04_huyen_hoang_hall.webp",
+      "Specs/Design/anh_nhi_identity.webp"
+    ],
+    "revision": true,
+    "previous_generation": {
+      "id": "huyen_hoang_hall",
+      "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Huyền cầm cặp trẻ em và trò chuyện với Hoàng, không có Quân trong khung. Location: Hành lang sau bữa tối.  Ordered references: huyen, hoang identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Huyen: distinct compact rounded face, short chin, natural small eyes, wispy bangs and shoulder-length layered half-up ponytail. Powder-blue blouse and charcoal trousers at work; lavender knit at home. Follow approved collar scene face for Huyen, never give her Tam's long face. Hoang: own young masculine portrait identity, navy casual blazer and light shirt. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/hoang/expressions/hoang_neutral.webp",
+        "game/images/assets/bg/bg_hotel_lobby_afternoon.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "source": "exec-b3637123-1231-43b0-be5e-6ac98d433765.png"
+    },
+    "source": "exec-194ebdcf-e0ec-4fe6-8639-1c095c459515.png",
+    "output": "game/images/assets/cg/cg_tam_c04_huyen_hoang_hall.webp"
+  },
+  {
+    "id": "spare_key",
+    "prompt": "Reframe this EXACT scene, preserving both faces, identities, clothes, expressions and grey-sofa apartment. Raise the KEY and Quan's hand to the center of image, around55–62% image height, fully above y750/1080. Use a higher camera and more visible tabletop. Faces remain fully visible upper half. Bottom25% quiet defocused table foreground for game textbox. Do not imply Huyen already accepted key: Quan offers it on table, Huyen's hands stay separate. Same semi-realistic cinematic 16:9. No text or new people.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c04_spare_key.webp"
+    ],
+    "revision": true,
+    "previous_generation": {
+      "id": "spare_key",
+      "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Quân để chìa khóa dự phòng gần tay Huyền; hai người nhìn nhau. Location: Nhà Quân.  Ordered references: huyen, quan identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Huyen: distinct compact rounded face, short chin, natural small eyes, wispy bangs and shoulder-length layered half-up ponytail. Powder-blue blouse and charcoal trousers at work; lavender knit at home. Follow approved collar scene face for Huyen, never give her Tam's long face. Quan: older stern angular male face, broad jaw, short swept black hair, charcoal suit and dark shirt. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+      "references": [
+        "game/images/characters/huyen/expressions/huyen_neutral.webp",
+        "game/images/characters/quan/expressions/quan_neutral.webp",
+        "game/images/assets/bg/bg_c04_quan_home_day.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "source": "exec-b07308dd-aaaf-465f-80ff-def3c62a62a0.png"
+    },
+    "source": "exec-716b5819-5d1c-42d1-b294-bb7afe128295.png",
+    "output": "game/images/assets/cg/cg_tam_c04_spare_key.webp"
+  },
+  {
+    "id": "school_pickup",
+    "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Ánh Nhi ôm cặp lớn nhìn lên Huyền; chưa nắm tay trước lựa chọn. Location: Cổng trường.  Ordered references: huyen, anh_nhi identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Huyen: distinct compact rounded face, short chin, natural small eyes, wispy bangs and shoulder-length layered half-up ponytail. Powder-blue blouse and charcoal trousers at work; lavender knit at home. Follow approved collar scene face for Huyen, never give her Tam's long face. Anh Nhi: same 8-year-old child as reference sheet, round child face, two low pigtails and wispy bangs, pale yellow cardigan white top navy skirt. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "Specs/Design/anh_nhi_identity.webp",
+      "game/images/assets/bg/bg_c04_school_gate.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-ab953856-d3b8-4cd6-8bac-9ac081e5efc0.png",
+    "output": "game/images/assets/cg/cg_tam_c04_school_pickup.webp"
+  },
+  {
+    "id": "school_bridge",
+    "prompt": "Use case illustration-story. Create one single finished cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Scene: Huyền kiểm tra trụ lệch mô hình cầu que gỗ; Ánh Nhi quan sát, Quân bên cạnh. Location: Văn phòng.  Ordered references: huyen, anh_nhi, quan identity portraits (child image is a multi-view identity sheet, NOT output layout); next empty location; final approved rendering style only (Huyen right woman). Huyen: distinct compact rounded face, short chin, natural small eyes, wispy bangs and shoulder-length layered half-up ponytail. Powder-blue blouse and charcoal trousers at work; lavender knit at home. Follow approved collar scene face for Huyen, never give her Tam's long face. Anh Nhi: same 8-year-old child as reference sheet, round child face, two low pigtails and wispy bangs, pale yellow cardigan white top navy skirt. Quan: older stern angular male face, broad jaw, short swept black hair, charcoal suit and dark shirt. Use EXACT child identity every time; no teen/adult child face. Home Huyen lavender knit, office powderblue blouse; Tam white blouse beige skirt at work/restaurant, dustyrose cardigan at home. Quan older charcoal suit dark shirt, Hoang navy blazer light shirt. Warm natural light matching place/time, candid artistic camera, no looking at viewer. Faces and key hands/props ABOVE 72% height, bottom25% calm for textbox. Exactly described cast, extras blurred. No readable lettering, fake text, logos, watermark, panels, collage. Anatomically natural hands and limbs.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "Specs/Design/anh_nhi_identity.webp",
+      "game/images/characters/quan/expressions/quan_neutral.webp",
+      "game/images/assets/bg/bg_company_open_office_day.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "source": "exec-504a837b-d1ae-48ed-aead-e3af66af12d8.png",
+    "output": "game/images/assets/cg/cg_tam_c04_school_bridge.webp"
+  },
+  {
+    "id": "group_dinner",
+    "prompt": "Create ONE cinematic semi-realistic Vietnamese visual novel CG, 16:9 landscape. Week23 ordinary FRIEND GROUP restaurant dinner. EXACTLY four physical people: Tam (long-haired woman LEFT in reference1, white blouse beige skirt), Huyen (short layered hair woman RIGHT in reference1, powderblue blouse), Hoang (portrait reference2, navy blazer light shirt), Anh Nhi (8-year-old child from reference3, yellow cardigan, two low pigtails). Quan (older stern man CENTER in reference1) appears ONLY as a small face on a tablet video-call screen on table, NOT physically present. Use reference4 restaurant and reference5 rendering finish. Four friends talk naturally across table; no hand holding or couple-like seating. Warm food dishes, child rice bowl, no alcohol for child. Artistic higher camera, all four faces, video-call screen and meaningful gestures ABOVE y=750/1080 (upper70%). Lower25% calm foreground for textbox. People look at each other or child, never camera. Child has same identity as sheet, not adult. No readable text/logos/watermarks. Natural hands, no extra people.",
+    "references": [
+      "game/images/assets/cg/cg_tam_c04_team_review.webp",
+      "game/images/characters/hoang/expressions/hoang_neutral.webp",
+      "Specs/Design/anh_nhi_identity.webp",
+      "game/images/assets/bg/bg_luxury_restaurant_evening.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "revision": false,
+    "source": "exec-1837d6f7-61bb-489c-ae20-a150ab4aa6ba.png",
+    "output": "game/images/assets/cg/cg_tam_c04_group_dinner.webp"
+  },
+  {
+    "id": "sleeping_blanket",
+    "prompt": "Create one finished cinematic semi-realistic 16:9 CG, quiet emotional chapter4 finale. Huyen reference1 (use approved collar-CG right woman's face in reference5 also) sits on grey sofa of Quan's apartment reference4, lavender knit and charcoal trousers. Same eight-year-old Anh Nhi from reference2, round child face with low pigtails and wispy bangs, fully clothed yellow cardigan, is ASLEEP with head resting across Huyen's lap. Quan older stern face reference3, charcoal suit dark shirt, bends gently to cover child with a thin blanket. Huyen watches him quietly, not camera. Laptop screen dark on table. Cinematic HIGH oblique camera so ALL THREE FACES INCLUDING SLEEPING CHILD and Quan's hands laying blanket lie clearly in upper70% of image; child face around55–60% height, never bottomquarter. Lower25% quiet defocused foreground. Warm lamp, cool night window, intimate family trust without kissing or romantic contact. Exact identities and room. No text, watermark, collage or extra characters. Natural anatomy.",
+    "references": [
+      "game/images/characters/huyen/expressions/huyen_neutral.webp",
+      "Specs/Design/anh_nhi_identity.webp",
+      "game/images/characters/quan/expressions/quan_neutral.webp",
+      "game/images/assets/bg/bg_c04_quan_home_night.webp",
+      "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+    ],
+    "revision": false,
+    "source": "exec-035b0917-a98e-4383-be73-1fcb2e0c9cc2.png",
+    "output": "game/images/assets/cg/cg_tam_c04_sleeping_blanket.webp"
+  }
+]

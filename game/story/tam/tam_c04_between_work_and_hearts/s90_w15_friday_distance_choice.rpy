@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s90_w15_friday_distance_choice.rpy
 
 label tam_c04_w15_s05_friday_distance_choice:
-    scene black
+    scene bg_company_open_office_day
     with fade
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Khoảng cách không lấy mất cả tuần. Nó chỉ làm một vài câu hỏi trở nên rõ hơn."
+    scene bg_company_open_office_day
+    with dissolve
     menu:
         "Giữ lịch gọi với Hoàng":
             $ story_add("tam_hoang_interest", 5)

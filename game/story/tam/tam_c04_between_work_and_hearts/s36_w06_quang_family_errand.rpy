@@ -2,7 +2,7 @@
 # Week 06 — Quang takes over a small family errand and Tâm notices where he belongs.
 
 label tam_c04_w06_s05_quang_family_errand:
-    scene black
+    scene bg_tam_family_living_room_evening
     with dissolve
 
     "Tối thứ Năm, mẹ Tâm nhờ người tới lấy một bộ giấy tờ."

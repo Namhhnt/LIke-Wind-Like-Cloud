@@ -5,5 +5,9 @@ label tam_c04_w18_s01_monday_phone_pulse:
     $ phone_refresh_all()
     scene bg_tam_room_morning
     with fade
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai không có tin nào mới. Hai người đều đã hỏi đủ. Phần còn lại thuộc về Tâm."
+    scene bg_tam_room_morning
+    with dissolve
     return

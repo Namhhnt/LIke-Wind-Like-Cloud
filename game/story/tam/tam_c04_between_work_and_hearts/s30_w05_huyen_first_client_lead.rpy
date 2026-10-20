@@ -5,7 +5,11 @@ label tam_c04_w05_s05_huyen_first_client_lead:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_huyen_presentation
+    with dissolve
     "Sáng thứ Sáu, Huyền đứng ở đầu bàn họp."
+    scene bg_meeting_room_day
+    with dissolve
 
     "Quân ngồi phía cuối, laptop đóng lại."
 

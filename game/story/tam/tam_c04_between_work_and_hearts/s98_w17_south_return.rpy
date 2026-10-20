@@ -3,7 +3,11 @@
 label tam_c04_w17_s02_south_return:
     scene bg_company_lobby_morning
     with dissolve
+    scene cg_tam_c04_return_luggage
+    with dissolve
     "Thiên An bước ra khỏi thang máy trước. Quang kéo theo hai chiếc vali."
+    scene bg_company_lobby_morning
+    with dissolve
     thienan neutral "Một cái là của tôi."
     quang "Anh biết."
     thienan neutral "Vậy sao anh kéo cả hai?"

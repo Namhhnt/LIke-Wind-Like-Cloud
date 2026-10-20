@@ -1,7 +1,11 @@
 label tam_c04_w12_s04_quang_at_family_dinner:
-    scene black
+    scene bg_tam_family_dining_room_evening
     with fade
+    scene cg_tam_c04_family_table
+    with dissolve
     "Tối thứ Năm, trên bàn ăn có ba cái bát."
+    scene bg_tam_family_dining_room_evening
+    with dissolve
     "Quang đến đúng giờ, mang món Thiên An thích và loại trà Tâm thường uống."
     thienan neutral "Anh chuẩn bị kỹ nhỉ."
     quang "Anh đi ngang qua."

@@ -5,9 +5,13 @@ label tam_c04_w24_s04_quang_thienan_finale:
         return
     if not story_has_flag("tam_c04_quang_thienan_committed") and not tam_c04_quang_thienan_breakthrough_ready():
         return
-    scene black
+    scene bg_tam_family_living_room_evening
+    with dissolve
+    scene cg_tam_c04_quang_thienan_work
     with dissolve
     "Thiên An làm việc ở bàn ăn. Quang đặt một cốc nước xuống rồi ngồi ở ghế đối diện."
+    scene bg_tam_family_living_room_evening
+    with dissolve
     thienan neutral "Anh không hỏi tôi có cần không nữa à?"
     quang "Em vẫn có thể bảo anh về."
     "Thiên An nhìn cánh cửa đang mở, rồi kéo tập hồ sơ sang một bên."

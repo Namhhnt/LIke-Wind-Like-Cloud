@@ -3,9 +3,13 @@
 label tam_c04_w18_s02_tam_romance_decision:
     $ _hoang_ready = tam_c04_hoang_breakthrough_ready()
     $ _quang_ready = tam_c04_quang_tam_breakthrough_ready()
-    scene black
+    scene bg_tam_room_morning
     with fade
+    scene cg_tam_c04_decision_bed
+    with dissolve
     "Tâm ngồi một mình ở mép giường. Chiếc điện thoại nằm úp bên cạnh."
+    scene bg_tam_room_morning
+    with dissolve
     "Không chọn cũng là một câu trả lời. Nhưng lần này cô muốn tự nói nó."
     menu:
         "Chọn Hoàng — thử bước vào một mối quan hệ nghiêm túc" if _hoang_ready:

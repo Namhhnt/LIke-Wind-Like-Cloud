@@ -9,7 +9,11 @@ label tam_c04_w13_s03_hoang_fixed_evening:
         return
     scene bg_luxury_restaurant_evening
     with dissolve
+    scene cg_tam_c04_hoang_restaurant
+    with dissolve
     "Hoàng đặt cốc nước sang phía Tâm. Không hỏi cô có bận cuối tuần không."
+    scene bg_luxury_restaurant_evening
+    with dissolve
     hoang neutral "Tối thứ Tư. Một tiếng. Nếu em không tới được, báo trước."
     tam neutral "Anh đang đặt lịch với em à?"
     hoang neutral "Ừ. Anh không muốn tiếp tục sống bằng phần thời gian còn thừa của em."

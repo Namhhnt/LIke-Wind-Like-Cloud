@@ -5,7 +5,11 @@ label tam_c04_w08_s06_month_two_priority:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, bảy giờ mười ba."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Hai tháng không kết thúc bằng một lời xác nhận."
 

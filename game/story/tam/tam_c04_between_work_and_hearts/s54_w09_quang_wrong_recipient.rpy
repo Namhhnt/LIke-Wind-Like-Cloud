@@ -1,8 +1,12 @@
 # Week 09 — A message lands in the wrong conversation and exposes Quang's split attention.
 label tam_c04_w09_s04_quang_wrong_recipient:
-    scene black
+    scene bg_asset_0007
     with fade
+    scene cg_tam_c04_phone_night
+    with dissolve
     "Chiều thứ Năm, Quang gửi cho Tâm một tấm ảnh lịch công tác của Thiên An."
+    scene bg_asset_0007
+    with dissolve
     "Tin nhắn dưới ảnh chỉ có bốn chữ: anh đã đổi rồi."
     "Ba giây sau, anh thu hồi cả hai."
     tam neutral "Gửi nhầm à?"

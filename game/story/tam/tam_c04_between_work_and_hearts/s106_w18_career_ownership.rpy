@@ -3,7 +3,11 @@
 label tam_c04_w18_s04_career_ownership:
     scene bg_meeting_room_day
     with dissolve
+    scene cg_tam_c04_tam_work_day
+    with dissolve
     "Quân giao cho Tâm và Huyền hai quyết định tách biệt. Không ai được ký thay người kia."
+    scene bg_company_open_office_day
+    with dissolve
     menu:
         "Tâm nhận phần có rủi ro cao hơn":
             $ story_add("career_tam", 10)

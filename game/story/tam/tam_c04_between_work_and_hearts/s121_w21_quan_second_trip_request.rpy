@@ -3,7 +3,11 @@
 label tam_c04_w21_s03_quan_second_trip_request:
     scene bg_company_open_office_day
     with dissolve
+    scene cg_tam_c04_huyen_quan_work
+    with dissolve
     "Quân thông báo chuyến công tác kéo dài mười ngày."
+    scene bg_company_open_office_day
+    with dissolve
     quan neutral "Ánh Nhi có thể ở nhà tôi. Cô chỉ cần ghé buổi tối. Hoặc ở nhà cô cuối tuần nếu tiện."
     huyen neutral "Anh đã hỏi con bé chưa?"
     quan neutral "Nó hỏi trước tôi."

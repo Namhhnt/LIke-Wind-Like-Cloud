@@ -1,7 +1,11 @@
 label tam_c04_w11_s04_huyen_catches_quan_error:
     scene bg_company_open_office_day
     with dissolve
+    scene cg_tam_c04_huyen_quan_work
+    with dissolve
     "Chiều thứ Năm, Huyền phát hiện Quân ghi nhầm một con số trong bảng dự toán."
+    scene bg_company_open_office_day
+    with dissolve
     "Cô nhìn màn hình ba giây, rồi sửa ở bản copy."
     huyen neutral "Anh Quân. Dòng mười bốn."
     "Quân kiểm tra."

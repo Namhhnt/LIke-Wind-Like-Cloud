@@ -2,12 +2,16 @@
 # Week 08 — Quang arrives and must choose which conversation he is actually seeking.
 
 label tam_c04_w08_s04_quang_choose_a_door:
-    scene black
+    scene bg_tam_family_hallway_night
     with fade
 
     "Tối thứ Năm, Quang đứng trước cửa nhà Tâm."
 
+    scene cg_tam_c04_quang_door
+    with dissolve
     "Anh mang một tập hồ sơ cho Thiên An và một hộp thức ăn cho Tâm."
+    scene bg_tam_family_hallway_night
+    with dissolve
 
     "Hai thứ nằm trên hai tay khác nhau."
 

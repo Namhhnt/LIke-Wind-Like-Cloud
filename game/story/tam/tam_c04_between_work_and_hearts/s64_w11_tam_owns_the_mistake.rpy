@@ -1,7 +1,11 @@
 label tam_c04_w11_s02_tam_owns_the_mistake:
     scene bg_meeting_room_day
     with dissolve
+    scene cg_tam_c04_team_review
+    with dissolve
     "Sáng thứ Ba, một quyết định của Tâm làm bản demo thiếu một trường hợp biên."
+    scene bg_meeting_room_day
+    with dissolve
     "Không nghiêm trọng. Nhưng đủ để khách hàng hỏi ngay trong cuộc họp."
     quan neutral "Ai chốt phạm vi này?"
     menu:

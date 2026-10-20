@@ -5,7 +5,11 @@ label tam_c04_w05_s02_separate_ownership:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_team_review
+    with dissolve
     "Sáng thứ Ba, Quân đặt hai tập brief ở hai phía khác nhau của bàn."
+    scene bg_meeting_room_day
+    with dissolve
 
     quan neutral "Tháng này không còn một đầu việc chung."
 

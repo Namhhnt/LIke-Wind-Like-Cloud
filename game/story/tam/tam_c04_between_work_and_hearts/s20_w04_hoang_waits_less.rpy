@@ -27,7 +27,11 @@ label tam_c04_w04_s03_hoang_waits_less:
 
     "Cô xuống sảnh đúng giờ hơn dự kiến năm phút."
 
+    scene cg_tam_c04_hoang_lobby
+    with dissolve
     "Hoàng đã đứng ngoài cửa, nhưng lần này không mang túi giấy hay một lý do nào khác."
+    scene bg_company_lobby_afternoon
+    with dissolve
 
     tam teasing "Hôm nay không mua dư gì à?"
 

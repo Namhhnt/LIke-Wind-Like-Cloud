@@ -5,7 +5,11 @@ label tam_c04_w03_s02_client_meeting_pressure:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_tam_presentation
+    with dissolve
     "Chiều thứ Ba, bản trình bày thử trở thành một cuộc họp thật."
+    scene bg_meeting_room_day
+    with dissolve
 
     "Phía khách hàng có thêm một người chưa từng xuất hiện trong danh sách. Ông ta ngồi cuối bàn, lật tài liệu nhanh hơn lời giới thiệu."
 

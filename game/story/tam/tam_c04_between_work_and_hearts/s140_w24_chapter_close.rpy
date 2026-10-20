@@ -1,7 +1,7 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s140_w24_chapter_close.rpy
 
 label tam_c04_w24_s07_chapter_close:
-    scene black
+    scene bg_tam_living_room_night
     with fade
     "Sáu tháng không khép lại bằng một lời tổng kết."
     "Chỉ có lịch tuần sau đã có tên người cần báo, một chiếc chìa khóa Huyền vẫn giữ, một cánh cửa Thiên An không còn khép ngay, và một quyết định công việc có chữ ký của chính Tâm."

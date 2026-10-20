@@ -2,7 +2,11 @@
 label tam_c04_w09_s06_friday_named_priority:
     scene bg_company_open_office_day
     with dissolve
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, sáu giờ bốn mươi."
+    scene bg_company_open_office_day
+    with dissolve
     "Hoàng đã để một chỗ. Huyền vừa gửi file không cần sửa. Quang vẫn còn một tin nhắn gửi nhầm. Đầu việc của Tâm chờ quyết định cuối."
     menu:
         "Báo Hoàng giờ Tâm sẽ đến, không để anh tự đoán":

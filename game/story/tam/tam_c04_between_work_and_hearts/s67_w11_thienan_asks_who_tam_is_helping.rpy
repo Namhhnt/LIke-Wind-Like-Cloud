@@ -1,7 +1,11 @@
 label tam_c04_w11_s05_thienan_asks_who_tam_is_helping:
-    scene black
+    scene bg_tam_family_living_room_evening
     with fade
+    scene cg_tam_c04_sisters_table
+    with dissolve
     "Tối thứ Năm, Thiên An gấp tờ lịch Quang để lại thành đôi."
+    scene bg_tam_family_living_room_evening
+    with dissolve
     thienan neutral "Em đang giúp ai vậy?"
     tam confused "Chị hỏi chuyện gì?"
     thienan neutral "Chuyện em cứ đứng giữa."

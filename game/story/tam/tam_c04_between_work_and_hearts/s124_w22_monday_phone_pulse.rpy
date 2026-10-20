@@ -5,5 +5,9 @@ label tam_c04_w22_s01_monday_phone_pulse:
     $ phone_refresh_all()
     scene bg_tam_room_morning
     with fade
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Tuần này công việc chen vào đúng nơi người ta vừa tạo được một thói quen mới."
+    scene bg_tam_room_morning
+    with dissolve
     return

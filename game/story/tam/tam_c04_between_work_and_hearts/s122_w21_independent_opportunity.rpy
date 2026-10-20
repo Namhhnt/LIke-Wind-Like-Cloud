@@ -3,7 +3,11 @@
 label tam_c04_w21_s04_independent_opportunity:
     scene bg_meeting_room_day
     with dissolve
+    scene cg_tam_c04_tam_work_day
+    with dissolve
     "Một dự án ngắn cần người đại diện nhóm làm việc trực tiếp với khách hàng."
+    scene bg_company_open_office_day
+    with dissolve
     if story_has_flag("tam_c04_tam_independent"):
         quan neutral "Tôi đề cử cô. Không có người đi kèm."
         menu:

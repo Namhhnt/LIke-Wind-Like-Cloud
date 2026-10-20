@@ -8,7 +8,11 @@ label tam_c04_w08_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w08_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai cuối tháng hai, Tâm mở lịch trước khi mở tin nhắn."
+    scene bg_tam_room_morning
+    with dissolve
 
     "Buổi review nằm ở chiều thứ Ba."
 

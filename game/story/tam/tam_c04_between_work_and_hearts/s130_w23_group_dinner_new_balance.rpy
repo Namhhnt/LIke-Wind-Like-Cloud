@@ -3,7 +3,11 @@
 label tam_c04_w23_s02_group_dinner_new_balance:
     scene bg_luxury_restaurant_evening
     with dissolve
+    scene cg_tam_c04_group_dinner
+    with dissolve
     "Bữa tối có Tâm, Huyền, Hoàng và Ánh Nhi. Quân gọi video từ khách sạn đúng lúc món ăn được mang ra."
+    scene bg_luxury_restaurant_evening
+    with dissolve
     anhni "Bố, chú Hoàng gắp hết hành cho con."
     hoang neutral "Cháu nói như chú vừa phạm tội."
     huyen neutral "Anh ấy đang mua chuộc nhân chứng."

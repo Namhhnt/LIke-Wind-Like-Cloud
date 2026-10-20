@@ -18,7 +18,11 @@ label tam_c04_w07_s03_hoang_notices_first:
     scene bg_company_lobby_afternoon
     with dissolve
 
+    scene cg_tam_c04_hoang_lobby
+    with dissolve
     "Chiều thứ Tư, Hoàng gặp Tâm ở sảnh."
+    scene bg_company_lobby_afternoon
+    with dissolve
 
     "Cô nói mình ổn trước khi anh hỏi."
 

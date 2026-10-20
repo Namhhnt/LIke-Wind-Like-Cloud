@@ -8,7 +8,11 @@ label tam_c04_w03_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w03_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai, Tâm tỉnh dậy khi điện thoại rung một lần rồi im."
+    scene bg_tam_room_morning
+    with dissolve
 
     "Không phải chuỗi tin nhắn dồn dập. Chỉ là những lời nhắc ngắn, mỗi lời nằm ở một góc khác nhau trong ngày của cô."
 

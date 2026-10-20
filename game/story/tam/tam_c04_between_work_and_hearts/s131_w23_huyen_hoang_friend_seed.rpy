@@ -4,10 +4,14 @@ label tam_c04_w23_s03_huyen_hoang_friend_seed:
     if story_has_flag("tam_c04_tam_hoang_dating"):
         return
 
-    scene black
+    scene bg_hotel_lobby_afternoon
     with dissolve
 
+    scene cg_tam_c04_huyen_hoang_hall
+    with dissolve
     "Sau bữa tối, Tâm đưa Ánh Nhi vào nhà vệ sinh. Huyền và Hoàng đứng lại ngoài hành lang."
+    scene bg_hotel_lobby_afternoon
+    with dissolve
     hoang neutral "Cô chăm con bé khá quen rồi."
     huyen neutral "Anh nói như tôi vừa lên chức bảo mẫu."
     hoang neutral "Tôi định nói cô hợp với việc người khác tin cô."

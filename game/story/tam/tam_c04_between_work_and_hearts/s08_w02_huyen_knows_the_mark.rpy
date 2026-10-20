@@ -5,7 +5,11 @@ label tam_c04_w02_s03_huyen_knows_the_mark:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_huyen_work
+    with dissolve
     "Sáng thứ Tư, Huyền đặt bản báo cáo mới lên bàn Tâm."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Ba dòng được tô vàng. Một thuật ngữ đã được sửa đồng nhất từ đầu đến cuối."
 

@@ -7,10 +7,14 @@ label tam_c04_w09_s03_hoang_keeps_a_place:
         $ story_flag("tam_c04_w09_hoang_scene_skipped")
         return
 
-    scene black
+    scene bg_hoangminh_villa_living_room_day
     with dissolve
     "Tối thứ Tư, trên bàn ăn nhà Hoàng có hai bộ bát đũa."
+    scene cg_tam_c04_hoang_home
+    with dissolve
     "Bộ thứ hai chưa được dọn thức ăn. Chỉ có một cốc nước ấm."
+    scene bg_hoangminh_villa_living_room_day
+    with dissolve
     tam neutral "Anh chuẩn bị trước à?"
     hoang neutral "Anh để chỗ. Chuẩn bị khác."
     tam confused "Khác thế nào?"

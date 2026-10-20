@@ -5,7 +5,11 @@ label tam_c04_w09_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w09_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai đầu tháng ba, điện thoại của Tâm không nhiều thông báo hơn."
+    scene bg_tam_room_morning
+    with dissolve
     "Chúng chỉ bớt giống những lời báo trước chung chung."
 
     if story_has_flag("tam_c04_m02_hoang_deepening"):

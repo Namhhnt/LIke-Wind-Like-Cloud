@@ -22,7 +22,11 @@ label tam_c04_w08_s03_hoang_asks_when:
 
     "Không có câu hỏi em có muốn gặp không."
 
+    scene cg_tam_c04_hoang_lobby
+    with dissolve
     "Tâm xuống sảnh lúc sáu giờ hai mươi."
+    scene bg_company_lobby_afternoon
+    with dissolve
 
     hoang neutral "Anh đoán gần đúng."
 

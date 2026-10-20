@@ -5,7 +5,11 @@ label tam_c04_w07_s02_huyen_disagrees_with_reasons:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_huyen_presentation
+    with dissolve
     "Chiều thứ Ba, Quân yêu cầu cắt phần trình bày của Huyền xuống còn một nửa."
+    scene bg_meeting_room_day
+    with dissolve
 
     huyen neutral "Em không đồng ý."
 

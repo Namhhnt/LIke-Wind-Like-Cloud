@@ -1,7 +1,7 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s125_w22_route_specific_busy_week.rpy
 
 label tam_c04_w22_s02_route_specific_busy_week:
-    scene black
+    scene bg_tam_room_morning
     with dissolve
     if story_has_flag("tam_c04_tam_hoang_dating"):
         "Hoàng phải đi gặp khách hàng hai ngày. Tâm lại có deadline vào tối anh trở về."
@@ -19,7 +19,11 @@ label tam_c04_w22_s02_route_specific_busy_week:
                 $ story_add("career_tam", 7)
                 $ story_flag("tam_c04_w22_hoang_contact_missed")
     elif story_has_flag("tam_c04_tam_quang_confirmed"):
+        scene cg_tam_c04_tam_quang_cafe
+        with dissolve
         "Quang hẹn Tâm ở một quán cách xa nhà hai người."
+        scene bg_c04_cafe_evening
+        with dissolve
         quang "Anh muốn có một nơi mà mình không tự động nói chuyện về chị An."
         tam neutral "Anh đang làm tốt đấy. Mười phút rồi chưa nhắc."
         quang "Em vừa nhắc."
@@ -27,7 +31,11 @@ label tam_c04_w22_s02_route_specific_busy_week:
         $ tam_c04_add_extended_score("quang_tam_awareness", 5)
         $ story_flag("tam_c04_w22_quang_tam_deliberate_space")
     else:
+        scene cg_tam_c04_tam_work_evening
+        with dissolve
         "Tâm dành ba tối liên tiếp cho dự án. Cô mệt, nhưng không dùng sự bận rộn để trốn một câu trả lời nào."
+        scene bg_company_open_office_day
+        with dissolve
         $ story_add("career_tam", 12)
         $ story_add("tam_self_clarity", 3)
         $ story_flag("tam_c04_w22_independent_busy_week")

@@ -5,7 +5,11 @@ label tam_c04_w02_s05_client_brief_rehearsal:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_team_review
+    with dissolve
     "Chiều thứ Sáu, phòng họp chỉ còn Tâm, Huyền và Quân."
+    scene bg_meeting_room_day
+    with dissolve
 
     "Slide đầu tiên nằm yên trên màn hình. Con trỏ chuột chớp ở góc dưới, nhỏ và đều."
 

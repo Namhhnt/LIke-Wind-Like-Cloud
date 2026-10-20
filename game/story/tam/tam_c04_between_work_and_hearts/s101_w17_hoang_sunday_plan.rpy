@@ -6,7 +6,11 @@ label tam_c04_w17_s05_hoang_sunday_plan:
         return
     scene bg_luxury_restaurant_evening
     with dissolve
+    scene cg_tam_c04_hoang_restaurant
+    with dissolve
     hoang neutral "Chủ Nhật anh muốn đưa em đi một nơi. Không phải nhà anh. Không phải việc công ty."
+    scene bg_luxury_restaurant_evening
+    with dissolve
     tam neutral "Nghe như anh đã loại hết cớ."
     hoang neutral "Ừ. Còn lại mỗi việc anh muốn đi cùng em."
     menu:

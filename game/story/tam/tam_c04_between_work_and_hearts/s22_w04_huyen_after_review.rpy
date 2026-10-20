@@ -5,7 +5,11 @@ label tam_c04_w04_s05_huyen_after_review:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_huyen_work
+    with dissolve
     "Sáng thứ Sáu, Huyền đặt bản đánh giá tháng dưới bàn phím."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Cô đã đọc nó đủ nhiều để nếp gấp giữa tờ giấy mềm hơn hai đầu."
 

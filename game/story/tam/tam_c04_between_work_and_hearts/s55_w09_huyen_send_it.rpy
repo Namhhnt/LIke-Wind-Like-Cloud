@@ -3,7 +3,11 @@ label tam_c04_w09_s05_huyen_send_it:
     scene bg_company_open_office_day
     with dissolve
     "Chiều thứ Sáu, Huyền đặt bản phản hồi khách hàng lên bàn Quân."
+    scene cg_tam_c04_huyen_quan_work
+    with dissolve
     "Anh đọc từ đầu đến cuối."
+    scene bg_company_open_office_day
+    with dissolve
     "Con trỏ chuột dừng ở dòng cuối, nhưng anh không sửa."
     quan neutral "Gửi đi."
     huyen confused "Anh không sửa gì à?"

@@ -1,8 +1,12 @@
 label tam_c04_w10_s04_quang_respects_the_closed_door:
-    scene black
+    scene bg_tam_family_hallway_night
     with fade
     "Tối thứ Năm, cửa phòng Thiên An đóng."
+    scene cg_tam_c04_quang_door
+    with dissolve
     "Quang đứng ngoài hành lang với một túi tài liệu."
+    scene bg_tam_family_hallway_night
+    with dissolve
     thienan neutral "Em cần làm một mình tối nay."
     "Quang giữ quai túi, rồi gật đầu."
     menu:

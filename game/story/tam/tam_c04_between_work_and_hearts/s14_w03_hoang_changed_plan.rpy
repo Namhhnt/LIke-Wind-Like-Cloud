@@ -22,7 +22,11 @@ label tam_c04_w03_s03_hoang_changed_plan:
 
     "Khi Tâm xuống sảnh, đồng hồ đã muộn hơn lịch hẹn với Hoàng gần bốn mươi phút."
 
+    scene cg_tam_c04_hoang_lobby
+    with dissolve
     "Anh ngồi ở hàng ghế cạnh cửa kính, một tay giữ điện thoại, tay kia đặt trên túi giấy chưa mở."
+    scene bg_company_lobby_afternoon
+    with dissolve
 
     tam worried "Em xin lỗi. Em nhắn mà không biết anh có thấy không."
 

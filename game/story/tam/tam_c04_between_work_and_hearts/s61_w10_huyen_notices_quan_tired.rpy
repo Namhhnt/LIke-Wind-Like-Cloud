@@ -2,7 +2,11 @@ label tam_c04_w10_s05_huyen_notices_quan_tired:
     scene bg_company_open_office_day
     with dissolve
     "Cuối ngày, Quân đọc cùng một dòng hai lần."
+    scene cg_tam_c04_huyen_quan_work
+    with dissolve
     "Huyền nhìn thấy trước Tâm."
+    scene bg_company_open_office_day
+    with dissolve
     huyen neutral "Anh chưa ăn trưa à?"
     quan neutral "Không liên quan đến bản này."
     huyen neutral "Có. Anh đang đọc sai dòng."

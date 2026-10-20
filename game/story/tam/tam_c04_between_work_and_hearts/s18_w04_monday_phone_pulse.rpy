@@ -8,7 +8,11 @@ label tam_c04_w04_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w04_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai cuối cùng của tháng đầu tiên, Tâm thức dậy trước chuông báo thức hai phút."
+    scene bg_tam_room_morning
+    with dissolve
 
     "Màn hình điện thoại có ít thông báo hơn tuần trước. Nhưng mỗi cái rõ hơn."
 

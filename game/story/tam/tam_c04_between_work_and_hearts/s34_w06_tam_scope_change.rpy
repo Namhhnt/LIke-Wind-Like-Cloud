@@ -5,7 +5,11 @@ label tam_c04_w06_s03_tam_scope_change:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_day
+    with dissolve
     "Chiều thứ Tư, khách hàng gửi một yêu cầu mới."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Nếu nhận, toàn bộ cấu trúc Tâm đã dựng từ đầu tuần phải đổi."
 

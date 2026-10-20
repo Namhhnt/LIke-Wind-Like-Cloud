@@ -3,7 +3,11 @@
 label tam_c04_w13_s04_quan_asks_huyen_pickup:
     scene bg_company_open_office_day
     with dissolve
+    scene cg_tam_c04_huyen_quan_work
+    with dissolve
     "Quân đứng cạnh bàn Huyền lâu hơn một nhịp. Trên tay anh không có tài liệu."
+    scene bg_company_open_office_day
+    with dissolve
     quan neutral "Chiều mai cô có thể ghé trường Trần Ánh Nhi không?"
     huyen surprised "Con gái anh?"
     quan neutral "Tôi có cuộc họp kéo dài. Người đón thường ngày đang nghỉ."

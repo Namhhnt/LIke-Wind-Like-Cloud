@@ -5,7 +5,7 @@ label tam_c04_w12_s03_hoang_asks_for_clear_no:
         $ story_add("hoang_self_acceptance", 5)
         $ story_flag("tam_c04_w12_hoang_no_longer_waiting_route")
         return
-    scene black
+    scene bg_company_lobby_afternoon
     with dissolve
     "Sau buổi review, Hoàng đi cạnh Tâm một đoạn."
     hoang neutral "Anh muốn đề nghị một việc."

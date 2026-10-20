@@ -1,7 +1,11 @@
 label tam_c04_w12_s06_month_three_priority:
     scene bg_company_open_office_day
     with dissolve
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, sáu giờ năm mươi tám."
+    scene bg_company_open_office_day
+    with dissolve
     "Ba tháng đầu khép lại bằng một bản đánh giá, một quy tắc không để người khác đoán, một bữa cơm ba người và một cốc nước đặt đúng bàn."
     menu:
         "Giữ một lịch cố định với Hoàng trong tháng tới":

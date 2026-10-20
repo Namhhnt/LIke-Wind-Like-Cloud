@@ -5,5 +5,9 @@ label tam_c04_w24_s01_monday_phone_pulse:
     $ phone_refresh_all()
     scene bg_tam_room_morning
     with fade
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Tuần cuối cùng của mùa này bắt đầu bằng lịch review sáu tháng và một tin nhắn rất bình thường từ người Tâm đã chọn."
+    scene bg_tam_room_morning
+    with dissolve
     return

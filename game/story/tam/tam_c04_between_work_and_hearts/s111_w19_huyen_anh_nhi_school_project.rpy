@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s111_w19_huyen_anh_nhi_school_project.rpy
 
 label tam_c04_w19_s04_huyen_anh_nhi_school_project:
-    scene black
+    scene bg_company_open_office_day
+    with dissolve
+    scene cg_tam_c04_school_bridge
     with dissolve
     "Ánh Nhi mang tới công ty một mô hình cầu bằng que gỗ. Một bên trụ bị lệch."
+    scene bg_company_open_office_day
+    with dissolve
     anhni "Bố cháu bảo để tối sửa. Nhưng tối nào bố cũng muộn."
     huyen neutral "Đưa cô xem."
     quan neutral "Cô còn việc."

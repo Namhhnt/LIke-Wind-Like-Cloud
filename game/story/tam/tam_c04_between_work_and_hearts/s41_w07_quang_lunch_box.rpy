@@ -2,7 +2,7 @@
 # Week 07 — Quang returns for a lunch box and reveals which absence he noticed.
 
 label tam_c04_w07_s04_quang_lunch_box:
-    scene black
+    scene bg_tam_family_dining_room_evening
     with fade
 
     "Tối thứ Năm, Quang tới trả một tập giấy cho Thiên An."

@@ -8,7 +8,11 @@ label tam_c04_w06_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w06_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Thứ Hai bắt đầu bằng một email thông báo Quân sẽ làm việc bên ngoài trong hai ngày."
+    scene bg_tam_room_morning
+    with dissolve
 
     if story_state.get("huyen_quan_trust", 0) >= 45:
         "Huyền chuyển tiếp email cho Tâm dù cả hai đều nằm trong danh sách nhận."

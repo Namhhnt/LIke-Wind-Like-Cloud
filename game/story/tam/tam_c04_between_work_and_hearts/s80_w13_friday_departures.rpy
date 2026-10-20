@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s80_w13_friday_departures.rpy
 
 label tam_c04_w13_s05_friday_departures:
-    scene black
+    scene bg_company_open_office_day
     with fade
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, ba lịch trình cùng mở ra trên màn hình Tâm."
+    scene bg_company_open_office_day
+    with dissolve
     "Máy bay của Thiên An và Quang cất cánh lúc sáu giờ. Hoàng giữ bàn lúc bảy giờ. Huyền gửi ảnh một chiếc ba lô trẻ con đặt trên ghế phụ."
     menu:
         "Nhắn Hoàng rằng Tâm sẽ đến đúng giờ":

@@ -15,14 +15,18 @@ label tam_c04_w06_s04_hoang_house_evening:
         $ story_flag("tam_c04_w06_hoang_house_scene_skipped")
         return
 
-    scene black
+    scene bg_hoangminh_villa_living_room_day
     with fade
 
     "Chiều thứ Năm, Tâm đến nhà Hoàng sau giờ làm."
 
     "Cổng mở trước khi cô kịp nhắn lần thứ hai."
 
+    scene cg_tam_c04_hoang_home
+    with dissolve
     "Trong phòng khách, một chiếc cốc đã đặt trên bàn. Nước nóng vừa đủ, không có đá."
+    scene bg_hoangminh_villa_living_room_day
+    with dissolve
 
     tam neutral "Anh chuẩn bị từ bao giờ?"
 

@@ -1,7 +1,11 @@
 label tam_c04_w10_s02_client_incident:
     scene bg_meeting_room_day
     with dissolve
+    scene cg_tam_c04_team_review
+    with dissolve
     "Mười giờ sáng, khách hàng yêu cầu đổi phần đã chốt và vẫn giữ nguyên thời hạn."
+    scene bg_meeting_room_day
+    with dissolve
     quan neutral "Tôi cần một quyết định trước mười một giờ. Không cần một bản giải thích dài."
     "Tâm nhìn scope. Huyền nhìn slide."
     menu:

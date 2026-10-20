@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s95_w16_month_four_priority.rpy
 
 label tam_c04_w16_s05_month_four_priority:
-    scene black
+    scene bg_company_open_office_day
     with fade
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Một tháng có người đi xa kết thúc bằng những điều họ chọn báo về."
+    scene bg_company_open_office_day
+    with dissolve
     menu:
         "Tâm muốn trả lời Hoàng rõ ràng hơn":
             $ story_add("tam_hoang_interest", 7)

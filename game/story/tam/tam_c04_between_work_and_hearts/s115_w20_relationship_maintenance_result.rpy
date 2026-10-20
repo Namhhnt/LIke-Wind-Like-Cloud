@@ -4,10 +4,14 @@ label tam_c04_w20_s02_relationship_maintenance_result:
     if not story_has_flag("tam_c04_tam_hoang_dating"):
         return
     $ _result = relationship_resolve_contact_period("tam_hoang", "tam_c04_w19")
-    scene black
+    scene bg_luxury_restaurant_evening
     with dissolve
     if _result == "maintained":
+        scene cg_tam_c04_hoang_restaurant
+        with dissolve
         "Hoàng đặt điện thoại xuống khi Tâm đến."
+        scene bg_luxury_restaurant_evening
+        with dissolve
         hoang neutral "Tuần trước không dễ. Nhưng anh không phải tự đoán."
         tam neutral "Em đang học."
         hoang neutral "Anh cũng vậy."

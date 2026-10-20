@@ -2,7 +2,11 @@ label tam_c04_w12_s05_huyen_after_quarter_review:
     scene bg_company_open_office_day
     with dissolve
     "Sau giờ làm, Huyền vẫn ngồi lại với bản đánh giá."
+    scene cg_tam_c04_huyen_quan_work
+    with dissolve
     "Quân đi ngang qua, đặt một cốc nước xuống bàn cô."
+    scene bg_company_open_office_day
+    with dissolve
     quan neutral "Đừng đọc lại lần thứ tư. Nội dung không đổi."
     huyen neutral "Em đang kiểm tra xem anh có cài câu nào khó chịu giữa các dòng không."
     quan neutral "Có. Nhưng em đã đọc thấy từ lần đầu."

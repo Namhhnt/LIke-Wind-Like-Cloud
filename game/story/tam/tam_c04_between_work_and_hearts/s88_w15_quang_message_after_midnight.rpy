@@ -3,7 +3,11 @@
 label tam_c04_w15_s03_quang_message_after_midnight:
     scene bg_tam_room_morning
     with dissolve
+    scene cg_tam_c04_phone_night
+    with dissolve
     "Tâm đọc tin nhắn của Quang sau nửa đêm."
+    scene bg_asset_0007
+    with dissolve
     quang "Hôm nay ổn. Chị An chịu ăn tối."
     menu:
         "Hỏi Quang thì sao":

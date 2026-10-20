@@ -5,7 +5,11 @@ label tam_c04_w08_s02_second_monthly_review:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_team_review
+    with dissolve
     "Chiều thứ Ba, Quân đặt hai bản đánh giá xuống bàn."
+    scene bg_meeting_room_day
+    with dissolve
 
     "Lần này Huyền tự kéo bản của mình lại."
 

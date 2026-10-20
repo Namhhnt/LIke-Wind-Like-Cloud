@@ -1,11 +1,15 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s100_w17_huyen_knows_the_house.rpy
 
 label tam_c04_w17_s04_huyen_knows_the_house:
-    scene black
+    scene bg_c04_quan_home_day
     with dissolve
     "Huyền quay lại nhà Quân để trả chìa khóa dự phòng."
     "Cô biết bình nước ở ngăn nào, thuốc dị ứng của Ánh Nhi nằm đâu, chiếc đèn hành lang hay chập lúc mưa."
+    scene cg_tam_c04_spare_key
+    with dissolve
     quan neutral "Cô có thể giữ chìa khóa."
+    scene bg_c04_quan_home_day
+    with dissolve
     huyen surprised "Anh không sợ em bán nhà à?"
     quan neutral "Cô sẽ mất thời gian kê khai tài sản."
     menu:

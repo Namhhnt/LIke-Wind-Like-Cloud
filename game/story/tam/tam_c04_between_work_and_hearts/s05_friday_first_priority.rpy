@@ -5,7 +5,11 @@ label tam_c04_w01_s05_friday_first_priority:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, năm giờ bốn mươi hai phút."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Văn phòng đã vơi người. Ánh sáng ngoài cửa kính nhạt dần trên những mặt bàn còn mở laptop."
 

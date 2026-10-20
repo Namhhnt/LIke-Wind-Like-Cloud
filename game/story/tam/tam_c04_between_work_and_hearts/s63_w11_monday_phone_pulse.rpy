@@ -3,7 +3,11 @@ label tam_c04_w11_s01_monday_phone_pulse:
     with fade
     $ story_flag("tam_c04_w11_started")
     $ phone_refresh_all()
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai, Tâm phát hiện lịch tuần có một khoảng trống đúng vào tối thứ Sáu."
+    scene bg_tam_room_morning
+    with dissolve
     if story_state.get("tam_hoang_interest", 0) >= 75:
         "Hoàng hỏi khoảng trống đó có thật sự dành cho anh không."
     if story_state.get("huyen_quan_interest", 0) >= 20:

@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s92_w16_trip_return_delay.rpy
 
 label tam_c04_w16_s02_trip_return_delay:
-    scene black
+    scene bg_tam_family_living_room_evening
+    with dissolve
+    scene cg_tam_c04_quang_thienan_work
     with dissolve
     "Mưa lớn giữ chuyến bay ở lại miền Nam thêm hai ngày."
+    scene bg_tam_family_living_room_evening
+    with dissolve
     thienan tired "Anh có thể về chuyến sớm hơn. Phần còn lại tôi xử lý được."
     quang "Anh biết."
     thienan neutral "Anh chỉ có một câu đó à?"

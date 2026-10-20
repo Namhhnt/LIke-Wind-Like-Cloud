@@ -6,7 +6,11 @@ label tam_c04_w19_s01_monday_phone_pulse:
     scene bg_tam_room_morning
     with fade
     if story_has_flag("tam_c04_tam_hoang_dating"):
+        scene cg_tam_c04_phone_morning
+        with dissolve
         "Tin đầu tuần của Hoàng không còn hỏi Tâm có rảnh không. Anh gửi lịch của mình và hỏi cô muốn giữ tối nào."
+        scene bg_tam_room_morning
+        with dissolve
     elif story_has_flag("tam_c04_tam_quang_confirmed"):
         "Quang gửi địa chỉ một quán nhỏ, không kèm tên Thiên An hay bất kỳ việc nhà nào."
     else:

@@ -1,7 +1,7 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s89_w15_huyen_weekend_with_anh_nhi.rpy
 
 label tam_c04_w15_s04_huyen_weekend_with_anh_nhi:
-    scene black
+    scene bg_c04_huyen_home_day
     with dissolve
     "Thứ Bảy, Ánh Nhi ôm gối đứng trước cửa căn hộ Huyền."
     anhni "Bố cháu nói tối mai mới về."

@@ -5,7 +5,11 @@ label tam_c04_w02_s06_friday_second_priority:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Sáu giờ mười tám phút."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Văn phòng chỉ còn tiếng điều hòa và vài bàn phím chưa chịu nghỉ."
 

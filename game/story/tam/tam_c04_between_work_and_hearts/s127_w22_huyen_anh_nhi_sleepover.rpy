@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s127_w22_huyen_anh_nhi_sleepover.rpy
 
 label tam_c04_w22_s04_huyen_anh_nhi_sleepover:
-    scene black
+    scene bg_c04_huyen_home_night
+    with dissolve
+    scene cg_tam_c04_huyen_nhi_huyen_home
     with dissolve
     "Ánh Nhi ngủ ở nhà Huyền đêm thứ hai. Chiếc bàn nhỏ đầy bút màu và tài liệu công ty bị đẩy sang một góc."
+    scene bg_c04_huyen_home_night
+    with dissolve
     anhni "Cô Huyền, bố cháu có hay làm cô tức không?"
     huyen neutral "Có."
     anhni "Thế sao cô vẫn giúp bố?"

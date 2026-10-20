@@ -5,7 +5,11 @@ label tam_c04_w01_s03_report_review:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_team_review
+    with dissolve
     "Chiều thứ Năm, Quân xem bản báo cáo mới trong im lặng."
+    scene bg_meeting_room_day
+    with dissolve
 
     "Huyền ngồi đối diện, hai tay đặt dưới bàn. Đầu ngón tay cô gõ nhẹ vào đầu gối, đều đến mức gần như có nhịp."
 

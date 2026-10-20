@@ -9,7 +9,11 @@ label tam_c04_w06_s02_quan_empty_chair:
 
     "Huyền làm việc nhanh hơn thường lệ trong một giờ đầu."
 
+    scene cg_tam_c04_empty_chair
+    with dissolve
     "Đến mười giờ, cô đứng dậy đi lấy nước rồi nhìn về phía chiếc ghế đó lần thứ ba."
+    scene bg_company_open_office_day
+    with dissolve
 
     tam neutral "Mày tìm gì à?"
 

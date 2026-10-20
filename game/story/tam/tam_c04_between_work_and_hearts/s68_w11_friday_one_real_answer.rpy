@@ -1,7 +1,11 @@
 label tam_c04_w11_s06_friday_one_real_answer:
     scene bg_company_open_office_day
     with dissolve
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, bảy giờ lẻ hai."
+    scene bg_company_open_office_day
+    with dissolve
     "Tâm có thể tiếp tục trả lời nửa câu cho nhiều người, hoặc trả lời trọn một câu cho một người."
     menu:
         "Giữ tối thứ Sáu cho Hoàng như một lịch thật":

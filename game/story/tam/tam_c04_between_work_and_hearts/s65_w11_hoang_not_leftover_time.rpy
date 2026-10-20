@@ -5,9 +5,13 @@ label tam_c04_w11_s03_hoang_not_leftover_time:
         $ story_add("hoang_self_acceptance", 5)
         $ story_flag("tam_c04_w11_hoang_stops_reserving_time")
         return
-    scene black
+    scene bg_hoangminh_villa_living_room_day
+    with dissolve
+    scene cg_tam_c04_hoang_home
     with dissolve
     "Tối thứ Tư, Hoàng đặt điện thoại úp xuống bàn."
+    scene bg_hoangminh_villa_living_room_day
+    with dissolve
     hoang neutral "Anh hỏi một câu hơi khó nghe nhé."
     tam neutral "Anh đã báo trước rồi."
     hoang neutral "Anh đang nằm trong lịch của em, hay chỉ nằm ở phần thời gian còn lại?"

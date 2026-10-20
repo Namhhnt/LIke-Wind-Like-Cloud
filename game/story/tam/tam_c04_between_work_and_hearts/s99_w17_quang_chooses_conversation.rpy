@@ -1,7 +1,7 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s99_w17_quang_chooses_conversation.rpy
 
 label tam_c04_w17_s03_quang_chooses_conversation:
-    scene black
+    scene bg_tam_family_hallway_night
     with dissolve
     "Chiều hôm đó, Quang đứng ở ngã rẽ giữa phòng Thiên An và ban công nơi Tâm đang phơi khăn."
     menu:

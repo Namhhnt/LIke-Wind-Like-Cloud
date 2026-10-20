@@ -6,9 +6,13 @@ label tam_c04_w19_s03_quang_thienan_no_longer_refuses:
     $ _active = tam_c04_quang_thienan_breakthrough_ready()
     if not _active:
         return
-    scene black
+    scene bg_tam_family_living_room_evening
+    with dissolve
+    scene cg_tam_c04_quang_thienan_work
     with dissolve
     "Thiên An về muộn. Quang đang ngồi ở bậc thềm, bên cạnh là một hộp thức ăn còn ấm."
+    scene bg_tam_family_living_room_evening
+    with dissolve
     thienan tired "Anh có thể để trong bếp."
     quang "Anh muốn chờ em ăn."
     thienan neutral "Tôi không cần người canh."

@@ -7,7 +7,11 @@ label tam_c04_w01_s04_quang_after_work:
 
     "Chiều hôm sau, Tâm gặp Quang ở sảnh công ty."
 
+    scene cg_tam_c04_quang_lobby
+    with dissolve
     "Anh đứng gần cửa kính, một tay cầm tập hồ sơ mỏng, tay kia giữ hai cốc nước."
+    scene bg_company_lobby_afternoon
+    with dissolve
 
     "Tâm nhìn hai cốc trước rồi mới nhìn anh."
 

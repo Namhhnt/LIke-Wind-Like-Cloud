@@ -13,7 +13,11 @@ label tam_c04_w01_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w01_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai đến bằng tiếng chuông báo thức và ba thông báo xếp chồng trên màn hình."
+    scene bg_tam_room_morning
+    with dissolve
 
     "Tâm ngồi dậy, kéo chăn khỏi đầu gối rồi nhìn điện thoại thêm vài giây."
 

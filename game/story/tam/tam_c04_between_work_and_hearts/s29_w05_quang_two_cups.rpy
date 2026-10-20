@@ -2,10 +2,14 @@
 # Week 05 — Two cups reveal which habit Quang is trying to stop hiding behind.
 
 label tam_c04_w05_s04_quang_two_cups:
-    scene black
+    scene bg_tam_family_dining_room_evening
     with fade
 
+    scene cg_tam_c04_family_table
+    with dissolve
     "Tối thứ Năm, Quang mang hồ sơ tới nhà."
+    scene bg_tam_family_dining_room_evening
+    with dissolve
 
     "Trên tay anh có hai cốc nước ấm."
 

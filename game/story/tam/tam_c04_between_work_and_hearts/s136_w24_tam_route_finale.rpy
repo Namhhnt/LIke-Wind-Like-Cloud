@@ -1,12 +1,18 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s136_w24_tam_route_finale.rpy
 
 label tam_c04_w24_s03_tam_route_finale:
-    scene black
+    scene bg_tam_family_entry_evening
     with dissolve
     if story_has_flag("tam_c04_tam_hoang_dating"):
+        scene bg_luxury_restaurant_evening
+        with dissolve
         $ _missed_w21 = relationship_resolve_contact_period("tam_hoang", "tam_c04_w21") == "missed"
         $ _missed_w22 = relationship_resolve_contact_period("tam_hoang", "tam_c04_w22") == "missed"
+        scene cg_tam_c04_hoang_final
+        with dissolve
         hoang neutral "Anh không cần mình gặp mỗi ngày. Nhưng anh không muốn tình yêu chỉ tồn tại vào tuần em rảnh."
+        scene bg_luxury_restaurant_evening
+        with dissolve
         if _missed_w21 and _missed_w22:
             tam neutral "Em đã nghĩ có tên rồi thì anh sẽ hiểu."
             hoang neutral "Anh hiểu em bận. Anh không đồng ý với việc bị bỏ ngoài cuộc."
@@ -28,7 +34,11 @@ label tam_c04_w24_s03_tam_route_finale:
             $ story_add("hoang_tam_trust", 5)
             $ story_flag("tam_c04_final_hoang_dating_stable")
     elif story_has_flag("tam_c04_tam_quang_confirmed"):
+        scene cg_tam_c04_quang_final
+        with dissolve
         "Quang đứng ở cửa nhưng không bước vào như mọi lần."
+        scene bg_tam_family_entry_evening
+        with dissolve
         quang "Anh tới đón em. Nếu em vẫn muốn đi cùng anh."
         tam neutral "Anh không cần hỏi lại mỗi lần."
         quang "Anh cần. Vì trước đây anh chưa từng hỏi."
@@ -39,7 +49,13 @@ label tam_c04_w24_s03_tam_route_finale:
         $ relationship_set_phase("tam_quang", "mutual_direction")
         $ story_flag("tam_c04_final_quang_tam_mutual_direction")
     else:
+        scene bg_company_open_office_day
+        with dissolve
+        scene cg_tam_c04_independent_plan
+        with dissolve
         "Tâm ký tên vào bản nhận workstream mới."
+        scene bg_company_open_office_day
+        with dissolve
         "Không có ai bị từ chối để cô chứng minh mình mạnh. Chỉ có một lựa chọn được giữ đúng nghĩa của nó."
         $ story_add("career_tam", 15)
         $ story_add("tam_self_clarity", 10)

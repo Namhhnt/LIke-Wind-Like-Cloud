@@ -2,7 +2,7 @@
 # Week 03 — Quang learns to stay near Thiên An without forcing his way in.
 
 label tam_c04_w03_s05_quang_at_the_door:
-    scene black
+    scene bg_tam_family_entry_evening
     with fade
 
     "Tối thứ Năm, Tâm về nhà muộn hơn thường lệ."

@@ -5,7 +5,11 @@ label tam_c04_w07_s06_friday_small_truth:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, màn hình Tâm sáng lên khi cô đang cài lại chiếc cúc tay áo."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Huyền vừa gửi bản cuối."
 

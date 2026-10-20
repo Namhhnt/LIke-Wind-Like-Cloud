@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s82_w14_huyen_meets_anh_nhi.rpy
 
 label tam_c04_w14_s02_huyen_meets_anh_nhi:
-    scene black
+    scene bg_c04_school_gate
+    with dissolve
+    scene cg_tam_c04_school_pickup
     with dissolve
     "Ánh Nhi đứng trước cổng trường, ôm chiếc cặp lớn gần bằng nửa người."
+    scene bg_c04_school_gate
+    with dissolve
     anhni "Cô là đồng nghiệp của bố cháu à?"
     huyen neutral "Cô là người bố cháu tin là sẽ không làm mất cháu."
     anhni "Thế cô có biết nấu ăn không?"

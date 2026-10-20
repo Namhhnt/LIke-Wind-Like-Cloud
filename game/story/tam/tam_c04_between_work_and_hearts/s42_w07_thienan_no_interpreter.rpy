@@ -2,10 +2,14 @@
 # Week 07 — Tâm refuses to interpret Thiên An for Quang.
 
 label tam_c04_w07_s05_thienan_no_interpreter:
-    scene black
+    scene bg_tam_family_living_room_evening
     with dissolve
 
+    scene cg_tam_c04_sisters_table
+    with dissolve
     "Tối thứ Năm, Thiên An để lại một tập tài liệu trên bàn khách."
+    scene bg_tam_family_living_room_evening
+    with dissolve
 
     "Bên trong có hai dòng ghi chú dành cho Quang."
 

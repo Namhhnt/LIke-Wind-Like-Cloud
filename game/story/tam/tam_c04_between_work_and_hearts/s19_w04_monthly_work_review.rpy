@@ -5,7 +5,11 @@ label tam_c04_w04_s02_monthly_work_review:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_team_review
+    with dissolve
     "Chiều thứ Ba, Quân đặt hai bản đánh giá xuống bàn."
+    scene bg_meeting_room_day
+    with dissolve
 
     "Một bản mang tên Tâm. Một bản mang tên Huyền."
 

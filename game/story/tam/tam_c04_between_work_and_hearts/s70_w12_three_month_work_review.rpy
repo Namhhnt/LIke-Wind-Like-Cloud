@@ -1,7 +1,11 @@
 label tam_c04_w12_s02_three_month_work_review:
     scene bg_meeting_room_day
     with dissolve
+    scene cg_tam_c04_team_review
+    with dissolve
     "Chiều thứ Ba, Quân đặt ba tập giấy lên bàn: đánh giá của Tâm, của Huyền, và bản tổng hợp dự án."
+    scene bg_meeting_room_day
+    with dissolve
     quan neutral "Ba tháng đầu không đủ để kết luận em sẽ đi được bao xa. Đủ để biết em chịu trách nhiệm theo cách nào."
     "Anh nhìn Tâm."
     if story_has_flag("tam_c04_w11_tam_owns_scope_mistake"):

@@ -5,7 +5,11 @@ label tam_c04_w03_s06_friday_pressure_choice:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, sáu giờ ba mươi sáu phút."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Bản họp khách đã được gửi. Nhưng việc xong không làm tuần nhẹ lại ngay."
 

@@ -1,9 +1,13 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s102_w17_friday_before_answer.rpy
 
 label tam_c04_w17_s06_friday_before_answer:
-    scene black
+    scene bg_company_open_office_day
     with fade
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Tối thứ Sáu, Tâm mở ba cuộc trò chuyện rồi không gõ chữ nào."
+    scene bg_company_open_office_day
+    with dissolve
     "Một người đã xin một ngày Chủ Nhật. Một người vừa trở về với câu nói chưa hoàn tất. Còn cô đã dùng ba tháng để trì hoãn việc gọi tên điều mình muốn."
     menu:
         "Chuẩn bị trả lời Hoàng":

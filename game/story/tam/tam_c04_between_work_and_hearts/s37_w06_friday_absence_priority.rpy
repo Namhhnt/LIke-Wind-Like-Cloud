@@ -5,7 +5,11 @@ label tam_c04_w06_s06_friday_absence_priority:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, Quân đã trở lại."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Chiếc ghế không còn trống. Huyền không nhìn sang đó lần nào trong mười phút đầu."
 

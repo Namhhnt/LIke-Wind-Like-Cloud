@@ -7,7 +7,11 @@ label tam_c04_w20_s04_huyen_quan_or_hoang_seed_check:
     $ _m05_hq_push = tam_c04_get_huyen_quan_push_score("m05")
 
     if tam_c04_huyen_quan_deep_trust_ready() and _m05_hq_push >= 2:
+        scene cg_tam_c04_huyen_quan_work
+        with dissolve
         "Quân đưa Huyền lịch công tác tháng sau và lịch học của Ánh Nhi trong cùng một email."
+        scene bg_company_open_office_day
+        with dissolve
         huyen neutral "Anh gộp hai file này làm gì?"
         quan neutral "Vì cả hai đều liên quan tới cô."
         menu:
@@ -26,7 +30,11 @@ label tam_c04_w20_s04_huyen_quan_or_hoang_seed_check:
         hoang neutral "Quân lại bắt cô sửa phần này à?"
         huyen neutral "Anh hỏi như thể chưa từng đứng cùng phe với anh ấy."
         hoang neutral "Tôi đứng cùng phe với bản nào đỡ phải sửa lần ba."
+        scene cg_tam_c04_huyen_hoang_office
+        with dissolve
         "Huyền nhìn anh, rồi đẩy một bản in sang."
+        scene bg_company_open_office_day
+        with dissolve
         huyen neutral "Vậy xem thử đi."
         $ tam_c04_add_extended_score("huyen_hoang_interest", 3)
         $ tam_c04_add_extended_score("hoang_huyen_interest", 3)

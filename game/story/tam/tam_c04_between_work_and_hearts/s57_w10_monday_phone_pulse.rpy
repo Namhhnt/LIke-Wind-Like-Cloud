@@ -3,7 +3,11 @@ label tam_c04_w10_s01_monday_phone_pulse:
     with fade
     $ story_flag("tam_c04_w10_started")
     $ phone_refresh_all()
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai, nhóm dự án nhận một mail có tiêu đề: URGENT — thay đổi nội dung trước bản demo."
+    scene bg_tam_room_morning
+    with dissolve
     "Tin của Huyền đến trước cả chuông báo thứ hai."
     huyen neutral "Tao ghét chữ urgent viết hoa."
     if story_has_flag("tam_c04_w09_focus_hoang"):

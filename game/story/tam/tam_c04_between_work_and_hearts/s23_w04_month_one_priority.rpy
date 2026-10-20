@@ -5,7 +5,11 @@ label tam_c04_w04_s06_month_one_priority:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, sáu giờ hai phút."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Tháng đầu tiên không kết thúc bằng một sự kiện lớn."
 

@@ -5,7 +5,11 @@ label tam_c04_w01_s02_new_work_rhythm:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_team_review
+    with dissolve
     "Đầu giờ sáng, Quân đặt một tập tài liệu xuống giữa bàn Tâm và Huyền."
+    scene bg_meeting_room_day
+    with dissolve
 
     quan neutral "Bản tổng hợp tiến độ tuần trước còn thiếu phần đối chiếu yêu cầu khách hàng."
 

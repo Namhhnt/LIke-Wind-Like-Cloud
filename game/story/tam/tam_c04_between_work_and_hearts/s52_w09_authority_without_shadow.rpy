@@ -3,7 +3,11 @@ label tam_c04_w09_s02_authority_without_shadow:
     scene bg_meeting_room_day
     with dissolve
 
+    scene cg_tam_c04_team_review
+    with dissolve
     "Sáng thứ Ba, Quân đặt một bản phân công mới lên bàn."
+    scene bg_meeting_room_day
+    with dissolve
     quan neutral "Tâm chịu trách nhiệm quyết định phạm vi. Huyền chịu trách nhiệm đầu ra đối ngoại. Hai em review chéo, không phê duyệt thay nhau."
     huyen neutral "Tức là nếu cô ấy sai, em không được cứu?"
     quan neutral "Em được chỉ ra. Người quyết định phải tự sửa."

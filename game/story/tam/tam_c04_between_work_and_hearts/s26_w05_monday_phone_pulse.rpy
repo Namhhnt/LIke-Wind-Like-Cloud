@@ -9,7 +9,11 @@ label tam_c04_w05_s01_monday_phone_pulse:
     $ story_flag("tam_c04_month_02_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai đầu tiên của tháng mới, Tâm thức dậy vì điện thoại rung trên mặt bàn."
+    scene bg_tam_room_morning
+    with dissolve
 
     "Không có thông báo nào nói thẳng rằng tháng trước đã thay đổi điều gì."
 

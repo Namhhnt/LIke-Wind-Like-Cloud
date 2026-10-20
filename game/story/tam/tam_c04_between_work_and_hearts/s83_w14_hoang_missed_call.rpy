@@ -6,7 +6,11 @@ label tam_c04_w14_s03_hoang_missed_call:
         return
     scene bg_tam_room_morning
     with dissolve
+    scene cg_tam_c04_phone_night
+    with dissolve
     "Tối thứ Tư, Tâm nhìn thấy cuộc gọi nhỡ của Hoàng sau gần hai tiếng."
+    scene bg_asset_0007
+    with dissolve
     "Tin nhắn cuối chỉ có: 'Anh về trước.'"
     menu:
         "Gọi lại ngay và xin lỗi rõ ràng":

@@ -5,9 +5,13 @@ label tam_c04_w20_s03_quang_thienan_month_five_choice:
         return
     if not tam_c04_quang_thienan_breakthrough_ready():
         return
-    scene black
+    scene bg_tam_family_living_room_evening
+    with dissolve
+    scene cg_tam_c04_quang_thienan_work
     with dissolve
     "Quang mang trả Thiên An chiếc thẻ phòng từ chuyến công tác."
+    scene bg_tam_family_living_room_evening
+    with dissolve
     quang "Anh định giữ làm cớ gặp em."
     thienan neutral "Cớ hơi tệ."
     quang "Ừ. Nên anh trả và hỏi thẳng. Cuối tuần em có muốn ăn cùng anh không?"

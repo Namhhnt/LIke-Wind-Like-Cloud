@@ -6,7 +6,11 @@ label tam_c04_w16_s03_hoang_one_evening:
         return
     scene bg_luxury_restaurant_evening
     with dissolve
+    scene cg_tam_c04_hoang_restaurant
+    with dissolve
     "Hoàng đến trước nhưng không gọi món. Tâm ngồi xuống đúng giờ."
+    scene bg_luxury_restaurant_evening
+    with dissolve
     hoang neutral "Anh đã nghĩ em sẽ lại quên."
     tam neutral "Em cũng nghĩ vậy."
     hoang neutral "Nhưng em vẫn tới."

@@ -3,7 +3,11 @@
 label tam_c04_w14_s04_tam_carries_own_work:
     scene bg_meeting_room_day
     with dissolve
+    scene cg_tam_c04_tam_work_day
+    with dissolve
     "Quân chuyển cho Tâm một đầu việc không có tên Huyền trong phần người phụ trách."
+    scene bg_company_open_office_day
+    with dissolve
     quan neutral "Cô tự chốt. Tôi chỉ xem bản cuối."
     menu:
         "Nhận quyền quyết định":

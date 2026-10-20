@@ -1,10 +1,14 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s109_w19_first_week_after_choice.rpy
 
 label tam_c04_w19_s02_first_week_after_choice:
-    scene black
+    scene bg_company_lobby_afternoon
     with dissolve
     if story_has_flag("tam_c04_tam_hoang_dating"):
+        scene cg_tam_c04_hoang_lobby
+        with dissolve
         "Hoàng đứng trước công ty với hai cốc nước."
+        scene bg_company_lobby_afternoon
+        with dissolve
         hoang neutral "Anh không biết em tan đúng giờ hay không. Nhưng anh biết hôm nay em chưa ăn chiều."
         menu:
             "Báo trước lịch bận và giữ một bữa tối muộn":
@@ -18,14 +22,22 @@ label tam_c04_w19_s02_first_week_after_choice:
                 $ story_flag("tam_c04_w19_hoang_contact_deferred")
                 "Hoàng không hỏi thêm."
     elif story_has_flag("tam_c04_tam_quang_confirmed"):
+        scene cg_tam_c04_tam_quang_cafe
+        with dissolve
         "Tâm và Quang ngồi ở một quán không ai trong gia đình thường tới."
+        scene bg_c04_cafe_evening
+        with dissolve
         quang "Anh không biết phải cư xử khác thế nào."
         tam neutral "Đừng cố khác. Chỉ đừng giả vờ như chưa nói gì."
         $ story_add("tam_quang_interest", 5)
         $ tam_c04_add_extended_score("quang_tam_awareness", 5)
         $ story_flag("tam_c04_w19_quang_tam_first_deliberate_outing")
     else:
+        scene cg_tam_c04_tam_work_day
+        with dissolve
         "Tâm nhận lời phụ trách một bản đề xuất mà trước đây cô sẽ chờ người khác cùng làm."
+        scene bg_company_open_office_day
+        with dissolve
         $ story_add("career_tam", 10)
         $ story_add("tam_self_clarity", 5)
         $ story_flag("tam_c04_w19_independent_proposal")

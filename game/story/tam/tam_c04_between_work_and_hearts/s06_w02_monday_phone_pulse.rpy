@@ -8,7 +8,11 @@ label tam_c04_w02_s01_monday_phone_pulse:
     $ story_flag("tam_c04_w02_started")
     $ phone_refresh_all()
 
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Sáng thứ Hai, điện thoại của Tâm sáng lên trước khi chuông báo thức kịp reo lần hai."
+    scene bg_tam_room_morning
+    with dissolve
 
     "Tin đầu tiên vẫn là của Huyền."
 

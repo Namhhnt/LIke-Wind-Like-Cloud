@@ -1,0 +1,2170 @@
+[
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s01_monday_phone_pulse.rpy",
+    "label": "tam_c04_w01_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai đến bằng tiếng chuông báo thức và ba thông báo xếp chồng trên màn hình.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s02_new_work_rhythm.rpy",
+    "label": "tam_c04_w01_s02_new_work_rhythm",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Đầu giờ sáng, Quân đặt một tập tài liệu xuống giữa bàn Tâm và Huyền.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s03_report_review.rpy",
+    "label": "tam_c04_w01_s03_report_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Chiều thứ Năm, Quân xem bản báo cáo mới trong im lặng.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s04_quang_after_work.rpy",
+    "label": "tam_c04_w01_s04_quang_after_work",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_lobby",
+        "anchor": "\"Anh đứng gần cửa kính, một tay cầm tập hồ sơ mỏng, tay kia giữ hai cốc nước.\"",
+        "restore": "bg_company_lobby_afternoon"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s05_friday_first_priority.rpy",
+    "label": "tam_c04_w01_s05_friday_first_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, năm giờ bốn mươi hai phút.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s06_w02_monday_phone_pulse.rpy",
+    "label": "tam_c04_w02_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai, điện thoại của Tâm sáng lên trước khi chuông báo thức kịp reo lần hai.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s07_w02_hoang_small_followup.rpy",
+    "label": "tam_c04_w02_s02_hoang_small_followup",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_lobby",
+        "anchor": "\"Khi Tâm xuống sảnh, anh đứng cạnh cửa kính với một túi giấy nhỏ trên tay.\"",
+        "restore": "bg_company_lobby_afternoon"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s08_w02_huyen_knows_the_mark.rpy",
+    "label": "tam_c04_w02_s03_huyen_knows_the_mark",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_huyen_work",
+        "anchor": "\"Sáng thứ Tư, Huyền đặt bản báo cáo mới lên bàn Tâm.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day",
+      "bg_meeting_room_day",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s09_w02_quang_stops_asking_around.rpy",
+    "label": "tam_c04_w02_s04_quang_stops_asking_around",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_sisters_table",
+        "anchor": "\"Tối thứ Năm, Tâm ghé qua nhà.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s100_w17_huyen_knows_the_house.rpy",
+    "label": "tam_c04_w17_s04_huyen_knows_the_house",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_spare_key",
+        "anchor": "quan neutral \"Cô có thể giữ chìa khóa.\"",
+        "restore": "bg_c04_quan_home_day"
+      }
+    ],
+    "background": "bg_c04_quan_home_day",
+    "backgrounds": [
+      "bg_c04_quan_home_day",
+      "bg_c04_quan_home_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s101_w17_hoang_sunday_plan.rpy",
+    "label": "tam_c04_w17_s05_hoang_sunday_plan",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_restaurant",
+        "anchor": "hoang neutral \"Chủ Nhật anh muốn đưa em đi một nơi. Không phải nhà anh. Không phải việc công ty.\"",
+        "restore": "bg_luxury_restaurant_evening"
+      }
+    ],
+    "background": "bg_luxury_restaurant_evening",
+    "backgrounds": [
+      "bg_luxury_restaurant_evening",
+      "bg_luxury_restaurant_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s102_w17_friday_before_answer.rpy",
+    "label": "tam_c04_w17_s06_friday_before_answer",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Tối thứ Sáu, Tâm mở ba cuộc trò chuyện rồi không gõ chữ nào.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s103_w18_monday_phone_pulse.rpy",
+    "label": "tam_c04_w18_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai không có tin nào mới. Hai người đều đã hỏi đủ. Phần còn lại thuộc về Tâm.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s104_w18_tam_romance_decision.rpy",
+    "label": "tam_c04_w18_s02_tam_romance_decision",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_decision_bed",
+        "anchor": "\"Tâm ngồi một mình ở mép giường. Chiếc điện thoại nằm úp bên cạnh.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": "bg_tam_room_morning",
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s105_w18_after_decision.rpy",
+    "label": "tam_c04_w18_s03_after_decision",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_hands",
+        "anchor": "\"Hoàng đưa tay qua mặt bàn. Tâm đặt tay mình lên đó, chỉ một lúc.\"",
+        "restore": "bg_luxury_restaurant_evening"
+      },
+      {
+        "asset": "cg_tam_c04_quang_confession",
+        "anchor": "\"Cả hai đứng cách nhau chưa tới một cánh tay. Không ai giả vờ đó chỉ là thói quen nữa.\"",
+        "restore": "bg_tam_family_hallway_night"
+      },
+      {
+        "asset": "cg_tam_c04_independent_plan",
+        "anchor": "\"Cô đặt điện thoại xuống và mở lại bản kế hoạch công việc. Lần này sự yên lặng không phải trốn tránh.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_tam_family_hallway_night",
+    "backgrounds": [
+      "bg_tam_family_hallway_night",
+      "bg_luxury_restaurant_evening",
+      "bg_luxury_restaurant_evening",
+      "bg_tam_family_hallway_night",
+      "bg_tam_room_morning",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s106_w18_career_ownership.rpy",
+    "label": "tam_c04_w18_s04_career_ownership",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_day",
+        "anchor": "\"Quân giao cho Tâm và Huyền hai quyết định tách biệt. Không ai được ký thay người kia.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s107_w18_friday_new_phase.rpy",
+    "label": "tam_c04_w18_s05_friday_new_phase",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Tối thứ Sáu, tên Hoàng nằm trên đầu lịch cuối tuần thay vì ở cuối danh sách thông báo.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s108_w19_monday_phone_pulse.rpy",
+    "label": "tam_c04_w19_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Tin đầu tuần của Hoàng không còn hỏi Tâm có rảnh không. Anh gửi lịch của mình và hỏi cô muốn giữ tối nào.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s109_w19_first_week_after_choice.rpy",
+    "label": "tam_c04_w19_s02_first_week_after_choice",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_lobby",
+        "anchor": "\"Hoàng đứng trước công ty với hai cốc nước.\"",
+        "restore": "bg_company_lobby_afternoon"
+      },
+      {
+        "asset": "cg_tam_c04_tam_quang_cafe",
+        "anchor": "\"Tâm và Quang ngồi ở một quán không ai trong gia đình thường tới.\"",
+        "restore": "bg_c04_cafe_evening"
+      },
+      {
+        "asset": "cg_tam_c04_tam_work_day",
+        "anchor": "\"Tâm nhận lời phụ trách một bản đề xuất mà trước đây cô sẽ chờ người khác cùng làm.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon",
+      "bg_c04_cafe_evening",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s10_w02_client_brief_rehearsal.rpy",
+    "label": "tam_c04_w02_s05_client_brief_rehearsal",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Chiều thứ Sáu, phòng họp chỉ còn Tâm, Huyền và Quân.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s110_w19_quang_thienan_no_longer_refuses.rpy",
+    "label": "tam_c04_w19_s03_quang_thienan_no_longer_refuses",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_thienan_work",
+        "anchor": "\"Thiên An về muộn. Quang đang ngồi ở bậc thềm, bên cạnh là một hộp thức ăn còn ấm.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s111_w19_huyen_anh_nhi_school_project.rpy",
+    "label": "tam_c04_w19_s04_huyen_anh_nhi_school_project",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_school_bridge",
+        "anchor": "\"Ánh Nhi mang tới công ty một mô hình cầu bằng que gỗ. Một bên trụ bị lệch.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s112_w19_hoang_contact_or_silence.rpy",
+    "label": "tam_c04_w19_s05_hoang_contact_or_silence",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_night",
+        "anchor": "\"Tối thứ Năm, công việc kéo dài hơn dự kiến. Lịch với Hoàng còn ba mươi phút.\"",
+        "restore": "bg_asset_0007"
+      }
+    ],
+    "background": "bg_bed_room_01_noon",
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_asset_0007"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s113_w19_friday_phase_check.rpy",
+    "label": "tam_c04_w19_s06_friday_phase_check",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Tuần đầu hẹn hò không có pháo hoa. Chỉ có hai lần đổi giờ và không ai phải đoán người kia đã biến đi đâu.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s114_w20_monday_phone_pulse.rpy",
+    "label": "tam_c04_w20_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Tháng thứ năm đi đến tuần cuối. Một vài mối quan hệ đã có tên. Một vài mối quan hệ khác bắt đầu có chỗ trong nhà.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s115_w20_relationship_maintenance_result.rpy",
+    "label": "tam_c04_w20_s02_relationship_maintenance_result",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_restaurant",
+        "anchor": "\"Hoàng đặt điện thoại xuống khi Tâm đến.\"",
+        "restore": "bg_luxury_restaurant_evening"
+      }
+    ],
+    "background": "bg_luxury_restaurant_evening",
+    "backgrounds": [
+      "bg_luxury_restaurant_evening",
+      "bg_luxury_restaurant_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s116_w20_quang_thienan_month_five_choice.rpy",
+    "label": "tam_c04_w20_s03_quang_thienan_month_five_choice",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_thienan_work",
+        "anchor": "\"Quang mang trả Thiên An chiếc thẻ phòng từ chuyến công tác.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s117_w20_huyen_quan_or_hoang_seed_check.rpy",
+    "label": "tam_c04_w20_s04_huyen_quan_or_hoang_seed_check",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Quân đưa Huyền lịch công tác tháng sau và lịch học của Ánh Nhi trong cùng một email.\"",
+        "restore": "bg_company_open_office_day"
+      },
+      {
+        "asset": "cg_tam_c04_huyen_hoang_office",
+        "anchor": "\"Huyền nhìn anh, rồi đẩy một bản in sang.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s118_w20_month_five_snapshot.rpy",
+    "label": "tam_c04_w20_s05_month_five_snapshot",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": []
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s119_w21_monday_phone_pulse.rpy",
+    "label": "tam_c04_w21_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Tháng cuối bắt đầu không bằng một biến cố. Chỉ là cách mọi người gọi tên Tâm đã khác đi trong những việc rất nhỏ.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s11_w02_friday_second_priority.rpy",
+    "label": "tam_c04_w02_s06_friday_second_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Sáu giờ mười tám phút.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s120_w21_ordinary_day_after_labels.rpy",
+    "label": "tam_c04_w21_s02_ordinary_day_after_labels",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_quang_cafe",
+        "anchor": "\"Quang đặt hai chiếc cốc xuống bàn rồi khựng lại.\"",
+        "restore": "bg_c04_cafe_evening"
+      },
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Tâm nhận ra mình đã có thể tan làm sớm mà không cần tìm ai để lấp khoảng trống.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_tam_living_room_night",
+    "backgrounds": [
+      "bg_tam_living_room_night",
+      "bg_c04_cafe_evening",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s121_w21_quan_second_trip_request.rpy",
+    "label": "tam_c04_w21_s03_quan_second_trip_request",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Quân thông báo chuyến công tác kéo dài mười ngày.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s122_w21_independent_opportunity.rpy",
+    "label": "tam_c04_w21_s04_independent_opportunity",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_day",
+        "anchor": "\"Một dự án ngắn cần người đại diện nhóm làm việc trực tiếp với khách hàng.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s123_w21_friday_new_routine.rpy",
+    "label": "tam_c04_w21_s05_friday_new_routine",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Một mối quan hệ mới không thay hết lịch sống. Nó chỉ buộc người ta thôi giả vờ rằng lịch ấy không ảnh hưởng tới ai.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s124_w22_monday_phone_pulse.rpy",
+    "label": "tam_c04_w22_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Tuần này công việc chen vào đúng nơi người ta vừa tạo được một thói quen mới.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s125_w22_route_specific_busy_week.rpy",
+    "label": "tam_c04_w22_s02_route_specific_busy_week",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_quang_cafe",
+        "anchor": "\"Quang hẹn Tâm ở một quán cách xa nhà hai người.\"",
+        "restore": "bg_c04_cafe_evening"
+      },
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Tâm dành ba tối liên tiếp cho dự án. Cô mệt, nhưng không dùng sự bận rộn để trốn một câu trả lời nào.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_tam_room_morning",
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_c04_cafe_evening",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s126_w22_thienan_keeps_door_open.rpy",
+    "label": "tam_c04_w22_s03_thienan_keeps_door_open",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_thienan_open_door",
+        "anchor": "\"Anh quay đi. Thiên An giữ cửa chưa khép.\"",
+        "restore": "bg_tam_family_entry_evening"
+      }
+    ],
+    "background": "bg_tam_family_entry_evening",
+    "backgrounds": [
+      "bg_tam_family_entry_evening",
+      "bg_tam_family_entry_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s127_w22_huyen_anh_nhi_sleepover.rpy",
+    "label": "tam_c04_w22_s04_huyen_anh_nhi_sleepover",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_nhi_huyen_home",
+        "anchor": "\"Ánh Nhi ngủ ở nhà Huyền đêm thứ hai. Chiếc bàn nhỏ đầy bút màu và tài liệu công ty bị đẩy sang một góc.\"",
+        "restore": "bg_c04_huyen_home_night"
+      }
+    ],
+    "background": "bg_c04_huyen_home_night",
+    "backgrounds": [
+      "bg_c04_huyen_home_night",
+      "bg_c04_huyen_home_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s128_w22_friday_maintenance.rpy",
+    "label": "tam_c04_w22_s05_friday_maintenance",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Khoảng cách tuần này được giữ bằng một cuộc gọi mười phút. Không lãng mạn lắm. Nhưng thật.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s129_w23_monday_phone_pulse.rpy",
+    "label": "tam_c04_w23_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Quân vẫn chưa về. Hoàng đề nghị một bữa tối nhóm. Quang hỏi có cần mua thêm trà. Huyền trả lời trước Tâm: 'Có trẻ con.'\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s12_w03_monday_phone_pulse.rpy",
+    "label": "tam_c04_w03_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai, Tâm tỉnh dậy khi điện thoại rung một lần rồi im.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s130_w23_group_dinner_new_balance.rpy",
+    "label": "tam_c04_w23_s02_group_dinner_new_balance",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_group_dinner",
+        "anchor": "\"Bữa tối có Tâm, Huyền, Hoàng và Ánh Nhi. Quân gọi video từ khách sạn đúng lúc món ăn được mang ra.\"",
+        "restore": "bg_luxury_restaurant_evening"
+      }
+    ],
+    "background": "bg_luxury_restaurant_evening",
+    "backgrounds": [
+      "bg_luxury_restaurant_evening",
+      "bg_luxury_restaurant_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s131_w23_huyen_hoang_friend_seed.rpy",
+    "label": "tam_c04_w23_s03_huyen_hoang_friend_seed",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_hoang_hall",
+        "anchor": "\"Sau bữa tối, Tâm đưa Ánh Nhi vào nhà vệ sinh. Huyền và Hoàng đứng lại ngoài hành lang.\"",
+        "restore": "bg_hotel_lobby_afternoon"
+      }
+    ],
+    "background": "bg_hotel_lobby_afternoon",
+    "backgrounds": [
+      "bg_hotel_lobby_afternoon",
+      "bg_hotel_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s132_w23_career_delivery_without_quan.rpy",
+    "label": "tam_c04_w23_s04_career_delivery_without_quan",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_huyen_work",
+        "anchor": "\"Tâm và Huyền phải gửi bản cuối khi Quân vẫn đang ở sân bay.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s133_w23_friday_before_final_review.rpy",
+    "label": "tam_c04_w23_s05_friday_before_final_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Sáu tháng gần kết thúc. Những điểm số có thể tăng rất nhanh. Thói quen thì không.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s134_w24_monday_phone_pulse.rpy",
+    "label": "tam_c04_w24_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Tuần cuối cùng của mùa này bắt đầu bằng lịch review sáu tháng và một tin nhắn rất bình thường từ người Tâm đã chọn.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s135_w24_six_month_work_review.rpy",
+    "label": "tam_c04_w24_s02_six_month_work_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_final_review",
+        "anchor": "\"Quân đặt hai bản đánh giá trước Tâm và Huyền. Góc phải đều có chữ ký của anh.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s136_w24_tam_route_finale.rpy",
+    "label": "tam_c04_w24_s03_tam_route_finale",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_final",
+        "anchor": "hoang neutral \"Anh không cần mình gặp mỗi ngày. Nhưng anh không muốn tình yêu chỉ tồn tại vào tuần em rảnh.\"",
+        "restore": "bg_luxury_restaurant_evening"
+      },
+      {
+        "asset": "cg_tam_c04_quang_final",
+        "anchor": "\"Quang đứng ở cửa nhưng không bước vào như mọi lần.\"",
+        "restore": "bg_tam_family_entry_evening"
+      },
+      {
+        "asset": "cg_tam_c04_independent_plan",
+        "anchor": "\"Tâm ký tên vào bản nhận workstream mới.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_tam_family_entry_evening",
+    "backgrounds": [
+      "bg_tam_family_entry_evening",
+      "bg_luxury_restaurant_evening",
+      "bg_luxury_restaurant_evening",
+      "bg_tam_family_entry_evening",
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s137_w24_quang_thienan_finale.rpy",
+    "label": "tam_c04_w24_s04_quang_thienan_finale",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_thienan_work",
+        "anchor": "\"Thiên An làm việc ở bàn ăn. Quang đặt một cốc nước xuống rồi ngồi ở ghế đối diện.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s138_w24_huyen_quan_finale.rpy",
+    "label": "tam_c04_w24_s05_huyen_quan_finale",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_sleeping_blanket",
+        "anchor": "\"Quân lấy chiếc chăn mỏng phủ lên Ánh Nhi.\"",
+        "restore": "bg_c04_quan_home_night"
+      }
+    ],
+    "background": "bg_c04_quan_home_night",
+    "backgrounds": [
+      "bg_c04_quan_home_night",
+      "bg_c04_quan_home_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s139_w24_final_snapshot.rpy",
+    "label": "tam_c04_w24_s06_final_snapshot",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": []
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s13_w03_client_meeting_pressure.rpy",
+    "label": "tam_c04_w03_s02_client_meeting_pressure",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_presentation",
+        "anchor": "\"Chiều thứ Ba, bản trình bày thử trở thành một cuộc họp thật.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s140_w24_chapter_close.rpy",
+    "label": "tam_c04_w24_s07_chapter_close",
+    "illustrations": [],
+    "background": "bg_tam_living_room_night",
+    "backgrounds": [
+      "bg_tam_living_room_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s14_w03_hoang_changed_plan.rpy",
+    "label": "tam_c04_w03_s03_hoang_changed_plan",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_lobby",
+        "anchor": "\"Anh ngồi ở hàng ghế cạnh cửa kính, một tay giữ điện thoại, tay kia đặt trên túi giấy chưa mở.\"",
+        "restore": "bg_company_lobby_afternoon"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s15_w03_huyen_defends_the_standard.rpy",
+    "label": "tam_c04_w03_s04_huyen_defends_the_standard",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_huyen_work",
+        "anchor": "\"Sáng thứ Năm, một thành viên từ đội khác gửi lại tài liệu với lời nhắn: phần này khách vẫn hiểu, không cần sửa thêm.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s16_w03_quang_at_the_door.rpy",
+    "label": "tam_c04_w03_s05_quang_at_the_door",
+    "illustrations": [],
+    "background": "bg_tam_family_entry_evening",
+    "backgrounds": [
+      "bg_tam_family_entry_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s17_w03_friday_pressure_choice.rpy",
+    "label": "tam_c04_w03_s06_friday_pressure_choice",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, sáu giờ ba mươi sáu phút.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s18_w04_monday_phone_pulse.rpy",
+    "label": "tam_c04_w04_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai cuối cùng của tháng đầu tiên, Tâm thức dậy trước chuông báo thức hai phút.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s19_w04_monthly_work_review.rpy",
+    "label": "tam_c04_w04_s02_monthly_work_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Chiều thứ Ba, Quân đặt hai bản đánh giá xuống bàn.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s20_w04_hoang_waits_less.rpy",
+    "label": "tam_c04_w04_s03_hoang_waits_less",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_lobby",
+        "anchor": "\"Hoàng đã đứng ngoài cửa, nhưng lần này không mang túi giấy hay một lý do nào khác.\"",
+        "restore": "bg_company_lobby_afternoon"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s21_w04_quang_family_table.rpy",
+    "label": "tam_c04_w04_s04_quang_family_table",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_family_table",
+        "anchor": "\"Tối thứ Năm, Thiên An trở về sau chuyến công tác ngắn.\"",
+        "restore": "bg_tam_family_dining_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_dining_room_evening",
+    "backgrounds": [
+      "bg_tam_family_dining_room_evening",
+      "bg_tam_family_dining_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s22_w04_huyen_after_review.rpy",
+    "label": "tam_c04_w04_s05_huyen_after_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_huyen_work",
+        "anchor": "\"Sáng thứ Sáu, Huyền đặt bản đánh giá tháng dưới bàn phím.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s23_w04_month_one_priority.rpy",
+    "label": "tam_c04_w04_s06_month_one_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, sáu giờ hai phút.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s24_w04_month_one_snapshot.rpy",
+    "label": "tam_c04_w04_s07_month_one_snapshot",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": []
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s26_w05_monday_phone_pulse.rpy",
+    "label": "tam_c04_w05_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai đầu tiên của tháng mới, Tâm thức dậy vì điện thoại rung trên mặt bàn.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s27_w05_separate_ownership.rpy",
+    "label": "tam_c04_w05_s02_separate_ownership",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Sáng thứ Ba, Quân đặt hai tập brief ở hai phía khác nhau của bàn.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s28_w05_hoang_house_invitation.rpy",
+    "label": "tam_c04_w05_s03_hoang_house_invitation",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_lobby",
+        "anchor": "\"Chiều thứ Tư, Hoàng chờ Tâm ở sảnh với một chiếc chìa khóa xe trên tay.\"",
+        "restore": "bg_company_lobby_afternoon"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s29_w05_quang_two_cups.rpy",
+    "label": "tam_c04_w05_s04_quang_two_cups",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_family_table",
+        "anchor": "\"Tối thứ Năm, Quang mang hồ sơ tới nhà.\"",
+        "restore": "bg_tam_family_dining_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_dining_room_evening",
+    "backgrounds": [
+      "bg_tam_family_dining_room_evening",
+      "bg_tam_family_dining_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s30_w05_huyen_first_client_lead.rpy",
+    "label": "tam_c04_w05_s05_huyen_first_client_lead",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_presentation",
+        "anchor": "\"Sáng thứ Sáu, Huyền đứng ở đầu bàn họp.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s31_w05_friday_new_month_priority.rpy",
+    "label": "tam_c04_w05_s06_friday_new_month_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, sáu giờ mười bảy.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s32_w06_monday_phone_pulse.rpy",
+    "label": "tam_c04_w06_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Thứ Hai bắt đầu bằng một email thông báo Quân sẽ làm việc bên ngoài trong hai ngày.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s33_w06_quan_empty_chair.rpy",
+    "label": "tam_c04_w06_s02_quan_empty_chair",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_empty_chair",
+        "anchor": "\"Đến mười giờ, cô đứng dậy đi lấy nước rồi nhìn về phía chiếc ghế đó lần thứ ba.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s34_w06_tam_scope_change.rpy",
+    "label": "tam_c04_w06_s03_tam_scope_change",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_day",
+        "anchor": "\"Chiều thứ Tư, khách hàng gửi một yêu cầu mới.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s35_w06_hoang_house_evening.rpy",
+    "label": "tam_c04_w06_s04_hoang_house_evening",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_home",
+        "anchor": "\"Trong phòng khách, một chiếc cốc đã đặt trên bàn. Nước nóng vừa đủ, không có đá.\"",
+        "restore": "bg_hoangminh_villa_living_room_day"
+      }
+    ],
+    "background": "bg_hoangminh_villa_living_room_day",
+    "backgrounds": [
+      "bg_hoangminh_villa_living_room_day",
+      "bg_hoangminh_villa_living_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s36_w06_quang_family_errand.rpy",
+    "label": "tam_c04_w06_s05_quang_family_errand",
+    "illustrations": [],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s37_w06_friday_absence_priority.rpy",
+    "label": "tam_c04_w06_s06_friday_absence_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, Quân đã trở lại.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s38_w07_monday_phone_pulse.rpy",
+    "label": "tam_c04_w07_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai, điện thoại Tâm có bốn thông báo đến trong vòng sáu phút.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s39_w07_huyen_disagrees_with_reasons.rpy",
+    "label": "tam_c04_w07_s02_huyen_disagrees_with_reasons",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_presentation",
+        "anchor": "\"Chiều thứ Ba, Quân yêu cầu cắt phần trình bày của Huyền xuống còn một nửa.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s40_w07_hoang_notices_first.rpy",
+    "label": "tam_c04_w07_s03_hoang_notices_first",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_lobby",
+        "anchor": "\"Chiều thứ Tư, Hoàng gặp Tâm ở sảnh.\"",
+        "restore": "bg_company_lobby_afternoon"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s41_w07_quang_lunch_box.rpy",
+    "label": "tam_c04_w07_s04_quang_lunch_box",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_family_dining_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s42_w07_thienan_no_interpreter.rpy",
+    "label": "tam_c04_w07_s05_thienan_no_interpreter",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_sisters_table",
+        "anchor": "\"Tối thứ Năm, Thiên An để lại một tập tài liệu trên bàn khách.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s43_w07_friday_small_truth.rpy",
+    "label": "tam_c04_w07_s06_friday_small_truth",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, màn hình Tâm sáng lên khi cô đang cài lại chiếc cúc tay áo.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s44_w08_monday_phone_pulse.rpy",
+    "label": "tam_c04_w08_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai cuối tháng hai, Tâm mở lịch trước khi mở tin nhắn.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s45_w08_second_monthly_review.rpy",
+    "label": "tam_c04_w08_s02_second_monthly_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Chiều thứ Ba, Quân đặt hai bản đánh giá xuống bàn.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s46_w08_hoang_asks_when.rpy",
+    "label": "tam_c04_w08_s03_hoang_asks_when",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_lobby",
+        "anchor": "\"Tâm xuống sảnh lúc sáu giờ hai mươi.\"",
+        "restore": "bg_company_lobby_afternoon"
+      }
+    ],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon",
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s47_w08_quang_choose_a_door.rpy",
+    "label": "tam_c04_w08_s04_quang_choose_a_door",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_door",
+        "anchor": "\"Anh mang một tập hồ sơ cho Thiên An và một hộp thức ăn cho Tâm.\"",
+        "restore": "bg_tam_family_hallway_night"
+      }
+    ],
+    "background": "bg_tam_family_hallway_night",
+    "backgrounds": [
+      "bg_tam_family_hallway_night",
+      "bg_tam_family_hallway_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s48_w08_huyen_stays_without_tam.rpy",
+    "label": "tam_c04_w08_s05_huyen_stays_without_tam",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Thứ Sáu, sáu giờ.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s49_w08_month_two_priority.rpy",
+    "label": "tam_c04_w08_s06_month_two_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, bảy giờ mười ba.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s50_w08_month_two_snapshot.rpy",
+    "label": "tam_c04_w08_s07_month_two_snapshot",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": []
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s51_w09_monday_phone_pulse.rpy",
+    "label": "tam_c04_w09_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai đầu tháng ba, điện thoại của Tâm không nhiều thông báo hơn.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s52_w09_authority_without_shadow.rpy",
+    "label": "tam_c04_w09_s02_authority_without_shadow",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Sáng thứ Ba, Quân đặt một bản phân công mới lên bàn.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s53_w09_hoang_keeps_a_place.rpy",
+    "label": "tam_c04_w09_s03_hoang_keeps_a_place",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_home",
+        "anchor": "\"Bộ thứ hai chưa được dọn thức ăn. Chỉ có một cốc nước ấm.\"",
+        "restore": "bg_hoangminh_villa_living_room_day"
+      }
+    ],
+    "background": "bg_hoangminh_villa_living_room_day",
+    "backgrounds": [
+      "bg_hoangminh_villa_living_room_day",
+      "bg_hoangminh_villa_living_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s54_w09_quang_wrong_recipient.rpy",
+    "label": "tam_c04_w09_s04_quang_wrong_recipient",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_night",
+        "anchor": "\"Chiều thứ Năm, Quang gửi cho Tâm một tấm ảnh lịch công tác của Thiên An.\"",
+        "restore": "bg_asset_0007"
+      }
+    ],
+    "background": "bg_bed_room_01_noon",
+    "backgrounds": [
+      "bg_asset_0007",
+      "bg_asset_0007"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s55_w09_huyen_send_it.rpy",
+    "label": "tam_c04_w09_s05_huyen_send_it",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Anh đọc từ đầu đến cuối.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s56_w09_friday_named_priority.rpy",
+    "label": "tam_c04_w09_s06_friday_named_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, sáu giờ bốn mươi.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s57_w10_monday_phone_pulse.rpy",
+    "label": "tam_c04_w10_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai, nhóm dự án nhận một mail có tiêu đề: URGENT — thay đổi nội dung trước bản demo.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s58_w10_client_incident.rpy",
+    "label": "tam_c04_w10_s02_client_incident",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Mười giờ sáng, khách hàng yêu cầu đổi phần đã chốt và vẫn giữ nguyên thời hạn.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s59_w10_hoang_does_not_wait_forever.rpy",
+    "label": "tam_c04_w10_s03_hoang_does_not_wait_forever",
+    "illustrations": [],
+    "background": "bg_company_lobby_afternoon",
+    "backgrounds": [
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s60_w10_quang_respects_closed_door.rpy",
+    "label": "tam_c04_w10_s04_quang_respects_the_closed_door",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_door",
+        "anchor": "\"Quang đứng ngoài hành lang với một túi tài liệu.\"",
+        "restore": "bg_tam_family_hallway_night"
+      }
+    ],
+    "background": "bg_tam_family_hallway_night",
+    "backgrounds": [
+      "bg_tam_family_hallway_night",
+      "bg_tam_family_hallway_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s61_w10_huyen_notices_quan_tired.rpy",
+    "label": "tam_c04_w10_s05_huyen_notices_quan_tired",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Huyền nhìn thấy trước Tâm.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s62_w10_friday_no_substitute.rpy",
+    "label": "tam_c04_w10_s06_friday_no_substitute",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, sáu giờ hai mươi sáu.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s63_w11_monday_phone_pulse.rpy",
+    "label": "tam_c04_w11_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai, Tâm phát hiện lịch tuần có một khoảng trống đúng vào tối thứ Sáu.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s64_w11_tam_owns_the_mistake.rpy",
+    "label": "tam_c04_w11_s02_tam_owns_the_mistake",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Sáng thứ Ba, một quyết định của Tâm làm bản demo thiếu một trường hợp biên.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s65_w11_hoang_not_leftover_time.rpy",
+    "label": "tam_c04_w11_s03_hoang_not_leftover_time",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_home",
+        "anchor": "\"Tối thứ Tư, Hoàng đặt điện thoại úp xuống bàn.\"",
+        "restore": "bg_hoangminh_villa_living_room_day"
+      }
+    ],
+    "background": "bg_hoangminh_villa_living_room_day",
+    "backgrounds": [
+      "bg_hoangminh_villa_living_room_day",
+      "bg_hoangminh_villa_living_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s66_w11_huyen_catches_quan_error.rpy",
+    "label": "tam_c04_w11_s04_huyen_catches_quan_error",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Chiều thứ Năm, Huyền phát hiện Quân ghi nhầm một con số trong bảng dự toán.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s67_w11_thienan_asks_who_tam_is_helping.rpy",
+    "label": "tam_c04_w11_s05_thienan_asks_who_tam_is_helping",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_sisters_table",
+        "anchor": "\"Tối thứ Năm, Thiên An gấp tờ lịch Quang để lại thành đôi.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s68_w11_friday_one_real_answer.rpy",
+    "label": "tam_c04_w11_s06_friday_one_real_answer",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, bảy giờ lẻ hai.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s69_w12_monday_phone_pulse.rpy",
+    "label": "tam_c04_w12_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai cuối tháng ba, mail đánh giá ba tháng đầu nằm trên cùng hộp thư.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s70_w12_three_month_work_review.rpy",
+    "label": "tam_c04_w12_s02_three_month_work_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_team_review",
+        "anchor": "\"Chiều thứ Ba, Quân đặt ba tập giấy lên bàn: đánh giá của Tâm, của Huyền, và bản tổng hợp dự án.\"",
+        "restore": "bg_meeting_room_day"
+      }
+    ],
+    "background": "bg_meeting_room_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_meeting_room_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s71_w12_hoang_asks_for_clear_no.rpy",
+    "label": "tam_c04_w12_s03_hoang_asks_for_clear_no",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": [
+      "bg_company_lobby_afternoon"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s72_w12_quang_at_family_dinner.rpy",
+    "label": "tam_c04_w12_s04_quang_at_family_dinner",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_family_table",
+        "anchor": "\"Tối thứ Năm, trên bàn ăn có ba cái bát.\"",
+        "restore": "bg_tam_family_dining_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_dining_room_evening",
+    "backgrounds": [
+      "bg_tam_family_dining_room_evening",
+      "bg_tam_family_dining_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s73_w12_huyen_after_quarter_review.rpy",
+    "label": "tam_c04_w12_s05_huyen_after_quarter_review",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Quân đi ngang qua, đặt một cốc nước xuống bàn cô.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s74_w12_month_three_priority.rpy",
+    "label": "tam_c04_w12_s06_month_three_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, sáu giờ năm mươi tám.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s75_w12_month_three_snapshot.rpy",
+    "label": "tam_c04_w12_s07_month_three_snapshot",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": []
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s76_w13_monday_phone_pulse.rpy",
+    "label": "tam_c04_w13_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Sáng thứ Hai, điện thoại rung trước chuông báo thức hai phút.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s77_w13_south_assignment.rpy",
+    "label": "tam_c04_w13_s02_south_assignment",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_thienan_work",
+        "anchor": "\"Thiên An đặt tập hồ sơ chi nhánh miền Nam xuống bàn.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s78_w13_hoang_fixed_evening.rpy",
+    "label": "tam_c04_w13_s03_hoang_fixed_evening",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_restaurant",
+        "anchor": "\"Hoàng đặt cốc nước sang phía Tâm. Không hỏi cô có bận cuối tuần không.\"",
+        "restore": "bg_luxury_restaurant_evening"
+      }
+    ],
+    "background": "bg_luxury_restaurant_evening",
+    "backgrounds": [
+      "bg_luxury_restaurant_evening",
+      "bg_luxury_restaurant_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s79_w13_quan_asks_huyen_pickup.rpy",
+    "label": "tam_c04_w13_s04_quan_asks_huyen_pickup",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_quan_work",
+        "anchor": "\"Quân đứng cạnh bàn Huyền lâu hơn một nhịp. Trên tay anh không có tài liệu.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s80_w13_friday_departures.rpy",
+    "label": "tam_c04_w13_s05_friday_departures",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Thứ Sáu, ba lịch trình cùng mở ra trên màn hình Tâm.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s81_w14_monday_phone_pulse.rpy",
+    "label": "tam_c04_w14_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Thứ Hai bắt đầu bằng một bức ảnh biển mờ qua cửa kính xe, một cuộc gọi nhỡ và tin nhắn của Huyền: 'Con bé không ăn hành.'\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s82_w14_huyen_meets_anh_nhi.rpy",
+    "label": "tam_c04_w14_s02_huyen_meets_anh_nhi",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_school_pickup",
+        "anchor": "\"Ánh Nhi đứng trước cổng trường, ôm chiếc cặp lớn gần bằng nửa người.\"",
+        "restore": "bg_c04_school_gate"
+      }
+    ],
+    "background": "bg_c04_school_gate",
+    "backgrounds": [
+      "bg_c04_school_gate",
+      "bg_c04_school_gate"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s83_w14_hoang_missed_call.rpy",
+    "label": "tam_c04_w14_s03_hoang_missed_call",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_night",
+        "anchor": "\"Tối thứ Tư, Tâm nhìn thấy cuộc gọi nhỡ của Hoàng sau gần hai tiếng.\"",
+        "restore": "bg_asset_0007"
+      }
+    ],
+    "background": "bg_bed_room_01_noon",
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_asset_0007"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s84_w14_tam_carries_own_work.rpy",
+    "label": "tam_c04_w14_s04_tam_carries_own_work",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_day",
+        "anchor": "\"Quân chuyển cho Tâm một đầu việc không có tên Huyền trong phần người phụ trách.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_meeting_room_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s85_w14_friday_quiet_house.rpy",
+    "label": "tam_c04_w14_s05_friday_quiet_house",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_huyen_nhi_quan_home",
+        "anchor": "\"Huyền gấp chiếc áo khoác nhỏ đặt trên ghế. Ánh Nhi ngủ trong phòng bên.\"",
+        "restore": "bg_c04_quan_home_night"
+      }
+    ],
+    "background": "bg_c04_quan_home_night",
+    "backgrounds": [
+      "bg_c04_quan_home_night",
+      "bg_c04_quan_home_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s86_w15_monday_phone_pulse.rpy",
+    "label": "tam_c04_w15_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Tin nhắn từ miền Nam đến lúc 00:47. Tin của Hoàng đến lúc 21:10. Tin của Huyền chỉ là ảnh một bài toán lớp ba bị sửa ba lần.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s87_w15_south_branch_late_night.rpy",
+    "label": "tam_c04_w15_s02_south_branch_late_night",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_south_late_night",
+        "anchor": "\"Thiên An tháo kính, day nhẹ giữa trán. Quang đặt cốc nước ấm cạnh tay cô.\"",
+        "restore": "bg_meeting_room_night"
+      }
+    ],
+    "background": "bg_meeting_room_night",
+    "backgrounds": [
+      "bg_meeting_room_night",
+      "bg_meeting_room_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s88_w15_quang_message_after_midnight.rpy",
+    "label": "tam_c04_w15_s03_quang_message_after_midnight",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_night",
+        "anchor": "\"Tâm đọc tin nhắn của Quang sau nửa đêm.\"",
+        "restore": "bg_asset_0007"
+      }
+    ],
+    "background": "bg_bed_room_01_noon",
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_asset_0007"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s89_w15_huyen_weekend_with_anh_nhi.rpy",
+    "label": "tam_c04_w15_s04_huyen_weekend_with_anh_nhi",
+    "illustrations": [],
+    "background": "bg_c04_huyen_home_day",
+    "backgrounds": [
+      "bg_c04_huyen_home_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s90_w15_friday_distance_choice.rpy",
+    "label": "tam_c04_w15_s05_friday_distance_choice",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Khoảng cách không lấy mất cả tuần. Nó chỉ làm một vài câu hỏi trở nên rõ hơn.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s91_w16_monday_phone_pulse.rpy",
+    "label": "tam_c04_w16_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Tuần cuối tháng bắt đầu bằng thông báo chuyến bay lùi hai ngày. Hoàng gửi lại lịch tối thứ Tư. Quân nhắn Huyền đúng bốn chữ: 'Cảm ơn cô. Tôi về.'\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s92_w16_trip_return_delay.rpy",
+    "label": "tam_c04_w16_s02_trip_return_delay",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_quang_thienan_work",
+        "anchor": "\"Mưa lớn giữ chuyến bay ở lại miền Nam thêm hai ngày.\"",
+        "restore": "bg_tam_family_living_room_evening"
+      }
+    ],
+    "background": "bg_tam_family_living_room_evening",
+    "backgrounds": [
+      "bg_tam_family_living_room_evening",
+      "bg_tam_family_living_room_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s93_w16_hoang_one_evening.rpy",
+    "label": "tam_c04_w16_s03_hoang_one_evening",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_hoang_restaurant",
+        "anchor": "\"Hoàng đến trước nhưng không gọi món. Tâm ngồi xuống đúng giờ.\"",
+        "restore": "bg_luxury_restaurant_evening"
+      }
+    ],
+    "background": "bg_luxury_restaurant_evening",
+    "backgrounds": [
+      "bg_luxury_restaurant_evening",
+      "bg_luxury_restaurant_evening"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s94_w16_quan_returns_home.rpy",
+    "label": "tam_c04_w16_s04_quan_returns_home",
+    "illustrations": [],
+    "background": "bg_c04_quan_home_night",
+    "backgrounds": [
+      "bg_c04_quan_home_night"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s95_w16_month_four_priority.rpy",
+    "label": "tam_c04_w16_s05_month_four_priority",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_tam_work_evening",
+        "anchor": "\"Một tháng có người đi xa kết thúc bằng những điều họ chọn báo về.\"",
+        "restore": "bg_company_open_office_day"
+      }
+    ],
+    "background": "bg_company_open_office_day",
+    "backgrounds": [
+      "bg_company_open_office_day",
+      "bg_company_open_office_day"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s96_w16_month_four_snapshot.rpy",
+    "label": "tam_c04_w16_s06_month_four_snapshot",
+    "illustrations": [],
+    "background": null,
+    "backgrounds": []
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s97_w17_monday_phone_pulse.rpy",
+    "label": "tam_c04_w17_s01_monday_phone_pulse",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_phone_morning",
+        "anchor": "\"Thiên An và Quang trở về vào sáng thứ Hai. Hoàng hỏi Tâm có giữ Chủ Nhật không. Huyền gửi ảnh Ánh Nhi bỏ quên một chiếc dây buộc tóc ở nhà cô.\"",
+        "restore": "bg_tam_room_morning"
+      }
+    ],
+    "background": null,
+    "backgrounds": [
+      "bg_tam_room_morning",
+      "bg_tam_room_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s98_w17_south_return.rpy",
+    "label": "tam_c04_w17_s02_south_return",
+    "illustrations": [
+      {
+        "asset": "cg_tam_c04_return_luggage",
+        "anchor": "\"Thiên An bước ra khỏi thang máy trước. Quang kéo theo hai chiếc vali.\"",
+        "restore": "bg_company_lobby_morning"
+      }
+    ],
+    "background": "bg_company_lobby_morning",
+    "backgrounds": [
+      "bg_company_lobby_morning",
+      "bg_company_lobby_morning"
+    ]
+  },
+  {
+    "file": "game/story/tam/tam_c04_between_work_and_hearts/s99_w17_quang_chooses_conversation.rpy",
+    "label": "tam_c04_w17_s03_quang_chooses_conversation",
+    "illustrations": [],
+    "background": "bg_tam_family_hallway_night",
+    "backgrounds": [
+      "bg_tam_family_hallway_night"
+    ]
+  }
+]

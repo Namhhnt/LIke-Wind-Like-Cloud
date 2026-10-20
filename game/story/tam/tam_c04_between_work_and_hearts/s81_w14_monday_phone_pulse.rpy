@@ -5,5 +5,9 @@ label tam_c04_w14_s01_monday_phone_pulse:
     $ phone_refresh_all()
     scene bg_tam_room_morning
     with fade
+    scene cg_tam_c04_phone_morning
+    with dissolve
     "Thứ Hai bắt đầu bằng một bức ảnh biển mờ qua cửa kính xe, một cuộc gọi nhỡ và tin nhắn của Huyền: 'Con bé không ăn hành.'"
+    scene bg_tam_room_morning
+    with dissolve
     return

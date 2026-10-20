@@ -1,7 +1,7 @@
 # FILE: game/story/tam/tam_c04_between_work_and_hearts/s94_w16_quan_returns_home.rpy
 
 label tam_c04_w16_s04_quan_returns_home:
-    scene black
+    scene bg_c04_quan_home_night
     with dissolve
     "Quân về nhà sau mười giờ. Ánh Nhi đã ngủ. Huyền ngồi dưới sàn phòng khách, dựa lưng vào sofa."
     "Trên bàn là bình nước đã thay nắp mới."

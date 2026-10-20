@@ -1,7 +1,11 @@
 label tam_c04_w10_s06_friday_no_substitute:
     scene bg_company_open_office_day
     with dissolve
+    scene cg_tam_c04_tam_work_evening
+    with dissolve
     "Thứ Sáu, sáu giờ hai mươi sáu."
+    scene bg_company_open_office_day
+    with dissolve
     "Một lịch hẹn cần đặt lại. Một cánh cửa đã được tôn trọng. Một file còn chờ review."
     menu:
         "Đặt lại lịch với Hoàng bằng một giờ cụ thể":

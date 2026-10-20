@@ -5,7 +5,11 @@ label tam_c04_w03_s04_huyen_defends_the_standard:
     scene bg_company_open_office_day
     with dissolve
 
+    scene cg_tam_c04_tam_huyen_work
+    with dissolve
     "Sáng thứ Năm, một thành viên từ đội khác gửi lại tài liệu với lời nhắn: phần này khách vẫn hiểu, không cần sửa thêm."
+    scene bg_company_open_office_day
+    with dissolve
 
     "Huyền đọc xong, kéo cửa sổ chat sang bên cạnh rồi gõ một đoạn dài."
 
