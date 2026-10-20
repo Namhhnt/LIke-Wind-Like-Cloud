@@ -1,0 +1,21 @@
+# UI review v2
+
+Built-in imagegen edits; concept review only, no runtime changes. Phone Home v1 remains the shared shell reference. Map uses existing city_map_extend_day.webp as visual input; implementation must reuse the actual original asset and runtime pin coordinates, not this generated composite. Generated airport pin does not show its locked state consistently with sidebar; use locked styling from v1 in implementation. Header back icon treatment still varies slightly between phone concepts; standardize to the same chevron during implementation.
+
+## map-v2
+
+Inputs: D:/Projects/RenPy_Games/LikeWindLikeCloud/Specs/Design/UI_Review_v1/02-map.png, D:/Projects/RenPy_Games/LikeWindLikeCloud/game/images/maps/city_map_extend_day.webp
+
+Edit UI concept, single landscape 16:9 image. Preserve Vietnamese text accurately, warm brown/cream/gold style. Image 1 is edit target. Image 2 is the EXACT existing game map artwork to composite into the large map viewport; preserve its overhead river, bridges, parks, airport at upper right, roads, buildings and daylight colors, do not invent another city or repaint it as evening. Keep image 1 header, right sidebar, bottom detail panel, approved gold pin icon designs. Reposition pins meaningfully onto this map, airport on actual airport top right. Move 'Đến địa điểm' button UP about 30px and LEFT about 55px at reference image size, leaving at least 48px clear space from ornate right frame and 30px from top border. Button fully inside bottom detail panel, no overlap of flourish, border, heading or body. Keep lower panel layout otherwise, shorten body width if needed. No code changes.
+
+## messages-v2
+
+Inputs: D:/Projects/RenPy_Games/LikeWindLikeCloud/Specs/Design/UI_Review_v1/06-phone-home.png, D:/Projects/RenPy_Games/LikeWindLikeCloud/Specs/Design/UI_Review_v1/07-messages.png
+
+Edit UI concept, single landscape 16:9 image. Preserve Vietnamese text accurately, warm brown/cream/gold style. Image 1 is exact master template for background, shell dimensions/position, status bar, inset borders, footer, ornament and typography. Edit ONLY interior content of image 1 into the message list from image 2. Do NOT copy image 2 notch, different shell or background. Keep master 06:00 status bar. Header title 'Tin nhắn' at same baseline and font size as master 'Điện thoại', small left back chevron in header. Content four evenly spaced identical-height rows: Huyền preview 'Tao thấy bị đe dọa.' badge 2; Hoàng preview 'Có tin nhắn mới.'; Minh preview 'Hẹn gặp lại.'; Nhóm công ty preview 'Thông báo mới.'. Same silhouette avatar size, name and preview baseline, timestamp aligned top-right in every row. Keep EXACT master footer X icon 'Đóng điện thoại', its dimensions and position. All content within master inner left/right margins.
+
+## conversation-v2
+
+Inputs: D:/Projects/RenPy_Games/LikeWindLikeCloud/Specs/Design/UI_Review_v1/06-phone-home.png, D:/Projects/RenPy_Games/LikeWindLikeCloud/Specs/Design/UI_Review_v1/08-conversation.png
+
+Edit UI concept, single landscape 16:9 image. Preserve Vietnamese text accurately, warm brown/cream/gold style. Image 1 is exact master template for background, shell dimensions/position, 06:00 status bar, inset border, footer and ornament. Edit ONLY interior content of image 1 into conversation content from image 2. Do NOT widen phone or change background. Header recipient 'Huyền' at same size/baseline as master 'Điện thoại', small left back chevron. Consistent message bubble rules: incoming LEFT dark brown; outgoing RIGHT lighter tan; identical font size, 16px inner padding, identical corner radius, same vertical gap; timestamps always small below each bubble aligned to its outer edge, never floating beside bubbles. Four bubbles exact text 'Tao thấy bị đe dọa.', 'Có chuyện gì vậy?', 'Tao muốn nói chuyện một chút.', 'Tao đang nghe đây.'. Below messages fixed reply section 'Chọn câu trả lời', two equal full-width buttons 'Kể tao nghe nhé.' and 'Mình nói chuyện sau nhé.' with same neutral speech icon, no heart scoring implication. Preserve EXACT master X 'Đóng điện thoại' footer dimensions and position. Fit all content without clipping by compact spacing. All same inner margins as master tiles.
