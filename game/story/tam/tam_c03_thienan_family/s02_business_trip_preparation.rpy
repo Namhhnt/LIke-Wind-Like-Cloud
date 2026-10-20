@@ -18,6 +18,9 @@ label tam_c03_thienan_family_s02_business_trip_preparation:
 
     "Tâm đứng ở bậc cầu thang, nhìn chị mình kiểm tra lại mọi thứ."
 
+    scene cg_tam_c03_trip_checklist
+    with dissolve
+
     thienan neutral "Laptop."
 
     quang neutral "Trong túi. Sạc ở ngăn phải."
@@ -93,6 +96,9 @@ label tam_c03_thienan_family_s02_business_trip_preparation:
     "Cũng rất mệt."
 
     thienan smile "Để chị biết là đủ."
+
+    scene bg_hoangminh_villa_living_room_day
+    with dissolve
 
     menu:
         "Tâm nhìn sự ăn ý giữa Thiên An và Quang thế nào?"

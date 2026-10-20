@@ -46,6 +46,9 @@ label tam_c03_thienan_family_s05_tam_observes_quang:
 
     "Anh kiểm tra màn hình, lưu lại file đang mở, rồi gập máy."
 
+    scene cg_tam_c03_quang_jacket
+    with dissolve
+
     "Sau đó, anh lấy chiếc áo khoác treo trên thành ghế, phủ lên vai Thiên An."
 
     "Thiên An hơi cựa mình."
@@ -89,6 +92,9 @@ label tam_c03_thienan_family_s05_tam_observes_quang:
     "Thiên An nhắm mắt."
 
     "Quang đứng thêm một lúc."
+
+    scene bg_tam_family_living_room_evening
+    with dissolve
 
     "Rồi anh quay ra, thấy Tâm vẫn đứng gần cửa."
 

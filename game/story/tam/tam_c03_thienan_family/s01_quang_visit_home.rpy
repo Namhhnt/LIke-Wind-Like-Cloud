@@ -33,6 +33,9 @@ label tam_c03_thienan_family_s01_quang_visit_home:
 
     tam smile "Em chào anh."
 
+    scene cg_tam_c03_quang_visit
+    with dissolve
+
     "Quang đứng ngoài cửa, tay cầm một túi tài liệu màu xám. Áo sơ mi của anh phẳng phiu, nhưng cổ tay áo có một nếp gấp nhỏ, giống như vừa bị kéo vội xuống sau một cuộc họp dài."
 
     quang smile "Anh làm phiền giờ này không?"
@@ -56,6 +59,9 @@ label tam_c03_thienan_family_s01_quang_visit_home:
     "Tâm bật cười."
 
     tam laughing "Anh vào đi."
+
+    scene bg_tam_family_entry_evening
+    with dissolve
 
     "Quang thay dép rất gọn."
 

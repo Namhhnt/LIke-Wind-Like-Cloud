@@ -1,0 +1,105 @@
+{
+  "generator": "built-in ImageGen",
+  "format": "Opaque WebP 1920x1080, Lanczos fit, quality 94",
+  "assets": [
+    {
+      "name": "cg_tam_c03_thienan_sofa",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Tam identity; input2 THIEN AN identity; input3 exact family living room setting; input4 style only. Cinematic layered medium two-shot in this old elegant Vietnamese family home at evening. Exhausted Thien An reclines on the carved wooden sofa, eyes half-opening toward younger sister Tam who has just arrived beside her, concern in her gaze. OPEN laptop sits on coffee table with blurred spreadsheet-like colored blocks but no legible text; thick documents, two pens and empty water glass nearby. Warm table lamp and dark shutters, intimate quiet exhaustion rather than glamorous pose. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/thienan/expressions/thienan_tired.webp",
+        "game/images/assets/bg/bg_tam_family_living_room_evening.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "075c914b-43c2-47d8-b907-49a4b9ecc2a5",
+      "output": "game/images/assets/cg/cg_tam_c03_thienan_sofa.webp"
+    },
+    {
+      "name": "cg_tam_c03_quang_visit",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 QUANG identity (not Quan); input2 Tam; input3 exact family house entry; input4 style. A medium three-quarter cinematic shot from inside the warmly lit open doorway, Quang outside holding a slim GRAY document bag at chest/waist level, tidy shirt with tiny wrinkle on cuff, gentle slightly reserved expression looking toward Tam. Tam at side of foreground, face readable in three-quarter angle, warmly welcomes him with eyes on him. Amber interior rim light and blue evening exterior contrast, elegant carved wood doorway. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/quang/expressions/quang_neutral.webp",
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/bg/bg_tam_family_entry_evening.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "correction_prompt": "Use case: precise-object-edit. Edit this exact scene. REMOVE the woman on the RIGHT in ivory blouse and low bun (Thien An) entirely, naturally reconstructing the carved door frame and warm entryway behind her. She has not entered this story scene yet. Keep ONLY Tam on LEFT in dusty rose cardigan and Quang CENTER holding gray document bag, preserving their exact identities, expressions, mutual gaze, clothes, poses, doorway, lighting and semi-realistic style. Do NOT replace the removed person with anyone or any object. Slightly reframe the two remaining people so gray document bag is visible above bottom quarter if possible. One complete wide16:9 image, no text.",
+      "initial_generation": "5ba83294-c2be-4e85-8159-b5e4b89d2bf8",
+      "generation_id": "fe135225-400a-4337-976f-b1ecda11744a",
+      "output": "game/images/assets/cg/cg_tam_c03_quang_visit.webp"
+    },
+    {
+      "name": "cg_tam_c03_trip_checklist",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Thien An identity; input2 QUANG identity; input3 Tam; input4 exact existing daytime villa living room; input5 style. Cinematic triangular three-person staging: Thien An checks open laptop bag resting atop a compact upright suitcase near door, Quang beside her points calmly to pocket containing a plain black USB stick and blue document folder. Tam watches from staircase in softer middle-ground, recognizable but secondary. Practical work coordination, restrained caring, no romantic touching, faces focused on checklist/items or each other, not camera. Daylight through windows, careful hands upper two-thirds, full environment continuity. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/thienan/expressions/thienan_neutral.webp",
+        "game/images/characters/quang/expressions/quang_neutral.webp",
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/bg/bg_hoangminh_villa_living_room_day.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "dd7ce4b3-026d-46f2-a335-12875c2658ba",
+      "output": "game/images/assets/cg/cg_tam_c03_trip_checklist.webp"
+    },
+    {
+      "name": "cg_tam_c03_family_dinner",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Tam identity; input2 Thien An; input3 exact dining room; input4 style. Cinematic medium two-shot framed over softly defocused older parents' shoulders at a carved wooden family dinner table. Parents' FACES NOT visible, only backs/shoulders at near edges, do not invent recurring faces. Focus on Thien An in three-quarter view with restrained tired expression, one hand still beside rice bowl, chopsticks resting on table, Tam beside her looks toward sister with concern. Vietnamese home dinner including winter melon soup, rice bowls and shared dishes, almost still tense pause during family marriage pressure, no Quang at table. Warm chandelier, dark shutters, cream walls and ceramics of input setting. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/tam/expressions/tam_worried.webp",
+        "game/images/characters/thienan/expressions/thienan_tired.webp",
+        "game/images/assets/bg/bg_tam_family_dining_room_evening.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "c758fbe5-1459-47c7-907d-290424cf6517",
+      "output": "game/images/assets/cg/cg_tam_c03_family_dinner.webp"
+    },
+    {
+      "name": "cg_tam_c03_sisters_balcony",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Tam identity; input2 Thien An; input3 EXACT balcony; input4 style. Quiet night cinematic medium-wide two-shot on this traditional Vietnamese family home balcony with carved shutters, patterned tiles, iron rail and blue-white ceramic planters. Sisters stand side by side, each holding one plain ceramic cup of warm water at chest height, faint steam, BOTH looking down toward the small street below, faces still recognizable in natural three-quarter angle, not rear-only. Tam softly concerned, older Thien An tired and introspective, emotional space between them, not touching or hugging. Warm doorway sidelight and cool night rim, composition across diagonal railing with lower blurred plants. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/characters/thienan/expressions/thienan_neutral.webp",
+        "game/images/assets/bg/bg_tam_family_balcony_night.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "837da1f2-f966-4ae6-a22d-16180615b0de",
+      "output": "game/images/assets/cg/cg_tam_c03_sisters_balcony.webp"
+    },
+    {
+      "name": "cg_tam_c03_quang_jacket",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 QUANG identity; input2 Thien An identity; input3 Tam; input4 EXACT family living room; input5 style. Emotionally restrained cinematic diagonal medium shot. Thien An asleep sitting on carved sofa, head gently tilted, eyes CLOSED, Quang quietly drapes a light jacket across her shoulders using natural careful hands. Laptop is already CLOSED on coffee table beside a plain document envelope, NOT on her lap. Tam observes quietly from doorway in softly focused background, same identifiable face. Quang looking at jacket/Thien An with gentle care, no kissing, no extra physical contact. Warm table lamp, dark shuttered windows, carved furniture exactly from setting. Face and draping action upper 70%. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/quang/expressions/quang_smile.webp",
+        "game/images/characters/thienan/expressions/thienan_tired.webp",
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/bg/bg_tam_family_living_room_evening.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "da12ba0f-f106-45c0-96e0-18100e947036",
+      "output": "game/images/assets/cg/cg_tam_c03_quang_jacket.webp"
+    },
+    {
+      "name": "cg_tam_c03_quang_gifts",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 QUANG authoritative identity, not Quan; input2 Tam; input3 exact gate setting; input4 style. Candid cinematic medium two-shot at gate in gentle morning light. Quang holds one small kraft paper gift bag with BOTH hands at chest height; inside glimpses of a plain supplement carton, coffee packet and mint tin, all unbranded and unreadable. He smiles slightly bashfully toward Tam, Tam teases him with kind smile, mutual gaze. Bag remains in HIS hands, before any support decision or transfer. Warm sunlight through foliage, cool stone gate pillars and dark metal bars of input, blurred foreground plants. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/quang/expressions/quang_bashful.webp",
+        "game/images/characters/tam/expressions/tam_smile.webp",
+        "game/images/assets/bg/bg_hoangminh_villa_day.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "11caf07a-15ba-4e84-8f10-3978577174f0",
+      "output": "game/images/assets/cg/cg_tam_c03_quang_gifts.webp"
+    },
+    {
+      "name": "cg_tam_c03_career_notebook",
+      "prompt": "Use case: illustration-story. Create ONE full-bleed wide 16:9 cinematic semi-realistic Vietnamese visual novel CG with the natural skin, realistic proportions, elegant photographic-painterly rendering and warm lighting of the style reference. Strictly preserve each named person's identity from their OWN portrait, never mix faces. Huyen has a compact rounder face, small soft chin, small natural eyes, lifted inner brows, shoulder-length layered hair with wispy bangs and high half-up ponytail; Tam has longer refined face and long half-up hair. They must look distinct. Frame faces, hands and story action within upper 73% to clear dialogue box, with atmospheric lower foreground. People look at one another or at the action, never at viewer. Natural anatomy and hands. No readable text, logos, watermark, panels or reference insets. Background extras indistinct faces. Input1 Tam identity; input2 exact modest study-bedroom at night; input3 style. Cinematic close-medium three-quarter portrait of Tam seated at wooden desk, softly absorbed as she reads a small OPEN DARK NAVY BLUE notebook in both hands raised at chest height. Navy cover visible on outside, tiny pale sticky note at corner, pages angled away from camera so NO readable or fake letters. Notebook is sister's practical career advice, quiet tenderness. Tam alone (Thien An has not entered yet), eyes down at notebook, long half-up hair; warm desk lamp and cool barred window light, blurred bookcase and simple bed consistent with setting. Continuity wardrobe: Tam in soft dusty-rose lightweight knit cardigan over ivory top and beige skirt, long half-up dark hair. Thien An in ivory silk blouse and charcoal tailored trousers, dark hair in a neat low bun with loose face-framing strands exactly as her portrait; no resemblance to Tam. Quang in pale blue open-collar business shirt and charcoal suit trousers, dark blazer if outdoors, youthful gentle face exactly as Quang reference, NOT Quan. ",
+      "references": [
+        "game/images/characters/tam/expressions/tam_neutral.webp",
+        "game/images/assets/bg/bg_asset_0008.webp",
+        "game/images/assets/cg/cg_tam_c01_collar_coffee.webp"
+      ],
+      "generation_id": "b73038f6-1c90-4a47-8428-41e33999efb4",
+      "output": "game/images/assets/cg/cg_tam_c03_career_notebook.webp"
+    }
+  ]
+}

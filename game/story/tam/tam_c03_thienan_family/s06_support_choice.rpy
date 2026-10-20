@@ -12,6 +12,9 @@ label tam_c03_thienan_family_s06_support_choice:
 
     "Anh đến sớm hơn giờ hẹn."
 
+    scene cg_tam_c03_quang_gifts
+    with dissolve
+
     "Trong tay là một túi giấy nhỏ, bên trong có vài hộp thuốc bổ, một gói cà phê không đường và một hộp kẹo bạc hà."
 
     tam confused "Anh mang gì nhiều vậy?"
@@ -68,6 +71,9 @@ label tam_c03_thienan_family_s06_support_choice:
 
     else:
         "Tâm nhìn túi giấy trong tay Quang, không hiểu vì sao mình lại thấy câu chuyện này đáng tiếc."
+
+    scene bg_hoangminh_villa_day
+    with dissolve
 
     menu:
         "Tâm trả lời Quang thế nào?"

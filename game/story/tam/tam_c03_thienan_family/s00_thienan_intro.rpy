@@ -23,6 +23,9 @@ label tam_c03_thienan_family_s00_thienan_intro:
 
     "Trên bàn trà, laptop của Thiên An đang mở. Một bảng tính dài kín màn hình, vài ô được tô đỏ, vài dòng ghi chú bị gạch ngang rồi viết lại."
 
+    scene cg_tam_c03_thienan_sofa
+    with dissolve
+
     "Thiên An ngồi tựa trên sofa, đầu nghiêng sang một bên."
 
     "Cô chưa ngủ hẳn. Nhưng cũng không còn tỉnh táo."
@@ -72,6 +75,9 @@ label tam_c03_thienan_family_s00_thienan_intro:
     "Một câu rất giống Thiên An."
 
     "Gọn. Chắc. Không để chừa chỗ cho người khác lo lắng."
+
+    scene bg_tam_family_living_room_evening
+    with dissolve
 
     menu:
         "Tâm làm gì khi thấy Thiên An mệt như vậy?"

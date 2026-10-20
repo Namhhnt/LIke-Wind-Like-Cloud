@@ -21,6 +21,9 @@ label tam_c03_thienan_family_s07_career_seed:
 
     thienan neutral "Cho em. Không phải giáo trình. Đừng sợ."
 
+    scene cg_tam_c03_career_notebook
+    with dissolve
+
     "Tâm cầm cuốn sổ lên."
 
     "Bên trong là vài trang ghi chú về cách đọc hợp đồng lao động, cách kiểm tra email công việc, cách ghi lại những trao đổi quan trọng sau cuộc họp."
@@ -38,6 +41,9 @@ label tam_c03_thienan_family_s07_career_seed:
     thienan neutral "Đừng làm việc chăm chỉ trước khi em biết mình đang làm đúng việc."
 
     "Tâm đọc đi đọc lại câu đó."
+
+    scene bg_asset_0008
+    with dissolve
 
     "Ngoài hành lang có tiếng bước chân."
 

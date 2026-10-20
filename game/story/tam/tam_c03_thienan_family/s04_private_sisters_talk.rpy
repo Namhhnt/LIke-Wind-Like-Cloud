@@ -23,6 +23,9 @@ label tam_c03_thienan_family_s04_private_sisters_talk:
 
     "Thiên An nhận cốc nước."
 
+    scene cg_tam_c03_sisters_balcony
+    with dissolve
+
     "Hai chị em đứng cạnh nhau, nhìn xuống con đường nhỏ trước nhà."
 
     "Một chiếc xe chạy qua, ánh đèn lướt lên hàng cây rồi mất hút."
@@ -70,6 +73,9 @@ label tam_c03_thienan_family_s04_private_sisters_talk:
     "Thiên An nói bằng giọng rất bình thường."
 
     "Nhưng chính vì bình thường nên Tâm mới thấy câu ấy mệt."
+
+    scene bg_tam_family_balcony_night
+    with dissolve
 
     # Repeatable sister-talk menu.
     # Tâm can ask up to 4 times.

@@ -54,6 +54,9 @@ label tam_c03_thienan_family_s03_family_pressure:
 
     tam_mother "Mẹ biết."
 
+    scene cg_tam_c03_family_dinner
+    with dissolve
+
     "Một khoảng lặng nhỏ rơi xuống bàn ăn."
 
     "Thiên An đặt đũa xuống, rất nhẹ."
@@ -99,6 +102,9 @@ label tam_c03_thienan_family_s03_family_pressure:
     "Một miếng bí bị chiếc thìa cắt lệch, nằm chìm một nửa trong nước."
 
     "Chị cô rất ít khi làm thứ gì lệch."
+
+    scene bg_tam_family_dining_room_evening
+    with dissolve
 
     menu:
         "Tâm phản ứng thế nào?"
